@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+
+	
+	<select id ="getById" parameterType="string" resultType="uservo">
+		<![CDATA[
+		select users_no
+		  from users
+		 where email = #{email}	
+		]]>
+	</select> 
+	
+	<select id="getNickname" parameterType="string" resultType="uservo">
+		<![CDATA[
+			select nickname as nickName 
+			from users where users_no = #{users_no};
+		]]>
+	</select>
+	
+	
+	<insert id="insert" parameterType="uservo">
+	
+		<![CDATA[
+			insert into users(email, pass_word, nickname, follower_num, following_num) values
+			(#{email}, #{pass_word}, #{nickname} , 0, 0)
+		]]>
+	</insert>
+
+ 	<select id="getNo" parameterType="uservo" resultType="int">
+		select users_no from users where nickname = #{nickname}
+	</select>
+
+
+	<select id ="getByNo" parameterType="int" resultType="uservo">
+		<![CDATA[
+		select user_no, email, nickname, password, sec_password, info, users_image, follower_num, follower_num
+		  from users
+		 where users_no = #{users_no }		
+		]]>
+	</select>
+	
+	
+	
+	<select id="selectForLogin" parameterType="uservo" resultType="uservo">
+		<![CDATA[
+		select users_no, email, pass_word, nickname
+			from users
+		where email = #{email} and pass_word = #{pass_word};
+		]]>
+	</select>
+	
+	<select id="idExist" parameterType="string" resultType="uservo">
+		<![CDATA[
+		select users_no 
+			from users
+		where email = #{email};
+		]]>
+	</select>
+	
+	<select id="nicknameExist" parameterType="string" resultType="uservo">
+		<![CDATA[
+		select users_no 
+			from users 
+		where nickname = #{nickname};
+		]]>
+	</select>
+	
+	
+	
+	
+	
+
+</mapper>

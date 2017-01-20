@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="post">
+	
+	
+	
+	<insert id="insert" parameterType="postvo">
+		<![CDATA[
+			insert into post(title, content, regdate, post_image, publish ) values
+				(#{title},#{content}, now(), #{post_image}, #{publish} );
+		]]>
+	</insert>
+	
+	
+	<select id="getPostList" parameterType="int" resultType="postvo">
+		<![CDATA[
+		select post_no, title, content, regdate, post_image, publish from post 
+	 	where post.users_no = #{users_no} order by post_no desc
+		]]>
+	</select>
+	
+	<!-- 
+	
+	<select id="selectOne" parameterType="long" resultType="postvo">
+		<![CDATA[
+		select no,category_no as categoryNo, title, reg_date as regDate,content from post where no = #{no}
+		]]>
+	</select>
+	<select id="lastNo" resultType="long">
+	<![CDATA[	
+			SELECT LAST_NUMBER
+ 				 FROM USER_SEQUENCES
+			WHERE SEQUENCE_NAME = 'POST_SEQ'
+			   	]]>
+	</select> 
+	<select id="selectTop" resultType="postvo" parameterType="long">
+		<![CDATA[
+		SELECT *
+  			FROM (SELECT c.*, ROWNUM AS rn
+          FROM (  SELECT no,
+                         title,
+                         content,
+                         reg_date AS regDate
+                    FROM POST
+					where CATEGORY_NO = #{categoryNo}
+                ORDER BY reg_date DESC) c) d
+ 			WHERE d.rn = 1
+		]]>
+	</select>
+	
+	-->
+</mapper>

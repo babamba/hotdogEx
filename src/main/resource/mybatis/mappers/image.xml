@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="image">
+	
+	<insert id="insert" parameterType="imagevo">
+		<![CDATA[
+			insert INTO image(save_name, org_name, ext_name, regdate) VALUES
+			(#{saveName}, #{orgName}', #{extName}, now())
+		]]>
+	</insert>
+	
+<!-- 	<select id="selectByPostNo" parameterType="imagevo" resultType="imagevo">
+		<![CDATA[	
+			select * from image where post_no = #{postNo} AND user_no =#{userNo}
+			   	]]>
+	</select> -->
+	
+	<select id="selectByNo" parameterType="int" resultType="imagevo">
+		<![CDATA[	
+			select * from image where image_no = #{imageNo};
+			   	]]>
+	</select>
+</mapper>
