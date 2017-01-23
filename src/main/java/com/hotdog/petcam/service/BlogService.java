@@ -32,6 +32,9 @@ public class BlogService {
 	private UserDao userDao;
 	
 	@Autowired
+	private UserService userService;
+	
+	@Autowired
 	private PostDao postDao;
 	
 	@Autowired
@@ -74,39 +77,25 @@ public class BlogService {
 			return blogVo;
 		}
 		
-		
-	
-/*	public Map<String, Object> index(String email){
-		Integer usersNo = null;
-		
-		//이메일로 유저번호 찾기.  not null일때 세션에 유저번호 저장
-		UserVo authUser = userDao.idExist(email); 
-		
-		//낫널일 경우  int형 usersNo객체에  유저번호 값이 담긴 authUser를 넣는다.
-		if(authUser != null){
-			usersNo = authUser.getUsers_no();
-		} 
-		
-		Map<String, Object> map = null;
-		map = new HashMap<String, Object>();
-		
-		//postVo형태인 list객체에 유저넘버를 파라미터로 조회한 포스트 컬럼을 map객체에 넣어 저장하고 리턴
-		List<PostVo> postlist = postDao.getList(usersNo);
-		map.put("post", postlist);
-			
-		return map;
-	}*/
+
 		
 		public Map<String, Object> index(String nickname){
 			Integer usersNo = null;
 			
 			//이메일로 유저번호 찾기.  not null일때 세션에 유저번호 저장
 			UserVo authUser = userDao.nicknameExist(nickname); 
+			System.out.println("오스유저"+ authUser);
+			
 			
 			//낫널일 경우 유저번호 값이 담긴 UserVo에 유저넘버를 저장하고 usersNo객체로 한다.
 			if(authUser != null){
 				usersNo = authUser.getUsers_no();
+				System.out.println(usersNo);
 			} 
+			
+			PostVo postVo = new PostVo();
+			postVo.setUsers_no(authUser.getUsers_no());
+			
 			
 			Map<String, Object> map = null;
 			map = new HashMap<String, Object>();
@@ -114,6 +103,8 @@ public class BlogService {
 			//postVo형태인 list객체에  위의 authUser(유저넘버)를 담음 usersNo를 이용해로 조회한 포스트 컬럼을 map객체에 넣어 저장하고 리턴
 			List<PostVo> postlist = postDao.getList(usersNo);
 			map.put("post", postlist);
+			map.put("authUser", authUser);
+			map.put("postvo", postVo);
 				
 			return map;	
 		}

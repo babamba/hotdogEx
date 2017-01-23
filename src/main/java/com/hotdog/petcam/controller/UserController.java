@@ -30,32 +30,17 @@ public class UserController {
 	@RequestMapping("/login")
 	public String login(@ModelAttribute UserVo vo, Model model, HttpServletRequest request, HttpSession session){
 		System.out.println("login");
-		System.out.println("controller" + request);
-		System.out.println("controller" + session);
-
 		return "redirect:/";
 	}
-	
 
-	
-	@RequestMapping(value = "/easyjoin")
-	public String easyjoin(@ModelAttribute UserVo vo, Model model) {
-		int users_no = userService.join(vo);
-		vo.setUsers_no(users_no);
-		userService.insert(vo);
-		return "redirect:/";
-	}
-	
 	
 	@RequestMapping(value = "/join")
 	public String join(@RequestParam( value="nickname", required=true, defaultValue="" ) String nickname,@ModelAttribute UserVo userVo,
 			HttpServletRequest request){
 	
 		int users_no = userService.join(userVo);
-		System.out.println("service.join"+users_no);
 		userVo.setUsers_no(users_no);
 		
-		System.out.println(userVo);
 		userService.insert(userVo);
 		return "redirect:/";
 	}

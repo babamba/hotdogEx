@@ -1,0 +1,114 @@
+@import url(http://fonts.googleapis.com/css?family=Jura:300,400,500,600);
+
+@import url(http://fonts.googleapis.com/css?family=Play);
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
+
+.logo {
+  float: left;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.post-container {
+  position: relative;
+  padding-left: 50px;
+}
+
+.published {
+  position: absolute;
+  width: 50px;
+  left: 25px;
+  padding: 10px 0;
+  text-align: center;
+  background-color: #fff;
+}
+
+.date {
+  text-transform: uppercase;
+  font-family: Open Sans;
+  font-weight: bold;
+  color: #222;
+  font-size: 12px;
+}
+
+.year {
+  text-transform: uppercase;
+  font-family: Open Sans;
+  font-weight: 300;
+  color: #777;
+  font-size: 12px;
+}
+
+.post {
+  padding-left: 50px;
+  padding-bottom: 60px;
+  margin: 0 auto;
+  border-left: 1px solid #999;
+}
+
+.post-container:last-child .post {
+  padding-bottom: 10px;
+}
+
+h1 {
+  font-family: Open Sans;
+  font-weight: bold;
+  color: #222;
+  font-size: 36px;
+  margin: 0;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-family: Open Sans;
+  font-weight: 300;
+  color: #777;
+  font-size: 26px;
+  margin: 0;
+}
+
+.pub-date {
+  font-family: Open Sans;
+  color: #666;
+  font-size: 12px;
+}
+
+.post img {
+  width: 80px;
+  height: 80px;
+  border-radius: 9999px;
+  float: left;
+  margin-right: 15px;
+}
+
+p {
+  font-family: Open Sans;
+  color: #333;
+  line-height: 1.6;
+  font-size: 18px;
+  margin-top: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  margin-bottom: 50px;
+}
+
+li {
+  display: inline-block;
+  padding: 0 10px;
+  font-family: Jura;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 55px;
+}

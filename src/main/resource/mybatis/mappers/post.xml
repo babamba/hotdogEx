@@ -15,7 +15,7 @@
 	
 	<select id="getPostList" parameterType="int" resultType="postvo">
 		<![CDATA[
-		select post_no, title, content, regdate, post_image, publish from post 
+		select users_no, post_no, title, content, regdate, post_image, publish from post 
 	 	where post.users_no = #{users_no} order by post_no desc
 		]]>
 	</select>

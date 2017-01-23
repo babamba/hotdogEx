@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hotdog.petcam.security.Auth;
 import com.hotdog.petcam.service.BlogService;
+import com.hotdog.petcam.service.UserService;
+import com.hotdog.petcam.vo.PostVo;
 
 @Controller
 @RequestMapping("/blog")
@@ -20,20 +22,12 @@ public class BlogController {
 	@Autowired
 	private BlogService blogService;
 	
+
+	
 	@RequestMapping("/{nickname}")
 	public String main(@PathVariable String nickname, Model model, HttpServletRequest request){
-		
-		Map<String, Object> map = blogService.index(nickname);
-		System.out.println(map);
-		System.out.println();
 		return "blog/blog-main";
 	}
-	
-	@RequestMapping("/{nickname}/post")
-	public String write(@PathVariable String nickname ){
-		return "blog/write";
-	}
-	
 	
 	
 	@Auth

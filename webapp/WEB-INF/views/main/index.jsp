@@ -265,7 +265,7 @@ $(function(){
 					<a>로그인 해</a>
 				</c:when>
 		<c:otherwise>
-				<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}">블로그화면으로</a> 
+				<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}">${authUser.nickname}의 블로그화면으로</a> 
 		</c:otherwise>
 	</c:choose>
 	

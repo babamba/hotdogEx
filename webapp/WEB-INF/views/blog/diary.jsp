@@ -3,17 +3,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 
 <html class="no-js">
+<!--<![endif]-->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Hot dog</title>
 <head>
+<meta name="description" content="">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/normalize.css">
 <link rel="stylesheet"
@@ -24,6 +29,8 @@
 	href="${pageContext.request.contextPath}/assets/css/main.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/swiper.css">
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/diary/diary.css">
 
 <!--     Fonts and icons     -->
 <link rel="stylesheet"
@@ -42,50 +49,31 @@
 <link href="${pageContext.request.contextPath}/assets/css/demo.css"
 	rel="stylesheet" />
 
-<style>
-video {
-  width: 100%;
-  height: 500px;
-}
-</style>
+</head>
+
 
 </head>
 <body>
+
 	<!-- Fixed-bar -->
 	<c:import url="/WEB-INF/views/includes/fixed_bar.jsp" />
 
-	<!-- 반응형 navigation -->
+    <!-- 반응형 navigation -->
 	<c:import url="/WEB-INF/views/includes/navigation.jsp" />
-
-	<div class="streaming_browser">
-		 <div>
-            <video id="videoPlayer" controls></video>
-       	 </div>
-		
-		<div class="streaming_control">
-			<div class="media_intro">
-				<H1>Media</H1>
-
-			</div>
-
-			<div class="togglebutton">
+	
+	<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/post">포스트하기</a>
+	
+	<!-- 포스트 리스트 -->
+	<c:import url="/WEB-INF/views/includes/diary_list.jsp" />
 
 
-
-				<label> <input type="checkbox" checked="">
-				</label>
-			</div>
-		</div>
-	</div>
-
-	<div id="post"></div>
-
-	<!-- Modal -->
+	
+ 	<!-- Modal -->
 	<c:import url="/WEB-INF/views/includes/modal.jsp" />
-
+	
 
 	<script
-		src="${pageContext.request.contextPath}/assets/js/vendor/jquery-1.10.2.min.js"></script>
+		src="${pageContext.request.contextPath}/assets/js/min/jquery-1.10.2.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/bootstrap.min.js"></script>
 	<script
@@ -94,9 +82,13 @@ video {
 		src="${pageContext.request.contextPath}/assets/js/min/swiper.jquery.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/plugins.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/main.min.js"></script>
+	
+
+
 	<!--   Core JS Files   -->
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
@@ -113,18 +105,8 @@ video {
 		src="${pageContext.request.contextPath}/assets/js/material-kit.js"
 		type="text/javascript"></script>
 	<script
-		src="${pageContext.request.contextPath}/assets/js/vendor/modernizr-2.6.2.min.js"></script>
-		
-	<!-- DASH-AVC/265 reference implementation -->
-	<script src="http://cdn.dashjs.org/latest/dash.all.min.js"></script>
-
-	<script>
-            (function(){
-                var url = "http://150.95.141.66:1935/live/admin2/test/manifest.mpd";
-                var player = dashjs.MediaPlayer().create();
-                player.initialize(document.querySelector("#videoPlayer"), url, true);
-            })();
-        </script>
+		src="${pageContext.request.contextPath}/assets/js/min/modernizr-2.6.2.min.js"></script>
+	
 
 </body>
 

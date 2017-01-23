@@ -29,6 +29,8 @@
 	href="${pageContext.request.contextPath}/assets/css/main.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/swiper.css">
+	
+
 
 <!--     Fonts and icons     -->
 <link rel="stylesheet"

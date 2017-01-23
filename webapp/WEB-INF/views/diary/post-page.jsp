@@ -55,6 +55,7 @@
 	<!-- 반응형 navigation -->
 	<c:import url="/WEB-INF/views/includes/navigation.jsp" />
 	
+	<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/post">포스트하기</a>
 	
 	<!-- Modal -->
 	<c:import url="/WEB-INF/views/includes/modal.jsp" />
