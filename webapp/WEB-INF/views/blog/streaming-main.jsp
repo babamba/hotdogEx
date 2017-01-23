@@ -57,26 +57,10 @@ video {
 	<!-- 반응형 navigation -->
 	<c:import url="/WEB-INF/views/includes/navigation.jsp" />
 
-	<div class="streaming_browser">
-		 <div>
-            <video id="videoPlayer" controls></video>
-       	 </div>
-		
-		<div class="streaming_control">
-			<div class="media_intro">
-				<H1>Media</H1>
+	<!-- 스트리밍 부분 -->
+	<c:import url="/WEB-INF/views/includes/streaming.jsp" />
 
-			</div>
-
-			<div class="togglebutton">
-
-
-
-				<label> <input type="checkbox" checked="">
-				</label>
-			</div>
-		</div>
-	</div>
+	
 
 	<div id="post"></div>
 
