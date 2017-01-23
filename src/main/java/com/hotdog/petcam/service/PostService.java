@@ -28,9 +28,9 @@ public class PostService {
 		postDao.insert(postVo);
 	}
 	
-	/*public List<PostVo> getList(int page){
+	public List<PostVo> getList(int page){
 		return postDao.getList(page);
 	}
-	*/
+	
 	
 }

@@ -60,7 +60,7 @@
 				</div>
 				<div class="post_content">
 					<p>
-						<p>${PostVo.content}</p>
+						<p>${vo.content}</p>
 					
 						<span>Lorem ipsum dolor sit amet, consectetur adipisicing
 							elit. Architecto perspiciatis quaerat, corporis, corrupti
@@ -73,16 +73,7 @@
 						<span>Quos perferendis voluptatibus amet fugiat porro
 							maxime nam natus illo adipisci, modi. Animi dolores ipsam
 							voluptas, dolorem, dolorum aut recusandae eius repudiandae
-							debitis in, quisquam ullam odit eligendi deserunt nihil!</span> <br>
-						<br> <span>Atque, fuga, ut. Doloribus, dignissimos. At
-							necessitatibus, facilis nulla. Expedita facilis, itaque, aliquid
-							recusandae similique obcaecati enim, unde libero dolore voluptate
-							voluptatum neque tenetur illum repellat dicta! Natus, quasi
-							consequuntur.</span> <br> <br> <span>Quis magnam
-							explicabo impedit laborum nobis aspernatur ipsa ad ut
-							reprehenderit eos, quo corporis dicta laboriosam suscipit,
-							voluptatibus vero? Eveniet ab est veniam mollitia ipsam,
-							provident in quia consectetur amet.</span>
+							debitis in, quisquam ullam odit eligendi deserunt nihil!</span>
 					</p>
 
 				</div>

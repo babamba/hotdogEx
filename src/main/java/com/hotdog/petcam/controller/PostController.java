@@ -61,20 +61,14 @@ public class PostController {
 		}
 		
 		@Auth
-		@RequestMapping(value="/{nicknaem}/insert",  method = RequestMethod.POST)
+		@RequestMapping(value="/{nickname}/insert",  method = RequestMethod.POST)
 		public String insert(@ModelAttribute PostVo postVo, @AuthUser UserVo authUser){
 			String nickname = authUser.getNickname();
 			postService.insert(postVo);
 			return "redirect:/blog/" + nickname;
 		}
 		
-		/*@ResponseBody
-		@RequestMapping("{nicknaem}/api/list")
-		public JSONResult list(@RequestParam(value="p", required=true, defaultValue="1")Integer page){
-			List<PostVo> list = postService.getList(page);
-			return JSONResult.success(list);
-		}
-		*/
+		
 		
 	
 }

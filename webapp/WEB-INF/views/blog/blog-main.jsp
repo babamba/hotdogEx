@@ -48,7 +48,7 @@
 <!-- CSS Just for demo purpose, don't include it in your project -->
 <link href="${pageContext.request.contextPath}/assets/css/demo.css"
 	rel="stylesheet" />
-
+<script src="${pageContext.request.contextPath }/assets/js/min/jquery-1.10.2.min.js" type="text/javascript"></script>
 </head>
 
 
@@ -66,7 +66,7 @@
 	<!-- Modal -->
 	<c:import url="/WEB-INF/views/includes/modal.jsp" />
 
-	<script src="${pageContext.request.contextPath }/assets/js/min/jquery-1.10.2.min.js" type="text/javascript"></script>
+	
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/bootstrap.min.js"></script>
 	<script
