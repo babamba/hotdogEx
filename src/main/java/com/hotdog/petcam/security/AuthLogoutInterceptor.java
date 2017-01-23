@@ -16,6 +16,7 @@ public class AuthLogoutInterceptor extends HandlerInterceptorAdapter {
 		if( session != null ) {
 			System.out.println("로그아웃 시도");
 			session.removeAttribute( "authUser" );
+			session.removeAttribute("secretUser");
 			System.out.println("세션 소멸");
 			session.invalidate();
 			System.out.println("세션 invalidate");

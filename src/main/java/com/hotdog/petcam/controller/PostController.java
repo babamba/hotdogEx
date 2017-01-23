@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hotdog.petcam.DTO.JSONResult;
 import com.hotdog.petcam.security.Auth;
 import com.hotdog.petcam.security.AuthUser;
 import com.hotdog.petcam.service.BlogService;
@@ -42,7 +45,14 @@ public class PostController {
 			return "blog/diary";
 		}
 		
-		
+		/*@Auth
+		@RequestMapping(value = "/{id}/admin/write", method = RequestMethod.POST)
+		public String insert(@AuthUser Jusers authUser, @ModelAttribute Post post) {
+			String id = authUser.getId();
+			postService.insert(post);
+			return "redirect:/" + id;
+		}
+		*/
 		@Auth
 		@RequestMapping("/{nickname}/write")
 		public String main(@PathVariable String nickname, @ModelAttribute PostVo postVo, Model model, @AuthUser UserVo authUser) {
@@ -50,8 +60,21 @@ public class PostController {
 			return "blog/write";
 		}
 		
-	
+		@Auth
+		@RequestMapping(value="/{nicknaem}/insert",  method = RequestMethod.POST)
+		public String insert(@ModelAttribute PostVo postVo, @AuthUser UserVo authUser){
+			String nickname = authUser.getNickname();
+			postService.insert(postVo);
+			return "redirect:/blog/" + nickname;
+		}
 		
+		/*@ResponseBody
+		@RequestMapping("{nicknaem}/api/list")
+		public JSONResult list(@RequestParam(value="p", required=true, defaultValue="1")Integer page){
+			List<PostVo> list = postService.getList(page);
+			return JSONResult.success(list);
+		}
+		*/
 		
 	
 }

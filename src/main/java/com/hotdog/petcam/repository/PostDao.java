@@ -19,6 +19,14 @@ public class PostDao {
 		return list;
 	}
 	
-
+	public void insert(PostVo postVo) {
+		sqlSession.insert("post.insert", postVo);
+	}
+	
+	/*public List<PostVo> getPageList(int page){
+		List<PostVo> list = sqlSession.selectList("post.getListByPage");
+	    return list;
+	}*/
+	
 	
 }

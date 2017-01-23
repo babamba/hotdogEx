@@ -48,8 +48,7 @@
 <link href="${pageContext.request.contextPath}/assets/css/demo.css"
 	rel="stylesheet" />
 
-
-
+<%-- <script src="${pageContext.request.contextPath}/assets/ck/ckeditor.js"></script> --%>
 
 </head>
 
@@ -63,7 +62,7 @@
 	<c:import url="/WEB-INF/views/includes/navigation.jsp" />
 	
 	<!-- 스마트에디터 -->
-	<c:import url="/WEB-INF/views/includes/smartediter.jsp" /> --%>
+	<c:import url="/WEB-INF/views/includes/smartediter.jsp" />
 	
 	
 	
@@ -89,7 +88,6 @@
 		src="${pageContext.request.contextPath}/assets/js/min/material.min.js" ></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/nouislider.min.js" ></script>
-	
 	<script
 		src="${pageContext.request.contextPath}/assets/js/bootstrap-datepicker.js" ></script>
 	
@@ -98,6 +96,8 @@
 		type="text/javascript"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/modernizr-2.6.2.min.js"></script>
+		
+
 
 </body>
 </html>

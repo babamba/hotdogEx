@@ -53,6 +53,65 @@
 
 
 </head>
+
+<script>
+  var isEnd = false;
+  var page = 0;
+  
+  var fetchList = function(){
+	  if(isEnd = true){
+		  return;
+	  }
+	  ++page;
+  }
+  
+  var render = function(vo, mode){
+	  var htmls = 
+		"<li class="unread"><div class="col col-1">" + 
+		"<p class="title">" + vo.name + "</p></div>" +
+	    "<div class="col col-2">" +
+		"<div class="subject"> " + vo.title + "<span class="teaser">" + vo.content + "</span></div>" + 
+		"<div class='" + vo.regDate + "'></div>" +
+		"</div>" +
+	"</li>"
+	  
+	if(mode = true ){
+		$("#list-board").prepend(htmls);
+	}else{
+		$("#list-board").append(htmls);
+	}
+  }
+  
+  
+  
+  $.ajax({
+	url: "${pageContext.request.contextPath }/post/api/list?p=" + page,
+	type: "get",
+	dataType: "json",
+	data:"",
+	success: function(response){
+		if(response.result != "success"){
+			console.error(response.message);
+			isEnd = true;
+			return;
+		}
+		
+	$(response.data).each(function(index, vo){
+		render(vo, false);
+	});
+	
+	if(response.data.length < 5){
+		isEnd = true;
+		}
+	},
+	error: function(jqXHR, status, e){
+		console.error(status + ":" + e)
+	}
+			
+  });
+  
+  
+  </script>
 <body>
 
 	<!-- Fixed-bar -->
