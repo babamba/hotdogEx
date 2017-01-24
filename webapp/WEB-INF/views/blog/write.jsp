@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -52,6 +53,24 @@
 
 </head>
 
+<script
+	src="${pageContext.request.contextPath}/assets/se2/js/HuskyEZCreator.js"
+	type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/assets/se2/init.js"
+	type="text/javascript"></script>
+<script>
+	$(function() {
+		$("textarea.smarteditor2").each(function() {
+			var textareaId = $(this).attr("id");
+			se2_init(textareaId);
+		});
+
+		$("[type=submit]").click(function() {
+			se2_syncData();
+		});
+
+	});
+</script>
 
 <body>
 	<h1>${map.postlist }</h1>

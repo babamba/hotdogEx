@@ -493,108 +493,6 @@ hr {
 }
 
 
-.streaming_browser{
-  padding-top: 100px;
-  float: right;
-  width: 80%;
-  background-color:white;
-	
-}
-
-.streaming_browser iframe{
-	width:100%;
-	height:500px;
-	
-}
-
-.streaming_control{
-	text-align: center;
-	border: 1px solid grey;
-	display: inline-block;
-	margin: 50px;
-	padding-bottom: 195px;
-	width: 90%;
-	
-}
-
-.streaming_control .media_intro{
-	display: flex;
-	
-}
-.toggle-menu ul{
-  width: 100%;
-  display: inline;
-  padding: 20px;
-  margin-top: 30px;
-  background: #6cc0f7;
-  color: white
-  font-size: 18px;
-}
-.toggle-menu:hover {
-  color: white;
-}
-
-
-@media screen and (max-width: 1600px){
-	.streaming_browser{
-		  padding-top: 230px;
-		  width:100%;
-		  text-align: center;
-		  background-color:white;
-	}
-	
-	.streaming_browser iframe{
-	width:75%;
-	float: inherit;
-	height:500px;
-	}
-	
-	.streaming_control{
-	width:70%;
-	float:right;
-	}
-}
-
-@media screen and (max-width: 1200px){
-	.streaming_browser{
-		  padding-top: 200px;
-		  width:100%;
-		  text-align: center;
-		  background-color:white;
-	}
-	
-	.streaming_browser iframe{
-	width:75%;
-	float: inherit;
-	height:500px;
-	}
-	
-	.streaming_control{
-	width:70%;
-	float:right;
-	}
-}
-
-@media screen and (max-width: 990px){
-	.streaming_browser{
-	  padding-top: 100px;
-	  float: right;
-	  width: 100%;
-	  text-align: center;
-	  background-color:white;
-	}
-	
-	.streaming_browser iframe{
-	width:100%;
-	float: inherit;
-	height:500px;	
-	}
-	.streaming_control{
-	float: inherit;
-	width:90%;
-	}
-}
-
 
 
 .vod_browser{
@@ -853,6 +751,76 @@ color: dimgrey;
 }
 
 
+/*---------------------------------------------------------
+ 4. Streaming
+-------------------------------------------------------- */
+	
+.streaming_browser{
+  padding-top: 100px;
+  float: right;
+  width: 100%;
+  background-color:white;
+	
+}
+
+.streaming_control{
+	text-align: center;
+	display: block;
+	padding-bottom:200px;
+	width: 100%;
+}
+
+.streaming_control button{
+	size:20px;
+	background-color:white;
+}
+
+
+.toggle-menu ul{
+  width: 100%;
+  display: inline;
+  margin-top: 30px;
+  background: #6cc0f7;
+  color: white;
+  font-size: 18px;
+}
+.toggle-menu:hover {
+  color: white;
+}
+
+
+@media screen and (max-width: 1400px){
+	.streaming_browser{
+		padding-top: 200px;
+			width:100%;
+		  background-color:white;
+	}
+	
+	.streaming_control{
+	width:100%;
+	}
+}
+
+@media screen and (max-width: 990px){
+	.streaming_browser{
+	  padding-top: 100px;
+	  float: right;
+	  width: 100%;
+	  text-align: center;
+	  background-color:white;
+	}
+	
+	.streaming_browser iframe{
+	width:100%;
+	float: inherit;
+	height:500px;	
+	}
+	.streaming_control{
+	width:100%;
+	}
+}
+
+
 
 
 
@@ -879,14 +847,21 @@ color: dimgrey;
 }
 
 #editer{
-	text-align: center;
-	height:400px;
+	background-color:white;
+
+	height:900px;
 }
 
 #editer input{
 	color:black;
 }
 
+#editer textarea{
+	width:100%; 
+	height:250px;
+	min-width:300px;
+	display:none;
+}
 
 
 /*---------------------------------------------------------

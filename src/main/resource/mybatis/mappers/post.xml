@@ -7,8 +7,8 @@
 	
 	<insert id="insert" parameterType="postvo">
 		<![CDATA[
-			insert into post(title, content, regdate, post_image, publish ) values
-				(#{title},#{content}, now(), #{post_image}, #{publish} );
+			insert into post(title, content, regdate, post_image, publish, users_no) values
+				(#{title},#{content}, now(), #{post_image}, #{publish}, #{users_no} );
 		]]>
 	</insert>
 	

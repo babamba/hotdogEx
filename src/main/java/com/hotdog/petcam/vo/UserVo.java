@@ -19,11 +19,20 @@ public class UserVo {
 	private String users_image;
 	private int follower_num;
 	private int following_num;
+	private String description;
 	
 	public UserVo(){
 		// 기본 생성자
 	}
 	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public UserVo(String email, String pass_word){
 		// Temp User 를 위한 생성자
 		this.email=email;
@@ -89,7 +98,8 @@ public class UserVo {
 	public String toString() {
 		return "UserVo [users_no=" + users_no + ", email=" + email + ", nickname=" + nickname + ", pass_word="
 				+ pass_word + ", sec_pass_word=" + sec_pass_word + ", infomation=" + infomation + ", users_image="
-				+ users_image + ", follower_num=" + follower_num + ", following_num=" + following_num + "]";
+				+ users_image + ", follower_num=" + follower_num + ", following_num=" + following_num + ", description="
+				+ description + "]";
 	}
 	
 	

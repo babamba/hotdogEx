@@ -2,85 +2,69 @@ package com.hotdog.petcam.vo;
 
 public class VideoVo {
 
-	private int videoNo;
-	private String saveName;
-	private String orgName;
-	private String extName;
+	private int video_no;
+	private String save_name;
+	private String org_name;
+	private String ext_name;
 	private String comments;
-	private String regDate;
+	private String regdate;
 	private int publish;
-	private int usersNo;
-	
-	public int getVideoNo() {
-		return videoNo;
+	private int users_no;
+	public int getVideo_no() {
+		return video_no;
 	}
-	
-	public void setVideoNo(int videoNo) {
-		this.videoNo = videoNo;
+	public void setVideo_no(int video_no) {
+		this.video_no = video_no;
 	}
-	
-	public String getSaveName() {
-		return saveName;
+	public String getSave_name() {
+		return save_name;
 	}
-	
-	public void setSaveName(String saveName) {
-		this.saveName = saveName;
+	public void setSave_name(String save_name) {
+		this.save_name = save_name;
 	}
-	
-	public String getOrgName() {
-		return orgName;
+	public String getOrg_name() {
+		return org_name;
 	}
-	
-	public void setOrgName(String orgName) {
-		this.orgName = orgName;
+	public void setOrg_name(String org_name) {
+		this.org_name = org_name;
 	}
-	
-	public String getExtName() {
-		return extName;
+	public String getExt_name() {
+		return ext_name;
 	}
-	
-	public void setExtName(String extName) {
-		this.extName = extName;
+	public void setExt_name(String ext_name) {
+		this.ext_name = ext_name;
 	}
-	
 	public String getComments() {
 		return comments;
 	}
-	
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
-	
-	public String getRegDate() {
-		return regDate;
+	public String getRegdate() {
+		return regdate;
 	}
-	
-	public void setRegDate(String regDate) {
-		this.regDate = regDate;
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
 	}
-	
 	public int getPublish() {
 		return publish;
 	}
-	
 	public void setPublish(int publish) {
 		this.publish = publish;
 	}
-	
-	public int getUsersNo() {
-		return usersNo;
+	public int getUsers_no() {
+		return users_no;
 	}
-	
-	public void setUsersNo(int usersNo) {
-		this.usersNo = usersNo;
+	public void setUsers_no(int users_no) {
+		this.users_no = users_no;
 	}
-	
 	@Override
 	public String toString() {
-		return "VideoVo [videoNo=" + videoNo + ", saveName=" + saveName + ", orgName=" + orgName + ", extName="
-				+ extName + ", comments=" + comments + ", regDate=" + regDate + ", publish=" + publish + ", usersNo="
-				+ usersNo + "]";
+		return "VideoVo [video_no=" + video_no + ", save_name=" + save_name + ", org_name=" + org_name + ", ext_name="
+				+ ext_name + ", comments=" + comments + ", regdate=" + regdate + ", publish=" + publish + ", users_no="
+				+ users_no + "]";
 	}
+	
 	
 	
 	

@@ -2,29 +2,28 @@ package com.hotdog.petcam.vo;
 
 public class BoardImageVo {
 
-	private int imageNo;
-	private int boardNo;
+	private int image_no;
+	private int board_no;
 	
-	public int getImageNo() {
-		return imageNo;
+	public int getImage_no() {
+		return image_no;
 	}
-	
-	public void setImageNo(int imageNo) {
-		this.imageNo = imageNo;
+	public void setImage_no(int image_no) {
+		this.image_no = image_no;
 	}
-	
-	public int getBoardNo() {
-		return boardNo;
+	public int getBoard_no() {
+		return board_no;
 	}
-	
-	public void setBoardNo(int boardNo) {
-		this.boardNo = boardNo;
+	public void setBoard_no(int board_no) {
+		this.board_no = board_no;
 	}
 	
 	@Override
 	public String toString() {
-		return "BoardImageVo [imageNo=" + imageNo + ", boardNo=" + boardNo + "]";
+		return "BoardImageVo [image_no=" + image_no + ", board_no=" + board_no + "]";
 	}
+	
+	
 	
 	
 }

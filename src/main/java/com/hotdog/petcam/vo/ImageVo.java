@@ -2,47 +2,48 @@ package com.hotdog.petcam.vo;
 
 public class ImageVo {
 	
-	private int imageNo;
-	private String saveName;
-	private String orgName;
-	private String extName;
-	private String regDate;
-	
-	public int getImageNo() {
-		return imageNo;
+	private int image_no;
+	private String save_name;
+	private String org_name;
+	private String ext_name;
+	private String regdate;
+	public int getImage_no() {
+		return image_no;
 	}
-	public void setImageNo(int imageNo) {
-		this.imageNo = imageNo;
+	public void setImage_no(int image_no) {
+		this.image_no = image_no;
 	}
-	public String getSaveName() {
-		return saveName;
+	public String getSave_name() {
+		return save_name;
 	}
-	public void setSaveName(String saveName) {
-		this.saveName = saveName;
+	public void setSave_name(String save_name) {
+		this.save_name = save_name;
 	}
-	public String getOrgName() {
-		return orgName;
+	public String getOrg_name() {
+		return org_name;
 	}
-	public void setOrgName(String orgName) {
-		this.orgName = orgName;
+	public void setOrg_name(String org_name) {
+		this.org_name = org_name;
 	}
-	public String getExtName() {
-		return extName;
+	public String getExt_name() {
+		return ext_name;
 	}
-	public void setExtName(String extName) {
-		this.extName = extName;
+	public void setExt_name(String ext_name) {
+		this.ext_name = ext_name;
 	}
-	public String getRegDate() {
-		return regDate;
+	public String getRegdate() {
+		return regdate;
 	}
-	public void setRegDate(String regDate) {
-		this.regDate = regDate;
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
 	}
 	@Override
 	public String toString() {
-		return "ImageVo [imageNo=" + imageNo + ", saveName=" + saveName + ", orgName=" + orgName + ", extName="
-				+ extName + ", regDate=" + regDate + "]";
+		return "ImageVo [image_no=" + image_no + ", save_name=" + save_name + ", org_name=" + org_name + ", ext_name="
+				+ ext_name + ", regdate=" + regdate + "]";
 	}
+	
+	
 	
 	
 }

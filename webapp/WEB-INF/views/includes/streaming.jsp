@@ -7,21 +7,18 @@
 
 <div class="banner-bg" id="top">
 <div class="streaming_browser">
-		 <div>
-            <video id="videoPlayer" controls></video>
-       	 </div>
+			 <div>
+	            <video id="videoPlayer" controls></video>
+	       	 </div>
 		
-		<div class="streaming_control">
-			<div class="media_intro">
-				<H1>Media</H1>
-
-			</div>
-
+			<div class="streaming_control">
+				<button type='button' class='btn btn-info'><i class="material-icons">fast_rewind</i></button>
+	    		<button type='button' class='btn btn-info'><i class="material-icons">filter_center_focus</i></button>
+	    		<button type='button' class='btn btn-info' ><i class="material-icons">fast_forward</i></button>
+	
 			<div class="togglebutton">
-
-
-
-				<label> <input type="checkbox" checked="">
+				<label> 
+					<input type="checkbox" checked="">
 				</label>
 			</div>
 		</div>

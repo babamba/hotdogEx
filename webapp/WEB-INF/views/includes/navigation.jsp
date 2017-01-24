@@ -14,7 +14,7 @@
 						</div>
 						<div class="profile-content">
 							<h3 class="profile-title">${authUser.nickname}</h3>
-							<p class="profile-description">내 블로그</p>
+							<p class="profile-description">${authUser.description}</p>
 						</div>
 					</div>
 				</div>
@@ -26,7 +26,7 @@
 				<ul>
 					<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}"><i class="material-icons">home</i>MY BLOG</a></li>
 					<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/account"><i class="material-icons">apps</i>My Acount</a></li>
-					<li><a href="${pageContext.request.contextPath}/diary/${authUser.nickname}/postlist"><i class="material-icons">accessibility</i>Diary</a></li>
+					<li><a href="${pageContext.request.contextPath}/post/${authUser.nickname}/postlist"><i class="material-icons">accessibility</i>Diary</a></li>
 					<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/follow"><i class="material-icons">bookmark</i>Friend</a></li> 
 					<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/streaming"><i class="material-icons">tv</i>Live Striming</a></li>
 					<li><a href="${pageContext.request.contextPath}/community"><i class="material-icons">forum</i>Community Main</a></li> 			
@@ -45,7 +45,7 @@
 			</div>
 			<div class="profile-text">
 				<h3 class="profile-title">${authUser.nickname}</h3>
-				<p class="profile-description">강아지가 좋아요 :D</p>
+				<p class="profile-description">${authUser.description}</p>
 			</div>
 			
 		</div>
@@ -56,7 +56,7 @@
 				<ul>
 					<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}"><i class="material-icons">home</i>MY BLOG</a></li>
 					<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/account"><i class="material-icons">apps</i>My Acount</a></li>
-					<li><a href="${pageContext.request.contextPath}/diary/${authUser.nickname}/postlist"><i class="material-icons">accessibility</i>Diary</a></li>
+					<li><a href="${pageContext.request.contextPath}/post/${authUser.nickname}/postlist"><i class="material-icons">accessibility</i>Diary</a></li>
 					<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/follow"><i class="material-icons">bookmark</i>Friend</a></li> 
 					<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/streaming"><i class="material-icons">tv</i>Live Striming</a></li>
 					<li><a href="${pageContext.request.contextPath}/community"><i class="material-icons">forum</i>Community Main</a></li> 		

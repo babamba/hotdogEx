@@ -2,28 +2,24 @@ package com.hotdog.petcam.vo;
 
 public class PostImageVo {
 
-	private int imageNo;
-	private int postNo;
+	private int image_no;
+	private int post_no;
 	
-	public int getImageNo() {
-		return imageNo;
+	public int getImage_no() {
+		return image_no;
 	}
-	
-	public void setImageNo(int imageNo) {
-		this.imageNo = imageNo;
+	public void setImage_no(int image_no) {
+		this.image_no = image_no;
 	}
-	
-	public int getPostNo() {
-		return postNo;
+	public int getPost_no() {
+		return post_no;
 	}
-	
-	public void setPostNo(int postNo) {
-		this.postNo = postNo;
+	public void setPost_no(int post_no) {
+		this.post_no = post_no;
 	}
-	
 	@Override
 	public String toString() {
-		return "PostImageVo [imageNo=" + imageNo + ", postNo=" + postNo + "]";
+		return "PostImageVo [image_no=" + image_no + ", post_no=" + post_no + "]";
 	}
 	
 	

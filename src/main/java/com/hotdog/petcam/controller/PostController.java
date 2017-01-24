@@ -25,7 +25,7 @@ import com.hotdog.petcam.vo.PostVo;
 import com.hotdog.petcam.vo.UserVo;
 
 @Controller
-@RequestMapping("/diary")
+@RequestMapping("/post")
 public class PostController {
 
 		@Autowired
@@ -42,7 +42,7 @@ public class PostController {
 			model.addAttribute("map", map);
 			
 			System.out.println(map);
-			return "blog/diary";
+			return "blog/diarytest";
 		}
 		
 		/*@Auth
@@ -64,6 +64,10 @@ public class PostController {
 		@RequestMapping(value="/{nickname}/insert",  method = RequestMethod.POST)
 		public String insert(@ModelAttribute PostVo postVo, @AuthUser UserVo authUser){
 			String nickname = authUser.getNickname();
+			int users_no = authUser.getUsers_no();
+			postVo.setUsers_no(users_no);
+			
+			System.out.println(postVo);
 			postService.insert(postVo);
 			return "redirect:/blog/" + nickname;
 		}

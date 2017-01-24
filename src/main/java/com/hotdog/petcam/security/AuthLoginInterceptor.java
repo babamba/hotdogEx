@@ -21,9 +21,16 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 		Object handler/*HandlerMethod*/)
 		throws Exception {
 		
+		
 		String email = request.getParameter( "email" );
-		String password = request.getParameter( "pass_word" );
+		String pass_word = request.getParameter( "pass_word" );
 		String nickname = request.getParameter("nickname");
+		String infomation = request.getParameter("infomation");
+		String users_image = request.getParameter("users_image");
+		String follower_num = request.getParameter("follower_num");
+		String following_num = request.getParameter("following_num");
+		String description = request.getParameter("description");
+		
 		
 		// Web Application Context 받아오기
 		ApplicationContext ac =
@@ -33,7 +40,8 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 		UserService userService = ac.getBean( UserService.class );
 		
 		// 데이터베이스에서 해당 UserVo 받아오기 
-		UserVo userVo = userService.login(email, password, nickname);
+		UserVo userVo = 
+				userService.login( email, pass_word, nickname, infomation, users_image, follower_num, following_num, description);
 		System.out.println(userVo);
 		System.out.println(request);
 		

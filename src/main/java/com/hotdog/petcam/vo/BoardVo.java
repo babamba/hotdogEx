@@ -2,19 +2,19 @@ package com.hotdog.petcam.vo;
 
 public class BoardVo {
 
-	 private int boardNo;
+	 private int board_no;
 	 private int category;
 	 private String title;
 	 private String content;
-	 private String regDate;
+	 private String regdate;
 	 private int hits;
 	 private int publish;
-	 private int usersNo;
-	public int getBoardNo() {
-		return boardNo;
+	 private int users_no;
+	public int getBoard_no() {
+		return board_no;
 	}
-	public void setBoardNo(int boardNo) {
-		this.boardNo = boardNo;
+	public void setBoard_no(int board_no) {
+		this.board_no = board_no;
 	}
 	public int getCategory() {
 		return category;
@@ -34,11 +34,11 @@ public class BoardVo {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getRegDate() {
-		return regDate;
+	public String getRegdate() {
+		return regdate;
 	}
-	public void setRegDate(String regDate) {
-		this.regDate = regDate;
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
 	}
 	public int getHits() {
 		return hits;
@@ -52,18 +52,19 @@ public class BoardVo {
 	public void setPublish(int publish) {
 		this.publish = publish;
 	}
-	public int getUsersNo() {
-		return usersNo;
+	public int getUsers_no() {
+		return users_no;
 	}
-	public void setUsersNo(int usersNo) {
-		this.usersNo = usersNo;
+	public void setUsers_no(int users_no) {
+		this.users_no = users_no;
 	}
 	
 	@Override
 	public String toString() {
-		return "BoardVo [boardNo=" + boardNo + ", category=" + category + ", title=" + title + ", content=" + content
-				+ ", regDate=" + regDate + ", hits=" + hits + ", publish=" + publish + ", usersNo=" + usersNo + "]";
+		return "BoardVo [board_no=" + board_no + ", category=" + category + ", title=" + title + ", content=" + content
+				+ ", regdate=" + regdate + ", hits=" + hits + ", publish=" + publish + ", users_no=" + users_no + "]";
 	}
+	
 	 
 	 
 }

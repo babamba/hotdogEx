@@ -1,5 +1,7 @@
 package com.hotdog.petcam.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -7,6 +9,7 @@ import com.hotdog.petcam.mail.SendMail;
 import com.hotdog.petcam.repository.BlogDao;
 import com.hotdog.petcam.repository.UserDao;
 import com.hotdog.petcam.vo.BlogVo;
+import com.hotdog.petcam.vo.PetVo;
 import com.hotdog.petcam.vo.UserVo;
 
 @Service
@@ -79,14 +82,18 @@ public class UserService {
 		}
 		return false;
 	}
-	
-	
-	
-	
-	
+
 	//웹브라우저에서 email, pass_word, nickname을 파라미터로 받아 db에 조회후  UserVo의 객체인 authUser에 넣어 리턴
-	public UserVo login(String email, String pass_word, String nickname){
-		UserVo authUser = userDao.selectForLogin(email, pass_word, nickname);
+	public UserVo login(
+						String email, 
+						String pass_word, 
+						String nickname, 
+						String description,
+						String infomation,
+						String users_image,
+						String follower_num,
+						String following_num){
+		UserVo authUser = userDao.selectForLogin(email, pass_word, nickname, description, infomation, users_image, follower_num, following_num);
 		System.out.println("loginService");
 		return authUser;
 	}
@@ -106,5 +113,29 @@ public class UserService {
 		}
 	}
 	
+	// *******************************************************************************************************
+		// **************************************** My Account ***************************************************
+		// *******************************************************************************************************
+		
+		public void basicModify(UserVo userVo){
+			userDao.basicModify(userVo);
+		}
+		public void userProfileModify(UserVo userVo){
+			userDao.userProfileModify(userVo);
+		}
+		public void petProfileModify(PetVo petVo){
+			userDao.petrProfileModify(petVo);
+		}
+		
+		
+		// *******************************************************************************************************
+		// **************************************** 메인페이지 리스트 뿌릴 용도 ***********************************************
+		// *******************************************************************************************************
+		public List<UserVo> getMainUserList(){
+			return userDao.getMainUserList();
+		}
+		public List<UserVo> getMainMyUserList(){
+			return userDao.getMainMyUserList();
+		}
 	
 }

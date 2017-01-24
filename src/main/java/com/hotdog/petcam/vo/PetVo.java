@@ -1,18 +1,18 @@
 package com.hotdog.petcam.vo;
 
 public class PetVo {
-	private int petNo;
+	private int pet_no;
 	private String name;
-	private String birthDate;
+	private String birthdate;
 	private String type;
 	private String info;
-	private String petImage;
-	private int usersNo;
-	public int getPetNo() {
-		return petNo;
+	private String pet_image;
+	private int users_no;
+	public int getPet_no() {
+		return pet_no;
 	}
-	public void setPetNo(int petNo) {
-		this.petNo = petNo;
+	public void setPet_no(int pet_no) {
+		this.pet_no = pet_no;
 	}
 	public String getName() {
 		return name;
@@ -20,11 +20,11 @@ public class PetVo {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getBirthDate() {
-		return birthDate;
+	public String getBirthdate() {
+		return birthdate;
 	}
-	public void setBirthDate(String birthDate) {
-		this.birthDate = birthDate;
+	public void setBirthdate(String birthdate) {
+		this.birthdate = birthdate;
 	}
 	public String getType() {
 		return type;
@@ -38,24 +38,25 @@ public class PetVo {
 	public void setInfo(String info) {
 		this.info = info;
 	}
-	public String getPetImage() {
-		return petImage;
+	public String getPet_image() {
+		return pet_image;
 	}
-	public void setPetImage(String petImage) {
-		this.petImage = petImage;
+	public void setPet_image(String pet_image) {
+		this.pet_image = pet_image;
 	}
-	public int getUsersNo() {
-		return usersNo;
+	public int getUsers_no() {
+		return users_no;
 	}
-	public void setUsersNo(int usersNo) {
-		this.usersNo = usersNo;
+	public void setUsers_no(int users_no) {
+		this.users_no = users_no;
 	}
-	
 	@Override
 	public String toString() {
-		return "PetVo [petNo=" + petNo + ", name=" + name + ", birthDate=" + birthDate + ", type=" + type + ", info="
-				+ info + ", petImage=" + petImage + ", usersNo=" + usersNo + "]";
+		return "PetVo [pet_no=" + pet_no + ", name=" + name + ", birthdate=" + birthdate + ", type=" + type + ", info="
+				+ info + ", pet_image=" + pet_image + ", users_no=" + users_no + "]";
 	}
+	
+	
 	
 	
 }

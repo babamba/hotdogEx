@@ -44,7 +44,7 @@
 			<div class="swiper-pagination"></div>
 		</div>
 
-		<a href="${pageContext.request.contextPath}/diary/${authUser.nickname}/write">포스트하기</a>
+		<a href="${pageContext.request.contextPath}/post/${authUser.nickname}/write">포스트하기</a>
 
 
 		<div id="post">

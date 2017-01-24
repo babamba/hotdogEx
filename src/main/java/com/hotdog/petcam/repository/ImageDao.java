@@ -15,7 +15,7 @@ public class ImageDao {
 
 	public int insert(ImageVo imageVo) {
 		sqlSession.insert("image.insert", imageVo);
-		return imageVo.getImageNo();
+		return imageVo.getImage_no();
 	}
 
 /*	public List<Image> get(Image image) {

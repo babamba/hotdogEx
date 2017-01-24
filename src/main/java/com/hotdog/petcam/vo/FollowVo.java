@@ -2,28 +2,27 @@ package com.hotdog.petcam.vo;
 
 public class FollowVo {
 
-	private int usersNo;
-	private int followUsersNo;
-	public int getUsersNo() {
-		return usersNo;
-	}
+	private int users_no;
+	private int follow_users_no;
 	
-	public void setUsersNo(int usersNo) {
-		this.usersNo = usersNo;
+	public int getUsers_no() {
+		return users_no;
 	}
-	
-	public int getFollowUsersNo() {
-		return followUsersNo;
+	public void setUsers_no(int users_no) {
+		this.users_no = users_no;
 	}
-	
-	public void setFollowUsersNo(int followUsersNo) {
-		this.followUsersNo = followUsersNo;
+	public int getFollow_users_no() {
+		return follow_users_no;
+	}
+	public void setFollow_users_no(int follow_users_no) {
+		this.follow_users_no = follow_users_no;
 	}
 	
 	@Override
 	public String toString() {
-		return "FollowVo [usersNo=" + usersNo + ", followUsersNo=" + followUsersNo + "]";
+		return "FollowVo [users_no=" + users_no + ", follow_users_no=" + follow_users_no + "]";
 	}
+	
 	
 	
 }

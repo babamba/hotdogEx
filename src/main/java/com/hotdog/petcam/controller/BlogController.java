@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hotdog.petcam.security.Auth;
+import com.hotdog.petcam.security.AuthUser;
 import com.hotdog.petcam.service.BlogService;
 import com.hotdog.petcam.service.UserService;
 import com.hotdog.petcam.vo.PostVo;
+import com.hotdog.petcam.vo.UserVo;
 
 @Controller
 @RequestMapping("/blog")
@@ -23,11 +25,18 @@ public class BlogController {
 	private BlogService blogService;
 	
 
-	
 	@RequestMapping("/{nickname}")
-	public String main(@PathVariable String nickname, Model model, HttpServletRequest request){
+	public String main(@PathVariable String nickname, Model model, HttpServletRequest request, @AuthUser UserVo authUser){
+		Map<String, Object> map = blogService.index(nickname);
+		model.addAttribute("map", map);
+		
+		System.out.println(map);
+		
+		
 		return "blog/blog-main";
 	}
+	
+	
 	
 	
 	@Auth

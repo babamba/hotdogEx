@@ -23,8 +23,8 @@
 	<insert id="insert" parameterType="uservo">
 	
 		<![CDATA[
-			insert into users(email, pass_word, nickname, follower_num, following_num) values
-			(#{email}, #{pass_word}, #{nickname} , 0, 0)
+			insert into users(email, pass_word, nickname, follower_num, following_num, description) values
+			(#{email}, #{pass_word}, #{nickname} , 0, 0 , '자기소개를 입력해주세요')
 		]]>
 	</insert>
 
@@ -35,7 +35,7 @@
 
 	<select id ="getByNo" parameterType="int" resultType="uservo">
 		<![CDATA[
-		select user_no, email, nickname, password, sec_password, info, users_image, follower_num, follower_num
+		select user_no, email, nickname, pass_word, sec_password, info, users_image, follower_num, follower_num, description
 		  from users
 		 where users_no = #{users_no }		
 		]]>
@@ -45,7 +45,7 @@
 	
 	<select id="selectForLogin" parameterType="uservo" resultType="uservo">
 		<![CDATA[
-		select users_no, email, pass_word, nickname
+		select users_no, email, pass_word, nickname, infomation, users_image, follower_num, following_num,  description
 			from users
 		where email = #{email} and pass_word = #{pass_word};
 		]]>
