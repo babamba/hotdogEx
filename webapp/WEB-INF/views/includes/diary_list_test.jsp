@@ -13,17 +13,17 @@
 </table>
 
 <div class="gallery" data-id="${no}">
-  <figure>
+ <!--  <figure>
     <img src="https://images.unsplash.com/photo-1448814100339-234df1d4005d?crop=entropy&fit=crop&fm=jpg&h=400&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=600" alt="" />
     <figcaption>vo.title<small>vo.post_no</small><small>vo.regdate</small>
     <small>vo.content</small>
     <small>vo.publish</small>
-    <button type='button' title='View Profile' class='btn btn-info btn-simple btn-xs'><i class='fa fa-user'></i></button>
-    <button type='button' title='Edit Profile' class='btn btn-success btn-simple btn-xs'> <i class='fa fa-edit'></i></button>
-    <button type='button' title='Remove' class='btn btn-danger btn-simple btn-xs'><i class='fa fa-times'></i></button>
+    <button type='button' title='View Profile' class='btn btn-info btn-simple btn-xs' id="post_view"><i class='fa fa-user'></i></button>
+    <button type='button' title='Edit Profile' class='btn btn-success btn-simple btn-xs' id="post_edit"> <i class='fa fa-edit'></i></button>
+    <button type='button' title='Remove' class='btn btn-danger btn-simple btn-xs' id="post_delete"><i class='fa fa-times'></i></button>
     </figcaption>
     
-  </figure>
+  </figure> -->
 
 </div>
 

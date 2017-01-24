@@ -32,7 +32,7 @@
 		<button class="btn btn-info">Info</button>
 	</div> --%>
 	
-	<div id="editer">
+	<div id="smartediter">
 		<form:form modelAttribute="postVo" action="${pageContext.request.contextPath}/post/${authUser.nickname}/insert" method="post" enctype="multipart/form-data">
 			<span>제목:</span>
 			<form:input path="title" name="title" />
@@ -46,17 +46,7 @@
 
 </div>
 <script>
-	$(function() {
-		$("textarea.smarteditor2").each(function() {
-			var textareaId = $(this).attr("id");
-			se2_init(textareaId);
-		});
-
-		$("[type=submit]").click(function() {
-			se2_syncData();
-		});
-
-	});
+	
 </script>
 
 <script type="text/javascript">
@@ -86,7 +76,18 @@
 				fCreator : "createSEditor2"
 			});
 
+	$(function() {
+		$("textarea.smarteditor2").each(function() {
+			var textareaId = $(this).attr("id");
+			se2_init(textareaId);
+		});
 
+		$("[type=submit]").click(function() {
+			se2_syncData();
+		});
+
+	});
+	
 	function setDefaultFont() {
 		var sDefaultFont = '나눔고딕';
 		var nFontSize = 24;

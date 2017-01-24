@@ -95,21 +95,25 @@
 
 <script>
 var isEnd = false;
-var page = 1;			// 게시글의 0번째 인덱스 
+var authUser = ${authUser.users_no};
+var page = 0;			// 게시글의 0번째 인덱스 
 var pluspage = 5;	// 게시글이 15개씩 fetchList로 로딩 되니까 fetchList가 요청될 시 15만큼 더해서 db인덱스값을 더해서 요청한다.
 
 var render = function(vo, mode){
 		
-var htmls = "<figure><img src='" + vo.post_image + "'/><figcaption>vo.title<small>" + vo.post_no + "</small><small>" + vo.regdate + "</small><small>" + vo.content + "</small><small>" +
+var htmls = "<figure><img src='https://images.unsplash.com/photo-1448814100339-234df1d4005d?crop=entropy&fit=crop&fm=jpg&h=400&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=600' alt='' /><figcaption>" + 
+			vo.title + "<small>" + vo.post_no + "</small><small>" + vo.regdate + "</small><small>" + vo.content + "</small><small>" +
 			vo.publish + "</small><button type='button' title='View Profile' class='btn btn-info btn-simple btn-xs'><i class='fa fa-user'></i></button>" + 
 			"<button type='button' title='Edit Profile' class='btn btn-success btn-simple btn-xs'> <i class='fa fa-edit'></i></button>" + 
-			"<button type='button' title='Remove' class='btn btn-danger btn-simple btn-xs'><i class='fa fa-times'></i></button></figcaption></figure>" +
-			"<a href='#'>자세히 보기</a></div>"
-					
+			"<button type='button' title='Remove' class='btn btn-danger btn-simple btn-xs'><i class='fa fa-times'></i></button></figcaption></figure>"
+			
 	console.log("htmls");
+			
 	if(mode == true ){
 		$(".gallery").prepend(htmls);
-	} 
+	}else{
+		$(".gallery").append(htmls);
+	}
 }
 
 
@@ -123,7 +127,7 @@ var fetchList = function(){
 	  console.log(page);
 	  
 	  $.ajax({
-		url: "${pageContext.request.contextPath }/post/api/list?p=" + page ,
+		url: "${pageContext.request.contextPath }/post/api/list?p=" + page + "&no=" + authUser,
 		type: "get",
 		dataType: "json",
 		data:"",
@@ -152,9 +156,61 @@ var fetchList = function(){
 	}
 });
 }
+$(function(){
+	fetchList();
+});
 
+
+$(document).on("click", 'figure', function(){
+	popup = {
+			  init: function(){
+			    $('figure').click(function(){
+			      popup.open($(this));
+			    });
+			    $('#post_view').click(function(){
+					console.log("view click")
+				})
+				$('#post_edit').click(function(){
+					console.log("edit click")
+				})	
+				$('#post_delete').click(function(){
+					console.log("delete click")
+				})	  
+			    
+			    $(document).on('click', '.popup img', function(){
+			      return false;
+			    }).on('click', '.popup', function(){
+			      popup.close();
+			    })
+			  },
+			  open: function($figure) {
+			    $('.gallery').addClass('pop');
+			    $popup = $('<div class="popup" />').appendTo($('body'));
+			    $fig = $figure.clone().appendTo($('.popup'));
+			    $bg = $('<div class="bg" />').appendTo($('.popup'));
+			    $close = $('<div class="close"><svg><use xlink:href="#close"></use></svg></div>').appendTo($fig);
+			    $shadow = $('<div class="shadow" />').appendTo($fig);
+			    src = $('img', $fig).attr('src');
+			    $shadow.css({backgroundImage: 'url(' + src + ')'});
+			    $bg.css({backgroundImage: 'url(' + src + ')'});
+			    setTimeout(function(){
+			      $('.popup').addClass('pop');
+			    }, 200);
+			  },
+			  close: function(){
+
+			    $('.gallery, .popup').removeClass('pop');
+			    setTimeout(function(){
+			      $('.popup').remove()
+			    }, 80);
+			  }
+			},
+
+			popup.init() 
+
+	});
 	
-	  /* $(function(){
+	  $(function(){
 		$(window).scroll( function(){
 			var $window = $(this);				  // 브라우저 창 기준
 			var scrollTop = $window.scrollTop();  // 스크롤의 현재 위치
@@ -178,46 +234,8 @@ var fetchList = function(){
 		fetchList();
 		++page;
 		page = page * pluspage;
-	});  */
-  
-	$(function(){
-		popup = {
-				  init: function(){
-				    $('figure').click(function(){
-				      popup.open($(this));
-				    });
-				    
-				    $(document).on('click', '.popup img', function(){
-				      return false;
-				    }).on('click', '.popup', function(){
-				      popup.close();
-				    })
-				  },
-				  open: function($figure) {
-				    $('.gallery').addClass('pop');
-				    $popup = $('<div class="popup" />').appendTo($('body'));
-				    $fig = $figure.clone().appendTo($('.popup'));
-				    $bg = $('<div class="bg" />').appendTo($('.popup'));
-				    $close = $('<div class="close"><svg><use xlink:href="#close"></use></svg></div>').appendTo($fig);
-				    $shadow = $('<div class="shadow" />').appendTo($fig);
-				    src = $('img', $fig).attr('src');
-				    $shadow.css({backgroundImage: 'url(' + src + ')'});
-				    $bg.css({backgroundImage: 'url(' + src + ')'});
-				    setTimeout(function(){
-				      $('.popup').addClass('pop');
-				    }, 200);
-				  },
-				  close: function(){
-				    $('.gallery, .popup').removeClass('pop');
-				    setTimeout(function(){
-				      $('.popup').remove()
-				    }, 80);
-				  }
-				}
-
-				popup.init() 
-			})
-	
+	});
+	  
   </script>	
 	
 </head>

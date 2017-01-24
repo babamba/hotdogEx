@@ -98,42 +98,15 @@ img {
   font-family: 'Open Sans', sans-serif;
   font-size: 32px;
 }
-
-.popup figure figcaption content {
-  font-size: 20px;
-  display: block;
-  text-transform: uppercase;
-  margin-top: 12px;
-  text-indent: 3px;
-  opacity: .7;
-  letter-spacing: 1px;
-}
-
-
-
 .popup figure figcaption small {
   font-size: 11px;
   display: block;
   text-transform: uppercase;
-  margin-top: 5px;
-  text-indent: 3px;
-  opacity: .7;
-  letter-spacing: 1px;
-}
-
-.popup figure figcaption a{
-  font-size: 11px;
-  display: block;
-  text-transform: uppercase;
   margin-top: 12px;
   text-indent: 3px;
   opacity: .7;
   letter-spacing: 1px;
 }
-
-
-
-
 .popup figure .shadow {
   position: relative;
   z-index: 1;

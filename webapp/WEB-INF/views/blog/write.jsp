@@ -58,19 +58,7 @@
 	type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/assets/se2/init.js"
 	type="text/javascript"></script>
-<script>
-	$(function() {
-		$("textarea.smarteditor2").each(function() {
-			var textareaId = $(this).attr("id");
-			se2_init(textareaId);
-		});
 
-		$("[type=submit]").click(function() {
-			se2_syncData();
-		});
-
-	});
-</script>
 
 <body>
 	<h1>${map.postlist }</h1>
@@ -82,7 +70,6 @@
 	
 	<!-- 스마트에디터 -->
 	<c:import url="/WEB-INF/views/includes/smartediter.jsp" />
-	
 	
 	
 	<!-- Modal -->

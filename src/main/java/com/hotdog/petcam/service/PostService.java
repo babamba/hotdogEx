@@ -28,8 +28,8 @@ public class PostService {
 		postDao.insert(postVo);
 	}
 	
-	public List<PostVo> getList(int page){
-		return postDao.getList(page);
+	public List<PostVo> getList(int page, int users_no){
+		return postDao.getList(page, users_no);
 	}
 	
 	

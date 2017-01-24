@@ -1,6 +1,8 @@
 package com.hotdog.petcam.repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +16,12 @@ public class PostDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<PostVo> getList(int usersNo){
-		List<PostVo> list = sqlSession.selectList("post.getPostList", usersNo);
+	public List<PostVo> getList(int page, int users_no){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("page", page);
+		map.put("users_no", users_no);
+		
+		List<PostVo> list = sqlSession.selectList("post.getListByPage", map);
 		return list;
 	}
 	
@@ -23,10 +29,10 @@ public class PostDao {
 		sqlSession.insert("post.insert", postVo);
 	}
 	
-	public List<PostVo> getPageList(int page){
+/*	public List<PostVo> getPageList(int page){
 		List<PostVo> list = sqlSession.selectList("post.getListByPage");
 	    return list;
 	}
-	
+	*/
 	
 }

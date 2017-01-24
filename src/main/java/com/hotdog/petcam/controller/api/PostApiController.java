@@ -24,12 +24,13 @@ public class PostApiController {
 	
 	@Auth
 	@ResponseBody
-	@RequestMapping("list")
+	@RequestMapping("/list")
 	public JSONResult list(
-			@RequestParam(value="p", required=true, defaultValue="1")
-			Integer page, Model model){
+			@RequestParam(value="p", required=true, defaultValue="1")Integer page, 
+			@RequestParam(value="no", required=true, defaultValue="1")Integer users_no,
+			Model model){
 		System.out.println(page);
-		List<PostVo> list = postService.getList(page);
+		List<PostVo> list = postService.getList(page, users_no);
 		
 		model.addAttribute("list", list);
 		System.out.println("controller return");
