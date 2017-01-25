@@ -19,6 +19,7 @@ import com.hotdog.petcam.security.Auth;
 import com.hotdog.petcam.security.AuthUser;
 import com.hotdog.petcam.security.Secret;
 import com.hotdog.petcam.service.UserService;
+import com.hotdog.petcam.vo.BlogVo;
 import com.hotdog.petcam.vo.PetVo;
 import com.hotdog.petcam.vo.UserVo;
 
@@ -29,28 +30,21 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
-	
-	// 유저 테스트용 페이지
-		@RequestMapping("/test")
-		public String test(){
-			return "user/joinform2";
-		}
 		
 		// ************************************* 회원 가입 및 로그인/아웃 **************
 		@RequestMapping("/login")
-		public String login(){
-
+		public String login(@ModelAttribute UserVo vo, Model model, HttpServletRequest request, HttpSession session){
 			return "redirect:/";
 		}
 		
 		@RequestMapping(value = "/join")
 		public String join(@RequestParam( value="nickname", required=true, defaultValue="" ) String nickname,
-						   @ModelAttribute UserVo userVo,HttpServletRequest request){
+						   @ModelAttribute UserVo userVo, HttpServletRequest request){
 		
 			int users_no = userService.join(userVo);
 			userVo.setUsers_no(users_no);
-			
 			userService.insert(userVo);
+			
 			return "redirect:/";
 		}
 		
@@ -80,54 +74,85 @@ public class UserController {
 			return JSONResult.success(result? "yes":"no");
 		}
 		
+		// *******************************************************************************************************
+		// **************************************** App 통신 ***************************************************
+		// *******************************************************************************************************
+		
+		@ResponseBody
+		@RequestMapping("/app/emailcheck")
+		public Object appEmailCheck(@RequestParam (value="email")String email){
+			return JSONResult.success(userService.appEmailCheck(email) ? "exist":"not exist");
+		}
+		
+		@ResponseBody
+		@RequestMapping("/app/login")
+		public Object appLogin(@RequestParam(value="email")String email,@RequestParam(value="pass_word")String pass_word,@ModelAttribute UserVo userVo){
+			
+			UserVo result = userService.appLogin(email,pass_word,userVo);
+			
+				return JSONResult.success(result);
+		}
+		
+		@ResponseBody
+		@RequestMapping(value = "/app/join")
+		public Object appjoin(@ModelAttribute UserVo userVo, HttpServletRequest request){
+		
+			int users_no = userService.join(userVo);
+			System.out.println(users_no);
+			userVo.setUsers_no(users_no);
+			userService.insert(userVo);
+			
+			return JSONResult.success(userVo);
+		}
+		
 		
 		// *******************************************************************************************************
 		// **************************************** My Account ***************************************************
 		// *******************************************************************************************************
 		// 1. 기본 정보 수정
-		@Auth
-		@Secret
-		@RequestMapping(value="/account/basicmodifyform", method=RequestMethod.POST)
-		public String basicModifyForm(@AuthUser UserVo authUser,Model model){
-			// model에 담아보내는  UserVo에 기본정보 다있으니 jsp 에서 뽑아 써야함..
-			model.addAttribute("userVo", authUser);
-			return "개인정보 수정 메인 페이지";
-		}
-		
-		@Auth
-		@Secret
-		@RequestMapping(value="/account/basicmodify", method= RequestMethod.POST)
-		public String basicModify(@ModelAttribute UserVo userVo){
-			userService.basicModify(userVo);
-			return "redirect:/";
-		}
-		
-		@Auth
-		@Secret
-		@RequestMapping(value="/account/profilemodifyform", method= RequestMethod.POST)
-		public String profileModifyForm(@AuthUser UserVo authUser,Model model,@RequestParam(value="category",required=true,defaultValue="user")String category){
-			if(category == "pet"){
-				return "펫 프로필 페이지";
-			}
-			return "유저 프로필 페이지";
-		}
-		@Auth
-		@Secret
-		@RequestMapping(value="/account/userprofilemodify", method=RequestMethod.POST)
-		public String userProfileModify(@ModelAttribute UserVo userVo){
-			userService.userProfileModify(userVo);
-			return "redirect:/";
-		}
-		
-		@Auth
-		@Secret
-		@RequestMapping(value="/account/petprofilemodify", method=RequestMethod.POST)
-		public String petProfileModify(@ModelAttribute PetVo petVo){
-			userService.petProfileModify(petVo);
-			return "redirect:/";
-		}
+		// 1. 기본 정보 수정
+				@Auth
+				@Secret
+				@RequestMapping("/account")
+				public String secretModifyForm(@AuthUser UserVo authUser,Model model){
+					// model에 담아보내는  UserVo에 기본정보 다있으니 jsp 에서 뽑아 써야함..
+					model.addAttribute("userVo", authUser);
+					return "개인정보 수정 메인 페이지";
+				}
+				
+				@Auth
+				@Secret
+				@RequestMapping(value="/account/secretmodify", method= RequestMethod.POST)
+				public String basicModify(@ModelAttribute UserVo userVo,@AuthUser UserVo authUser){
+					
+					// 입력받은 2차 비밀번호 수정사항을 세션의 authUser 정보에 덮어씌운다.
+					authUser.setSec_pass_word(userVo.getSec_pass_word());
+					
+					// 가서 업데이트 하자 
+					userService.secretModify(authUser);
+					
+					// 블로그 메인으로 리다이렉트~
+					return "redirect:/blog/"+ authUser.getNickname();
+				}
+			
+				@Auth
+				@Secret
+				@RequestMapping(value="/account/userprofilemodify", method=RequestMethod.POST)
+				public String userProfileModify(@ModelAttribute BlogVo blogVo,@AuthUser UserVo authUser,
+												@RequestParam(value="nickname") String nickname, @RequestParam(value="title")String title,
+												@RequestParam(value="infomation") String infomation){
+					userService.userProfileModify(authUser,blogVo,nickname,title,infomation);
+					return "redirect:/user/account";
+				}
+				@Auth
+				@Secret
+				@RequestMapping(value="/account/petprofilemodify", method=RequestMethod.POST)
+				public String petProfileModify(@ModelAttribute PetVo petVo,@AuthUser UserVo authUser){
+					userService.petProfileModify(petVo);
+					return "redirect:/blog/"+ authUser.getNickname();
+				}
 	
-	
+		
 	
 	
 }

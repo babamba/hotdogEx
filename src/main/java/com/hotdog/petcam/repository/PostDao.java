@@ -29,6 +29,10 @@ public class PostDao {
 		sqlSession.insert("post.insert", postVo);
 	}
 	
+	public int delete(PostVo postVo){
+		return sqlSession.delete("post.postdelete", postVo);
+	}
+	
 /*	public List<PostVo> getPageList(int page){
 		List<PostVo> list = sqlSession.selectList("post.getListByPage");
 	    return list;

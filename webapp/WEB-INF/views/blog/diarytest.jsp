@@ -19,80 +19,126 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- diarytest -->
+<style type="text/css">
+#banner-bg div {
+	width: 300px;
+	background: #fff;
+	border: 2px solid #aaa;
+	padding: 15px;
+	padding-bottom: 15px;
+	margin: 15px;
+}
+
+#banner-bg div img {
+	width: 100%;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 15px;
+	margin-bottom: 5px;
+}
+
+#banner-bg div h2 {
+	font-size: 1.2em;
+}
+
+#banner-bg div p {
+	font-family: "맑은 고딕", 돋움;
+	color: #333;
+	margin: 0;
+	padding: 10px;
+}
+</style>
+
+
+
+
+<!-- %%%%%%%%%%% diary css -->
+<!-- %%%%%%%%%%%		   -->
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/diary_test.css">
-
-
-
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/normalize.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/font-awesome.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/bootstrap.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/main.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/swiper.css">
-
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/diary/diary.css">
 
+<!-- %%%%%%%%%%%			   -->
+<!-- %%%%%%%%%%% diary css end -->
+	
+
+
+
+
+<!-- %%%%%%%%%%% 기본 include css -->
+<!-- %%%%%%%%%%%			   -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/normalize.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.css">
+
 <!--     Fonts and icons     -->
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-<link rel="stylesheet" type="text/css"
-	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 
 <!-- CSS Files -->
-<link
-	href="${pageContext.request.contextPath}/assets/css/material-kit.css"rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/assets/css/material-kit.css"rel="stylesheet" />
 
 <!-- CSS Just for demo purpose, don't include it in your project -->
-<link href="${pageContext.request.contextPath}/assets/css/demo.css"
-	rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/assets/css/demo.css" rel="stylesheet" />
+<!-- %%%%%%%%%%%				    -->
+<!-- %%%%%%%%%%% 기본 include css end -->
 	
 	
+	
+<!-- %%%%%%%%%%% WOOKMARK css -->
+<!-- %%%%%%%%%%%			  -->	
+
+<script src="${pageContext.request.contextPath}/assets/js/jquery.vgrid.js" ></script>
+
+	
+<!-- %%%%%%%%%%%				  -->
+<!-- %%%%%%%%%%% WOOKMARK css end -->	
+
+	
+
+
+
+
+
+
+<!-- %%%%%%%%%%%include javascript -->
+<!-- %%%%%%%%%%%		    		-->	
 <script src="${pageContext.request.contextPath}/assets/js/min/jquery-1.10.2.min.js"></script>
-		
-		<script src="${pageContext.request.contextPath}/assets/js/diary_test.js"></script>
-<script
-		src="${pageContext.request.contextPath}/assets/js/min/bootstrap.min.js"></script>
-<script
-		src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
-<script
-		src="${pageContext.request.contextPath}/assets/js/material-kit.js" type="text/javascript"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/wookmark.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/min/main.min.js"></script>
 
-<script
-		src="${pageContext.request.contextPath}/assets/js/min/swiper.jquery.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/plugins.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/main.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/main.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/min/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/material-kit.js" type="text/javascript"></script>
+
+<script src="${pageContext.request.contextPath}/assets/js/min/plugins.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/min/modernizr-2.6.2.min.js"></script>
+<!--   Core JS Files   -->
+<script src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
+<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+<script src="${pageContext.request.contextPath}/assets/js/min/nouislider.min.js"></script>
+<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
+<script src="${pageContext.request.contextPath}/assets/js/bootstrap-datepicker.js"></script>
+<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+
+<!-- %%%%%%%%%%% include javascript end -->
+<!-- %%%%%%%%%%%		    		-->	
+
+
+<!-- %%%%%%%%%%% test javascript 	-->
+<!-- %%%%%%%%%%%		    		-->	
+<script src="${pageContext.request.contextPath}/assets/js/diary_test.js"></script>
+<!-- Include the imagesLoaded plug-in -->
+  <script src="${pageContext.request.contextPath}/assets/js/min/imagesloaded.pkgd.min.js"></script>
+
+<!-- %%%%%%%%%%% test javascript end-->
+<!-- %%%%%%%%%%%		    		-->	
+
+
+
 	
-
-
-	<!--   Core JS Files   -->
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
-	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/nouislider.min.js"
-		type="text/javascript"></script>
-	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
-	<script
-		src="${pageContext.request.contextPath}/assets/js/bootstrap-datepicker.js"
-		type="text/javascript"></script>
-	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/modernizr-2.6.2.min.js"></script>
-	
-
-
 <script>
 var isEnd = false;
 var authUser = ${authUser.users_no};
@@ -101,18 +147,16 @@ var pluspage = 5;	// 게시글이 15개씩 fetchList로 로딩 되니까 fetchLi
 
 var render = function(vo, mode){
 		
-var htmls = "<figure><img src='https://images.unsplash.com/photo-1448814100339-234df1d4005d?crop=entropy&fit=crop&fm=jpg&h=400&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=600' alt='' /><figcaption>" + 
-			vo.title + "<small>" + vo.post_no + "</small><small>" + vo.regdate + "</small><small>" + vo.content + "</small><small>" +
-			vo.publish + "</small><button type='button' title='View Profile' class='btn btn-info btn-simple btn-xs'><i class='fa fa-user'></i></button>" + 
-			"<button type='button' title='Edit Profile' class='btn btn-success btn-simple btn-xs'> <i class='fa fa-edit'></i></button>" + 
-			"<button type='button' title='Remove' class='btn btn-danger btn-simple btn-xs'><i class='fa fa-times'></i></button></figcaption></figure>"
-			
+ var htmls = "<li><img src='https://raw.github.com/GBKS/Wookmark-jQuery/master/sample-images/image_1.jpg'>" +
+		    "<h1>" + vo.title + "</h1></li>"
+
+	
 	console.log("htmls");
 			
 	if(mode == true ){
-		$(".gallery").prepend(htmls);
+		$("#tiles").prepend(htmls);
 	}else{
-		$(".gallery").append(htmls);
+		$("#tiles").append(htmls);
 	}
 }
 
@@ -161,54 +205,6 @@ $(function(){
 });
 
 
-$(document).on("click", 'figure', function(){
-	popup = {
-			  init: function(){
-			    $('figure').click(function(){
-			      popup.open($(this));
-			    });
-			    $('#post_view').click(function(){
-					console.log("view click")
-				})
-				$('#post_edit').click(function(){
-					console.log("edit click")
-				})	
-				$('#post_delete').click(function(){
-					console.log("delete click")
-				})	  
-			    
-			    $(document).on('click', '.popup img', function(){
-			      return false;
-			    }).on('click', '.popup', function(){
-			      popup.close();
-			    })
-			  },
-			  open: function($figure) {
-			    $('.gallery').addClass('pop');
-			    $popup = $('<div class="popup" />').appendTo($('body'));
-			    $fig = $figure.clone().appendTo($('.popup'));
-			    $bg = $('<div class="bg" />').appendTo($('.popup'));
-			    $close = $('<div class="close"><svg><use xlink:href="#close"></use></svg></div>').appendTo($fig);
-			    $shadow = $('<div class="shadow" />').appendTo($fig);
-			    src = $('img', $fig).attr('src');
-			    $shadow.css({backgroundImage: 'url(' + src + ')'});
-			    $bg.css({backgroundImage: 'url(' + src + ')'});
-			    setTimeout(function(){
-			      $('.popup').addClass('pop');
-			    }, 200);
-			  },
-			  close: function(){
-
-			    $('.gallery, .popup').removeClass('pop');
-			    setTimeout(function(){
-			      $('.popup').remove()
-			    }, 80);
-			  }
-			},
-
-			popup.init() 
-
-	});
 	
 	  $(function(){
 		$(window).scroll( function(){
@@ -236,8 +232,15 @@ $(document).on("click", 'figure', function(){
 		page = page * pluspage;
 	});
 	  
+	$('.banner-bg').vgrid({
+			time:400,
+			delay:30,
+			wait:500
+	});	  
+	  
   </script>	
-	
+
+  
 </head>
 <body>
 
@@ -252,8 +255,6 @@ $(document).on("click", 'figure', function(){
 	<!-- 포스트 리스트 -->
 	<c:import url="/WEB-INF/views/includes/diary_list_test.jsp" />
 
-
-	
  	<!-- Modal -->
 	<c:import url="/WEB-INF/views/includes/modal.jsp" />
 	

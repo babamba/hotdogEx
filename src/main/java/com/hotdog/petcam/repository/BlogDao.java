@@ -26,7 +26,12 @@ public class BlogDao {
 		sqlSession.update("blog.update", vo);
 	}
 	
-	
+	public void blogTitleModify(BlogVo blogVo){
+		sqlSession.update("blog.titleModify", blogVo);
+	}
+	public BlogVo getTitleByNo(int no){
+		return sqlSession.selectOne("blog.getTitleByNo", no);
+	}
 	
 	
 	

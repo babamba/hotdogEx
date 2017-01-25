@@ -6,7 +6,7 @@
 	
 	<select id ="getById" parameterType="string" resultType="uservo">
 		<![CDATA[
-		select users_no
+		select users_no, nickname
 		  from users
 		 where email = #{email}	
 		]]>
@@ -67,6 +67,48 @@
 		]]>
 	</select>
 	
+	<!-- ********************** App ************************* -->
+	<select id="appEmailCheck" parameterType="string" resultType="string">
+		<![CDATA[
+			select email 
+				from users 
+					where email=#{email};
+		]]>
+		
+	</select>
+	<select id="appLogin" parameterType="uservo" resultType="uservo">
+		<![CDATA[
+			select users_no
+				from users
+				where email=#{email} and pass_word =#{pass_word}
+		]]>
+	</select>
+	
+	<select id="getallbyno" parameterType="int" resultType="uservo">
+		<![CDATA[
+			select email,nickname,pass_word,infomation,users_image,follower_num,following_num
+				from users
+				where users_no = #{no}
+		]]>
+	</select>
+	
+	<!-- ********************** Account ************************* -->
+	<!-- ********** 2차 비밀번호수정 ********** -->
+	<update id="secretModify" parameterType="uservo">
+		<![CDATA[
+			update users 
+				set sec_pass_word=#{sec_pass_word} 
+					where nickname=#{nickname};
+		]]>
+	</update>
+	
+	<update id="userprofileModify" parameterType="uservo">
+			<![CDATA[
+			update users
+				set nickname = #{nickname}, infomation = #{infomation}
+					where users_no=#{users_no};
+			]]>
+	</update>
 	
 	
 	

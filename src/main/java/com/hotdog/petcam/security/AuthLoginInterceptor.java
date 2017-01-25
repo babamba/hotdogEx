@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -63,5 +64,7 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 		System.out.println("인증처리");
 		return false;
 	}
+	
+	
 
 }

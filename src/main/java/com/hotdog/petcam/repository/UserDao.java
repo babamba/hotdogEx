@@ -19,9 +19,6 @@ public class UserDao{
 
 	public int insert(UserVo userVo){
 		sqlSession.insert("user.insert", userVo);
-		System.out.println(userVo);
-		System.out.println(userVo.getUsers_no());
-		
 		return userVo.getUsers_no();
 	}
 	
@@ -72,6 +69,10 @@ public class UserDao{
 		return authUser;
 	}
 	
+	public UserVo getAllByNo(int no){
+		return sqlSession.selectOne("user.getallbyno",no);
+	}
+	
 	public List<UserVo> getMainUserList(){
 		return sqlSession.selectList("user.getMainUserList");
 	}
@@ -83,8 +84,8 @@ public class UserDao{
 	// **************************************** My Account ***************************************************
 	// *******************************************************************************************************
 	
-	public void basicModify(UserVo userVo){
-		sqlSession.update("user.basicModify", userVo);
+	public void secretModify(UserVo userVo){
+		sqlSession.update("user.secretModify", userVo);
 	}
 	public void userProfileModify(UserVo userVo){
 		sqlSession.update("user.userprofileModify",userVo);
@@ -93,4 +94,18 @@ public class UserDao{
 		sqlSession.update("user.userprofileModify",petVo);
 	}
 	
+	// *******************************************************************************************************
+	// **************************************** App 통신 ***************************************************
+	// *******************************************************************************************************	
+	
+	public boolean appEmailCheck(String email){
+		Object object=sqlSession.selectOne("user.appEmailCheck", email);
+		if (object == null){
+			return false;
+		}
+		return true;
+	}
+	public UserVo appLogin(UserVo userVo){
+		return sqlSession.selectOne("user.appLogin", userVo);
+	}
 }

@@ -21,31 +21,30 @@ public class UserService {
 	@Autowired
 	private BlogDao blogDao;
 	
-	public int join(UserVo userVo){
-		return userDao.insert(userVo);
+	public int join(UserVo userVo) {
+		userDao.insert(userVo);
+		UserVo vo1 = getId(userVo.getEmail());
+		return vo1.getUsers_no();
 	}
 	
-	//유저 가입시 getId메소드로 UserVo 객체에 이메일값을 저장하고 BlogVo객체 UsersNo값을 넣어준다. title, logo는 디폴트값으로 저장
-	public void insert(UserVo userVo){
+	// 유저 가입시 getId메소드로 UserVo 객체에 이메일값을 저장하고 BlogVo객체 UsersNo값을 넣어준다. title,
+		// logo는 디폴트값으로 저장
+	public void insert(UserVo userVo) {
 		UserVo vo1 = getId(userVo.getEmail());
-		System.out.println(vo1);
 		
 		BlogVo blogVo = new BlogVo();
 		blogVo.setUsers_no(vo1.getUsers_no());
 		blogVo.setTitle(vo1.getNickname() + "블로그");
 		blogVo.setLogo_image("a.jpg");
-		System.out.println(vo1);
-		
-		System.out.println(blogVo);
-		System.out.println("유저서비스 블로그생성");
+
 		blogDao.insert(blogVo);
-	}
+
+		}
 	
 	// 이메일 파라미터를 통해 조회한 유저넘버를 UserVo형태로 리턴
-	public UserVo getId(String email){
-		System.out.println(email);
+	public UserVo getId(String email) {
 		return userDao.getId(email);
-	}
+		}
 	
 	
 	// 유저넘버를 파라미터로 유저정보를 UserVo 형태로 리턴
@@ -58,7 +57,6 @@ public class UserService {
 	//email을 파라미터로 받아 db에서 셀렉트하고 정보를 넣는다. 조회결과 유무로  null or not null을 판단해 낫널일 경우 트루를 리턴, 없을경우 false리턴
 	public boolean idExist(String email) {
 		if (userDao.idExist(email) != null) {
-			System.out.println("idExist");
 			return true;
 		}
 		return false;
@@ -72,6 +70,11 @@ public class UserService {
 		}
 		return false;
 	}
+	
+	public UserVo getAllByNo(int no) {
+		return userDao.getAllByNo(no);
+	}
+	
 	
 	// 브라우저에서 닉네임 체크 null이면 true not null이면 false
 	public boolean nicknameCheck(String nickname) {
@@ -117,15 +120,29 @@ public class UserService {
 		// **************************************** My Account ***************************************************
 		// *******************************************************************************************************
 		
-		public void basicModify(UserVo userVo){
-			userDao.basicModify(userVo);
+		public void secretModify(UserVo userVo) {
+			userDao.secretModify(userVo);
 		}
-		public void userProfileModify(UserVo userVo){
+	
+		public void userProfileModify(UserVo userVo, BlogVo blogVo, String nickname, String title, String infomation) {
+			if (nickname != "") {
+				userVo.setNickname(nickname);
+			}
+			if (infomation != "") {
+				userVo.setInfomation(infomation);
+			}
+			if (title != "") {
+				blogVo.setUsers_no(userVo.getUsers_no());
+				blogVo.setTitle(title);
+				blogDao.blogTitleModify(blogVo);
+			}
 			userDao.userProfileModify(userVo);
 		}
-		public void petProfileModify(PetVo petVo){
+	
+		public void petProfileModify(PetVo petVo) {
 			userDao.petrProfileModify(petVo);
 		}
+
 		
 		
 		// *******************************************************************************************************
@@ -138,4 +155,23 @@ public class UserService {
 			return userDao.getMainMyUserList();
 		}
 	
+		// *******************************************************************************************************
+		// **************************************** App 통신 ***************************************************
+		// *******************************************************************************************************	
+		public boolean appEmailCheck(String email) {
+			return userDao.appEmailCheck(email);
+		}
+
+		public UserVo appLogin(String email, String pass_word, UserVo userVo) {
+			userVo.setEmail(email);
+			userVo.setPass_word(pass_word);
+
+			if (userDao.appLogin(userVo) == null) {
+				userVo.setUsers_no(-1);
+				return userVo;
+			} else {
+				return userDao.appLogin(userVo);
+			}
+		}
+		
 }

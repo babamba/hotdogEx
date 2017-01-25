@@ -1,6 +1,7 @@
 package com.hotdog.petcam.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,9 +9,8 @@ import org.springframework.stereotype.Service;
 import com.hotdog.petcam.repository.BlogDao;
 import com.hotdog.petcam.repository.PostDao;
 import com.hotdog.petcam.repository.UserDao;
-import com.hotdog.petcam.vo.BlogVo;
 import com.hotdog.petcam.vo.PostVo;
-import com.hotdog.petcam.vo.UserVo;
+
 
 @Service
 public class PostService {
@@ -32,5 +32,9 @@ public class PostService {
 		return postDao.getList(page, users_no);
 	}
 	
+	public boolean delete(PostVo postVo){
+		int result = postDao.delete(postVo);
+		return (result == 1);
+	}
 	
 }
