@@ -12,46 +12,137 @@
 	</div>
 -->
 
+<script>
+$(function(){
+    $(".list_container").vgrid({
+        easingeasing: "easeOutQuint",
+        useLoadImageEvent: true,
+		useFontSizeListener: true,
+		time: 200,
+		delay: 20,
+		wait: 500,
+        fadeIn: {
+            time: 300,
+            delay: 50
+        }
+    });
+});
+</script>
+
 <div class="banner-bg" id="top">
+	<h4>나의 기록</h4>
+	<div class = "list_container">
 				<div>
 					<img src="${pageContext.request.contextPath}/assets/sample-images/image_1.jpg">
-					<h2>발리 - 따나롯 해상 사원</h2>			
-					<p>만조 때는 바닷물이 밀려들어 사원과 육지가 떨어지고 썰물이 되면 다시 육지와 연결된다.  </p>
+					<h5>vo.title</h5>
+					<ul class="list_content">
+						<li>vo.regdate </li>
+						<li>${authUser.nickname }</li>
+						<li>vo.content</li>
+						<li>동해물과 백두산이 마르고 닳도록 머니ㅏㅇ러ㅣㅏㅁ 넝리ㅏ머니ㅏㅇ러마ㅣ넝리ㅏ머닝라ㅓㄴ</li>
+					</ul>
 				</div>
 				<div>
 					<img src="${pageContext.request.contextPath}/assets/sample-images/image_2.jpg">
-					<h2>남원 - 홍명희 혼불 문학관</h2>			
-					<p>홍명희가 만 17년간 집필한  '혼불'에 대한 모든 것이 모여있는 곳. </p>
+					<h5>vo.title</h5>	
+					<p>2016.01.31</p>
+					<p>vo.content</p>
 				</div>
 				<div>
 					<img src="${pageContext.request.contextPath}/assets/sample-images/image_3.jpg">
-					<h2>고창 - 도솔산 선운사</h2>					
-					<p>정유재란 때 피해를 입었으나 광해군 때 재건하여 지금까지 보존해 오는 절.</p>
+					<h5>vo.title</h5>	
+					<p>vo.regdate</p>
+					<p>vo.content</p>
 				</div>
 				<div>
 					<img src="${pageContext.request.contextPath}/assets/sample-images/image_4.jpg">
-					<h2>발리 - 울룬다누 사원</h2>				
-					<p>브라딴 호수 위의 사원. 강과 호수를 관장하는 물의 여신 '데위 다뉘'를 위해 지어진 사원이라네요. </p>
+					<h5>vo.title</h5>	
+					<p>vo.regdate</p>
+					<p>vo.content</p>
 				</div>	
 				<div>
 					<img src="${pageContext.request.contextPath}/assets/sample-images/image_5.jpg">
-					<h2>발리 - 따나롯 해상 사원</h2>			
-					<p>만조 때는 바닷물이 밀려들어 사원과 육지가 떨어지고 썰물이 되면 다시 육지와 연결된다.  </p>
+					<h5>vo.title</h5>	
+					<p>vo.regdate</p>
+					<p>vo.content</p>
 				</div>
 				<div>
 					<img src="${pageContext.request.contextPath}/assets/sample-images/image_5.jpg">
-					<h2>남원 - 홍명희 혼불 문학관</h2>			
-					<p>홍명희가 만 17년간 집필한  '혼불'에 대한 모든 것이 모여있는 곳. </p>
+					<h5>vo.title</h5>	
+					<p>vo.regdate</p>
+					<p>vo.content</p>
 				</div>
 				<div>
 					<img src="${pageContext.request.contextPath}/assets/sample-images/image_6.jpg">
-					<h2>고창 - 도솔산 선운사</h2>					
-					<p>정유재란 때 피해를 입었으나 광해군 때 재건하여 지금까
-					지 보존해 오는 절.</p>
+					<h5>vo.title</h5>	
+					<p>vo.regdate</p>
+					<p>vo.content</p>
 				</div>
 				<div>
 					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
-					<h2>발리 - 울룬다누 사원</h2>				
-					<p>브라딴 호수 위의 사원. 강과 호수를 관장하는 물의 여신 '데위 다뉘'를 위해 지어진 사원이라네요. </p>
+					<h5>vo.title</h5>	
+					<p>vo.regdate</p>
+					<p>vo.content</p>
 				</div>	
+				<div>
+					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
+					<h5>vo.title</h5>	
+					<p>vo.regdate</p>
+					<p>vo.content</p>
+				</div>	
+				<div>
+					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
+					<h5>vo.title</h5>	
+					<p>vo.regdate</p>
+					<p>vo.content</p>
+				</div>	
+				<div>
+					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
+					<h5>vo.title</h5>	
+					<p>vo.regdate</p>
+					<p>vo.content</p>
+				</div>	
+				<div>
+					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
+					<h5>vo.title</h5>	
+					<p>vo.regdate</p>
+					<p>vo.content</p>
+				</div>	
+				<div>
+					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
+					<h5>vo.title</h5>	
+					<p>vo.regdate</p>
+					<p>vo.content</p>
+				</div>	
+				<div>
+					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
+					<h5>vo.title</h5>	
+					<p>vo.regdate</p>
+					<p>vo.content</p>
+				</div>	
+				<div>
+					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
+					<h5>vo.title</h5>	
+					<p>vo.regdate</p>
+					<p>vo.content</p>
+				</div>	
+				<div>
+					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
+					<h5>vo.title</h5>	
+					<p>vo.regdate</p>
+					<p>vo.content</p>
+				</div>	
+				<div>
+					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
+					<h5>vo.title</h5>	
+					<p>vo.regdate</p>
+					<p>vo.content</p>
+				</div>	
+				<div>
+					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
+					<h5>vo.title</h5>	
+					<p>vo.regdate</p>
+					<p>vo.content</p>
+				</div>	
+				</div>
 </div>

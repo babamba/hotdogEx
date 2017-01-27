@@ -20,126 +20,148 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style type="text/css">
-#banner-bg div {
+.list_container div {
 	width: 300px;
 	background: #fff;
-	border: 2px solid #aaa;
 	padding: 15px;
 	padding-bottom: 15px;
 	margin: 15px;
+	box-shadow: 5px 5px 10px #f2f2f2;
 }
 
-#banner-bg div img {
+.list_container div img {
 	width: 100%;
 	border-bottom: 1px solid #ccc;
 	padding-bottom: 15px;
 	margin-bottom: 5px;
 }
 
-#banner-bg div h2 {
-	font-size: 1.2em;
+.list_container div h5{
+	font-size:1.4em;
+	text-align:center;
 }
 
-#banner-bg div p {
+
+.list_container div p {
+	text-align:center;
 	font-family: "맑은 고딕", 돋움;
+	display:inline-block;
+	padding-right:10px;
 	color: #333;
 	margin: 0;
 	padding: 10px;
 }
+
+.list_content{
+	overflow: hidden; 
+	text-overflow: ellipsis;
+	white-space: nowrap; 
+	font-family: "맑은 고딕", 돋움;
+	text-align:center;
+	padding-right:10px;
+	color: #333;
+	margin: 0;
+	padding: 10px;
+}
+
 </style>
 
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/normalize.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/font-awesome.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/bootstrap.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/main.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/swiper.css">
 
-<!-- %%%%%%%%%%% diary css -->
-<!-- %%%%%%%%%%%		   -->
-
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/diary_test.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/diary/diary.css">
-
-<!-- %%%%%%%%%%%			   -->
-<!-- %%%%%%%%%%% diary css end -->
-	
-
-
-
-
-<!-- %%%%%%%%%%% 기본 include css -->
-<!-- %%%%%%%%%%%			   -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/normalize.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/diary/diary.css">
 
 <!--     Fonts and icons     -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<link rel="stylesheet" type="text/css"
+	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 
 <!-- CSS Files -->
-<link href="${pageContext.request.contextPath}/assets/css/material-kit.css"rel="stylesheet" />
+<link
+	href="${pageContext.request.contextPath}/assets/css/material-kit.css"
+	rel="stylesheet" />
 
 <!-- CSS Just for demo purpose, don't include it in your project -->
-<link href="${pageContext.request.contextPath}/assets/css/demo.css" rel="stylesheet" />
-<!-- %%%%%%%%%%%				    -->
-<!-- %%%%%%%%%%% 기본 include css end -->
-	
-	
-	
-<!-- %%%%%%%%%%% WOOKMARK css -->
-<!-- %%%%%%%%%%%			  -->	
-
-<script src="${pageContext.request.contextPath}/assets/js/jquery.vgrid.js" ></script>
-
-	
-<!-- %%%%%%%%%%%				  -->
-<!-- %%%%%%%%%%% WOOKMARK css end -->	
-
-	
+<link href="${pageContext.request.contextPath}/assets/css/demo.css"
+	rel="stylesheet" />
 
 
+<script
+	src="${pageContext.request.contextPath}/assets/js/min/jquery-1.10.2.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/js/min/bootstrap.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/js/jquery.vgrid.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/js/jquery.easing.1.3.js"></script>
+
+<script
+	src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/js/material-kit.js"
+	type="text/javascript"></script>
+
+<script
+	src="${pageContext.request.contextPath}/assets/js/min/swiper.jquery.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/js/min/plugins.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/js/min/main.min.js"></script>
 
 
 
-
-<!-- %%%%%%%%%%%include javascript -->
-<!-- %%%%%%%%%%%		    		-->	
-<script src="${pageContext.request.contextPath}/assets/js/min/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/wookmark.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/min/main.min.js"></script>
-
-<script src="${pageContext.request.contextPath}/assets/js/min/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/material-kit.js" type="text/javascript"></script>
-
-<script src="${pageContext.request.contextPath}/assets/js/min/plugins.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/min/modernizr-2.6.2.min.js"></script>
 <!--   Core JS Files   -->
-<script src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
 <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-<script src="${pageContext.request.contextPath}/assets/js/min/nouislider.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/js/min/nouislider.min.js"
+	type="text/javascript"></script>
 <!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
-<script src="${pageContext.request.contextPath}/assets/js/bootstrap-datepicker.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/js/bootstrap-datepicker.js"
+	type="text/javascript"></script>
 <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 
-<!-- %%%%%%%%%%% include javascript end -->
-<!-- %%%%%%%%%%%		    		-->	
-
-
-<!-- %%%%%%%%%%% test javascript 	-->
-<!-- %%%%%%%%%%%		    		-->	
-<script src="${pageContext.request.contextPath}/assets/js/diary_test.js"></script>
-<!-- Include the imagesLoaded plug-in -->
-  <script src="${pageContext.request.contextPath}/assets/js/min/imagesloaded.pkgd.min.js"></script>
-
-<!-- %%%%%%%%%%% test javascript end-->
-<!-- %%%%%%%%%%%		    		-->	
+<script
+	src="${pageContext.request.contextPath}/assets/js/min/modernizr-2.6.2.min.js"></script>
 
 
 
-	
-	
+
+
+
 <script>
+$(function(){
+    $(".list_container").vgrid({
+        easing: "easeOutQuint",
+        time: 500,
+        delay: 20,
+        fadeIn: {
+            time: 300,
+            delay: 50
+        }
+    });
+});
+
+
+
 var isEnd = false;
 var authUser = ${authUser.users_no};
 var page = 0;			// 게시글의 0번째 인덱스 
@@ -147,16 +169,15 @@ var pluspage = 5;	// 게시글이 15개씩 fetchList로 로딩 되니까 fetchLi
 
 var render = function(vo, mode){
 		
- var htmls = "<li><img src='https://raw.github.com/GBKS/Wookmark-jQuery/master/sample-images/image_1.jpg'>" +
-		    "<h1>" + vo.title + "</h1></li>"
+ var htmls = 
 
 	
 	console.log("htmls");
 			
 	if(mode == true ){
-		$("#tiles").prepend(htmls);
+		$(".list_container").prepend(htmls);
 	}else{
-		$("#tiles").append(htmls);
+		$(".list_container").append(htmls);
 	}
 }
 
@@ -238,30 +259,31 @@ $(function(){
 			wait:500
 	});	  
 	  
-  </script>	
+  </script>
 
-  
+
 </head>
 <body>
 
 	<!-- Fixed-bar -->
 	<c:import url="/WEB-INF/views/includes/fixed_bar.jsp" />
 
-    <!-- 반응형 navigation -->
+	<!-- 반응형 navigation -->
 	<c:import url="/WEB-INF/views/includes/navigation.jsp" />
-	
-	<a href="${pageContext.request.contextPath}/diary/${authUser.nickname}/write">포스트하기</a>
-	
+
+	<a
+		href="${pageContext.request.contextPath}/diary/${authUser.nickname}/write">포스트하기</a>
+
 	<!-- 포스트 리스트 -->
 	<c:import url="/WEB-INF/views/includes/diary_list_test.jsp" />
 
- 	<!-- Modal -->
+	<!-- Modal -->
 	<c:import url="/WEB-INF/views/includes/modal.jsp" />
-	
 
-	
-	
-	
+
+
+
+
 
 </body>
 
