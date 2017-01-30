@@ -32,8 +32,9 @@ $(function(){
 <div class="banner-bg" id="top">
 	<h4>나의 기록</h4>
 	<div class = "list_container">
-				<div>
-					<img src="${pageContext.request.contextPath}/assets/sample-images/image_1.jpg">
+				<div class="imagelist">
+				<a href="${pageContext.request.contextPath}/assets/sample-images/image_1.jpg"  rel="lightbox" data-title="vo.content">
+					<img src="${pageContext.request.contextPath}/assets/sample-images/image_1.jpg" data-toggle="lightbox">
 					<h5>vo.title</h5>
 					<ul class="list_content">
 						<li>vo.regdate </li>
@@ -41,6 +42,7 @@ $(function(){
 						<li>vo.content</li>
 						<li>동해물과 백두산이 마르고 닳도록 머니ㅏㅇ러ㅣㅏㅁ 넝리ㅏ머니ㅏㅇ러마ㅣ넝리ㅏ머닝라ㅓㄴ</li>
 					</ul>
+					</a>
 				</div>
 				<div>
 					<img src="${pageContext.request.contextPath}/assets/sample-images/image_2.jpg">

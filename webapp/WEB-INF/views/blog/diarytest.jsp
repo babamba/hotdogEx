@@ -69,6 +69,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+ <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/lightbox/dist/css/lightbox.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/normalize.css">
 <link rel="stylesheet"
@@ -101,12 +102,14 @@
 	rel="stylesheet" />
 
 
-<script
-	src="${pageContext.request.contextPath}/assets/js/min/jquery-1.10.2.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/min/jquery-1.10.2.min.js"></script>
+
 <script
 	src="${pageContext.request.contextPath}/assets/js/min/bootstrap.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/assets/js/jquery.vgrid.js"></script>
+<script 	
+	src="${pageContext.request.contextPath}/assets/lightbox/dist/js/lightbox.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/assets/js/jquery.easing.1.3.js"></script>
 
@@ -115,6 +118,8 @@
 <script
 	src="${pageContext.request.contextPath}/assets/js/material-kit.js"
 	type="text/javascript"></script>
+
+
 
 <script
 	src="${pageContext.request.contextPath}/assets/js/min/swiper.jquery.min.js"></script>
@@ -141,14 +146,12 @@
 
 <script
 	src="${pageContext.request.contextPath}/assets/js/min/modernizr-2.6.2.min.js"></script>
-
-
-
-
-
-
 <script>
-$(function(){
+	
+
+
+
+ $(function(){
     $(".list_container").vgrid({
         easing: "easeOutQuint",
         time: 500,
@@ -157,9 +160,12 @@ $(function(){
             time: 300,
             delay: 50
         }
-    });
-});
+    }).click(function(){
+    	console.log("list click!!!");
+    })
+}); 
 
+  
 
 
 var isEnd = false;
@@ -169,9 +175,10 @@ var pluspage = 5;	// 게시글이 15개씩 fetchList로 로딩 되니까 fetchLi
 
 var render = function(vo, mode){
 		
- var htmls = 
+ var htmls = "<div><img src='${pageContext.request.contextPath}/assets/sample-images/image_1.jpg'><h5>" + vo.title + "</h5>" + 
+			 "<ul class='list_content'><li>" + vo.regdate + "</li><li>" + vo.content + "</li>" + 
+			 "</ul></div>"
 
-	
 	console.log("htmls");
 			
 	if(mode == true ){

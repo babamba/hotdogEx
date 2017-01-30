@@ -1,9 +1,11 @@
 package com.hotdog.petcam.controller;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,8 @@ import com.hotdog.petcam.security.AuthUser;
 import com.hotdog.petcam.service.BlogService;
 import com.hotdog.petcam.service.PostService;
 import com.hotdog.petcam.vo.BlogVo;
+import com.hotdog.petcam.vo.ImageVo;
+import com.hotdog.petcam.vo.PostImageVo;
 import com.hotdog.petcam.vo.PostVo;
 import com.hotdog.petcam.vo.UserVo;
 
@@ -71,6 +75,30 @@ public class PostController {
 			postService.insert(postVo);
 			return "redirect:/blog/" + nickname;
 		}
+		
+//		@Auth
+//		@RequestMapping(value = "blog/se2upload", method = RequestMethod.POST)
+//		public void image(HttpServletRequest request, HttpServletResponse response, @AuthUser UserVo authUser){
+//			try {
+//				String fileName = request.getHeader("file-name");
+//				int fileSize = Integer.parseInt(request.getHeader("file-size"));
+//				InputStream input = request.getInputStream();
+//				int count = 0;
+//				byte[] data = new byte[fileSize];
+//				while(count < fileSize)
+//					count += input.read(data, count, data.length - count);
+//				
+//				ImageVo imageVo = new ImageVo();
+//				PostImageVo postImageVo = new PostImageVo();
+//				
+//				
+//				
+//			} catch (Exception e) {
+//				// TODO: handle exception
+//			}
+//			return;
+//		}
+		
 		
 		
 		

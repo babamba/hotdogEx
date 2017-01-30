@@ -14,6 +14,7 @@ import com.hotdog.petcam.security.Auth;
 import com.hotdog.petcam.security.AuthUser;
 import com.hotdog.petcam.service.BlogService;
 import com.hotdog.petcam.service.UserService;
+import com.hotdog.petcam.vo.ImageVo;
 import com.hotdog.petcam.vo.PostVo;
 import com.hotdog.petcam.vo.UserVo;
 
@@ -56,6 +57,16 @@ public class BlogController {
 	public String Account(@PathVariable String nickname){
 		return "blog/account-main";
 	}
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }
