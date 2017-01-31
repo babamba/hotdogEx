@@ -104,6 +104,11 @@ public class UserController {
 			return JSONResult.success(userVo);
 		}
 		
+		@ResponseBody
+		@RequestMapping("/app/getuser")
+		public Object appGetUser(@RequestParam(value="userno") int userNo){
+			return JSONResult.success(userService.getUser(userNo));
+		}
 		
 		// *******************************************************************************************************
 		// **************************************** My Account ***************************************************

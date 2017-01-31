@@ -35,7 +35,7 @@
 
 	<select id ="getByNo" parameterType="int" resultType="uservo">
 		<![CDATA[
-		select user_no, email, nickname, pass_word, sec_password, info, users_image, follower_num, follower_num, description
+		select users_no, email, nickname, pass_word, sec_pass_word,users_image, follower_num, follower_num, infomation
 		  from users
 		 where users_no = #{users_no }		
 		]]>
