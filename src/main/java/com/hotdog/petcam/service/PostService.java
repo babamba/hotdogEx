@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hotdog.petcam.repository.BlogDao;
+import com.hotdog.petcam.repository.ImageDao;
 import com.hotdog.petcam.repository.PostDao;
 import com.hotdog.petcam.repository.UserDao;
+import com.hotdog.petcam.vo.ImageVo;
 import com.hotdog.petcam.vo.PostVo;
 
 
@@ -24,6 +26,9 @@ public class PostService {
 	@Autowired
 	private PostDao postDao;
 	
+	@Autowired
+	private ImageDao imageDao;
+	
 	public void insert(PostVo postVo) {
 		postDao.insert(postVo);
 	}
@@ -35,6 +40,10 @@ public class PostService {
 	public boolean delete(PostVo postVo){
 		int result = postDao.delete(postVo);
 		return (result == 1);
+	}
+	
+	public void insertImage(ImageVo imageVo){
+		return imageDao.insert(imageVo);
 	}
 	
 }

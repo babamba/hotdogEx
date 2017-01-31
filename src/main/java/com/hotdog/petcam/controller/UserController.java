@@ -63,7 +63,6 @@ public class UserController {
 			return JSONResult.success(userService.checkCode(inputCode,code)? "yes":"no");
 		}
 		
-		
 		//닉네임체크
 		@ResponseBody
 		@RequestMapping("/nickCheck")

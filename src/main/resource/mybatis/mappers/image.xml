@@ -6,7 +6,7 @@
 	<insert id="insert" parameterType="imagevo">
 		<![CDATA[
 			insert INTO image(save_name, org_name, ext_name, regdate) VALUES
-			(#{saveName}, #{orgName}', #{extName}, now())
+			(#{save_name}, #{org_name}', #{ext_name}, now())
 		]]>
 	</insert>
 	
@@ -18,7 +18,7 @@
 	
 	<select id="selectByNo" parameterType="int" resultType="imagevo">
 		<![CDATA[	
-			select * from image where image_no = #{imageNo};
+			select * from image where image_no = #{image_no};
 			   	]]>
 	</select>
 </mapper>

@@ -21,16 +21,22 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/se/js/HuskyEZCreator.js" charset="utf-8"></script>
 
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+
+<!-- include summernote css/js-->
+<link href="${pageContext.request.contextPath}/assets/summernote/summernote.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/assets/summernote/summernote.js"></script>
+
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/normalize.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/font-awesome.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/bootstrap.css">
+<%-- <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/bootstrap.css"> --%>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/main.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/swiper.css">
 
 <!--     Fonts and icons     -->
 <link rel="stylesheet"
@@ -49,19 +55,14 @@
 <link href="${pageContext.request.contextPath}/assets/css/demo.css"
 	rel="stylesheet" />
 
-<%-- <script src="${pageContext.request.contextPath}/assets/ck/ckeditor.js"></script> --%>
+
 
 </head>
 
 <script
-	src="${pageContext.request.contextPath}/assets/se2/js/HuskyEZCreator.js"
-	type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/assets/se2/init.js"
-	type="text/javascript"></script>
-
+	src="${pageContext.request.contextPath}/assets/se2/js/HuskyEZCreator.js" type="text/javascript"></script>
 
 <body>
-	<h1>${map.postlist }</h1>
 	<!-- Fixed-bar -->
 	<c:import url="/WEB-INF/views/includes/fixed_bar.jsp" />
 
@@ -76,10 +77,13 @@
 	<c:import url="/WEB-INF/views/includes/modal.jsp" />
 
 	<script src="${pageContext.request.contextPath }/assets/js/min/jquery-1.10.2.min.js" type="text/javascript"></script>
-	<script
+ 	
+ 	<script
+		src="${pageContext.request.contextPath}/assets/js/material-kit.js"
+		type="text/javascript"></script>
+ 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/bootstrap.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
+	
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/swiper.jquery.min.js"></script>
 	<script
@@ -90,16 +94,13 @@
 		src="${pageContext.request.contextPath}/assets/js/email.js" ></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/toggle.js" ></script>	
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/material.min.js" ></script>
+
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/nouislider.min.js" ></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/bootstrap-datepicker.js" ></script>
 	
-	<script
-		src="${pageContext.request.contextPath}/assets/js/material-kit.js"
-		type="text/javascript"></script>
+	
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/modernizr-2.6.2.min.js"></script>
 		

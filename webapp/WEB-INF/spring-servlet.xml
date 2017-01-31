@@ -35,7 +35,7 @@
 
 
 	 <!-- the mvc resources tag does the magic -->
-	<!-- <mvc:resources mapping="/blog/logo/asset/**" location="file:/upload/" /> -->
+	 <mvc:resources mapping="gallery/assets/**" location="file:/upload/" />
 
 	<mvc:default-servlet-handler />
 

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.hotdog.petcam.DTO.JSONResult;
 import com.hotdog.petcam.security.Auth;
@@ -76,28 +77,27 @@ public class PostController {
 			return "redirect:/blog/" + nickname;
 		}
 		
-//		@Auth
-//		@RequestMapping(value = "blog/se2upload", method = RequestMethod.POST)
-//		public void image(HttpServletRequest request, HttpServletResponse response, @AuthUser UserVo authUser){
-//			try {
-//				String fileName = request.getHeader("file-name");
-//				int fileSize = Integer.parseInt(request.getHeader("file-size"));
-//				InputStream input = request.getInputStream();
-//				int count = 0;
-//				byte[] data = new byte[fileSize];
-//				while(count < fileSize)
-//					count += input.read(data, count, data.length - count);
-//				
-//				ImageVo imageVo = new ImageVo();
-//				PostImageVo postImageVo = new PostImageVo();
-//				
-//				
-//				
-//			} catch (Exception e) {
-//				// TODO: handle exception
-//			}
-//			return;
-//		}
+		/*@Auth
+		@ResponseBody
+		@RequestMapping(value = "/upload", method = RequestMethod.POST)
+		
+		public void image(@RequestParam(value="file") MultipartFile Filedata, Model model,
+				HttpServletRequest request, HttpServletResponse response, @AuthUser UserVo authUser){
+		
+			blogService.restore(Filedata);
+			
+		}*/
+		
+		@ResponseBody
+	    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+	    public JSONResult upload(@RequestParam("file") MultipartFile file,
+	            Model model, HttpServletResponse response){
+	        System.out.println("upload");
+	        String saveFileName = blogService.restore(file);
+	        return JSONResult.success("D:\\upload\\" + saveFileName);
+	    }
+		
+		
 		
 		
 		

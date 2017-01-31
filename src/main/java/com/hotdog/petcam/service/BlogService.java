@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.Multipart;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,7 +25,8 @@ import com.hotdog.petcam.vo.UserVo;
 @Service
 public class BlogService {
 	
-	private static final String SAVE_PATH = "c:\\upload";
+	private static final String SAVE_PATH = "d:\\upload";
+	private static final String URL = "gallery/assets/";
 
 	@Autowired
 	private BlogDao blogDao;
@@ -53,10 +56,6 @@ public class BlogService {
 		}
 		BlogVo blogVo = blogDao.get(no);
 		return blogVo;
-	}
-	
-	public int insertImage(ImageVo imageVo) {
-		return imageDao.insert(imageVo);
 	}
 	
 	
@@ -110,6 +109,40 @@ public class BlogService {
 		}
 	
 	
+	public String restore(MultipartFile multipartFile){
+		String url = "";
+		try {
+			
+			if(multipartFile.isEmpty() == true){
+				return url;
+			}
+			
+			String originalFileName = multipartFile.getOriginalFilename();
+			String extName = originalFileName.substring(originalFileName.lastIndexOf('.')+1, originalFileName.length());
+			String saveFileName = generateSaveFileName(extName);
+			
+			ImageVo imageVo = new ImageVo();
+			imageVo.setSave_name(saveFileName);
+			imageVo.setOrg_name(originalFileName);
+			imageVo.setExt_name(extName);
+			
+			System.out.println(imageVo);
+			imageDao.insert(imageVo);
+			
+			writeFile(multipartFile, saveFileName);
+			
+			url = URL + saveFileName;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new RuntimeException("upload file exception");
+		}
+		return url;
+		
+		
+	}
+		
+		
 	
 	public void restore(MultipartFile file, BlogVo blogVo) {
 		String saveFileName = "";
@@ -117,14 +150,11 @@ public class BlogService {
 			if (file.isEmpty() == true) {
 				return;
 			}
-
 			String orgFileName = file.getOriginalFilename();
 			String extName = orgFileName.substring(orgFileName.lastIndexOf('.') + 1);
 			saveFileName = generateSaveFileName(extName);
 
 			writeFile(file, saveFileName);
-			blogVo.setLogo_image(saveFileName);
-			blogDao.update(blogVo);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -7,6 +7,7 @@ public class ImageVo {
 	private String org_name;
 	private String ext_name;
 	private String regdate;
+	
 	public int getImage_no() {
 		return image_no;
 	}

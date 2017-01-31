@@ -5,100 +5,63 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
+
+
 <div class="banner-bg" id="top">
-
-
-	<%-- ckediter 
-	<div id="editor">
-		 <form action="${pageContext.request.contextPath}/diary/${authUser.nickname}/insert">
-            <textarea name="title">
-            
-            </textarea>
-            
-            <textarea name="content" id="editor1" rows="10" cols="80">
-                 	펫의 일상을 적어보세요.
-            </textarea>
-            
-            
-        <input type="submit" class="btn btn-default" value="posting">
-            <script>
-                // Replace the <textarea id="editor1"> with a CKEditor
-                // instance, using default configuration.
-                CKEDITOR.replace( 'editor1',{language:'korean'} );
-            </script>
-
-        </form>
-		<button class="btn btn-primary">Primary</button>
-		<button class="btn btn-info">Info</button>
-	</div> --%>
+	<form action="${pageContext.request.contextPath }/post/${authUser.nickname}/insert" method="post">
+	 	<textarea class="form-control" name="title" placeholder="제목을 입력하세요." rows="1" style="font-size:20px"></textarea>
+	 	<textarea id="summernote"  name=content>
+	 	
+	 	
+	 	</textarea>
+	 	
+	 	
+		<input type="submit" class="btn btn-default">	
+	</form>
 	
-	<div id="smartediter">
-		<form:form modelAttribute="postVo" action="${pageContext.request.contextPath}/post/${authUser.nickname}/insert" method="post" enctype="multipart/form-data">
-			<span>제목:</span>
-			<form:input path="title" name="title" />
-			<textarea name="content" id="content" rows="10" cols="100" class="smarteditor2"></textarea>
-			
-			<input class="btn btn-default" type="submit" value="서버로 내용 전송" style="color:white;" />
-	
-		</form:form>
-	</div>
-
-
 </div>
+
+
 <script>
-	
-</script>
 
-<script type="text/javascript">
-	var oEditors = [];
 
-	// 추가 글꼴 목록
-	//var aAdditionalFontSet = [["MS UI Gothic", "MS UI Gothic"], ["Comic Sans MS", "Comic Sans MS"],["TEST","TEST"]];
 
-	nhn.husky.EZCreator
-			.createInIFrame({
-				oAppRef : oEditors,
-				elPlaceHolder : "content",
-				sSkinURI : "${pageContext.request.contextPath}/assets/se2/SmartEditor2Skin.html",
-				htParams : {
-					bUseToolbar : true, // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-					bUseVerticalResizer : false, // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-					bUseModeChanger : true, // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-					//aAdditionalFontList : aAdditionalFontSet,		// 추가 글꼴 목록
-					fOnBeforeUnload : function() {
-						//alert("완료!");
-					}
-				}, //boolean
-				fOnAppLoad : function() {
-					//예제 코드
-					//oEditors.getById["content"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
-				},
-				fCreator : "createSEditor2"
-			});
+$('#summernote').summernote({
+	height : 700, // set editor height
+	minHeight : 100, // set minimum height of editor
+	maxHeight : null, // set maximum height of editor
+	lang : 'ko-KR', // default: 'en-US'
+	 callbacks: {
+	onImageUpload : function(files, editor, welEditable) {
+        sendFile(files[0], editor, welEditable);
+        alert("asdfasdf");
+    },
+	 }
+});
 
-	$(function() {
-		$("textarea.smarteditor2").each(function() {
-			var textareaId = $(this).attr("id");
-			se2_init(textareaId);
-		});
 
-		$("[type=submit]").click(function() {
-			se2_syncData();
-		});
+function sendFile(files, editor, welEditable) {
+    data = new FormData();
+    
+    data.append("file", files);
+    
+    alert("file upload" + files);
+    
+    $.ajax({
+        data : data,
+        type : "POST",
+        url : "${pageContext.request.contextPath }/post/upload",
+        contentType : false,
+        processData : false,
+        success : function(data) {
+            editor.insertImage(welEditable, data);
+            console.log("image_upload ajax!@!");
+        }
+       
+    });
+}
 
-	});
-	
-	function setDefaultFont() {
-		var sDefaultFont = '나눔고딕';
-		var nFontSize = 24;
-		oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
-	}
-	
-	function se2_syncData() {
-		$("textarea.smarteditor2").each(function() {
-			var textareaId = $(this).attr("id");
-			oEditors.getById[textareaId].exec("UPDATE_CONTENTS_FIELD", []);
-		});
-	}
-	
+
+
 </script>

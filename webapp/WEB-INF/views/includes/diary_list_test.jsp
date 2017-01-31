@@ -12,22 +12,6 @@
 	</div>
 -->
 
-<script>
-$(function(){
-    $(".list_container").vgrid({
-        easingeasing: "easeOutQuint",
-        useLoadImageEvent: true,
-		useFontSizeListener: true,
-		time: 200,
-		delay: 20,
-		wait: 500,
-        fadeIn: {
-            time: 300,
-            delay: 50
-        }
-    });
-});
-</script>
 
 <div class="banner-bg" id="top">
 	<h4>나의 기록</h4>
@@ -45,7 +29,7 @@ $(function(){
 					</a>
 				</div>
 				<div>
-					<img src="${pageContext.request.contextPath}/assets/sample-images/image_2.jpg">
+					<img src="${pageContext.request.contextPath}/assets/sample-images/sample_image11.jpg">
 					<h5>vo.title</h5>	
 					<p>2016.01.31</p>
 					<p>vo.content</p>
@@ -80,42 +64,6 @@ $(function(){
 					<p>vo.regdate</p>
 					<p>vo.content</p>
 				</div>
-				<div>
-					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
-					<h5>vo.title</h5>	
-					<p>vo.regdate</p>
-					<p>vo.content</p>
-				</div>	
-				<div>
-					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
-					<h5>vo.title</h5>	
-					<p>vo.regdate</p>
-					<p>vo.content</p>
-				</div>	
-				<div>
-					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
-					<h5>vo.title</h5>	
-					<p>vo.regdate</p>
-					<p>vo.content</p>
-				</div>	
-				<div>
-					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
-					<h5>vo.title</h5>	
-					<p>vo.regdate</p>
-					<p>vo.content</p>
-				</div>	
-				<div>
-					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
-					<h5>vo.title</h5>	
-					<p>vo.regdate</p>
-					<p>vo.content</p>
-				</div>	
-				<div>
-					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
-					<h5>vo.title</h5>	
-					<p>vo.regdate</p>
-					<p>vo.content</p>
-				</div>	
 				<div>
 					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
 					<h5>vo.title</h5>	

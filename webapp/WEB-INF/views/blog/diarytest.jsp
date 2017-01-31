@@ -20,49 +20,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style type="text/css">
-.list_container div {
-	width: 300px;
-	background: #fff;
-	padding: 15px;
-	padding-bottom: 15px;
-	margin: 15px;
-	box-shadow: 5px 5px 10px #f2f2f2;
-}
 
-.list_container div img {
-	width: 100%;
-	border-bottom: 1px solid #ccc;
-	padding-bottom: 15px;
-	margin-bottom: 5px;
-}
-
-.list_container div h5{
-	font-size:1.4em;
-	text-align:center;
-}
-
-
-.list_container div p {
-	text-align:center;
-	font-family: "맑은 고딕", 돋움;
-	display:inline-block;
-	padding-right:10px;
-	color: #333;
-	margin: 0;
-	padding: 10px;
-}
-
-.list_content{
-	overflow: hidden; 
-	text-overflow: ellipsis;
-	white-space: nowrap; 
-	font-family: "맑은 고딕", 돋움;
-	text-align:center;
-	padding-right:10px;
-	color: #333;
-	margin: 0;
-	padding: 10px;
-}
 
 </style>
 
@@ -82,7 +40,7 @@
 	href="${pageContext.request.contextPath}/assets/css/swiper.css">
 
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/diary/diary.css">
+	href="${pageContext.request.contextPath}/assets/css/diary_test.css">
 
 <!--     Fonts and icons     -->
 <link rel="stylesheet"
@@ -149,9 +107,13 @@
 <script>
 	
 
+/* $('.banner-bg').vgrid({
+	time:400,
+	delay:30,
+	wait:500
+});	   */
 
-
- $(function(){
+/*  $(function(){
     $(".list_container").vgrid({
         easing: "easeOutQuint",
         time: 500,
@@ -163,9 +125,21 @@
     }).click(function(){
     	console.log("list click!!!");
     })
-}); 
-
-  
+});  */
+ 
+	$(function(){
+	    $(".list_container").vgrid({
+	        easing: "easeOutQuint",
+	        time: 500,
+	        delay: 20,
+	        fadeIn: {
+	            time: 300,
+	            delay: 50
+	        }
+	    }).click(function(){
+	    	console.log("list click!!!");
+	    })
+	}); 
 
 
 var isEnd = false;
@@ -260,11 +234,7 @@ $(function(){
 		page = page * pluspage;
 	});
 	  
-	$('.banner-bg').vgrid({
-			time:400,
-			delay:30,
-			wait:500
-	});	  
+	
 	  
   </script>
 
