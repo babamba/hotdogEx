@@ -1,7 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -25,7 +24,10 @@
 <script src="${pageContext.request.contextPath}/assets/summernote/summernote.js"></script>
 <script src="${pageContext.request.contextPath}/assets/summernote/summernote-ko-KR.js"></script> --%>
 
-<script src="${pageContext.request.contextPath}/assets/ckeditor/ckeditor.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/assets/ckeditor/ckeditor.js"></script> --%>
+  
+  
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/assets/ckeditor/config.js"></script>
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
@@ -86,20 +88,34 @@
 	
 </div> --%>
 <div class="banner-bg" id="top">
-		<form action="${pageContext.request.contextPath }/post/${authUser.nickname}/insert" method="post">
+		<form action= "${pageContext.request.contextPath }/post/${authUser.nickname}/insert" method="post">
 			<textarea class="form-control" name="title" placeholder="제목을 입력하세요." rows="1" style="font-size:20px"></textarea>
             <textarea name="content" id="ckeditor" rows="10" cols="80">
                 This is my textarea to be replaced with CKEditor.
             </textarea>
-            
-           
              <input type="submit" class="btn btn-default">
-             
-            <script>
-               		CKEDITOR.replace('ckeditor');
-            </script>
         </form>
-       
+        
+            <script>
+            
+            CKEDITOR.replace( 'ckeditor', {//해당 이름으로 된 textarea에 에디터를 적용 <-- 이거 이름 부분입니다.
+            width:'100%',
+            height:'600px',
+            filebrowserImageUploadUrl: '${pageContext.request.contextPath }/post/upload' //여기 경로로 파일을 전달하여 업로드 시킨다. 
+            // JSP, PHP 공통입니다. 경로를 적당히 적어줍니다.
+        });
+
+
+            </script>
+            
+            <script type='text/javascript'> 
+            var CKEditorFuncNum = ${CKEditorFuncNum};
+            var file_path = ${file_path};
+
+            console.log(CKEditorFuncNum + " : " + file_path)	
+            	
+            window.parent.CKEDITOR.tools.callFunction( '${CKEditorFuncNum}', '${file_path}', '파일 전송 완료.');
+            </script>
 </div>
 	
 	<%-- <!-- 스마트에디터 -->

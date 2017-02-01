@@ -81,14 +81,30 @@ public class PostController {
 		}
 		
 		@Auth
-		@ResponseBody
-		@RequestMapping(value = "/upload", method = RequestMethod.POST)
+		@RequestMapping("/upload")
 		
-		public String image(@RequestParam(value="upload") MultipartFile upload, Model model,
-				HttpServletRequest request, HttpServletResponse response, @AuthUser UserVo authUser) throws UnknownHostException{
+		public String image(
+				@RequestParam(value="CKEditorFuncNum") int CKEditorFuncNum,
+				@RequestParam(value="upload") MultipartFile upload, Model model,
+				HttpServletRequest request, HttpServletResponse response, @AuthUser UserVo authUser, ImageVo imageVo) throws UnknownHostException{
 			
 			String saveFileName = blogService.restore(upload);
-			return "http://150.95.141.66/hotdog/hotdog/image/user/" +  saveFileName;
+			
+			String path = "http://localhost:8087/hotdog/hotdog/image/user/";
+			
+			String file_path = saveFileName + path;
+			
+						
+//			model.addAttribute("file_path", file_path); 
+//			model.addAttribute("CKEditorFuncNum", CKEditorFuncNum);
+			model.addAttribute(file_path);
+			model.addAttribute(CKEditorFuncNum);
+			
+			
+			
+			System.out.println(CKEditorFuncNum);
+			System.out.println(saveFileName);
+			return saveFileName;
 			
 		}
 		
