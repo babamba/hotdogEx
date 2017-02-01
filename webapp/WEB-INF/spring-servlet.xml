@@ -63,8 +63,7 @@
 		<property name="defaultEncoding" value="utf-8" />
 	</bean>
 
-
-	<!-- Interceptors -->
+ 	<!-- Interceptors -->
 
  	<mvc:interceptors>
 		<mvc:interceptor>
@@ -83,9 +82,10 @@
 		</mvc:interceptor>
 		
 		<mvc:interceptor>
-			<mvc:mapping path="/user/account/**" />
-			<bean class="com.hotdog.petcam.security.SecretInterceptor" />
+			<mvc:mapping path="/user/secretlogin" />
+			<bean class="com.hotdog.petcam.security.SecretLoginInterceptor" />
 		</mvc:interceptor>
+		
 		
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
@@ -93,12 +93,18 @@
 			<mvc:exclude-mapping path="/user/logout" />
 			<mvc:exclude-mapping path="/user/signupform" />
 			<mvc:exclude-mapping path="/assets/**" />
+			<mvc:exclude-mapping path="/user/secretlogin"/>
 			<bean class="com.hotdog.petcam.security.AuthInterceptor" />
 		</mvc:interceptor>
+		
 		<mvc:interceptor>
-			<mvc:mapping path="/**"/>		
-			<mvc:exclude-mapping path="/user/account/**"/>
-			<bean class="com.hotdog.petcam.security.SecretInterceptor"/>
+			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/user/login" />
+			<mvc:exclude-mapping path="/user/logout" />
+			<mvc:exclude-mapping path="/user/signupform" />
+			<mvc:exclude-mapping path="/assets/**" />
+			<mvc:exclude-mapping path="/user/secretlogin"/>
+			<bean class="com.hotdog.petcam.security.SecretInterceptor" />
 		</mvc:interceptor>
 
 	</mvc:interceptors>
