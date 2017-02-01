@@ -125,7 +125,7 @@ function sendFile(files, editor, welEditable) {
 		        processData : false,
 		        success : function(data) {
 		        	console.log(data.data);
-		        	$note.summernote('insertImage', data.data)
+		        	$note.summernote(data.data)
 		    	  	  }
 				});
 			
