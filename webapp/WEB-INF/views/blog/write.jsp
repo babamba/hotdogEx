@@ -98,16 +98,11 @@
             <script>
                 // Replace the <textarea id="editor1"> with a CKEditor
                 // instance, using default configuration.
-                $(function(){
-
                 	CKEDITOR.config.language = 'ko';
-                	
-          
-                	  CKEDITOR.replace( 'ckeditor', {
+                	CKEDITOR.replace( 'ckeditor', {
                 			  filebrowserImageUploadUrl: '${pageContext.request.contextPath }/post/upload'
                           });
-                });
-               
+
               
             </script>
         </form>
