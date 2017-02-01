@@ -152,10 +152,13 @@ $(function(){
 	        success : function(data) {
 	        	console.log(data);
 	        	
-	        	var image = $('<img>').attr('src', data.data);
+	        	var data = data.data;
+	        	console.log(data);
+	        	
+	        	var image = $('<img>').attr('src', data);
 	        	$("#summernote").summernote("insertNode", image[0]);
 	        	
-	            editor.insertImage(IMAGE_PATH + data.data);
+	            editor.insertImage(data);
 	        }, error: function(jqXHR, textStatus, errorThrown){
 	        	console.log(textStatus+ "" + errorThrown)
 	        }
