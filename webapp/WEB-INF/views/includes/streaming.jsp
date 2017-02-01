@@ -12,13 +12,13 @@
 	       	 </div>
 		
 			<div class="streaming_control">
-				<button type='button' class='btn btn-info'><i class="material-icons">fast_rewind</i></button>
-	    		<button type='button' class='btn btn-info'><i class="material-icons">filter_center_focus</i></button>
-	    		<button type='button' class='btn btn-info' ><i class="material-icons">fast_forward</i></button>
+				<button type='button' class='btn btn-info' id='left'><i id="left" class="material-icons">fast_rewind</i></button>
+	    		<button type='button' class='btn btn-info' id='center'><i class="material-icons">filter_center_focus</i></button>
+	    		<button type='button' class='btn btn-info' id='right'><i class="material-icons">fast_forward</i></button>
 	
 			<div class="togglebutton">
 				<label> 
-					<input type="checkbox" checked="">
+					<input type="checkbox" checked="checked">
 				</label>
 			</div>
 		</div>
