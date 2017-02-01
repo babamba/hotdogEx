@@ -6,7 +6,7 @@
 	<insert id="insert" parameterType="imagevo">
 		<![CDATA[
 			insert INTO image(save_name, org_name, ext_name, regdate) VALUES
-			(#{save_name}, #{org_name}', #{ext_name}, now())
+			(#{save_name}, #{org_name}, #{ext_name}, now())
 		]]>
 	</insert>
 	

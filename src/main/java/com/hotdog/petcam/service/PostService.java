@@ -42,8 +42,8 @@ public class PostService {
 		return (result == 1);
 	}
 	
-	public void insertImage(ImageVo imageVo){
+/*	public void insertImage(ImageVo imageVo){
 		return imageDao.insert(imageVo);
-	}
+	}*/
 	
 }

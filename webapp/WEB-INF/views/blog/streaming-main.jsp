@@ -104,7 +104,7 @@ video {
 
 	<script>
             (function(){
-                var url = "http://150.95.141.66:1935/live/admin2/test/manifest.mpd";
+                var url = "http://150.95.141.66:1935/live/admin2/stream/manifest.mpd";
                 var player = dashjs.MediaPlayer().create();
                 player.initialize(document.querySelector("#videoPlayer"), url, true);
             })();

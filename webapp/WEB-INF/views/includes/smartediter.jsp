@@ -26,20 +26,18 @@
 <script>
 
 
-
-$('#summernote').summernote({
+/* $('#summernote').summernote({
+	onImageUpload : function(files, editor, welEditable) {
+        sendFile(files[0], editor, welEditable);  
+    },
 	height : 700, // set editor height
 	minHeight : 100, // set minimum height of editor
 	maxHeight : null, // set maximum height of editor
 	lang : 'ko-KR', // default: 'en-US'
-	 callbacks: {
-	onImageUpload : function(files, editor, welEditable) {
-        sendFile(files[0], editor, welEditable);
-        alert("asdfasdf");
-    },
-	 }
+	
+	
+	 
 });
-
 
 function sendFile(files, editor, welEditable) {
     data = new FormData();
@@ -55,12 +53,53 @@ function sendFile(files, editor, welEditable) {
         contentType : false,
         processData : false,
         success : function(data) {
+        	console.log(data);
             editor.insertImage(welEditable, data);
-            console.log("image_upload ajax!@!");
         }
-       
     });
-}
+}  */
+ $
+$(function(){
+	$('#summernote').summernote({
+		height : 700, // set editor height
+		minHeight : 100, // set minimum height of editor
+		maxHeight : null, // set maximum height of editor
+		lang : 'ko-KR', // default: 'en-US'
+ 		
+		callbacks:{
+			onImageUpload : function(files, editor, welEditable) {
+		        sendFile(files[0], editor, welEditable);  
+		    }
+		}
+	});
+	
+	function sendFile(files, editor, welEditable) {
+	    data = new FormData();
+	    
+	    data.append("file", files);
+	    
+	    alert("file upload" + files);
+	    
+	    $.ajax({
+	        data : data,
+	        type : "POST",
+	        url : "${pageContext.request.contextPath }/post/upload",
+	        contentType : false,
+	        processData : false,
+	        success : function(data) {
+	        	console.log(data);
+	        	
+	        	var image = $('<img>').attr('src',  + data.data);
+	        	$("#summernote").summernote("insertNode", image[0]);
+	        	
+	            editor.insertImage(welEditable, data.data);
+	        }, error: function(jqXHR, textStatus, errorThrown){
+	        	console.log(textStatus+ "" + errorThrown)
+	        }
+	    });
+	}
+})
+ 
 
 
 

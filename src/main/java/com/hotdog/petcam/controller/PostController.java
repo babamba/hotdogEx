@@ -88,13 +88,14 @@ public class PostController {
 			
 		}*/
 		
+		@Auth
 		@ResponseBody
 	    @RequestMapping(value = "/upload", method = RequestMethod.POST)
 	    public JSONResult upload(@RequestParam("file") MultipartFile file,
 	            Model model, HttpServletResponse response){
 	        System.out.println("upload");
 	        String saveFileName = blogService.restore(file);
-	        return JSONResult.success("D:\\upload\\" + saveFileName);
+	        return JSONResult.success(saveFileName);
 	    }
 		
 		
