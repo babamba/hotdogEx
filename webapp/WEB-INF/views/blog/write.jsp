@@ -26,7 +26,7 @@
 <script src="${pageContext.request.contextPath}/assets/summernote/summernote-ko-KR.js"></script> --%>
 
 <script src="${pageContext.request.contextPath}/assets/ckeditor/ckeditor.js"></script>
-
+<script src="${pageContext.request.contextPath}/assets/ckeditor/config.js"></script>
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
@@ -96,14 +96,7 @@
              <input type="submit" class="btn btn-default">
              
             <script>
-                // Replace the <textarea id="editor1"> with a CKEditor
-                // instance, using default configuration.
-                	CKEDITOR.config.language = 'ko';
-                	CKEDITOR.replace( 'ckeditor', {
-                			  filebrowserImageUploadUrl: '${pageContext.request.contextPath }/post/upload'
-                          });
-
-              
+               		CKEDITOR.replace('ckeditor');
             </script>
         </form>
        
