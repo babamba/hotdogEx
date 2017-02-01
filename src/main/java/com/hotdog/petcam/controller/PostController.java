@@ -80,18 +80,19 @@ public class PostController {
 			return "redirect:/blog/" + nickname;
 		}
 		
-		/*@Auth
+		@Auth
 		@ResponseBody
 		@RequestMapping(value = "/upload", method = RequestMethod.POST)
 		
-		public void image(@RequestParam(value="file") MultipartFile Filedata, Model model,
-				HttpServletRequest request, HttpServletResponse response, @AuthUser UserVo authUser){
-		
-			blogService.restore(Filedata);
+		public String image(@RequestParam(value="upload") MultipartFile upload, Model model,
+				HttpServletRequest request, HttpServletResponse response, @AuthUser UserVo authUser) throws UnknownHostException{
 			
-		}*/
+			String saveFileName = blogService.restore(upload);
+			return "http://150.95.141.66/hotdog/hotdog/image/user/" +  saveFileName;
+			
+		}
 		
-		@Auth
+		/*@Auth
 		@ResponseBody
 	    @RequestMapping(value = "/upload", method = RequestMethod.POST)
 	    public JSONResult upload(@RequestParam("file") MultipartFile file, MultipartHttpServletRequest request,
@@ -99,9 +100,8 @@ public class PostController {
 	        System.out.println("upload");
 	        String saveFileName = blogService.restore(file);
 	        String localIp = InetAddress.getLocalHost().getHostAddress();
-//	        "http://" + localIp + ":" +  request.getServerPort() +  "/hotdog/hotdog/image/user/" + 
 	        return JSONResult.success("http://150.95.141.66/hotdog/hotdog/image/user/" + saveFileName);
-	    }
+	    }*/
 		
 		
 		

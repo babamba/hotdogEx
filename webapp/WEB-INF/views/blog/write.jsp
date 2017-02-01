@@ -20,10 +20,12 @@
 
 <script src="${pageContext.request.contextPath }/assets/js/min/jquery-1.10.2.min.js" type="text/javascript"></script>
 
-<!-- include summernote css/js-->
+<%-- <!-- include summernote css/js-->
 <link href="${pageContext.request.contextPath}/assets/summernote/summernote.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/assets/summernote/summernote.js"></script>
-<script src="${pageContext.request.contextPath}/assets/summernote/summernote-ko-KR.js"></script>
+<script src="${pageContext.request.contextPath}/assets/summernote/summernote-ko-KR.js"></script> --%>
+
+<script src="${pageContext.request.contextPath}/assets/ckeditor/ckeditor.js"></script>
 
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
@@ -70,7 +72,7 @@
 	<c:import url="/WEB-INF/views/includes/navigation.jsp" />
 	
 	
-	<div class="banner-bg" id="top">
+	<%-- <div class="banner-bg" id="top">
 	<form action="${pageContext.request.contextPath }/post/${authUser.nickname}/insert" method="post">
 	 	<textarea class="form-control" name="title" placeholder="제목을 입력하세요." rows="1" style="font-size:20px"></textarea>
 	 	<textarea id="summernote"  name=content>
@@ -82,6 +84,45 @@
 		<input type="submit" class="btn btn-default">	
 	</form>
 	
+</div> --%>
+<div class="banner-bg" id="top">
+		<form action="${pageContext.request.contextPath }/post/${authUser.nickname}/insert" method="post">
+			<textarea class="form-control" name="title" placeholder="제목을 입력하세요." rows="1" style="font-size:20px"></textarea>
+            <textarea name="content" id="ckeditor" rows="10" cols="80">
+                This is my textarea to be replaced with CKEditor.
+            </textarea>
+            
+           
+             <input type="submit" class="btn btn-default">
+             
+            <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                $(function(){
+                	  CKEDITOR.replace( 'ckeditor', {
+                			  height : '500px',
+                			  filebrowserImageUploadUrl: '${pageContext.request.contextPath }/post/upload'
+                          });
+                	  
+                	  CKEDITOR.on('dialogDefinition', function( ev ){
+                          var dialogName = ev.data.name;
+                          var dialogDefinition = ev.data.definition;
+                        
+                          switch (dialogName) {
+                              case 'image': //Image Properties dialog
+                                  //dialogDefinition.removeContents('info');
+                                  dialogDefinition.removeContents('Link');
+                                  dialogDefinition.removeContents('advanced');
+                                  break;
+                          }
+                      });
+                	  
+                })
+               
+              
+            </script>
+        </form>
+       
 </div>
 	
 	<%-- <!-- 스마트에디터 -->
@@ -121,7 +162,7 @@
 
 </body>
 <script>
-var IMAGE_PATH = 'http://localhost:8087/hotdog/hotdog/image/user/';
+/* var IMAGE_PATH = 'http://localhost:8087/hotdog/hotdog/image/user/';
 
 $(function(){
 	$('#summernote').summernote({
@@ -170,7 +211,7 @@ $(function(){
 	        }
 	    });
 	}
-})
+}) */
 
 
 	
