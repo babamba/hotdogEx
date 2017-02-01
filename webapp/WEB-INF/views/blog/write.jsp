@@ -103,20 +103,6 @@
                 			  height : '500px',
                 			  filebrowserImageUploadUrl: '${pageContext.request.contextPath }/post/upload'
                           });
-                	  
-                	  CKEDITOR.on('dialogDefinition', function( ev ){
-                          var dialogName = ev.data.name;
-                          var dialogDefinition = ev.data.definition;
-                        
-                          switch (dialogName) {
-                              case 'image': //Image Properties dialog
-                                  //dialogDefinition.removeContents('info');
-                                  dialogDefinition.removeContents('Link');
-                                  dialogDefinition.removeContents('advanced');
-                                  break;
-                          }
-                      });
-                	  
                 })
                
               
