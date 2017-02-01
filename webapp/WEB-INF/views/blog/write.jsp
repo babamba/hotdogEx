@@ -100,14 +100,9 @@
                 // instance, using default configuration.
                 $(function(){
 
-                	CKEDITOR.editorConfig = function( config ) {
-                		// Define changes to default configuration here. For example:
-                		config.language = 'ko';
-                		config.uiColor = '#AADC6E';
-
-                		};
+                	CKEDITOR.config.language = 'ko';
                 	
-                	
+          
                 	  CKEDITOR.replace( 'ckeditor', {
                 			  height : '500px',
                 			  filebrowserImageUploadUrl: '${pageContext.request.contextPath }/post/upload'
