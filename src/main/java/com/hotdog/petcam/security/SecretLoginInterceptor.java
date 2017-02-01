@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.hotdog.petcam.service.UserService;
 import com.hotdog.petcam.vo.UserVo;
 
 public class SecretLoginInterceptor extends HandlerInterceptorAdapter {
@@ -22,15 +23,22 @@ public class SecretLoginInterceptor extends HandlerInterceptorAdapter {
 		ApplicationContext ac =
 			WebApplicationContextUtils.getWebApplicationContext( request.getServletContext() );
 		
+		HttpSession session = request.getSession(true);
+		
+		UserVo authUser=(UserVo)session.getAttribute("authUser");
+		
+		authUser.setSec_pass_word(sec_pass_word);
+		
 		// Secret User 권한을 설정하기 위해 UserVo 빈가져오기
-		UserVo userVo = ac.getBean( UserVo.class );
+		UserService userService = ac.getBean(UserService.class);
+		UserVo userVo = new UserVo();
 		
-		userVo.setSec_pass_word((sec_pass_word));
+		userVo = userService.secretLogin(authUser);
+		// 비교
 		
-	
 		
 		// 인증 처리
-		HttpSession session = request.getSession( true );
+		
 		session.setAttribute( "secretUser", userVo );
 		response.sendRedirect( request.getContextPath() );
 		return false;
