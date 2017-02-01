@@ -88,8 +88,6 @@
 		</mvc:interceptor>
 		
 		
-		
-		
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
 			<mvc:exclude-mapping path="/user/login" />

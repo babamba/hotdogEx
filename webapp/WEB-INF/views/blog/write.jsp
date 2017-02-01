@@ -23,6 +23,7 @@
 <!-- include summernote css/js-->
 <link href="${pageContext.request.contextPath}/assets/summernote/summernote.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/assets/summernote/summernote.js"></script>
+<script src="${pageContext.request.contextPath}/assets/summernote/summernote-ko-KR.js"></script>
 
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
@@ -124,47 +125,54 @@ var IMAGE_PATH = 'http://localhost:8087/hotdog/hotdog/image/user/';
 
 $(function(){
 	$('#summernote').summernote({
-		height : 700, // set editor height
-		minHeight : 100, // set minimum height of editor
-		maxHeight : null, // set maximum height of editor
-		lang : 'ko-KR', // default: 'en-US'
+		
 		
 		callbacks:{
-			onImageUpload : function(files, editor) {
-		        sendFile(files[0], editor);  
+			onImageUpload : function(file, editor, welEditable) {
+		        sendFile(file[0], editor, welEditable);  
 		    }
-		}
+		},
+	placeholder: 'Escribe aquí',
+	height : 700, // set editor height
+	minHeight : 100, // set minimum height of editor
+	maxHeight : null, // set maximum height of editor
+	lang : 'ko-KR', // default: 'en-US'
+	focus: true
+	
+	
 	});
 	
-	function sendFile(files, editor) {
-	    data = new FormData();
+	function sendFile(file, editor, welEditable) {
+	    imagedata = new FormData();
 	    
-	    data.append("file", files);
+	    imagedata.append("file", file);
 	    
-	    alert("file upload" + files);
+	    alert("file upload" + file);
 	    
 	    $.ajax({
-	        data : data,
+	        data : imagedata,
 	        type : "POST",
 	        url : "${pageContext.request.contextPath }/post/upload",
 	        contentType : false,
 	        processData : false,
-	        success : function(data) {
-	        	console.log(data);
+	        success : function(imagedata) {
+	        	console.log(imagedata);
 	        	
-	        	var data_path = data.data;
+	        	var data_path = imagedata.data;
 	        	console.log(data_path);
 	        	
 	        	var image = $('<img>').attr('src', data_path);
 	        	$("#summernote").summernote("insertNode", image[0]);
 	        	
-	            editor.insertImage(data);
+	            editor.insertImage(welEditable, imagedata);
 	        }, error: function(jqXHR, textStatus, errorThrown){
 	        	console.log(textStatus+ "" + errorThrown)
 	        }
 	    });
 	}
 })
+
+
 	
 </script>
 

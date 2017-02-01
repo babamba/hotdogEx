@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class ImageService {
 
-	private static final String SAVE_PATH = "c:\\upload";
+	private static final String SAVE_PATH = "/upload";
 	
 
 	public String restore(MultipartFile userimage, int no) {
