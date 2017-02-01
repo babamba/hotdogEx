@@ -39,12 +39,13 @@ public class SecretInterceptor extends HandlerInterceptorAdapter{
 		
 		HttpSession session = request.getSession();
 		if(session == null){
-			response.sendRedirect(request.getContextPath()+"/petcam/ + 로그인 경로 처리");
+			response.sendRedirect(request.getContextPath()+"/ 로그인 경로 처리");
 		}
 		
 		UserVo SecretUser = (UserVo)session.getAttribute("secretUser");
+		
 		if(SecretUser == null){
-			response.sendRedirect(request.getContextPath()+"/petcam/ + 2차 비밀번호 경로");
+			response.sendRedirect(request.getContextPath()+"/user/secretcontrol");
 		}
 		
 		return true;
