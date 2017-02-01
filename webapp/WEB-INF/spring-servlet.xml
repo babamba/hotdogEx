@@ -35,7 +35,7 @@
 
 
 	 <!-- the mvc resources tag does the magic -->
-	 <mvc:resources mapping="/hotdog/image/user/**" location="file:/upload/" />
+	<mvc:resources mapping="/hotdog/image/user/**" location="file:/upload/" />
 
 	<mvc:default-servlet-handler />
 
@@ -63,7 +63,8 @@
 		<property name="defaultEncoding" value="utf-8" />
 	</bean>
 
- 	<!-- Interceptors -->
+
+	<!-- Interceptors -->
 
  	<mvc:interceptors>
 		<mvc:interceptor>
@@ -85,6 +86,8 @@
 			<mvc:mapping path="/user/secretlogin" />
 			<bean class="com.hotdog.petcam.security.SecretLoginInterceptor" />
 		</mvc:interceptor>
+		
+		
 		
 		
 		<mvc:interceptor>

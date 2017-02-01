@@ -25,7 +25,7 @@ import com.hotdog.petcam.vo.UserVo;
 @Service
 public class BlogService {
 	
-	private static final String SAVE_PATH = "C:\\upload";
+	private static final String SAVE_PATH = "c:\\upload";
 
 	@Autowired
 	private BlogDao blogDao;

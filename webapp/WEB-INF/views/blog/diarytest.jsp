@@ -27,7 +27,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
- <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/lightbox/dist/css/lightbox.min.css">
+ <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/lightbox/css/lightbox.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/normalize.css">
 <link rel="stylesheet"
@@ -67,7 +67,7 @@
 <script
 	src="${pageContext.request.contextPath}/assets/js/jquery.vgrid.js"></script>
 <script 	
-	src="${pageContext.request.contextPath}/assets/lightbox/dist/js/lightbox.min.js"></script>
+	src="${pageContext.request.contextPath}/assets/lightbox/js/lightbox.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/assets/js/jquery.easing.1.3.js"></script>
 
