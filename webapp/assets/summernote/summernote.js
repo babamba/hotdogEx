@@ -7314,7 +7314,7 @@
 								context.invoke('editor.restoreRange');
 
 								if (typeof data === 'string') { // image url
-									context.invoke('editor.insertImage', data.data);
+									context.invoke('editor.insertImage', data);
 								} else { // array of files
 									context.invoke(
 											'editor.insertImagesOrCallback',
