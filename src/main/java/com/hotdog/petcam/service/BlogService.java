@@ -204,7 +204,9 @@ public class BlogService {
 		return blogDao.getTitleByNo(no);
 	}
 	
-	
+	public void setLogo(BlogVo blogVo){
+		blogDao.setLogo(blogVo);
+	}
 	
 	
 	

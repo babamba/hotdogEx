@@ -42,9 +42,6 @@ public class BlogController {
 		return "blog/blog-main";
 	}
 	
-	
-	
-	
 	@Auth
 	@Secret
 	@RequestMapping("/{nickname}/vod")

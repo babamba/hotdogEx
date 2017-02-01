@@ -70,7 +70,7 @@ public class UserDao{
 	}
 	
 	//맵형태의 email, password, nickname을 조회해 담고 UserVo형태의 authUser에 담아 리턴
-		public UserVo selectForLogin(String email, String pass_word, String nickname){
+	public UserVo selectForLogin(String email, String pass_word, String nickname){
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("email", email);
 			map.put("pass_word", pass_word);

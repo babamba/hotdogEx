@@ -4604,8 +4604,8 @@
 									lang.image.maximumFileSizeError);
 						} else {
 							async.readFileAsDataURL(file).then(
-									function(data) {
-										return self.insertImage(data,
+									function(dataURL) {
+										return self.insertImage(dataURL,
 												filename);
 									}).fail(function() {
 								context.triggerEvent('image.upload.error');

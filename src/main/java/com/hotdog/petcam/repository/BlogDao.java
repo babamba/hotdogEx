@@ -33,6 +33,8 @@ public class BlogDao {
 		return sqlSession.selectOne("blog.getTitleByNo", no);
 	}
 	
-	
+	public void setLogo(BlogVo blogVo){
+		sqlSession.update("blog.setLogo", blogVo);
+	}
 	
 }

@@ -99,7 +99,8 @@ public class PostController {
 	        System.out.println("upload");
 	        String saveFileName = blogService.restore(file);
 	        String localIp = InetAddress.getLocalHost().getHostAddress();
-	        return JSONResult.success("http://" + localIp + ":" +  request.getServerPort() +  "/hotdog/hotdog/image/user/" + saveFileName);
+//	        "http://" + localIp + ":" +  request.getServerPort() +  "/hotdog/hotdog/image/user/" + 
+	        return JSONResult.success(saveFileName);
 	    }
 		
 		

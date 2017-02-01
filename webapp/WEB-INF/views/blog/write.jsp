@@ -68,8 +68,23 @@
 	<!-- 반응형 navigation -->
 	<c:import url="/WEB-INF/views/includes/navigation.jsp" />
 	
-	<!-- 스마트에디터 -->
-	<c:import url="/WEB-INF/views/includes/smartediter.jsp" />
+	
+	<div class="banner-bg" id="top">
+	<form action="${pageContext.request.contextPath }/post/${authUser.nickname}/insert" method="post">
+	 	<textarea class="form-control" name="title" placeholder="제목을 입력하세요." rows="1" style="font-size:20px"></textarea>
+	 	<textarea id="summernote"  name=content>
+	 	
+	 	
+	 	</textarea>
+	 	
+	 	
+		<input type="submit" class="btn btn-default">	
+	</form>
+	
+</div>
+	
+	<%-- <!-- 스마트에디터 -->
+	<c:import url="/WEB-INF/views/includes/smartediter.jsp" /> --%>
 	
 	
 	<!-- Modal -->
@@ -104,4 +119,50 @@
 	
 
 </body>
+<script>
+var IMAGE_PATH = 'http://localhost:8087/hotdog/hotdog/image/user/';
+
+$(function(){
+	$('#summernote').summernote({
+		height : 700, // set editor height
+		minHeight : 100, // set minimum height of editor
+		maxHeight : null, // set maximum height of editor
+		lang : 'ko-KR', // default: 'en-US'
+		
+		callbacks:{
+			onImageUpload : function(files, editor) {
+		        sendFile(files[0], editor);  
+		    }
+		}
+	});
+	
+	function sendFile(files, editor) {
+	    data = new FormData();
+	    
+	    data.append("file", files);
+	    
+	    alert("file upload" + files);
+	    
+	    $.ajax({
+	        data : data,
+	        type : "POST",
+	        url : "${pageContext.request.contextPath }/post/upload",
+	        contentType : false,
+	        processData : false,
+	        success : function(data) {
+	        	console.log(data);
+	        	
+	        	var image = $('<img>').attr('src', data.data);
+	        	$("#summernote").summernote("insertNode", image[0]);
+	        	
+	            editor.insertImage(IMAGE_PATH + data.data);
+	        }, error: function(jqXHR, textStatus, errorThrown){
+	        	console.log(textStatus+ "" + errorThrown)
+	        }
+	    });
+	}
+})
+	
+</script>
+
 </html>

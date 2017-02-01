@@ -39,7 +39,7 @@
 	<div class="sidebar-menu hidden-xs hidden-sm">
 		<div class="top-section">
 			<div class="profile-image">
-				<img src="${pageContext.request.contextPath}/assets/img/Hotdog2.jpg" alt="Volton">
+				<img src="${pageContext.request.contextPath}/hotdog/image/user/${authUser.users_image}" alt="Volton">
 				<!-- Button trigger modal -->
 
 			</div>
