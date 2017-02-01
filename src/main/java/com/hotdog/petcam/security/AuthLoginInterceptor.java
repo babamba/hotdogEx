@@ -42,7 +42,7 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 		
 		// 데이터베이스에서 해당 UserVo 받아오기 
 		UserVo userVo = 
-				userService.login( email, pass_word, nickname, infomation, users_image, follower_num, following_num, description);
+				userService.login(email, pass_word, nickname);
 		System.out.println(userVo);
 		System.out.println(request);
 		

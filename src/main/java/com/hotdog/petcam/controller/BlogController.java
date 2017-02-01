@@ -1,5 +1,6 @@
 package com.hotdog.petcam.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hotdog.petcam.security.Auth;
 import com.hotdog.petcam.security.AuthUser;
+import com.hotdog.petcam.security.Secret;
 import com.hotdog.petcam.service.BlogService;
+import com.hotdog.petcam.service.PetService;
 import com.hotdog.petcam.service.UserService;
 import com.hotdog.petcam.vo.ImageVo;
 import com.hotdog.petcam.vo.PostVo;
@@ -24,6 +27,8 @@ public class BlogController {
 
 	@Autowired
 	private BlogService blogService;
+	@Autowired private UserService userService;
+	@Autowired private PetService petService;
 	
 
 	@RequestMapping("/{nickname}")

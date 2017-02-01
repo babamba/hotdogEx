@@ -18,10 +18,30 @@
 	
 	<select id="get" parameterType="int" resultType="blogvo">
 		<![CDATA[
-			select * from BLOG where users_no = #{users_no}
+			select * from BLOG where users_no = #{users_no};
 		]]>
 	</select>
-
+	<update id="titleModify" parameterType="blogvo">
+		<![CDATA[
+			update blog 
+				set title=#{title} 
+					where users_no=#{users_no};
+		]]>
+	</update>
+	<select id="getTitleByNo" parameterType="int" resultType="blogvo">
+		<![CDATA[
+			select title 
+				from blog
+				where users_no=#{no};
+		]]>
+	</select>
+	<update id="setLogo" parameterType = "blogvo">
+		<![CDATA[
+			update blog
+				set logo_image = #{logo_image}
+				where users_no = #{users_no};
+		]]>
+	</update>
 	
 	
 	

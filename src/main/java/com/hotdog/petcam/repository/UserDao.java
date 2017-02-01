@@ -69,6 +69,17 @@ public class UserDao{
 		return authUser;
 	}
 	
+	//맵형태의 email, password, nickname을 조회해 담고 UserVo형태의 authUser에 담아 리턴
+		public UserVo selectForLogin(String email, String pass_word, String nickname){
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("email", email);
+			map.put("pass_word", pass_word);
+			map.put("nickname", nickname);
+			UserVo authUser = sqlSession.selectOne("user.selectForLogin",map);
+			return authUser;
+		}
+	
+	
 	public UserVo getAllByNo(int no){
 		return sqlSession.selectOne("user.getallbyno",no);
 	}
@@ -90,9 +101,27 @@ public class UserDao{
 	public void userProfileModify(UserVo userVo){
 		sqlSession.update("user.userprofileModify",userVo);
 	}
+	public void setImage(UserVo userVo){
+		sqlSession.update("user.setImage", userVo);
+		
+	}
 	public void petrProfileModify(PetVo petVo){
 		sqlSession.update("user.userprofileModify",petVo);
 	}
+
+	// *******************************************************************************************************
+	// ***************************** Secret ***************************************************
+	// *******************************************************************************************************
+			
+			public UserVo firstCheck(UserVo authUser){
+				return sqlSession.selectOne("user.firstCheck", authUser);
+			}
+			
+			public UserVo secretLogin(UserVo userVo){
+				return sqlSession.selectOne("user.secretLogin", userVo);
+			}
+	
+	
 	
 	// *******************************************************************************************************
 	// **************************************** App 통신 ***************************************************

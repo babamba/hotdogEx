@@ -58,17 +58,17 @@ function sendFile(files, editor, welEditable) {
         }
     });
 }  */
- $
-$(function(){
+
+/* $(function(){
 	$('#summernote').summernote({
 		height : 700, // set editor height
 		minHeight : 100, // set minimum height of editor
 		maxHeight : null, // set maximum height of editor
 		lang : 'ko-KR', // default: 'en-US'
- 		
+		onImageUpload : function(files, editor, welEditable) {
+	        sendFile(files[0], editor, welEditable);  
 		callbacks:{
-			onImageUpload : function(files, editor, welEditable) {
-		        sendFile(files[0], editor, welEditable);  
+			
 		    }
 		}
 	});
@@ -98,8 +98,45 @@ $(function(){
 	        }
 	    });
 	}
-})
+}) */
  
+
+	$(document).ready(function(){
+		$('#summernote').summernote({
+		height: 300, 
+		height : 700, // set editor height
+		minHeight : 100, // set minimum height of editor
+		maxHeight : null, // set maximum height of editor
+		lang : 'ko-KR', // default: 'en-US'
+		callbacks : {
+		onImageUpload : function(files, deitor, welEditable){
+			console.log(files);
+			
+			data = new FormData();
+			data.append("file", files[0]);
+			
+			var $note = $(this);
+			
+			$.ajax({
+		        data : data,
+		        type : "POST",
+		        url : "${pageContext.request.contextPath }/post/upload",
+		        contentType : false,
+		        processData : false,
+		        success : function(data) {
+		        	console.log(data.data);
+		        	$note.summernote('insertImage', data.data)
+		    	  	  }
+				});
+			
+			}
+			}
+		
+		})
+	})
+		
+
+
 
 
 

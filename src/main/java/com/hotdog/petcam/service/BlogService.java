@@ -26,7 +26,6 @@ import com.hotdog.petcam.vo.UserVo;
 public class BlogService {
 	
 	private static final String SAVE_PATH = "C:\\upload";
-	private static final String URL = "/hotdog/image/user/";
 
 	@Autowired
 	private BlogDao blogDao;
@@ -111,6 +110,7 @@ public class BlogService {
 	
 	public String restore(MultipartFile multipartFile){
 		String url = "";
+		String saveFileName;
 		try {
 			
 			if(multipartFile.isEmpty() == true){
@@ -119,7 +119,7 @@ public class BlogService {
 			
 			String originalFileName = multipartFile.getOriginalFilename();
 			String extName = originalFileName.substring(originalFileName.lastIndexOf('.')+1, originalFileName.length());
-			String saveFileName = generateSaveFileName(extName);
+			saveFileName = generateSaveFileName(extName);
 			
 			ImageVo imageVo = new ImageVo();
 			imageVo.setSave_name(saveFileName);
@@ -131,13 +131,12 @@ public class BlogService {
 			
 			writeFile(multipartFile, saveFileName);
 			
-			url = URL + saveFileName;
-			
 		} catch (Exception e) {
 			// TODO: handle exception
 			throw new RuntimeException("upload file exception");
 		}
-		return url;
+		System.out.println(saveFileName);
+		return saveFileName;
 		
 		
 	}
@@ -200,6 +199,10 @@ public class BlogService {
 		fos.close();
 	}
 	
+	// 정보수정에서 타이틀을 수정하기 위해
+	public BlogVo getTitleByNo(int no){
+		return blogDao.getTitleByNo(no);
+	}
 	
 	
 	

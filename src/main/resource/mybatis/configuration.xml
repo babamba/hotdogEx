@@ -6,6 +6,7 @@
 		<typeAlias alias="blogvo" type="com.hotdog.petcam.vo.BlogVo" />
 		<typeAlias alias="postvo" type="com.hotdog.petcam.vo.PostVo" />
 		<typeAlias alias="imagevo" type="com.hotdog.petcam.vo.ImageVo" />
+		<typeAlias alias="petvo" type="com.hotdog.petcam.vo.PetVo" />
 	</typeAliases>
 	
 	<mappers>
@@ -13,5 +14,6 @@
 		<mapper resource="mybatis/mappers/blog.xml" />
 		<mapper resource="mybatis/mappers/post.xml" />
 		<mapper resource="mybatis/mappers/image.xml" />
+		<mapper resource="mybatis/mappers/pet.xml"	/>
 	</mappers>
 </configuration>

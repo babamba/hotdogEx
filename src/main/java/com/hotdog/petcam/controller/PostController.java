@@ -1,6 +1,8 @@
 package com.hotdog.petcam.controller;
 
 import java.io.InputStream;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.hotdog.petcam.DTO.JSONResult;
 import com.hotdog.petcam.security.Auth;
@@ -91,11 +94,12 @@ public class PostController {
 		@Auth
 		@ResponseBody
 	    @RequestMapping(value = "/upload", method = RequestMethod.POST)
-	    public JSONResult upload(@RequestParam("file") MultipartFile file,
-	            Model model, HttpServletResponse response){
+	    public JSONResult upload(@RequestParam("file") MultipartFile file, MultipartHttpServletRequest request,
+	            Model model, HttpServletResponse response) throws UnknownHostException{
 	        System.out.println("upload");
 	        String saveFileName = blogService.restore(file);
-	        return JSONResult.success(saveFileName);
+	        String localIp = InetAddress.getLocalHost().getHostAddress();
+	        return JSONResult.success("http://" + localIp + ":" +  request.getServerPort() +  "/hotdog/hotdog/image/user/" + saveFileName);
 	    }
 		
 		

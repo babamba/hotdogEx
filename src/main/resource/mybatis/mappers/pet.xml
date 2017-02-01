@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="user">
+<mapper namespace="pet">
 
-	<insert id="insert" parameterType="uservo">
+	<insert id="insert" parameterType="petvo">
 		<![CDATA[
 			iselect * from pet;
 				insert INTO pet(name, birthdate, type, info, pet_image) values
@@ -11,11 +11,11 @@
 		]]>
 	</insert>
 
-	<select id ="getByNo" parameterType="long" resultType="uservo">
+	<select id ="getallbyno" parameterType="int" resultType="petvo">
 		<![CDATA[
-		select user_no, email, nickname, password, sec_password, info, users_image, follower_num, follower_num
-		  from users
-		 where user_no=#{no }		
+				select name,birthdate,type,info,pet_image
+					from pet
+					where users_no = #{no}
 		]]>
 	</select>
 
