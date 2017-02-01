@@ -41,32 +41,35 @@ public class BlogController {
 	
 	
 	@Auth
+	@Secret
 	@RequestMapping("/{nickname}/vod")
 	public String vod(@PathVariable String nickname){
 		return "blog/vod-main";
 	}
 	
 	@Auth
+	@Secret
 	@RequestMapping("/{nickname}/streaming")
 	public String Streaming(@PathVariable String nickname){
 		return "blog/streaming-main";
 	}
 	
 	@Auth
+	@Secret
 	@RequestMapping("/{nickname}/account")
-	public String Account(@PathVariable String nickname){
+	public String Account(@PathVariable String nickname,@AuthUser UserVo authUser,Model model){
+		// 뷰에 수정에 필요한 내용들 다 넘겨버리자
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("userVo", userService.getAllByNo(authUser.getUsers_no()));
+		map.put("blogVo", blogService.getTitleByNo(authUser.getUsers_no()));
+		map.put("petVo", petService.getAllByNo(authUser.getUsers_no()));
+		
+		model.addAttribute("map", map);
+		
 		return "blog/account-main";
 	}
 	
+	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }
