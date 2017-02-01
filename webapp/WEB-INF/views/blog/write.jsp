@@ -104,7 +104,6 @@
                 	
           
                 	  CKEDITOR.replace( 'ckeditor', {
-                			  height : '500px',
                 			  filebrowserImageUploadUrl: '${pageContext.request.contextPath }/post/upload'
                           });
                 });
