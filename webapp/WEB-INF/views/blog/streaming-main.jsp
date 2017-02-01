@@ -14,6 +14,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Hot dog</title>
 <head>
+<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery.js"></script>
+
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/normalize.css">
 <link rel="stylesheet"
@@ -103,12 +105,58 @@ video {
 	<script src="http://cdn.dashjs.org/latest/dash.all.min.js"></script>
 
 	<script>
+			var ip1 = "10.0.0.4";
+		
             (function(){
-                var url = "http://150.95.141.66:1935/live/admin2/stream/manifest.mpd";
+                var url = "http://150.95.141.66:1935/live/${authUser.nickname}/stream/manifest.mpd";
                 var player = dashjs.MediaPlayer().create();
                 player.initialize(document.querySelector("#videoPlayer"), url, true);
+                
+                $("#left").click(function(){
+                    $.ajax({
+                        url:"http://150.95.141.66/test/cgi-bin/send.py",
+                        type:"post",
+                        data: { msg:"left", ip:ip1 },
+                        success: function(){
+                            console.log("success");
+                        },
+                        error : function(jqXHR, status, e) {
+                        console.log(status + ":" + e);
+                        }            
+                    });
+                });
+                
+                $("#center").click(function(){
+                    $.ajax({
+                        url:"http://150.95.141.66/test/cgi-bin/send.py",
+                        type:"post",
+                        data: { msg:"center", ip:ip1 },
+                        success: function(){
+                            console.log("success");
+                        },
+                        error : function(jqXHR, status, e) {
+                        console.log(status + ":" + e);
+                        }            
+                    });
+                });
+                
+                $("#right").click(function(){
+                    $.ajax({
+                        url:"http://150.95.141.66/test/cgi-bin/send.py",
+                        type:"post",
+                        data: { msg:"right", ip:ip1 },
+                        success: function(){
+                            console.log("success");
+                        },
+                        error : function(jqXHR, status, e) {
+                        console.log(status + ":" + e);
+                        }            
+                    });
+                });
             })();
-        </script>
+       
+       
+    </script>
 
 </body>
 
