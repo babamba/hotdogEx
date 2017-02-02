@@ -15,6 +15,7 @@ public class JSONResult {
 	}
 
 	private JSONResult() {
+		
 	}
 
 	private JSONResult(Object data) {

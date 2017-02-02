@@ -4,13 +4,20 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.hotdog.petcam.repository.ImageDao;
+import com.hotdog.petcam.vo.ImageVo;
 
 @Service
 public class ImageService {
 
 	private static final String SAVE_PATH = "/upload";
+	
+	@Autowired
+	private ImageDao imageDao;
 	
 
 	public String restore(MultipartFile userimage, int no) {
@@ -40,8 +47,47 @@ public class ImageService {
 			throw new RuntimeException("write file");
 		}
 		return saveFileName;
+	}	
+	
+	
+	//포스팅용 이미지 업로드 리스토어
+	public String restore(MultipartFile multipartFile){
+		String url = "";
+		String saveFileName;
+		try {
+			
+			if(multipartFile.isEmpty() == true){
+				return url;
+			}
+			
+			String originalFileName = multipartFile.getOriginalFilename();
+			String extName = originalFileName.substring(originalFileName.lastIndexOf('.')+1, originalFileName.length());
+			saveFileName = generateSaveFileName(extName);
+			
+			ImageVo imageVo = new ImageVo();
+			imageVo.setSave_name(saveFileName);
+			imageVo.setOrg_name(originalFileName);
+			imageVo.setExt_name(extName);
+			
+			imageDao.insert(imageVo);
+			
+			writeFile(multipartFile, saveFileName);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new RuntimeException("upload file exception");
+		}
+		System.out.println(saveFileName);
+		return saveFileName;
+		
+		
 	}
-
+	
+	
+	
+	
+	
+	
 	private void writeFile(MultipartFile multipartFile, String saveFileName) throws IOException {
 
 		byte[] fileData = multipartFile.getBytes();

@@ -16,7 +16,7 @@
 <div class="banner-bg" id="top">
 	<h4>나의 기록</h4>
 	<div class = "list_container">
-				<div class="imagelist">
+				<%-- <div class="imagelist">
 				<a href="${pageContext.request.contextPath}/assets/sample-images/image_1.jpg"  rel="lightbox" data-title="vo.content">
 					<img src="${pageContext.request.contextPath}/assets/sample-images/image_1.jpg" data-toggle="lightbox">
 					<h5>vo.title</h5>
@@ -33,66 +33,7 @@
 					<h5>vo.title</h5>	
 					<p>2016.01.31</p>
 					<p>vo.content</p>
-				</div>
-				<div>
-					<img src="${pageContext.request.contextPath}/assets/sample-images/image_3.jpg">
-					<h5>vo.title</h5>	
-					<p>vo.regdate</p>
-					<p>vo.content</p>
-				</div>
-				<div>
-					<img src="${pageContext.request.contextPath}/assets/sample-images/image_4.jpg">
-					<h5>vo.title</h5>	
-					<p>vo.regdate</p>
-					<p>vo.content</p>
-				</div>	
-				<div>
-					<img src="${pageContext.request.contextPath}/assets/sample-images/image_5.jpg">
-					<h5>vo.title</h5>	
-					<p>vo.regdate</p>
-					<p>vo.content</p>
-				</div>
-				<div>
-					<img src="${pageContext.request.contextPath}/assets/sample-images/image_5.jpg">
-					<h5>vo.title</h5>	
-					<p>vo.regdate</p>
-					<p>vo.content</p>
-				</div>
-				<div>
-					<img src="${pageContext.request.contextPath}/assets/sample-images/image_6.jpg">
-					<h5>vo.title</h5>	
-					<p>vo.regdate</p>
-					<p>vo.content</p>
-				</div>
-				<div>
-					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
-					<h5>vo.title</h5>	
-					<p>vo.regdate</p>
-					<p>vo.content</p>
-				</div>	
-				<div>
-					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
-					<h5>vo.title</h5>	
-					<p>vo.regdate</p>
-					<p>vo.content</p>
-				</div>	
-				<div>
-					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
-					<h5>vo.title</h5>	
-					<p>vo.regdate</p>
-					<p>vo.content</p>
-				</div>	
-				<div>
-					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
-					<h5>vo.title</h5>	
-					<p>vo.regdate</p>
-					<p>vo.content</p>
-				</div>	
-				<div>
-					<img src="${pageContext.request.contextPath}/assets/sample-images/image_7.jpg">
-					<h5>vo.title</h5>	
-					<p>vo.regdate</p>
-					<p>vo.content</p>
-				</div>	
+				</div> --%>
+				
 				</div>
 </div>

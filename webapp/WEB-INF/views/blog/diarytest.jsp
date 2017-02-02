@@ -20,14 +20,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style type="text/css">
-
-
 </style>
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
- <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/lightbox/css/lightbox.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/lightbox/css/lightbox.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/normalize.css">
 <link rel="stylesheet"
@@ -60,13 +59,14 @@
 	rel="stylesheet" />
 
 
-<script src="${pageContext.request.contextPath}/assets/js/min/jquery-1.10.2.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/js/min/jquery-1.10.2.min.js"></script>
 
 <script
 	src="${pageContext.request.contextPath}/assets/js/min/bootstrap.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/assets/js/jquery.vgrid.js"></script>
-<script 	
+<script
 	src="${pageContext.request.contextPath}/assets/lightbox/js/lightbox.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/assets/js/jquery.easing.1.3.js"></script>
@@ -104,6 +104,8 @@
 
 <script
 	src="${pageContext.request.contextPath}/assets/js/min/modernizr-2.6.2.min.js"></script>
+
+
 <script>
 	
 
@@ -149,9 +151,9 @@ var pluspage = 5;	// 게시글이 15개씩 fetchList로 로딩 되니까 fetchLi
 
 var render = function(vo, mode){
 		
- var htmls = "<div><img src='${pageContext.request.contextPath}/assets/sample-images/image_1.jpg'><h5>" + vo.title + "</h5>" + 
+ var htmls = "<div class='list'><a href='#' rel='lightbox'><img src=''><h5>'" + vo.title + "</h5>" + 
 			 "<ul class='list_content'><li>" + vo.regdate + "</li><li>" + vo.content + "</li>" + 
-			 "</ul></div>"
+			 "</ul></a></div>"
 
 	console.log("htmls");
 			
@@ -188,6 +190,17 @@ var fetchList = function(){
 		$(response.data).each(function(index, vo){
 			render(vo, false);
 			console.log("render")
+			 $(".list_container").vgrid({
+	        easing: "easeOutQuint",
+	        time: 500,
+	        delay: 20,
+	        fadeIn: {
+	            time: 300,
+	            delay: 50
+	        }
+	        
+	    })
+			
 		});
 		
 		if( response.data.length < 10 ) {
@@ -202,9 +215,6 @@ var fetchList = function(){
 	}
 });
 }
-$(function(){
-	fetchList();
-});
 
 
 	
@@ -237,8 +247,15 @@ $(function(){
 	
 	  
   </script>
-
-
+  <script>
+  
+  $(document).on('click', ".list", function(){
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true
+   		 })
+    })
+  </script>
 </head>
 <body>
 
@@ -248,8 +265,7 @@ $(function(){
 	<!-- 반응형 navigation -->
 	<c:import url="/WEB-INF/views/includes/navigation.jsp" />
 
-	<a
-		href="${pageContext.request.contextPath}/diary/${authUser.nickname}/write">포스트하기</a>
+
 
 	<!-- 포스트 리스트 -->
 	<c:import url="/WEB-INF/views/includes/diary_list_test.jsp" />

@@ -20,13 +20,9 @@
 
 <script src="${pageContext.request.contextPath }/assets/js/min/jquery-1.10.2.min.js" type="text/javascript"></script>
 
-<%-- <!-- include summernote css/js-->
-<link href="${pageContext.request.contextPath}/assets/summernote/summernote.css" rel="stylesheet">
-<script src="${pageContext.request.contextPath}/assets/summernote/summernote.js"></script>
-<script src="${pageContext.request.contextPath}/assets/summernote/summernote-ko-KR.js"></script> --%>
-
-<script src="${pageContext.request.contextPath}/assets/ckeditor/ckeditor.js"></script>
+<script src="//cdn.ckeditor.com/4.6.2/full/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/assets/ckeditor/config.js"></script>
+<script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
@@ -41,7 +37,8 @@
 	href="${pageContext.request.contextPath}/assets/css/bootstrap.css"> --%>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/main.css">
-
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/alertify/alertify.default.css">
 <!--     Fonts and icons     -->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons" />
@@ -86,21 +83,49 @@
 	
 </div> --%>
 <div class="banner-bg" id="top">
-		<form action="${pageContext.request.contextPath }/post/${authUser.nickname}/insert" method="post">
+		<form action= "${pageContext.request.contextPath }/post/${authUser.nickname}/insert" method="post">
 			<textarea class="form-control" name="title" placeholder="제목을 입력하세요." rows="1" style="font-size:20px"></textarea>
             <textarea name="content" id="ckeditor" rows="10" cols="80">
                 This is my textarea to be replaced with CKEditor.
             </textarea>
-            
-           
-             <input type="submit" class="btn btn-default">
-             
-            <script>
-               		CKEDITOR.replace('ckeditor');
-            </script>
+             <input type="submit" class="btn btn-default" id="posting">
         </form>
-       
-</div>
+        
+            <script>
+            CKEDITOR.replace( 'ckeditor', {//해당 이름으로 된 textarea에 에디터를 적용 <-- 이거 이름 부분입니다.
+            	toolbar : [
+            	       	['Source','-','Save','NewPage','Preview','-','Templates'],
+            	       	['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print','SpellChecker', 'Scayt'],
+            	       	['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
+            	       	['Form', 'Checkbox', 'Radio','TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField'],'/',
+            	       	['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
+            	       	['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
+            	       	['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],['Link','Unlink','Anchor'],
+            	       	['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],'/',
+            	       	['Styles','Format','Font','FontSize'],['TextColor','BGColor'],['Maximize', 'ShowBlocks','-','About']],
+            enterMode :CKEDITOR.ENTER_BR,
+            allowedContent:true,
+            width:'100%',
+            height:'600px',
+            filebrowserImageUploadUrl: '${pageContext.request.contextPath }/image/upload' //여기 경로로 파일을 전달하여 업로드 시킨다. 
+            // JSP, PHP 공통입니다. 경로를 적당히 적어줍니다.
+        });
+            </script> 
+		</div>
+		
+		
+		<script>
+		
+		$("#posting").on('click', function(){
+			alertify.success("Success notification");
+			console.log("alert")
+		});
+		
+		/* $("input").click(function(){
+			alertify.success("Success notification");
+		}) */
+		</script>
+		
 	
 	<%-- <!-- 스마트에디터 -->
 	<c:import url="/WEB-INF/views/includes/smartediter.jsp" /> --%>

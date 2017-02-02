@@ -22,7 +22,7 @@
 	
 	<select id = "getListByPage" parameterType="map" resultType="postvo">
 		<![CDATA[
-		 select a.post_no, a.title, a.content, date_format(a.regdate, '%Y %m/%e %h:%i') , a.publish
+		 select a.post_no, a.title, a.content, date_format(a.regdate, '%Y %m/%e %h:%i') as regdate , a.publish
  		 from post a, users b where b.users_no = a.users_no and b.users_no = #{users_no} and a.users_no > 0
  		 order by a.post_no desc
  		 limit #{page }, 9;

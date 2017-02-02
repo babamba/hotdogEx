@@ -21,6 +21,7 @@ public class PostDao {
 		map.put("page", page);
 		map.put("users_no", users_no);
 		
+		
 		List<PostVo> list = sqlSession.selectList("post.getListByPage", map);
 		return list;
 	}

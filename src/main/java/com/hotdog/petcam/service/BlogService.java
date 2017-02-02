@@ -95,9 +95,7 @@ public class BlogService {
 			PostVo postVo = new PostVo();
 //			postVo.setUsers_no(authUser.getUsers_no());
 			
-			
-			Map<String, Object> map = null;
-			map = new HashMap<String, Object>();
+			Map<String, Object> map = new HashMap<String, Object>();
 			
 			//postVo형태인 list객체에  위의 authUser(유저넘버)를 담음 usersNo를 이용해로 조회한 포스트 컬럼을 map객체에 넣어 저장하고 리턴
 //			List<PostVo> postlist = postDao.getList(usersNo);
@@ -109,38 +107,6 @@ public class BlogService {
 		}
 	
 	
-	public String restore(MultipartFile multipartFile){
-		String url = "";
-		String saveFileName;
-		try {
-			
-			if(multipartFile.isEmpty() == true){
-				return url;
-			}
-			
-			String originalFileName = multipartFile.getOriginalFilename();
-			String extName = originalFileName.substring(originalFileName.lastIndexOf('.')+1, originalFileName.length());
-			saveFileName = generateSaveFileName(extName);
-			
-			ImageVo imageVo = new ImageVo();
-			imageVo.setSave_name(saveFileName);
-			imageVo.setOrg_name(originalFileName);
-			imageVo.setExt_name(extName);
-			
-			System.out.println(imageVo);
-			imageDao.insert(imageVo);
-			
-			writeFile(multipartFile, saveFileName);
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			throw new RuntimeException("upload file exception");
-		}
-		System.out.println(saveFileName);
-		return saveFileName;
-		
-		
-	}
 		
 		
 	

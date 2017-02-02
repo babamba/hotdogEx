@@ -70,27 +70,17 @@ public class PostController {
 		
 		@Auth
 		@RequestMapping(value="/{nickname}/insert",  method = RequestMethod.POST)
-		public String insert(@ModelAttribute PostVo postVo, @AuthUser UserVo authUser){
+		public String insert(@ModelAttribute PostVo postVo, @AuthUser UserVo authUser ){
 			String nickname = authUser.getNickname();
 			int users_no = authUser.getUsers_no();
 			postVo.setUsers_no(users_no);
-			
+			System.out.println(nickname);
 			System.out.println(postVo);
 			postService.insert(postVo);
-			return "redirect:/blog/" + nickname;
+			return "redirect:/post/" + nickname + "/postlist";
 		}
 		
-		@Auth
-		@ResponseBody
-		@RequestMapping(value = "/upload", method = RequestMethod.POST)
 		
-		public String image(@RequestParam(value="upload") MultipartFile upload, Model model,
-				HttpServletRequest request, HttpServletResponse response, @AuthUser UserVo authUser) throws UnknownHostException{
-			
-			String saveFileName = blogService.restore(upload);
-			return "http://150.95.141.66/hotdog/hotdog/image/user/" +  saveFileName;
-			
-		}
 		
 		/*@Auth
 		@ResponseBody
