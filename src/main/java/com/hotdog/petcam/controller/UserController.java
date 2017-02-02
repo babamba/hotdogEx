@@ -18,6 +18,7 @@ import com.hotdog.petcam.security.Auth;
 import com.hotdog.petcam.security.AuthUser;
 import com.hotdog.petcam.security.Secret;
 import com.hotdog.petcam.service.BlogService;
+import com.hotdog.petcam.service.FileUploadService;
 import com.hotdog.petcam.service.ImageService;
 import com.hotdog.petcam.service.UserService;
 import com.hotdog.petcam.vo.BlogVo;
@@ -31,6 +32,7 @@ public class UserController {
 	@Autowired	private UserService userService;
 	@Autowired  private BlogService blogService;
 	@Autowired	private ImageService imageService;
+	@Autowired 	private FileUploadService fileService;
 
 	@RequestMapping("/login")
 	public String login(@ModelAttribute UserVo vo, Model model, HttpServletRequest request, HttpSession session) {
@@ -238,5 +240,14 @@ public class UserController {
 			return "main/checkSecret";
 		}
 		
+	}
+	
+	// ******** 테스트
+	@ResponseBody
+	@RequestMapping("/app/audioupload")
+	public Object appAudioUpload(MultipartFile file){
+		String saveName= fileService.restore(file);
+		
+		return JSONResult.success(saveName);
 	}
 }
