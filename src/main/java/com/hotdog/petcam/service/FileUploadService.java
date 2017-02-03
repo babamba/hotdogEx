@@ -15,7 +15,7 @@ public class FileUploadService {
         
         
         //오디오업로드용 멀티파트
-        public String restore(MultipartFile userimage, String nickname) {
+        public String restore(MultipartFile userimage) {
             
             String saveFileName;
             try {
@@ -26,7 +26,7 @@ public class FileUploadService {
 
                 String originalFileName = userimage.getOriginalFilename();
                 String extName = originalFileName.substring(originalFileName.lastIndexOf('.') + 1,originalFileName.length());
-                saveFileName = nickname + "-" + generateSaveFileName(extName);
+                saveFileName = generateSaveFileName(extName);
                 Long fileSize = userimage.getSize();
 
                 System.out.println("파일명 정제중");

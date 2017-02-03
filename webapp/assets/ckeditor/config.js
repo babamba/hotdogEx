@@ -9,5 +9,6 @@ CKEDITOR.editorConfig = function( config ) {
 	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
 
 	// The toolbar groups arrangement, optimized for two toolbar rows.
-
+	config.font_names='Gulim/Gulim;Dotum/Dotum;Batang/Batang;Gungsuh/Gungsuh/Arial/Arial;Tahoma/Tahoma;Verdana/Verdana';
+	config.extraPlugins = 'codemirror';
 };

@@ -273,10 +273,9 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping("/app/audioupload")
 	public Object appAudioUpload(
-			@RequestParam(value="nickname")String nickname,
 			@RequestParam(value="file")MultipartFile file){
 		
-		String saveName= fileService.restore(file, nickname);
+		String saveName= fileService.restore(file);
 		
 		return JSONResult.success(saveName);
 	}
