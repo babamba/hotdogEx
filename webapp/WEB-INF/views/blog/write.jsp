@@ -22,7 +22,7 @@
 
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 <%-- <script src="${pageContext.request.contextPath}/assets/ckeditor/ckeditor.js"></script> --%>
-<script src="${pageContext.request.contextPath}/assets/ckeditor/config.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/assets/ckeditor/config.js"></script> --%>
 <script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
