@@ -22,7 +22,7 @@
 
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 <%-- <script src="${pageContext.request.contextPath}/assets/ckeditor/ckeditor.js"></script> --%>
-<script src="${pageContext.request.contextPath}/assets/ckeditor/config.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/assets/ckeditor/config.js"></script> --%>
 <script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
@@ -94,14 +94,13 @@
         
             <script>
             CKEDITOR.replace( 'ckeditor', {//해당 이름으로 된 textarea에 에디터를 적용 <-- 이거 이름 부분입니다.
+            startupFocus : false,  // 자동 focus 사용할때는  true
             enterMode :CKEDITOR.ENTER_BR,
             allowedContent:true,
             width:'100%',
             height:'600px',
-            filebrowserImageUploadUrl: '${pageContext.request.contextPath }/image/upload', //여기 경로로 파일을 전달하여 업로드 시킨다. 
-            customConfig: ''
-            
-            
+            filebrowserImageUploadUrl: '${pageContext.request.contextPath }/image/upload', //여기 경로로 파일을 전달하여 업로드 시킨다.
+            customConfig: '${pageContext.request.contextPath}/assets/ckeditor/config.js'
             
             // JSP, PHP 공통입니다. 경로를 적당히 적어줍니다.
         });
@@ -143,15 +142,11 @@
 		</script>
 		
 	
-	<%-- <!-- 스마트에디터 -->
-	<c:import url="/WEB-INF/views/includes/smartediter.jsp" /> --%>
-	
 	
 	<!-- Modal -->
 	<c:import url="/WEB-INF/views/includes/modal.jsp" />
 
 	
- 	
  	
  	<script
 		src="${pageContext.request.contextPath}/assets/js/min/bootstrap.min.js"></script>
@@ -176,63 +171,6 @@
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/modernizr-2.6.2.min.js"></script>
 		
-	
 
 </body>
-<script>
-/* var IMAGE_PATH = 'http://localhost:8087/hotdog/hotdog/image/user/';
-
-$(function(){
-	$('#summernote').summernote({
-		
-		
-		callbacks:{
-			onImageUpload : function(file, editor, welEditable) {
-		        sendFile(file[0], editor, welEditable);  
-		    }
-		},
-	placeholder: 'Escribe aquí',
-	height : 700, // set editor height
-	minHeight : 100, // set minimum height of editor
-	maxHeight : null, // set maximum height of editor
-	lang : 'ko-KR', // default: 'en-US'
-	focus: true
-	
-	
-	});
-	
-	function sendFile(file, editor, welEditable) {
-	    imagedata = new FormData();
-	    
-	    imagedata.append("file", file);
-	    
-	    alert("file upload" + file);
-	    
-	    $.ajax({
-	        data : imagedata,
-	        type : "POST",
-	        url : "${pageContext.request.contextPath }/post/upload",
-	        contentType : false,
-	        processData : false,
-	        success : function(imagedata) {
-	        	console.log(imagedata);
-	        	
-	        	var data_path = imagedata.data;
-	        	console.log(data_path);
-	        	
-	        	var image = $('<img>').attr('src', data_path);
-	        	$("#summernote").summernote("insertNode", image[0]);
-	        	
-	            editor.insertImage(welEditable, imagedata);
-	        }, error: function(jqXHR, textStatus, errorThrown){
-	        	console.log(textStatus+ "" + errorThrown)
-	        }
-	    });
-	}
-}) */
-
-
-	
-</script>
-
 </html>
