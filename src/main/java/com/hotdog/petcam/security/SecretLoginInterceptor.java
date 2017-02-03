@@ -28,6 +28,7 @@ public class SecretLoginInterceptor extends HandlerInterceptorAdapter {
 		UserVo authUser=(UserVo)session.getAttribute("authUser");
 		
 		authUser.setSec_pass_word(sec_pass_word);
+		String nickname = authUser.getNickname();
 		
 		// Secret User 권한을 설정하기 위해 UserVo 빈가져오기
 		UserService userService = ac.getBean(UserService.class);
@@ -40,7 +41,7 @@ public class SecretLoginInterceptor extends HandlerInterceptorAdapter {
 		// 인증 처리
 		
 		session.setAttribute( "secretUser", userVo );
-		response.sendRedirect( request.getContextPath() );
+		response.sendRedirect( request.getContextPath() + "/blog/" + nickname );
 		return false;
 	}
 	

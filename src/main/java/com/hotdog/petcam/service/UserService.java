@@ -158,12 +158,16 @@ public class UserService {
 		userDao.secretModify(userVo);
 	}
 
-	public void userProfileModify(UserVo userVo, BlogVo blogVo, String nickname, String title, String infomation) {
+public void userProfileModify(UserVo userVo, BlogVo blogVo, String nickname, String title, String infomation,String password) {
+		
 		if (nickname.length()>=1) {
 			userVo.setNickname(nickname);
 		}
 		if (infomation.length()>=1) {
 			userVo.setInfomation(infomation);
+		}
+		if (password.length()>=1){
+			userVo.setPass_word(password);
 		}
 		if (title.length()>=1) {
 			blogVo.setUsers_no(userVo.getUsers_no());
@@ -177,8 +181,58 @@ public class UserService {
 	}
 	
 
-	public void petProfileModify(PetVo petVo) {
-		userDao.petrProfileModify(petVo);
+	public void petProfileModify(PetVo petVo,int no,String name,String info,String co_date,String age,String gender) {
+		
+		petVo.setUsers_no(no);
+		
+		// 펫이 있는지 없는지 검사
+		if (userDao.existPet(petVo) == false	){
+			// 없으면 입력된 정보로 펫 등록
+			if(name.length()>=1){
+				petVo.setName(name);
+			}
+			if(info.length()>=1){
+				petVo.setInfo(info);
+			}
+			if(co_date.length()>=1){
+				petVo.setCo_Date(co_date);
+			}
+			if(age.length() >= 1){
+				petVo.setAge(age);
+			}
+			if(gender.length()>=1){
+				petVo.setGender(gender);
+			}
+			userDao.insertPet(petVo);
+		}else{
+			//있으면 수정
+			PetVo ModiPet = userDao.getPet(no);
+			
+			if(name.length()>=1){
+				ModiPet.setName(name);
+			}
+			if(info.length()>=1){
+				ModiPet.setInfo(info);
+			}
+			if(co_date.length()>=1){
+				ModiPet.setCo_Date(co_date);
+			}
+			if(age.length() >= 1){
+				ModiPet.setAge(age);
+			}
+			if(gender.length()>=1){
+				ModiPet.setGender(gender);
+			}
+			ModiPet.setUsers_no(no);
+			System.out.println(ModiPet);
+			userDao.petProfileModify(ModiPet);
+			
+		}
+	}
+	public void setPetImage(PetVo petVo){
+		
+			userDao.setPetImage(petVo);
+	
 	}
 
 	
@@ -200,5 +254,12 @@ public class UserService {
 	public UserVo secretLogin(UserVo userVo){
 		return userDao.secretLogin(userVo);
 	}
+	
+	// ************************ App account ***********************
+	
+		public void appUserProfileModify(UserVo userVo){
+			userDao.appUserProfileModify(userVo);
+		}
+		
 	
 }

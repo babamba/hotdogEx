@@ -6,14 +6,14 @@
 	<insert id="insert" parameterType="petvo">
 		<![CDATA[
 			iselect * from pet;
-				insert INTO pet(name, birthdate, type, info, pet_image) values
-				(#{name}, #{birthDate}, #{type}, #{info}, #{petImage});
+				insert INTO pet(name, co_date, type, info, pet_image) values
+				(#{name}, #{co_date}, #{type}, #{info}, #{petImage});
 		]]>
 	</insert>
 
 	<select id ="getallbyno" parameterType="int" resultType="petvo">
 		<![CDATA[
-				select name,birthdate,type,info,pet_image
+				select name,co_date,gender,info,pet_image,age
 					from pet
 					where users_no = #{no}
 		]]>

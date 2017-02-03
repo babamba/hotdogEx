@@ -105,8 +105,27 @@ public class UserDao{
 		sqlSession.update("user.setImage", userVo);
 		
 	}
-	public void petrProfileModify(PetVo petVo){
-		sqlSession.update("user.userprofileModify",petVo);
+	
+	public void petProfileModify(PetVo petVo){
+		sqlSession.update("user.petprofileModify",petVo);
+	}
+	public void setPetImage(PetVo petVo){
+		sqlSession.update("user.setpetimage",petVo);
+	}
+	
+	// 펫이 있는지 없는지 검사한다.
+	public boolean existPet(PetVo petVo){
+		if( sqlSession.selectOne("user.existPet", petVo) == null ){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	public PetVo getPet(int no){
+		return sqlSession.selectOne("user.getPet", no);
+	}
+	public void insertPet(PetVo petVo){
+		sqlSession.insert("user.insertPet", petVo);
 	}
 
 	// *******************************************************************************************************
@@ -137,4 +156,10 @@ public class UserDao{
 	public UserVo appLogin(UserVo userVo){
 		return sqlSession.selectOne("user.appLogin", userVo);
 	}
+	
+	// ************************* App account ******************
+	public void appUserProfileModify(UserVo userVo){
+		sqlSession.update("user.appUserProfileModify", userVo);
+	}
+	
 }

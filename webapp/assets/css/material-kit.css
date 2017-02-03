@@ -33,10 +33,10 @@
 /* SHADOWS */
 /* Shadows (from mdl http://www.getmdl.io/) */
 body {
-  background-color: #CCCCCC;
+  background-color: #ffffff;
 }
 body.inverse {
-  background: #333333;
+  background: #ffffff;
 }
 body.inverse, body.inverse .form-control {
   color: #ffffff;
