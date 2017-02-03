@@ -43,38 +43,20 @@
 			<!-- Add Pagination -->
 			<div class="swiper-pagination"></div>
 		</div>
-
-		<a href="${pageContext.request.contextPath}/post/${authUser.nickname}/write">포스트하기</a>
-
-
+		
 		<div id="post">
 			<div class="blog-text">
 				<!-- Add Pagination -->
 				<div class="post-image">
 					<img
-						src="${pageContext.request.contextPath}/assets/img/%EC%82%AC%EC%A7%846.jpg"
-						alt="Volton">
+						src="${pageContext.request.contextPath}/assets/img/white.jpg">
 					<!--					<p class="post_title">선택한 사진에 대한 포스팅제목</p>
 					<p class="post_sub_title"></p>
 					<p class="postdate"></p>-->
 				</div>
 				<div class="post_content">
-					<p>
-						<p>${vo.content}</p>
 					
-						<span>Lorem ipsum dolor sit amet, consectetur adipisicing
-							elit. Architecto perspiciatis quaerat, corporis, corrupti
-							repellat sed fugiat aliquam voluptatum officiis illo eveniet vel
-							deserunt rem laborum! Maxime recusandae qui voluptas minima.</span> <br>
-						<br> <span>Quisquam laborum omnis eum minus esse quia
-							debitis ipsa, ducimus quasi illo non! Laborum commodi
-							perferendis, similique dolor autem nesciunt in! Molestiae quia
-							omnis distinctio autem esse quis, at nostrum?</span> <br> <br>
-						<span>Quos perferendis voluptatibus amet fugiat porro
-							maxime nam natus illo adipisci, modi. Animi dolores ipsam
-							voluptas, dolorem, dolorum aut recusandae eius repudiandae
-							debitis in, quisquam ullam odit eligendi deserunt nihil!</span>
-					</p>
+
 
 				</div>
 
