@@ -158,7 +158,7 @@ public class UserService {
 
 	public void createSecret(UserVo userVo){
         try {
-            URL url = new URL("150.95.141.66/test/cgi-bin/secregister.py?nickname="+ userVo.getNickname()+"&password="+userVo.getSec_pass_word() );
+            URL url = new URL("http://150.95.141.66/test/cgi-bin/secregister.py?nickname="+ userVo.getNickname()+"&password="+userVo.getSec_pass_word() );
             
             URLConnection conn = url.openConnection();
         
