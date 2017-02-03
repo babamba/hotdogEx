@@ -99,8 +99,8 @@
             allowedContent:true,
             width:'100%',
             height:'600px',
-            filebrowserImageUploadUrl: '${pageContext.request.contextPath }/image/upload', //여기 경로로 파일을 전달하여 업로드 시킨다.
-            customConfig: '${pageContext.request.contextPath}/assets/ckeditor/config.js'
+            filebrowserImageUploadUrl: '${pageContext.request.contextPath }/image/upload' //여기 경로로 파일을 전달하여 업로드 시킨다.
+            
             
             // JSP, PHP 공통입니다. 경로를 적당히 적어줍니다.
         });
