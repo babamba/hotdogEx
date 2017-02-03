@@ -4,115 +4,71 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.hotdog.petcam.repository.ImageDao;
-import com.hotdog.petcam.vo.ImageVo;
-
 @Service
 public class FileUploadService {
-	private static final String SAVE_PATH = "/usr/local/WowzaStreamingEngine/content";
-	
-	@Autowired
-	private ImageDao imageDao;
-	
 
-	public String restore(MultipartFile userimage, int no) {
-		System.out.println("들어옴");
-		
-		String saveFileName;
-		try {
+    
+        private static final String SAVE_PATH = " /usr/local/WowzaStreamingEngine/content";
+        
+        
+        //오디오업로드용 멀티파트
+        public String restore(MultipartFile userimage, String nickname) {
+            
+            String saveFileName;
+            try {
 
-			if (userimage.isEmpty() == true) {
-				return "";
-			}
+                if (userimage.isEmpty() == true) {
+                    return "";
+                }
 
-			String originalFileName = userimage.getOriginalFilename();
-			String extName = originalFileName.substring(originalFileName.lastIndexOf('.') + 1,originalFileName.length());
-			saveFileName = generateSaveFileName(extName);
-			Long fileSize = userimage.getSize();
+                String originalFileName = userimage.getOriginalFilename();
+                String extName = originalFileName.substring(originalFileName.lastIndexOf('.') + 1,originalFileName.length());
+                saveFileName = nickname + "-" + generateSaveFileName(extName);
+                Long fileSize = userimage.getSize();
 
-			System.out.println("파일명 정제중");
-			System.out.println(saveFileName);
-			
-			writeFile(userimage, saveFileName);
+                System.out.println("파일명 정제중");
+                System.out.println(saveFileName);
+                
+                writeFile(userimage, saveFileName);
 
-			
-		} catch (IOException ex) {
-			// throw new UploadFileException("write file");
-			// log 남기기
-			throw new RuntimeException("write file");
-		}
-		return saveFileName;
-	}	
-	
-	
-	//포스팅용 이미지 업로드 리스토어
-	public String restore(MultipartFile multipartFile){
-		String url = "";
-		String saveFileName;
-		try {
-			
-			if(multipartFile.isEmpty() == true){
-				return url;
-			}
-			
-			String originalFileName = multipartFile.getOriginalFilename();
-			String extName = originalFileName.substring(originalFileName.lastIndexOf('.')+1, originalFileName.length());
-			saveFileName = generateSaveFileName(extName);
-			
-			ImageVo imageVo = new ImageVo();
-			imageVo.setSave_name(saveFileName);
-			imageVo.setOrg_name(originalFileName);
-			imageVo.setExt_name(extName);
-			
-			imageDao.insert(imageVo);
-			
-			writeFile(multipartFile, saveFileName);
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			throw new RuntimeException("upload file exception");
-		}
-		System.out.println(saveFileName);
-		return saveFileName;
-		
-		
-	}
-	
-	
-	
-	
-	
-	
-	private void writeFile(MultipartFile multipartFile, String saveFileName) throws IOException {
+                
+            } catch (IOException ex) {
+                // throw new UploadFileException("write file");
+                // log 남기기
+                throw new RuntimeException("write file");
+            }
+            return saveFileName;
+        }
 
-		byte[] fileData = multipartFile.getBytes();
-		
-		FileOutputStream fos = new FileOutputStream(SAVE_PATH + "/" + saveFileName);
-		fos.write(fileData);
+        private void writeFile(MultipartFile multipartFile, String saveFileName) throws IOException {
 
-		if (fos != null) {
-			fos.close();
-		}
+            byte[] fileData = multipartFile.getBytes();
+            
+            FileOutputStream fos = new FileOutputStream(SAVE_PATH + "/" + saveFileName);
+            fos.write(fileData);
 
-	}
+            if (fos != null) {
+                fos.close();
+            }
 
-	private String generateSaveFileName(String ext) {
-		String fileName = "";
-		Calendar calendar = Calendar.getInstance();
+        }
 
-		fileName += calendar.get(Calendar.YEAR);
-		fileName += calendar.get(Calendar.MONTH);
-		fileName += calendar.get(Calendar.DATE);
-		fileName += calendar.get(Calendar.HOUR);
-		fileName += calendar.get(Calendar.MINUTE);
-		fileName += calendar.get(Calendar.SECOND);
-		fileName += calendar.get(Calendar.MILLISECOND);
-		fileName += ("." + ext);
+        private String generateSaveFileName(String ext) {
+            String fileName = "";
+            Calendar calendar = Calendar.getInstance();
 
-		return fileName;
-	}
-}
+            fileName += calendar.get(Calendar.YEAR);
+            fileName += calendar.get(Calendar.MONTH);
+            fileName += calendar.get(Calendar.DATE);
+            fileName += calendar.get(Calendar.HOUR);
+            fileName += calendar.get(Calendar.MINUTE);
+            fileName += calendar.get(Calendar.SECOND);
+            fileName += calendar.get(Calendar.MILLISECOND);
+            fileName += ("." + ext);
+
+            return fileName;
+        }
+    }

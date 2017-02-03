@@ -143,6 +143,8 @@ public class UserController {
 	// ******************************** 회원 이미지 관리 ***********************************
 	// ******************************** 회원 이미지 관리 ***********************************
 	
+	
+	
 	@Auth
 	@Secret
 	@RequestMapping(value = "/account/userprofilemodify", method = RequestMethod.POST)
@@ -270,8 +272,10 @@ public class UserController {
 	// ******** 테스트
 	@ResponseBody
 	@RequestMapping("/app/audioupload")
-	public Object appAudioUpload(MultipartFile file){
-		String saveName= fileService.restore(file);
+	public Object appAudioUpload(
+			@RequestParam(value="nickname")String nickname,
+			MultipartFile file){
+		String saveName= fileService.restore(file, nickname);
 		
 		return JSONResult.success(saveName);
 	}
