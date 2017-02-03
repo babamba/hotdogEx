@@ -106,7 +106,7 @@
         });
             </script> 
             
-        <script type='text/javascript'>
+       <%-- <script type='text/javascript'>
 		CKEDITOR.on('dialogDefinition', function (ev) {
 			var dialogName = ev.data.name;
 			var dialog = ev.data.definition.dialog;
@@ -123,7 +123,7 @@
 		});
 		</script>
 		
-        <script>
+        <script>--%>
         
        
         
