@@ -22,7 +22,7 @@
 
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 <%-- <script src="${pageContext.request.contextPath}/assets/ckeditor/ckeditor.js"></script> --%>
-<%-- <script src="${pageContext.request.contextPath}/assets/ckeditor/config.js"></script> --%>
+<script src="${pageContext.request.contextPath}/assets/ckeditor/config.js"></script>
 <script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
@@ -99,11 +99,34 @@
             width:'100%',
             height:'600px',
             filebrowserImageUploadUrl: '${pageContext.request.contextPath }/image/upload', //여기 경로로 파일을 전달하여 업로드 시킨다. 
+            customConfig: '$/{pageContext.request.contextPath}/assets/ckeditor/config.js'
+            
             
             
             // JSP, PHP 공통입니다. 경로를 적당히 적어줍니다.
         });
             </script> 
+            
+        <script type='text/javascript'>
+			CKEDITOR.on('dialogDefinition', function (ev) {
+				var dialogName = ev.data.name;
+				var dialog = ev.data.definition.dialog;
+				var dialogDefinition = ev.data.definition;
+	
+					if (dialogName == 'image') {
+						dialog.on('show', function (obj) {
+						this.selectPage('Upload'); //업로드텝으로 시작
+					});
+	
+					dialogDefinition.removeContents('advanced'); // 자세히탭 제거
+					dialogDefinition.removeContents('Link'); // 링크탭 제거
+				}
+			});
+		</script>
+		
+            
+            
+            
 		</div>
 		
 		
