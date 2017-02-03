@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileUploadService {
 
     
-        private static final String SAVE_PATH = " /usr/local/WowzaStreamingEngine/content";
+        private static final String SAVE_PATH = "/usr/local/WowzaStreamingEngine/content";
         
         
         //오디오업로드용 멀티파트

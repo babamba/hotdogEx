@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -273,7 +274,7 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping("/app/audioupload")
 	public Object appAudioUpload(
-			@RequestParam(value="file")MultipartFile file){
+			@RequestPart(value="file")MultipartFile file){
 		
 		String saveName= fileService.restore(file);
 		
