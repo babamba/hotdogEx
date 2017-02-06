@@ -104,6 +104,7 @@
             width:'100%',
             height:'600px',
             filebrowserImageUploadUrl:"${pageContext.request.contextPath }/image/upload"
+            });
 
             </script> 
             
