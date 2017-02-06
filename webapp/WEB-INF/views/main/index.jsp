@@ -110,13 +110,7 @@ $(function(){
 			})
 		})
 
-
-
-
-
-
 	$("#sendMailButton").click(function() {
-		
 		
 		var formData = new FormData();
         email=$("#inputEmail").val();
@@ -220,31 +214,8 @@ $(function(){
 				}
 			}
 		})
-		
-	/* $("#joinButton").click(function(){
-		
-		$.ajax({
-			url:"${pageContext.request.contextPath}/user/join",
-			type:"get",
-			dataType:"json",
-			data:""
-		})
-		
-		
-	}) */
-	
-		
-		
-		
 	})
 })
-
-
-		
-
-
-
-
 
 </script>
 

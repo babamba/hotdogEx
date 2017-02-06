@@ -27,24 +27,27 @@
 			</div>
 			<div class="content">
 				<div class="signin-cont cont">
-					<form action="#" method="post" enctype="multipart/form-data">
+					<form action="${pageContext.request.contextPath}/user/login">
 						<input type="email" name="email" id="email" class="inpt" required="required" placeholder="Your email">
 						<label for="email">Your email</label> 
 						
-						<input type="password" name="password" id="password" class="inpt" required="required"placeholder="Your password"> 
+						<input type="password" name="pass_word" id="password" class="inpt" required="required"placeholder="Your password"> 
 						<label for="password">Your password</label> <input type="checkbox" id="remember" class="checkbox" checked> 
 							
 						<label for="remember">Remember me</label>
 						
 						<div class="submit-wrap">
-							<input type="submit" value="Sign in" class="submit"> <a
-								href="#" class="more">Forgot your password?</a>
+							<input type="submit" value="Sign in" class="submit">
+							 <c:if test="${param.result eq 'fail'}">
+								<p>로그인이 실패 했습니다.</p>
+							</c:if>
+							<a href="#" class="more">Forgot your password?</a>
 						</div>
 					</form>
 				</div>
 				
 				<div class="signup-cont cont">
-					<form action="#" method="post" enctype="multipart/form-data">
+					<form action="${pageContext.request.contextPath}/user/join">
 						<input id="inputNickCheck" type="button" value="check" class="check"> <img id="img-checkemail" style="display: none;">
 						<input type="text" name="nickname" id="inputnickname" class="inpt" required="required" placeholder="Your name">
 						<label for="name">Your nick name</label> 
@@ -52,7 +55,7 @@
 						<input type="email" name="email" id="inputEmail" class="inpt" required="required" placeholder="Your email"> 
 						<label for="email">Your email</label> 
 						
-						<input type="password" name="password" id="inputPassword" class="inpt" required="required" placeholder="Your password">
+						<input type="password" name="pass_word" id="inputPassword" class="inpt" required="required" placeholder="Your password">
 						<label for="password">Your password</label>
 						
 						<input id="inputPassword2Check" type="button" value="check" class="check"> <img id="img-checkemail" style="display: none;">
@@ -60,7 +63,7 @@
 						<label for="password">Check password</label>
 						
 						<div id="checkButton">
-							<button type="button" class="SendCode" value="Send Code">Send Code</button>
+							<button type="button" class="SendCode" name="code" value="Send Code">Send Code</button>
 							<label for="Code">Send Code</label>
 						</div>
 
@@ -107,10 +110,10 @@ var code;
 
 $(function(){
 	
- /* $("#joinNextButton").prop("disabled",true);
+ 	/* $("#joinNextButton").prop("disabled",true); */
  	$("#sendMailButton").prop("disabled", true);
 	$("#inputCodeCheck").prop("disabled", true);
-	$("#joinButton").prop("disabled", true); */
+	$("#SendCode").prop("disabled", true);
 	
 	$("#SignUp").prop("disabled", true);
 	
@@ -142,7 +145,7 @@ $(function(){
 				// 코드가 일치할 때
 				if(response.data=="yes"){
 					alert("사용가능한 닉네임입니다.");
-					$("#sendMailButton").prop("disabled",false);
+					
 				}
 					if(response.data=="no"){
 						alert("이미 사용중인 닉네임입니다.")
@@ -175,11 +178,41 @@ $(function(){
 				return false;
 			}else{
 				alert("비밀번호 체크완료")
+				$("#SendCode").prop("disabled",false);
 			}
 		});
 		
 	$("#checkButton").on("click", "#inputCodeCheck", function(){
+		code=$("#inputCode").val();
+    	console.log(code);
 		
+		if(code==""){
+			return;
+		}
+    	
+		$.ajax({
+			url:"${pageContext.request.contextPath}/user/checkcode?code="+code,
+			type:"get",
+			dataType:"json",
+			data:"",
+			success: function(response){
+				
+				// 통신에러
+				if( response.result == "fail" ) {
+					console.log( response.message );
+					return;
+				}
+			
+				// 코드가 일치할 때
+			if(response.data=="yes"){
+				alert("코드가 일치합니다.");
+				$("#SignUp").prop("disabled",false);
+			}
+				if(response.data=="no"){
+					alert("코드가 일치하지 않습니다.")
+				}
+			}
+		})
 	});
 	
 		
@@ -237,6 +270,10 @@ $(function(){
 		 $('.SendCode').replaceWith("<input id='inputCodeCheck' type='button' value='check' class='check'> <img id='img-checkemail' style='display: none;'><input type='number' name='code' id='inputCode' class='inpt' required='required' placeholder='Check Code'><label for='Code'>Send Code</label>"); 
 		 return true;
 	});
+	
+	
+	
+	
 })
 	
 </script>

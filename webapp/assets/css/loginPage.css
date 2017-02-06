@@ -32,8 +32,9 @@ body .container .half {
   padding: 58px 40px 0;
 }
 body .container .half.bg {
-  background-image: url("https://unsplash.com/search/dog?photo=nitdfruLYys");
+  background-image: url("https://archzine.fr/wp-content/uploads/2015/11/2-race-de-chien-taille-moyen-golden-retriver-pour-vivre-ensemble-avec-vous-quels-chiens.jpg");
   background-size: 400px;
+  margin-bottom:40px;
   background-repeat: no-repeat;
 }
 body .container h1 {
@@ -79,7 +80,7 @@ body .container .tabs .tab.active {
 }
 body .container .content form {
   position: relative;
-  height: 400px;
+  height: 345px;
 }
 body .container .content label:first-of-type, body .container .content input:first-of-type, body .container .content .more:first-of-type {
   -moz-animation: slideIn 0.4s cubic-bezier(0.37, 0.82, 0.2, 1);
@@ -122,17 +123,26 @@ body .container .content label:nth-of-type(8), body .container .content input:nt
   -webkit-animation: slideIn 0.6s cubic-bezier(0.37, 0.82, 0.2, 1);
   animation: slideIn 1.1s cubic-bezier(0.37, 0.82, 0.2, 1);
 }
-body .container .content label:nth-of-type(9), body .container .content input:nth-of-type(9), body .container .content .more:nth-of-type(9), body .container .content .check:nth-of-type(9) {
+body .container .content label:nth-of-type(9), body .container .content input:nth-of-type(9), body .container .content .more:nth-of-type(9), body .container .content .check:nth-of-type(9){
   -moz-animation: slideIn 0.6s cubic-bezier(0.37, 0.82, 0.2, 1);
   -webkit-animation: slideIn 0.6s cubic-bezier(0.37, 0.82, 0.2, 1);
   animation: slideIn 1.1s cubic-bezier(0.37, 0.82, 0.2, 1);
 }
-body .container .content label:nth-of-type(10), body .container .content input:nth-of-type(10), body .container .content .more:nth-of-type(10), body .container .content .check:nth-of-type(10) {
+body .container .content label:nth-of-type(10), body .container .content input:nth-of-type(10), body .container .content .more:nth-of-type(10), body .container .content .check:nth-of-type(10),body .container .content .signup-cont button,body .container .content .signup-cont .checkButton {
   -moz-animation: slideIn 0.6s cubic-bezier(0.37, 0.82, 0.2, 1);
   -webkit-animation: slideIn 0.6s cubic-bezier(0.37, 0.82, 0.2, 1);
   animation: slideIn 1.1s cubic-bezier(0.37, 0.82, 0.2, 1);
 }
-
+body .container .content label:nth-of-type(11), body .container .content input:nth-of-type(11), body .container .content .more:nth-of-type(11), body .container .content .check:nth-of-type(11){
+  -moz-animation: slideIn 0.6s cubic-bezier(0.37, 0.82, 0.2, 1);
+  -webkit-animation: slideIn 0.6s cubic-bezier(0.37, 0.82, 0.2, 1);
+  animation: slideIn 1.1s cubic-bezier(0.37, 0.82, 0.2, 1);
+}
+body .container .content label:nth-of-type(12),body .container .content button:nth-of-type(12),  body .container .content .submit:nth-of-type(11){
+  -moz-animation: slideIn 0.6s cubic-bezier(0.37, 0.82, 0.2, 1);
+  -webkit-animation: slideIn 0.6s cubic-bezier(0.37, 0.82, 0.2, 1);
+  animation: slideIn 1.1s cubic-bezier(0.37, 0.82, 0.2, 1);
+}
 
 
 /*  */

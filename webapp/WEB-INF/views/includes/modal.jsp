@@ -69,8 +69,6 @@
 			
 			<form action="${pageContext.request.contextPath}/user/login">
             <div class="modal-body">
-				
-				
 	               <div class="form-group label-floating">
                         <label class="control-label">Email</label>
                         <input type="email" name="email" class="form-control">

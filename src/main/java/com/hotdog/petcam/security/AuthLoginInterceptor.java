@@ -49,7 +49,7 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
         String callBack = (String)session.getAttribute("authcallback");
         System.out.println(callBack);
         
-        response.sendRedirect( "http://localhost:8087"+callBack );     // request.getContextPath 에 추가하면 도메인이 일부 중복된다.
+        response.sendRedirect(request.getContextPath());     // request.getContextPath 에 추가하면 도메인이 일부 중복된다.
         return false;
     }
 
