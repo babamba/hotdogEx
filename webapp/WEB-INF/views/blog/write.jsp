@@ -20,8 +20,13 @@
 
 <script src="${pageContext.request.contextPath }/assets/js/min/jquery-1.10.2.min.js" type="text/javascript"></script>
 
+<<<<<<< HEAD
 <%-- <script src="${pageContext.request.contextPath}/assets/ckeditor/ckeditor.js"></script> --%>
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+=======
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+ <%--<script src="${pageContext.request.contextPath}/assets/ckeditor/ckeditor.js"></script> --%>
+>>>>>>> branch 'master' of https://github.com/babamba/hotdogEx.git
 <%-- <script src="${pageContext.request.contextPath}/assets/ckeditor/config.js"></script> --%>
 <script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
 <!-- include libraries(jQuery, bootstrap) -->
@@ -98,10 +103,8 @@
             enterMode :CKEDITOR.ENTER_BR,
             width:'100%',
             height:'600px',
-            filebrowserImageUploadUrl: '${pageContext.request.contextPath }/image/upload' //여기 경로로 파일을 전달하여 업로드 시킨다.
-          
-            // JSP, PHP 공통입니다. 경로를 적당히 적어줍니다.
-        });
+            filebrowserImageUploadUrl:"${pageContext.request.contextPath }/image/upload"
+
             </script> 
             
         <script type='text/javascript'>
@@ -121,12 +124,7 @@
 		});
 		</script>
 		
-        <script>
-        
-       
-        
-        </script>
-            
+
             
 		</div>
 		
