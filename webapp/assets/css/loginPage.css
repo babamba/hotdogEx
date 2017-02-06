@@ -13,6 +13,7 @@ body {
   font-family: 'Lato', sans-serif;
   background-color: #f8f8f8;
   height:100%;
+  margin-top:170px;
 }
 body .container {
   position: relative;

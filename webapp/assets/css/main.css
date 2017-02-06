@@ -175,6 +175,9 @@ textarea {
 /*---------------------------------------------------------
  2. Basic Style
 -------------------------------------------------------- */
+
+
+
 body {
   font-size: 14px;
   line-height: 24px;
@@ -664,6 +667,8 @@ color: dimgrey;
   padding-top: 100px;
   background-color:white;
 }
+
+
 
 
 .swiper-wrapper{

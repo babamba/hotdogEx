@@ -31,13 +31,13 @@
             
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse">
              <!-- Button trigger modal -->
-                <div class="top_button col-sm-0 pull-right">
+                <!-- <div class="top_button col-sm-0 pull-right">
                         <button class="btn btn-danger" data-toggle="modal" data-target="#info">Info</button>
                         <button class="btn btn-success" data-toggle="modal" data-target="#signIn">sign in</button>
                         <button class="btn btn-primary" data-toggle="modal" data-target="#accessTerms">join test</button>
                         <button class="btn btn-primary" data-toggle="modal" data-target="#search">Search</button>
                        
-                 </div>
+                 </div> -->
             </div>   
         </div>
         <!-- /.container -->
@@ -66,8 +66,8 @@
 	            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse">
 	             <!-- Button trigger modal -->
 	                <div class="top_button col-sm-0 pull-right">
-	                        <button class="btn btn-danger" data-toggle="modal" data-target="#info">Info</button>
-	                        <button class="btn btn-info" data-toggle="modal" data-target="#downloads">DownLoad</button>
+	                        <!-- <button class="btn btn-danger" data-toggle="modal" data-target="#info">Info</button>
+	                        <button class="btn btn-info" data-toggle="modal" data-target="#downloads">DownLoad</button> -->
 	                        <button class="btn btn-success" data-toggle="modal" data-target="#logout">Log-out</button>
 	                        <button class="btn btn-primary" data-toggle="modal" data-target="#search">Search</button>
 	                 </div>

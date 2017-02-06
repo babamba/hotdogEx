@@ -20,7 +20,7 @@
 <body>
 	<section class="container">
 		<article class="half">
-			<h1>Login</h1>
+			<h1>HOT DOG</h1>
 			<div class="tabs">
 				<span class="tab signin active"><a href="#signin">Sign in</a></span>
 				<span class="tab signup"><a href="#signup">Sign up</a></span>
@@ -41,7 +41,9 @@
 							 <c:if test="${param.result eq 'fail'}">
 								<p>로그인이 실패 했습니다.</p>
 							</c:if>
-							<a href="#" class="more">Forgot your password?</a>
+							<a href="#" class="more">비밀번호를 잊으셨나요?</a>
+							<a href="${pageContext.request.contextPath}" class="more">Main</a>
+							
 						</div>
 					</form>
 				</div>

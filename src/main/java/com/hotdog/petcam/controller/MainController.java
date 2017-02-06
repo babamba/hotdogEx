@@ -23,7 +23,7 @@ public class MainController {
 		return "main/test";
 	}
 	
-	@RequestMapping("/main/loginpage")
+	@RequestMapping("/loginpage")
 	public String login(){
 		return "main/loginPage";
 	}

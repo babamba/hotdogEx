@@ -231,11 +231,14 @@ $(function(){
 	<br><br>
 	<h1>메인화면은 구성중이다</h1>
 		
-		<c:choose>
+			<c:choose>
 				<c:when test="${empty authUser }">
+				<div id="testLogin">
 					<a>로그인 해</a><br>
-					<a href="${pageContext.request.contextPath}/main/loginpage">Log in</a>
-				</c:when>
+					<a href="${pageContext.request.contextPath}/loginpage">Log in</a>
+				</div>
+			</c:when>
+			
 		<c:otherwise>
 				<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}">${authUser.nickname}의 블로그화면으로</a> 
 		</c:otherwise>
