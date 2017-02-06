@@ -10,7 +10,8 @@
 				<div class="col-md-12">
 					<div class="top-section">
 						<div class="profile-image">
-							<img src="${pageContext.request.contextPath}/assets/img/%EC%82%AC%EC%A7%842.jpg">
+							<img src="${pageContext.request.contextPath}/hotdog/image/user/${authUser.users_image}">
+							
 						</div>
 						<div class="profile-content">
 							<h3 class="profile-title">${authUser.nickname}</h3>
@@ -40,7 +41,7 @@
 	<div class="sidebar-menu hidden-xs hidden-sm">
 		<div class="top-section">
 			<div class="profile-image">
-				<img src="${pageContext.request.contextPath}/hotdog/image/user/${authUser.users_image}" alt="Volton">
+				<img src="${pageContext.request.contextPath}/hotdog/image/user/${authUser.users_image}">
 				<!-- Button trigger modal -->
 
 			</div>

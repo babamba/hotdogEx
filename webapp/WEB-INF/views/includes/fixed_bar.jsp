@@ -36,6 +36,7 @@
                         <button class="btn btn-success" data-toggle="modal" data-target="#signIn">sign in</button>
                         <button class="btn btn-primary" data-toggle="modal" data-target="#accessTerms">join test</button>
                         <button class="btn btn-primary" data-toggle="modal" data-target="#search">Search</button>
+                       
                  </div>
             </div>   
         </div>

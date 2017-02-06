@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -14,57 +13,44 @@ import com.hotdog.petcam.vo.UserVo;
 
 
 public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
-	
-	@Override
-	public boolean preHandle(
-		HttpServletRequest request,
-		HttpServletResponse response,
-		Object handler/*HandlerMethod*/)
-		throws Exception {
-		
-		
-		String email = request.getParameter( "email" );
-		String pass_word = request.getParameter( "pass_word" );
-		String nickname = request.getParameter("nickname");
-		String infomation = request.getParameter("infomation");
-		String users_image = request.getParameter("users_image");
-		String follower_num = request.getParameter("follower_num");
-		String following_num = request.getParameter("following_num");
-		String description = request.getParameter("description");
-		
-		
-		// Web Application Context 받아오기
-		ApplicationContext ac =
-			WebApplicationContextUtils.getWebApplicationContext( request.getServletContext() );
-		
-		// Container 안에 있는 UserService Bean(객체) 받아오기
-		UserService userService = ac.getBean( UserService.class );
-		
-		// 데이터베이스에서 해당 UserVo 받아오기 
-		UserVo userVo = 
-				userService.login(email, pass_word, nickname);
-		System.out.println(userVo);
-		System.out.println(request);
-		
-		// 이메일과 패쓰워드가 일치하지 않는 경우
-		if( userVo == null ) {
-			System.out.println(userVo);
-			response.sendRedirect( 
-				request.getContextPath() + "/user/loginform?result=fail" );
-			
-			System.out.println("login fail");
-			return false;
-		}
-		
-		// 인증 처리
-		HttpSession session = request.getSession( true );
-		session.setAttribute( "authUser", userVo );
-		response.sendRedirect( request.getContextPath() );
-		System.out.println(response);
-		System.out.println("인증처리");
-		return false;
-	}
-	
-	
+    
+    @Override
+    public boolean preHandle(
+        HttpServletRequest request,
+        HttpServletResponse response,
+        Object handler/*HandlerMethod*/)
+        throws Exception {
+        
+        String email = request.getParameter( "email" );
+        String password = request.getParameter( "pass_word" );
+        String nickname = request.getParameter("nickname");
+        
+        // Web Application Context 받아오기
+        ApplicationContext ac =
+            WebApplicationContextUtils.getWebApplicationContext( request.getServletContext() );
+        
+        // Container 안에 있는 UserService Bean(객체) 받아오기
+        UserService userService = ac.getBean( UserService.class );
+        
+        // 데이터베이스에서 해당 UserVo 받아오기
+        UserVo userVo = userService.login(email, password, nickname);
+        // 이메일과 패쓰워드가 일치하지 않는 경우
+        if( userVo == null ) {
+            System.out.println(userVo);
+            response.sendRedirect(
+                request.getContextPath() + "/user/loginform?result=fail" );
+            
+            return false;
+        }
+        
+        // 인증 처리
+        HttpSession session = request.getSession( true );
+        session.setAttribute( "authUser", userVo );
+        String callBack = (String)session.getAttribute("authcallback");
+        System.out.println(callBack);
+        
+        response.sendRedirect( "http://localhost:8087"+callBack );     // request.getContextPath 에 추가하면 도메인이 일부 중복된다.
+        return false;
+    }
 
 }

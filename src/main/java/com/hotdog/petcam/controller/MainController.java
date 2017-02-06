@@ -23,6 +23,10 @@ public class MainController {
 		return "main/test";
 	}
 	
-
+	@RequestMapping("/main/loginpage")
+	public String login(){
+		return "main/loginPage";
+	}
+	
 	
 }

@@ -1,3 +1,4 @@
+﻿
 /*
  Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
  For licensing, see LICENSE.md or http://ckeditor.com/license
@@ -575,7 +576,8 @@
                     label: d.lang.image.btnUpload,
                     "for": ["Upload", "upload"]
                 }]
-            }, {
+            },
+            {
                 id: "advanced",
                 label: d.lang.common.advancedTab,
                 elements: [{

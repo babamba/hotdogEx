@@ -20,8 +20,8 @@
 
 <script src="${pageContext.request.contextPath }/assets/js/min/jquery-1.10.2.min.js" type="text/javascript"></script>
 
-<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 <%-- <script src="${pageContext.request.contextPath}/assets/ckeditor/ckeditor.js"></script> --%>
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 <%-- <script src="${pageContext.request.contextPath}/assets/ckeditor/config.js"></script> --%>
 <script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
 <!-- include libraries(jQuery, bootstrap) -->
@@ -87,7 +87,7 @@
 		<form action= "${pageContext.request.contextPath }/post/${authUser.nickname}/insert" method="post">
 			<textarea class="form-control" name="title" placeholder="제목을 입력하세요." rows="1" style="font-size:20px"></textarea>
             <textarea name="content" id="ckeditor" rows="10" cols="80">
-                This is my textarea to be replaced with CKEditor.
+                
             </textarea>
              <input type="submit" class="btn btn-default" id="posting">
         </form>
@@ -96,12 +96,10 @@
             CKEDITOR.replace( 'ckeditor', {//해당 이름으로 된 textarea에 에디터를 적용 <-- 이거 이름 부분입니다.
             startupFocus : false,  // 자동 focus 사용할때는  true
             enterMode :CKEDITOR.ENTER_BR,
-            allowedContent:true,
             width:'100%',
             height:'600px',
-            filebrowserImageUploadUrl: '${pageContext.request.contextPath }/image/upload', //여기 경로로 파일을 전달하여 업로드 시킨다.
-            customConfig: '${pageContext.request.contextPath}/assets/ckeditor/config.js'
-            
+            filebrowserImageUploadUrl: '${pageContext.request.contextPath }/image/upload' //여기 경로로 파일을 전달하여 업로드 시킨다.
+          
             // JSP, PHP 공통입니다. 경로를 적당히 적어줍니다.
         });
             </script> 
