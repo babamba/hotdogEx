@@ -15,8 +15,8 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/loginPage.css">
+<script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
 </head>
-
 <body>
 	<section class="container">
 		<article class="half">
@@ -80,9 +80,9 @@
 		</article>
 		<div class="half bg"></div>
 	</section>
-	<script src="${pageContext.request.contextPath }/assets/js/jquery-ui.js"></script>
-	<script src="${pageContext.request.contextPath }/assets/js/jquery.js"></script>
-
+	
+	
+<script src="${pageContext.request.contextPath }/assets/js/jquery.js"></script>
 	<!-- <script src="js/index.js"></script> -->
 	<script>$('.tabs .tab').click(function(){
 	    if ($(this).hasClass('signin')) {
@@ -253,11 +253,6 @@ $(function(){
 			return false;
 		}
 		
-		
-		
-		
-		
-
 		// 배열에 TempUser 정보 넣어서 JSON 으로 던지기         {"data":arr}
 		// var arr=[ $("#inputEmail").val() ,$("#inputPassword").val() ];
 	
@@ -277,7 +272,28 @@ $(function(){
 	
 	
 })
-	
+
+	if(!alertify.myAlert){
+	  //define a new dialog
+	  alertify.dialog('myAlert',function(){
+	    return{
+	      main:function(message){
+	        this.message = message;
+	      },
+	      setup:function(){
+	          return { 
+	            buttons:[{text: "cool!", key:27/*Esc*/}],
+	            focus: { element:0 }
+	          };
+	      },
+	      prepare:function(){
+	        this.setContent(this.message);
+	      }
+	  }});
+	}
+	//launch it.
+	alertify.myAlert("Browser dialogs made easy!");
+		
 </script>
 	
 	
