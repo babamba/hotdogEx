@@ -78,7 +78,43 @@
 				</div>
 			</div>
 		</article>
-		<div class="half bg"></div>
+		<div class="half bg">
+		  <div class="dog">
+			  <div class="dog-body">
+			    <div class="dog-tail">
+			      <div class="dog-tail">
+			        <div class="dog-tail">
+			          <div class="dog-tail">
+			            <div class="dog-tail">
+			              <div class="dog-tail">
+			                <div class="dog-tail">
+			                  <div class="dog-tail"></div>
+			                </div>
+			              </div>
+			            </div>
+			          </div>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="dog-torso"></div>
+			  <div class="dog-head">
+			    <div class="dog-ears">
+			      <div class="dog-ear"></div>
+			      <div class="dog-ear"></div>
+			    </div>
+			    <div class="dog-eyes">
+			      <div class="dog-eye"></div>
+			      <div class="dog-eye"></div>
+			    </div>
+			    <div class="dog-muzzle">
+			      <div class="dog-tongue"></div>
+			    </div>
+			  </div>
+			</div>
+			
+			<div class="ball" tabindex="0"></div>
+		</div>
 	</section>
 	
 	
@@ -266,34 +302,10 @@ $(function(){
 
 		 $('.SendCode').replaceWith("<input id='inputCodeCheck' type='button' value='check' class='check'> <img id='img-checkemail' style='display: none;'><input type='number' name='code' id='inputCode' class='inpt' required='required' placeholder='Check Code'><label for='Code'>Send Code</label>"); 
 		 return true;
-	});
-	
-	
-	
-	
-})
+		});	
+	})
 
-	if(!alertify.myAlert){
-	  //define a new dialog
-	  alertify.dialog('myAlert',function(){
-	    return{
-	      main:function(message){
-	        this.message = message;
-	      },
-	      setup:function(){
-	          return { 
-	            buttons:[{text: "cool!", key:27/*Esc*/}],
-	            focus: { element:0 }
-	          };
-	      },
-	      prepare:function(){
-	        this.setContent(this.message);
-	      }
-	  }});
-	}
-	//launch it.
-	alertify.myAlert("Browser dialogs made easy!");
-		
+
 </script>
 	
 	
