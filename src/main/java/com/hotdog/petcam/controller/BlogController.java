@@ -32,11 +32,11 @@ public class BlogController {
 	
 
 	@RequestMapping("/{nickname}")
-	public String main(@PathVariable String nickname, Model model, HttpServletRequest request, @AuthUser UserVo authUser){
+	public String main(@PathVariable String nickname, Model model, HttpServletRequest request){
 		Map<String, Object> map = blogService.index(nickname);
 		model.addAttribute("map", map);
 		
-		System.out.println(map);
+		System.out.println("맵" + map);
 		
 		
 		return "blog/blog-main";

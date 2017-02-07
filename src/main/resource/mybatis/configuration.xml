@@ -15,5 +15,6 @@
 		<mapper resource="mybatis/mappers/post.xml" />
 		<mapper resource="mybatis/mappers/image.xml" />
 		<mapper resource="mybatis/mappers/pet.xml"	/>
+		<mapper resource="mybatis/mappers/follow.xml"	/>
 	</mappers>
 </configuration>

@@ -31,6 +31,10 @@ public class UserDao{
 		return sqlSession.selectOne("user.getById", email);
 	}
 	
+	public UserVo getDataByNo(int users_no){
+		return sqlSession.selectOne("user.getDataByNo", users_no);
+	}
+	
 	
 	//이메일 파라미터로 유저넘버 조회  UserVo 형태의 authUser에 리턴
 	public UserVo idExist(String email) {

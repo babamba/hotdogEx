@@ -80,7 +80,7 @@ public class BlogService {
 
 		
 		public Map<String, Object> index(String nickname){
-			Integer usersNo = null;
+			Integer users_no = null;
 			
 			//이메일로 유저번호 찾기.  not null일때 세션에 유저번호 저장
 			UserVo authUser = userDao.nicknameExist(nickname); 
@@ -89,20 +89,24 @@ public class BlogService {
 			
 			//낫널일 경우 유저번호 값이 담긴 UserVo에 유저넘버를 저장하고 usersNo객체로 한다.
 			if(authUser != null){
-				usersNo = authUser.getUsers_no();
-				System.out.println(usersNo);
+				users_no = authUser.getUsers_no();
+				System.out.println(users_no);
 			} 
 			
-			PostVo postVo = new PostVo();
-//			postVo.setUsers_no(authUser.getUsers_no());
+			/*PostVo postVo = postDao.getIndexByPostTop6(users_no);*/
+			UserVo userVo = userDao.getDataByNo(users_no);
+			BlogVo blogVo = blogDao.get(users_no);
+			
 			
 			Map<String, Object> map = new HashMap<String, Object>();
 			
 			//postVo형태인 list객체에  위의 authUser(유저넘버)를 담음 usersNo를 이용해로 조회한 포스트 컬럼을 map객체에 넣어 저장하고 리턴
 //			List<PostVo> postlist = postDao.getList(usersNo);
 //			map.put("post", postlist);
-			map.put("authUser", authUser);
-			map.put("postvo", postVo);
+			
+			map.put("userVo", userVo);
+			map.put("blogVo", blogVo);
+			/*map.put("postvo", postVo);*/
 				
 			return map;	
 		}

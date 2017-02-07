@@ -18,7 +18,7 @@
 	
 	<select id="get" parameterType="int" resultType="blogvo">
 		<![CDATA[
-			select * from BLOG where users_no = #{users_no};
+			select a.title, a.logo_image from blog a, users b where a.users_no = b.users_no and b.users_no = #{users_no}
 		]]>
 	</select>
 	<update id="titleModify" parameterType="blogvo">

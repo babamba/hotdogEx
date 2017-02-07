@@ -13,8 +13,8 @@ public class BlogDao {
 	private SqlSession sqlSession;
 	
 	//유저넘버로 블로그 정보 가져오기.
-	public BlogVo get(int no){
-		return sqlSession.selectOne("blog.get", no);
+	public BlogVo get(int users_no){
+		return sqlSession.selectOne("blog.get", users_no);
 	}
 	
 	public void insert(BlogVo vo) {

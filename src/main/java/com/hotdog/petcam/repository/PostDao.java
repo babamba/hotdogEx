@@ -40,4 +40,10 @@ public class PostDao {
 	}
 	*/
 	
+	
+/*	public PostVo getIndexByPostTop6(int users_no){
+		return sqlSession.selectList("post.getIndexByPostTop9" ,users_no);
+		
+	}*/
+	
 }

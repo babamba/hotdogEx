@@ -33,6 +33,15 @@
 	</select>
 
 
+	<select id ="getDataByNo" parameterType="int" resultType="uservo">
+        <![CDATA[
+        select email, nickname, infomation, users_image, follower_num, following_num
+          from users
+         where users_no = #{users_no }        
+        ]]>
+    </select>
+    
+
 	<select id ="getByNo" parameterType="int" resultType="uservo">
         <![CDATA[
         select users_no, email, nickname, pass_word, sec_pass_word, infomation, users_image, follower_num,following_num

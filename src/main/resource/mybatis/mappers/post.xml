@@ -29,6 +29,14 @@
 		]]>
 	</select>
 	
+	<select id = "getIndexByPostTop9" parameterType="int" resultType="postvo">
+		<![CDATA[
+		 select  a.title, date_format(a.regdate, '%Y %m/%e %h:%i') as regdate , a.publish, a.post_image
+ 		 from post a, users b where b.users_no = a.users_no and b.users_no = #{users_no} and a.users_no > 0
+ 		 order by a.post_no desc limit 0, 9;
+		]]>
+	</select>
+	
 	
 	<select id = "postdelete"  resultType="postvo">
 		<![CDATA[
