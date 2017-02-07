@@ -101,8 +101,7 @@ public class BlogService {
 			Map<String, Object> map = new HashMap<String, Object>();
 			
 			//postVo형태인 list객체에  위의 authUser(유저넘버)를 담음 usersNo를 이용해로 조회한 포스트 컬럼을 map객체에 넣어 저장하고 리턴
-//			List<PostVo> postlist = postDao.getList(usersNo);
-//			map.put("post", postlist);
+
 			
 			map.put("userVo", userVo);
 			map.put("blogVo", blogVo);
@@ -111,7 +110,7 @@ public class BlogService {
 			return map;	
 		}
 	
-	
+		
 		
 		
 	

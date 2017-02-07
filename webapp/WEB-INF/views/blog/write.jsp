@@ -20,13 +20,13 @@
 
 <script src="${pageContext.request.contextPath }/assets/js/min/jquery-1.10.2.min.js" type="text/javascript"></script>
 
-<<<<<<< HEAD
+
 <%-- <script src="${pageContext.request.contextPath}/assets/ckeditor/ckeditor.js"></script> --%>
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
-=======
+
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
  <%--<script src="${pageContext.request.contextPath}/assets/ckeditor/ckeditor.js"></script> --%>
->>>>>>> branch 'master' of https://github.com/babamba/hotdogEx.git
+
 <%-- <script src="${pageContext.request.contextPath}/assets/ckeditor/config.js"></script> --%>
 <script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
 <!-- include libraries(jQuery, bootstrap) -->

@@ -44,35 +44,5 @@
 		]]>
 	</select>
 	
-	
-	<!-- 
-	
-	<select id="selectOne" parameterType="long" resultType="postvo">
-		<![CDATA[
-		select no,category_no as categoryNo, title, reg_date as regDate,content from post where no = #{no}
-		]]>
-	</select>
-	<select id="lastNo" resultType="long">
-	<![CDATA[	
-			SELECT LAST_NUMBER
- 				 FROM USER_SEQUENCES
-			WHERE SEQUENCE_NAME = 'POST_SEQ'
-			   	]]>
-	</select> 
-	<select id="selectTop" resultType="postvo" parameterType="long">
-		<![CDATA[
-		SELECT *
-  			FROM (SELECT c.*, ROWNUM AS rn
-          FROM (  SELECT no,
-                         title,
-                         content,
-                         reg_date AS regDate
-                    FROM POST
-					where CATEGORY_NO = #{categoryNo}
-                ORDER BY reg_date DESC) c) d
- 			WHERE d.rn = 1
-		]]>
-	</select>
-	
-	-->
+
 </mapper>

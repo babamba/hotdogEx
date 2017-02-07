@@ -41,9 +41,10 @@ public class PostDao {
 	*/
 	
 	
-/*	public PostVo getIndexByPostTop6(int users_no){
-		return sqlSession.selectList("post.getIndexByPostTop9" ,users_no);
+	public List<PostVo> getIndexByPostTop9(int users_no){
+		List<PostVo> list = sqlSession.selectList("post.getIndexByPostTop9",users_no);
 		
-	}*/
+		return list;
+	}
 	
 }

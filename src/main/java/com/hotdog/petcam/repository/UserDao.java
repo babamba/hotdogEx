@@ -31,6 +31,10 @@ public class UserDao{
 		return sqlSession.selectOne("user.getById", email);
 	}
 	
+	public int getNoByNick(String nickname){
+		return sqlSession.selectOne("user.getNoByNick", nickname);
+	}
+	
 	public UserVo getDataByNo(int users_no){
 		return sqlSession.selectOne("user.getDataByNo", users_no);
 	}

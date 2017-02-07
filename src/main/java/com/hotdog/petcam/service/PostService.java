@@ -12,6 +12,7 @@ import com.hotdog.petcam.repository.PostDao;
 import com.hotdog.petcam.repository.UserDao;
 import com.hotdog.petcam.vo.ImageVo;
 import com.hotdog.petcam.vo.PostVo;
+import com.hotdog.petcam.vo.UserVo;
 
 
 @Service
@@ -41,6 +42,16 @@ public class PostService {
 		int result = postDao.delete(postVo);
 		return (result == 1);
 	}
+	
+	public List<PostVo> getMainPostList(String nickname){
+		Integer users_no = null;
+		
+		users_no = userDao.getNoByNick(nickname);
+		
+		
+		return postDao.getIndexByPostTop9(users_no);
+	}
+	
 	
 /*	public void insertImage(ImageVo imageVo){
 		return imageDao.insert(imageVo);

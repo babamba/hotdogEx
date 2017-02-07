@@ -18,6 +18,8 @@
 <link rel="shortcut icon" href="images/favicon.png">
 <title>Hot dog</title>
 <head>
+<!-- LOAD GOOGLE FONTS -->
+<link href="${pageContext.request.contextPath}/assets/template/http://fonts.googleapis.com/css?family=Open+Sans:400,300,800,700,600%7CRaleway:100,300,600,700,800" rel="stylesheet" type="text/css" />
 
 <script src="${pageContext.request.contextPath }/assets/js/min/jquery-1.10.2.min.js" type="text/javascript"></script>
 
@@ -25,8 +27,6 @@
 <link href="${pageContext.request.contextPath}/assets/css/material-kit.css" rel="stylesheet" />
 </head>
 
-<!-- Rix스마트고딕 -->
-<link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixSGo+L:400|RixSGo+M:400|RixSGo+B:400|RixSGo+EB:400" />
 
 <!-- Bootstrap Core CSS -->
 <link href="${pageContext.request.contextPath}/assets/template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -53,8 +53,6 @@
 <!-- Template color -->
 <link href="${pageContext.request.contextPath}/assets/template/css/color-variations/blue.css" rel="stylesheet" type="text/css" media="screen" title="blue">
 
-<!-- LOAD GOOGLE FONTS -->
-<link href="${pageContext.request.contextPath}/assets/template/http://fonts.googleapis.com/css?family=Open+Sans:400,300,800,700,600%7CRaleway:100,300,600,700,800" rel="stylesheet" type="text/css" />
 
 <!-- CSS CUSTOM STYLE -->
 <link rel="${pageContext.request.contextPath}/assets/template/stylesheet" type="text/css" href="css/custom.css" media="screen" />
@@ -63,7 +61,47 @@
 <script src="${pageContext.request.contextPath}/assets/template/vendor/jquery/jquery-1.11.2.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/template/vendor/plugins-compressed.js"></script>
 
+<script>
+	var nickname = ${map.userVo.nickname};
+	var post = "${pageContext.request.contextPath }/postView?post_no="
+			
+	var render = function(vo){
+			
+	 var htmls =  "<div class='post-item'><div class='post-image'><a href='#'><img src='""'></a></div><div class='post-content-details'>" + 
+        		  "<div class='post-title'><h3><a href='#''>" + vo.title + "</a></h3></div>" +
+        		  "<div class='post-description'><div class='post-info'><a class='read-more' href='" + post + vo.post_no + "'>read more <i class='fa fa-long-arrow-right'></i></a></div>" +
+         		  "</div></div><div class='post-meta'><div class='post-date'><span class='post-date-year'>" + vo.regdate + "</span></div>" +
+        		  "<div class='post-comments'> <a href='#'> <i class='fa fa-comments-o'></i><span class='post-comments-number'>0</span></a></div>" +
+         		  "</div></div>"
+			$(".isotope").append(htmls);
+		}
 
+	var fetchList = function(){
+		console.log("fetchList")
+	
+		  console.log(page);
+		  
+		  $.ajax({
+			url: "${pageContext.request.contextPath }/blog/api/indexPostList?nickname=" + nickname,
+			type: "get",
+			dataType: "json",
+			data:"",
+			success: function(response){
+				$(response.data).each(function(index, vo){
+					render(vo);
+					console.log("render")
+				});
+			},
+		error: function(jqXHR, status, e){
+			console.error(status + ":" + e)
+		}
+	});
+	}
+	
+	$(function(){
+		fetchList();
+	})
+	</script>
 
 <body>
 <%-- 	<!-- Fixed-bar -->
@@ -132,14 +170,14 @@
  --%>
 		<!-- CONTENT -->
   <section class="content">
-    <div class="container"> 
+    <div class="container list_container"> 
     
     
       <!-- Blog post-->
       <div class="isotope" data-isotope-item-space="3" data-isotope-col="3" data-isotope-item=".post-item"> 
         <!-- Blog image post-->
         <div class="post-item">
-          <div class="post-image"> <a href="#"> <img alt="" src="images/blog/thumb/10.jpg"> </a> </div>
+          <div class="post-image"> <a href="#"> <img alt="" src="${pageContext.request.contextPath}/assets/template/images/blog/thumb/10.jpg"> </a> </div>
           <div class="post-content-details">
             <div class="post-title">
               <h3><a href="#">Image post example</a></h3>
@@ -212,9 +250,6 @@
   
 </div>
 <!-- END: WRAPPER --> 	
-	
-
-	
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/bootstrap.min.js"></script>
 	<script
@@ -248,6 +283,8 @@
 	
 	<!-- Custom js file --> 
 	<script src="${pageContext.request.contextPath}/assets/template/js/custom.js"></script>
+
+	
 
 </body>
 </html>
