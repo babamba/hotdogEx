@@ -38,6 +38,10 @@ public class PostService {
 		return postDao.getList(page, users_no);
 	}
 	
+	public PostVo getPost(int post_no){
+		return postDao.getPost(post_no);
+	}
+	
 	public boolean delete(PostVo postVo){
 		int result = postDao.delete(postVo);
 		return (result == 1);

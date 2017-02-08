@@ -1391,8 +1391,11 @@ var INSPIRO = {};
     /* ---------------------------------------------------------------------------
      * MASONRY ISOTOPE
      * --------------------------------------------------------------------------- */
-    INSPIRO.masonryIsotope = function () {
+   
 
+    	
+    INSPIRO.masonryIsotope = function () {
+    	
         var $isotops = $(".isotope");
         $isotops.each(function () {
             var isotopeTime,
@@ -1465,8 +1468,8 @@ var INSPIRO = {};
 
 
         });
-
     };
+
 
     // Intellegent Grid
     var itemWidth = function (columns, $elemContainer, itemElement, itemElementSpace) {
@@ -1509,9 +1512,10 @@ var INSPIRO = {};
             $findElementLarge.width(33.333333 - itemElementSpace + '%').css(itemElementMargins);
         }
 
-
-
     };
+    
+    
+    
 
 
 
@@ -1785,6 +1789,8 @@ var INSPIRO = {};
             INSPIRO.menuFix()
 
     });
+
+    
 
 
     //Document ready functions

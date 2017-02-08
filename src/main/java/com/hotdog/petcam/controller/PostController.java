@@ -81,7 +81,6 @@ public class PostController {
 		}
 		
 		
-		
 		/*@Auth
 		@ResponseBody
 	    @RequestMapping(value = "/upload", method = RequestMethod.POST)
@@ -92,6 +91,18 @@ public class PostController {
 	        String localIp = InetAddress.getLocalHost().getHostAddress();
 	        return JSONResult.success("http://150.95.141.66/hotdog/hotdog/image/user/" + saveFileName);
 	    }*/
+		
+		
+		@RequestMapping("/postView")
+		public String postView(@RequestParam(value="post_no")int post_no,
+				Model model){
+			
+			PostVo postVo = postService.getPost(post_no);
+			System.out.println(postVo);
+			model.addAttribute("postVo", postVo);
+			
+			return "blog/post-page";
+		}
 		
 		
 		

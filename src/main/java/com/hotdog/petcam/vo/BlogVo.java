@@ -5,8 +5,9 @@ public class BlogVo {
 	private int users_no;
 	private String title;
 	private String logo_image;
-	
 
+	
+	
 	public int getUsers_no() {
 		return users_no;
 	}

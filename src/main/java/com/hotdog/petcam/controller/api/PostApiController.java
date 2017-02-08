@@ -65,6 +65,16 @@ public class PostApiController {
 	}
 	
 	
+	@ResponseBody
+	@RequestMapping("/postComment/insert")
+	public JSONResult postCommentInsert(
+			@RequestParam(value="post_no")int post_no,
+			@RequestParam(value="nickname")String nickname
+			){
+		return JSONResult.success("comment");
+	}
+	
+	
 	
 	
 }

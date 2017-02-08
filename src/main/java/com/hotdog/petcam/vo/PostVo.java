@@ -9,6 +9,7 @@ public class PostVo {
 	private String post_image;
 	private int publish;
 	private int users_no;
+	private String nickname;
 	
 
 	public int getPost_no() {
@@ -55,10 +56,18 @@ public class PostVo {
 		this.publish = publish;
 	}
 	
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	
 	@Override
 	public String toString() {
 		return "PostVo [post_no=" + post_no + ", title=" + title + ", content=" + content + ", regdate=" + regdate
-				+ ", post_image=" + post_image + ", publish=" + publish + ", users_no=" + users_no + "]";
+				+ ", post_image=" + post_image + ", publish=" + publish + ", users_no=" + users_no + ", nickname="
+				+ nickname + "]";
 	}
 	
 	

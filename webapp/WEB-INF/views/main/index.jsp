@@ -26,8 +26,6 @@
 	href="${pageContext.request.contextPath}/assets/css/bootstrap.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/main.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/swiper.css">
 
 <!--     Fonts and icons     -->
 <link rel="stylesheet"
@@ -80,19 +78,9 @@
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
 	<script
-		src="${pageContext.request.contextPath}/assets/js/min/swiper.jquery.min.js"></script>
-	<script
 		src="${pageContext.request.contextPath}/assets/js/min/plugins.min.js"></script>
 	<script
-		src="${pageContext.request.contextPath}/assets/js/main.js" ></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/email.js" ></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/toggle.js" ></script>	
-	<script
 		src="${pageContext.request.contextPath}/assets/js/min/material.min.js" ></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/nouislider.min.js" ></script>
 	
 	<script
 		src="${pageContext.request.contextPath}/assets/js/bootstrap-datepicker.js" ></script>
@@ -101,7 +89,7 @@
 		src="${pageContext.request.contextPath}/assets/js/material-kit.js"
 		type="text/javascript"></script>
 	<script
-		src="${pageContext.request.contextPath}/assets/js/vendor/modernizr-2.6.2.min.js"></script>
+		src="${pageContext.request.contextPath}/assets/js/min/modernizr-2.6.2.min.js"></script>
 
 
 </body>

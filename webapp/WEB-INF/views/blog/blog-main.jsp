@@ -15,18 +15,10 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<link rel="shortcut icon" href="images/favicon.png">
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon.png">
 <title>Hot dog</title>
+
 <head>
-<!-- LOAD GOOGLE FONTS -->
-<link href="${pageContext.request.contextPath}/assets/template/http://fonts.googleapis.com/css?family=Open+Sans:400,300,800,700,600%7CRaleway:100,300,600,700,800" rel="stylesheet" type="text/css" />
-
-<script src="${pageContext.request.contextPath }/assets/js/min/jquery-1.10.2.min.js" type="text/javascript"></script>
-
-<!-- CSS Files -->
-<link href="${pageContext.request.contextPath}/assets/css/material-kit.css" rel="stylesheet" />
-</head>
-
 
 <!-- Bootstrap Core CSS -->
 <link href="${pageContext.request.contextPath}/assets/template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -53,6 +45,8 @@
 <!-- Template color -->
 <link href="${pageContext.request.contextPath}/assets/template/css/color-variations/blue.css" rel="stylesheet" type="text/css" media="screen" title="blue">
 
+<!-- LOAD GOOGLE FONTS -->
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,800,700,600%7CRaleway:100,300,600,700,800" rel="stylesheet" type="text/css" />
 
 <!-- CSS CUSTOM STYLE -->
 <link rel="${pageContext.request.contextPath}/assets/template/stylesheet" type="text/css" href="css/custom.css" media="screen" />
@@ -61,47 +55,9 @@
 <script src="${pageContext.request.contextPath}/assets/template/vendor/jquery/jquery-1.11.2.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/template/vendor/plugins-compressed.js"></script>
 
-<script>
-	var nickname = ${map.userVo.nickname};
-	var post = "${pageContext.request.contextPath }/postView?post_no="
-			
-	var render = function(vo){
-			
-	 var htmls =  "<div class='post-item'><div class='post-image'><a href='#'><img src='""'></a></div><div class='post-content-details'>" + 
-        		  "<div class='post-title'><h3><a href='#''>" + vo.title + "</a></h3></div>" +
-        		  "<div class='post-description'><div class='post-info'><a class='read-more' href='" + post + vo.post_no + "'>read more <i class='fa fa-long-arrow-right'></i></a></div>" +
-         		  "</div></div><div class='post-meta'><div class='post-date'><span class='post-date-year'>" + vo.regdate + "</span></div>" +
-        		  "<div class='post-comments'> <a href='#'> <i class='fa fa-comments-o'></i><span class='post-comments-number'>0</span></a></div>" +
-         		  "</div></div>"
-			$(".isotope").append(htmls);
-		}
-
-	var fetchList = function(){
-		console.log("fetchList")
-	
-		  console.log(page);
-		  
-		  $.ajax({
-			url: "${pageContext.request.contextPath }/blog/api/indexPostList?nickname=" + nickname,
-			type: "get",
-			dataType: "json",
-			data:"",
-			success: function(response){
-				$(response.data).each(function(index, vo){
-					render(vo);
-					console.log("render")
-				});
-			},
-		error: function(jqXHR, status, e){
-			console.error(status + ":" + e)
-		}
-	});
-	}
-	
-	$(function(){
-		fetchList();
-	})
-	</script>
+<!-- User Profile -->
+<script src="${pageContext.request.contextPath}/assets/js/userProfile.js"></script>
+<link href="${pageContext.request.contextPath}/assets/css/userProfile.css" rel="stylesheet">
 
 <body>
 <%-- 	<!-- Fixed-bar -->
@@ -121,7 +77,7 @@
       <div class="container"> 
         
         <!--LOGO-->
-        <div id="logo"> <a href="${pageContext.request.contextPath}" class="logo" data-dark-logo="images/logo-dark.png"> <img src="${pageContext.request.contextPath}/assets/img/hotdog_logo.png" alt="Hotdog Logo"> </a> </div>
+        <div id="logo"> <a href="${pageContext.request.contextPath}" class="logo" data-dark-logo="images/logo-dark.png"> <img src="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png" alt="Hotdog Logo"> </a> </div>
         <!--END: LOGO--> 
         
         <!--MOBILE MENU -->
@@ -149,25 +105,36 @@
   </header>
   <!-- END: HEADER --> 
   
+  
+  
   <!-- PAGE TITLE -->
   <section id="page-title" class="page-title-parallax page-title-center text-dark" style="background-image:url(${pageContext.request.contextPath}/hotdog/image/user/${map.blogVo.logo_image})">
     <div class="container">
       <div class="page-title col-md-8">
         <h1>${map.blogVo.title}</h1>
-        <span>${map.userVo.infomation}</span> </div>
-
+        <span>${map.userVo.infomation}</span> </div>	
+        <button class="fancy-btn openProfile">Can I haz Modal?</button>
+        <div class="modal-frame">
+		  <div class="modal">
+				    <div class="modal-inset">
+		      			<div class="button closeProfile"><i class="fa fa-close"></i></div>
+			
+		      <div class="modal-body">
+						        <h3>Such Modal, Much Animate!</h3>
+		        				<p>Nothing groundbreaking, but I hope you enjoyed <br /> the physics for the open/close animation =).</p>
+		        <p class="ps">**I know the SASS is a bit messy, I did this on the fly and for fun <br /> and w.e. I DO WHAT I WANT!!</p>
+		      			</div>
+		    		</div>
+		  	</div>
+		</div>
+		<div class="modal-overlay"></div>
+        
+        
+        
     </div>
   </section>
   <!-- END: PAGE TITLE --> 
-  
 
-		<%-- <div class="user_image">
-			<button data-toggle="modal" data-target="#InfoModal">
-				<img src="${pageContext.request.contextPath}/hotdog/image/user/${map.userVo.users_image}">
-			</button>
-		</div>
-	<c:import url="/WEB-INF/views/includes/userProfile.jsp" />
- --%>
 		<!-- CONTENT -->
   <section class="content">
     <div class="container list_container"> 
@@ -175,25 +142,7 @@
     
       <!-- Blog post-->
       <div class="isotope" data-isotope-item-space="3" data-isotope-col="3" data-isotope-item=".post-item"> 
-        <!-- Blog image post-->
-        <div class="post-item">
-          <div class="post-image"> <a href="#"> <img alt="" src="${pageContext.request.contextPath}/assets/template/images/blog/thumb/10.jpg"> </a> </div>
-          <div class="post-content-details">
-            <div class="post-title">
-              <h3><a href="#">Image post example</a></h3>
-            </div>
-            <div class="post-info"> <span class="post-autor">Post by: <a href="#">Alea Grande</a></span> <span class="post-category">in <a href="#">Productivity</a></span> </div>
-            <div class="post-description">
-              <p>Curabitur pulvinar euismod ante, ac sagittis ante posuere ac. Vivamus luctus commodo dolor porta feugiat. Fusce at velit id ligula pharetra laoreet. Ut nec metus a mi ullamcorper hendrerit. Nulla facilisi. Pellentesque sed nibh a quam accumsan dignissim quis quis urna.</p>
-              <div class="post-info"> <a class="read-more" href="blog-post.html">read more <i class="fa fa-long-arrow-right"></i></a> </div>
-            </div>
-          </div>
-          <div class="post-meta">
-            <div class="post-date"> <span class="post-date-day">16</span> <span class="post-date-month">January</span> <span class="post-date-year">2015</span> </div>
-            <div class="post-comments"> <a href="#"> <i class="fa fa-comments-o"></i> <span class="post-comments-number">324</span> </a> </div>
-            <div class="post-comments"> <a href="#"> <i class="fa fa-share-alt"></i> <span class="post-comments-number">324</span> </a> </div>
-          </div>
-        </div>
+        
       </div>
       
       
@@ -255,28 +204,19 @@
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
 	<script
-		src="${pageContext.request.contextPath}/assets/js/min/swiper.jquery.min.js"></script>
-	<script
 		src="${pageContext.request.contextPath}/assets/js/min/plugins.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/main.js" ></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/email.js" ></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/toggle.js" ></script>	
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/material.min.js" ></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/nouislider.min.js" ></script>
-	
 	<script
 		src="${pageContext.request.contextPath}/assets/js/bootstrap-datepicker.js" ></script>
-	
 	<script
-		src="${pageContext.request.contextPath}/assets/js/material-kit.js"
-		type="text/javascript"></script>
+		src="${pageContext.request.contextPath}/assets/js/material-kit.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/modernizr-2.6.2.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>	
 		
 	<!-- Theme Base, Components and Settings --> 
 	<script src="${pageContext.request.contextPath}/assets/template/js/theme-functions.js"></script> 
@@ -285,6 +225,56 @@
 	<script src="${pageContext.request.contextPath}/assets/template/js/custom.js"></script>
 
 	
+
+
+	<script>
+	var nickname = "${map.userVo.nickname}"
+	var image_path = "${pageContext.request.contextPath}/hotdog/image/user/"
+	var post = "${pageContext.request.contextPath }/post/postView?post_no="
+				
+			
+
+	var render = function(vo, $){
+		var htmls =  "<div class='post-item'><div class='post-image'><img src='" + image_path + vo.post_image + "'></a></div><div class='post-content-details'>" + 
+	        		  "<div class='post-title'><h3>" + vo.title + "</a></h3></div>" +
+	        		  "<div class='post-description'><div class='post-info'><a class='read-more' href='" + post + vo.post_no + "'>read more <i class='fa fa-long-arrow-right'></i></a></div>" +
+	         		  "</div></div><div class='post-meta'><div class='post-date'><span class='post-date-year'>" + vo.regdate + "</span></div>" +
+	        		  "<div class='post-comments' data-no='" + vo.post_no + "'> <a href='#'> <i class='fa fa-comments-o'></i><span class='post-comments-number'>0</span></a></div>" +
+	         		  "</div></div>"
+				
+	         		  $(".isotope").append(htmls);
+		}
+	
+	var fetchList = function(){
+		console.log("fetchList")
+	
+		  $.ajax({
+			url: "${pageContext.request.contextPath }/blog/api/indexPostList?nickname=" + nickname,
+			type: "get",
+			dataType: "json",
+			data:"",
+			success: function(response){
+				$(response.data).each(function(index, vo){
+					render(vo, $);
+					
+					
+					console.log("render")
+				});
+			},
+		error: function(jqXHR, status, e){
+			console.error(status + ":" + e)
+			}
+		})
+	};
+	
+	fetchList();
+	
+	$(function(){
+	})
+
+	</script>
+
+
 
 </body>
 </html>

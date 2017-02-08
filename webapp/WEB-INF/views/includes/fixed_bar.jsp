@@ -58,7 +58,7 @@
 	                    <span class="icon-bar"></span>
 	                    <span class="icon-bar"></span>
 	                </button>
-	                <img src="${pageContext.request.contextPath}/assets/img/hotdog_logo.png"/>
+	                <img src="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png"/>
 	                
 	            </div>
 	            <!-- Collect the nav links, forms, and other content for toggling -->

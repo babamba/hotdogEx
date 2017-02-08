@@ -82,6 +82,7 @@ public class BlogService {
 		public Map<String, Object> index(String nickname){
 			Integer users_no = null;
 			
+			System.out.println(nickname);
 			//이메일로 유저번호 찾기.  not null일때 세션에 유저번호 저장
 			UserVo authUser = userDao.nicknameExist(nickname); 
 			System.out.println("오스유저"+ authUser);
@@ -97,6 +98,7 @@ public class BlogService {
 			UserVo userVo = userDao.getDataByNo(users_no);
 			BlogVo blogVo = blogDao.get(users_no);
 			
+			System.out.println(userVo);
 			
 			Map<String, Object> map = new HashMap<String, Object>();
 			
