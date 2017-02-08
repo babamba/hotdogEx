@@ -5,29 +5,47 @@
 
 .fancy-btn {
   -webkit-appearance: none;
+  display:block;
   cursor: pointer;
   outline: none;
   border: none;
-  position: relative;
-  top: 50%;
-  display: block;
-  min-width: 10%;
-  line-height: 55px;
-  font-size: 14px;
-  text-transform: uppercase;
+  
+  position: absolute;
+
+  margin-top:30px;
+  left:47%;
+  bottom:75%;	
+  width:50px;
+  height:50px;
+  
+  font-size: 12px;
+
   margin: 0 auto;
-  padding: 0 10px;
-  background-color: #F2594B;
-  color: #FFF;
-  border-radius: 3px;
+  padding: 0 px;
+  
+  background-color: transparent;
+  
+  border-radius: 25px;
+  
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-.fancy-btn:hover {
-  background-color: #f46f63;
+
+.fancy-btn img{
+	position:relaitve;
+	border-radius: 25px;
+	width:50px;
+	height:50px;
 }
+
+.fancy-btn img:hover {
+  background-color: white;
+  opacity: 0.2;
+  transition: opacity 0.5s;
+}
+
 
 .modal-overlay {
   position: absolute;
@@ -164,8 +182,8 @@
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
-.modal-inset .close {
-  display: block;
+.modal-inset button .closeProfile {
+  display: relative;
   cursor: pointer;
   position: absolute;
   top: 10px;
@@ -173,7 +191,7 @@
   padding: 10px;
   opacity: .4;
 }
-.modal-inset .close:hover {
+.modal-inset .closeProfile:hover {
   opacity: 1;
 }
 
