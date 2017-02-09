@@ -136,6 +136,9 @@
 								<div data-animation="fadeInDown" data-animation-delay="900">
 									<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}" class="button transparent rounded">${authUser.nickname}의 블로그화면으로</a>
 								</div>
+								<div data-animation="fadeInDown" data-animation-delay="900">
+									<a href="${pageContext.request.contextPath}/user/logout" class="button transparent rounded">Log-Out</a>
+								</div>
 							</c:otherwise>
 						</c:choose>
 						
