@@ -19,4 +19,8 @@ public class BoardController {
 			System.out.println("ggg");
 		}
 		
+		public void test2(){
+			
+		}
+		
 }
