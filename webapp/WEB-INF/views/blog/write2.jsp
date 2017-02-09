@@ -75,6 +75,13 @@
 	rel="${pageContext.request.contextPath}/assets/template/stylesheet"
 	type="text/css" href="css/custom.css" media="screen" />
 
+<!-- CKEDITOR SCRIPT -->
+<%-- <script src="${pageContext.request.contextPath}/assets/ckeditor/ckeditor.js"></script> --%>
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+
+<!-- ALERTIFY SCRIPT -->
+<script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
+
 <!--VENDOR SCRIPT-->
 <script
 	src="${pageContext.request.contextPath}/assets/template/vendor/jquery/jquery-1.11.2.min.js"></script>
@@ -179,11 +186,6 @@
 					
 					</div>
 				</div>
-
-
-
-
-
 			</div>
 		</section>
 		<!-- END: PAGE TITLE -->
@@ -191,28 +193,15 @@
 		<!-- CONTENT -->
 		<section class="content">
 			<div class="container list_container">
-				<!-- Blog post-->
-				<div class="isotope" data-isotope-item-space="3"
-					data-isotope-col="3" data-isotope-item=".post-item">
-					
-				</div>
-				<!--  pagination nav 
-	      <div class="text-center">
-	        <div class="pagination-wrap">
-	          <ul class="pagination">
-	            <li> <a aria-label="Previous" href="#"> <span aria-hidden="true"><i class="fa fa-angle-left"></i></span> </a> </li>
-	            <li><a href="#">1</a> </li>
-	            <li><a href="#">2</a> </li>
-	            <li class="active"><a href="#">3</a> </li>
-	            <li><a href="#">4</a> </li>
-	            <li><a href="#">5</a> </li>
-	            <li> <a aria-label="Next" href="#"> <span aria-hidden="true"><i class="fa fa-angle-right"></i></span> </a> </li>
-	          </ul>
-	        </div>
-	      </div> -->
-
-				<!-- END: Blog post-->
+				<form action= "${pageContext.request.contextPath }/post/${authUser.nickname}/insert" method="post">
+					<textarea class="form-control" name="title" placeholder="제목을 입력하세요." rows="1" style="font-size:20px"></textarea>
+		            <textarea name="content" id="ckeditor" rows="10" cols="80">
+		                
+		            </textarea>
+		             <input type="submit" class="btn btn-default" id="posting">
+       			</form>
 			</div>
+
 		</section>
 
 		<!-- END: SECTION -->
@@ -290,49 +279,44 @@
 
 	<!-- post 최신 글 9개 불러오는 ajax list -->
 	<script>
-	var nickname = "${map.userVo.nickname}"
-	var image_path = "${pageContext.request.contextPath}/hotdog/image/user/"
-	var post = "${pageContext.request.contextPath }/post/postView?post_no="
-				
-			
+            CKEDITOR.replace( 'ckeditor', {//해당 이름으로 된 textarea에 에디터를 적용 <-- 이거 이름 부분입니다.
+            startupFocus : false,  // 자동 focus 사용할때는  true
+            enterMode :CKEDITOR.ENTER_BR,
+            width:'100%',
+            height:'600px',
+            filebrowserImageUploadUrl:"${pageContext.request.contextPath }/image/upload"
+            });
 
-		var render = function(vo, $){
-		var htmls =  "<div class='post-item'><div class='post-image'><img src='" + image_path + vo.post_image + "'></a></div><div class='post-content-details'>" + 
-	        		  "<div class='post-title'><h3>" + vo.title + "</a></h3></div>" +
-	        		  "<div class='post-description'><div class='post-info'><a class='read-more' href='" + post + vo.post_no + "'>read more <i class='fa fa-long-arrow-right'></i></a></div>" +
-	         		  "</div></div><div class='post-meta'><div class='post-date'><span class='post-date-year'>" + vo.regdate + "</span></div>" +
-	        		  "<div class='post-comments' data-no='" + vo.post_no + "'> <a href='#'> <i class='fa fa-comments-o'></i><span class='post-comments-number'>0</span></a></div>" +
-	         		  "</div></div>"
-				
-	         		  $(".isotope").append(htmls);
-		}
-	
-	var fetchList = function(){
-		console.log("fetchList")
-	
-		  $.ajax({
-			url: "${pageContext.request.contextPath }/blog/api/indexPostList?nickname=" + nickname,
-			type: "get",
-			dataType: "json",
-			data:"",
-			success: function(response){
-				$(response.data).each(function(index, vo){
-					render(vo, $);
-					
-					
-					console.log("render")
+            </script> 
+            
+        <script type='text/javascript'>
+		CKEDITOR.on('dialogDefinition', function (ev) {
+			var dialogName = ev.data.name;
+			var dialog = ev.data.definition.dialog;
+			var dialogDefinition = ev.data.definition;
+
+				if (dialogName == 'image') {
+					dialog.on('show', function (obj) {
+					this.selectPage('Upload'); //업로드텝으로 시작
 				});
-			},
-		error: function(jqXHR, status, e){
-			console.error(status + ":" + e)
+
+				dialogDefinition.removeContents('advanced'); // 자세히탭 제거
+				dialogDefinition.removeContents('Link'); // 링크탭 제거
 			}
-		})
-	};
-	
-	fetchList();
-
-
-	</script>
+		});
+		</script>
+		
+		<script>
+		
+		$("#posting").on('click', function(){
+			alertify.success("Success notification");
+			console.log("alert")
+		});
+		
+		/* $("input").click(function(){
+			alertify.success("Success notification");
+		}) */
+		</script>
 
 
 	<!-- user profile modal -->

@@ -7,6 +7,8 @@
 		<typeAlias alias="postvo" type="com.hotdog.petcam.vo.PostVo" />
 		<typeAlias alias="imagevo" type="com.hotdog.petcam.vo.ImageVo" />
 		<typeAlias alias="petvo" type="com.hotdog.petcam.vo.PetVo" />
+		<typeAlias alias="postcommentsvo" type="com.hotdog.petcam.vo.PostCommentsVo" />
+		<typeAlias alias="postchatvo" type="com.hotdog.petcam.vo.PostChatVo" />
 	</typeAliases>
 	
 	<mappers>
@@ -16,5 +18,7 @@
 		<mapper resource="mybatis/mappers/image.xml" />
 		<mapper resource="mybatis/mappers/pet.xml"	/>
 		<mapper resource="mybatis/mappers/follow.xml"	/>
+		<mapper resource="mybatis/mappers/postcomments.xml"/>
+		<mapper resource="mybatis/mappers/postchat.xml"/>
 	</mappers>
 </configuration>

@@ -50,7 +50,7 @@ public class PostController {
 			model.addAttribute("map", map);
 			
 			System.out.println(map);
-			return "blog/diarytest";
+			return "blog/diary2";
 		}
 		
 		/*@Auth
@@ -65,7 +65,7 @@ public class PostController {
 		@RequestMapping("/{nickname}/write")
 		public String main(@PathVariable String nickname, @ModelAttribute PostVo postVo, Model model, @AuthUser UserVo authUser) {
 			
-			return "blog/write";
+			return "blog/write2";
 		}
 		
 		@Auth

@@ -55,7 +55,7 @@ public class BlogController {
 	@Secret
 	@RequestMapping("/{nickname}/streaming")
 	public String Streaming(@PathVariable String nickname){
-		return "blog/streaming-main";
+		return "blog/streaming-main2";
 	}
 	
 	@Auth
@@ -70,7 +70,7 @@ public class BlogController {
 		
 		model.addAttribute("map", map);
 		
-		return "blog/account-main";
+		return "blog/account-main2";
 	}
 	
 	

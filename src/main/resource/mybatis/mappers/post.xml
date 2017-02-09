@@ -13,6 +13,8 @@
 	</insert>
 	
 	
+	
+	
 	<select id="getPostList" parameterType="int" resultType="postvo">
 		<![CDATA[
 		select users_no, post_no, title, content, regdate, post_image, publish from post 
@@ -56,6 +58,9 @@
 		delete from post where users_no = #{users_no} and post_no= #{post_no}
 		]]>
 	</select>
+	
+	
+	
 	
 	
 	

@@ -75,6 +75,13 @@
 	rel="${pageContext.request.contextPath}/assets/template/stylesheet"
 	type="text/css" href="css/custom.css" media="screen" />
 
+<!-- CKEDITOR SCRIPT -->
+<%-- <script src="${pageContext.request.contextPath}/assets/ckeditor/ckeditor.js"></script> --%>
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+
+<!-- ALERTIFY SCRIPT -->
+<script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
+
 <!--VENDOR SCRIPT-->
 <script
 	src="${pageContext.request.contextPath}/assets/template/vendor/jquery/jquery-1.11.2.min.js"></script>
@@ -84,6 +91,10 @@
 <!-- User Profile -->
 <script
 	src="${pageContext.request.contextPath}/assets/js/userProfile.js"></script>
+	
+<!-- DASH-AVC/265 reference implementation SCRIPT-->
+	<script src="http://cdn.dashjs.org/latest/dash.all.min.js"></script>	
+	
 <link
 	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
 	rel="stylesheet">
@@ -179,11 +190,6 @@
 					
 					</div>
 				</div>
-
-
-
-
-
 			</div>
 		</section>
 		<!-- END: PAGE TITLE -->
@@ -191,28 +197,25 @@
 		<!-- CONTENT -->
 		<section class="content">
 			<div class="container list_container">
-				<!-- Blog post-->
-				<div class="isotope" data-isotope-item-space="3"
-					data-isotope-col="3" data-isotope-item=".post-item">
+				<div class="streaming_browser">
+						 <div>
+				            <video id="videoPlayer" controls></video>
+				       	 </div>
 					
+						<div class="streaming_control">
+							<button type='button' class='btn btn-info' id='left'><i id="left" class="material-icons">fast_rewind</i></button>
+				    		<button type='button' class='btn btn-info' id='center'><i class="material-icons">filter_center_focus</i></button>
+				    		<button type='button' class='btn btn-info' id='right'><i class="material-icons">fast_forward</i></button>
+				
+						<div class="togglebutton">
+							<label> 
+								<input type="checkbox" checked="checked">
+							</label>
+						</div>
+					</div>
 				</div>
-				<!--  pagination nav 
-	      <div class="text-center">
-	        <div class="pagination-wrap">
-	          <ul class="pagination">
-	            <li> <a aria-label="Previous" href="#"> <span aria-hidden="true"><i class="fa fa-angle-left"></i></span> </a> </li>
-	            <li><a href="#">1</a> </li>
-	            <li><a href="#">2</a> </li>
-	            <li class="active"><a href="#">3</a> </li>
-	            <li><a href="#">4</a> </li>
-	            <li><a href="#">5</a> </li>
-	            <li> <a aria-label="Next" href="#"> <span aria-hidden="true"><i class="fa fa-angle-right"></i></span> </a> </li>
-	          </ul>
-	        </div>
-	      </div> -->
-
-				<!-- END: Blog post-->
 			</div>
+
 		</section>
 
 		<!-- END: SECTION -->
@@ -288,53 +291,6 @@
 
 
 
-	<!-- post 최신 글 9개 불러오는 ajax list -->
-	<script>
-	var nickname = "${map.userVo.nickname}"
-	var image_path = "${pageContext.request.contextPath}/hotdog/image/user/"
-	var post = "${pageContext.request.contextPath }/post/postView?post_no="
-				
-			
-
-		var render = function(vo, $){
-		var htmls =  "<div class='post-item'><div class='post-image'><img src='" + image_path + vo.post_image + "'></a></div><div class='post-content-details'>" + 
-	        		  "<div class='post-title'><h3>" + vo.title + "</a></h3></div>" +
-	        		  "<div class='post-description'><div class='post-info'><a class='read-more' href='" + post + vo.post_no + "'>read more <i class='fa fa-long-arrow-right'></i></a></div>" +
-	         		  "</div></div><div class='post-meta'><div class='post-date'><span class='post-date-year'>" + vo.regdate + "</span></div>" +
-	        		  "<div class='post-comments' data-no='" + vo.post_no + "'> <a href='#'> <i class='fa fa-comments-o'></i><span class='post-comments-number'>0</span></a></div>" +
-	         		  "</div></div>"
-				
-	         		  $(".isotope").append(htmls);
-		}
-	
-	var fetchList = function(){
-		console.log("fetchList")
-	
-		  $.ajax({
-			url: "${pageContext.request.contextPath }/blog/api/indexPostList?nickname=" + nickname,
-			type: "get",
-			dataType: "json",
-			data:"",
-			success: function(response){
-				$(response.data).each(function(index, vo){
-					render(vo, $);
-					
-					
-					console.log("render")
-				});
-			},
-		error: function(jqXHR, status, e){
-			console.error(status + ":" + e)
-			}
-		})
-	};
-	
-	fetchList();
-
-
-	</script>
-
-
 	<!-- user profile modal -->
 	<script>
 	$(document).on('ready', function(){
@@ -359,8 +315,62 @@
 	    });
 
 	  });
-	
 	</script>
+	
+	<!-- VIDEO Controller -->
+	<script>
+			var ip1 = "10.0.0.4";
+		
+            (function(){
+                var url = "http://150.95.141.66:1935/live/${authUser.nickname}/stream/manifest.mpd";
+                var player = dashjs.MediaPlayer().create();
+                player.initialize(document.querySelector("#videoPlayer"), url, true);
+                
+                $("#left").click(function(){
+                    $.ajax({
+                        url:"http://150.95.141.66/test/cgi-bin/send.py",
+                        type:"post",
+                        data: { msg:"left", ip:ip1 },
+                        success: function(){
+                            console.log("success");
+                        },
+                        error : function(jqXHR, status, e) {
+                        console.log(status + ":" + e);
+                        }            
+                    });
+                });
+                
+                $("#center").click(function(){
+                    $.ajax({
+                        url:"http://150.95.141.66/test/cgi-bin/send.py",
+                        type:"post",
+                        data: { msg:"center", ip:ip1 },
+                        success: function(){
+                            console.log("success");
+                        },
+                        error : function(jqXHR, status, e) {
+                        console.log(status + ":" + e);
+                        }            
+                    });
+                });
+                
+                $("#right").click(function(){
+                    $.ajax({
+                        url:"http://150.95.141.66/test/cgi-bin/send.py",
+                        type:"post",
+                        data: { msg:"right", ip:ip1 },
+                        success: function(){
+                            console.log("success");
+                        },
+                        error : function(jqXHR, status, e) {
+                        console.log(status + ":" + e);
+                        }            
+                    });
+                });
+            })();
+       
+       
+    </script>
 
 
 </body>

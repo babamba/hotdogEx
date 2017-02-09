@@ -179,11 +179,6 @@
 					
 					</div>
 				</div>
-
-
-
-
-
 			</div>
 		</section>
 		<!-- END: PAGE TITLE -->
@@ -213,6 +208,7 @@
 
 				<!-- END: Blog post-->
 			</div>
+			<div class="text-center m-t-40"><a href="#" class="button border rounded">Load more</a></div>
 		</section>
 
 		<!-- END: SECTION -->
@@ -290,46 +286,97 @@
 
 	<!-- post 최신 글 9개 불러오는 ajax list -->
 	<script>
-	var nickname = "${map.userVo.nickname}"
-	var image_path = "${pageContext.request.contextPath}/hotdog/image/user/"
-	var post = "${pageContext.request.contextPath }/post/postView?post_no="
-				
-			
+	var isEnd = false;
+	var authUser = ${authUser.users_no};
+	var page = 0;			// 게시글의 0번째 인덱스 
+	var pluspage = 5;	// 게시글이 15개씩 fetchList로 로딩 되니까 fetchList가 요청될 시 15만큼 더해서 db인덱스값을 더해서 요청한다.
 
-		var render = function(vo, $){
-		var htmls =  "<div class='post-item'><div class='post-image'><img src='" + image_path + vo.post_image + "'></a></div><div class='post-content-details'>" + 
-	        		  "<div class='post-title'><h3>" + vo.title + "</a></h3></div>" +
-	        		  "<div class='post-description'><div class='post-info'><a class='read-more' href='" + post + vo.post_no + "'>read more <i class='fa fa-long-arrow-right'></i></a></div>" +
-	         		  "</div></div><div class='post-meta'><div class='post-date'><span class='post-date-year'>" + vo.regdate + "</span></div>" +
-	        		  "<div class='post-comments' data-no='" + vo.post_no + "'> <a href='#'> <i class='fa fa-comments-o'></i><span class='post-comments-number'>0</span></a></div>" +
-	         		  "</div></div>"
+	var render = function(vo, mode){
+			
+	 var htmls = "<div class='list'><a href='#' rel='lightbox'><img src=''><h5>'" + vo.title + "</h5>" + 
+				 "<ul class='list_content'><li>" + vo.regdate + "</li><li>" + vo.content + "</li>" + 
+				 "</ul></a></div>"
+
+		console.log("htmls");
 				
-	         		  $(".isotope").append(htmls);
+		if(mode == true ){
+			$(".list_container").prepend(htmls);
+		}else{
+			$(".list_container").append(htmls);
 		}
-	
+	}
+
+
+
 	var fetchList = function(){
 		console.log("fetchList")
-	
+		if(isEnd == true){
+			  return;
+		  }
+		
+		  console.log(page);
+		  
 		  $.ajax({
-			url: "${pageContext.request.contextPath }/blog/api/indexPostList?nickname=" + nickname,
+			url: "${pageContext.request.contextPath }/post/api/list?p=" + page + "&no=" + authUser,
 			type: "get",
 			dataType: "json",
 			data:"",
 			success: function(response){
-				$(response.data).each(function(index, vo){
-					render(vo, $);
-					
-					
-					console.log("render")
-				});
+
+				if(response.result != "success"){
+					console.error(response.message);
+					isEnd = true;
+					return;
+				}
+				
+			$(response.data).each(function(index, vo){
+				render(vo, false);
+				console.log("render")
+			});
+			
+			if( response.data.length < 10 ) {
+				isEnd = true;
+				$( ".load-more-link" ).prop( "disabled", true );
+			}
+			
+			
 			},
 		error: function(jqXHR, status, e){
 			console.error(status + ":" + e)
-			}
-		})
-	};
-	
-	fetchList();
+		}
+	});
+	}
+
+
+		
+		  $(function(){
+			$(window).scroll( function(){
+				var $window = $(this);				  // 브라우저 창 기준
+				var scrollTop = $window.scrollTop();  // 스크롤의 현재 위치
+				var windowHeight = $window.height();  // 윈도우창의 높이 가변
+				var documentHeight = $( document ).height();  //문서의 기준
+				
+				
+				// 창사이즈가 줄어들수록 window 값을 달라짐.
+				// 스크롤의 맨마지막 top값을 알려면 
+				// 문서높이  - 브라우저 창 높이 = 스크롤 스크롤 창 끝
+				
+				
+				// 스크롤 바가 바닥까지 왔을 때( 10px 덜 왔을 때 )
+				if( scrollTop == documentHeight - windowHeight ) {
+					console.log( "call fetchList" );
+					fetchList();
+					++page;
+					page = page * pluspage;
+				}
+			});
+			fetchList();
+			++page;
+			page = page * pluspage;
+		});
+		  
+		
+		  
 
 
 	</script>

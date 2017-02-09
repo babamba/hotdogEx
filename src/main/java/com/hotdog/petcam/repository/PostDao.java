@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.hotdog.petcam.vo.PostChatVo;
 import com.hotdog.petcam.vo.PostVo;
 
 @Repository
@@ -29,6 +30,9 @@ public class PostDao {
 	public void insert(PostVo postVo) {
 		sqlSession.insert("post.insert", postVo);
 	}
+	
+	
+	
 	
 	public int delete(PostVo postVo){
 		return sqlSession.delete("post.postdelete", postVo);

@@ -165,48 +165,79 @@
                         <h4 class="comments-title">Comments <small class="number">(4)</small></h4>
                     </div>
 
-
-
                     <div class="comment">
                         <a href="#" class="pull-left">
-                            <img alt="" src="images/team/2.jpg" class="avatar">
+                            <img alt="" src="${pageContext.request.contextPath}/assets/template/images/team/4.jpg" class="avatar">
                         </a>
                         <div class="media-body">
-                            <h4 class="media-heading">Juna Smith</h4>
-                            <p class="time">Jan 18, 2015 at 10:30 PM</p>
-                            <p>Nullam nisl dui, congue in mi non, dapibus adipiscing metus. Donec mollis semper rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed euismod neque. Aliquam eget malesuada enim, eu interdum elit. Sed sagittis ornare velit a congue.</p>
-                            <a href="#" class="comment-reply pull-right"><i class="fa fa-reply"></i> Reply</a>
-                        </div>
 
+                            <h4 class="media-heading">Dia Perry</h4>
+                            <p class="time">Jun 24, 2015 at 14:28 PM</p>
 
+                            <p class="comment_section">Donec mollis semper rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+							
+                            <a href="javascript:;" class="comment-reply pull-right"><i class="fa fa-reply"></i> Reply</a>
 
-                        <div class="comment comment-replied">
-                            <a href="#" class="pull-left">
-                                <img alt="" src="images/team/3.jpg" class="avatar">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">Ariol Smith</h4>
-                                <p class="time">Jun 24, 2015 at 14:28 PM</p>
-                                <p>Ut ultrices consectetur eleifend. Nullam nisl dui, congue in mi non, dapibus adipiscing metus. Donec mollis semper rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed euismod neque. Aliquam eget malesuada enim, eu interdum elit. Sed sagittis ornare velit a congue.</p>
-                                <a href="#" class="comment-reply pull-right"><i class="fa fa-reply"></i> Reply</a>
-                            </div>
                         </div>
                     </div>
+                    
+                    <script>
+      				
+                    
+                    
+                    var render= function(){
+                    	var textarea = "<form action='#'><textarea data-no='${authUser.nickname}' name='content' id='comments'></textarea>";
+                    	  $(".comment_section").append(textarea);
+                    }
+                    
+	                   $(".comments").on("click", ".comment-reply", function(){
+	           	          render();
+	           	          console.log("render");
+	                	  $('.comment-reply').replaceWith("<button type='submit' class='btn chatBtn'><i class='fa fa-paper-plane'></i>&nbsp;Post comment</button>")
+	                   })
+	                   
+	                
+                    $(document).on("click", ".chatBtn", function(){
+                    	var nickname = "${authUser.nickname}";
+                    	var post_no = "${postVo.post_no}";
+                		
+                    	$.ajax({
+                			url: "${pageContext.request.contextPath }/post/api//postComment/chatInsert?nickname=" + nickname + "&post_no=" + post_no,
+                			type: "get",
+                			dataType: "json",
+                			data:"",
+                			success: function(response){
+                					console.log("render")
+                				},
+                		error: function(jqXHR, status, e){
+                			console.error(status + ":" + e)
+                			}
+                		})
+                	})   
+	                   
+	                   
+	                   
+                    </script>
+                    
+                    
+                    
+                    
+                    
+                    
                 </div>
                 
                 <div class="comment-form">
                     <div class="heading heading_form">
                         <h4>Leave a comment</h4>
                     </div>
-                    <form class="form-gray-fields">
-                       
+                    
+                    
+                    <form class="form-gray-fields" action="${pageContext.request.contextPath}/post/comment?">   
                             <div class="col-md-4 form_group_nickname">
                                 <div class="form-group">
                                     <label for="name" class="upper">${authUser.nickname}</label>
-                                    
                                 </div>
                             </div>
-                     
                         
                         <div class="row">
                             <div class="col-md-12">
@@ -226,6 +257,10 @@
                         </div>
 
                     </form>
+                    
+                    
+                    
+                    
                 </div>
             </div>
             

@@ -11,6 +11,7 @@ import com.hotdog.petcam.repository.ImageDao;
 import com.hotdog.petcam.repository.PostDao;
 import com.hotdog.petcam.repository.UserDao;
 import com.hotdog.petcam.vo.ImageVo;
+import com.hotdog.petcam.vo.PostChatVo;
 import com.hotdog.petcam.vo.PostVo;
 import com.hotdog.petcam.vo.UserVo;
 

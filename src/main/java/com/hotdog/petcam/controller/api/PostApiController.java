@@ -25,7 +25,6 @@ public class PostApiController {
 	@Autowired
 	private PostService postService;
 	
-	
 	@Auth
 	@ResponseBody
 	@RequestMapping("/list")
@@ -63,18 +62,6 @@ public class PostApiController {
 		
 		return JSONResult.success(result ? postVo.getUsers_no() : -1);
 	}
-	
-	
-	@ResponseBody
-	@RequestMapping("/postComment/insert")
-	public JSONResult postCommentInsert(
-			@RequestParam(value="post_no")int post_no,
-			@RequestParam(value="nickname")String nickname
-			){
-		return JSONResult.success("comment");
-	}
-	
-	
 	
 	
 }

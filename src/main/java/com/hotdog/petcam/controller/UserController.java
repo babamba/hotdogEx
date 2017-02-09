@@ -310,6 +310,21 @@ public class UserController {
 			return JSONResult.success("success");
 		}
 		
+		@ResponseBody
+        @RequestMapping(value = "app/account/userprofilemodify2", method = RequestMethod.POST)
+        public Object appUserProfileModify2(@RequestParam(value="users_no")Integer users_no,@ModelAttribute UserVo userVo,
+                                            @RequestParam(value = "userimage") MultipartFile userimage) {
+            
+
+            String saveName = imageService.restore(userimage, users_no);
+            userVo.setUsers_no(users_no);
+            userVo.setUsers_image(saveName);
+            
+            userService.setImage( userVo );
+
+            return JSONResult.success(saveName);
+        }
+		
 	
 	
 	
