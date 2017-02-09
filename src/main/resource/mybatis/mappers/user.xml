@@ -185,7 +185,7 @@
 	
 	<select id="getPet" parameterType="int" resultType="petvo">
 		<![CDATA[
-			select pet_no,name,info,gender,age,co_date,pet_image,user_no
+			select *
 				from pet
 					where users_no=#{no};
 				
