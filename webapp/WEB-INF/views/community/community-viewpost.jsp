@@ -90,25 +90,28 @@
 	
 <script type="text/javascript">
 
+
 var boardNo = ${boardVo.board_no};
 var usersNo = ${authUserNo};
 var image_path = "${pageContext.request.contextPath}/hotdog/image/user/"
 
+
 var renderReply = function(vo){
 	
 	var htmls = 
-		"<a href='#' class='pull-left'> <img alt='' src='" + image_path + vo.users_image + "' class='avatar'></a>"+
+		"<div class='comment'><a href='#' data-id='" + vo.comments_no + "' class='pull-left'> <img alt='' src='" + image_path + vo.users_image + "' class='avatar'></a>"+
 		"<div class='media-body'>"+
 		"<h4 class='media-heading'>"+vo.nickname+"</h4>"+
 		"<p class='time'>"+vo.regdate +"</p>"+
 		"<p class='comment_section'>"+vo.content+"</p>"+
+		"<form><textarea placeholder='테스트'></textarea>" +
+		"<a href='javascript:;' class='comment-fetchlist pull-right' onclick=javascript:comment_fetch_list(); return false; id='reply' ><i class='fa fa-reply'></i>답글보기</a>"+
 		"<a href='javascript:;' class='comment-reply pull-right' id='reply' ><i class='fa fa-reply'></i>Reply</a>"+
-		"</div>";
+		"</form></div>";
 		
 		$("#attachReply").append(htmls);
 };
 
-   
 var fetchReply = function(){
 		
 	$.ajax({
@@ -126,7 +129,7 @@ var fetchReply = function(){
 			$(response.data).each(function(index, vo){
 				
 				renderReply(vo);
-
+				
 			})
 		},
 		error : function(jqXHR, status, e) {
@@ -138,6 +141,7 @@ var fetchReply = function(){
 $(function(){
  
 	fetchReply();
+	var commentsNo = $(this).attr("data-id");
 	
 	console.log(usersNo);
 	
@@ -165,8 +169,54 @@ $(function(){
 			}
 		});
 	});
-	
 });
+
+var renderCommentfetchList = function(vo){
+	
+	var htmls = 
+		"<div class='comment comment-replied'><a href='#' class='pull-left'><img alt='' src='" + image_path + vo.users_image +"' class='avatar'></a>" +
+		"<div class='media-body'><h4 class='media-heading'>" + vo.nickname + "'</h4><p class='time'>" + vo.regdate + "</p>" +
+		"<p class='comment_section'>"+vo.content+"</p>'+ '<form><textarea placeholder='테스트'></textarea>" +
+		"<a href='javascript:;' class='comment-reply pull-right' id='reply' ><i class='fa fa-reply'></i>Reply</a>" + 
+		"</form></div>";
+		
+		$("#attachReply").append(htmls);
+};
+
+
+var comment_fetch_list = function(){
+	
+	$.ajax({
+		url : "${pageContext.request.contextPath }/community/freeboard/api/commentFetchList?comments_no="+commentsNo,
+		type : "get",
+		dataType : "json",
+		success : function(response){
+			
+			if(response.result != "success"){
+				console.error(response.message);
+				return;
+			}
+			
+			//redering
+			$(response.data).each(function(index, vo){
+				renderCommentfetchList(vo);
+			})
+		},
+		error : function(jqXHR, status, e) {
+			console.log(status + ":" + e);
+		}
+	});
+};
+
+$(".comment-fetchlist").click(function(){
+	comment_fetch_list();
+})
+
+
+
+
+
+
 </script>
 
 <body>
@@ -302,19 +352,20 @@ $(function(){
 							</h4>
 						</div>
 
-
-						<div class="comment" id="attachReply">
-							<!--
-								<a href="#" class="pull-left"> <img alt="" src="images/team/1.jpg" class="avatar"></a>
-														
-								<div class="media-body" id="attachReply">
-								
-								<h4 class="media-heading">닉네임!!!</h4>
-								<p class="time">등록날짜 !!!</p>
-								<p>내용 !!!</p>
-								<a href="#" class="comment-reply pull-right"><i class="fa fa-reply"></i> Reply</a>
-								
-							</div> -->
+						<div id="attachReply">
+							<!-- <div class="comment"> -->
+								<!--
+									<a href="#" class="pull-left"> <img alt="" src="images/team/1.jpg" class="avatar"></a>
+															
+									<div class="media-body" id="attachReply">
+									
+									<h4 class="media-heading">닉네임!!!</h4>
+									<p class="time">등록날짜 !!!</p>
+									<p>내용 !!!</p>
+									<a href="#" class="comment-reply pull-right"><i class="fa fa-reply"></i> Reply</a>
+									
+								</div> -->
+							<!-- </div> -->
 						</div>
 					</div>
 					
