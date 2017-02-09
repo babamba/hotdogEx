@@ -283,5 +283,8 @@ public class UserService {
 	public void appUserProfileModify(UserVo userVo) {
 		userDao.appUserProfileModify(userVo);
 	}
-
+	
+	public PetVo getPet(int users_no){
+		return userDao.getPet(users_no);
+	}
 }

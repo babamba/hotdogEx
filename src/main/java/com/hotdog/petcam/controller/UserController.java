@@ -249,7 +249,38 @@ public class UserController {
 		
 		return "redirect:/blog/" + authUser.getNickname();
 	}
-
+	
+	@ResponseBody
+	@RequestMapping(value = "/app/account/petprofilemodify", method = RequestMethod.POST)
+	public Object appPetProfileModify(@ModelAttribute PetVo petVo,@RequestParam(value="users_no")Integer users_no,
+			@RequestParam(value="petname") String name,@RequestParam(value="petinfo") String info,
+			@RequestParam(value="gender")String gender,@RequestParam(value="age")String age,
+			@RequestParam(value="co_date") String co_date ){
+		
+		userService.petProfileModify(petVo,users_no,name,info,co_date,age,gender);
+		return JSONResult.success("success");
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/app/account/petprofilemodify2", method = RequestMethod.POST)
+	public Object appPetProfileModify2(@ModelAttribute PetVo petVo,@RequestParam(value="users_no") Integer users_no,
+			@RequestParam(value="petimage")MultipartFile petimage ){
+		
+		
+		String saveName = imageService.restore(petimage, users_no);
+		petVo.setUsers_no(users_no);
+		petVo.setPet_image(saveName);
+		userService.setPetImage(petVo);
+		
+		return JSONResult.success(saveName);
+	}
+	@ResponseBody
+	@RequestMapping(value = "/app/getpet")
+	public Object appGetPet(@RequestParam(value="users_no")Integer users_no){
+		
+		PetVo pet=userService.getPet(users_no);
+		return JSONResult.success(pet);
+	}
 	
 	// ******************************secret check ****************
 	
