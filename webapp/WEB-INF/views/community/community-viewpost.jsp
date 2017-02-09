@@ -99,15 +99,14 @@ var image_path = "${pageContext.request.contextPath}/hotdog/image/user/"
 var renderReply = function(vo){
 	
 	var htmls = 
-		"<div class='comment'><a href='#' data-id='" + vo.comments_no + "' class='pull-left'> <img alt='' src='" + image_path + vo.users_image + "' class='avatar'></a>"+
+		"<div class='comment'><a href='#' class='pull-left'> <img alt='' src='" + image_path + vo.users_image + "' class='avatar'></a>"+
 		"<div class='media-body'>"+
 		"<h4 class='media-heading'>"+vo.nickname+"</h4>"+
 		"<p class='time'>"+vo.regdate +"</p>"+
 		"<p class='comment_section'>"+vo.content+"</p>"+
-		"<form><textarea placeholder='테스트'></textarea>" +
-		"<a href='javascript:;' class='comment-fetchlist pull-right' onclick=javascript:comment_fetch_list(); return false; id='reply' ><i class='fa fa-reply'></i>답글보기</a>"+
-		"<a href='javascript:;' class='comment-reply pull-right' id='reply' ><i class='fa fa-reply'></i>Reply</a>"+
-		"</form></div>";
+		"<button class='comment-reply pull-right' id='viewChat' data-cno1='"+vo.comments_no+"'><i class='fa fa-reply'></i>답글보기</button>"+
+		"<button class='comment-reply pull-right' id='writeChat' data-cno2='"+vo.comments_no+"'><i class='fa fa-reply'></i>Reply</button>"+
+		"</div>";
 		
 		$("#attachReply").append(htmls);
 };
@@ -138,13 +137,51 @@ var fetchReply = function(){
 	});
 };
 
+var renderReplyChat = function(vo){
+	
+	var htmls = 
+		"<div class='comment comment-replied'><a href='#' class='pull-left'><img alt='' src='" + image_path + vo.users_image +"' class='avatar'></a>" +
+		"<div class='media-body'><h4 class='media-heading'>" + vo.nickname + "'</h4><p class='time'>" + vo.regdate + "</p>" +
+		"<p class='comment_section'>"+vo.content+"</p>'+ '<form><textarea placeholder='테스트'></textarea>" +
+		"<a href='javascript:;' class='comment-reply pull-right' id='reply' ><i class='fa fa-reply'></i>Reply</a>" + 
+		"</form></div>";
+		
+		$("#attachReply").append(htmls);
+};
+
+
+
+var fetchReplyChat = function(commentsNo){
+	
+	$.ajax({
+		url : "${pageContext.request.contextPath }/community/freeboard/api/fetchreplychat?commentsNo="+commentsNo,
+		type : "get",
+		dataType : "json",
+		success : function(response){
+			
+			if(response.result != "success"){
+				console.error(response.message);
+				return;
+			}
+			
+			//redering
+			$(response.data).each(function(index, vo){
+				renderReplyChat(vo);
+			})
+		},
+		error : function(jqXHR, status, e) {
+			console.log(status + ":" + e);
+		}
+	});
+};
+
+
+
 $(function(){
  
 	fetchReply();
-	var commentsNo = $(this).attr("data-id");
-	
-	console.log(usersNo);
-	
+		
+
 	$("#writeReply").submit(function(event){
 		
 		event.preventDefault();
@@ -169,53 +206,16 @@ $(function(){
 			}
 		});
 	});
-});
-
-var renderCommentfetchList = function(vo){
 	
-	var htmls = 
-		"<div class='comment comment-replied'><a href='#' class='pull-left'><img alt='' src='" + image_path + vo.users_image +"' class='avatar'></a>" +
-		"<div class='media-body'><h4 class='media-heading'>" + vo.nickname + "'</h4><p class='time'>" + vo.regdate + "</p>" +
-		"<p class='comment_section'>"+vo.content+"</p>'+ '<form><textarea placeholder='테스트'></textarea>" +
-		"<a href='javascript:;' class='comment-reply pull-right' id='reply' ><i class='fa fa-reply'></i>Reply</a>" + 
-		"</form></div>";
+	$(document).on("click", "#viewChat", function(){
 		
-		$("#attachReply").append(htmls);
-};
-
-
-var comment_fetch_list = function(){
-	
-	$.ajax({
-		url : "${pageContext.request.contextPath }/community/freeboard/api/commentFetchList?comments_no="+commentsNo,
-		type : "get",
-		dataType : "json",
-		success : function(response){
-			
-			if(response.result != "success"){
-				console.error(response.message);
-				return;
-			}
-			
-			//redering
-			$(response.data).each(function(index, vo){
-				renderCommentfetchList(vo);
-			})
-		},
-		error : function(jqXHR, status, e) {
-			console.log(status + ":" + e);
-		}
+		var commentsNo = $(this).data("cno1");
+		
+		console.log(commentsNo);
+		
+		fetchReplyChat(commentsNo);
 	});
-};
-
-$(".comment-fetchlist").click(function(){
-	comment_fetch_list();
 })
-
-
-
-
-
 
 </script>
 

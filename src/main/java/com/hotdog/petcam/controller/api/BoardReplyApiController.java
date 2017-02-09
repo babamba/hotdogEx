@@ -41,15 +41,15 @@ public class BoardReplyApiController {
 	
 	/////////////////////////////////////////// Reply Chat
 	@ResponseBody
-	@RequestMapping("/fetchreplyChat")
-	public JSONResult fetchReplyChat(@RequestParam(value="commnetsNo", required=true) Integer comments_no){
+	@RequestMapping("/fetchreplychat")
+	public JSONResult fetchReplyChat(@RequestParam(value="commentsNo", required=true) Integer comments_no){
 				
 		List<BoardChatVo> list = boardService.fetchReplyChat(comments_no);
 		return JSONResult.success(list);
 	}
 	
 	@ResponseBody
-	@RequestMapping("/writereplyChat")
+	@RequestMapping("/writereplychat")
 	public JSONResult writeReplyChat(BoardChatVo boardChatVo){
 		
 		BoardChatVo vo = boardService.writeReplyChat(boardChatVo);
