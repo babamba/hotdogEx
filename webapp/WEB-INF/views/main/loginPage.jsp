@@ -11,10 +11,10 @@
 <meta charset="UTF-8">
 <title>#codevember Sign In / Sign Up</title>
 
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/loginPage.css">
+<script src="${pageContext.request.contextPath}/assets/template/vendor/jquery/jquery-1.11.2.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/loginPage.css">
 <script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
 </head>
 <body>
@@ -118,8 +118,6 @@
 	</section>
 	
 	
-<script src="${pageContext.request.contextPath }/assets/js/jquery.js"></script>
-	<!-- <script src="js/index.js"></script> -->
 	<script>$('.tabs .tab').click(function(){
 	    if ($(this).hasClass('signin')) {
 	        $('.tabs .tab').removeClass('active');
@@ -138,7 +136,8 @@
 	    var amountMovedX = (e.pageX * -1 / 30);
 	    var amountMovedY = (e.pageY * -1 / 9);
 	    $(this).css('background-position', amountMovedX + 'px ' + amountMovedY + 'px');
-	});</script>
+	});
+	</script>
 	
 	<script>
 var email;
