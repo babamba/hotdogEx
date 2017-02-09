@@ -1,11 +1,14 @@
 package com.hotdog.petcam.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hotdog.petcam.repository.FollowDao;
+import com.hotdog.petcam.vo.NewsVo;
 import com.hotdog.petcam.vo.UserVo;
 
 @Service
@@ -36,8 +39,19 @@ public class FollowService {
       }
       return true;
    }
-   // 팔로워 숫자 
+   // 팔로워 숫자 반환
    public int countFollower(int users_no){
       return followDao.countFollower(users_no);
+   }
+   // 내 프로필인지 아닌지
+   public boolean myProfile(int authUser_no,int users_no){
+	   if(authUser_no == users_no){
+		   return true;
+	   }
+	   return false;
+   }
+   // 이웃의 최신글 리턴하기
+   public List<NewsVo> news(int authUser_no,int page){
+	   return followDao.news(authUser_no,page);
    }
 }

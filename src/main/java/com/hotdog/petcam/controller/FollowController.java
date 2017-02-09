@@ -22,7 +22,7 @@ import com.hotdog.petcam.vo.UserVo;
 public class FollowController {
    @Autowired private FollowService followService;
    
-// 모달 띄울때 해당유저 정보 받아오기
+   // 모달 띄울때 해당유저 정보 받아오기
    @Auth
    @ResponseBody
    @RequestMapping(value="/infomodal",method=RequestMethod.POST)
@@ -31,12 +31,14 @@ public class FollowController {
       Map<String,Object> resultMap = new HashMap<String,Object>();
       resultMap.put("didFollow", followService.didFollow(authUser.getUsers_no(),users_no));
       resultMap.put("countFollower", followService.countFollower(users_no));
+      resultMap.put("myProfile", followService.myProfile(authUser.getUsers_no(),users_no));
       
       return JSONResult.success(resultMap);
    }
    
    // 1. Follow 추가
    @Auth
+   @ResponseBody
    @RequestMapping(value="/add",method=RequestMethod.POST)
    public Object addFollow(@AuthUser UserVo authUser,@RequestParam(value="users_no")Integer users_no){
       // 나의 번호와 상대의 번호를 가져와 디비에 입력
@@ -47,6 +49,7 @@ public class FollowController {
    
    // 2. Follow 삭제
    @Auth
+   @ResponseBody
    @RequestMapping(value="/delete",method=RequestMethod.POST)
    public Object deleteFollow(@AuthUser UserVo authUser,@RequestParam(value="users_no")Integer users_no){
       // 나의 번호와 상대의 번호를 가져와 디비에서 삭제
@@ -55,6 +58,7 @@ public class FollowController {
    }
    
    // 3. Following 목록
+   @ResponseBody
    @RequestMapping(value="/followinglist",method=RequestMethod.POST)
    public Object followingList(@RequestParam(value="users_no")Integer users_no){
       // 번호로 해당 유저가 팔로잉하는 사람들의 리스트를 가져온다. 
@@ -64,6 +68,7 @@ public class FollowController {
    }
    
    // 4. Follow 목록
+   @ResponseBody
    @RequestMapping(value="/followlist",method=RequestMethod.POST)
    public Object followList(@RequestParam(value="users_no")Integer users_no){
       // 번호로 해당 유저를 팔로잉 중인 유저들의 리스트를 가져온다. 
@@ -72,6 +77,13 @@ public class FollowController {
       return JSONResult.success(list);
    }
    
-   // 5. 본인이  해당유저를 Follow 했는지 안했는지 판단
-   // follow 버튼을 뿌리는 곳에서 follow Service 의  did follow 메서드 불러서 판단
+   // 5. 팔로우 이웃들의 최근 글 출력하기
+   @Auth
+   @ResponseBody
+   @RequestMapping(value="/news",method=RequestMethod.GET)
+   public Object news(@AuthUser UserVo authUser,
+		   			  @RequestParam(value="page",required=true,defaultValue="1")Integer page){
+	   
+	   return JSONResult.success(followService.news(authUser.getUsers_no(), page));
+   }
 }

@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.hotdog.petcam.vo.NewsVo;
 import com.hotdog.petcam.vo.UserVo;
 
 @Repository
@@ -55,4 +56,11 @@ public class FollowDao {
    public int countFollower(int users_no){
       return sqlSession.selectOne("follow.countFollower", users_no);
    }
+   public List<NewsVo> news(int authUser_no,int page){
+	   Map<String,Object> map = new HashMap<String,Object>();
+	   map.put("authUser_no", authUser_no);
+	   map.put("page", page);
+	   return sqlSession.selectList("follow.news", map);
+   }
+   
 }

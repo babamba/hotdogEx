@@ -214,23 +214,23 @@
                      data:"users_no="+users_no,
                      dataType:"json",
                      success:function(response){
-                        createButton(response.data.didFollow);
+                        createButton(response.data.didFollow,response.data.myProfile);
                         createFollower(response.data.countFollower);
                      }
                   })
                })
                
                // 2-1.팔로우 유무를 판단하여 버튼을 생성한다.
-               var createButton = function(didFollow){
+               var createButton = function(didFollow,myProfile){
                   var htmls;
                   // 팔로우 안되어 있을 때 
-                  if(didFollow == false){
+                  if(didFollow == false && myProfile != true){
                      htmls = "<button id='followButton'>Follow</button>";
                   }
                   // 팔로우 되어 있을 때 생성할 버튼
-                  else{
-                     htmls ="<button id='deleteFollowButton'>Delete Follow</button>";
-                  }
+                  if(didFollow == true && myProfile != true){
+           		   htmls ="<button id='deleteFollowButton'>Delete Follow</button>";
+           	   }
                   
                   $("#emptyButton").append(htmls);
                }
@@ -243,6 +243,7 @@
                
                // 3. 팔로우 / 팔로우 삭제 버튼 클릭시 요청 처리해주고 버튼 바꾸기
                 $(document).on("click", "#followButton", function(){
+                	alert
                    var users_no= ${map.userVo.users_no};
                    var htmls;
                    
@@ -284,6 +285,5 @@
                 })
                
                </script>
-
 </body>
 </html>

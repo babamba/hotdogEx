@@ -72,7 +72,6 @@ public class UserController {
 	public Object appjoin(@ModelAttribute UserVo userVo, HttpServletRequest request) {
 
 		int users_no = userService.join(userVo);
-		System.out.println(users_no);
 		userVo.setUsers_no(users_no);
 		userService.insert(userVo);
 
@@ -229,7 +228,6 @@ public class UserController {
 			@RequestParam(value="gender")String gender,@RequestParam(value="age")String age,
 			@RequestParam(value="co_date") String co_date ){
 		
-		System.out.println("사진없이 컨트롤러 들어옴");
 		userService.petProfileModify(petVo,authUser.getUsers_no(),name,info,co_date,age,gender);
 		return "redirect:/blog/" + authUser.getNickname();
 	}
@@ -242,7 +240,6 @@ public class UserController {
 			@RequestParam(value="gender") String gender,@RequestParam(value="age") String age,
 			@RequestParam(value="co_date") String co_date,@RequestParam(value="petimage")MultipartFile petimage ){
 		
-		System.out.println("사진 가지고 컨트롤러 들어옴");
 		userService.petProfileModify(petVo,authUser.getUsers_no(),name,info,co_date,age,gender);
 		
 		String saveName = imageService.restore(petimage, authUser.getUsers_no());

@@ -68,4 +68,18 @@
       ]]>
    </select>
    
+   <!-- 7. 팔로우한 이웃들의 최근 글 목록 불러오기 -->
+   <select id="news" parameterType="map" resultType="newsvo">
+   	<![CDATA[
+		   		select e.rn,e.users_image,e.nickname,e.title,e.regdate,e.users_no
+			from ( select @rownum:=@rownum+1 as rn, c.users_image,c.nickname,a.title,a.regdate,a.users_no
+					from post a,( select users_no
+											from follow
+									where follow_users_no=#{authUser_no}) b, users c,(select @rownum:=0) d
+					where a.users_no = b.users_no and a.users_no = c.users_no
+						order by regdate desc ) e
+			  where (#{page}-1)*10+1 <= rn and rn <= #{page}*10
+   	]]>
+   </select>
+   
 </mapper>

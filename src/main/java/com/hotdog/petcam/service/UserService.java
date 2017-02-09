@@ -43,6 +43,10 @@ public class UserService {
 		blogVo.setLogo_image("a.jpg");
 
 		blogDao.insert(blogVo);
+		
+		PetVo pet = new PetVo();
+		pet.setUsers_no(userVo.getUsers_no());
+		userDao.insertPet(pet);
 	}
 
 	public void createFolder(int no) {
@@ -245,7 +249,6 @@ public class UserService {
 				ModiPet.setGender(gender);
 			}
 			ModiPet.setUsers_no(no);
-			System.out.println(ModiPet);
 			userDao.petProfileModify(ModiPet);
 
 		}
