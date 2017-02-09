@@ -6,18 +6,25 @@
    <!--  1. 팔로우 추가  -->
    <insert id="addFollow" parameterType="map">
       <![CDATA[
-         insert 
-            into follow(users_no,follow_users_no) 
-         values   (#{users_no},#{authUser_no});
+         insert into follow( users_no, follow_users_no) 
+         values(#{users_no}, #{authUser_no})
       ]]>
    </insert>
+   <!--  1.1 팔로우 추가시 USERS 테이블 팔로우 숫자 갱샌해주기 -->
+   <update id="followerUpdate" parameterType="int">
+         <![CDATA[
+            update users 
+            set follower_num = (select count(follow_users_no)  from follow where users_no=#{users_no}) 
+            where users_no = #{users_no}
+         ]]>
+   </update>
 
    <!--  2. 팔로우 삭제 -->   
    <delete id="deleteFollow" parameterType="map">
       <![CDATA[
          delete 
             from follow
-         where users_no = #{users_no} and follow_users_no=#{authUser_no};
+         where users_no = #{users_no} and follow_users_no=#{authUser_no}
       ]]>
    </delete>
    
@@ -28,7 +35,7 @@
             from ( select users_no
                      from follow
                   where follow_users_no = #{users_no} ) a ,users b
-            where a.users_no = b.users_no;
+            where a.users_no = b.users_no
       ]]>
    </select>
    
@@ -39,7 +46,7 @@
             from ( select users_no
                      from follow
                   where users_no = #{users_no} ) a , users b
-            where a.users_no = b.users_no;
+            where a.users_no = b.users_no
       ]]>
    </select>
    
@@ -48,7 +55,7 @@
       <![CDATA[
          select users_no
             from follow
-            where users_no=#{users_no} and follow_users_no = #{authUser_no};
+            where users_no=#{users_no} and follow_users_no = #{authUser_no}
       ]]>   
    </select>
    
@@ -57,7 +64,7 @@
       <![CDATA[
          select count(follow_users_no)
             from follow
-            where users_no=#[users_no};
+            where users_no=#{users_no}
       ]]>
    </select>
    

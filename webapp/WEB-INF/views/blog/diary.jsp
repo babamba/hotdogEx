@@ -178,8 +178,7 @@
 		<section class="content">
 			<div class="container list_container">
 				<!-- Blog post-->
-				<div class="isotope" data-isotope-item-space="3"
-					data-isotope-col="3" data-isotope-item=".post-item">
+				<div class="isotope" data-isotope-item-space="3" data-isotope-col="3" data-isotope-item=".post-item">
 					
 				</div>
 				<!--  pagination nav 
@@ -199,7 +198,7 @@
 
 				<!-- END: Blog post-->
 			</div>
-			<div class="text-center m-t-40"><a href="#" class="button border rounded">Load more</a></div>
+			<div id="load-more-link" class="text-center m-t-40"><a href="javascript:;" class="button border rounded">Load more</a></div>
 		</section>
 
 		<!-- END: SECTION -->
@@ -246,25 +245,6 @@
 
 	</div>
 	<!-- END: WRAPPER -->
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/bootstrap.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/plugins.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/nouislider.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/bootstrap-datepicker.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/material-kit.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/modernizr-2.6.2.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
-
 	<!-- Theme Base, Components and Settings -->
 	<script
 		src="${pageContext.request.contextPath}/assets/template/js/theme-functions.js"></script>
@@ -277,27 +257,27 @@
 
 	<!-- post 최신 글 9개 불러오는 ajax list -->
 	<script>
+	
+	var nickname = "${map.userVo.nickname}"
+	var image_path = "${pageContext.request.contextPath}/hotdog/image/user/"
+	var post = "${pageContext.request.contextPath }/post/postView?post_no="
+	
 	var isEnd = false;
 	var authUser = ${authUser.users_no};
 	var page = 0;			// 게시글의 0번째 인덱스 
 	var pluspage = 5;	// 게시글이 15개씩 fetchList로 로딩 되니까 fetchList가 요청될 시 15만큼 더해서 db인덱스값을 더해서 요청한다.
 
-	var render = function(vo, mode){
+	var render = function(vo){
 			
-	 var htmls = "<div class='list'><a href='#' rel='lightbox'><img src=''><h5>'" + vo.title + "</h5>" + 
-				 "<ul class='list_content'><li>" + vo.regdate + "</li><li>" + vo.content + "</li>" + 
-				 "</ul></a></div>"
-
-		console.log("htmls");
+	 var htmls = "<div class='post-item'><div class='post-image'><a href='#'> <img alt='' src='" + image_path + vo.post_image + "'></a></div>" +
+				 "<div class='post-content-details'><div class='post-title'><h3>" + vo.title + "</h3></div></div><div class='post-description'>" +
+				 "<div class='post-info'> <a class='read-more' href='" + post + vo.post_no + "'>read more <i class='fa fa-long-arrow-right'></i></a> </div></div></div>" +
+				 "<div class='post-meta'><div class='post-date'><span class='post-date-year'>" + vo.regdate + "</span></div>" +
+				 "<div class='post-comments' data-no='" + vo.post_no + "'><a href='#'><i class='fa fa-comments-o'></i> <span class='post-comments-number'>324</span></a></div>" +
+				 "<div class='post-comments'><a href='#'> <i class='fa fa-share-alt'></i> <span class='post-comments-number'>324</span></a></div></div></div>"
 				
-		if(mode == true ){
-			$(".list_container").prepend(htmls);
-		}else{
-			$(".list_container").append(htmls);
-		}
+				 $(".isotope").append(htmls);
 	}
-
-
 
 	var fetchList = function(){
 		console.log("fetchList")
@@ -327,10 +307,8 @@
 			
 			if( response.data.length < 10 ) {
 				isEnd = true;
-				$( ".load-more-link" ).prop( "disabled", true );
-			}
-			
-			
+				$( "#load-more-link" ).prop( "disabled", true );
+				}
 			},
 		error: function(jqXHR, status, e){
 			console.error(status + ":" + e)

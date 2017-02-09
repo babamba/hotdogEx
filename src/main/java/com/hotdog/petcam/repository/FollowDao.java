@@ -19,7 +19,10 @@ public class FollowDao {
       map.put("authUser_no", authUser_no);
       map.put("users_no", users_no);
       
+      // 팔로우 추가
       sqlSession.insert("follow.addFollow", map);
+      // USERS 테이블에 follower_num 갱신
+      sqlSession.update("follow.followerUpdate",users_no);
    }
    
    public void deleteFollow(int authUser_no,int users_no){
@@ -27,7 +30,10 @@ public class FollowDao {
       map.put("authUser_no", authUser_no);
       map.put("users_no", users_no);
       
+      //팔로우 삭제
       sqlSession.delete("follow.deleteFollow",map);
+      // USERS 테이블에 follower_num 갱신
+      sqlSession.update("follow.followerUpdate",users_no);
    }
    
    public List<UserVo> followingList(int users_no){

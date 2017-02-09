@@ -39,7 +39,7 @@
 
 	<select id ="getDataByNo" parameterType="int" resultType="uservo">
         <![CDATA[
-        select email, nickname, infomation, users_image, follower_num, following_num
+        select users_no, email, nickname, infomation, users_image, follower_num, following_num
           from users
          where users_no = #{users_no }        
         ]]>
@@ -192,12 +192,11 @@
 		]]>
 	</select>
 	
-	
-		<insert id="insertPet" parameterType="petvo">
+	<insert id="insertPet" parameterType="petvo">
 	        <![CDATA[
 	            insert into pet(name, info, gender, age, co_date,users_no) values
 	            (#{name},#{info},#{gender},#{age},STR_TO_DATE(#{co_date},"%m/%d/%Y"),#{users_no})
 	        ]]>
-		</insert>
+	</insert>
 
 </mapper>

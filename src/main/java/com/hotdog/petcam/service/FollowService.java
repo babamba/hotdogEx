@@ -14,6 +14,7 @@ public class FollowService {
    @Autowired FollowDao followDao;
    
    public void addFollow(int authUser_no,int users_no){
+      System.out.println(authUser_no+" : "+ users_no);
       followDao.addFollow(authUser_no,users_no);
    }
    
