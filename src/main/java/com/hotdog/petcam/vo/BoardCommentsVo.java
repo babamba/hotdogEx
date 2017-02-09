@@ -7,6 +7,7 @@ public class BoardCommentsVo {
 	private String regdate;
 	private int board_no;
 	private int users_no;
+	private String nickname;
 	
 	public int getComments_no() {
 		return comments_no;
@@ -38,11 +39,17 @@ public class BoardCommentsVo {
 	public void setUsers_no(int users_no) {
 		this.users_no = users_no;
 	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	
 	@Override
 	public String toString() {
 		return "BoardCommentsVo [comments_no=" + comments_no + ", content=" + content + ", regdate=" + regdate
-				+ ", board_no=" + board_no + ", users_no=" + users_no + "]";
+				+ ", board_no=" + board_no + ", users_no=" + users_no + ", nickname=" + nickname + "]";
 	}
 	
 	

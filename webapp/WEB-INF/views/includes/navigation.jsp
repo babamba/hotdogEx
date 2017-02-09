@@ -15,7 +15,7 @@
 						<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}"><i class="fa fa-home"></i></a>
 					
 						<!-- 커뮤니티 메인 -->
-						<li class="dropdown"><a href="#">커뮤니티 메인</a></li>
+						<li><a href="${pageContext.request.contextPath}/community">커뮤니티 메인</a></li>
 				</c:when>
 					
 					<c:otherwise> 
@@ -23,7 +23,7 @@
 						<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}"><i class="fa fa-home"></i></a>
 						
 						<!-- 커뮤니티 메인 -->
-						<li class="dropdown"><a href="#">커뮤니티 메인</a></li>
+						<li><a href="${pageContext.request.contextPath}/community">커뮤니티 메인</a></li>
 						
 						<!-- 포스팅  -->
 						<li><a href="${pageContext.request.contextPath}/post/${authUser.nickname}/write">포스팅하기</a></li>

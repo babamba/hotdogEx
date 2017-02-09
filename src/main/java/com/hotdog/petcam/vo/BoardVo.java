@@ -10,6 +10,8 @@ public class BoardVo {
 	 private int hits;
 	 private int publish;
 	 private int users_no;
+	 private String nickname;
+	 
 	public int getBoard_no() {
 		return board_no;
 	}
@@ -58,11 +60,17 @@ public class BoardVo {
 	public void setUsers_no(int users_no) {
 		this.users_no = users_no;
 	}
-	
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	@Override
 	public String toString() {
 		return "BoardVo [board_no=" + board_no + ", category=" + category + ", title=" + title + ", content=" + content
-				+ ", regdate=" + regdate + ", hits=" + hits + ", publish=" + publish + ", users_no=" + users_no + "]";
+				+ ", regdate=" + regdate + ", hits=" + hits + ", publish=" + publish + ", users_no=" + users_no
+				+ ", nickname=" + nickname + "]";
 	}
 	
 	 
