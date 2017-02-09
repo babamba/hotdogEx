@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hotdog.petcam.DTO.JSONResult;
 import com.hotdog.petcam.service.BoardService;
+import com.hotdog.petcam.vo.BoardChatVo;
 import com.hotdog.petcam.vo.BoardCommentsVo;
 
 @Controller
@@ -19,12 +20,12 @@ public class BoardReplyApiController {
 	@Autowired
 	private BoardService boardService;
 	
+	/////////////////////////////////////////// Reply
 	@ResponseBody
 	@RequestMapping("/fetchreply")
 	public JSONResult fetchReply(@RequestParam(value="boardNo", required=true) Integer board_no){
 				
 		List<BoardCommentsVo> list = boardService.fetchReply(board_no);
-		System.out.println("패치 리플라이" + list);
 		return JSONResult.success(list);
 	}
 	
@@ -33,6 +34,25 @@ public class BoardReplyApiController {
 	public JSONResult writeReply(BoardCommentsVo boardCommentsVo){
 		
 		BoardCommentsVo vo = boardService.writeReply(boardCommentsVo);
+		
+		return JSONResult.success(vo);
+	}
+	
+	
+	/////////////////////////////////////////// Reply Chat
+	@ResponseBody
+	@RequestMapping("/fetchreplyChat")
+	public JSONResult fetchReplyChat(@RequestParam(value="commnetsNo", required=true) Integer comments_no){
+				
+		List<BoardChatVo> list = boardService.fetchReplyChat(comments_no);
+		return JSONResult.success(list);
+	}
+	
+	@ResponseBody
+	@RequestMapping("/writereplyChat")
+	public JSONResult writeReplyChat(BoardChatVo boardChatVo){
+		
+		BoardChatVo vo = boardService.writeReplyChat(boardChatVo);
 		
 		return JSONResult.success(vo);
 	}

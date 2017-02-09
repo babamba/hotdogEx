@@ -21,7 +21,7 @@
 	<choose>
 		<when test="keyword != null and keyword !=''">
 			<![CDATA[
-				select b.board_no as board_no, b.category as category, b.title as title, b.content as content, b.regdate as regdate, b.hits as hits , b.users_no as users_no , u.nickname as nickname
+				select b.board_no, b.category, b.title, b.content, b.regdate, b.hits ,b.users_no, u.nickname
 				from board b, users u
 				where b.category = #{category_no } and b.users_no = u.users_no and (b.title like "%${keyword }%" or b.content like "%${keyword }%")
 				order by b.board_no DESC 
@@ -31,7 +31,7 @@
 		
 		<otherwise>
 			<![CDATA[
-				select b.board_no as board_no, b.category as category, b.title as title, b.content as content, b.regdate as regdate, b.hits as hits ,u.nickname as nickname
+				select b.board_no, b.category, b.title, b.content, b.regdate, b.hits ,u.nickname
 				from board b, users u
 				where b.category = #{category_no } and b.users_no = u.users_no
 				order by b.board_no DESC 
@@ -50,7 +50,7 @@
 
 <select id="viewPost" parameterType="int" resultType="boardvo">
 <![CDATA[
-	select b.board_no as board_no, b.category as category, b.title as title, b.content as content, b.regdate as regdate, b.hits as hits ,u.nickname as nickname
+	select b.board_no, b.category, b.title, b.content, b.regdate, b.hits ,u.nickname
 	from board b, users u where b.board_no = #{board_no} and b.users_no = u.users_no
 ]]>
 </select>
@@ -93,10 +93,46 @@
 <select id="getReply" parameterType="int" resultType="boardcommentsvo">
 <![CDATA[
 
-	select bc.comments_no, bc.content, bc.regdate, bc.board_no, bc.users_no, u.nickname 
+	select bc.board_chat_no, bc.content, bc.regdate, bc.board_no, bc.users_no, u.nickname, u.users_image
 	from board_comments bc, users u
 	where bc.comments_no = #{comments_no } and bc.users_no = u.users_no
 
 ]]>
 </select>
+
+<!--                 			Reply Chat							 -->
+
+<select id="fetchReplyChat" parameterType="int" resultType="boardchatvo">
+<![CDATA[
+
+	select bc.board_chat_no, bc.content, bc.regdate, bc.comments_no, bc.users_no, u.nickname, u.users_image
+ 	from board_chat bc, users u 
+ 	where bc.comments_no = #{comments_no } and u.users_no = bc.users_no
+
+]]>
+</select>
+
+<insert id="writeReplyChat" parameterType="boardchatvo">
+
+<![CDATA[
+	insert INTO board_chat(content, regdate, comments_no, users_no) VALUES (#{content }, now(), #{comments_no }, #{users_no })
+]]>
+
+    <selectKey resultType="int" keyProperty="board_chat_no" order="AFTER">
+        SELECT LAST_INSERT_ID()  
+    </selectKey>
+
+</insert>
+
+<select id="getReplyChat" parameterType="int" resultType="boardchatvo">
+<![CDATA[
+
+	select bc.board_chat_no, bc.content, bc.regdate, bc.comments_no, bc.users_no, u.nickname, u.users_image
+	from board_chat bc, users u
+	where bc.board_chat_no = #{board_chat_no } and bc.users_no = u.users_no
+
+]]>
+</select>
+
+
 </mapper>

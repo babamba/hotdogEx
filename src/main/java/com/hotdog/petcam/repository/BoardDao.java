@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.hotdog.petcam.vo.BoardChatVo;
 import com.hotdog.petcam.vo.BoardCommentsVo;
 import com.hotdog.petcam.vo.BoardVo;
 
@@ -51,6 +52,8 @@ public class BoardDao {
     	sqlSession.update("board.increaseHits", boardVo);
     }
     
+    
+    ////////////////////////////////////////////////////////////////////Reply    
     // 선택된 게시글에 달린 댓글 리스트 가져오기 
     public List<BoardCommentsVo> fetchReply(int board_no){
     	return sqlSession.selectList("board.fetchReply", board_no);
@@ -62,8 +65,27 @@ public class BoardDao {
     	return boardCommentsVo.getComments_no();
     }
     
+    // 작성한 댓글 바로 가져오기
     public BoardCommentsVo getReply(int comments_no){
     	return sqlSession.selectOne("board.getReply", comments_no);
+    }
+    
+    
+    ////////////////////////////////////////////////////////////////////ReplyChat    
+    // 선택된 게시글에 달린 댓글 리스트 가져오기 
+    public List<BoardChatVo> fetchReplyChat(int comments_no){
+    	return sqlSession.selectList("board.fetchReplyChat", comments_no);
+    }
+    
+    // 해당 게시글에 댓글 작성하기
+    public int writeReplyChat(BoardChatVo boardChatVo){
+    	sqlSession.insert("board.writeReplyChat", boardChatVo);
+    	return boardChatVo.getComments_no();
+    }
+    
+    // 작성한 댓글 바로 가져오기
+    public BoardChatVo getReplyChat(int board_chat_no){
+    	return sqlSession.selectOne("board.getReplyChat", board_chat_no);
     }
     
     

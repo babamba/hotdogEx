@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hotdog.petcam.repository.BoardDao;
+import com.hotdog.petcam.vo.BoardChatVo;
 import com.hotdog.petcam.vo.BoardCommentsVo;
 import com.hotdog.petcam.vo.BoardVo;
 
@@ -80,6 +81,8 @@ public class BoardService {
     	boardDao.increaseHits(boardVo);
     }
     
+    
+    ////////////////////////////////////////////////////////////////////Reply    
     // 선택된 게시글에 달린 댓글 리스트 가져오기 
     public List<BoardCommentsVo> fetchReply(int board_no){
     	return boardDao.fetchReply(board_no);
@@ -89,6 +92,19 @@ public class BoardService {
     public BoardCommentsVo writeReply(BoardCommentsVo boardCommentsVo){
     	int comments_no = boardDao.writeReply(boardCommentsVo);
     	return boardDao.getReply(comments_no);
+    }
+    
+    
+    ////////////////////////////////////////////////////////////////////ReplyChat    
+    // 선택된 게시글에 달린 댓글 리스트 가져오기 
+    public List<BoardChatVo> fetchReplyChat(int comments_no){
+    	return boardDao.fetchReplyChat(comments_no);
+    }
+    
+    // 해당 게시글에 댓글 작성하기
+    public BoardChatVo writeReplyChat(BoardChatVo boardChatVo){
+    	int board_chat_no = boardDao.writeReplyChat(boardChatVo);
+    	return boardDao.getReplyChat(board_chat_no);
     }
 
    

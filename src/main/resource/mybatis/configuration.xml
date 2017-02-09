@@ -12,6 +12,7 @@
 		<typeAlias alias="boardvo" type="com.hotdog.petcam.vo.BoardVo" />
 		<typeAlias alias="boardcommentsvo" type="com.hotdog.petcam.vo.BoardCommentsVo" />
 		<typeAlias alias="newsvo" type="com.hotdog.petcam.vo.NewsVo" />
+		<typeAlias alias="boardchatvo" type="com.hotdog.petcam.vo.BoardChatVo" />
 	</typeAliases>
 	
 	<mappers>
