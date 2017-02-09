@@ -127,17 +127,17 @@
 
 						<c:choose>
 							<c:when test="${empty authUser }">
-								<div data-animation="fadeInDown" data-animation-delay="900">
-									<a href="${pageContext.request.contextPath}/loginpage" class="button transparent rounded" ><span>Log-In</span></a>
+								<div data-animation="fadeInDown" data-animation-delay="900" >
+									<a href="${pageContext.request.contextPath}/loginpage" class="button transparent rounded" ><span style="color:black;">Log-In</span></a>
 								</div>
 							</c:when>
 							
 							<c:otherwise>
 								<div data-animation="fadeInDown" data-animation-delay="900">
-									<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}" class="button transparent rounded">${authUser.nickname}의 블로그화면으로</a>
+									<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}" class="button transparent rounded" style="color:black;">${authUser.nickname}의 블로그화면으로</a>
 								</div>
 								<div data-animation="fadeInDown" data-animation-delay="900">
-									<a href="${pageContext.request.contextPath}/user/logout" class="button transparent rounded">Log-Out</a>
+									<a href="${pageContext.request.contextPath}/user/logout" class="button transparent rounded" style="color:black;">Log-Out</a>
 								</div>
 							</c:otherwise>
 						</c:choose>

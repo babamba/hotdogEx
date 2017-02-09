@@ -54,7 +54,11 @@ public class BlogController {
 	@Auth
 	@Secret
 	@RequestMapping("/{nickname}/streaming")
-	public String Streaming(@PathVariable String nickname){
+	public String Streaming(@PathVariable String nickname, Model model){
+		Map<String, Object> map = blogService.index(nickname);
+		model.addAttribute("map", map);
+		
+		
 		return "blog/streaming-main";
 	}
 	

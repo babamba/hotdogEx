@@ -58,62 +58,8 @@
 	<!-- WRAPPER -->
 	<div class="wrapper">
 
-		<!-- HEADER -->
-		<header id="header" class="header-transparent">
-			<div id="header-wrap">
-				<div class="container">
-
-					<!--LOGO-->
-				    <div id="logo"> <a href="${pageContext.request.contextPath}" class="logo" data-dark-logo="images/logo-dark.png"> <img src="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png" alt="Hotdog Logo"> </a> </div>
-				    <!--END: LOGO--> 
-
-					<!--MOBILE MENU -->
-					<div class="nav-main-menu-responsive">
-						<button class="lines-button x">
-							<span class="lines"></span>
-						</button>
-					</div>
-					<!--END: MOBILE MENU -->
-
-					
-
-					<!--TOP SEARCH -->
-					<div id="top-search"> <a id="top-search-trigger"><i class="fa fa-search"></i><i class="fa fa-close"></i></a>
-						<form action="search-results-page.html" method="get">
-							<input type="text" name="q" class="form-control" value="" placeholder="Start typing & press  &quot;Enter&quot;">
-						</form>
-					</div>
-					<!--END: TOP SEARCH -->
-					
-					 <!--NAVIGATION-->
-			        <c:import url="/WEB-INF/views/includes/navigation.jsp" />
-			        <!--END: NAVIGATION--> 
-				</div>
-			</div>
-		</header>
-		<!-- END: HEADER -->
-    
-		<!-- PAGE TITLE -->
-		<!-- <section id="page-title" class="page-title-parallax page-title-center text-dark" style="background-image:url(images/parallax/page-title-parallax.jpg);">
-			<div class="container">
-				<div class="page-title col-md-8">
-					<h1>BLOG</h1>
-		            <span>Work is easy when you have all tools around you!</span>
-		        </div>
-		        <div class="breadcrumb col-md-4">
-		            <ul>
-		                <li><a href="#"><i class="fa fa-home"></i></a>
-		                </li>
-		                <li><a href="#">Home</a>
-		                </li>
-		                <li><a href="#">Page title</a>
-		                </li>
-		                <li class="active"><a href="#">Page title version</a>
-		                </li>
-		            </ul>
-		        </div>
-		    </div>
-		</section> -->
+		<!-- START: HEADER PAGE TITLE -->
+		<c:import url="/WEB-INF/views/includes/header.jsp" />
 		<!-- END: PAGE TITLE -->
 
 

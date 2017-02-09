@@ -5,29 +5,158 @@
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="${pageContext.request.contextPath}/assets/js/min/jquery-1.10.2.min.js" ></script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Security Page</title>
+
+<link rel="shortcut icon" href="images/favicon.png">
+<title>HOTDOG | BIT2017</title>
+
+<!-- Bootstrap Core CSS -->
+<link
+	href="${pageContext.request.contextPath}/assets/template/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/assets/template/vendor/fontawesome/css/font-awesome.min.css"
+	type="text/css" rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/assets/template/vendor/animateit/animate.min.css"
+	rel="stylesheet">
+
+<!-- Vendor css -->
+<link
+	href="${pageContext.request.contextPath}/assets/template/vendor/owlcarousel/owl.carousel.css"
+	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/assets/template/vendor/magnific-popup/magnific-popup.css"
+	rel="stylesheet">
+
+<!-- Template base -->
+<link
+	href="${pageContext.request.contextPath}/assets/template/css/theme-base.css"
+	rel="stylesheet">
+
+
+<!-- Template elements -->
+<link
+	href="${pageContext.request.contextPath}/assets/template/css/theme-elements.css"
+	rel="stylesheet">
+
+
+<!-- Responsive classes -->
+<link
+	href="${pageContext.request.contextPath}/assets/template/css/responsive.css"
+	rel="stylesheet">
+
+<!--[if lt IE 9]>
+		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<![endif]-->
+
+<!-- Template color -->
+<link
+	href="${pageContext.request.contextPath}/assets/template/css/color-variations/blue.css"
+	rel="stylesheet" type="text/css" media="screen" title="blue">
+
+<!-- LOAD GOOGLE FONTS -->
+<link
+	href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,800,700,600%7CRaleway:100,300,600,700,800"
+	rel="stylesheet" type="text/css" />
+
+<!-- CSS CUSTOM STYLE -->
+<link
+	rel="${pageContext.request.contextPath}/assets/template/stylesheet"
+	type="text/css" href="css/custom.css" media="screen" />
+
+<!--VENDOR SCRIPT-->
+<script
+	src="${pageContext.request.contextPath}/assets/template/vendor/jquery/jquery-1.11.2.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/template/vendor/plugins-compressed.js"></script>
+
+
 </head>
-<body>
-	<h1> 보안페이지 - 2차 비밀번호 설정</h1>
 
-	<div>	
-		<form method="post" action="${pageContext.request.contextPath }/user/secretlogin">
-			<label>2차비밀번호 확인</label>
-			<br>
-			<input id="secretNumber" type ="password"	onkeydown='return onlyNumber(event)' 
-				onkeyup='removeChar(event)' style='ime-mode:disabled;'	placeholder="Secret Number " name="sec_pass_word">
-			<br>
-			<br>
-			
-			<input type="submit" id="checkSecretbutton" value = "인증 시도" />
-		</form>
+<body class="wide">
+
+
+	<!-- WRAPPER -->
+	<div class="wrapper">
+
+		<!-- HEADER -->
+		<header id="header" class="header-transparent header-dark">
+			<div id="header-wrap">
+				<div class="container">
+
+					<!--LOGO-->
+					<div id="logo">
+						<a href="index.html" class="logo"
+							data-dark-logo="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png"> <img
+							src="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png" alt="Polo Logo">
+						</a>
+					</div>
+					<!--END: LOGO-->
+
+					<!--MOBILE MENU -->
+					<div class="nav-main-menu-responsive">
+						<button class="lines-button x">
+							<span class="lines"></span>
+						</button>
+					</div>
+					<!--END: MOBILE MENU -->
+				</div>
+			</div>
+		</header>
+		<!-- END: HEADER -->
+
+		<!-- SECTION -->
+		<section class="parallax fullscreen"
+			style="background-image: url(${pageContext.request.contextPath}/assets/template/images/parallax/8.jpg)">
+			<div class="container container-fullscreen">
+				<div class="text-middle">
+					<div class="row">
+					
+					<form method="post" action="${pageContext.request.contextPath }/user/secretlogin">	
+						<div class="col-md-4 col-md-offset-4 p-30 background-white">
+							
+							<label class=col-md-12>2차비밀번호 확인</label>
+						
+							<div class="col-md-12 form-group">
+							
+								<label class="sr-only">Password</label> 
+								<input id="secretNumber" name="sec_pass_word" onkeydown='return onlyNumber(event)' type="password" value="" placeholder="Secret Number" class="form-control input-lg">
+
+							</div>
+
+							<div class="col-md-12 form-group">
+								
+								<button type="submit" id="checkSecretbutton" class="btn btn-primary" type="button">인증 시도</button>
+								<button type="button" class="btn btn-danger"><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}" style="color:white;">Cancel</a></button>
+							</div>
+						
+						</div>
+						</form>
+						
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- END: SECTION -->
+
+
 	</div>
-	
+	<!-- END: WRAPPER -->
+
+	<!-- Theme Base, Components and Settings -->
+	<script src="${pageContext.request.contextPath}/assets/template/js/theme-functions.js"></script>
+
+	<!-- Custom js file -->
+	<script src="${pageContext.request.contextPath}/assets/template/js/custom.js"></script>
+
 	<script>
 		// 클릭시 비교
 		var secretNumber;
@@ -70,5 +199,10 @@
 				event.target.value = event.target.value.replace(/[^0-9]/g, "");
 		}
 	</script>
+
+
+
+
 </body>
+
 </html>

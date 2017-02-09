@@ -64,7 +64,8 @@ public class PostController {
 		@Auth
 		@RequestMapping("/{nickname}/write")
 		public String main(@PathVariable String nickname, @ModelAttribute PostVo postVo, Model model, @AuthUser UserVo authUser) {
-			
+			Map<String, Object> map = blogService.index(nickname);
+			model.addAttribute("map", map);
 			return "blog/write";
 		}
 		
