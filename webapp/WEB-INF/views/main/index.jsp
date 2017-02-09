@@ -18,78 +18,144 @@
 <head>
 
 
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/normalize.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/font-awesome.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/bootstrap.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/main.css">
-
-<!--     Fonts and icons     -->
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-<link rel="stylesheet" type="text/css"
-	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-
-<!-- CSS Files -->
+<!-- Bootstrap Core CSS -->
 <link
-	href="${pageContext.request.contextPath}/assets/css/material-kit.css"
-	rel="stylesheet" />
+	href="${pageContext.request.contextPath}/assets/template/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/assets/template/vendor/fontawesome/css/font-awesome.min.css"
+	type="text/css" rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/assets/template/vendor/animateit/animate.min.css"
+	rel="stylesheet">
 
-<!-- CSS Just for demo purpose, don't include it in your project -->
-<link href="${pageContext.request.contextPath}/assets/css/demo.css"
-	rel="stylesheet" />
+<!-- Vendor css -->
+<link
+	href="${pageContext.request.contextPath}/assets/template/vendor/owlcarousel/owl.carousel.css"
+	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/assets/template/vendor/magnific-popup/magnific-popup.css"
+	rel="stylesheet">
 
-<script src="${pageContext.request.contextPath}/assets/js/min/jquery-1.10.2.min.js" ></script>
+<!-- Template base -->
+<link
+	href="${pageContext.request.contextPath}/assets/template/css/theme-base.css"
+	rel="stylesheet">
+
+<!-- Template elements -->
+<link
+	href="${pageContext.request.contextPath}/assets/template/css/theme-elements.css"
+	rel="stylesheet">
+
+<!-- Responsive classes -->
+<link
+	href="${pageContext.request.contextPath}/assets/template/css/responsive.css"
+	rel="stylesheet">
+
+<!--[if lt IE 9]>
+		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<![endif]-->
+
+<!-- Template color -->
+<link
+	href="${pageContext.request.contextPath}/assets/template/css/color-variations/blue.css"
+	rel="stylesheet" type="text/css" media="screen" title="blue">
+
+<!-- LOAD GOOGLE FONTS -->
+<link
+	href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,800,700,600%7CRaleway:100,300,600,700,800"
+	rel="stylesheet" type="text/css" />
+
+<!-- CSS CUSTOM STYLE -->
+<link
+	rel="${pageContext.request.contextPath}/assets/template/stylesheet" type="text/css" href="css/custom.css" media="screen" />
+<!--VENDOR SCRIPT-->
+<script
+	src="${pageContext.request.contextPath}/assets/template/vendor/jquery/jquery-1.11.2.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/template/vendor/plugins-compressed.js"></script>
+
+<!-- User Profile -->
+<script
+	src="${pageContext.request.contextPath}/assets/js/userProfile.js"></script>
+<link
+	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
+	rel="stylesheet">
+	
 </head>
-
-
-<body>
+<body class="wide">
 	
-	<!-- Fixed-bar -->
-	<c:import url="/WEB-INF/views/includes/fixed_bar.jsp" />
-	
-	<br><br>
-	<h1>메인화면은 구성중이다</h1>
-		
-			<c:choose>
-				<c:when test="${empty authUser }">
-				<div id="testLogin">
-					<a>로그인 해</a><br>
-					<a href="${pageContext.request.contextPath}/loginpage">Log in</a>
+
+	<!-- WRAPPER -->
+	<div class="wrapper">
+
+		<!-- HEADER -->
+		<header id="header" class="header-transparent header-dark header-fullwidth">
+			<div id="header-wrap">
+				<div class="container">
+
+					<!--LOGO-->
+					<div id="logo">
+						<a href="#" class="logo" data-dark-logo="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png">
+							<img src="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png" alt="Polo Logo">
+						</a>
+					</div>
+					<!--END: LOGO-->
+
+					<!--MOBILE MENU -->
+					<div class="nav-main-menu-responsive">
+						<button class="lines-button x">
+							<span class="lines"></span>
+						</button>
+					</div>
+					<!--END: MOBILE MENU -->
+					
 				</div>
-			</c:when>
-			
-		<c:otherwise>
-				<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}">${authUser.nickname}의 블로그화면으로</a> 
-		</c:otherwise>
-	</c:choose>
-	
-	<!-- Modal -->
-	<c:import url="/WEB-INF/views/includes/modal.jsp" />
+			</div>
+		</header>
+		<!-- END: HEADER -->
 
 
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/bootstrap.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/plugins.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/material.min.js" ></script>
-	
-	<script
-		src="${pageContext.request.contextPath}/assets/js/bootstrap-datepicker.js" ></script>
-	
-	<script
-		src="${pageContext.request.contextPath}/assets/js/material-kit.js"
-		type="text/javascript"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/modernizr-2.6.2.min.js"></script>
+		<!-- SECTION IMAGE FULLSCREEN -->
+		<section class="fullscreen background-light text-blue">
+			<div class="container">
+				<div class="container-fullscreen text-center">
+					<div class="text-middle">
+						<h4 data-animation="fadeInUp" data-animation-delay="700">Hello HotDog</h4>
+						<h1 class="text-large"><span>메인화면은 구성중이다</span> </h1>
+
+
+						<c:choose>
+							<c:when test="${empty authUser }">
+								<div data-animation="fadeInDown" data-animation-delay="900">
+									<a href="${pageContext.request.contextPath}/loginpage" class="button transparent rounded" ><span>Log-In</span></a>
+								</div>
+							</c:when>
+							
+							<c:otherwise>
+								<div data-animation="fadeInDown" data-animation-delay="900">
+									<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}" class="button transparent rounded">${authUser.nickname}의 블로그화면으로</a>
+								</div>
+							</c:otherwise>
+						</c:choose>
+						
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- END: SECTION IMAGE FULLSCREEN -->
+
+		
+
+	</div>
+	<!-- END: WRAPPER -->
+
+	<!-- Theme Base, Components and Settings -->
+	<script src="${pageContext.request.contextPath}/assets/template/js/theme-functions.js"></script>
+
+	<!-- Custom js file -->
+	<script src="${pageContext.request.contextPath}/assets/template/js/custom.js"></script>
+
 
 
 </body>

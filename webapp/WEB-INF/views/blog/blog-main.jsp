@@ -88,14 +88,8 @@
 	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
 	rel="stylesheet">
 <body>
-	<%-- 	<!-- Fixed-bar -->
-	<c:import url="/WEB-INF/views/includes/fixed_bar.jsp" />
 
-	<!-- 반응형 navigation -->
-	<c:import url="/WEB-INF/views/includes/navigation.jsp" />
-	
-	<!-- Modal -->
-	<c:import url="/WEB-INF/views/includes/modal.jsp" /> --%>
+
 
 	<div class="wrapper">
 
@@ -135,7 +129,7 @@
 					<!--END: TOP SEARCH -->
 
 					<!--NAVIGATION-->
-					<c:import url="/WEB-INF/views/includes/navigation2.jsp" />
+					<c:import url="/WEB-INF/views/includes/navigation.jsp" />
 					<!--END: NAVIGATION-->
 
 
@@ -188,6 +182,7 @@
 		</section>
 		<!-- END: PAGE TITLE -->
 
+
 		<!-- CONTENT -->
 		<section class="content">
 			<div class="container list_container">
@@ -196,25 +191,9 @@
 					data-isotope-col="3" data-isotope-item=".post-item">
 					
 				</div>
-				<!--  pagination nav 
-	      <div class="text-center">
-	        <div class="pagination-wrap">
-	          <ul class="pagination">
-	            <li> <a aria-label="Previous" href="#"> <span aria-hidden="true"><i class="fa fa-angle-left"></i></span> </a> </li>
-	            <li><a href="#">1</a> </li>
-	            <li><a href="#">2</a> </li>
-	            <li class="active"><a href="#">3</a> </li>
-	            <li><a href="#">4</a> </li>
-	            <li><a href="#">5</a> </li>
-	            <li> <a aria-label="Next" href="#"> <span aria-hidden="true"><i class="fa fa-angle-right"></i></span> </a> </li>
-	          </ul>
-	        </div>
-	      </div> -->
-
 				<!-- END: Blog post-->
 			</div>
 		</section>
-
 		<!-- END: SECTION -->
 
 		<!-- FOOTER -->

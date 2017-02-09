@@ -4,66 +4,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-	<div class="responsive-header visible-xs visible-sm">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="top-section">
-						<div class="profile-image">
-							<img src="${pageContext.request.contextPath}/hotdog/image/user/${authUser.users_image}">
-							
-						</div>
-						<div class="profile-content">
-							<h3 class="profile-title">${authUser.nickname}</h3>
-							<p class="profile-description">${authUser.description}</p>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- 토글메뉴 - 이벤트 jquery-->
-			<a href="#" class="toggle-menu"><i class="fa fa-bars"></i></a>
-			<div class="main-navigation responsive-menu">
-				<ul>
-					<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}"><i class="material-icons">home</i>MY BLOG</a></li>
-					<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/account"><i class="material-icons">apps</i>My Acount</a></li>
-					<li><a href="${pageContext.request.contextPath}/post/${authUser.nickname}/write"><i class="material-icons">apps</i> Posting</a></li>
-					<li><a href="${pageContext.request.contextPath}/post/${authUser.nickname}/postlist"><i class="material-icons">accessibility</i>Diary</a></li>
-					<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/follow"><i class="material-icons">bookmark</i>Friend</a></li> 
-					<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/streaming"><i class="material-icons">tv</i>Live Striming</a></li>
-					<li><a href="${pageContext.request.contextPath}/community"><i class="material-icons">forum</i>Community Main</a></li> 			
-				</ul>
-			</div>
-		</div>
-	</div>
-	
-	<!-- SIDEBAR -->
-	<div class="sidebar-menu hidden-xs hidden-sm">
-		<div class="top-section">
-			<div class="profile-image">
-				<img src="${pageContext.request.contextPath}/hotdog/image/user/${authUser.users_image}">
-				<!-- Button trigger modal -->
-
-			</div>
-			<div class="profile-text">
-				<h3 class="profile-title">${authUser.nickname}</h3>
-				<p class="profile-description">${authUser.description}</p>
-			</div>
+<div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
+	<div class="container">
+		<nav id="mainMenu" class="main-menu mega-menu">
+			<ul class="main-menu nav nav-pills">
 			
-		</div>
-		
-		<!-- top-section -->
+			    <!-- authUser 블로그 메인 -->
+				<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}"><i class="fa fa-home"></i></a>
+				
+				<!-- 커뮤니티 메인 -->
+				<li class="dropdown"><a href="#">커뮤니티 메인</a></li>
+				
+				<!-- 포스팅  -->
+				<li><a href="${pageContext.request.contextPath}/post/${authUser.nickname}/write">포스팅하기</a></li>
+					
+				<!-- 다이어리 부분  -->
+				<li><a href="${pageContext.request.contextPath}/post/${authUser.nickname}/postlist">나의 다이어리</a></li>
+						
+				<!-- 스트리밍 부분 -->
+				<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/streaming">핫도그 스트리밍</a></li>
 
-		<div class="sidebar-service">
-				<ul>
-					<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}"><i class="material-icons">home</i>MY BLOG</a></li>
-					<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/account"><i class="material-icons">apps</i>My Acount</a></li>
-					<li><a href="${pageContext.request.contextPath}/post/${authUser.nickname}/write"><i class="material-icons">apps</i> Posting</a></li>
-					<li><a href="${pageContext.request.contextPath}/post/${authUser.nickname}/postlist"><i class="material-icons">accessibility</i>Diary</a></li>
-					<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/follow"><i class="material-icons">bookmark</i>Friend</a></li> 
-					<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/streaming"><i class="material-icons">tv</i>Live Striming</a></li>
-					<li><a href="${pageContext.request.contextPath}/community"><i class="material-icons">forum</i>Community Main</a></li> 		
-				</ul>
-		</div>
-		
+
+				<!-- user account  -->
+				<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/account">내 정보</a></li>
+				
+				
+				<!-- 로그인 로그아웃 부분-->
+				<c:choose>
+					<c:when test="${empty authUser}"> 
+						<li><a href="${pageContext.request.contextPath}/loginpage">Log-In</a></li>
+					</c:when>
+					
+					<c:otherwise> 
+						<li><a href="${pageContext.request.contextPath}/user/logout">Log-out</a></li>
+					</c:otherwise>
+			    </c:choose>
+			</ul>
+		</nav>
 	</div>
+</div>

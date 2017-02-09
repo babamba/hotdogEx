@@ -86,7 +86,7 @@
 					<!--END: TOP SEARCH -->
 					
 					 <!--NAVIGATION-->
-			        <c:import url="/WEB-INF/views/includes/navigation2.jsp" />
+			        <c:import url="/WEB-INF/views/includes/navigation.jsp" />
 			        <!--END: NAVIGATION--> 
 				</div>
 			</div>

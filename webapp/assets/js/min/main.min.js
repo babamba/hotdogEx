@@ -1,1 +1,0 @@
-!function(e){"use strict";e(".sidebar-service"),e(".toggle-menu").click(function(){return e(".responsive-menu").stop(!0,!0).slideToggle(),!1})}(jQuery);

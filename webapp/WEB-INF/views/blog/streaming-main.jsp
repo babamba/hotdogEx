@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -10,100 +11,304 @@
 <!--[if gt IE 8]><!-->
 
 <html class="no-js">
+<!--<![endif]-->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="shortcut icon"
+	href="${pageContext.request.contextPath}/assets/images/favicon.png">
 <title>Hot dog</title>
+
 <head>
-<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery.js"></script>
 
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/normalize.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/font-awesome.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/bootstrap.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/main.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/swiper.css">
-
-<!--     Fonts and icons     -->
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-<link rel="stylesheet" type="text/css"
-	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-
-<!-- CSS Files -->
+<!-- Bootstrap Core CSS -->
 <link
-	href="${pageContext.request.contextPath}/assets/css/material-kit.css"
-	rel="stylesheet" />
+	href="${pageContext.request.contextPath}/assets/template/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/assets/template/vendor/fontawesome/css/font-awesome.min.css"
+	type="text/css" rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/assets/template/vendor/animateit/animate.min.css"
+	rel="stylesheet">
 
-<!-- CSS Just for demo purpose, don't include it in your project -->
-<link href="${pageContext.request.contextPath}/assets/css/demo.css"
-	rel="stylesheet" />
+<!-- Vendor css -->
+<link
+	href="${pageContext.request.contextPath}/assets/template/vendor/owlcarousel/owl.carousel.css"
+	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/assets/template/vendor/magnific-popup/magnific-popup.css"
+	rel="stylesheet">
 
-<style>
-video {
-  width: 100%;
-  height: 500px;
-}
-</style>
+<!-- Template base -->
+<link
+	href="${pageContext.request.contextPath}/assets/template/css/theme-base.css"
+	rel="stylesheet">
 
-</head>
-<body>
-	<!-- Fixed-bar -->
-	<c:import url="/WEB-INF/views/includes/fixed_bar.jsp" />
+<!-- Template elements -->
+<link
+	href="${pageContext.request.contextPath}/assets/template/css/theme-elements.css"
+	rel="stylesheet">
 
-	<!-- 반응형 navigation -->
-	<c:import url="/WEB-INF/views/includes/navigation.jsp" />
+<!-- Responsive classes -->
+<link
+	href="${pageContext.request.contextPath}/assets/template/css/responsive.css"
+	rel="stylesheet">
 
-	<!-- 스트리밍 부분 -->
-	<c:import url="/WEB-INF/views/includes/streaming.jsp" />
+<!--[if lt IE 9]>
+		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<![endif]-->
 
+<!-- Template color -->
+<link
+	href="${pageContext.request.contextPath}/assets/template/css/color-variations/blue.css"
+	rel="stylesheet" type="text/css" media="screen" title="blue">
+
+<!-- LOAD GOOGLE FONTS -->
+<link
+	href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,800,700,600%7CRaleway:100,300,600,700,800"
+	rel="stylesheet" type="text/css" />
+
+<!-- CSS CUSTOM STYLE -->
+<link
+	rel="${pageContext.request.contextPath}/assets/template/stylesheet"
+	type="text/css" href="css/custom.css" media="screen" />
+
+<!-- CKEDITOR SCRIPT -->
+<%-- <script src="${pageContext.request.contextPath}/assets/ckeditor/ckeditor.js"></script> --%>
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+
+<!-- ALERTIFY SCRIPT -->
+<script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
+
+<!--VENDOR SCRIPT-->
+<script
+	src="${pageContext.request.contextPath}/assets/template/vendor/jquery/jquery-1.11.2.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/template/vendor/plugins-compressed.js"></script>
+
+<!-- User Profile -->
+<script
+	src="${pageContext.request.contextPath}/assets/js/userProfile.js"></script>
 	
+<!-- DASH-AVC/265 reference implementation SCRIPT-->
+	<script src="http://cdn.dashjs.org/latest/dash.all.min.js"></script>	
+	
+<link
+	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
+	rel="stylesheet">
+<body>
+	<div class="wrapper">
 
-	<div id="post"></div>
+		<!-- HEADER -->
+		<header id="header" class="header-transparent">
+			<div id="header-wrap">
+				<div class="container">
 
-	<!-- Modal -->
-	<c:import url="/WEB-INF/views/includes/modal.jsp" />
+					<!--LOGO-->
+					<div id="logo">
+						<a href="${pageContext.request.contextPath}" class="logo"
+							data-dark-logo="images/logo-dark.png"> <img
+							src="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png"
+							alt="Hotdog Logo">
+						</a>
+					</div>
+					<!--END: LOGO-->
+
+					<!--MOBILE MENU -->
+					<div class="nav-main-menu-responsive">
+						<button class="lines-button x">
+							<span class="lines"></span>
+						</button>
+					</div>
+					<!--END: MOBILE MENU -->
 
 
-	<script
-		src="${pageContext.request.contextPath}/assets/js/vendor/jquery-1.10.2.min.js"></script>
+					<!--TOP SEARCH -->
+					<div id="top-search">
+						<a id="top-search-trigger"><i class="fa fa-search"></i><i
+							class="fa fa-close"></i></a>
+						<form action="search-results-page.html" method="get">
+							<input type="text" name="q" class="form-control" value=""
+								placeholder="Start typing & press  &quot;Enter&quot;">
+						</form>
+					</div>
+					<!--END: TOP SEARCH -->
+
+					<!--NAVIGATION-->
+					<c:import url="/WEB-INF/views/includes/navigation.jsp" />
+					<!--END: NAVIGATION-->
+
+
+				</div>
+			</div>
+		</header>
+		<!-- END: HEADER -->
+
+
+
+		<!-- PAGE TITLE -->
+		<section id="page-title"
+			class="page-title-parallax page-title-center text-dark"
+			style="background-image:url(${pageContext.request.contextPath}/hotdog/image/user/${map.blogVo.logo_image})">
+			<div class="container">
+				<div class="page-title col-md-8">
+					<h1>${map.blogVo.title}</h1>
+					<span>${map.userVo.infomation}</span>
+					
+					<!-- profile modal  -->
+					<button class="fancy-btn openProfile">
+						<img
+							src="${pageContext.request.contextPath}/hotdog/image/user/${map.userVo.users_image}">
+					</button>
+					<div class="modal-frame">
+						<div class="modal">
+							<div class="modal-inset">
+								<div class="button closeProfile">
+									<i class="fa fa-close"></i>
+								</div>
+
+								<div class="modal-body">
+									<h3>${map.userVo.nickname}</h3>
+									<p>${map.userVo.email}</p>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-overlay">
+					
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- END: PAGE TITLE -->
+
+		<!-- CONTENT -->
+		<section class="content">
+			<div class="container list_container">
+				<div class="streaming_browser">
+						 <div>
+				            <video id="videoPlayer" controls></video>
+				       	 </div>
+					
+						<div class="streaming_control">
+							<button type='button' class='btn btn-info' id='left'><i id="left" class="material-icons">fast_rewind</i></button>
+				    		<button type='button' class='btn btn-info' id='center'><i class="material-icons">filter_center_focus</i></button>
+				    		<button type='button' class='btn btn-info' id='right'><i class="material-icons">fast_forward</i></button>
+				
+						<div class="togglebutton">
+							<label> 
+								<input type="checkbox" checked="checked">
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</section>
+
+		<!-- END: SECTION -->
+
+		<!-- FOOTER -->
+		<footer class="background-dark text-grey" id="footer">
+
+			<div class="copyright-content">
+				<div class="container">
+					<div class="row">
+						<div class="copyright-text col-md-6">
+							&copy; 2017 Hotdog. &nbsp;&nbsp;<a target="_blank"
+								href="http://www.inspiro-media.com">Bit Academy</a>
+						</div>
+						<div class="col-md-6">
+							<div class="social-icons">
+								<ul>
+									<li class="social-facebook"><a href="#"><i
+											class="fa fa-facebook"></i></a></li>
+									<li class="social-twitter"><a href="#"><i
+											class="fa fa-twitter"></i></a></li>
+									<li class="social-google"><a href="#"><i
+											class="fa fa-google-plus"></i></a></li>
+									<li class="social-pinterest"><a href="#"><i
+											class="fa fa-pinterest"></i></a></li>
+									<li class="social-vimeo"><a href="#"><i
+											class="fa fa-vimeo-square"></i></a></li>
+									<li class="social-linkedin"><a href="#"><i
+											class="fa fa-linkedin"></i></a></li>
+									<li class="social-dribbble"><a href="#"><i
+											class="fa fa-dribbble"></i></a></li>
+									<li class="social-youtube"><a href="#"><i
+											class="fa fa-youtube-play"></i></a></li>
+									<li class="social-rss"><a href="#"><i
+											class="fa fa-rss"></i></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- END: FOOTER -->
+
+	</div>
+	<!-- END: WRAPPER -->
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/bootstrap.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
 	<script
-		src="${pageContext.request.contextPath}/assets/js/min/swiper.jquery.min.js"></script>
-	<script
 		src="${pageContext.request.contextPath}/assets/js/min/plugins.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/main.min.js"></script>
-	<!--   Core JS Files   -->
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
-	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
 	<script
-		src="${pageContext.request.contextPath}/assets/js/min/nouislider.min.js"
-		type="text/javascript"></script>
-	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
+		src="${pageContext.request.contextPath}/assets/js/min/nouislider.min.js"></script>
 	<script
-		src="${pageContext.request.contextPath}/assets/js/bootstrap-datepicker.js"
-		type="text/javascript"></script>
-	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+		src="${pageContext.request.contextPath}/assets/js/bootstrap-datepicker.js"></script>
 	<script
-		src="${pageContext.request.contextPath}/assets/js/material-kit.js"
-		type="text/javascript"></script>
+		src="${pageContext.request.contextPath}/assets/js/material-kit.js"></script>
 	<script
-		src="${pageContext.request.contextPath}/assets/js/vendor/modernizr-2.6.2.min.js"></script>
-		
-	<!-- DASH-AVC/265 reference implementation -->
-	<script src="http://cdn.dashjs.org/latest/dash.all.min.js"></script>
+		src="${pageContext.request.contextPath}/assets/js/min/modernizr-2.6.2.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
 
+	<!-- Theme Base, Components and Settings -->
+	<script
+		src="${pageContext.request.contextPath}/assets/template/js/theme-functions.js"></script>
+
+	<!-- Custom js file -->
+	<script
+		src="${pageContext.request.contextPath}/assets/template/js/custom.js"></script>
+
+
+
+	<!-- user profile modal -->
+	<script>
+	$(document).on('ready', function(){
+	    $modal = $('.modal-frame');
+	    $overlay = $('.modal-overlay');
+
+	    /* Need this to clear out the keyframe classes so they dont clash with each other between ener/leave. Cheers. */
+	    $modal.bind('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e){
+	      if($modal.hasClass('state-leave')) {
+	        $modal.removeClass('state-leave');
+	      }
+	    });
+
+	    $('.closeProfile').on('click', function(){
+	      $overlay.removeClass('state-show');
+	      $modal.removeClass('state-appear').addClass('state-leave');
+	    });
+
+	    $('.openProfile').on('click', function(){
+	      $overlay.addClass('state-show');
+	      $modal.removeClass('state-leave').addClass('state-appear');
+	    });
+
+	  });
+	</script>
+	
+	<!-- VIDEO Controller -->
 	<script>
 			var ip1 = "10.0.0.4";
 		
@@ -158,6 +363,6 @@ video {
        
     </script>
 
-</body>
 
+</body>
 </html>

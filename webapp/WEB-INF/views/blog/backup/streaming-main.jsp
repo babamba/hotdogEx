@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -11,11 +10,11 @@
 <!--[if gt IE 8]><!-->
 
 <html class="no-js">
-<!--<![endif]-->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Hot dog</title>
 <head>
+<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery.js"></script>
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/normalize.css">
@@ -45,9 +44,32 @@
 <link href="${pageContext.request.contextPath}/assets/css/demo.css"
 	rel="stylesheet" />
 
-</head>
+<style>
+video {
+  width: 100%;
+  height: 500px;
+}
+</style>
 
+</head>
 <body>
+	<!-- Fixed-bar -->
+	<c:import url="/WEB-INF/views/includes/fixed_bar.jsp" />
+
+	<!-- 반응형 navigation -->
+	<c:import url="/WEB-INF/views/includes/navigation.jsp" />
+
+	<!-- 스트리밍 부분 -->
+	<c:import url="/WEB-INF/views/includes/streaming.jsp" />
+
+	
+
+	<div id="post"></div>
+
+	<!-- Modal -->
+	<c:import url="/WEB-INF/views/includes/modal.jsp" />
+
+
 	<script
 		src="${pageContext.request.contextPath}/assets/js/vendor/jquery-1.10.2.min.js"></script>
 	<script
@@ -58,11 +80,9 @@
 		src="${pageContext.request.contextPath}/assets/js/min/swiper.jquery.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/plugins.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/main.min.js"></script>
-
 	<!--   Core JS Files   -->
 	<script
 		src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
@@ -80,7 +100,64 @@
 		type="text/javascript"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/vendor/modernizr-2.6.2.min.js"></script>
+		
+	<!-- DASH-AVC/265 reference implementation -->
+	<script src="http://cdn.dashjs.org/latest/dash.all.min.js"></script>
 
+	<script>
+			var ip1 = "10.0.0.4";
+		
+            (function(){
+                var url = "http://150.95.141.66:1935/live/${authUser.nickname}/stream/manifest.mpd";
+                var player = dashjs.MediaPlayer().create();
+                player.initialize(document.querySelector("#videoPlayer"), url, true);
+                
+                $("#left").click(function(){
+                    $.ajax({
+                        url:"http://150.95.141.66/test/cgi-bin/send.py",
+                        type:"post",
+                        data: { msg:"left", ip:ip1 },
+                        success: function(){
+                            console.log("success");
+                        },
+                        error : function(jqXHR, status, e) {
+                        console.log(status + ":" + e);
+                        }            
+                    });
+                });
+                
+                $("#center").click(function(){
+                    $.ajax({
+                        url:"http://150.95.141.66/test/cgi-bin/send.py",
+                        type:"post",
+                        data: { msg:"center", ip:ip1 },
+                        success: function(){
+                            console.log("success");
+                        },
+                        error : function(jqXHR, status, e) {
+                        console.log(status + ":" + e);
+                        }            
+                    });
+                });
+                
+                $("#right").click(function(){
+                    $.ajax({
+                        url:"http://150.95.141.66/test/cgi-bin/send.py",
+                        type:"post",
+                        data: { msg:"right", ip:ip1 },
+                        success: function(){
+                            console.log("success");
+                        },
+                        error : function(jqXHR, status, e) {
+                        console.log(status + ":" + e);
+                        }            
+                    });
+                });
+            })();
+       
+       
+    </script>
 
 </body>
+
 </html>
