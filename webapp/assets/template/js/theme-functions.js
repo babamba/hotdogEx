@@ -198,7 +198,7 @@ var INSPIRO = {};
 
             var pageInAnimation = $body.attr('data-animation-in') || "fadeIn",
                 pageOutAnimation = $body.attr('data-animation-out') || "fadeOut",
-                pageLoaderStylePath = $body.attr('data-animation-icon-path') || "/template/images/svg-loaders/",
+                pageLoaderStylePath = $body.attr('data-animation-icon-path') || "${pageContext.request.contextPath}/assets/template/images/svg-loaders/",
                 pageLoaderStyle = $body.attr('data-animation-icon') || "ring.svg",
                 pageInDuration = $body.attr('data-speed-in') || 1000,
                 pageOutDuration = $body.attr('data-speed-out') || 500;

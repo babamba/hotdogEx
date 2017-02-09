@@ -7,6 +7,7 @@ public class PostCommentsVo {
 	private String regdate;
 	private int post_no;
 	private int users_no;
+	private String users_image;
 	
 	public int getComments_no() {
 		return comments_no;

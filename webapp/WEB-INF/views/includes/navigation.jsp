@@ -19,7 +19,7 @@
 				</c:when>
 					
 					<c:otherwise> 
-						 <!-- authUser 블로그 메인 -->
+						<!-- authUser 블로그 메인 -->
 						<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}"><i class="fa fa-home"></i></a>
 						
 						<!-- 커뮤니티 메인 -->

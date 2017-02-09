@@ -92,11 +92,12 @@
 
 var boardNo = ${boardVo.board_no};
 var usersNo = ${authUserNo};
+var image_path = "${pageContext.request.contextPath}/hotdog/image/user/"
 
 var renderReply = function(vo){
 	
 	var htmls = 
-		"<a href='#' class='pull-left'> <img alt='' src='images/team/1.jpg' class='avatar'></a>"+
+		"<a href='#' class='pull-left'> <img alt='' src='" + image_path + vo.users_image + "' class='avatar'></a>"+
 		"<div class='media-body'>"+
 		"<h4 class='media-heading'>"+vo.nickname+"</h4>"+
 		"<p class='time'>"+vo.regdate +"</p>"+

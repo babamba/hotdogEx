@@ -71,7 +71,7 @@
 <select id="fetchReply" parameterType="int" resultType="boardcommentsvo">
 
 <![CDATA[
-	select bc.comments_no, bc.content, bc.regdate, bc.board_no, bc.users_no, u.nickname 
+	select bc.comments_no, bc.content, bc.regdate, bc.board_no, bc.users_no, u.nickname, u.users_image
 	from board_comments bc, users u
 	where bc.board_no = #{board_no } and bc.users_no = u.users_no
 ]]>
@@ -81,9 +81,7 @@
 <insert id="writeReply" parameterType="boardcommentsvo">
 
 <![CDATA[
-
 	insert INTO board_comments(content, regdate, board_no, users_no) VALUES (#{content }, now(), #{board_no }, #{users_no })
-
 ]]>
 
     <selectKey resultType="int" keyProperty="comments_no" order="AFTER">

@@ -24,7 +24,7 @@ public class BoardReplyApiController {
 	public JSONResult fetchReply(@RequestParam(value="boardNo", required=true) Integer board_no){
 				
 		List<BoardCommentsVo> list = boardService.fetchReply(board_no);
-		
+		System.out.println("패치 리플라이" + list);
 		return JSONResult.success(list);
 	}
 	

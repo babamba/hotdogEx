@@ -7,6 +7,8 @@ public class PostChatVo {
 		private String regdate;
 		private int comments_no;
 		private int users_no;
+		private String users_image;
+		
 		
 		public int getPost_chat_no() {
 			return post_chat_no;
