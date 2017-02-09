@@ -239,25 +239,7 @@
 
 	</div>
 	<!-- END: WRAPPER -->
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/bootstrap.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/plugins.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/nouislider.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/bootstrap-datepicker.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/material-kit.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/modernizr-2.6.2.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
-
+	
 	<!-- Theme Base, Components and Settings -->
 	<script
 		src="${pageContext.request.contextPath}/assets/template/js/theme-functions.js"></script>

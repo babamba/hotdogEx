@@ -145,33 +145,53 @@
 			class="page-title-parallax page-title-center text-dark"
 			style="background-image:url(${pageContext.request.contextPath}/hotdog/image/user/${map.blogVo.logo_image})">
 			<div class="container">
-				<div class="page-title col-md-8">
+			  <div class="page-title col-md-8">
 					<h1>${map.blogVo.title}</h1>
 					<span>${map.userVo.infomation}</span>
 					
-					<!-- profile modal  -->
-					<button class="fancy-btn openProfile">
-						<img
-							src="${pageContext.request.contextPath}/hotdog/image/user/${map.userVo.users_image}">
-					</button>
+					 
+					 
+					 <!-- profile modal  -->
+					<div id="showInfo">
+						<button class="fancy-btn openProfile">
+							<img
+								src="${pageContext.request.contextPath}/hotdog/image/user/${map.userVo.users_image}">
+						</button>
+					</div>
+
 					<div class="modal-frame">
 						<div class="modal">
 							<div class="modal-inset">
-								<div class="button closeProfile">
+
+								<div class="button closeProfile" id="infoModal-close">
 									<i class="fa fa-close"></i>
 								</div>
 
 								<div class="modal-body">
+									<img
+										src="${pageContext.request.contextPath}/hotdog/image/user/${map.userVo.users_image}">
 									<h3>${map.userVo.nickname}</h3>
+									<p>${map.userVo.infomation}</p>
 									<p>${map.userVo.email}</p>
+									<div id="emptyFollowerButton"></div>
+									<div id="emptyButton"></div>
+									<%--<ul><li><a href="${pageContext.request.contextPath }/blog/${map.userVo.nickname">블로그 가기</a></li></ul> --%>
+
 
 								</div>
 							</div>
 						</div>
 					</div>
+
+
+
+
 					<div class="modal-overlay">
 					
 					</div>
+					
+					
+					
 				</div>
 
 
@@ -238,25 +258,6 @@
 
 	</div>
 	<!-- END: WRAPPER -->
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/bootstrap.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/plugins.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/nouislider.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/bootstrap-datepicker.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/material-kit.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/modernizr-2.6.2.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/min/material.min.js"></script>
-
 	<!-- Theme Base, Components and Settings -->
 	<script
 		src="${pageContext.request.contextPath}/assets/template/js/theme-functions.js"></script>
@@ -277,7 +278,7 @@
 
 		var render = function(vo, $){
 		var htmls =  "<div class='post-item'><div class='post-image'><img src='" + image_path + vo.post_image + "'></a></div><div class='post-content-details'>" + 
-	        		  "<div class='post-title'><h3>" + vo.title + "</a></h3></div>" +
+	        		  "<div class='post-title'><h3>" + vo.title + "</h3></div>" +
 	        		  "<div class='post-description'><div class='post-info'><a class='read-more' href='" + post + vo.post_no + "'>read more <i class='fa fa-long-arrow-right'></i></a></div>" +
 	         		  "</div></div><div class='post-meta'><div class='post-date'><span class='post-date-year'>" + vo.regdate + "</span></div>" +
 	        		  "<div class='post-comments' data-no='" + vo.post_no + "'> <a href='#'> <i class='fa fa-comments-o'></i><span class='post-comments-number'>0</span></a></div>" +
@@ -340,7 +341,90 @@
 	  });
 	
 	</script>
-
+	 <!--  PROFILE SCRIPT -->
+               <script type="text/javascript">
+               // 1. 유저를 클릭했을때,팔로우 유무, 대상의 요약정보를 요청한다.
+               $("#showInfo").click(function(){
+                  var users_no= ${map.userVo.users_no};
+                  var follower;
+                  var didfollow;
+                  
+                  $.ajax({
+                     url:"${pageContext.request.contextPath}/follow/infomodal",
+                     type:"post",
+                     data:"users_no="+users_no,
+                     dataType:"json",
+                     success:function(response){
+                        createButton(response.data.didFollow);
+                        createFollower(response.data.countFollower);
+                     }
+                  })
+               })
+               
+               // 2-1.팔로우 유무를 판단하여 버튼을 생성한다.
+               var createButton = function(didFollow){
+                  var htmls;
+                  // 팔로우 안되어 있을 때 
+                  if(didFollow == false){
+                     htmls = "<button id='followButton'>Follow</button>";
+                  }
+                  // 팔로우 되어 있을 때 생성할 버튼
+                  else{
+                     htmls ="<button id='deleteFollowButton'>Delete Follow</button>";
+                  }
+                  
+                  $("#emptyButton").append(htmls);
+               }
+               
+               // 2-2. 갱신된 팔로워 숫자를 불러와 버튼을 생성한다.
+               var createFollower=function(countFollower){
+                  var htmls = "<buttion id='followerButtion'>Follower : "+countFollower+"명</button>";
+                  $("#emptyFollowerButton").append(htmls);
+               }
+               
+               // 3. 팔로우 / 팔로우 삭제 버튼 클릭시 요청 처리해주고 버튼 바꾸기
+                $(document).on("click", "#followButton", function(){
+                   var users_no= ${map.userVo.users_no};
+                   var htmls;
+                   
+                   $.ajax({
+                      url:"${pageContext.request.contextPath}/follow/add",
+                      type:"post",
+                      data:"users_no="+users_no,
+                      dataType:"json",
+                      success:function(response){
+                         $("#followButton").remove();
+                         htmls ="<button id='deleteFollowButton'>Delete Follow</button>";
+                         $("#emptyButton").append(htmls);
+                      }
+                   })
+                 });
+               
+                $(document).on("click", "#deleteFollowButton", function(){
+                   var users_no= ${map.userVo.users_no};
+                   var htmls;
+                   
+                   $.ajax({
+                      url:"${pageContext.request.contextPath}/follow/delete",
+                      type:"post",
+                      data:"users_no="+users_no,
+                      dataType:"json",
+                      success:function(response){
+                         $("#deleteFollowButton").remove();
+                         htmls = "<button id='followButton'>Follow</button>";
+                         $("#emptyButton").append(htmls);
+                      }
+                   })
+                 });
+              
+                // 4. 유저 상세보기 창 닫을때 추가된 html 버튼 제거하기( 버튼 쌓이지 않게 )
+                $(document).on("click","#infoModal-close",function(){
+                $("#followButton").remove();
+                $("#deleteFollowButton").remove();
+                $("#followerButtion").remove();
+                })
+               
+               </script>
 
 </body>
 </html>

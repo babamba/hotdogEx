@@ -1,12 +1,15 @@
 package com.hotdog.petcam.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hotdog.petcam.DTO.JSONResult;
 import com.hotdog.petcam.security.Auth;
@@ -19,10 +22,17 @@ import com.hotdog.petcam.vo.UserVo;
 public class FollowController {
    @Autowired private FollowService followService;
    
-   // 뷰 테스트
-   @RequestMapping(value="/test")
-   public String test(){
-      return "test/test";
+// 모달 띄울때 해당유저 정보 받아오기
+   @Auth
+   @ResponseBody
+   @RequestMapping(value="/infomodal",method=RequestMethod.POST)
+   public Object infoModal(@AuthUser UserVo authUser,@RequestParam(value="users_no")Integer users_no){
+      
+      Map<String,Object> resultMap = new HashMap<String,Object>();
+      resultMap.put("didFollow", followService.didFollow(authUser.getUsers_no(),users_no));
+      resultMap.put("countFollower", followService.countFollower(users_no));
+      
+      return JSONResult.success(resultMap);
    }
    
    // 1. Follow 추가
