@@ -20,10 +20,12 @@ public class BoardController {
 			System.out.println("ggg");
 		}
 		
+
 		public void test3(){
 			System.out.println("test3");
 		}
 		
+
 		public void test2(){
 			
 		}
