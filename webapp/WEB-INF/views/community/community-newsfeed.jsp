@@ -21,6 +21,12 @@
 <title>Hot dog</title>
 
 <head>
+<!--  News Feed css 파일 -->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/newsfeed/animate.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/newsfeed/li-scroller.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/newsfeed/slick.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/newsfeed/theme.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/newsfeed/style.css">
 
 <!-- Bootstrap Core CSS -->
 <link
@@ -160,7 +166,7 @@
 			style="background-image:url(${pageContext.request.contextPath}/assets/template/images/parallax/page-title-parallax.jpg)">
 			<div class="container">
 			  <div class="page-title col-md-8">
-					<h1>Community</h1>
+					<h1>뉴스피드</h1>
 					
 	
 				</div>
@@ -170,59 +176,33 @@
 
 
 		<!-- CONTENT -->
-			<section class="p-t-100">
-			<div class="container">
-				<div class="row">
-					<!--  02/10 뉴스피드 추가 --><div class="col-md-3">
-						<div class="icon-box effect medium color border center">
-							<div class="icon">
-								<a href="${pageContext.request.contextPath}/community/newsfeed"><i class="fa fa-list-alt"></i></a>
-							</div>
-							<h3>뉴스피드</h3>
-						</div>
-					</div>
-				
-					<div class="col-md-3">
-						<div class="icon-box effect medium color border center">
-							<div class="icon">
-								<a href="${pageContext.request.contextPath}/community/freeboard"><i class="fa fa-list-alt"></i></a>
-							</div>
-							<h3>자유게시판</h3>
-						</div>
-					</div>
-
-					<div class="col-md-3">
-						<div class="icon-box effect medium color border center">
-							<div class="icon">
-								<a href="#"><i class="fa fa-desktop"></i></a>
-							</div>
-							<h3>Q & A</h3>
-						</div>
-					</div>
-
-					<div class="col-md-3">
-						<div class="icon-box effect medium color border center">
-							<div class="icon">
-								<a href="#"><i class="fa fa-cloud"></i></a>
-							</div>
-							<h3>갤러리</h3>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="icon-box effect medium color border center">
-							<div class="icon">
-								<a href="#"><i class="fa fa-lightbulb-o"></i></a>
-							</div>
-							<h3>다이어리</h3>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
 		
-
-
-		<!-- END: SECTION -->
+		<!-- 최근 이웃글 타이틀    ( 링크 부여  )-->
+		<div class="latest_newsarea"> <span>Latest News</span>
+			      <ul id="ticker01" class="news_sticker">
+			      <c:forEach items="${latest_news }"	var="vo" varStatus="status">
+			      	<li><a href="${pageContext.request.contextPath }/community/newsfeed/detail?no=${vo.post_no}">${vo.nickname} : ${vo.title }</a></li>
+			      </c:forEach>
+			      </ul>
+		 </div>
+		 
+		 <!-- 최근 이웃글 중 조회수,댓글이 높은 순 (링크 부여)-->
+		  <div class="thumbnail_slider_area">
+		      <div class="owl-carousel">
+		       <c:forEach items="${top_ten }"	var="vo" varStatus="status">
+		        <div class="signle_iteam">
+		         <img src="${pageContext.request.contextPath}/hotdog/image/user/${vo.post_image}">
+		          <img src="${pageContext.request.contextPath}/hotdog/image/user/${vo.users_image}">
+		          <div class="sing_commentbox slider_comntbox">
+		            <p><i class="fa fa-calendar"></i>${vo.regdate }</p>
+		            <a href="#"><i class="fa fa-comments"></i>count</a></div>
+		          <a class="slider_tittle" href="#">제목</a></div>
+		        </c:forEach>
+		        
+    	</div>
+		
+			
+		<!-- END: CONTENT -->
 
 		<!-- FOOTER -->
 		<c:import url="/WEB-INF/views/includes/footer.jsp" />
@@ -237,6 +217,15 @@
 	<!-- Custom js file -->
 	<script
 		src="${pageContext.request.contextPath}/assets/template/js/custom.js"></script>
+		
+		<!--  News Feed JS-->
+	<script src="${pageContext.request.contextPath}/assets/js/newsfeed/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/newsfeed/wow.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/newsfeed/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/newsfeed/slick.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/newsfeed/jquery.li-scroller.1.0.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/newsfeed/custom.js"></script>
+		
 
 </body>
 </html>

@@ -3,12 +3,33 @@ package com.hotdog.petcam.vo;
 public class NewsVo {
 	private Long rn;
 	private int users_no;
+	private int post_no;
+	private String post_image;
 	private String title;
 	private String regdate;
 	private String users_image;
 	private String nickname;
+	private int count;
 	
 	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	public String getPost_image() {
+		return post_image;
+	}
+	public void setPost_image(String post_image) {
+		this.post_image = post_image;
+	}
+	public int getPost_no() {
+		return post_no;
+	}
+	public void setPost_no(int post_no) {
+		this.post_no = post_no;
+	}
 	public Long getRn() {
 		return rn;
 	}
@@ -47,8 +68,9 @@ public class NewsVo {
 	}
 	@Override
 	public String toString() {
-		return "NewsVo [rn=" + rn + ", users_no=" + users_no + ", title=" + title + ", regdate=" + regdate
-				+ ", users_image=" + users_image + ", nickname=" + nickname + "]";
+		return "NewsVo [rn=" + rn + ", users_no=" + users_no + ", post_no=" + post_no + ", post_image=" + post_image
+				+ ", title=" + title + ", regdate=" + regdate + ", users_image=" + users_image + ", nickname="
+				+ nickname + ", count=" + count + "]";
 	}
 	
 	
