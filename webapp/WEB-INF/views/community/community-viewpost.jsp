@@ -88,6 +88,12 @@
 	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
 	rel="stylesheet">
 	
+<!-- community -->
+<link
+	href="${pageContext.request.contextPath}/assets/css/community.css"
+	rel="stylesheet">
+	
+	
 <script type="text/javascript">
 
 var boardNo = ${map.boardVo.board_no};
@@ -98,15 +104,15 @@ var image_path = "${pageContext.request.contextPath}/hotdog/image/user/";
 var renderReply = function(vo){
 	
 	var htmls = 
-		"<div class='comment'><a href='#' class='pull-left'> <img alt='' src='" + image_path + vo.users_image + "' class='avatar'></a>"+
+		"<div class='comment'><a href='#' class='pull-left'><img alt='' src='" + image_path + vo.users_image + "' class='avatar'></a>"+
 		"<div class='media-body' id='chatview-"+vo.comments_no+ "'>"+
 		"<h4 class='media-heading'>"+vo.nickname+"</h4>"+
 		"<p class='time'>"+vo.regdate +"</p>"+
 		"<p class='comment_section'>" + vo.content +"</p>"+
 		"<div><form action='#' class='replytext' id='replyChat-" + vo.comments_no + "'></form></div>" +
-		"<div><button class='comment-reply pull-right' id='viewChat' data-cno1='"+vo.comments_no+"'><i class='fa fa-reply'></i>답글보기 ("+vo.count+")</button>"+
-		"<button class='comment-reply pull-right' id='writeChat' data-cno2='"+vo.comments_no+"'><i class='fa fa-reply'></i>Reply</button></div></div>"+
-		"</div>";
+		"<button class='comment-reply pull-right btn btn-white' style='padding-right:12px; padding-left:10px; margin-bottom:0px;' id='viewChat' data-cno1='"+vo.comments_no+"'><i class='fa fa-reply'></i>답글보기 ("+vo.count+")</button>"+
+		"<button class='comment-reply pull-right btn btn-white' style='padding:12px 12px; margin-right:6px; margin-bottom:0px;' id='writeChat' data-cno2='"+vo.comments_no+"'><i class='fa fa-reply'></i>Reply</button>"+
+		"</div></div>";
 		
 		$("#attachReply").append(htmls);
 };
@@ -115,7 +121,8 @@ $(function(){
 	
 	var textchat = function(replyNo){
 		
-		var textareareply = "<textarea id='contentReply'></textarea><button type='submit'>답글쓰기</button>"
+		var textareareply = "<div><textarea id='contentReply' aria-required='true' placeholder='내용 입력' cols='10' rows='4' class='form-control required'>" +
+							"</textarea><button class='btn btn-white' type='submit' style='margin-top:12px;'>답글쓰기</button></div>"
 			console.log(textareareply);
 			
 		$("#replyChat-"+replyNo).append(textareareply);
@@ -142,7 +149,7 @@ $(function(){
 					dataType : "json",
 					data : "content="+$("#contentReply").val()+
 						   "&users_no="+usersNo+
-						   "&comments_no="+commentsNo,
+						   "&comments_no="+replyNo,
 					success : function(response){
 						
 						if(response.result != "success"){
@@ -202,12 +209,12 @@ var renderReplyChat = function(vo, commentsNo){
 	
 	var htmls = 
 		"<div class='comment comment-replied'><a href='#' class='pull-left'><img alt='' src='" + image_path + vo.users_image +"' class='avatar'></a>" +
-		"<div class='media-body'><h4 class='media-heading'>" + vo.nickname + "'</h4><p class='time'>" + vo.regdate + "</p>" +
+		"<div class='media-body'><h4 class='media-heading'>" + vo.nickname + "</h4><p class='time'>" + vo.regdate + "</p>" +
 		"<p class='comment_section'>"+vo.content+"</p>'" +
-		"<a href='javascript:;' class='comment-reply pull-right' id='reply' ><i class='fa fa-reply'></i>Reply</a>" + 
+		"<div><button class='comment-reply pull-right btn btn-white' id='reply'><i class='fa fa-reply'></i>Reply</button></div>" + 
 		"</div>";
 		
-		$("#chatview-"+commentsNo).append(htmls);
+		$("#chatview-"+commentsNo).after(htmls);
 };
 
 
