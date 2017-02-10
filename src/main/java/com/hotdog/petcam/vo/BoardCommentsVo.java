@@ -9,7 +9,7 @@ public class BoardCommentsVo {
 	private int users_no;
 	private String nickname;
 	private String users_image;
-	
+	private int count;
 	
 	public String getUsers_image() {
 		return users_image;
@@ -53,12 +53,17 @@ public class BoardCommentsVo {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	@Override
 	public String toString() {
 		return "BoardCommentsVo [comments_no=" + comments_no + ", content=" + content + ", regdate=" + regdate
 				+ ", board_no=" + board_no + ", users_no=" + users_no + ", nickname=" + nickname + ", users_image="
-				+ users_image + "]";
+				+ users_image + ", count=" + count + "]";
 	}
 	
 	

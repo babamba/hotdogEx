@@ -70,6 +70,11 @@ public class BoardDao {
     	return sqlSession.selectOne("board.getReply", comments_no);
     }
     
+    // 댓글 갯수 카운트
+    public int countReply(int board_no){
+    	return sqlSession.selectOne("board.countReply", board_no);
+    }
+
     
     ////////////////////////////////////////////////////////////////////ReplyChat    
     // 선택된 게시글에 달린 댓글 리스트 가져오기 
@@ -87,6 +92,12 @@ public class BoardDao {
     public BoardChatVo getReplyChat(int board_chat_no){
     	return sqlSession.selectOne("board.getReplyChat", board_chat_no);
     }
+    
+    // 댓글 갯수 카운트
+    public int countReplyChat(int comments_no){
+    	return sqlSession.selectOne("board.countReplyChat", comments_no);
+    }
+    
     
     
     

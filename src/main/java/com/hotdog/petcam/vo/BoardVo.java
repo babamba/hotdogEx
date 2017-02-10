@@ -11,6 +11,7 @@ public class BoardVo {
 	 private int publish;
 	 private int users_no;
 	 private String nickname;
+	 private int count;
 	 
 	public int getBoard_no() {
 		return board_no;
@@ -66,11 +67,17 @@ public class BoardVo {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	@Override
 	public String toString() {
 		return "BoardVo [board_no=" + board_no + ", category=" + category + ", title=" + title + ", content=" + content
 				+ ", regdate=" + regdate + ", hits=" + hits + ", publish=" + publish + ", users_no=" + users_no
-				+ ", nickname=" + nickname + "]";
+				+ ", nickname=" + nickname + ", count=" + count + "]";
 	}
 	
 	 

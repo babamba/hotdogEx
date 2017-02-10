@@ -42,10 +42,9 @@ public class BoardController {
 		
 		int userNo = authUser.getUsers_no();
 		
-		BoardVo boardVo = boardService.viewPost(board_no);
-		boardService.increaseHits(boardVo);
+		Map<String,Object> map = boardService.viewPost(board_no);
 		
-		model.addAttribute("boardVo", boardVo);
+		model.addAttribute("map" , map);
 		model.addAttribute("authUserNo", userNo);
 		
 		return "community/community-viewpost";

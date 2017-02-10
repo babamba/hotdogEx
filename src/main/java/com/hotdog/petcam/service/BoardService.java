@@ -72,15 +72,27 @@ public class BoardService {
     }
     
     // 선택된 게시글 하나 가져오기 
-    public BoardVo viewPost(int board_no){
-    	return boardDao.viewPost(board_no);
-    }
-    
-    // 조횟수 증가
-    public void increaseHits(BoardVo boardVo){
+    public Map<String,Object> viewPost(int board_no){
+    	BoardVo boardVo = boardDao.viewPost(board_no);
+    	
+    	// 게시글 조회때마다 조횟수 증가 
     	boardDao.increaseHits(boardVo);
+    	
+    	// regdate 월 , 일 , 년  구분
+    	String data = boardVo.getRegdate(); 	
+    	String[] temp  = data.split(" ");
+    	String[] date = temp[0].split("-");
+    	
+        Map<String,Object> map = new HashMap<String,Object>();
+        
+        map.put("boardVo", boardVo);
+        map.put("year", date[0]);
+        map.put("month", date[1]);
+        map.put("day", date[2]);
+        
+    	return map;
     }
-    
+        
     
     ////////////////////////////////////////////////////////////////////Reply    
     // 선택된 게시글에 달린 댓글 리스트 가져오기 
@@ -94,6 +106,10 @@ public class BoardService {
     	return boardDao.getReply(comments_no);
     }
     
+    //댓글 갯수 카운트
+    public int countReply(int board_no){
+    	return boardDao.countReply(board_no);
+    }
     
     ////////////////////////////////////////////////////////////////////ReplyChat    
     // 선택된 게시글에 달린 댓글 리스트 가져오기 
@@ -106,6 +122,12 @@ public class BoardService {
     	int board_chat_no = boardDao.writeReplyChat(boardChatVo);
     	return boardDao.getReplyChat(board_chat_no);
     }
+    
+    // 댓글 갯수 카운트
+    public int countReplyChat(int comments_no){
+    	return boardDao.countReplyChat(comments_no);
+    }
+
 
    
     

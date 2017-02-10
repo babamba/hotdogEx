@@ -90,10 +90,9 @@
 	
 <script type="text/javascript">
 
-
-var boardNo = ${boardVo.board_no};
+var boardNo = ${map.boardVo.board_no};
 var usersNo = ${authUserNo};
-var image_path = "${pageContext.request.contextPath}/hotdog/image/user/"
+var image_path = "${pageContext.request.contextPath}/hotdog/image/user/";
 
 /* 댓글 렌더 */
 var renderReply = function(vo){
@@ -103,9 +102,9 @@ var renderReply = function(vo){
 		"<div class='media-body' id='chatview-"+vo.comments_no+ "'>"+
 		"<h4 class='media-heading'>"+vo.nickname+"</h4>"+
 		"<p class='time'>"+vo.regdate +"</p>"+
-		"<p class='comment_section'>"+vo.content+"</p>"+
+		"<p class='comment_section'>" + vo.content +"</p>"+
 		"<div><form action='#' class='replytext' id='replyChat-" + vo.comments_no + "'></form></div>" +
-		"<div><button class='comment-reply pull-right' id='viewChat' data-cno1='"+vo.comments_no+"'><i class='fa fa-reply'></i>답글보기</button>"+
+		"<div><button class='comment-reply pull-right' id='viewChat' data-cno1='"+vo.comments_no+"'><i class='fa fa-reply'></i>답글보기 ("+vo.count+")</button>"+
 		"<button class='comment-reply pull-right' id='writeChat' data-cno2='"+vo.comments_no+"'><i class='fa fa-reply'></i>Reply</button></div></div>"+
 		"</div>";
 		
@@ -375,17 +374,17 @@ $(function(){
 						<div class="post-content-details">
 						
 							<div class="post-title">
-								<h2> 제목 : ${boardVo.title } </h2>
+								<h2> 제목 : ${map.boardVo.title } </h2>
 							</div>
 							
 							<div class="post-info">
-								<span class="post-autor"> 작성자 : <a href="#"> ${boardVo.nickname }</a></span> 
+								<span class="post-autor"> 작성자 : <a href="#"> ${map.boardVo.nickname }</a></span> 
 								<!--  <span class="post-category">in <a href="#">Productivity</a></span> -->
 							</div>
 							<div class="post-description">
 								
 								
-								<p> ${boardVo.content } </p>
+								<p> ${map.boardVo.content }	 </p>
 								
 								
 							</div>
@@ -393,14 +392,14 @@ $(function(){
 						<div class="post-meta">
 						
 							<div class="post-date">
-								<span class="post-date-day">16</span> 
-								<span class="post-date-month">January<br>2017</span> 
-								<span class="post-date-year">2015</span>
+								<span class="post-date-day">${map.day }</span> 
+								<span class="post-date-month">${map.month }월 <br><br>${map.year }년</span> 
 							</div>
 
 							<div class="post-comments">
 								<a href="#"> <i class="fa fa-comments-o"></i> <span
-									class="post-comments-number">324</span>
+																	class="post-comments-number">${map.boardVo.count }</span>
+								
 								</a>
 							</div>
 						</div>
@@ -410,7 +409,7 @@ $(function(){
 					<div id="comments" class="comments">
 						<div class="heading">
 							<h4 class="comments-title">
-								댓글 <small class="number">(4)</small>
+								댓글 <small class="number">${map.boardVo.count }</small>
 							</h4>
 						</div>
 

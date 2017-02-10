@@ -21,7 +21,8 @@
 	<choose>
 		<when test="keyword != null and keyword !=''">
 			<![CDATA[
-				select b.board_no, b.category, b.title, b.content, b.regdate, b.hits ,b.users_no, u.nickname
+				select b.board_no, b.category, b.title, b.content, b.regdate, b.hits ,b.users_no, u.nickname, (select count(*) from board_comments bc
+																											   where b.board_no = bc.board_no) as count
 				from board b, users u
 				where b.category = #{category_no } and b.users_no = u.users_no and (b.title like "%${keyword }%" or b.content like "%${keyword }%")
 				order by b.board_no DESC 
@@ -31,7 +32,8 @@
 		
 		<otherwise>
 			<![CDATA[
-				select b.board_no, b.category, b.title, b.content, b.regdate, b.hits ,u.nickname
+				select b.board_no, b.category, b.title, b.content, b.regdate, b.hits ,u.nickname, (select count(*) from board_comments bc
+																								   where b.board_no = bc.board_no) as count
 				from board b, users u
 				where b.category = #{category_no } and b.users_no = u.users_no
 				order by b.board_no DESC 
@@ -50,7 +52,8 @@
 
 <select id="viewPost" parameterType="int" resultType="boardvo">
 <![CDATA[
-	select b.board_no, b.category, b.title, b.content, b.regdate, b.hits ,u.nickname
+	select b.board_no, b.category, b.title, b.content, b.regdate, b.hits ,u.nickname, (select count(*) from board_comments bc
+																					   where b.board_no = bc.board_no) as count
 	from board b, users u where b.board_no = #{board_no} and b.users_no = u.users_no
 ]]>
 </select>
@@ -71,7 +74,8 @@
 <select id="fetchReply" parameterType="int" resultType="boardcommentsvo">
 
 <![CDATA[
-	select bc.comments_no, bc.content, bc.regdate, bc.board_no, bc.users_no, u.nickname, u.users_image
+	select bc.comments_no, bc.content, bc.regdate, bc.board_no, bc.users_no, u.nickname, u.users_image, (select count(*) FROM board_chat bChat
+																					  					 where bc.board_no = #{board_no } and bc.comments_no = bChat.comments_no) as count
 	from board_comments bc, users u
 	where bc.board_no = #{board_no } and bc.users_no = u.users_no
 ]]>
@@ -93,12 +97,21 @@
 <select id="getReply" parameterType="int" resultType="boardcommentsvo">
 <![CDATA[
 
-	select bc.board_chat_no, bc.content, bc.regdate, bc.board_no, bc.users_no, u.nickname, u.users_image
+	select bc.comments_no, bc.content, bc.regdate, bc.board_no, bc.users_no, u.nickname, u.users_image
 	from board_comments bc, users u
 	where bc.comments_no = #{comments_no } and bc.users_no = u.users_no
 
 ]]>
 </select>
+
+<select id="countReply" parameterType="int" resultType="int">
+<![CDATA[
+
+select count(*) from board_comments bc where bc.board_no= #{board_no }
+
+]]>
+</select>
+
 
 <!--                 			Reply Chat							 -->
 
@@ -133,6 +146,15 @@
 
 ]]>
 </select>
+
+<select id="countReplyChat" parameterType="int" resultType="int">
+<![CDATA[
+
+select count(*) from board_chat bc where bc.comments_no = #{comments_no }
+
+]]>
+</select>
+
 
 
 </mapper>

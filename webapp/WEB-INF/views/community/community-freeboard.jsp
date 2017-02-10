@@ -204,7 +204,7 @@
 										<p>${map.totalCount - (map.currentPage - 1)* map.listSize - status.index }</p>
 									</td>
 									<td class="cart-product-description">
-										<a href="${pageContext.request.contextPath }/community/freeboard/viewpost?no=${vo.board_no }">${vo.title }</a>
+										<a href="${pageContext.request.contextPath }/community/freeboard/viewpost?no=${vo.board_no }">${vo.title }(${vo.count })</a>
 									</td>
 
 									<td class="cart-product-price">
