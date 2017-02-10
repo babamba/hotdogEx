@@ -134,8 +134,8 @@
 	var post = "${pageContext.request.contextPath }/post/postView?post_no="
 				
 			
-
-		var render = function(vo, $){
+   
+	var render = function(vo){
 		var htmls =  "<div class='post-item'><div class='post-image'><img src='" + image_path + vo.post_image + "'></a></div><div class='post-content-details'>" + 
 	        		  "<div class='post-title'><h3>" + vo.title + "</h3></div>" +
 	        		  "<div class='post-description'><div class='post-info'><a class='read-more' href='" + post + vo.post_no + "'>read more <i class='fa fa-long-arrow-right'></i></a></div>" +
@@ -148,7 +148,7 @@
 	
 	var fetchList = function(){
 		console.log("fetchList")
-	
+	  
 		  $.ajax({
 			url: "${pageContext.request.contextPath }/blog/api/indexPostList?nickname=" + nickname,
 			type: "get",
@@ -156,9 +156,9 @@
 			data:"",
 			success: function(response){
 				$(response.data).each(function(index, vo){
+					
 					render(vo, $);
-					
-					
+					INSPIRO.masonryIsotope(render);
 					console.log("render")
 				});
 			},
@@ -169,7 +169,6 @@
 	};
 	
 	fetchList();
-
 
 	</script>
 

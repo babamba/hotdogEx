@@ -186,6 +186,7 @@
 				
 			$(response.data).each(function(index, vo){
 				render(vo, false);
+				INSPIRO.masonryIsotope(render);
 				console.log("render")
 			});
 			

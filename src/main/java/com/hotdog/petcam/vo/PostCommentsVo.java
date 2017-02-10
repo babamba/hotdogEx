@@ -7,8 +7,21 @@ public class PostCommentsVo {
 	private String regdate;
 	private int post_no;
 	private int users_no;
+	private String nickname;
 	private String users_image;
 	
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public String getUsers_image() {
+		return users_image;
+	}
+	public void setUsers_image(String users_image) {
+		this.users_image = users_image;
+	}
 	public int getComments_no() {
 		return comments_no;
 	}
@@ -42,8 +55,9 @@ public class PostCommentsVo {
 	
 	@Override
 	public String toString() {
-		return "Post_CommentsVo [comments_no=" + comments_no + ", content=" + content + ", regdate=" + regdate
-				+ ", post_no=" + post_no + ", users_no=" + users_no + "]";
+		return "PostCommentsVo [comments_no=" + comments_no + ", content=" + content + ", regdate=" + regdate
+				+ ", post_no=" + post_no + ", users_no=" + users_no + ", nickname=" + nickname + ", users_image="
+				+ users_image + "]";
 	}
 	
 	

@@ -95,24 +95,82 @@ var boardNo = ${boardVo.board_no};
 var usersNo = ${authUserNo};
 var image_path = "${pageContext.request.contextPath}/hotdog/image/user/"
 
-
+/* 댓글 렌더 */
 var renderReply = function(vo){
 	
 	var htmls = 
 		"<div class='comment'><a href='#' class='pull-left'> <img alt='' src='" + image_path + vo.users_image + "' class='avatar'></a>"+
-		"<div class='media-body'>"+
+		"<div class='media-body' id='chatview-"+vo.comments_no+ "'>"+
 		"<h4 class='media-heading'>"+vo.nickname+"</h4>"+
 		"<p class='time'>"+vo.regdate +"</p>"+
 		"<p class='comment_section'>"+vo.content+"</p>"+
-		"<button class='comment-reply pull-right' id='viewChat' data-cno1='"+vo.comments_no+"'><i class='fa fa-reply'></i>답글보기</button>"+
-		"<button class='comment-reply pull-right' id='writeChat' data-cno2='"+vo.comments_no+"'><i class='fa fa-reply'></i>Reply</button>"+
+		"<div><form action='#' class='replytext' id='replyChat-" + vo.comments_no + "'></form></div>" +
+		"<div><button class='comment-reply pull-right' id='viewChat' data-cno1='"+vo.comments_no+"'><i class='fa fa-reply'></i>답글보기</button>"+
+		"<button class='comment-reply pull-right' id='writeChat' data-cno2='"+vo.comments_no+"'><i class='fa fa-reply'></i>Reply</button></div></div>"+
 		"</div>";
 		
 		$("#attachReply").append(htmls);
 };
 
-var fetchReply = function(){
+$(function(){
+	
+	var textchat = function(replyNo){
 		
+		var textareareply = "<textarea id='contentReply'></textarea><button type='submit'>답글쓰기</button>"
+			console.log(textareareply);
+			
+		$("#replyChat-"+replyNo).append(textareareply);
+	} 
+	
+	$(document).on("click", "#writeChat", function(){
+		
+		
+		var replyNo = $(this).data("cno2");
+		var commentsNo =$(this).data("cno1");
+		
+		console.log(replyNo);
+		textchat(replyNo);
+		
+
+		$(".replytext").submit(function(event){
+			
+			var replyNo = $(this).data("cno2");
+				event.preventDefault();
+				
+				$.ajax({
+					url : "${pageContext.request.contextPath }/community/freeboard/api/writereplychat",
+					type : "post",
+					dataType : "json",
+					data : "content="+$("#contentReply").val()+
+						   "&users_no="+usersNo+
+						   "&comments_no="+commentsNo,
+					success : function(response){
+						
+						if(response.result != "success"){
+							console.error(response.message);
+							return;
+						}
+						renderReply(response.data);
+					},
+					
+					error : function(jqXHR, status, e) {
+						console.log(status + ":" + e);
+					}
+				});
+			});
+		})
+})
+
+
+
+
+
+
+
+
+/* 댓글 리스트  */
+var fetchReply = function(){
+	
 	$.ajax({
 		url : "${pageContext.request.contextPath }/community/freeboard/api/fetchreply?boardNo="+boardNo,
 		type : "get",
@@ -137,20 +195,24 @@ var fetchReply = function(){
 	});
 };
 
-var renderReplyChat = function(vo){
+
+
+/* 댓글의 댓글 렌더 */
+var renderReplyChat = function(vo, commentsNo){
+	
 	
 	var htmls = 
 		"<div class='comment comment-replied'><a href='#' class='pull-left'><img alt='' src='" + image_path + vo.users_image +"' class='avatar'></a>" +
 		"<div class='media-body'><h4 class='media-heading'>" + vo.nickname + "'</h4><p class='time'>" + vo.regdate + "</p>" +
-		"<p class='comment_section'>"+vo.content+"</p>'+ '<form><textarea placeholder='테스트'></textarea>" +
+		"<p class='comment_section'>"+vo.content+"</p>'" +
 		"<a href='javascript:;' class='comment-reply pull-right' id='reply' ><i class='fa fa-reply'></i>Reply</a>" + 
-		"</form></div>";
+		"</div>";
 		
-		$("#attachReply").append(htmls);
+		$("#chatview-"+commentsNo).append(htmls);
 };
 
 
-
+/* 댓글의 댓글 리스트불러오기 */
 var fetchReplyChat = function(commentsNo){
 	
 	$.ajax({
@@ -166,22 +228,22 @@ var fetchReplyChat = function(commentsNo){
 			
 			//redering
 			$(response.data).each(function(index, vo){
-				renderReplyChat(vo);
+				renderReplyChat(vo, commentsNo);
 			})
 		},
 		error : function(jqXHR, status, e) {
 			console.log(status + ":" + e);
 		}
 	});
-};
+};	
 
 
 
+		
 $(function(){
  
 	fetchReply();
 		
-
 	$("#writeReply").submit(function(event){
 		
 		event.preventDefault();
@@ -208,7 +270,7 @@ $(function(){
 	});
 	
 	$(document).on("click", "#viewChat", function(){
-		
+
 		var commentsNo = $(this).data("cno1");
 		
 		console.log(commentsNo);
