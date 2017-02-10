@@ -38,14 +38,9 @@
 	
 	<select id = "getPost" parameterType="int" resultType = "postvo">
 		<![CDATA[
-			 SELECT a.post_no,
-			       a.title,
-			       a.content,
-			       a.regdate,
-			       a.post_image,
-			       a.publish, b.nickname
-				   FROM post a, users b
-				   WHERE a.users_no = b.users_no and a.post_no = #{post_no}
+			SELECT a.post_no, a.title, a.content, a.regdate, a.post_image, a.publish, b.nickname, 
+			(select count(*) from post_comments bc where a.post_no = bc.post_no) as count FROM post a, users b  
+			WHERE a.users_no = b.users_no and a.post_no = #{post_no}
 		]]>
 	</select>
 	
@@ -56,10 +51,85 @@
 		]]>
 	</select>
 	
+	<!--                 			Reply								 -->
+	<select id="postfetchReply" parameterType="int" resultType="postcommentsvo">
+
+	<![CDATA[
+		select pc.comments_no, pc.content, pc.regdate, pc.post_no, pc.users_no, 
+						u.nickname, u.users_image, (select count(*) FROM board_chat pChat
+						where pc.post_no = #{post_no } and pc.comments_no = pChat.comments_no) as count
+		from post_comments pc, users u
+		where pc.post_no = #{post_no } and pc.users_no = u.users_no
+	]]>
+	</select>
+
+	<insert id="writePostReply" parameterType="postcommentsvo">
+	
+	<![CDATA[
+		insert INTO post_comments(content, regdate, post_no, users_no) VALUES (#{content }, now(), #{post_no }, #{users_no })
+	]]>
+	
+	    <selectKey resultType="int" keyProperty="comments_no" order="AFTER">
+	        SELECT LAST_INSERT_ID()  
+	    </selectKey>
+	
+	</insert>
+		
+	<select id="countPostReply" parameterType="int" resultType="int">
+	<![CDATA[
+	
+	select count(*) from post_comments a where a.post_no= #{post_no }
+	
+	]]>
+	</select>
+	
+	<select id="getPostReply" parameterType="int" resultType="postcommentsvo">
+	<![CDATA[
+	
+		select pc.comments_no, pc.content, pc.regdate, pc.post_no, pc.users_no, u.nickname, u.users_image
+		from post_comments pc, users u
+		where pc.comments_no = #{comments_no } and pc.users_no = u.users_no
+	
+	]]>
+	</select>
 	
 	
+	<!--                 			Reply Chat							 -->
+	<select id="fetchReplyPostChat" parameterType="int" resultType="postchatvo">
+	<![CDATA[
 	
+		select pc.post_chat_no, pc.content, pc.regdate, pc.comments_no, pc.users_no, u.nickname, u.users_image
+	 	from post_chat pc, users u 
+	 	where pc.comments_no = #{comments_no} and u.users_no = pc.users_no;
 	
+	]]>
+	</select>
+	
+	<insert id="writeReplyPostChat" parameterType="postchatvo">
+
+	<![CDATA[
+		insert INTO post_chat(content, regdate, comments_no, users_no) VALUES (#{content }, now(), #{comments_no }, #{users_no })
+	]]>
+	
+	    <selectKey resultType="int" keyProperty="post_chat_no" order="AFTER">
+	        SELECT LAST_INSERT_ID()  
+	    </selectKey>
+	
+	</insert>
+	
+	<select id="getReplyPostChat" parameterType="int" resultType="postchatvo">
+	<![CDATA[
+		select pc.post_chat_no, pc.content, pc.regdate, pc.comments_no, pc.users_no, u.nickname, u.users_image
+		from post_chat pc, users u
+		where pc.post_chat_no = #{post_chat_no } and pc.users_no = u.users_no
+	]]>
+	</select>
+	
+	<select id="countReplyPostChat" parameterType="int" resultType="int">
+		<![CDATA[
+		select count(*) from post_chat pc where pc.comments_no = #{comments_no }
+		]]>
+</select>
 	
 
 </mapper>

@@ -93,19 +93,22 @@ public class PostController {
 	        return JSONResult.success("http://150.95.141.66/hotdog/hotdog/image/user/" + saveFileName);
 	    }*/
 		
-		
+		@Auth
 		@RequestMapping("/postView")
 		public String postView(@RequestParam(value="post_no")int post_no,
-				Model model){
+				@AuthUser UserVo authUser, Model model){
 			
-			PostVo postVo = postService.getPost(post_no);
-			System.out.println(postVo);
-			model.addAttribute("postVo", postVo);
+			int users_no = authUser.getUsers_no();
+			
+			Map<String, Object> map = postService.getPost(post_no);
+			System.out.println(map);
+			
+			
+			model.addAttribute("map", map);
+			model.addAttribute("authusers_no", authUser);
 			
 			return "blog/post-page";
 		}
-		
-		
 		
 		
 		

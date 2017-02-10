@@ -156,9 +156,9 @@
 			data:"",
 			success: function(response){
 				$(response.data).each(function(index, vo){
-					
 					render(vo, $);
 					INSPIRO.masonryIsotope(render);
+					
 					console.log("render")
 				});
 			},

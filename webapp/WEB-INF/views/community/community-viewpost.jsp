@@ -109,7 +109,7 @@ var renderReply = function(vo){
 		"<h4 class='media-heading'>"+vo.nickname+"</h4>"+
 		"<p class='time'>"+vo.regdate +"</p>"+
 		"<p class='comment_section'>" + vo.content +"</p>"+
-		"<div><form action='#' class='replytext' id='replyChat-" + vo.comments_no + "'></form></div>" +
+		"<div><form class='replytext' id='replyChat-" + vo.comments_no + "'></form></div>" +
 		"<button class='comment-reply pull-right btn btn-white' style='padding-right:12px; padding-left:10px; margin-bottom:0px;' id='viewChat' data-cno1='"+vo.comments_no+"'><i class='fa fa-reply'></i>답글보기 ("+vo.count+")</button>"+
 		"<button class='comment-reply pull-right btn btn-white' style='padding:12px 12px; margin-right:6px; margin-bottom:0px;' id='writeChat' data-cno2='"+vo.comments_no+"'><i class='fa fa-reply'></i>Reply</button>"+
 		"</div></div>";
@@ -117,32 +117,33 @@ var renderReply = function(vo){
 		$("#attachReply").append(htmls);
 };
 
-$(function(){
+
+	
+	
+$(document).on("click", "#writeChat", function(){
 	
 	var textchat = function(replyNo){
 		
 		var textareareply = "<div><textarea id='contentReply' aria-required='true' placeholder='내용 입력' cols='10' rows='4' class='form-control required'>" +
-							"</textarea><button class='btn btn-white' type='submit' style='margin-top:12px;'>답글쓰기</button></div>"
-			console.log(textareareply);
+							"</textarea><button id='chatajax'class='chatText btn btn-white' type='submit' style='margin-top:12px;'>답글쓰기</button></div>"
 			
 		$("#replyChat-"+replyNo).append(textareareply);
 	} 
 	
-	$(document).on("click", "#writeChat", function(){
-		
 		
 		var replyNo = $(this).data("cno2");
-		var commentsNo =$(this).data("cno1");
-		
+
 		console.log(replyNo);
+
 		textchat(replyNo);
 		
-
-		$(".replytext").submit(function(event){
+		
+		$(".chatajax").submit(function(event){
+			event.preventDefault();
 			
 			var replyNo = $(this).data("cno2");
-				event.preventDefault();
-				
+			
+
 				$.ajax({
 					url : "${pageContext.request.contextPath }/community/freeboard/api/writereplychat",
 					type : "post",
@@ -165,7 +166,7 @@ $(function(){
 				});
 			});
 		})
-})
+	
 
 
 
