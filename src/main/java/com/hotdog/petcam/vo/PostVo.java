@@ -10,8 +10,17 @@ public class PostVo {
 	private int publish;
 	private int users_no;
 	private String nickname;
+	private int count;
+	
+	
 	
 
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public int getPost_no() {
 		return post_no;
 	}
@@ -67,7 +76,7 @@ public class PostVo {
 	public String toString() {
 		return "PostVo [post_no=" + post_no + ", title=" + title + ", content=" + content + ", regdate=" + regdate
 				+ ", post_image=" + post_image + ", publish=" + publish + ", users_no=" + users_no + ", nickname="
-				+ nickname + "]";
+				+ nickname + ", count=" + count + "]";
 	}
 	
 	

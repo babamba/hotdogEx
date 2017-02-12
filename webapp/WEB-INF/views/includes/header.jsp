@@ -123,7 +123,7 @@
                <script type="text/javascript">
                // 1. 유저를 클릭했을때,팔로우 유무, 대상의 요약정보를 요청한다.
                $("#showInfo").click(function(){
-                  var users_no= ${map.userVo.users_no};
+                  var users_no= ${map.userVo.nickname};
                   var follower;
                   var didfollow;
                   

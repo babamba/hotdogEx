@@ -75,8 +75,55 @@ public class PostService {
 		return postDao.getIndexByPostTop9(users_no);
 	}
 	
-	/*public List<PostCommentsVo> fetchReply(int post_no){
-		return postDao.
-	}*/
+	
+//	선택된 게시글에 달린 댓글 리스트 가져오기.
+	public List<PostCommentsVo> fetchReply(int post_no){
+		return postDao.fetchPostReply(post_no);
+	}
+	
+	//해당 게시글에 댓글 작성하기
+	public PostCommentsVo writeReply(PostCommentsVo postCommentsVo){
+		int comments_no = postDao.writePostReply(postCommentsVo);
+		return postDao.getReply(comments_no);
+	}
+	
+	//댓글 갯수 카운트
+	public int countReply(int post_no){
+		return postDao.countReply(post_no);
+	}
+	
+	////////////////////////////////////////////////////////////////////ReplyChat    
+	// 선택된 게시글에 달린 댓글 리스트 가져오기 
+	public List<PostChatVo> fetchReplyChat(int comments_no){
+		return postDao.fetchReplyChat(comments_no);
+	}
+	
+	// 해당 게시글에 댓글 작성하기
+	public PostChatVo writeReplyChat(PostChatVo postChatVo){
+		int post_chat_no = postDao.writeReplyChat(postChatVo);
+		return postDao.getReplyPostChat(post_chat_no);
+	}
+	
+	public int countReplyChat(int comments_no){
+		return postDao.countReplyChat(comments_no);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

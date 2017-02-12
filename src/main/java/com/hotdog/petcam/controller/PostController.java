@@ -94,18 +94,22 @@ public class PostController {
 	    }*/
 		
 		@Auth
-		@RequestMapping("/postView")
-		public String postView(@RequestParam(value="post_no")int post_no,
+		@RequestMapping("/{nickname}/postView")
+		public String postView(@PathVariable String nickname ,
+							   @RequestParam(value="post_no")int post_no,
 				@AuthUser UserVo authUser, Model model){
+			
+			Map<String, Object> users = blogService.index(nickname);
+			model.addAttribute("users_map", users);
+			
 			
 			int users_no = authUser.getUsers_no();
 			
 			Map<String, Object> map = postService.getPost(post_no);
-			System.out.println(map);
-			
+			System.out.println("@@@@@@@@@@@@맵@@@@@@@@@@@@@@" + map);
 			
 			model.addAttribute("map", map);
-			model.addAttribute("authusers_no", authUser);
+			model.addAttribute("authUserNo", users_no);
 			
 			return "blog/post-page";
 		}

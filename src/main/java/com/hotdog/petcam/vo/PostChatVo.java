@@ -7,9 +7,23 @@ public class PostChatVo {
 		private String regdate;
 		private int comments_no;
 		private int users_no;
+		private String nickname;
 		private String users_image;
 		
 		
+		
+		public String getNickname() {
+			return nickname;
+		}
+		public void setNickname(String nickname) {
+			this.nickname = nickname;
+		}
+		public String getUsers_image() {
+			return users_image;
+		}
+		public void setUsers_image(String users_image) {
+			this.users_image = users_image;
+		}
 		public int getPost_chat_no() {
 			return post_chat_no;
 		}
@@ -43,7 +57,8 @@ public class PostChatVo {
 		@Override
 		public String toString() {
 			return "PostChatVo [post_chat_no=" + post_chat_no + ", content=" + content + ", regdate=" + regdate
-					+ ", comments_no=" + comments_no + ", users_no=" + users_no + "]";
+					+ ", comments_no=" + comments_no + ", users_no=" + users_no + ", nickname=" + nickname
+					+ ", users_image=" + users_image + "]";
 		}
 		
 		

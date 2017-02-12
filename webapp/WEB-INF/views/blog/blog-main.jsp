@@ -130,8 +130,9 @@
 	<!-- post 최신 글 9개 불러오는 ajax list -->
 	<script>
 	var nickname = "${map.userVo.nickname}"
+	var users_map = "{users_map.userVo.no}"
 	var image_path = "${pageContext.request.contextPath}/hotdog/image/user/"
-	var post = "${pageContext.request.contextPath }/post/postView?post_no="
+	var post = "${pageContext.request.contextPath }/post/" + nickname + "/postView?post_no="
 				
 			
    

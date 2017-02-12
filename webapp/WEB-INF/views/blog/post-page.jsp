@@ -96,8 +96,8 @@
 	
 <script type="text/javascript">
 
-var boardNo = ${map.boardVo.board_no};
-var usersNo = ${authUserNo};
+var postNo = ${map.postVo.post_no};
+var usersNo = ${authUser_no};
 var image_path = "${pageContext.request.contextPath}/hotdog/image/user/";
 
 /* 댓글 렌더 */
@@ -145,7 +145,7 @@ $(document).on("click", "#writeChat", function(){
 			
 
 				$.ajax({
-					url : "${pageContext.request.contextPath }/community/freeboard/api/writereplychat",
+					url : "${pageContext.request.contextPath }/postView/api/writereplychat",
 					type : "post",
 					dataType : "json",
 					data : "content="+$("#contentReply").val()+
@@ -179,7 +179,7 @@ $(document).on("click", "#writeChat", function(){
 var fetchReply = function(){
 	
 	$.ajax({
-		url : "${pageContext.request.contextPath }/community/freeboard/api/fetchreply?boardNo="+boardNo,
+		url : "${pageContext.request.contextPath }/postView/api/fetchreply?postNo="+postNo,
 		type : "get",
 		dataType : "json",
 		success : function(response){
@@ -223,7 +223,7 @@ var renderReplyChat = function(vo, commentsNo){
 var fetchReplyChat = function(commentsNo){
 	
 	$.ajax({
-		url : "${pageContext.request.contextPath }/community/freeboard/api/fetchreplychat?commentsNo="+commentsNo,
+		url : "${pageContext.request.contextPath }/postView/api/fetchreplychat?commentsNo="+commentsNo,
 		type : "get",
 		dataType : "json",
 		success : function(response){
@@ -256,7 +256,7 @@ $(function(){
 		event.preventDefault();
 		
 		$.ajax({
-			url : "${pageContext.request.contextPath }/community/freeboard/api/writereply",
+			url : "${pageContext.request.contextPath }/postView/api/writereply",
 			type : "post",
 			dataType : "json",
 			data : "content="+$("#comment").val()+
@@ -294,79 +294,8 @@ $(function(){
 
 	<div class="wrapper">
 
-		<!-- HEADER -->
-		<header id="header" class="header-transparent">
-			<div id="header-wrap">
-				<div class="container">
-
-					<!--LOGO-->
-					<div id="logo">
-						<a href="${pageContext.request.contextPath}" class="logo"
-							data-dark-logo="images/logo-dark.png"> <img
-							src="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png"
-							alt="Hotdog Logo">
-						</a>
-					</div>
-					<!--END: LOGO-->
-
-					<!--MOBILE MENU -->
-					<div class="nav-main-menu-responsive">
-						<button class="lines-button x">
-							<span class="lines"></span>
-						</button>
-					</div>
-					<!--END: MOBILE MENU -->
-
-
-					<!--TOP SEARCH -->
-					<div id="top-search">
-						<a id="top-search-trigger"><i class="fa fa-search"></i><i
-							class="fa fa-close"></i></a>
-						<form action="search-results-page.html" method="get">
-							<input type="text" name="q" class="form-control" value=""
-								placeholder="Start typing & press  &quot;Enter&quot;">
-						</form>
-					</div>
-					<!--END: TOP SEARCH -->
-
-					<!--NAVIGATION-->
-					<div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
-							<div class="container">
-								<nav id="mainMenu" class="main-menu mega-menu">
-									<ul class="main-menu nav nav-pills">
-									
-									    <!-- authUser 블로그 메인 -->
-										<li><a href="${pageContext.request.contextPath}"><i class="fa fa-home"></i></a>
-										
-										<!-- 커뮤니티 메인 -->
-										<li><a href="${pageContext.request.contextPath}/community">커뮤니티 메인</a></li>
-									
-									</ul>
-								</nav>
-							</div>
-					</div>
-					<!--END: NAVIGATION-->
-
-
-				</div>
-			</div>
-		</header>
-		<!-- END: HEADER -->
-
-
-
-		<!-- PAGE TITLE -->
-		<section id="page-title"
-			class="page-title-parallax page-title-center text-dark"
-			style="background-image:url(${pageContext.request.contextPath}/assets/template/images/parallax/page-title-parallax.jpg)">
-			<div class="container">
-			  <div class="page-title col-md-8">
-					<h1>자유게시판</h1>
-					
-	
-				</div>
-			</div>
-		</section>
+		<!-- START: HEADER PAGE TITLE -->
+		<c:import url="/WEB-INF/views/includes/header.jsp" />
 		<!-- END: PAGE TITLE -->
 
 
@@ -384,10 +313,12 @@ $(function(){
 							<div class="post-title">
 								<h2> ${map.postVo.title } </h2>
 							</div>
+							<div class="post-info">
+								<span class="post-autor"> 작성자 : <a href="#"> ${map.boardVo.nickname }</a></span> 
+								<!--  <span class="post-category">in <a href="#">Productivity</a></span> -->
+							</div>
 							
 							<div class="post-description">
-								
-								
 								<p> ${map.postVo.content }	 </p>
 								
 								
@@ -396,7 +327,8 @@ $(function(){
 						<div class="post-meta">
 						
 							<div class="post-date">
-								<span class="post-date-month">${map.postVo.regdate}</span> 
+								<span class="post-date-day">${map.day }</span> 
+								<span class="post-date-month">${map.month }월 <br><br>${map.year }년</span> 
 							</div>
 
 							<div class="post-comments">

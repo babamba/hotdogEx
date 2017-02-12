@@ -70,5 +70,51 @@ public class PostDao {
 	}
 	
 	// 작성한 댓글 바로 가져오기
+	public PostCommentsVo getReply(int comments_no){
+		return sqlSession.selectOne("post.getPostReply", comments_no);
+	}
+	
+	// 댓글 갯수 카운트
+	public int countReply(int post_no){
+		return sqlSession.selectOne("post.countPostReply", post_no);
+	}
+	
+    /////////////////////////////////////////////////////////////////ReplyChat    
+	//선택된 게시글에 달린 댓글의 댓글  리스트 
+	public List<PostChatVo> fetchReplyChat(int comments_no){
+		return sqlSession.selectList("post.fetchReplyPostChat", comments_no);
+	}
+	
+	//해당 게시글에 댓글의 댓글 작성
+	public int writeReplyChat(PostChatVo postChatVo){
+		return sqlSession.insert("post.writeReplyPostChat", postChatVo);
+	}
+	
+	// 작성한 댓글 바로 가져오기
+	public PostChatVo getReplyPostChat(int post_chat_no){
+		return sqlSession.selectOne("post.getReplyPostChat", post_chat_no);
+	}
+	
+	// 댓글 갯수 카운트
+	public int countReplyChat(int comments_no){
+		return sqlSession.selectOne("post.countReplyPostChat", comments_no);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

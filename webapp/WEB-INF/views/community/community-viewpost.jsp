@@ -405,8 +405,8 @@ $(function(){
 							</div>
 
 							<div class="post-comments">
-								<a href="#"> <i class="fa fa-comments-o"></i> <span
-																	class="post-comments-number">${map.boardVo.count }</span>
+								<a href="#"> <i class="fa fa-comments-o"></i> 
+								<span class="post-comments-number">${map.boardVo.count }</span>
 								
 								</a>
 							</div>
