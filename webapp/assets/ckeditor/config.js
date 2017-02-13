@@ -3,36 +3,31 @@
  * For licensing, see LICENSE.md or http://ckeditor.com/license
  */
 
+ 
 CKEDITOR.editorConfig = function( config ) {
-	// Define changes to default configuration here.
-	// For complete reference see:
-	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
-
-	// The toolbar groups arrangement, optimized for two toolbar rows.
-	config.toolbarGroups = [
-		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
-		{ name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
-		{ name: 'links' },
-		{ name: 'insert' },
-		{ name: 'forms' },
-		{ name: 'tools' },
-		{ name: 'document',	   groups: [ 'mode', 'document', 'doctools' ] },
-		{ name: 'others' },
-		'/',
-		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-		{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
-		{ name: 'styles' },
-		{ name: 'colors' },
-		{ name: 'about' }
-	];
-
-	// Remove some buttons provided by the standard plugins, which are
-	// not needed in the Standard(s) toolbar.
-	config.removeButtons = 'Underline,Subscript,Superscript';
-
-	// Set the most common block elements.
-	config.format_tags = 'p;h1;h2;h3;pre';
-
-	// Simplify the dialog windows.
+	config.language = 'ko';
+	config.uiColor = '#f2f2f2';
+	config.height = 300;
+	config.toolbarCanCollapse = true;
+	
+	config.enterMode =CKEDITOR.ENTER_BR;		//엔터키 입력시 br 태그 변경
+	config.shiftEnterMode = CKEDITOR.ENTER_P;	//엔터키 입력시 p 태그로 변경
+	config.image2_alignClasses = [ 'align-left', 'align-center', 'align-right' ];
+	config.stylesSet = 'my_styles';
+	config.stylesSet = '${pageContext.request.contextPath}/assets/ckeditor/styles.js';
+	config.image2_alignClasses = [ 'image-left', 'image-center', 'image-right' ];
+	config.image2_captionedClass = 'image-captioned';
+	config.removeButtons ='';
+	config.font_names = "굴림;돋움;바탕;궁서;굴림체;돋움체;바탕체;궁서체;나눔고딕;나눔명조;"+
+	'Arial;Comic Sans MS;Courier New;Lucida Sans Unicode;monospace;sans-serif;serif;Tahoma;Times New Roman;Verdana';
 	config.removeDialogTabs = 'image:advanced;link:advanced';
+	config.tabIndex = 1;	// 에디트 안에서 탭 사용하기
+	config.tabSpaces = 4;	// 탭 칸수
+	config.allowedContent = true;
+
+	/*config.extraPlugins = 
+		'widget',
+		'uploadimage';
+	*/
 };
+

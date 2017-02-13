@@ -97,7 +97,7 @@
 <script type="text/javascript">
 
 var postNo = ${map.postVo.post_no};
-var usersNo = ${authUser_no};
+var usersNo = ${authUserNo};
 var image_path = "${pageContext.request.contextPath}/hotdog/image/user/";
 
 /* 댓글 렌더 */
@@ -252,7 +252,7 @@ $(function(){
 	fetchReply();
 		
 	$("#writeReply").submit(function(event){
-		
+		console.log("submit")
 		event.preventDefault();
 		
 		$.ajax({
@@ -261,7 +261,7 @@ $(function(){
 			dataType : "json",
 			data : "content="+$("#comment").val()+
 				   "&users_no="+usersNo+
-				   "&board_no="+boardNo,
+				   "&post_no="+postNo,
 			success : function(response){
 				
 				if(response.result != "success"){
@@ -294,9 +294,94 @@ $(function(){
 
 	<div class="wrapper">
 
-		<!-- START: HEADER PAGE TITLE -->
-		<c:import url="/WEB-INF/views/includes/header.jsp" />
-		<!-- END: PAGE TITLE -->
+		<!-- HEADER -->
+		<header id="header" class="header-transparent">
+			<div id="header-wrap">
+				<div class="container">
+
+					<!--LOGO-->
+					<div id="logo">
+						<a href="${pageContext.request.contextPath}" class="logo">
+							<img src="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png" alt="Hotdog">
+						</a>
+					</div>
+					<!--END: LOGO-->
+
+					<!--MOBILE MENU -->
+					<div class="nav-main-menu-responsive">
+						<button class="lines-button x">
+							<span class="lines"></span>
+						</button>
+					</div>
+					<!--END: MOBILE MENU -->
+
+					<!--TOP SEARCH -->
+					<div id="top-search">
+						<a id="top-search-trigger"><i class="fa fa-search"></i><i
+							class="fa fa-close"></i></a>
+						<form action="search-results-page.html" method="get">
+							<input type="text" name="q" class="form-control" value=""
+								placeholder="Start typing & press  &quot;Enter&quot;">
+						</form>
+					</div>
+					<!--END: TOP SEARCH -->
+					
+					<!--NAVIGATION-->
+					<c:import url="/WEB-INF/views/includes/navigation.jsp" />
+					<!--END: NAVIGATION-->
+					
+				</div>
+			</div>
+		</header>
+		<!-- END: HEADER -->
+		
+		<!-- PAGE TITLE -->
+		<section id="page-title"
+			class="page-title-parallax page-title-center text-dark"
+			style="background-image:url(${pageContext.request.contextPath}/hotdog/image/user/${map2.blogVo.logo_image})">
+			<div class="container">
+			  <div class="page-title col-md-8">
+					<h1>${map2.blogVo.title}</h1>
+					<span>${map2.userVo.infomation}</span>
+					
+					 <!-- profile modal  -->
+					<div id="showInfo">
+						<button class="fancy-btn openProfile">
+							<img
+								src="${pageContext.request.contextPath}/hotdog/image/user/${map2.userVo.users_image}">
+						</button>
+					</div>
+
+					<div class="modal-frame">
+						<div class="modal">
+							<div class="modal-inset">
+
+								<div class="button closeProfile" id="infoModal-close">
+									<i class="fa fa-close"></i>
+								</div>
+
+								<div class="modal-body">
+									<img
+										src="${pageContext.request.contextPath}/hotdog/image/user/${map.userVo.users_image}">
+									<h3>${map.userVo.nickname}</h3>
+									<p>${map.userVo.infomation}</p>
+									<p>${map.userVo.email}</p>
+									<div id="emptyFollowerButton"></div>
+									<div id="emptyButton"></div>
+									<%--<ul><li><a href="${pageContext.request.contextPath }/blog/${map.userVo.nickname">블로그 가기</a></li></ul> --%>
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+				<div class="modal-overlay">
+					
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- END: PAGE TITLE -->
 
 
 		<!-- CONTENT -->

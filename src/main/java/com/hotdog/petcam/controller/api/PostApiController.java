@@ -1,6 +1,7 @@
 package com.hotdog.petcam.controller.api;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,10 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.hotdog.petcam.DTO.JSONResult;
 import com.hotdog.petcam.security.Auth;
 import com.hotdog.petcam.security.AuthUser;
+import com.hotdog.petcam.service.ImageService;
 import com.hotdog.petcam.service.PostService;
 import com.hotdog.petcam.vo.PostVo;
 import com.hotdog.petcam.vo.UserVo;
@@ -24,6 +27,9 @@ public class PostApiController {
 
 	@Autowired
 	private PostService postService;
+	
+	@Autowired
+	private ImageService imageService;
 	
 	@Auth
 	@ResponseBody
@@ -61,6 +67,28 @@ public class PostApiController {
 		
 		
 		return JSONResult.success(result ? postVo.getUsers_no() : -1);
+	}
+	
+	@Auth
+	@ResponseBody
+	@RequestMapping(value ="/post_imageupload", method=RequestMethod.POST)
+	public JSONResult post_imageUpload(
+			@AuthUser UserVo authUser,
+			@RequestParam(value = "post_image") MultipartFile post_image, Model model){
+		
+		
+		String saveFileName = imageService.restore(post_image);
+		/*imageService.PostImageUpload(postVo);*/
+	
+		
+/*		postVo.setPost_image(saveFileName);*/
+		System.out.println("post_image" + saveFileName);
+		
+		model.addAttribute("saveFileName", saveFileName);
+		System.out.println("모델" + model);
+		
+		
+		return JSONResult.success(saveFileName);
 	}
 	
 	

@@ -76,8 +76,10 @@
 	type="text/css" href="css/custom.css" media="screen" />
 
 <!-- CKEDITOR SCRIPT -->
-<%-- <script src="${pageContext.request.contextPath}/assets/ckeditor/ckeditor.js"></script> --%>
-<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+<script src="${pageContext.request.contextPath}/assets/ckeditor/ckeditor.js"></script>
+<!-- <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script> -->
+<script src="${pageContext.request.contextPath}/assets/ckeditor/plugins/uploadimage/plugin.js"></script>
+<script src="${pageContext.request.contextPath}/assets/ckeditor/plugins/widget/plugin.js"></script>
 
 <!-- ALERTIFY SCRIPT -->
 <script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
@@ -104,12 +106,29 @@
 		<!-- CONTENT -->
 		<section class="content">
 			<div class="container list_container">
-				<form action= "${pageContext.request.contextPath }/post/${authUser.nickname}/insert" method="post">
-					<textarea class="form-control" name="title" placeholder="제목을 입력하세요." rows="1" style="font-size:20px"></textarea>
-		            <textarea name="content" id="ckeditor" rows="10" cols="80">
-		                
-		            </textarea>
-		             <input type="submit" class="btn btn-default" id="posting">
+				<!-- <form name="uploadImages" method="post" enctype="multipart/form-data">
+						<div class="tab-pane" id="imageThum">
+							<label>썸네일</label>
+							<input id="post_image" type="file" class="btn btn-default btn-sm" accept="image/*" onchange="loadFile(event)">
+							<img id="output" width="200px" height="150px" /> <br>
+							<button id="post_imageThum" class="btn btn-white">save</button>
+						</div>
+					</form> -->
+					
+			
+				
+				<form>
+					<label>썸네일</label>
+					<input id="post_image" type="file" name="post_image" class="btn btn-white btn-sm" accept="image/*" onchange="loadFile(event)">
+					<img id="output" width="200px" height="150px" /> <br>
+					<button id="post_imageThum" class="btn btn-white">save</button>
+				</form>
+				
+				<form action= "${pageContext.request.contextPath }/post/${authUser.nickname}/insert" method="post"  >
+					<textarea class="form-control required" aria-required="true" name="title" placeholder="제목을 입력하세요." rows="1" style="font-size:20px"></textarea>
+		            <input type="hidden" class="post_imagebox" name="post_image" >
+		            <textarea name="content" id="ckeditor" rows="10" cols="80"></textarea>
+		            <input type="submit" class="btn btn-white pull-right" id="posting" style="margin-right:0; margin-top:10px; ">
        			</form>
 			</div>
 
@@ -132,16 +151,64 @@
 	<script
 		src="${pageContext.request.contextPath}/assets/template/js/custom.js"></script>
 
+	<script>
+	var loadFile = function(
+			event) {
+		var output = document
+				.getElementById('output');
+		output.src = URL
+				.createObjectURL(event.target.files[0]);
+	};
+	
+	
+	
+	$(function(){
+		
+		var savaFileName;
+		var image_path = "${pageContext.request.contextPath}";
+		
+		
+		$("#post_imageThum").click(function(e) {
+			e.preventDefault();
+			var formData = new FormData();
+			post_image = $("#post_image").get(0).files[0];
+
+			if (post_image != null) {
+				formData.append("post_image",post_image);
+				controllerUrl = "post_imageupload";
+				} 
+					$.ajax({
+						url : "${pageContext.request.contextPath}/post/api/"+ controllerUrl,
+						type : "post",
+						data : formData,
+						processData : false,
+						contentType : false,
+						success : function(response){
+							saveFileName = response.data;
+							console.log(saveFileName)
+							/* var path = saveFileName; */
+							
+							$(".post_imagebox").attr("value", saveFileName);
+							console.log("${pageContext.request.contextPath}");
+							alert("썸네일 이미지가 업로드 되었습니다.")
+						}
+				})
+			
+			
+		})
+	});
+	</script>
 
 
 	<!-- post 최신 글 9개 불러오는 ajax list -->
 	<script>
             CKEDITOR.replace( 'ckeditor', {//해당 이름으로 된 textarea에 에디터를 적용 <-- 이거 이름 부분입니다.
+            customConfig: '${pageContext.request.contextPath}/assets/ckeditor/config.js',
             startupFocus : false,  // 자동 focus 사용할때는  true
             enterMode :CKEDITOR.ENTER_BR,
             width:'100%',
             height:'600px',
-            filebrowserImageUploadUrl:"${pageContext.request.contextPath }/image/upload"
+            filebrowserImageUploadUrl:"${pageContext.request.contextPath }/image/upload",
             });
 
             </script> 
@@ -202,7 +269,6 @@
 	  });
 	
 	</script>
-
 
 </body>
 </html>

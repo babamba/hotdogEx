@@ -56,7 +56,6 @@ public class PostDao {
 		return list;
 	}
 	
-	
 	 ////////////////////////////////////////////////////////////////////Reply
 	 // 선택된 게시글에 달린 댓글 리스트 가져오기 
 	public List<PostCommentsVo> fetchPostReply(int post_no){

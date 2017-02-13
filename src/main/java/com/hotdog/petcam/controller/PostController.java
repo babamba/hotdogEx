@@ -25,6 +25,7 @@ import com.hotdog.petcam.DTO.JSONResult;
 import com.hotdog.petcam.security.Auth;
 import com.hotdog.petcam.security.AuthUser;
 import com.hotdog.petcam.service.BlogService;
+import com.hotdog.petcam.service.ImageService;
 import com.hotdog.petcam.service.PostService;
 import com.hotdog.petcam.vo.BlogVo;
 import com.hotdog.petcam.vo.ImageVo;
@@ -41,6 +42,9 @@ public class PostController {
 		
 		@Autowired
 		private BlogService blogService;
+		
+		@Autowired
+		private ImageService ImageService;
 		
 		@Auth
 		@RequestMapping("/{nickname}/postlist")
@@ -69,14 +73,19 @@ public class PostController {
 			return "blog/write";
 		}
 		
+		
 		@Auth
-		@RequestMapping(value="/{nickname}/insert",  method = RequestMethod.POST)
+		@RequestMapping(value="/{nickname}/insert")
 		public String insert(@ModelAttribute PostVo postVo, @AuthUser UserVo authUser ){
 			String nickname = authUser.getNickname();
+			
 			int users_no = authUser.getUsers_no();
 			postVo.setUsers_no(users_no);
+			
 			System.out.println(nickname);
-			System.out.println(postVo);
+			System.out.println("controller insert" + postVo);
+			
+			
 			postService.insert(postVo);
 			return "redirect:/post/" + nickname + "/postlist";
 		}
@@ -107,6 +116,10 @@ public class PostController {
 			
 			Map<String, Object> map = postService.getPost(post_no);
 			System.out.println("@@@@@@@@@@@@맵@@@@@@@@@@@@@@" + map);
+			
+			Map<String, Object> map2 = blogService.index(nickname);
+			model.addAttribute("map", map2);
+			System.out.println("@@@@@@맵222222@@@  " + map2);
 			
 			model.addAttribute("map", map);
 			model.addAttribute("authUserNo", users_no);

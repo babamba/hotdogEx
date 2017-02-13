@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hotdog.petcam.vo.ImageVo;
+import com.hotdog.petcam.vo.PostVo;
 
 
 @Repository
@@ -24,5 +25,10 @@ public class ImageDao {
 	public ImageVo selectByNo(int no){
 		return sqlSession.selectOne("image.selectByNo", no);
 	}
+	
+	public void uploadPostImage(PostVo postVo){
+		sqlSession.update("post.post_image_insert",postVo);
+	}
+	
 	
 }

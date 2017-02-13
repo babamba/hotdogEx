@@ -34,6 +34,7 @@ public class PostService {
 	private ImageDao imageDao;
 	
 	public void insert(PostVo postVo) {
+		System.out.println(postVo);
 		postDao.insert(postVo);
 	}
 	
@@ -75,7 +76,7 @@ public class PostService {
 		return postDao.getIndexByPostTop9(users_no);
 	}
 	
-	
+
 //	선택된 게시글에 달린 댓글 리스트 가져오기.
 	public List<PostCommentsVo> fetchReply(int post_no){
 		return postDao.fetchPostReply(post_no);

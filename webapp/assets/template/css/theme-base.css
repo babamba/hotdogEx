@@ -2326,7 +2326,7 @@ body.wide #topbar.topbar-fullwidth > .container {
 -----------------------------------------------------------------*/
 
 #content {
-    overflow: hidden;
+    overflow: visible;
     padding: 60px 0;
     position: relative;
 }

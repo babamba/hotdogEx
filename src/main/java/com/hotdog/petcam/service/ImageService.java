@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.hotdog.petcam.repository.ImageDao;
 import com.hotdog.petcam.vo.ImageVo;
+import com.hotdog.petcam.vo.PostVo;
 
 @Service
 public class ImageService {
@@ -19,6 +20,10 @@ public class ImageService {
 	@Autowired
 	private ImageDao imageDao;
 	
+	
+	public void PostImageUpload(PostVo postVo){
+		imageDao.uploadPostImage(postVo);
+	}
 
 	public String restore(MultipartFile userimage, int no) {
 		System.out.println("들어옴");

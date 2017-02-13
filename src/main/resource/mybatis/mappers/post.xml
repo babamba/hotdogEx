@@ -51,6 +51,10 @@
 		]]>
 	</select>
 	
+	<update id="post_image_insert" parameterType="postvo">
+		update post set post_image = #{post_image} where post_no = #{post_no]};
+	</update>
+	
 	<!--                 			Reply								 -->
 	<select id="postfetchReply" parameterType="int" resultType="postcommentsvo">
 
