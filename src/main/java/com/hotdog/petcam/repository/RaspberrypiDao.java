@@ -20,7 +20,6 @@ public class RaspberrypiDao {
 	}
 
 	public RaspberrypiVo selectByNo(RaspberrypiVo raspberrypiVo) {
-
 		return sqlSession.selectOne("raspberrypi.selectByNo", raspberrypiVo);
 	}
 }
