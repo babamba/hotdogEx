@@ -179,13 +179,7 @@
 						<div class="post-comments">
 							<a href="#">
 								<i class="fa fa-comments-o"></i>
-								<span class="post-comments-number">324</span>
-							</a>
-						</div>
-						<div class="post-comments">
-							<a href="#">
-								<i class="fa fa-share-alt"></i>
-								<span class="post-comments-number">324</span>
+								<span class="post-comments-number">${vo.count }</span>
 							</a>
 						</div>
 					</div>
@@ -222,7 +216,7 @@
 								render( vo, false );
 							});
 							
-							if( response.data.length < 10 ) {
+							if( response.data.length < 5 ) {
 								isEnd = true;
 							}
 						},
@@ -374,16 +368,11 @@
 				<div class="widget clearfix widget-blog-articles"> 
 					<h4 class="widget-title">최근 활동한 이웃들</h4>
 					<ul class="list-posts list-medium">
-						<li><a href="#">Printing and typesetting</a>
-							<small>Jun 18 2015</small>
+						<c:forEach items="${recent_users }"	var="vo" varStatus="status">
+						<li><a href="${pageContext.request.contextPath }/post/${vo.nickname}/postView?post_no=${vo.post_no}">${vo.nickname } : ${vo.title }</a>
+							<small>${vo.regdate }</small>
 						</li>
-						<li><a href="#">Lorem Ipsum has been the industry's</a><small>Jun 18 2015</small>
-						</li>
-						<li><a href="#">Ipsum and typesetting</a><small>Jun 18 2015</small>
-						</li>
-						<li><a href="#">Specimen book</a><small>Jun 18 2015</small>
-						</li>
-
+						</c:forEach>
 					</ul>
 				</div>
 				<!--end: widget blog articles-->

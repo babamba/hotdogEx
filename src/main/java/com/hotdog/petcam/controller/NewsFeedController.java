@@ -29,8 +29,10 @@ public class NewsFeedController {
 						@RequestParam(value="page",required=true,defaultValue="1")Integer page){
 		List<NewsVo> latest_news = newsfeedService.latestNews(authUser.getUsers_no(),page);
 		List<NewsVo> top_ten = newsfeedService.topTen(authUser.getUsers_no());
+		List<NewsVo> recent_users=newsfeedService.recent_users(authUser.getUsers_no());
 		model.addAttribute("latest_news", latest_news);
 		model.addAttribute("top_ten", top_ten);
+		model.addAttribute("recent_users",recent_users);
 		return "community/community-newsfeed";
 	}
 	

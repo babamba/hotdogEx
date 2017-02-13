@@ -18,5 +18,8 @@ public class NewsFeedService {
 	public List<NewsVo> topTen(int authUser_no){
 		return newsfeedDao.topTen(authUser_no);
 	}
+	public List<NewsVo> recent_users(int authUser_no){
+		return newsfeedDao.recent_users(authUser_no);
+	}
 	
 }

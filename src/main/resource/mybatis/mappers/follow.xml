@@ -96,7 +96,7 @@
 									where follow_users_no=#{authUser_no}) b, users c,(select @rownum:=0) d
 					where a.users_no = b.users_no and a.users_no = c.users_no
 						order by regdate desc ) e
-			  where (#{page}-1)*10+1 <= rn and rn <= #{page}*10
+			 limit #{min},#{max}
    	]]>
    </select>
    
@@ -115,12 +115,48 @@
 				FROM post a, (SELECT users_no FROM follow WHERE follow_users_no = #{authUser_no}) b,users c,(SELECT @rownum := 0) d
 								   WHERE a.users_no = b.users_no AND a.users_no = c.users_no
 				) p 
-		where rn<=5
-		order by count desc;
+		order by count desc
+		limit 10;
    	]]>
    	
    </select>
    
    <!--  10. 최신글 목록 및 댓글 수  -->
    
+   <select id="latest_news_with_count" parameterType ="map" resultType="newsvo">
+   	<![CDATA[
+   		select p.rn,p.post_no,p.post_image,p.users_image,p.nickname,p.users_no,p.title,p.regdate,( select count(*) from post_comments pc where pc.post_no =p.post_no) as count
+		from ( SELECT @rownum := @rownum + 1 AS rn,
+										 a.post_no,
+										 a.post_image,
+										 c.users_image,
+										 c.nickname,
+										 a.title,
+										 a.regdate,
+										 a.users_no
+				FROM post a, (SELECT users_no FROM follow WHERE follow_users_no = #{authUser_no}) b,users c,(SELECT @rownum := 0) d
+								   WHERE a.users_no = b.users_no AND a.users_no = c.users_no
+				) p 
+		order by regdate desc
+		limit #{min},#{max};
+		
+   	]]>
+   	</select>
+   
+   <!-- 최근 활동한 이웃 -->
+   <select id="recent_users" parameterType="int" resultType="newsvo">
+	<![CDATA[
+	 		select e.rn,e.post_no,e.users_image,e.nickname,e.post_image,e.title,e.regdate,e.users_no
+			from ( select @rownum:=@rownum+1 as rn,a.post_no,a.post_image, c.users_image,c.nickname,a.title,a.regdate,a.users_no
+					from post a,( select users_no
+											from follow
+									where follow_users_no=#{authUser_no}) b, users c,(select @rownum:=0) d
+					where a.users_no = b.users_no and a.users_no = c.users_no
+						order by regdate desc ) e
+						 order by regdate desc
+			  limit 4;
+			  
+	]]>
+   
+   </select>
 </mapper>
