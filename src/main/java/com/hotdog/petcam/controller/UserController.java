@@ -29,10 +29,14 @@ import com.hotdog.petcam.vo.UserVo;
 @RequestMapping("/user")
 public class UserController {
 
-	@Autowired	private UserService userService;
-	@Autowired  private BlogService blogService;
-	@Autowired	private ImageService imageService;
-	@Autowired 	private FileUploadService fileService;
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private BlogService blogService;
+	@Autowired
+	private ImageService imageService;
+	@Autowired
+	private FileUploadService fileService;
 
 	@RequestMapping("/login")
 	public String login(@ModelAttribute UserVo vo, Model model, HttpServletRequest request, HttpSession session) {
@@ -103,10 +107,10 @@ public class UserController {
 
 		return JSONResult.success(result ? "yes" : "no");
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("/app/getuser")
-	public Object appGetUser(@RequestParam(value="userno") int userNo){
+	public Object appGetUser(@RequestParam(value = "userno") int userNo) {
 		return JSONResult.success(userService.getUser(userNo));
 	}
 
@@ -139,46 +143,59 @@ public class UserController {
 		return "main/index";
 	}
 
-	// ******************************** 회원 이미지 관리 ***********************************
-	// ******************************** 회원 이미지 관리 ***********************************
-	
-	
-	
+	@ResponseBody
+	@RequestMapping(value = "/app/account/secretmodify", method = RequestMethod.POST)
+	public Object appSecModify(@ModelAttribute UserVo userVo, @RequestParam(value = "nickname") String nickname,
+			@RequestParam(value = "sec_pass_word") int sec_pass_word) {
+
+		userVo.setNickname(nickname);
+		userVo.setSec_pass_word(sec_pass_word);
+
+		userService.secretModify(userVo);
+
+		return JSONResult.success("");
+	}
+
+	// ******************************** 회원 이미지 관리
+	// ***********************************
+	// ******************************** 회원 이미지 관리
+	// ***********************************
+
 	@Auth
 	@Secret
 	@RequestMapping(value = "/account/userprofilemodify", method = RequestMethod.POST)
 	public String userProfileModify(@ModelAttribute BlogVo blogVo, @AuthUser UserVo authUser,
 			@RequestParam(value = "nickname") String nickname, @RequestParam(value = "title") String title,
-			@RequestParam(value = "infomation") String infomation,@RequestParam(value="pass_word")String password,
+			@RequestParam(value = "infomation") String infomation, @RequestParam(value = "pass_word") String password,
 			@RequestParam(value = "userimage") MultipartFile userimage) {
 		// @RequestParam(value="blogimage") MultipartFile blogimage
-		
-		userService.userProfileModify(authUser, blogVo, nickname, title, infomation,password);
+
+		userService.userProfileModify(authUser, blogVo, nickname, title, infomation, password);
 
 		String saveName = imageService.restore(userimage, authUser.getUsers_no());
 		authUser.setUsers_image(saveName);
-		
-		userService.setImage( authUser );
+
+		userService.setImage(authUser);
 
 		return "redirect:/";
 	}
-	
+
 	@Auth
 	@Secret
 	@RequestMapping(value = "/account/userprofilemodify2", method = RequestMethod.POST)
 	public String userProfileModify2(@ModelAttribute BlogVo blogVo, @AuthUser UserVo authUser,
 			@RequestParam(value = "nickname") String nickname, @RequestParam(value = "title") String title,
-			@RequestParam(value = "infomation") String infomation,@RequestParam(value="pass_word")String password,
+			@RequestParam(value = "infomation") String infomation, @RequestParam(value = "pass_word") String password,
 			@RequestParam(value = "blogimage") MultipartFile blogimage) {
-		
-		userService.userProfileModify(authUser, blogVo, nickname, title, infomation,password);
+
+		userService.userProfileModify(authUser, blogVo, nickname, title, infomation, password);
 
 		String saveName = imageService.restore(blogimage, authUser.getUsers_no());
-		
+
 		blogVo.setUsers_no(authUser.getUsers_no());
 		blogVo.setLogo_image(saveName);
-		blogService.setLogo( blogVo);
-		
+		blogService.setLogo(blogVo);
+
 		return "redirect:/";
 	}
 
@@ -187,173 +204,192 @@ public class UserController {
 	@RequestMapping(value = "/account/userprofilemodify3", method = RequestMethod.POST)
 	public String userProfileModify3(@ModelAttribute BlogVo blogVo, @AuthUser UserVo authUser,
 			@RequestParam(value = "nickname") String nickname, @RequestParam(value = "title") String title,
-			@RequestParam(value = "infomation") String infomation,
-			@RequestParam(value="pass_word")String password,
+			@RequestParam(value = "infomation") String infomation, @RequestParam(value = "pass_word") String password,
 			@RequestParam(value = "userimage") MultipartFile userimage,
 			@RequestParam(value = "blogimage") MultipartFile blogimage) {
-		
-		userService.userProfileModify(authUser, blogVo, nickname, title, infomation,password);
 
-		String saveName = imageService.restore(userimage,authUser.getUsers_no());
+		userService.userProfileModify(authUser, blogVo, nickname, title, infomation, password);
+
+		String saveName = imageService.restore(userimage, authUser.getUsers_no());
 		String saveName2 = imageService.restore(blogimage, authUser.getUsers_no());
-		
+
 		authUser.setUsers_image(saveName);
 		blogVo.setUsers_no(authUser.getUsers_no());
 		blogVo.setLogo_image(saveName2);
-		
-		userService.setImage( authUser );
-		blogService.setLogo( blogVo);
+
+		userService.setImage(authUser);
+		blogService.setLogo(blogVo);
 
 		return "redirect:/";
 	}
-	
+
 	@Auth
 	@Secret
 	@RequestMapping(value = "/account/userprofilemodify4", method = RequestMethod.POST)
 	public String userProfileModify4(@ModelAttribute BlogVo blogVo, @AuthUser UserVo authUser,
 			@RequestParam(value = "nickname") String nickname, @RequestParam(value = "title") String title,
-			@RequestParam(value = "infomation") String infomation,@RequestParam(value="pass_word")String password){
-		
-		userService.userProfileModify(authUser, blogVo, nickname, title, infomation,password);
+			@RequestParam(value = "infomation") String infomation, @RequestParam(value = "pass_word") String password) {
+
+		userService.userProfileModify(authUser, blogVo, nickname, title, infomation, password);
 		return "redirect:/";
 	}
-	
-	
 
 	@Auth
 	@Secret
 	@RequestMapping(value = "/account/petprofilemodify", method = RequestMethod.POST)
 	public String petProfileModify(@ModelAttribute PetVo petVo, @AuthUser UserVo authUser,
-			@RequestParam(value="petname") String name,@RequestParam(value="petinfo") String info,
-			@RequestParam(value="gender")String gender,@RequestParam(value="age")String age,
-			@RequestParam(value="co_date") String co_date ){
-		
-		userService.petProfileModify(petVo,authUser.getUsers_no(),name,info,co_date,age,gender);
+			@RequestParam(value = "petname") String name, @RequestParam(value = "petinfo") String info,
+			@RequestParam(value = "gender") String gender, @RequestParam(value = "age") String age,
+			@RequestParam(value = "co_date") String co_date) {
+
+		userService.petProfileModify(petVo, authUser.getUsers_no(), name, info, co_date, age, gender);
 		return "redirect:/blog/" + authUser.getNickname();
 	}
-	
+
 	@Auth
 	@Secret
 	@RequestMapping(value = "/account/petprofilemodify2", method = RequestMethod.POST)
 	public String petProfileModify2(@ModelAttribute PetVo petVo, @AuthUser UserVo authUser,
-			@RequestParam(value="petname") String name,@RequestParam(value="petinfo") String info,
-			@RequestParam(value="gender") String gender,@RequestParam(value="age") String age,
-			@RequestParam(value="co_date") String co_date,@RequestParam(value="petimage")MultipartFile petimage ){
-		
-		userService.petProfileModify(petVo,authUser.getUsers_no(),name,info,co_date,age,gender);
-		
+			@RequestParam(value = "petname") String name, @RequestParam(value = "petinfo") String info,
+			@RequestParam(value = "gender") String gender, @RequestParam(value = "age") String age,
+			@RequestParam(value = "co_date") String co_date, @RequestParam(value = "petimage") MultipartFile petimage) {
+
+		userService.petProfileModify(petVo, authUser.getUsers_no(), name, info, co_date, age, gender);
+
 		String saveName = imageService.restore(petimage, authUser.getUsers_no());
 		petVo.setUsers_no(authUser.getUsers_no());
 		petVo.setPet_image(saveName);
 		userService.setPetImage(petVo);
-		
+
 		return "redirect:/blog/" + authUser.getNickname();
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/app/account/petprofilemodify", method = RequestMethod.POST)
-	public Object appPetProfileModify(@ModelAttribute PetVo petVo,@RequestParam(value="users_no")Integer users_no,
-			@RequestParam(value="petname") String name,@RequestParam(value="petinfo") String info,
-			@RequestParam(value="gender")String gender,@RequestParam(value="age")String age,
-			@RequestParam(value="co_date") String co_date ){
-		
-		userService.petProfileModify(petVo,users_no,name,info,co_date,age,gender);
+	public Object appPetProfileModify(@ModelAttribute PetVo petVo, @RequestParam(value = "users_no") Integer users_no,
+			@RequestParam(value = "petname") String name, @RequestParam(value = "petinfo") String info,
+			@RequestParam(value = "gender") String gender, @RequestParam(value = "age") String age,
+			@RequestParam(value = "co_date") String co_date) {
+
+		userService.petProfileModify(petVo, users_no, name, info, co_date, age, gender);
 		return JSONResult.success("success");
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/app/account/petprofilemodify2", method = RequestMethod.POST)
-	public Object appPetProfileModify2(@ModelAttribute PetVo petVo,@RequestParam(value="users_no") Integer users_no,
-			@RequestParam(value="petimage")MultipartFile petimage ){
-		
-		
+	public Object appPetProfileModify2(@ModelAttribute PetVo petVo, @RequestParam(value = "users_no") Integer users_no,
+			@RequestParam(value = "petimage") MultipartFile petimage) {
+
 		String saveName = imageService.restore(petimage, users_no);
 		petVo.setUsers_no(users_no);
 		petVo.setPet_image(saveName);
 		userService.setPetImage(petVo);
-		
+
 		return JSONResult.success(saveName);
 	}
+
 	@ResponseBody
 	@RequestMapping(value = "/app/getpet")
-	public Object appGetPet(@RequestParam(value="users_no")Integer users_no){
-		
-		PetVo pet=userService.getPet(users_no);
+	public Object appGetPet(@RequestParam(value = "users_no") Integer users_no) {
+
+		PetVo pet = userService.getPet(users_no);
 		return JSONResult.success(pet);
 	}
-	
+
 	// ******************************secret check ****************
-	
+
 	@RequestMapping("/secretcontrol")
-	public String secretControl(@AuthUser UserVo authUser){
+	public String secretControl(@AuthUser UserVo authUser) {
 		// 2차 비밀번호가 있나없나 체크한다.
-		if( userService.firstCheck(authUser) ){
+		if (userService.firstCheck(authUser)) {
 			System.out.println("최초 접속");
 			return "main/firstSecret";
-		}else{
+		} else {
 			System.out.println("설정되어 있음");
 			return "main/checkSecret";
 		}
-		
+
 	}
-	
+
+	@ResponseBody
+	@RequestMapping("/app/secretcontrol")
+	public Object appSecretControl(@RequestParam(value = "users_no") int users_no, @ModelAttribute UserVo userVo) {
+		userVo.setUsers_no(users_no);
+		if (userService.firstCheck(userVo)) {
+			return JSONResult.success("first");
+		} else {
+			return JSONResult.success("exist");
+		}
+
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/app/secretlogin", method = RequestMethod.POST)
+	public Object appSecretControl(@ModelAttribute UserVo userVo, @RequestParam(value = "users_no") int users_no,
+			@RequestParam(value = "sec_pass_word") int sec_pass_word) {
+		userVo.setUsers_no(users_no);
+		userVo.setSec_pass_word(sec_pass_word);
+		if (userService.secretLogin(userVo) != null) {
+			return JSONResult.success("yes");
+		} else {
+			return JSONResult.success("no");
+		}
+
+	}
+
 	// ******** 테스트
 	@ResponseBody
 	@RequestMapping("/app/audioupload")
-	public Object appAudioUpload(MultipartFile file){
-		
-		String saveName= fileService.restore(file);
-		
+	public Object appAudioUpload(MultipartFile file) {
+
+		String saveName = fileService.restore(file);
+
 		return JSONResult.success(saveName);
 	}
-	
-	// *************  App account ******
-	
-		@ResponseBody
-		@RequestMapping(value="/app/account/userprofilemodify")
-		public Object appUserProfileModify(@RequestParam(value="users_no",required=true,defaultValue="")String no,@RequestParam(value="nickname",required=true,defaultValue="")String nickname,
-											@RequestParam(value="pass_word",required=true,defaultValue="")String password,@ModelAttribute UserVo userVo){
-			
-			if(nickname != ""){
-				userVo.setNickname(nickname);
-			}
-			if(password != ""){
-				userVo.setPass_word(password);
-			}
-			if(no != ""){
-				userVo.setUsers_no( Integer.parseInt(no) );
-			}
-			
-			
-			try{
-				userService.appUserProfileModify(userVo);
-				
-			} 
-			catch(Exception e){
-				System.out.println("앱 개인정보 수정 실패 catch");
-				return JSONResult.error("fail");
-			}
-			
-			System.out.println("앱 개인정보 수정 완료");
-			return JSONResult.success("success");
+
+	// ************* App account ******
+
+	@ResponseBody
+	@RequestMapping(value = "/app/account/userprofilemodify")
+	public Object appUserProfileModify(@RequestParam(value = "users_no", required = true, defaultValue = "") String no,
+			@RequestParam(value = "nickname", required = true, defaultValue = "") String nickname,
+			@RequestParam(value = "pass_word", required = true, defaultValue = "") String password,
+			@ModelAttribute UserVo userVo) {
+
+		if (nickname != "") {
+			userVo.setNickname(nickname);
 		}
-		
-		@ResponseBody
-        @RequestMapping(value = "app/account/userprofilemodify2", method = RequestMethod.POST)
-        public Object appUserProfileModify2(@RequestParam(value="users_no")Integer users_no,@ModelAttribute UserVo userVo,
-                                            @RequestParam(value = "userimage") MultipartFile userimage) {
-            
+		if (password != "") {
+			userVo.setPass_word(password);
+		}
+		if (no != "") {
+			userVo.setUsers_no(Integer.parseInt(no));
+		}
 
-            String saveName = imageService.restore(userimage, users_no);
-            userVo.setUsers_no(users_no);
-            userVo.setUsers_image(saveName);
-            
-            userService.setImage( userVo );
+		try {
+			userService.appUserProfileModify(userVo);
 
-            return JSONResult.success(saveName);
-        }
-		
-	
-	
-	
+		} catch (Exception e) {
+			System.out.println("앱 개인정보 수정 실패 catch");
+			return JSONResult.error("fail");
+		}
+
+		System.out.println("앱 개인정보 수정 완료");
+		return JSONResult.success("success");
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "app/account/userprofilemodify2", method = RequestMethod.POST)
+	public Object appUserProfileModify2(@RequestParam(value = "users_no") Integer users_no,
+			@ModelAttribute UserVo userVo, @RequestParam(value = "userimage") MultipartFile userimage) {
+
+		String saveName = imageService.restore(userimage, users_no);
+		userVo.setUsers_no(users_no);
+		userVo.setUsers_image(saveName);
+
+		userService.setImage(userVo);
+
+		return JSONResult.success(saveName);
+	}
+
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="raspberrypi">
+
+	<insert id="insert" parameterType="raspberrypivo">
+		<![CDATA[
+				insert INTO raspberrypi
+						(users_no,device_num,ip_address,temperature) 
+				VALUES (#{users_no}, 
+						#{device_num}, 
+						#{ip_address}, 
+						#{temperature});
+		]]>
+	</insert>
+
+	<select id="selectByNo" parameterType="raspberrypivo"
+		resultType="raspberrypivo">
+		<![CDATA[
+				select users_no,
+					   device_num,
+					   ip_address,
+					   temperature 
+				 from raspberrypi 
+				 where users_no = #{users_no};
+		]]>
+	</select>
+
+</mapper>

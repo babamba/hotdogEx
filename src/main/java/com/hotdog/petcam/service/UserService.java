@@ -43,7 +43,7 @@ public class UserService {
 		blogVo.setLogo_image("a.jpg");
 
 		blogDao.insert(blogVo);
-		
+
 		PetVo pet = new PetVo();
 		pet.setUsers_no(userVo.getUsers_no());
 		userDao.insertPet(pet);
@@ -160,25 +160,26 @@ public class UserService {
 		createSecret(userVo);
 	}
 
-	public void createSecret(UserVo userVo){
-        try {
-            URL url = new URL("http://150.95.141.66/test/cgi-bin/secregister.py?nickname="+ userVo.getNickname()+"&password="+userVo.getSec_pass_word() );
-            
-            URLConnection conn = url.openConnection();
-        
-             InputStream is = conn.getInputStream();
-                BufferedReader br = new BufferedReader(new InputStreamReader(is));
-                char[] buff = new char[512];
-                int len = -1;
-                
-                while( (len = br.read(buff)) != -1) {
-                   System.out.print(new String(buff, 0, len));
-                }
-                
-                br.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+	public void createSecret(UserVo userVo) {
+		try {
+			URL url = new URL("http://150.95.141.66/test/cgi-bin/secregister.py?nickname=" + userVo.getNickname()
+					+ "&password=" + userVo.getSec_pass_word());
+
+			URLConnection conn = url.openConnection();
+
+			InputStream is = conn.getInputStream();
+			BufferedReader br = new BufferedReader(new InputStreamReader(is));
+			char[] buff = new char[512];
+			int len = -1;
+
+			while ((len = br.read(buff)) != -1) {
+				System.out.print(new String(buff, 0, len));
+			}
+
+			br.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void userProfileModify(UserVo userVo, BlogVo blogVo, String nickname, String title, String infomation,
@@ -283,8 +284,8 @@ public class UserService {
 	public void appUserProfileModify(UserVo userVo) {
 		userDao.appUserProfileModify(userVo);
 	}
-	
-	public PetVo getPet(int users_no){
+
+	public PetVo getPet(int users_no) {
 		return userDao.getPet(users_no);
 	}
 }
