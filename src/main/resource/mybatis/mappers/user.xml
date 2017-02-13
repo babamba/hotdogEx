@@ -159,8 +159,8 @@
 	
 		<![CDATA[
 			update pet
-				set pet_image=#{petImage}
-					where users_no = #{usersNo};
+				set pet_image=#{pet_image}
+					where users_no = #{users_no};
 		]]>
 	</update>
 	

@@ -12,8 +12,8 @@ import com.hotdog.petcam.vo.NewsVo;
 public class NewsFeedService {
 	@Autowired private NewsFeedDao newsfeedDao;
 	
-	public List<NewsVo> latestNews(int authUser_no){
-		return newsfeedDao.latestNews(authUser_no);
+	public List<NewsVo> latestNews(int authUser_no,int page){
+		return newsfeedDao.latestNews(authUser_no,page);
 	}
 	public List<NewsVo> topTen(int authUser_no){
 		return newsfeedDao.topTen(authUser_no);

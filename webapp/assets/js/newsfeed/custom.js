@@ -54,13 +54,13 @@ jQuery(document).ready(function() {
         }]
     });
 });
-<!-- WOW -->
+
 wow = new WOW({
     animateClass: 'animated',
     offset: 100
 });
 wow.init();
-<!-- Preloader -->
+
 jQuery(window).load(function() { // makes sure the whole site is loaded
     $('#status').fadeOut(); // will first fade out the loading animation
     $('#preloader').delay(700).fadeOut('slow'); // will fade out the white DIV that covers the website.
