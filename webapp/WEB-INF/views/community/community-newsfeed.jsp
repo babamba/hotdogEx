@@ -156,7 +156,7 @@
 							<img src="${pageContext.request.contextPath}/hotdog/image/user/${vo.post_image }" width="220px" height="300px">
 							<div class="image-box-content">
 								<p>
-									<a href="${pageContext.request.contextPath}/hotdog/image/user/${vo.post_image }" data-lightbox-type="image" title="Your image title here!"><i class="fa fa-expand"></i></a>
+									<a href="${pageContext.request.contextPath}/hotdog/image/user/${vo.post_image }" data-lightbox-type="image" title="${vo.title }"><i class="fa fa-expand"></i></a>
 									<a href="${pageContext.request.contextPath }/post/${vo.nickname}/postView?post_no=${vo.post_no}"><i class="fa fa-link"></i></a>
 								</p>
 							</div>
