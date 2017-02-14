@@ -1,0 +1,100 @@
+
+*{
+	padding:0px;
+	margin:0px;
+}
+
+.clearfix{
+    clear: both;
+}
+
+
+/* 유저 */
+.user_image_modify{
+	display: inline-block;
+	
+}
+
+.user_image_box{
+	float:left;
+	top:0px;
+	display:inline-block;
+}
+
+#output{
+	width:400px; 
+	height:300px;
+}
+
+.user_profile_modify{
+	display: inline-block;
+	margin-top:30px;
+	float:right;
+}
+
+.user_profile_modify .input-group{
+	margin:10px;
+}
+
+.user_profile_modify .password_start{
+	margin:40px 10px 10px 10px;
+}
+
+
+/*펫 */
+.pet_image_modify{
+	display: inline-block;
+	
+}
+
+.pet_image_box{
+	float:left;
+	top:0px;
+	display:inline-block;
+}
+
+
+.pet_profile_modify{
+	display: inline-block;
+	margin-top:30px;
+	float:right;
+}
+
+#petProfileSave{
+	width:100px;
+	display:block;
+	margin:0 auto;
+}
+
+.pet_profile_modify .input-group{
+	margin:10px;
+}
+
+.pet_profile_modify .password_start{
+	margin:60px 10px 10px 10px;
+}
+
+#output3{
+	width:100%; 
+	height:300px;
+}
+
+
+/*블로그 */
+.blog_image_modify{
+	position:relative;
+	display: inline-block;
+	margin-left:100px;
+	width:100%;
+}
+
+.blog_image_box{
+	display:inline-block;
+	
+}
+
+.blog_profile_modify{
+	display: inline-block;
+	width:500px;
+}
+
