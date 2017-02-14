@@ -39,4 +39,7 @@ public class NewsFeedDao {
 		
 		return sqlSession.selectList("follow.search",map);
 	}
+	public List<NewsVo> totalTop(){
+		return sqlSession.selectList("follow.total_top");
+	}
 }
