@@ -27,6 +27,7 @@ public class NewsFeedController {
 	@RequestMapping("")
 	public String index(@AuthUser UserVo authUser,Model model,
 						@RequestParam(value="page",required=true,defaultValue="1")Integer page){
+		
 		List<NewsVo> latest_news = newsfeedService.latestNews(authUser.getUsers_no(),page);
 		List<NewsVo> top_ten = newsfeedService.topTen(authUser.getUsers_no());
 		List<NewsVo> recent_users=newsfeedService.recent_users(authUser.getUsers_no());
@@ -36,13 +37,37 @@ public class NewsFeedController {
 		return "community/community-newsfeed";
 	}
 	
-	// 2. 리스트 더 불러오기
+	// 2. 메인 에서 리스트 더 불러오기
 	@ResponseBody
 	@RequestMapping("/fetch")
-	public Object fetch(@AuthUser UserVo authUser,Model model,@RequestParam(value="page",required=true,defaultValue="1")Integer page){
+	public Object fetch(@AuthUser UserVo authUser,@RequestParam(value="page",required=true,defaultValue="1")Integer page){
 		
-		System.out.println(" 추가 요청 들어옴 페이지 :"+page);
 		List<NewsVo> latest_news = newsfeedService.latestNews(authUser.getUsers_no(),page);
 		return JSONResult.success(latest_news);
+	}
+	
+	// 3. 검색한 회원의 글 불러오기
+	@RequestMapping("/search")
+	public String search(@AuthUser UserVo authUser,Model model,@RequestParam(value ="search") String search,
+						@RequestParam(value="page",required = true,defaultValue="1")Integer page){
+		
+		List<NewsVo> search_list = newsfeedService.search(authUser.getUsers_no(),search,page);
+		List<NewsVo> top_ten = newsfeedService.topTen(authUser.getUsers_no());
+		List<NewsVo> recent_users=newsfeedService.recent_users(authUser.getUsers_no());
+		model.addAttribute("search_list", search_list);
+		model.addAttribute("top_ten", top_ten);
+		model.addAttribute("recent_users",recent_users);
+		model.addAttribute("search", search);
+		return "community/community-newsfeed-search";
+	}
+	
+	// 4. 검색한 유저의 글 더 불러오기
+	
+	@ResponseBody
+	@RequestMapping("/search/fetch")
+	public Object searchFetch(@AuthUser UserVo authUser,@RequestParam(value="page",required=true,defaultValue="1")Integer page,String search){
+		
+		List<NewsVo> search_fetch = newsfeedService.search(authUser.getUsers_no(),search,page);
+		return JSONResult.success(search_fetch);
 	}
 }

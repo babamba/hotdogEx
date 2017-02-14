@@ -143,7 +143,7 @@
    	]]>
    	</select>
    
-   <!-- 최근 활동한 이웃 -->
+   <!-- 11. 최근 활동한 이웃 -->
    <select id="recent_users" parameterType="int" resultType="newsvo">
 	<![CDATA[
 	 		select e.rn,e.post_no,e.users_image,e.nickname,e.post_image,e.title,e.regdate,e.users_no
@@ -157,6 +157,26 @@
 			  limit 4;
 			  
 	]]>
+   </select>
    
+   <!--  12. 검색한 유저의 글 불러오기 -->
+   <select id="search" parameterType="map" resultType="newsvo">
+   	<![CDATA[
+   		select p.rn,p.post_no,p.post_image,p.users_image,p.nickname,p.users_no,p.title,p.regdate,( select count(*) from post_comments pc where pc.post_no =p.post_no) as count
+		from ( SELECT @rownum := @rownum + 1 AS rn,
+										 a.post_no,
+										 a.post_image,
+										 c.users_image,
+										 c.nickname,
+										 a.title,
+										 a.regdate,
+										 a.users_no
+				FROM post a,users c,(SELECT @rownum := 0) d
+								   WHERE c.nickname = #{search} AND a.users_no = c.users_no
+				) p 
+		order by regdate desc
+		limit #{min},#{max};
+		
+   	]]>
    </select>
 </mapper>
