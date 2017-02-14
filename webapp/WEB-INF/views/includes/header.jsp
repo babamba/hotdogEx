@@ -61,7 +61,7 @@
 								src="${pageContext.request.contextPath}/hotdog/image/user/${map.userVo.users_image}">
 						</button>
 					</div>
-
+				<div class="container modal-body-container">
 					<div class="modal-frame">
 						<div class="modal">
 							<div class="modal-inset">
@@ -70,17 +70,18 @@
 									 style="float:right; padding:10px; margin:10px;">
 									<i class="fa fa-close"></i>
 								</div>
-
-								<div class="modal-body" style="clear:both; ">
-									<img
-										src="${pageContext.request.contextPath}/hotdog/image/user/${map.userVo.users_image}">
-									<h3>${map.userVo.nickname}</h3>
-									<p>${map.userVo.infomation}</p>
-									<p>${map.userVo.email}</p>
-									<div id="emptyFollowerButton" ></div>
-									<div id="emptyButton" ></div>
-									<%--<ul><li><a href="${pageContext.request.contextPath }/blog/${map.userVo.nickname">블로그 가기</a></li></ul> --%>
-
+								
+								
+									<div class="modal-body" style="clear:both; ">
+										<img
+											src="${pageContext.request.contextPath}/hotdog/image/user/${map.userVo.users_image}">
+										<h3>${map.userVo.nickname}</h3>
+										<p>${map.userVo.infomation}</p>
+										<p>${map.userVo.email}</p>
+										<div id="emptyFollowerButton" ></div>
+										<div id="emptyButton" ></div>
+										<%--<ul><li><a href="${pageContext.request.contextPath }/blog/${map.userVo.nickname">블로그 가기</a></li></ul> --%>
+								</div>
 
 								</div>
 							</div>

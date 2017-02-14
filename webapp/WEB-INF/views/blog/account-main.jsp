@@ -93,16 +93,14 @@
 <script
 	src="${pageContext.request.contextPath}/assets/js/userProfile.js"></script>
 <link
-	href="${pageContext.request.contextPath}/assets/css/userProfile.css" rel="stylesheet">
-	
+	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
+	rel="stylesheet">
+
 <link
 	href="${pageContext.request.contextPath}/assets/css/account-main.css"
 	rel="stylesheet">
-	
-<!-- Account Main -->	
-	
-	
-	
+
+<!-- Account Main -->
 <body>
 	<div class="wrapper">
 
@@ -128,18 +126,14 @@
 								<div class="nav-tabs-navigation">
 									<div class="nav-tabs-wrapper">
 										<ul class="nav nav-tabs" data-tabs="tabs">
-											<li class="active social-facebook">
-												<a href="#secret" data-toggle="tab">
-													<i class="fa fa-facebook"></i> 보안번호
-												</a>
-											</li>
-											
-											<li class="social-facebook">
-												<a href="#profile" data-toggle="tab"> 
-													<i class="fa fa-facebook"></i> 프로필 설정
-												</a>
-											</li>
-											
+											<li class="social-facebook"><a href="#secret"
+												data-toggle="tab"> <i class="fa fa-lock"></i> 보안번호
+											</a></li>
+
+											<li class="social-facebook"><a href="#profile"
+												data-toggle="tab"> <i class="fa fa-facebook"></i> 프로필 설정
+											</a></li>
+
 										</ul>
 									</div>
 								</div>
@@ -168,8 +162,7 @@
 												</div>
 												<div class="col-sm-4">
 													<div class="input-group">
-														<span class="input-group-addon"> <i
-															class="fa fa-group"></i>
+														<span class="input-group-addon"> <i class="fa fa-group"></i>
 														</span> <input id="secretNumberCheck" type="password"
 															class="form-control" onkeydown='return onlyNumber(event)'
 															onkeyup='removeChar(event)' style='ime-mode: disabled;'
@@ -287,8 +280,8 @@
 																	enctype="multipart/form-data">
 																	<label>Set User Image</label> <input id="userimage"
 																		type="file" class="btn btn-default btn-sm"
-																		accept="image/*" onchange="loadFile(event)">
-																	<img id="output" width="200px" height="150px" /> <br>
+																		accept="image/*" onchange="loadFile(event)"> <img
+																		id="output" width="200px" height="150px" /> <br>
 
 																	<label>Set Blog Image</label> <input id="blogimage"
 																		type="file" class="btn btn-default btn-sm"
@@ -547,8 +540,8 @@
 																enctype="multipart/form-data">
 																<label>Set pet Image</label> <input id="petimage"
 																	type="file" class="btn btn-default btn-sm"
-																	accept="image/*" onchange="loadFile3(event)">
-																<img id="output3" width="200px" height="150px" /> <br>
+																	accept="image/*" onchange="loadFile3(event)"> <img
+																	id="output3" width="200px" height="150px" /> <br>
 
 																<div class="col-sm-4">
 																	<div class="input-group">
@@ -706,7 +699,7 @@
 										<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
 									</div>
 									<!--  *************************** *************************************** -->
-									
+
 
 								</div>
 							</div>
@@ -745,28 +738,42 @@
 
 	<!-- user profile modal -->
 	<script>
-	$(document).on('ready', function(){
-	    $modal = $('.modal-frame');
-	    $overlay = $('.modal-overlay');
+		$(document)
+				.on(
+						'ready',
+						function() {
+							$modal = $('.modal-frame');
+							$overlay = $('.modal-overlay');
 
-	    /* Need this to clear out the keyframe classes so they dont clash with each other between ener/leave. Cheers. */
-	    $modal.bind('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e){
-	      if($modal.hasClass('state-leave')) {
-	        $modal.removeClass('state-leave');
-	      }
-	    });
+							/* Need this to clear out the keyframe classes so they dont clash with each other between ener/leave. Cheers. */
+							$modal
+									.bind(
+											'webkitAnimationEnd oanimationend msAnimationEnd animationend',
+											function(e) {
+												if ($modal
+														.hasClass('state-leave')) {
+													$modal
+															.removeClass('state-leave');
+												}
+											});
 
-	    $('.closeProfile').on('click', function(){
-	      $overlay.removeClass('state-show');
-	      $modal.removeClass('state-appear').addClass('state-leave');
-	    });
+							$('.closeProfile').on(
+									'click',
+									function() {
+										$overlay.removeClass('state-show');
+										$modal.removeClass('state-appear')
+												.addClass('state-leave');
+									});
 
-	    $('.openProfile').on('click', function(){
-	      $overlay.addClass('state-show');
-	      $modal.removeClass('state-leave').addClass('state-appear');
-	    });
+							$('.openProfile').on(
+									'click',
+									function() {
+										$overlay.addClass('state-show');
+										$modal.removeClass('state-leave')
+												.addClass('state-appear');
+									});
 
-	  });
+						});
 	</script>
 
 

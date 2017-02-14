@@ -74,7 +74,7 @@ public class BlogController {
 		
 		model.addAttribute("map", map);
 		
-		return "blog/account-main";
+		return "blog/account-main2";
 	}
 	
 	
