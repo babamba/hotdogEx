@@ -22,11 +22,11 @@ public class RaspberrypiController {
 	@ResponseBody
 	@RequestMapping(value = "/app/raspberry/insert", method = RequestMethod.POST)
 	public Object piInsert(@ModelAttribute RaspberrypiVo raspberrypiVo, @RequestParam(value = "users_no") int users_no,
-			@RequestParam(value = "device_num") String device_num,
+			@RequestParam(value = "device_num") String token,
 			@RequestParam(value = "ip_address") String ip_address) {
 		raspberrypiVo.setUsers_no(users_no);
-		raspberrypiVo.setDevice_num(device_num);
-		raspberrypiVo.setIp_address(ip_address);
+		raspberrypiVo.setDevice_num(ip_address);
+		raspberrypiVo.setToken(token);
 		raspberrypiService.insert(raspberrypiVo);
 		return JSONResult.success("");
 	}

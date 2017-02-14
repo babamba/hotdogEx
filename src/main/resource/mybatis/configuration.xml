@@ -14,6 +14,8 @@
 		<typeAlias alias="newsvo" type="com.hotdog.petcam.vo.NewsVo" />
 		<typeAlias alias="boardchatvo" type="com.hotdog.petcam.vo.BoardChatVo" />
 		<typeAlias alias="raspberrypivo" type="com.hotdog.petcam.vo.RaspberrypiVo" />
+		<typeAlias alias="categoryvo" type="com.hotdog.petcam.vo.CategoryVo" />
+		
 	</typeAliases>
 
 	<mappers>
@@ -27,5 +29,6 @@
 		<mapper resource="mybatis/mappers/postchat.xml" />
 		<mapper resource="mybatis/mappers/board.xml" />
 		<mapper resource="mybatis/mappers/raspberrypi.xml" />
+		<mapper resource="mybatis/mappers/category.xml" />
 	</mappers>
 </configuration>

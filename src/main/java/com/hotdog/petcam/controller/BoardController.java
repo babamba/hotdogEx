@@ -20,16 +20,13 @@ public class BoardController {
 	
 	@Autowired private BoardService boardService;
 	
-	
-	// 카테고리 넘버 지정 (자유게시판 : 1, QnA :2 ...)
-	private final int NO_FREEBOARD = 1 ;
-	
 	@RequestMapping("")
 	public String freeBoard(@RequestParam( value="p", required=true, defaultValue="1") Integer page,
 							@RequestParam( value="kwd", required=true, defaultValue="") String keyword,
+							@RequestParam( value="categoryNo", required=true) Integer category_no,
 							Model model){
 		
-		Map<String, Object> map = boardService.getTotalList(NO_FREEBOARD, page, keyword);
+		Map<String, Object> map = boardService.getTotalList(category_no, page, keyword);
 		model.addAttribute( "map", map );
 
 		return "community/community-freeboard";
@@ -58,12 +55,12 @@ public class BoardController {
 	
 	@Auth
 	@RequestMapping("/writepost")
-	public String writePost(BoardVo boardVo,@AuthUser UserVo authUser){
+	public String writePost(@RequestParam( value="categoryNo", required=true) Integer category_no ,BoardVo boardVo,@AuthUser UserVo authUser){
 		
 		int userNo = authUser.getUsers_no();
 		
 		boardVo.setUsers_no(userNo);
-		boardVo.setCategory(NO_FREEBOARD);
+		boardVo.setCategory_no(category_no);
 		
 		boardService.writePost(boardVo);
 		

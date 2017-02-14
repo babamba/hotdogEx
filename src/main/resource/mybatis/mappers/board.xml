@@ -7,7 +7,7 @@
 	<![CDATA[
 		select count(*) 
 		from board b 
-		WHERE b.category = #{category_no } 
+		WHERE b.category_no = #{category_no } 
 		]]>
 		<if test="keyword != null and keyword !=''">
 			<![CDATA[
@@ -21,10 +21,10 @@
 	<choose>
 		<when test="keyword != null and keyword !=''">
 			<![CDATA[
-				select b.board_no, b.category, b.title, b.content, b.regdate, b.hits ,b.users_no, u.nickname, (select count(*) from board_comments bc
+				select b.board_no, b.category_no, b.title, b.content, b.regdate, b.hits ,b.users_no, u.nickname, (select count(*) from board_comments bc
 																											   where b.board_no = bc.board_no) as count
 				from board b, users u
-				where b.category = #{category_no } and b.users_no = u.users_no and (b.title like "%${keyword }%" or b.content like "%${keyword }%")
+				where b.category_no = #{category_no } and b.users_no = u.users_no and (b.title like "%${keyword }%" or b.content like "%${keyword }%")
 				order by b.board_no DESC 
 				limit #{currentPage }, 10 
 			]]>
@@ -32,10 +32,10 @@
 		
 		<otherwise>
 			<![CDATA[
-				select b.board_no, b.category, b.title, b.content, b.regdate, b.hits ,u.nickname, (select count(*) from board_comments bc
+				select b.board_no, b.category_no, b.title, b.content, b.regdate, b.hits ,u.nickname, (select count(*) from board_comments bc
 																								   where b.board_no = bc.board_no) as count
 				from board b, users u
-				where b.category = #{category_no } and b.users_no = u.users_no
+				where b.category_no = #{category_no } and b.users_no = u.users_no
 				order by b.board_no DESC 
 				limit #{currentPage }, 10 
 			]]>
@@ -45,14 +45,14 @@
 
 <insert id="writePost" parameterType="boardvo">
 <![CDATA[
-	insert into board(category, title, content, regdate, users_no) values (#{category } , #{title } , #{content } , now(), #{users_no })
+	insert into board(category_no, title, content, regdate, users_no) values (#{category_no } , #{title } , #{content } , now(), #{users_no })
 ]]>
 </insert>
 
 
 <select id="viewPost" parameterType="int" resultType="boardvo">
 <![CDATA[
-	select b.board_no, b.category, b.title, b.content, b.regdate, b.hits ,u.nickname, (select count(*) from board_comments bc
+	select b.board_no, b.category_no, b.title, b.content, b.regdate, b.hits ,u.nickname, (select count(*) from board_comments bc
 																					   where b.board_no = bc.board_no) as count
 	from board b, users u where b.board_no = #{board_no} and b.users_no = u.users_no
 ]]>

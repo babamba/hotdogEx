@@ -6,11 +6,12 @@
 	<insert id="insert" parameterType="raspberrypivo">
 		<![CDATA[
 				insert INTO raspberrypi
-						(users_no,device_num,ip_address,temperature) 
+						(users_no,device_num,token,temperature,humidity) 
 				VALUES (#{users_no}, 
 						#{device_num}, 
-						#{ip_address}, 
-						#{temperature});
+						#{token}, 
+						#{temperature}
+						#{humidity})
 		]]>
 	</insert>
 
@@ -19,10 +20,11 @@
 		<![CDATA[
 				select users_no,
 					   device_num,
-					   ip_address,
-					   temperature 
+					   token,
+					   temperature,
+					   humidity 
 				 from raspberrypi 
-				 where users_no = #{users_no};
+				 where users_no = #{users_no}
 		]]>
 	</select>
 
