@@ -10,7 +10,7 @@
 				VALUES (#{users_no}, 
 						#{device_num}, 
 						#{token}, 
-						#{temperature}
+						#{temperature},
 						#{humidity})
 		]]>
 	</insert>
