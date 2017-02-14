@@ -4,6 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -73,10 +77,13 @@ public class BoardService {
     
     // 선택된 게시글 하나 가져오기 
     public Map<String,Object> viewPost(int board_no){
+
     	BoardVo boardVo = boardDao.viewPost(board_no);
     	
-    	// 게시글 조회때마다 조횟수 증가 
-    	boardDao.increaseHits(boardVo);
+    	/* 게시글 조회때마다 조횟수 증가 
+    	if(boardVo != null){
+    		boardDao.increaseHits(board_no);
+    	}*/
     	
     	// regdate 월 , 일 , 년  구분
     	String data = boardVo.getRegdate(); 	
@@ -91,6 +98,10 @@ public class BoardService {
         map.put("day", date[2]);
         
     	return map;
+    }
+    
+    public void updateHits(int board_no){
+    	boardDao.increaseHits(board_no);
     }
         
     

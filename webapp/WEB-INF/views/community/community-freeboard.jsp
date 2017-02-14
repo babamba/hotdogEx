@@ -87,6 +87,26 @@
 <link
 	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
 	rel="stylesheet">
+	
+	
+<script>
+$(function(){
+	
+	$(document).on("click", "#viewPost", function(){
+		
+		var boardNo = $(this).data("no");		
+		
+ 		$.ajax({
+			url : "${pageContext.request.contextPath }/community/freeboard/api/updateHits?boardNo="+boardNo,
+			type : "get",
+
+			error : function(jqXHR, status, e) {
+				console.log(status + ":" + e);
+			}
+		}); 
+	})
+})
+</script>
 <body>
 
 
@@ -203,7 +223,7 @@
 									<td class="cart-product-remove">
 										<p>${map.totalCount - (map.currentPage - 1)* map.listSize - status.index }</p>
 									</td>
-									<td class="cart-product-description">
+									<td class="cart-product-description" id="viewPost" data-no="${vo.board_no }">
 										<a href="${pageContext.request.contextPath }/community/freeboard/viewpost?no=${vo.board_no }">${vo.title }(${vo.count })</a>
 									</td>
 

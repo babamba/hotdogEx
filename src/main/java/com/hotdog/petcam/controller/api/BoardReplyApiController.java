@@ -56,4 +56,14 @@ public class BoardReplyApiController {
 		
 		return JSONResult.success(vo);
 	}
+	
+	@ResponseBody
+	@RequestMapping("/updateHits")
+	public void updateHits(@RequestParam(value="boardNo", required=true) Integer board_no){
+		
+		boardService.updateHits(board_no);
+		
+	}
+	
+	
 }

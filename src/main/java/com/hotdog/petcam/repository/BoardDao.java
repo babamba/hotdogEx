@@ -48,8 +48,8 @@ public class BoardDao {
     }
     
     // 조횟수 증가
-    public void increaseHits(BoardVo boardVo){
-    	sqlSession.update("board.increaseHits", boardVo);
+    public void increaseHits(int board_no){
+    	sqlSession.update("board.increaseHits", board_no);
     }
     
     

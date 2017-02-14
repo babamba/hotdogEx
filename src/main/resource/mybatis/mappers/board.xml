@@ -60,10 +60,10 @@
 
 
 
-<update id="increaseHits" parameterType="boardvo">
+<update id="increaseHits" parameterType="int">
 
 <![CDATA[
-	update board set hits = #{hits }+ 1 where board_no = #{board_no }
+	update board set hits = hits + 1 where board_no = #{board_no }
 ]]>
 
 </update>

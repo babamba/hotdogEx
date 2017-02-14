@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<% pageContext.setAttribute( "newLine", "\n" ); %>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -108,7 +108,7 @@ var renderReply = function(vo){
 		"<div class='media-body' id='chatview-"+vo.comments_no+ "'>"+
 		"<h4 class='media-heading'>"+vo.nickname+"</h4>"+
 		"<p class='time'>"+vo.regdate +"</p>"+
-		"<p class='comment_section'>" + vo.content +"</p>"+
+		"<p class='comment_section'>" + vo.content.replace( /\n/gi, "<br>") +"</p>"+
 		"<div><form class='replytext' id='replyChat-" + vo.comments_no + "'></form></div>" +
 		"<button class='comment-reply pull-right btn btn-white' style='padding-right:12px; padding-left:10px; margin-bottom:0px;' id='viewChat' data-cno1='"+vo.comments_no+"'><i class='fa fa-reply'></i>답글보기 ("+vo.count+")</button>"+
 		"<button class='comment-reply pull-right btn btn-white' style='padding:12px 12px; margin-right:6px; margin-bottom:0px;' id='writeChat' data-cno2='"+vo.comments_no+"'><i class='fa fa-reply'></i>Reply</button>"+
@@ -392,7 +392,7 @@ $(function(){
 							<div class="post-description">
 								
 								
-								<p> ${map.boardVo.content }	 </p>
+								<p> ${fn:replace(map.boardVo.content, newLine, "<br>") }	 </p>
 								
 								
 							</div>
@@ -405,8 +405,8 @@ $(function(){
 							</div>
 
 							<div class="post-comments">
-								<a href="#"> <i class="fa fa-comments-o"></i> 
-								<span class="post-comments-number">${map.boardVo.count }</span>
+								<a href="#"> <i class="fa fa-comments-o"></i> <span
+																	class="post-comments-number">${map.boardVo.count }</span>
 								
 								</a>
 							</div>

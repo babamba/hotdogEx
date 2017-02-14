@@ -1,5 +1,17 @@
 select * FROM users;
 
+select * from raspberrypi;
+select * from raspberrypi r where r.ip_address='10.0.0.4';
+
+insert INTO raspberrypi VALUES(2, 'Test', '10.0.0.4', 0);
+
+select nickname, sec_pass_word 
+from users u, (select * from raspberrypi ri where ri.ip_address='10.0.0.4') r 
+where r.users_no= u.users_no;
+
+select device_num from raspberrypi r WHERE r.ip_address = '10.0.0.4';
+
+update raspberrypi SET device_num = 'hi' where ip_address = '10.0.0.4';
 -----------------------BOARD
 
 SELECT * FROM board;
@@ -37,7 +49,7 @@ insert into board value (1, 1, '자유게시판', '냉무',  now(), 0, 0, 3);
 
 delete FROM board ;
 
-update board set hits = 2+ 1 where board_no = 3;
+update board set hits = hits + 1 where board_no = 3;
 
 insert into board(category, title, content, regdate, users_no) values (1 , '자유게시판' , '냉무' , now(), 3);
 
