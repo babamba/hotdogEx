@@ -28,5 +28,15 @@ public class NewsFeedDao {
 	public List<NewsVo> recent_users(int authUser_no){
 		return sqlSession.selectList("follow.recent_users",authUser_no);
 	}
-	
+	public List<NewsVo> search(int authUser_no,String search,int page){
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("authUser_no", authUser_no);
+		map.put("search", search);
+		map.put("page", page);
+		map.put("min", ((page-1)*10)+1);
+		map.put("max", (page)*10);	
+		
+		return sqlSession.selectList("follow.search",map);
+	}
 }

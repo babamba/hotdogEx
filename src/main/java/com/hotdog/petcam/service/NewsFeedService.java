@@ -21,5 +21,8 @@ public class NewsFeedService {
 	public List<NewsVo> recent_users(int authUser_no){
 		return newsfeedDao.recent_users(authUser_no);
 	}
+	public List<NewsVo> search(int authUser_no,String search,int page){
+		return newsfeedDao.search(authUser_no,search,page);
+	}
 	
 }

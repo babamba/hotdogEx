@@ -147,7 +147,7 @@
 					<!-- Blog post-->
 					<div class="post-content col-md-9" >
 				
-					<c:forEach items="${latest_news }"	var="vo" varStatus="status">	
+					<c:forEach items="${search_list }"	var="vo" varStatus="status">	
 						<!-- Blog image post-->
 						<div class="post-item">
 							<div class="post-image">
@@ -202,7 +202,7 @@
 					
 					
 					$.ajax({
-						url: "${pageContext.request.contextPath }/community/newsfeed/fetch?page=" + page,
+						url: "${pageContext.request.contextPath }/community/newsfeed/search/fetch?page=" + page,
 						type: "get",
 						dataType: "json",
 						data:"",
@@ -295,7 +295,7 @@
 				<div class="widget clearfix widget-search">
                             <form action="${pageContext.request.contextPath }/community/newsfeed/search" method="get" class="form-inline">
                                 <div class="input-group">
-                                    <input type="text" name="search" placeholder="누구의 글을 찾나요?" class="form-control">
+                                    <input type="text" name="search" placeholder="${search }" class="form-control">
                                     <span class="input-group-btn">
 										<button type="submit" class="btn color btn-primary"><i class="fa fa-search"></i></button>	
 									</span>
@@ -303,7 +303,7 @@
                             </form>
                         </div>
 				<!--end: widget search-->
-
+				
 				<!--widget archive-->
 				<div class="widget clearfix widget-archive">
 					<h4 class="widget-title">명예의 전당</h4>
@@ -386,6 +386,7 @@
 					</div>
 				</div>
 				<!--end: widget tags -->
+
 
 			</div>
 			<!-- END: Sidebar-->
