@@ -27,7 +27,7 @@ public class RaspberrypiController {
 		raspberrypiVo.setDevice_num(device_num);
 		raspberrypiVo.setToken(token);
 		raspberrypiService.insert(raspberrypiVo);
-		return JSONResult.success("");
+		return JSONResult.success("success");
 	}
 
 	@ResponseBody
@@ -37,7 +37,7 @@ public class RaspberrypiController {
 		raspberrypiVo.setUsers_no(users_no);
 		raspberrypiVo.setToken(token);
 		raspberrypiService.tokenUpdate(raspberrypiVo);
-		return JSONResult.success("");
+		return JSONResult.success("success");
 	}
 
 	@ResponseBody
@@ -47,7 +47,7 @@ public class RaspberrypiController {
 		raspberrypiVo.setUsers_no(users_no);
 		raspberrypiVo.setDevice_num(device_num);
 		raspberrypiService.DevUpdate(raspberrypiVo);
-		return JSONResult.success("");
+		return JSONResult.success("success");
 	}
 
 	@ResponseBody
