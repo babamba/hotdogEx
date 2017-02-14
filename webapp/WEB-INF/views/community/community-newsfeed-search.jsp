@@ -191,7 +191,7 @@
 			<!-- END: Blog post-->
 			<script>
 				var isEnd = false;
-				var page = 0;
+				var page = 1;
 				
 				var fetch=function(){
 					
@@ -306,7 +306,7 @@
 				
 				<!--widget archive-->
 				<div class="widget clearfix widget-archive">
-					<h4 class="widget-title">명예의 전당</h4>
+					<h4 class="widget-title">Hot Post</h4>
 					<c:forEach items="${total_top }"	var="vo" varStatus="status">	
 					<ul class="list list-lines">
 						<li><a href="${pageContext.request.contextPath }/post/${vo.nickname}/postView?post_no=${vo.post_no}">${vo.title } : ${vo.nickname }</a></li>

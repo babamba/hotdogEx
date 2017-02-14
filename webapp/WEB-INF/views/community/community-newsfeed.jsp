@@ -90,9 +90,10 @@
 
 					<!--TOP SEARCH -->
 					<div id="top-search"> <a id="top-search-trigger"><i class="fa fa-search"></i><i class="fa fa-close"></i></a>
-						<form action="search-results-page.html" method="get">
-							<input type="text" name="q" class="form-control" value="" placeholder="Start typing & press  &quot;Enter&quot;">
+						<form action="${pageContext.request.contextPath}/search }" method="get">
+							<input type="text" name="keyword" class="form-control" value="" placeholder="Start typing & press  &quot;Enter&quot;">
 						</form>
+						
 					</div>
 					<!--END: TOP SEARCH -->
 					<!--NAVIGATION-->
@@ -122,7 +123,7 @@
 				<div class="container">
 					<div class="page-title col-md-8">
 						<h1>News Feed</h1>
-						<span>이웃들의 소식을 한눈에 확인하세요 !</span>
+						<h1>Share. Your <span class="text-rotator" data-rotate-effect="bounce" data-rotate-speed="3000">Happiness :),Sorrow :(,Everything !</span></h1>
 					</div>
 					<div class="breadcrumb col-md-4">
 						<ul>
@@ -146,9 +147,36 @@
 					<div class="row">
 					<!-- Blog post-->
 					<div class="post-content col-md-9" >
-				
+						<!--Portfolio Carousel -->
+				<div class="hr-title hr-long center"><abbr>Friend's Best list</abbr> </div>
+				<div class="carousel" data-lightbox-type="gallery">
+				<c:forEach items="${top_ten }"	var="vo" varStatus="status">
+					<div class="portfolio-item design artwork">
+						
+						<div class="portfolio-image effect social-links">
+							<img src="${pageContext.request.contextPath}/hotdog/image/user/${post_image }" alt="">
+							<div class="image-box-content">
+								<p>
+									<a href="${pageContext.request.contextPath}/hotdog/image/user/${post_image }" data-lightbox-type="image" title="Your image title here!"><i class="fa fa-expand"></i></a>
+									<a href="${pageContext.request.contextPath }/post/${vo.nickname}/postView?post_no=${vo.post_no}"><i class="fa fa-link"></i></a>
+								</p>
+							</div>
+						</div>
+						<div class="portfolio-description">
+							<h4 class="title">${vo.title }</h4>
+							<p><i class="fa fa-tag"></i>${vo.nickname }</p>
+						</div>
+						<div class="portfolio-date">
+							<p class="small"><i class="fa fa-calendar-o"></i>${vo.regdate }</p>
+						</div>
+						
+					</div>
+					</c:forEach>
+				</div>
+					
 					<c:forEach items="${latest_news }"	var="vo" varStatus="status">	
 						<!-- Blog image post-->
+						<div class="hr-title hr-long center"><abbr>Friend's latest post</abbr> </div>
 						<div class="post-item">
 							<div class="post-image">
 							<a href="#">
@@ -191,7 +219,7 @@
 			<!-- END: Blog post-->
 			<script>
 				var isEnd = false;
-				var page = 0;
+				var page = 1;
 				
 				var fetch=function(){
 					
@@ -306,7 +334,7 @@
 
 				<!--widget archive-->
 				<div class="widget clearfix widget-archive">
-					<h4 class="widget-title">명예의 전당</h4>
+					<h4 class="widget-title">Hot Post</h4>
 					<c:forEach items="${total_top }"	var="vo" varStatus="status">	
 					<ul class="list list-lines">
 						<li><a href="${pageContext.request.contextPath }/post/${vo.nickname}/postView?post_no=${vo.post_no}">${vo.title } : ${vo.nickname }</a></li>
@@ -314,19 +342,6 @@
 					</c:forEach>
 				</div>
 				<!--end: widget archive-->
-
-				<!--widget slider-->
-				<div class="widget clearfix widget-slider">
-					<h4 class="widget-title">Top News</h4>
-					<div class="post-slider">
-						<div class="carousel" data-carousel-dots="true" data-carousel-col="1" data-carousel-autoplay="true">
-							<c:forEach items="${top_ten }"	var="vo" varStatus="status">
-							<img alt="image" src="${pageContext.request.contextPath }/hotdog/image/user/${vo.post_image}">
-							</c:forEach>
-						</div>
-					</div>
-				</div>
-				<!--end: widget slider -->
 
 				
 
