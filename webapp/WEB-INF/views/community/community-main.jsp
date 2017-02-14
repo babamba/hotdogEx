@@ -181,19 +181,41 @@
 							<h3>뉴스피드</h3>
 						</div>
 					</div>
-					
-					<c:forEach items="${list }" var="categoryVo" varStatus="status">
-						<div class="col-md-3">
-							
-							<div class="icon-box effect medium color border center">
-								<div class="icon">
-									<a href="${pageContext.request.contextPath}/community/freeboard?categoryNo=${categoryVo.category_no }"><i class="fa fa-list-alt"></i></a>
-								</div>
-								<h3>${categoryVo.title }</h3>
+				
+					<div class="col-md-3">
+						<div class="icon-box effect medium color border center">
+							<div class="icon">
+								<a href="${pageContext.request.contextPath}/community/freeboard"><i class="fa fa-list-alt"></i></a>
 							</div>
-							
+							<h3>자유게시판</h3>
 						</div>
-					</c:forEach>
+					</div>
+
+					<div class="col-md-3">
+						<div class="icon-box effect medium color border center">
+							<div class="icon">
+								<a href="#"><i class="fa fa-desktop"></i></a>
+							</div>
+							<h3>Q & A</h3>
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<div class="icon-box effect medium color border center">
+							<div class="icon">
+								<a href="#"><i class="fa fa-cloud"></i></a>
+							</div>
+							<h3>갤러리</h3>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="icon-box effect medium color border center">
+							<div class="icon">
+								<a href="#"><i class="fa fa-lightbulb-o"></i></a>
+							</div>
+							<h3>다이어리</h3>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>

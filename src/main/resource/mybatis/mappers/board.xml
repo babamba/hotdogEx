@@ -45,7 +45,7 @@
 
 <insert id="writePost" parameterType="boardvo">
 <![CDATA[
-	insert into board(category_no, title, content, regdate, users_no) values (#{category_no } , #{title } , #{content } , now(), #{users_no })
+	insert into board(category_no, title, content, regdate, hits, users_no) values (#{category_no } , #{title } , #{content } , now(), 0 , #{users_no })
 ]]>
 </insert>
 

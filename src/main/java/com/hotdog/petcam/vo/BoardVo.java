@@ -10,8 +10,16 @@ public class BoardVo {
 	 private int hits;
 	 private int users_no;
 	 private String nickname;
+	 private int count;
+	 
 	public int getBoard_no() {
 		return board_no;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
 	}
 	public void setBoard_no(int board_no) {
 		this.board_no = board_no;
@@ -63,11 +71,6 @@ public class BoardVo {
 	public String toString() {
 		return "BoardVo [board_no=" + board_no + ", category_no=" + category_no + ", title=" + title + ", content="
 				+ content + ", regdate=" + regdate + ", hits=" + hits + ", users_no=" + users_no + ", nickname="
-				+ nickname + "]";
+				+ nickname + ", count=" + count + "]";
 	}
-	 
-	 
-	
-	 
-	 
 }

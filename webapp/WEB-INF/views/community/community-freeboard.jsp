@@ -93,17 +93,19 @@
 $(function(){
 	
 	$(document).on("click", "#viewPost", function(){
-		
-		var boardNo = $(this).data("no");		
-		
- 		$.ajax({
+				
+		var boardNo = $(this).data("no");
+						
+		$.ajax({
 			url : "${pageContext.request.contextPath }/community/freeboard/api/updateHits?boardNo="+boardNo,
 			type : "get",
-
+			success: function() { 
+				console.log("success");
+			},
 			error : function(jqXHR, status, e) {
 				console.log(status + ":" + e);
 			}
-		}); 
+		});
 	})
 })
 </script>

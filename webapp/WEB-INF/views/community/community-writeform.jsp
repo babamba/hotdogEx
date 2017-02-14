@@ -174,7 +174,7 @@
 				<div class="row">
 					<div class="col-md-10 col-md-offset-1">
 					
-						<form class="form-gray-fields" action="${pageContext.request.contextPath}/community/freeboard/writepost">
+						<form class="form-gray-fields" action="${pageContext.request.contextPath}/community/freeboard/writepost" method="post">
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
