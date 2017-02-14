@@ -142,6 +142,7 @@
 	<!-- post 최신 글 9개 불러오는 ajax list -->
 	<script>
 	
+	
 	var nickname = "${map.userVo.nickname}"
 	var image_path = "${pageContext.request.contextPath}/hotdog/image/user/"
 	var post = "${pageContext.request.contextPath }/post/" + nickname + "/postView?post_no="
@@ -155,8 +156,7 @@
 	console.log(page)
 	
 	var render = function(vo){
-		
-		
+			
 		var htmls =  "<div class='post-item'><div class='post-image'><img src='" + image_path + vo.post_image + "'></a></div><div class='post-content-details'>" + 
 				  "<div class='post-title'><h3>" + vo.title + "</h3></div>" +
 				  "<div class='post-description'><div class='post-info'><a class='read-more' href='" + post + vo.post_no + "'>read more <i class='fa fa-long-arrow-right'></i></a></div>" +
@@ -165,16 +165,13 @@
 				  "</div></div>"
 			
 					  $(".isotope").append(htmls);
-					 
-				  
-		}
+		};
 
 	var fetchList = function(){
-		
-		console.log("fetchList")  
+		"use strict";
+		console.log("fetchList")
+		  
 		console.log(page);
-		
-		
 		
 		  if(isEnd == true){
 			  return;
@@ -194,9 +191,9 @@
 				}
 				
 			$(response.data).each(function(index, vo){
-				"use strict"
 				render(vo);
-				/* INSPIRO.masonryIsotope(render); */
+				INSPIRO.masonryIsotope('reload');
+				
 				console.log("render")
 			});
 			
@@ -221,11 +218,8 @@
 		});
 	});
 	
-	$(function(){
-		
-	})	 
-		
-		  
+	
+	
 
 
 	</script>

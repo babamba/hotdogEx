@@ -90,12 +90,23 @@
 <script
 	src="${pageContext.request.contextPath}/assets/template/vendor/plugins-compressed.js"></script>
 
+<!-- Write Page -->
+<link 
+	href="${pageContext.request.contextPath}/assets/css/write.css" 
+	rel="stylesheet">	
+
+
 <!-- User Profile -->
 <script
 	src="${pageContext.request.contextPath}/assets/js/userProfile.js"></script>
 <link
 	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
 	rel="stylesheet">
+	
+
+		
+</head>
+	
 <body>
 	<div class="wrapper">
 
@@ -117,7 +128,7 @@
 					
 			
 				
-				<form>
+				<form class="thumnail-upload">
 					<label>썸네일</label>
 					<input id="post_image" type="file" name="post_image" class="btn btn-white btn-sm" accept="image/*" onchange="loadFile(event)">
 					<img id="output" width="200px" height="150px" /> <br>

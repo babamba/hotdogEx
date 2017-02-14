@@ -1790,6 +1790,9 @@ var INSPIRO = {};
 
     });
 
+    $(document).ready(
+    		INSPIRO.masonryIsotope()
+    );
     
 
 

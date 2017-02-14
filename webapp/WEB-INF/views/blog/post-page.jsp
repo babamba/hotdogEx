@@ -88,6 +88,7 @@
 	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
 	rel="stylesheet">
 	
+
 <!-- community -->
 <link
 	href="${pageContext.request.contextPath}/assets/css/community.css"

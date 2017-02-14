@@ -66,18 +66,19 @@
 						<div class="modal">
 							<div class="modal-inset">
 
-								<div class="button closeProfile" id="infoModal-close">
+								<div class="icon-box effect medium closeProfile" id="infoModal-close" 
+									 style="float:right; padding:10px; margin:10px;">
 									<i class="fa fa-close"></i>
 								</div>
 
-								<div class="modal-body">
+								<div class="modal-body" style="clear:both; ">
 									<img
 										src="${pageContext.request.contextPath}/hotdog/image/user/${map.userVo.users_image}">
 									<h3>${map.userVo.nickname}</h3>
 									<p>${map.userVo.infomation}</p>
 									<p>${map.userVo.email}</p>
-									<div id="emptyFollowerButton"></div>
-									<div id="emptyButton"></div>
+									<div id="emptyFollowerButton" ></div>
+									<div id="emptyButton" ></div>
 									<%--<ul><li><a href="${pageContext.request.contextPath }/blog/${map.userVo.nickname">블로그 가기</a></li></ul> --%>
 
 
@@ -123,7 +124,7 @@
                <script type="text/javascript">
                // 1. 유저를 클릭했을때,팔로우 유무, 대상의 요약정보를 요청한다.
                $("#showInfo").click(function(){
-                  var users_no= ${map.userVo.nickname};
+                  var users_no= ${map.userVo.users_no};
                   var follower;
                   var didfollow;
                   
@@ -144,11 +145,11 @@
                   var htmls;
                   // 팔로우 안되어 있을 때 
                   if(didFollow == false){
-                     htmls = "<button id='followButton'>Follow</button>";
+                     htmls = "<button id='followButton' class='btn btn-white'>Follow</button>";
                   }
                   // 팔로우 되어 있을 때 생성할 버튼
                   else{
-                     htmls ="<button id='deleteFollowButton'>Delete Follow</button>";
+                     htmls ="<button id='deleteFollowButton' class='btn btn-white'>Delete Follow</button>";
                   }
                   
                   $("#emptyButton").append(htmls);
@@ -156,7 +157,7 @@
                
                // 2-2. 갱신된 팔로워 숫자를 불러와 버튼을 생성한다.
                var createFollower=function(countFollower){
-                  var htmls = "<buttion id='followerButtion'>Follower : "+countFollower+"명</button>";
+                  var htmls = "<buttion id='followerButtion' >Follower : "+countFollower+"명</button>";
                   $("#emptyFollowerButton").append(htmls);
                }
                

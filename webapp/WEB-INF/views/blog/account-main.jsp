@@ -92,10 +92,17 @@
 <!-- User Profile -->
 <script
 	src="${pageContext.request.contextPath}/assets/js/userProfile.js"></script>
-
 <link
-	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
+	href="${pageContext.request.contextPath}/assets/css/userProfile.css" rel="stylesheet">
+	
+<link
+	href="${pageContext.request.contextPath}/assets/css/account-main.css"
 	rel="stylesheet">
+	
+<!-- Account Main -->	
+	
+	
+	
 <body>
 	<div class="wrapper">
 
@@ -121,21 +128,18 @@
 								<div class="nav-tabs-navigation">
 									<div class="nav-tabs-wrapper">
 										<ul class="nav nav-tabs" data-tabs="tabs">
-											<li class="active"><a href="#secret" data-toggle="tab">
-													<i class="material-icons">face</i> 보안번호
-											</a></li>
-											<li><a href="#profile" data-toggle="tab"> <i
-													class="material-icons">chat</i> 프로필 설정
-											</a></li>
-											<li><a href="#settings" data-toggle="tab"> <i
-													class="material-icons">build</i> 관심 다이어리
-											</a></li>
-											<li><a href="#QA" data-toggle="tab"> <i
-													class="material-icons">face</i> Q/A 게시글
-											</a></li>
-											<li><a href="#customer" data-toggle="tab"> <i
-													class="material-icons">face</i> 고객문의
-											</a></li>
+											<li class="active social-facebook">
+												<a href="#secret" data-toggle="tab">
+													<i class="fa fa-facebook"></i> 보안번호
+												</a>
+											</li>
+											
+											<li class="social-facebook">
+												<a href="#profile" data-toggle="tab"> 
+													<i class="fa fa-facebook"></i> 프로필 설정
+												</a>
+											</li>
+											
 										</ul>
 									</div>
 								</div>
@@ -259,13 +263,13 @@
 															<ul class="nav nav-tabs" data-tabs="tabs">
 
 																<li><a href="#user_profile" data-toggle="tab">
-																		<i class="material-icons">build</i> User - Profile
+																		<i class="material-icons"></i> User - Profile
 																</a></li>
 
 
 
 																<li><a href="#pet_profile" data-toggle="tab"> <i
-																		class="material-icons">face</i> Pet - Profile
+																		class="material-icons"></i> Pet - Profile
 																</a></li>
 
 															</ul>
@@ -702,16 +706,7 @@
 										<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
 									</div>
 									<!--  *************************** *************************************** -->
-									<div class="tab-pane" id="settings">
-										<p>관심 다이어리 화면</p>
-									</div>
-									<div class="tab-pane" id="QA">
-										<p>Q/A 게시판 부분</p>
-									</div>
-									<div class="tab-pane" id="customer">
-										<p>고객게시판 화면 부분</p>
-									</div>
-
+									
 
 								</div>
 							</div>

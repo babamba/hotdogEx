@@ -46,6 +46,18 @@
   transition: opacity 0.5s;
 }
 
+#emptyFollowerButton{
+	margin-top:20px;
+}
+
+#followButton{
+	margin-top:15px;
+}
+
+#deleteFollowButton{
+	margin-top:15px;
+}
+
 
 .modal-overlay {
   position: absolute;
@@ -158,12 +170,14 @@
 }
 
 .modal-inset {
-  position: relative;
-  top:300px;
+  position: absolute;
+  top:200px;
   background-color: white;
   
+  border-radius: 25px;
+  
   width: 320px;
-  height: 400px;
+  height: 500px;
   left:50%;
   margin-left:-160px;
   
@@ -182,15 +196,20 @@
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
-.modal-inset button .closeProfile {
-  display: relative;
+.modal-frame .modal-inset button .closeProfile {
+  position: relative;
+  display: block;
+  float:right;
   cursor: pointer;
-  position: absolute;
+ 
+  margin:0px;
   top: 10px;
   right: 10px;
   padding: 10px;
   opacity: .4;
 }
+
+
 .modal-inset .closeProfile:hover {
   opacity: 1;
 }
@@ -217,13 +236,15 @@
 }
 .modal-body h3 {
   font-weight: 700;
-  padding-bottom: 22px;
+  padding:15px 0 5px 0;
+  margin:3px;
   display: block;
   color: #F2594B;
   text-align: center;
 }
 .modal-body p {
-  padding-bottom: 20px;
+  padding:5px 0 5px 0;
+  margin:3px;
 }
 .modal-body .ps {
   font-size: 12px;

@@ -85,8 +85,7 @@
 <script
 	src="${pageContext.request.contextPath}/assets/js/userProfile.js"></script>
 <link
-	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
-	rel="stylesheet">
+	href="${pageContext.request.contextPath}/assets/css/userProfile.css" rel="stylesheet">
 <body>
 
 
@@ -174,116 +173,6 @@
 	</script>
 
 
-	<!-- user profile modal -->
-	<script>
-	$(document).on('ready', function(){
-	    $modal = $('.modal-frame');
-	    $overlay = $('.modal-overlay');
-
-	    /* Need this to clear out the keyframe classes so they dont clash with each other between ener/leave. Cheers. */
-	    $modal.bind('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e){
-	      if($modal.hasClass('state-leave')) {
-	        $modal.removeClass('state-leave');
-	      }
-	    });
-
-	    $('.closeProfile').on('click', function(){
-	      $overlay.removeClass('state-show');
-	      $modal.removeClass('state-appear').addClass('state-leave');
-	    });
-
-	    $('.openProfile').on('click', function(){
-	      $overlay.addClass('state-show');
-	      $modal.removeClass('state-leave').addClass('state-appear');
-	    });
-
-	  });
 	
-	</script>
-	 <!--  PROFILE SCRIPT -->
-               <script type="text/javascript">
-               // 1. 유저를 클릭했을때,팔로우 유무, 대상의 요약정보를 요청한다.
-               $("#showInfo").click(function(){
-                  var users_no= ${map.userVo.users_no};
-                  var follower;
-                  var didfollow;
-                  
-                  $.ajax({
-                     url:"${pageContext.request.contextPath}/follow/infomodal",
-                     type:"post",
-                     data:"users_no="+users_no,
-                     dataType:"json",
-                     success:function(response){
-                        createButton(response.data.didFollow,response.data.myProfile);
-                        createFollower(response.data.countFollower);
-                     }
-                  })
-               })
-               
-               // 2-1.팔로우 유무를 판단하여 버튼을 생성한다.
-               var createButton = function(didFollow,myProfile){
-                  var htmls;
-                  // 팔로우 안되어 있을 때 
-                  if(didFollow == false && myProfile != true){
-                     htmls = "<button id='followButton'>Follow</button>";
-                  }
-                  // 팔로우 되어 있을 때 생성할 버튼
-                  if(didFollow == true && myProfile != true){
-           		   htmls ="<button id='deleteFollowButton'>Delete Follow</button>";
-           	   }
-                  
-                  $("#emptyButton").append(htmls);
-               }
-               
-               // 2-2. 갱신된 팔로워 숫자를 불러와 버튼을 생성한다.
-               var createFollower=function(countFollower){
-                  var htmls = "<buttion id='followerButtion'>Follower : "+countFollower+"명</button>";
-                  $("#emptyFollowerButton").append(htmls);
-               }
-               
-               // 3. 팔로우 / 팔로우 삭제 버튼 클릭시 요청 처리해주고 버튼 바꾸기
-                $(document).on("click", "#followButton", function(){
-                	alert
-                   var users_no= ${map.userVo.users_no};
-                   var htmls;
-                   
-                   $.ajax({
-                      url:"${pageContext.request.contextPath}/follow/add",
-                      type:"post",
-                      data:"users_no="+users_no,
-                      dataType:"json",
-                      success:function(response){
-                         $("#followButton").remove();
-                         htmls ="<button id='deleteFollowButton'>Delete Follow</button>";
-                         $("#emptyButton").append(htmls);
-                      }
-                   })
-                 });
-               
-                $(document).on("click", "#deleteFollowButton", function(){
-                   var users_no= ${map.userVo.users_no};
-                   var htmls;
-                   
-                   $.ajax({
-                      url:"${pageContext.request.contextPath}/follow/delete",
-                      type:"post",
-                      data:"users_no="+users_no,
-                      dataType:"json",
-                      success:function(response){
-                         $("#deleteFollowButton").remove();
-                         htmls = "<button id='followButton'>Follow</button>";
-                         $("#emptyButton").append(htmls);
-                      }
-                   })
-                 });
-              
-                // 4. 유저 상세보기 창 닫을때 추가된 html 버튼 제거하기( 버튼 쌓이지 않게 )
-                $(document).on("click","#infoModal-close",function(){
-                $("#followButton").remove();
-                $("#deleteFollowButton").remove();
-                $("#followerButtion").remove();
-                })
-               
-               </script>
 </body>
 </html>
