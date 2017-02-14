@@ -140,52 +140,54 @@
 			</section>
 			<!-- END: PAGE TITLE -->
 			
-<!-- CONTENT -->
-<section class="content">
-	<div class="container">
-		<div class="row">
-			<!-- Blog post-->
-			<div class="post-content col-md-9" id="newsContent">
+			<!-- CONTENT -->
+			<section class="content">
+				<div class="container">
+					<div class="row">
+					<!-- Blog post-->
+					<div class="post-content col-md-9" >
 				
-				<c:forEach items="${latest_news }"	var="vo" varStatus="status">	
-				<!-- Blog image post-->
-				<div class="post-item">
-					<div class="post-image">
-						<a href="#">
-							<img alt="" src="${pageContext.request.contextPath }/hotdog/image/user/${vo.post_image}">
-						</a>
-					</div>
-					<div class="post-content-details">
-						<div class="post-title">
-							<h3><a href="#">${vo. title}</a></h3>
-						</div>
-						<div class="post-info">
-							<span class="post-autor">Post by: <a href="#">${vo.nickname }</a></span>
-						</div>
-						<div class="post-description">
-							<p>불러온 리스트들의 글내용....image 파일을 제외하고 어떻게 불러올까...</p>
-
-							<div class="post-read-more">
-								<a class="read-more" href="${pageContext.request.contextPath }/post/${vo.nickname}/postView?post_no=${vo.post_no}">read more <i class="fa fa-long-arrow-right"></i></a>
+					<c:forEach items="${latest_news }"	var="vo" varStatus="status">	
+						<!-- Blog image post-->
+						<div class="post-item">
+							<div class="post-image">
+							<a href="#">
+								<img alt="" src="${pageContext.request.contextPath }/hotdog/image/user/${vo.post_image}">
+							</a>
+							</div>
+							<div class="post-content-details">
+								<div class="post-title">
+									<h3><a href="#">${vo. title}</a></h3>
+								</div>
+								<div class="post-info">
+									<span class="post-autor">Post by: <a href="#">${vo.nickname }</a></span>
+								</div>
+								<div class="post-description">
+									<p>불러온 리스트들의 글내용....image 파일을 제외하고 어떻게 불러올까...</p>
+		
+									<div class="post-read-more">
+										<a class="read-more" href="${pageContext.request.contextPath }/post/${vo.nickname}/postView?post_no=${vo.post_no}">read more <i class="fa fa-long-arrow-right"></i></a>
+									</div>
+								</div>
+							</div>
+		
+							<div class="post-meta">
+								<div class="post-date">
+									<span class="post-date-day">${vo.regdate }</span>
+								</div>
+		
+								<div class="post-comments">
+									<a href="#">
+										<i class="fa fa-comments-o"></i>
+										<span class="post-comments-number">${vo.count }</span>
+									</a>
+								</div>
 							</div>
 						</div>
-					</div>
-
-					<div class="post-meta">
-						<div class="post-date">
-							<span class="post-date-day">${vo.regdate }</span>
-						</div>
-
-						<div class="post-comments">
-							<a href="#">
-								<i class="fa fa-comments-o"></i>
-								<span class="post-comments-number">${vo.count }</span>
-							</a>
-						</div>
-					</div>
-				</div>
 				</c:forEach>
+					<div id="addList"></div>
 			</div>
+			
 			<!-- END: Blog post-->
 			<script>
 				var isEnd = false;
@@ -193,10 +195,11 @@
 				
 				var fetch=function(){
 					
-					if(isEnd = true	){
+					if(isEnd == true ){
 						return;
 					}
 					++page;
+					
 					
 					$.ajax({
 						url: "${pageContext.request.contextPath }/community/newsfeed/fetch?page=" + page,
@@ -232,44 +235,38 @@
 						'<div class="post-item">'+
 							'<div class="post-image">'+
 								'<a href="#">'+
-									'<img alt="" src="${pageContext.request.contextPath }/hotdog/image/user/${vo.post_image}">'+
-								'</a>'+
+									'<img alt="" src="${pageContext.request.contextPath }/hotdog/image/user/'+vo.post_image+
+								' "></a>'+
 							'</div>'+
 							'<div class="post-content-details">'+
 								'<div class="post-title">'+
-									'<h3><a href="#">${vo. title}</a></h3>'+
+									'<h3><a href="#">' + vo. title + '</a></h3>'+
 								'</div>'+
 								'<div class="post-info">'+
-									'<span class="post-autor">Post by: <a href="#">${vo.nickname }</a></span>'+
+									'<span class="post-autor">Post by: <a href="#">'+ vo.nickname +'</a></span>'+
 								'</div>'+
 								'<div class="post-description">'+
 									'<p>불러온 리스트들의 글내용....image 파일을 제외하고 어떻게 불러올까...</p>'+
 									'<div class="post-read-more">'+
-										'<a class="read-more" href="${pageContext.request.contextPath }/post/${vo.nickname}/postView?post_no=${vo.post_no}">read more <i class="fa fa-long-arrow-right"></i></a>'+
+										'<a class="read-more" href="${pageContext.request.contextPath }/post/'+ vo.nickname +'/postView?post_no='+ vo.post_no +'">read more <i class="fa fa-long-arrow-right"></i></a>'+
 									'</div>'+
 								'</div>'+
 							'</div>'+
 							'<div class="post-meta">'+
 								'<div class="post-date">'+
-									'<span class="post-date-day">${vo.regdate }</span>'+
+									'<span class="post-date-day">'+ vo.regdate +'</span>'+
 								'</div>'+
 								'<div class="post-comments">'+
 									'<a href="#">'+
 										'<i class="fa fa-comments-o"></i>'+
-										'<span class="post-comments-number">324</span>'+
-									'</a>'+
-								'</div>'+
-								'<div class="post-comments">'+
-									'<a href="#">'+
-										'<i class="fa fa-share-alt"></i>'+
-										'<span class="post-comments-number">324</span>'+
+										'<span class="post-comments-number">'+ vo.count +'</span>'+
 									'</a>'+
 								'</div>'+
 							'</div>'+
 						'</div>';
 						
 					
-						$( "#newsContent" ).append( htmls );
+						$( "#addList" ).append( htmls );
 					
 				}
 				
@@ -280,10 +277,9 @@
 					var documentHeight = $( document ).height();
 					
 					// 스크롤 바가 바닥까지 왔을 때( 10px 덜 왔을 때 )
-					if( scrollTop + windowHeight + 30 > documentHeight ) {
+					if( scrollTop + windowHeight + 20 > documentHeight ) {
 						//console.log( "call fetchList" );
 						fetch();
-						console.log("리스트 불러오기")
 					}
 				});
 				

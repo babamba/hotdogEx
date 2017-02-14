@@ -39,8 +39,9 @@ public class NewsFeedController {
 	// 2. 리스트 더 불러오기
 	@ResponseBody
 	@RequestMapping("/fetch")
-	public Object fetch(@AuthUser UserVo authUser,Model model,
-	@RequestParam(value="page",required=true,defaultValue="1")Integer page){
+	public Object fetch(@AuthUser UserVo authUser,Model model,@RequestParam(value="page",required=true,defaultValue="1")Integer page){
+		
+		System.out.println(" 추가 요청 들어옴 페이지 :"+page);
 		List<NewsVo> latest_news = newsfeedService.latestNews(authUser.getUsers_no(),page);
 		return JSONResult.success(latest_news);
 	}
