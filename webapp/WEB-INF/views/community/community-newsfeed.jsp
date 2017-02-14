@@ -152,12 +152,11 @@
 				<div class="carousel" data-lightbox-type="gallery">
 				<c:forEach items="${top_ten }"	var="vo" varStatus="status">
 					<div class="portfolio-item design artwork">
-						
 						<div class="portfolio-image effect social-links">
-							<img src="${pageContext.request.contextPath}/hotdog/image/user/${post_image }" alt="">
+							<img src="${pageContext.request.contextPath}/hotdog/image/user/${vo.post_image }" alt="">
 							<div class="image-box-content">
 								<p>
-									<a href="${pageContext.request.contextPath}/hotdog/image/user/${post_image }" data-lightbox-type="image" title="Your image title here!"><i class="fa fa-expand"></i></a>
+									<a href="${pageContext.request.contextPath}/hotdog/image/user/${vo.post_image }" data-lightbox-type="image" title="Your image title here!"><i class="fa fa-expand"></i></a>
 									<a href="${pageContext.request.contextPath }/post/${vo.nickname}/postView?post_no=${vo.post_no}"><i class="fa fa-link"></i></a>
 								</p>
 							</div>
@@ -180,7 +179,7 @@
 						<div class="post-item">
 							<div class="post-image">
 							<a href="#">
-								<img alt="" src="${pageContext.request.contextPath }/hotdog/image/user/${vo.post_image}">
+								<img alt="" src="${pageContext.request.contextPath }/hotdog/image/user/${vo.post_image}" width="830px" height="600px">
 							</a>
 							</div>
 							<div class="post-content-details">
