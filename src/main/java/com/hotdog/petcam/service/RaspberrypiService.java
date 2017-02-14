@@ -16,6 +16,14 @@ public class RaspberrypiService {
 		raspberrypiDao.insert(raspberrypiVo);
 	}
 
+	public void tokenUpdate(RaspberrypiVo raspberrypiVo) {
+		raspberrypiDao.tokenUpdate(raspberrypiVo);
+	}
+
+	public void DevUpdate(RaspberrypiVo raspberrypiVo) {
+		raspberrypiDao.devUpdate(raspberrypiVo);
+	}
+
 	public RaspberrypiVo selectByNo(RaspberrypiVo raspberrypiVo) {
 		return raspberrypiDao.selectByNo(raspberrypiVo);
 	}
