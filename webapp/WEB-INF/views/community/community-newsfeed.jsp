@@ -153,7 +153,7 @@
 				<c:forEach items="${top_ten }"	var="vo" varStatus="status">
 					<div class="portfolio-item design artwork">
 						<div class="portfolio-image effect social-links">
-							<img src="${pageContext.request.contextPath}/hotdog/image/user/${vo.post_image }" alt="">
+							<img src="${pageContext.request.contextPath}/hotdog/image/user/${vo.post_image }" width="220px" height="300px">
 							<div class="image-box-content">
 								<p>
 									<a href="${pageContext.request.contextPath}/hotdog/image/user/${vo.post_image }" data-lightbox-type="image" title="Your image title here!"><i class="fa fa-expand"></i></a>
