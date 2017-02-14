@@ -242,7 +242,7 @@ public class UserController {
 			@RequestParam(value = "gender") String gender, @RequestParam(value = "age") String age,
 			@RequestParam(value = "co_date") String co_date) {
 
-		userService.petProfileModify(petVo, authUser.getUsers_no(), name, info, co_date, age, gender);
+		userService.petProfileModify(authUser.getUsers_no(), name, info, co_date, age, gender);
 		return "redirect:/blog/" + authUser.getNickname();
 	}
 
@@ -254,7 +254,7 @@ public class UserController {
 			@RequestParam(value = "gender") String gender, @RequestParam(value = "age") String age,
 			@RequestParam(value = "co_date") String co_date, @RequestParam(value = "petimage") MultipartFile petimage) {
 
-		userService.petProfileModify(petVo, authUser.getUsers_no(), name, info, co_date, age, gender);
+		userService.petProfileModify(authUser.getUsers_no(), name, info, co_date, age, gender);
 
 		String saveName = imageService.restore(petimage, authUser.getUsers_no());
 		petVo.setUsers_no(authUser.getUsers_no());
@@ -266,12 +266,12 @@ public class UserController {
 
 	@ResponseBody
 	@RequestMapping(value = "/app/account/petprofilemodify", method = RequestMethod.POST)
-	public Object appPetProfileModify(@ModelAttribute PetVo petVo, @RequestParam(value = "users_no") Integer users_no,
+	public Object appPetProfileModify(@RequestParam(value = "users_no") Integer users_no,
 			@RequestParam(value = "petname") String name, @RequestParam(value = "petinfo") String info,
 			@RequestParam(value = "gender") String gender, @RequestParam(value = "age") String age,
 			@RequestParam(value = "co_date") String co_date) {
 
-		userService.petProfileModify(petVo, users_no, name, info, co_date, age, gender);
+		userService.petProfileModify(users_no, name, info, co_date, age, gender);
 		return JSONResult.success("success");
 	}
 
