@@ -185,7 +185,7 @@
 	
 	<select id="getPet" parameterType="int" resultType="petvo">
 		<![CDATA[
-			select name, info, gender, age, date_format(co_date,'%m/%d/%y'),users_no,pet_no
+			select name, info, gender, age, date_format(co_date,'%m/%d/%y') as co_date,users_no,pet_no
 				from pet
 					where users_no=#{no};
 				
