@@ -24,5 +24,8 @@ public class NewsFeedService {
 	public List<NewsVo> search(int authUser_no,String search,int page){
 		return newsfeedDao.search(authUser_no,search,page);
 	}
+	public List<NewsVo> totalTop(){
+		return newsfeedDao.totalTop();
+	}
 	
 }

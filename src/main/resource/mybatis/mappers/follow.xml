@@ -179,4 +179,25 @@
 		
    	]]>
    </select>
+   
+   <!--  13 현시각 가장 댓글 순위가 높은 글 -->
+   <select id="total_top" resultType="newsvo">
+   		<![CDATA[
+   		select p.rn,p.post_no,p.post_image,p.users_image,p.nickname,p.users_no,p.title,p.regdate,( select count(*) from post_comments pc where pc.post_no =p.post_no) as count
+		from ( SELECT @rownum := @rownum + 1 AS rn,
+										 a.post_no,
+										 a.post_image,
+										 c.users_image,
+										 c.nickname,
+										 a.title,
+										 a.regdate,
+										 a.users_no
+				FROM post a,users c,(SELECT @rownum := 0) d
+								   WHERE  a.users_no = c.users_no
+				) p 
+		order by count desc
+		limit 5;
+		
+   		]]>
+   </select>
 </mapper>

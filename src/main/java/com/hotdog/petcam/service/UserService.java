@@ -206,53 +206,29 @@ public class UserService {
 		userDao.setImage(userVo);
 	}
 
-	public void petProfileModify(PetVo petVo, int no, String name, String info, String co_date, String age,
-			String gender) {
+	public void petProfileModify(int no, String name, String info, String co_date, String age, String gender) {
 
-		petVo.setUsers_no(no);
+		// 있으면 수정
+		PetVo ModiPet = userDao.getPet(no);
 
-		// 펫이 있는지 없는지 검사
-		if (userDao.existPet(petVo) == false) {
-			// 없으면 입력된 정보로 펫 등록
-			if (name.length() >= 1) {
-				petVo.setName(name);
-			}
-			if (info.length() >= 1) {
-				petVo.setInfo(info);
-			}
-			if (co_date.length() >= 1) {
-				petVo.setCo_Date(co_date);
-			}
-			if (age.length() >= 1) {
-				petVo.setAge(age);
-			}
-			if (gender.length() >= 1) {
-				petVo.setGender(gender);
-			}
-			userDao.insertPet(petVo);
-		} else {
-			// 있으면 수정
-			PetVo ModiPet = userDao.getPet(no);
-
-			if (name.length() >= 1) {
-				ModiPet.setName(name);
-			}
-			if (info.length() >= 1) {
-				ModiPet.setInfo(info);
-			}
-			if (co_date.length() >= 1) {
-				ModiPet.setCo_Date(co_date);
-			}
-			if (age.length() >= 1) {
-				ModiPet.setAge(age);
-			}
-			if (gender.length() >= 1) {
-				ModiPet.setGender(gender);
-			}
-			ModiPet.setUsers_no(no);
-			userDao.petProfileModify(ModiPet);
-
+		if (name.length() >= 1) {
+			ModiPet.setName(name);
 		}
+		if (info.length() >= 1) {
+			ModiPet.setInfo(info);
+		}
+		if (co_date.length() >= 1) {
+			ModiPet.setCo_Date(co_date);
+		}
+		if (age.length() >= 1) {
+			ModiPet.setAge(age);
+		}
+		if (gender.length() >= 1) {
+			ModiPet.setGender(gender);
+		}
+		ModiPet.setUsers_no(no);
+		userDao.petProfileModify(ModiPet);
+
 	}
 
 	public void setPetImage(PetVo petVo) {

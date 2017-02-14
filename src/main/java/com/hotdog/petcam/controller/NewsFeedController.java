@@ -31,9 +31,11 @@ public class NewsFeedController {
 		List<NewsVo> latest_news = newsfeedService.latestNews(authUser.getUsers_no(),page);
 		List<NewsVo> top_ten = newsfeedService.topTen(authUser.getUsers_no());
 		List<NewsVo> recent_users=newsfeedService.recent_users(authUser.getUsers_no());
+		List<NewsVo> total_top = newsfeedService.totalTop();
 		model.addAttribute("latest_news", latest_news);
 		model.addAttribute("top_ten", top_ten);
 		model.addAttribute("recent_users",recent_users);
+		model.addAttribute("total_top", total_top);
 		return "community/community-newsfeed";
 	}
 	
@@ -54,9 +56,11 @@ public class NewsFeedController {
 		List<NewsVo> search_list = newsfeedService.search(authUser.getUsers_no(),search,page);
 		List<NewsVo> top_ten = newsfeedService.topTen(authUser.getUsers_no());
 		List<NewsVo> recent_users=newsfeedService.recent_users(authUser.getUsers_no());
+		List<NewsVo> total_top = newsfeedService.totalTop();
 		model.addAttribute("search_list", search_list);
 		model.addAttribute("top_ten", top_ten);
 		model.addAttribute("recent_users",recent_users);
+		model.addAttribute("total_top", total_top);
 		model.addAttribute("search", search);
 		return "community/community-newsfeed-search";
 	}

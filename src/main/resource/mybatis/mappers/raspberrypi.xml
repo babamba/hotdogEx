@@ -10,7 +10,7 @@
 				VALUES (#{users_no}, 
 						#{device_num}, 
 						#{token}, 
-						#{temperature}
+						#{temperature},
 						#{humidity})
 		]]>
 	</insert>
@@ -27,5 +27,19 @@
 				 where users_no = #{users_no}
 		]]>
 	</select>
+	<update id="tokenUpdate" parameterType="raspberrypivo">
+		<![CDATA[	
+			Update raspberrypi 
+				set token = #{token}
+			where users_no =#{users_no}
+		]]>
+	</update>
+	<update id="devUpdate" parameterType="raspberrypivo">
+		<![CDATA[	
+			Update raspberrypi 
+				set device_num = #{device_num}
+			where users_no =#{users_no}
+		]]>
+	</update>
 
 </mapper>

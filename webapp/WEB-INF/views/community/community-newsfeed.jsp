@@ -160,7 +160,7 @@
 									<h3><a href="#">${vo. title}</a></h3>
 								</div>
 								<div class="post-info">
-									<span class="post-autor">Post by: <a href="#">${vo.nickname }</a></span>
+									<span class="post-autor">Post by: <a href="${pageContext.request.contextPath }/blog/${vo.nickname}">${vo.nickname }</a></span>
 								</div>
 								<div class="post-description">
 									<p>불러온 리스트들의 글내용....image 파일을 제외하고 어떻게 불러올까...</p>
@@ -307,12 +307,11 @@
 				<!--widget archive-->
 				<div class="widget clearfix widget-archive">
 					<h4 class="widget-title">명예의 전당</h4>
+					<c:forEach items="${total_top }"	var="vo" varStatus="status">	
 					<ul class="list list-lines">
-						<li>Jun 2017 </li>
-						<li>May 2017 </li>
-						<li>Apr 2017 </li>
-						<li>Mar 2017 </li>
+						<li><a href="${pageContext.request.contextPath }/post/${vo.nickname}/postView?post_no=${vo.post_no}">${vo.title } : ${vo.nickname }</a></li>
 					</ul>
+					</c:forEach>
 				</div>
 				<!--end: widget archive-->
 
