@@ -90,8 +90,8 @@
 
 					<!--TOP SEARCH -->
 					<div id="top-search"> <a id="top-search-trigger"><i class="fa fa-search"></i><i class="fa fa-close"></i></a>
-						<form action="search-results-page.html" method="get">
-							<input type="text" name="q" class="form-control" value="" placeholder="Start typing & press  &quot;Enter&quot;">
+						<form action="${pageContext.request.contextPath}/search" method="get">
+							<input type="text" name="keyword" class="form-control" value="" placeholder="Start typing & press  &quot;Enter&quot;">
 						</form>
 					</div>
 					<!--END: TOP SEARCH -->

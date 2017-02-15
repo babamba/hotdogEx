@@ -26,7 +26,6 @@ public class ImageService {
 	}
 
 	public String restore(MultipartFile userimage, int no) {
-		System.out.println("들어옴");
 		
 		String saveFileName;
 		try {
@@ -38,10 +37,7 @@ public class ImageService {
 			String originalFileName = userimage.getOriginalFilename();
 			String extName = originalFileName.substring(originalFileName.lastIndexOf('.') + 1,originalFileName.length());
 			saveFileName = generateSaveFileName(extName);
-			Long fileSize = userimage.getSize();
 
-			System.out.println("파일명 정제중");
-			System.out.println(saveFileName);
 			
 			writeFile(userimage, saveFileName);
 
@@ -82,7 +78,6 @@ public class ImageService {
 			// TODO: handle exception
 			throw new RuntimeException("upload file exception");
 		}
-		System.out.println(saveFileName);
 		return saveFileName;
 		
 		
