@@ -82,19 +82,26 @@
 
 /*블로그 */
 .blog_image_modify{
-	position:relative;
 	display: inline-block;
-	margin-left:100px;
-	width:100%;
 }
 
 .blog_image_box{
+	float:left;
+	top:0px;
 	display:inline-block;
 	
 }
 
 .blog_profile_modify{
 	display: inline-block;
-	width:500px;
+	margin-top:30px;
+	float:right;
 }
+
+#output2{
+	width:100%; 
+	height:300px;
+}
+
+
 

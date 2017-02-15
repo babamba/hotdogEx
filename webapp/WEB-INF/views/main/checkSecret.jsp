@@ -115,7 +115,8 @@
 
 		<!-- SECTION -->
 		<section class="parallax fullscreen"
-			style="background-image: url(${pageContext.request.contextPath}/assets/template/images/parallax/8.jpg)">
+			style="background: 
+			linear-gradient(rgba(0, 0, 0, 0.65),rgba(0, 0, 0, 0.65)),url(${pageContext.request.contextPath}/assets/img/security.jpg); background-size:cover;">
 			<div class="container container-fullscreen">
 				<div class="text-middle">
 					<div class="row">

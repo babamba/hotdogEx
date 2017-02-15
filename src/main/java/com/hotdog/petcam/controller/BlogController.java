@@ -41,7 +41,7 @@ public class BlogController {
 		System.out.println("맵" + map);
 		
 		
-		return "blog/blog-main";
+		return "blog/blog-main2";
 	}
 	
 	@Auth

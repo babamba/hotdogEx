@@ -132,17 +132,20 @@
 								<ul class="tabs-navigation">
 
 									<li class="social-facebook"><a href="#user_profile"><i
-											class="fa fa-user"></i> 유저 프로필 설정</a></li>
+											class="fa fa-user"></i> 유저 프로필 설정</a>
+									</li>
 
 									<li class="social-facebook"><a href="#pet_profile"> <i
-											class="fa fa-user"></i> 펫 프로필 설정
-									</a></li>
+											class="fa fa-user"></i> 펫 프로필 설정</a>
+									</li>
 
 									<li class="social-facebook"><a href="#blog_profile"><i
-											class="fa fa-user"></i> 블로그 설정</a></li>
+											class="fa fa-user"></i> 블로그 설정</a>
+									</li>
 
 									<li class="social-facebook"><a href="#secret"><i
-											class="fa fa-lock"></i>보안번호 설정</a></li>
+											class="fa fa-lock"></i>보안번호 설정</a>
+									</li>
 
 								</ul>
 
@@ -151,11 +154,12 @@
 								
 									<div class="tab-pane" id="user_profile">
 										<form name="uploadImages" method="post" enctype="multipart/form-data" class="upload_modify">
-										<div class="user_modify_intro text-center">
-											<h4>유저 프로필 설정</h4>
-											<p>유저 프로필 설정</p>
-										</div>
-										<div class="user_image_modify text-center" style="border:1px solid right #ddd" >
+											<div class="user_modify_intro text-center">
+												<h4>유저 프로필 설정</h4>
+												<p>유저 프로필 설정</p>
+											</div>
+											
+											<div class="user_image_modify text-center" style="border:1px solid right #ddd" >
 
 											<div class="user_image_box">
 												<span class="label label-info">프로필 사진을 넣어주세요.</span> 
@@ -211,15 +215,17 @@
 												</div>
 												
 												<button id="userProfileSave" class="btn btn-primary btn-sm pull-right">저장 </button>
+												<button id="nicknameCheck" class="btn btn-primary btn-sm pull-right">닉네임 중복검사</button>
 											</div>
 											</form>
+											
 										</div>
 										
 									
 
 									<div class="tab-pane" id="pet_profile">
 										<form name="uploadImages" method="post" enctype="multipart/form-data" class="upload_modify">
-										<div class="user_modify_intro text-center">
+										<div class="pet_modify_intro text-center">
 											<h4>펫 프로필 설정</h4>
 											<p>펫 프로필 설정</p>
 										</div>
@@ -292,33 +298,43 @@
 												</div>
 										</div>
 										<div class="petfileButton center-block">
-											<button id="petProfileSave" class="btn btn-primary btn-sm center-block">save</button>
+											<button id="petProfileSave" class="btn btn-primary btn-sm center-block">펫 프로필 저장</button>
 										</div>
 									</form>
 								</div>
-								
-									<div class="tab-pane" id="blog_profile">
-										<h4>블로그 설정</h4>
-										<p>블로그 설정</p>
+									
+								<div class="tab-pane" id="blog_profile">
+									<form name="uploadImages" method="post" enctype="multipart/form-data" class="upload_modify">
 										
-										<div class="blog_image_modify">
-											<div class="blog_image_box">
-												<span class="label label-info">Set Blog Image</span>
-												<input id="blogimage" type="file" accept="image/*" onchange="loadFile2(event)" > 
-												<img id="output2" width="200px" height="150px" />
+										<div class="blog_modify_intro text-center">
+											<h4>블로그 설정</h4>
+											<p>블로그 설정</p>
 										</div>
+									
+									   
+									    
+											<div class="blog_image_modify" style="margin-left:0; border:1px solid right #ddd; width:520px;">
+												
+												<div class="blog_image_box col-md-12">
+													<span class="label label-info">블로그 대표사진을 넣어주세요.</span>
+													<input id="blogimage" type="file" accept="image/*" onchange="loadFile2(event)" > 
+													<img id="output2"/>
+												</div>
+											</div>
 										
 										
-										</div>
-										
-										<div class="blog_profile_modify">
+										<div class="blog_profile_modify col-md-6" >
 											<div class="input-group">
-												<span class="input-group-addon"> <i class="fa fa-group"></i></span>
+												<span class="input-group-addon"><i class="fa fa-group"></i></span>
 												<input id="title" type="text" class="form-control"placeholder="${map.blogVo.title }">
 											</div>
 										</div>
 										
-									</div>
+										<div class="blogProfileButton center-block text-center">
+											<button id="blogProfileSave" class="btn btn-primary btn-sm">저장 </button>
+										</div>
+									</form>
+								</div>
 									
 									
 									<div class="tab-pane" id="secret">
