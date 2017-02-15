@@ -149,7 +149,7 @@
 		<!-- 수정 전에 펫이 있는지 부터 확인 할것 -->
 	        <![CDATA[
 	            update pet
-	                set name=#{name}, info=#{info}, co_date=STR_TO_DATE(#{co_date},"%m/%d/%Y"),age=#{age},gender=#{gender}
+	                set name=#{name}, info=#{info}, co_date=STR_TO_DATE(#{co_date},"%d/%m/%Y"),age=#{age},gender=#{gender}
 	                    where users_no = #{users_no};
 	        ]]>
 	
@@ -185,7 +185,7 @@
 	
 	<select id="getPet" parameterType="int" resultType="petvo">
 		<![CDATA[
-			select name, info, gender, age, date_format(co_date,'%m/%d/%Y') as co_date,users_no,pet_no,pet_image
+			select name, info, gender, age, date_format(co_date,'%d/%m/%Y') as co_date,users_no,pet_no,pet_image
 				from pet
 					where users_no=#{no};
 				
@@ -195,7 +195,7 @@
 	<insert id="insertPet" parameterType="petvo">
 	        <![CDATA[
 	            insert into pet(name, info, gender, age, co_date,users_no) values
-	            (#{name},#{info},#{gender},#{age},STR_TO_DATE(#{co_date},"%m/%d/%Y"),#{users_no})
+	            (#{name},#{info},#{gender},#{age},STR_TO_DATE(#{co_date},"%d/%m/%Y"),#{users_no})
 	        ]]>
 	</insert>
 
