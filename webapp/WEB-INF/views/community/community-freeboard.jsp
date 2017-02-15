@@ -124,7 +124,7 @@ $(function(){
 					<div id="logo">
 						<a href="${pageContext.request.contextPath}" class="logo"
 							data-dark-logo="images/logo-dark.png"> <img
-							src="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png"
+							src="${pageContext.request.contextPath}/assets/img/hotdog_logo_02.png"
 							alt="Hotdog Logo">
 						</a>
 					</div>
@@ -226,7 +226,7 @@ $(function(){
 										<p>${map.totalCount - (map.currentPage - 1)* map.listSize - status.index }</p>
 									</td>
 									<td class="cart-product-description" id="viewPost" data-no="${vo.board_no }">
-										<a href="${pageContext.request.contextPath }/community/freeboard/viewpost?no=${vo.board_no }">${vo.title }(${vo.count })</a>
+										<a href="${pageContext.request.contextPath }/community/viewpost?no=${vo.board_no }">${vo.title }(${vo.count })</a>
 									</td>
 
 									<td class="cart-product-price">

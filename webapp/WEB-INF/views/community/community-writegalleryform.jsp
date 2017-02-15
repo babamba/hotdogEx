@@ -75,11 +75,26 @@
 	rel="${pageContext.request.contextPath}/assets/template/stylesheet"
 	type="text/css" href="css/custom.css" media="screen" />
 
+<!-- CKEDITOR SCRIPT -->
+<script src="${pageContext.request.contextPath}/assets/ckeditor/ckeditor.js"></script>
+<!-- <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script> -->
+<script src="${pageContext.request.contextPath}/assets/ckeditor/plugins/uploadimage/plugin.js"></script>
+<script src="${pageContext.request.contextPath}/assets/ckeditor/plugins/widget/plugin.js"></script>
+
+<!-- ALERTIFY SCRIPT -->
+<script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
+
 <!--VENDOR SCRIPT-->
 <script
 	src="${pageContext.request.contextPath}/assets/template/vendor/jquery/jquery-1.11.2.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/assets/template/vendor/plugins-compressed.js"></script>
+
+<!-- Write Page -->
+<link 
+	href="${pageContext.request.contextPath}/assets/css/write.css" 
+	rel="stylesheet">	
+
 
 <!-- User Profile -->
 <script
@@ -87,12 +102,13 @@
 <link
 	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
 	rel="stylesheet">
+	
+
+		
+</head>
+	
 <body>
-
-
-
 	<div class="wrapper">
-
 		<!-- HEADER -->
 		<header id="header" class="header-transparent">
 			<div id="header-wrap">
@@ -168,40 +184,21 @@
 		</section>
 		<!-- END: PAGE TITLE -->
 
-
 		<!-- CONTENT -->
-				<div class="hr-title hr-long center"><abbr>글 쓰기</abbr> </div>
-				<div class="row">
-					<div class="col-md-10 col-md-offset-1">
-					
-						<form class="form-gray-fields" action="${pageContext.request.contextPath}/community/freeboard/writepost" method="post">
-							<div class="row">
-								<div class="col-md-12">
-									<div class="form-group">
-										<label class="upper" for="name">Title</label>
-										<input type="text" class="form-control required" name="title" placeholder="Enter name" id="name3" aria-required="true">
-									</div>
-								</div>
-							</div>
-							
-							<div class="row">
-								<div class="col-md-12">
-									<div class="form-group">
-										<label class="upper" for="comment">Content</label>
-										<textarea class="form-control required" name="content" rows="9" placeholder="Enter comment" id="comment3" aria-required="true"></textarea>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<div class="form-group text-center">
-										<button class="btn btn-primary" type="submit" name="${categoryNo }"><i class="fa fa-paper-plane"></i>&nbsp;등록 </button>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
+		<section class="content">
+			<div class="container list_container">
+				<form action= "${pageContext.request.contextPath}/community/writegallerypost" method="post"  >
+					<textarea class="form-control required" aria-required="true" name="title" placeholder="제목을 입력하세요." rows="1" style="font-size:20px"></textarea>
+
+		            <textarea name="content" id="ckeditor" rows="10" cols="80"></textarea>
+		            
+		            <button type="submit" name="${categoryNo }" class="btn btn-white pull-right" id="posting" style="margin-right:0; margin-top:10px; "></button>
+		            
+		            
+       			</form>
+			</div>
+
+		</section>
 
 		<!-- END: SECTION -->
 
@@ -211,6 +208,7 @@
 
 	</div>
 	<!-- END: WRAPPER -->
+	
 	<!-- Theme Base, Components and Settings -->
 	<script
 		src="${pageContext.request.contextPath}/assets/template/js/theme-functions.js"></script>
@@ -218,6 +216,76 @@
 	<!-- Custom js file -->
 	<script
 		src="${pageContext.request.contextPath}/assets/template/js/custom.js"></script>
+
+	
+	<script>
+            CKEDITOR.replace( 'ckeditor', {//해당 이름으로 된 textarea에 에디터를 적용 <-- 이거 이름 부분입니다.
+            customConfig: '${pageContext.request.contextPath}/assets/ckeditor/config.js',
+            startupFocus : false,  // 자동 focus 사용할때는  true
+            enterMode :CKEDITOR.ENTER_BR,
+            width:'100%',
+            height:'600px',
+            filebrowserImageUploadUrl:"${pageContext.request.contextPath }/image/upload",
+            });
+
+            </script> 
+            
+        <script type='text/javascript'>
+		CKEDITOR.on('dialogDefinition', function (ev) {
+			var dialogName = ev.data.name;
+			var dialog = ev.data.definition.dialog;
+			var dialogDefinition = ev.data.definition;
+
+				if (dialogName == 'image') {
+					dialog.on('show', function (obj) {
+					this.selectPage('Upload'); //업로드텝으로 시작
+				});
+
+				dialogDefinition.removeContents('advanced'); // 자세히탭 제거
+				dialogDefinition.removeContents('Link'); // 링크탭 제거
+			}
+		});
+		</script>
+		
+		<script>
+		
+		$("#posting").on('click', function(){
+			alertify.success("Success notification");
+			console.log("alert")
+		});
+		
+		/* $("input").click(function(){
+			alertify.success("Success notification");
+		}) */
+		</script>
+
+
+	<!-- user profile modal -->
+	<script>
+	$(document).on('ready', function(){
+	    $modal = $('.modal-frame');
+	    $overlay = $('.modal-overlay');
+
+	    /* Need this to clear out the keyframe classes so they dont clash with each other between ener/leave. Cheers. */
+	    $modal.bind('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e){
+	      if($modal.hasClass('state-leave')) {
+	        $modal.removeClass('state-leave');
+	      }
+	    });
+
+	    $('.closeProfile').on('click', function(){
+	      $overlay.removeClass('state-show');
+	      $modal.removeClass('state-appear').addClass('state-leave');
+	    });
+
+	    $('.openProfile').on('click', function(){
+	      $overlay.addClass('state-show');
+	      $modal.removeClass('state-leave').addClass('state-appear');
+	    });
+
+	  });
+	
+	</script>
 
 </body>
 </html>

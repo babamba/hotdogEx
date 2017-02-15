@@ -90,25 +90,17 @@
 	<div class="wrapper">
 
 		<!-- HEADER -->
-		<header id="header" class="header-transparent header-dark header-fullwidth">
+		<header id="header" class="header-transparent header-white header-fullwidth">
 			<div id="header-wrap">
 				<div class="container">
 
 					<!--LOGO-->
 					<div id="logo">
-						<a href="#" class="logo" data-dark-logo="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png">
-							<img src="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png" alt="Polo Logo">
+						<a href="${pageContext.request.contextPath}/" class="logo" data-dark-logo="${pageContext.request.contextPath}/assets/img/hotdog_logo_02.png">
+							<img src="${pageContext.request.contextPath}/assets/img/hotdog_logo_02.png" alt="Hot Dog">
 						</a>
 					</div>
 					<!--END: LOGO-->
-
-					<!--MOBILE MENU -->
-					<div class="nav-main-menu-responsive">
-						<button class="lines-button x">
-							<span class="lines"></span>
-						</button>
-					</div>
-					<!--END: MOBILE MENU -->
 					
 				</div>
 			</div>

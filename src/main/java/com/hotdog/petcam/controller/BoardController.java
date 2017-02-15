@@ -1,5 +1,6 @@
 package com.hotdog.petcam.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,20 +12,36 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.hotdog.petcam.security.Auth;
 import com.hotdog.petcam.security.AuthUser;
 import com.hotdog.petcam.service.BoardService;
+import com.hotdog.petcam.service.CategoryService;
 import com.hotdog.petcam.vo.BoardVo;
+import com.hotdog.petcam.vo.CategoryVo;
 import com.hotdog.petcam.vo.UserVo;
 
 @Controller
-@RequestMapping("/community/freeboard")
+@RequestMapping("/community")
 public class BoardController {
 	
 	@Autowired private BoardService boardService;
 	
+	@Autowired CategoryService categoryService;
 	
 	// 카테고리 넘버 지정 (자유게시판 : 1, QnA :2 ...)
 	private final int NO_FREEBOARD = 1 ;
+	private final int NO_GALLERYBOARD = 2 ;
+	
+
 	
 	@RequestMapping("")
+	public String communityMain(Model model){
+		List<CategoryVo> list = categoryService.getCategoryList();
+		
+		model.addAttribute("list", list);
+		
+		return "community/community-main";
+	}
+	
+	
+	@RequestMapping("/freeboard")
 	public String freeBoard(@RequestParam( value="p", required=true, defaultValue="1") Integer page,
 							@RequestParam( value="kwd", required=true, defaultValue="") String keyword,
 							Model model){
@@ -34,6 +51,32 @@ public class BoardController {
 
 		return "community/community-freeboard";
 	}
+	
+	@RequestMapping("/freeboard/writeform")
+	public String writeBoardForm(){
+		return "community/community-writeform";
+	}
+	
+	
+	// 카테고리 넘버 지정 (자유게시판 : 1, QnA :2 ...)
+		
+		
+	@RequestMapping("/galleryboard")
+	public String galleryBoard(@RequestParam( value="p", required=true, defaultValue="1") Integer page,
+								@RequestParam( value="kwd", required=true, defaultValue="") String keyword,
+								Model model){
+			
+		Map<String, Object> map = boardService.getTotalList(NO_GALLERYBOARD, page, keyword);
+		model.addAttribute( "map", map );
+
+		return "community/community-galleryboard";
+	}
+	
+	@RequestMapping("/freeboard/writegalleryform")
+	public String writeGalleryForm(){
+		return "community/community-writegalleryform";
+	}
+	
 	
 	@Auth
 	@RequestMapping("/viewpost")
@@ -50,12 +93,9 @@ public class BoardController {
 		return "community/community-viewpost";
 	}
 	
-
-	@RequestMapping("/writeform")
-	public String writeForm(){
-		return "community/community-writeform";
-	}
 	
+	
+	//자유 입력폼 
 	@Auth
 	@RequestMapping("/writepost")
 	public String writePost(BoardVo boardVo,@AuthUser UserVo authUser){
@@ -69,4 +109,20 @@ public class BoardController {
 		
 		return "redirect:/community/freeboard";
 	}
+	
+	//갤러리 ck에디터 
+	@Auth
+	@RequestMapping("/writegallerypost")
+	public String writeGalleryPost(BoardVo boardVo,@AuthUser UserVo authUser){
+		
+		int userNo = authUser.getUsers_no();
+		
+		boardVo.setUsers_no(userNo);
+		boardVo.setCategory_no(NO_GALLERYBOARD);
+		
+		boardService.writePost(boardVo);
+		
+		return "redirect:/community/galleryboard";
+	}
+	
 }

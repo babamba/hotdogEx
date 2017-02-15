@@ -12,27 +12,30 @@
 				<c:choose>
 					<c:when test="${empty authUser}"> 
 						<!-- authUser 블로그 메인 -->
-						<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}"><i class="fa fa-home"></i></a>
-					
+						<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}">블로그 </a></li>
+						
 						<!-- 커뮤니티 메인 -->
-						<li><a href="${pageContext.request.contextPath}/community">커뮤니티 메인</a></li>
+						<li><a href="${pageContext.request.contextPath}/community">커뮤니티</a></li>
 				</c:when>
 					
 					<c:otherwise> 
 						<!-- authUser 블로그 메인 -->
-						<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}"><i class="fa fa-home"></i></a>
+						<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}">블로그</a></li>
 						
 						<!-- 커뮤니티 메인 -->
-						<li><a href="${pageContext.request.contextPath}/community">커뮤니티 메인</a></li>
+						<li><a href="${pageContext.request.contextPath}//community/newsfeed">뉴스피드</a></li>
+						
+						<!-- 커뮤니티 메인 -->
+						<li><a href="${pageContext.request.contextPath}/community">커뮤니티</a></li>
 						
 						<!-- 포스팅  -->
-						<li><a href="${pageContext.request.contextPath}/post/${authUser.nickname}/write">포스팅하기</a></li>
+						<%-- <li><a href="${pageContext.request.contextPath}/post/${authUser.nickname}/write">포스팅하기</a></li> --%>
 							
-						<!-- 다이어리 부분  -->
-						<li><a href="${pageContext.request.contextPath}/post/${authUser.nickname}/postlist">나의 다이어리</a></li>
+						<%-- <!-- 다이어리 부분  -->
+						<li><a href="${pageContext.request.contextPath}/post/${authUser.nickname}/postlist">나의 다이어리</a></li> --%>
 								
-						<!-- 스트리밍 부분 -->
-						<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/streaming">핫도그 스트리밍</a></li>
+						<%-- <!-- 스트리밍 부분 -->
+						<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/streaming">핫도그 스트리밍</a></li> --%>
 		
 						<!-- user account  -->
 						<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/account">내 정보</a></li>

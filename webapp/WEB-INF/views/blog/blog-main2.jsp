@@ -94,31 +94,31 @@
 		<c:import url="/WEB-INF/views/includes/header.jsp" />
 		<!-- END: PAGE TITLE -->
 
-		<!-- CONTENT -->
+		<div class="blog_navigation text-center">
+			
+				<a style="margin:0 ; padding:15px 26px 15px 26px; border:1px solid #e6e6e6; "  class="button border effect icon-top" href="${pageContext.request.contextPath}/post/${authUser.nickname}/postlist"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i>diary</span></a>
+				<a style="margin:0; padding:15px 20px 15px 20px; border:1px solid #e6e6e6; " class="button border effect icon-top" href="${pageContext.request.contextPath}/blog/${authUser.nickname}/streaming"><span><i class="fa fa-video-camera" aria-hidden="true"></i>stream</span></a>
+				<a style="margin:0; padding:15px; border:1px solid #e6e6e6; " class="button border effect icon-top" href="${pageContext.request.contextPath}/blog/${authUser.nickname}/vod"><span><i class="fa fa-file-video-o" aria-hidden="true"></i>vodplay</span></a>
+			
+		</div>
+
 		<section class="content">
 			<div class="container list_container">
-				<!-- Blog post-->
-				<div class="isotope" data-isotope-item-space="3" data-isotope-col="3" data-isotope-item=".post-item">
-					
+						<!-- Blog post-->
+				<div class="post-content post-modern">
+					<div id="write" class="text-center m-t-40"><a href="${pageContext.request.contextPath}/post/${authUser.nickname}/write" class="button border rounded">Posting</a></div>
+					<br/>	
+					<div class="timeline">
+						
+						<ul class="timeline-circles" >
+							
+							
+							
+						</ul>
+					</div>	
 				</div>
-				<!--  pagination nav 
-	      <div class="text-center">
-	        <div class="pagination-wrap">
-	          <ul class="pagination">
-	            <li> <a aria-label="Previous" href="#"> <span aria-hidden="true"><i class="fa fa-angle-left"></i></span> </a> </li>
-	            <li><a href="#">1</a> </li>
-	            <li><a href="#">2</a> </li>
-	            <li class="active"><a href="#">3</a> </li>
-	            <li><a href="#">4</a> </li>
-	            <li><a href="#">5</a> </li>
-	            <li> <a aria-label="Next" href="#"> <span aria-hidden="true"><i class="fa fa-angle-right"></i></span> </a> </li>
-	          </ul>
-	        </div>
-	      </div> -->
-
-				<!-- END: Blog post-->
-			</div>
-			<div id="load-more-link" class="text-center m-t-40"><a href="javascript:;" class="button border rounded">Load more</a></div>
+			<div id="load-more-link" class="text-center m-t-40"><a href="javascript:;" class="button border rounded">Load more</a></div>	
+		</div>
 		</section>
 
 		<!-- END: SECTION -->
@@ -157,14 +157,16 @@
 	
 	var render = function(vo){
 			
-		var htmls =  "<div class='post-item'><div class='post-image'><img src='" + image_path + vo.post_image + "'></a></div><div class='post-content-details'>" + 
-				  "<div class='post-title'><h3>" + vo.title + "</h3></div>" +
-				  "<div class='post-description'><div class='post-info'><a class='read-more' href='" + post + vo.post_no + "'>read more <i class='fa fa-long-arrow-right'></i></a></div>" +
-				  "</div></div><div class='post-meta'><div class='post-date'><span class='post-date-year'>" + vo.regdate + "</span></div>" +
-				  "<div class='post-comments' data-no='" + vo.post_no + "'> <a href='#'> <i class='fa fa-comments-o'></i><span class='post-comments-number'>" + ${map.postVo.count } + "</span></a><a href='#' class='social-facebook'><i class='fa fa-facebook'></i><span class='post-comments-number'>0</span></a></div>" +
-				  "</div></div>"
+		var htmls =  "<li class='timeline_list'><div class='timeline-block'><div class='post-item'><div class='post-image'><a href='#'><img src='" + image_path + vo.post_image + "'></a></div>" +
+					 "<div class='post-content-details'><div class='post-title'><h3>" + vo.title + "</h3></div>" +
+					 "<div class='post-info'><span class='post-autor'>Post by : " + nickname + "</span><span class='post-category'></span></div>" +
+					 "<div class='post-description'><div class='post-info'><a class='read-more' href='" + post + vo.post_no + "'>read more <i class='fa fa-long-arrow-right'></i></a></div></div>" +
+
+
+					 "<div class='post-meta'><div class='post-date'>" + vo.regdate + "</div>" +
+					 "<div class='post-comments'><a href='#'><i class='fa fa-comments-o'></i><span class='post-comments-number'>324</span></a></div></div></div></div></li>"
 			
-					  $(".isotope").append(htmls);
+					  $(htmls).appendTo(".timeline-circles");
 		};
 
 	var fetchList = function(){
@@ -178,7 +180,7 @@
 		  }
 		
 		  $.ajax({
-			url: "${pageContext.request.contextPath }/post/api/list?p=" + page + "&no=" + authUser,
+			url: "${pageContext.request.contextPath }/blog/api/list?p=" + page + "&no=" + authUser,
 			type: "get",
 			dataType: "json",
 			data:"",

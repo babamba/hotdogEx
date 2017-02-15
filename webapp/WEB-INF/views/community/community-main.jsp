@@ -101,8 +101,8 @@
 					<!--LOGO-->
 					<div id="logo">
 						<a href="${pageContext.request.contextPath}" class="logo"
-							data-dark-logo="images/logo-dark.png"> <img
-							src="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png"
+							data-dark-logo="${pageContext.request.contextPath}/assets/img/hotdog_logo_02.png"> <img
+							src="${pageContext.request.contextPath}/assets/img/hotdog_logo_02.png"
 							alt="Hotdog Logo">
 						</a>
 					</div>
@@ -134,11 +134,39 @@
 								<nav id="mainMenu" class="main-menu mega-menu">
 									<ul class="main-menu nav nav-pills">
 									
+									<c:choose>
+									<c:when test="${empty authUser}"> 
+									
+									<!-- 커뮤니티 메인 -->
+										<li><a href="${pageContext.request.contextPath}/community">커뮤니티 메인</a></li>
+									
+									</c:when>
+									<c:otherwise> 
 									    <!-- authUser 블로그 메인 -->
-										<li><a href="${pageContext.request.contextPath}"><i class="fa fa-home"></i></a>
+										<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}">블로그</a></li>
+										
+										<!-- 커뮤니티 메인 -->
+										<li><a href="${pageContext.request.contextPath}//community/newsfeed">뉴스피드</a></li>
 										
 										<!-- 커뮤니티 메인 -->
 										<li><a href="${pageContext.request.contextPath}/community">커뮤니티 메인</a></li>
+										
+										
+									</c:otherwise>
+			    					</c:choose>
+									
+									<!-- 로그인 로그아웃 부분-->
+									<c:choose>
+										<c:when test="${empty authUser}"> 
+											<li><a href="${pageContext.request.contextPath}/loginpage">Log-In</a></li>
+										</c:when>
+										
+										<c:otherwise> 
+											<li><a href="${pageContext.request.contextPath}/user/logout">Log-out</a></li>
+										</c:otherwise>
+								    </c:choose>
+									
+									
 									
 									</ul>
 								</nav>
@@ -172,48 +200,51 @@
 		<!-- CONTENT -->
 			<section class="p-t-100">
 			<div class="container">
-				<div class="row">
-					<!--  02/10 뉴스피드 추가 --><div class="col-md-3">
+					<div class="row">
+					<!--  02/10 뉴스피드 추가 -->
+					
+					<%-- <div class="col-md-3">
 						<div class="icon-box effect medium color border center">
 							<div class="icon">
 								<a href="${pageContext.request.contextPath}/community/newsfeed"><i class="fa fa-list-alt"></i></a>
 							</div>
 							<h3>뉴스피드</h3>
 						</div>
-					</div>
+					</div> --%>
 				
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<div class="icon-box effect medium color border center">
 							<div class="icon">
-								<a href="${pageContext.request.contextPath}/community/freeboard"><i class="fa fa-list-alt"></i></a>
+								<a href="${pageContext.request.contextPath}/community/freeboard">
+								<i class="fa fa-list-alt" ></i></a>
 							</div>
-							<h3>자유게시판</h3>
+							<h3>프리 톡</h3>
 						</div>
 					</div>
 
-					<div class="col-md-3">
+					<!-- <div class="col-md-3">
 						<div class="icon-box effect medium color border center">
 							<div class="icon">
 								<a href="#"><i class="fa fa-desktop"></i></a>
 							</div>
 							<h3>Q & A</h3>
 						</div>
-					</div>
+					</div> -->
 
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<div class="icon-box effect medium color border center">
 							<div class="icon">
-								<a href="#"><i class="fa fa-cloud"></i></a>
+								<a href="${pageContext.request.contextPath}/community/galleryboard"><i class="fa fa-cloud"></i></a>
 							</div>
-							<h3>갤러리</h3>
+							<h3>갤러리 톡</h3>
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<div class="icon-box effect medium color border center">
 							<div class="icon">
 								<a href="#"><i class="fa fa-lightbulb-o"></i></a>
 							</div>
-							<h3>다이어리</h3>
+							<h3>다이어리 톡</h3>
 						</div>
 					</div>
 				</div>

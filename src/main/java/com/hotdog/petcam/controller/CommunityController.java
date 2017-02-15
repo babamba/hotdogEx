@@ -11,17 +11,8 @@ import com.hotdog.petcam.service.CategoryService;
 import com.hotdog.petcam.vo.CategoryVo;
 
 @Controller
-@RequestMapping("/community")
+@RequestMapping("")
 public class CommunityController {
 	
-	@Autowired CategoryService categoryService;
 	
-	@RequestMapping("")
-	public String communityMain(Model model){
-		List<CategoryVo> list = categoryService.getCategoryList();
-		
-		model.addAttribute("list", list);
-		
-		return "community/community-main";
-	}
 }

@@ -87,6 +87,28 @@
 <link
 	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
 	rel="stylesheet">
+	
+	
+<script>
+$(function(){
+	
+	$(document).on("click", "#viewPost", function(){
+				
+		var boardNo = $(this).data("no");
+						
+		$.ajax({
+			url : "${pageContext.request.contextPath }/community/freeboard/api/updateHits?boardNo="+boardNo,
+			type : "get",
+			success: function() { 
+				console.log("success");
+			},
+			error : function(jqXHR, status, e) {
+				console.log(status + ":" + e);
+			}
+		});
+	})
+})
+</script>
 <body>
 
 
@@ -135,10 +157,10 @@
 									<ul class="main-menu nav nav-pills">
 									
 									    <!-- authUser 블로그 메인 -->
-										<li><a href="${pageContext.request.contextPath}"><i class="fa fa-home"></i></a>
+										<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}">블로그 </a></li>
 										
 										<!-- 커뮤니티 메인 -->
-										<li><a href="${pageContext.request.contextPath}/community">커뮤니티 메인</a></li>
+										<li><a href="${pageContext.request.contextPath}/community">커뮤니티</a></li>
 									
 									</ul>
 								</nav>
@@ -170,38 +192,94 @@
 
 
 		<!-- CONTENT -->
-				<div class="hr-title hr-long center"><abbr>글 쓰기</abbr> </div>
-				<div class="row">
-					<div class="col-md-10 col-md-offset-1">
+			<section id="shop-wishlist">
+			<div class="container">
+			
+					<form action="${pageContext.request.contextPath}/community/freeboard/writegalleryform" method="get">
+						<button class="btn btn-primary" type="submit" name="${categoryNo }">글쓰기</button>
+					</form>
+			
+					<form action="${pageContext.request.contextPath}/community/freeboard">
+						<input type="submit" value="검색" style="float: right;">
+						<input type="text"  name="kwd" style="float: right;">
+					</form><br><br>
 					
-						<form class="form-gray-fields" action="${pageContext.request.contextPath}/community/freeboard/writepost" method="post">
-							<div class="row">
-								<div class="col-md-12">
-									<div class="form-group">
-										<label class="upper" for="name">Title</label>
-										<input type="text" class="form-control required" name="title" placeholder="Enter name" id="name3" aria-required="true">
-									</div>
-								</div>
-							</div>
+				<div class="shop-cart">
+					<div class="table table-condensed table-striped table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th class="cart-product-remove">번호</th>
+								<!--<th class="cart-product-thumbnail">Product</th>-->
+									<th class="cart-product-name">제목</th>
+									<th class="cart-product-price">작성자</th>
+									<th class="cart-product-price">작성일</th>
+									<th class="cart-product-remove">조회수</th>
+									<th class="cart-product-remove"></th>
+								</tr>
+							</thead>
 							
-							<div class="row">
-								<div class="col-md-12">
-									<div class="form-group">
-										<label class="upper" for="comment">Content</label>
-										<textarea class="form-control required" name="content" rows="9" placeholder="Enter comment" id="comment3" aria-required="true"></textarea>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<div class="form-group text-center">
-										<button class="btn btn-primary" type="submit" name="${categoryNo }"><i class="fa fa-paper-plane"></i>&nbsp;등록 </button>
-									</div>
-								</div>
-							</div>
-						</form>
+							<tbody>
+								<c:forEach items="${map.list }"	var="vo" varStatus="status">
+								<tr>
+									<td class="cart-product-remove">
+										<p>${map.totalCount - (map.currentPage - 1)* map.listSize - status.index }</p>
+									</td>
+									<td class="cart-product-description" id="viewPost" data-no="${vo.board_no }">
+										<a href="${pageContext.request.contextPath }/community/viewpost?no=${vo.board_no }">${vo.title }(${vo.count })</a>
+									</td>
+
+									<td class="cart-product-price">
+										<span class="amount">${vo.nickname }</span>
+									</td>
+									
+									<td class="cart-product-price">
+										<span class="amount">${vo.regdate }</span>
+									</td>
+	
+									<td class="cart-product-remove">
+										<a href="#">${vo.hits }</a>
+									</td>
+									
+									<td class="cart-product-remove">
+										<a href="#"><i class="fa fa-close"></i></a>
+									</td>
+								</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+						
+								<ul class="pager">
+									<c:if test="${map.prevPage > 0 }" >
+										<li><a href="${pageContext.request.contextPath}/community/freeboard?p=${map.prevPage }">◀</a></li>
+									</c:if>
+									
+									<c:forEach begin="${map.beginPage }" end="${map.endPage}" var="page">
+										<c:choose>
+											<c:when test="${map.endPage < page }">
+												<li>${page }</li>
+											</c:when> 
+											
+											<c:when test="${map.currentPage == page }">
+												<li>${page }</li>
+											</c:when>
+											
+											<c:otherwise> 
+												<li><a href="${pageContext.request.contextPath }/community/freeboard?p=${page }">${page }</a></li>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+									
+									<c:if test="${map.nextPage > 0 }" >
+										<li><a href="${pageContext.request.contextPath }/community/freeboard?p=${map.nextPage }">▶</a></li>
+									</c:if>	
+								</ul>
 					</div>
 				</div>
+			</div>
+		</section>	
+		
+
 
 		<!-- END: SECTION -->
 

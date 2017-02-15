@@ -12,7 +12,7 @@
 					<!--LOGO-->
 					<div id="logo">
 						<a href="${pageContext.request.contextPath}" class="logo">
-							<img src="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png" alt="Hotdog">
+							<img src="${pageContext.request.contextPath}/assets/img/hotdog_logo_02.png" alt="Hotdog">
 						</a>
 					</div>
 					<!--END: LOGO-->
