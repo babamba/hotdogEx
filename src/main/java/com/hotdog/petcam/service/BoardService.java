@@ -80,11 +80,6 @@ public class BoardService {
 
     	BoardVo boardVo = boardDao.viewPost(board_no);
     	
-    	/* 게시글 조회때마다 조횟수 증가 
-    	if(boardVo != null){
-    		boardDao.increaseHits(board_no);
-    	}*/
-    	
     	// regdate 월 , 일 , 년  구분
     	String data = boardVo.getRegdate(); 	
     	String[] temp  = data.split(" ");

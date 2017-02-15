@@ -1,15 +1,13 @@
 package com.hotdog.petcam.vo;
 
 public class VideoVo {
-
+	
 	private int video_no;
 	private String save_name;
-	private String org_name;
-	private String ext_name;
-	private String comments;
 	private String regdate;
-	private int publish;
+	private String regtime;
 	private int users_no;
+	
 	public int getVideo_no() {
 		return video_no;
 	}
@@ -22,35 +20,17 @@ public class VideoVo {
 	public void setSave_name(String save_name) {
 		this.save_name = save_name;
 	}
-	public String getOrg_name() {
-		return org_name;
-	}
-	public void setOrg_name(String org_name) {
-		this.org_name = org_name;
-	}
-	public String getExt_name() {
-		return ext_name;
-	}
-	public void setExt_name(String ext_name) {
-		this.ext_name = ext_name;
-	}
-	public String getComments() {
-		return comments;
-	}
-	public void setComments(String comments) {
-		this.comments = comments;
-	}
 	public String getRegdate() {
 		return regdate;
 	}
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
-	public int getPublish() {
-		return publish;
+	public String getRegtime() {
+		return regtime;
 	}
-	public void setPublish(int publish) {
-		this.publish = publish;
+	public void setRegtime(String regtime) {
+		this.regtime = regtime;
 	}
 	public int getUsers_no() {
 		return users_no;
@@ -60,12 +40,7 @@ public class VideoVo {
 	}
 	@Override
 	public String toString() {
-		return "VideoVo [video_no=" + video_no + ", save_name=" + save_name + ", org_name=" + org_name + ", ext_name="
-				+ ext_name + ", comments=" + comments + ", regdate=" + regdate + ", publish=" + publish + ", users_no="
-				+ users_no + "]";
+		return "VideoVo [video_no=" + video_no + ", save_name=" + save_name + ", regdate=" + regdate + ", regtime="
+				+ regtime + ", users_no=" + users_no + "]";
 	}
-	
-	
-	
-	
 }

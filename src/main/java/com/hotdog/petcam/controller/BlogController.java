@@ -32,7 +32,7 @@ public class BlogController {
 	
 
 	@RequestMapping("/{nickname}")
-	public String main(@PathVariable String nickname, Model model, HttpServletRequest request){
+	public String main(@PathVariable String nickname, Model model){
 		System.out.println("로그인한 유저 닉네임" + nickname);
 		
 		Map<String, Object> map = blogService.index(nickname);
@@ -45,11 +45,14 @@ public class BlogController {
 	}
 	
 	@Auth
-	@Secret
 	@RequestMapping("/{nickname}/vod")
-	public String vod(@PathVariable String nickname){
-		return "blog/vod-main";
+	public String vodMain(@PathVariable String nickname, Model model){
+		Map<String, Object> map = blogService.index(nickname);
+		model.addAttribute("map", map);
+		
+		return "blog/vod-list";
 	}
+	
 	
 	@Auth
 	@Secret
