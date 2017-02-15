@@ -4,29 +4,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<script>
-$(function(){
-	
-	var users_no = ${authUser.users_no}
-	
-    $("#getVod").click(function(){    	
-    	
-        $.ajax({
-            url:"http://150.95.141.66/test/cgi-bin/vod.py",
-            type:"post",
-            data: { userNo : users_no },
-            success: function(){
-                console.log("success");
-            },
-            error : function(jqXHR, status, e) {
-            console.log(status + ":" + e);
-            }            
-        });
-    });
-
-})
-</script>
-
 <div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
 	<div class="container">
 		<nav id="mainMenu" class="main-menu mega-menu">

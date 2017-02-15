@@ -1,10 +1,13 @@
 package com.hotdog.petcam.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hotdog.petcam.vo.BlogVo;
+import com.hotdog.petcam.vo.VideoVo;
 
 @Repository
 public class BlogDao {
@@ -35,6 +38,10 @@ public class BlogDao {
 	
 	public void setLogo(BlogVo blogVo){
 		sqlSession.update("blog.setLogo", blogVo);
+	}
+	
+	public List<VideoVo> getVod(int users_no){
+		return sqlSession.selectList("blog.getVod", users_no);
 	}
 	
 }

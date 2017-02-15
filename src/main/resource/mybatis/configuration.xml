@@ -16,6 +16,7 @@
 		<typeAlias alias="raspberrypivo" type="com.hotdog.petcam.vo.RaspberrypiVo" />
 		<typeAlias alias="categoryvo" type="com.hotdog.petcam.vo.CategoryVo" />
 		<typeAlias alias="searchblogvo" type="com.hotdog.petcam.vo.SearchBlogVo" />
+		<typeAlias alias="videovo" type="com.hotdog.petcam.vo.VideoVo" />
 	</typeAliases>
 
 	<mappers>

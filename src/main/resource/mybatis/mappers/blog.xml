@@ -43,8 +43,11 @@
 		]]>
 	</update>
 	
-	
-	
+	<select id="getVod" parameterType="int" resultType="videovo">
+		<![CDATA[
+			select * from video v where v.users_no = #{users_no };
+		]]>
+	</select>
 	
 
 </mapper>

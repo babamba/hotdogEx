@@ -1,9 +1,8 @@
 package com.hotdog.petcam.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,9 +16,8 @@ import com.hotdog.petcam.security.Secret;
 import com.hotdog.petcam.service.BlogService;
 import com.hotdog.petcam.service.PetService;
 import com.hotdog.petcam.service.UserService;
-import com.hotdog.petcam.vo.ImageVo;
-import com.hotdog.petcam.vo.PostVo;
 import com.hotdog.petcam.vo.UserVo;
+import com.hotdog.petcam.vo.VideoVo;
 
 @Controller
 @RequestMapping("/blog")
@@ -46,9 +44,16 @@ public class BlogController {
 	
 	@Auth
 	@RequestMapping("/{nickname}/vod")
-	public String vodMain(@PathVariable String nickname, Model model){
+	public String vodMain(@PathVariable String nickname, @AuthUser UserVo authUser,  Model model){
+		
+		int userNo = authUser.getUsers_no();
+		
+		List<VideoVo> list = blogService.getVod(userNo);
+		
 		Map<String, Object> map = blogService.index(nickname);
+		
 		model.addAttribute("map", map);
+		model.addAttribute("list", list);
 		
 		return "blog/vod-list";
 	}

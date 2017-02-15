@@ -113,16 +113,15 @@
 				<!-- START REVOLUTION SLIDER 5.0.7 auto mode -->
 					<div id="rev_slider_60_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.0.7">
 						<ul>	
+						
 							<!-- SLIDE  -->
-							<li data-title="Los Angeles">
-							
-							<!-- <iframe width="100%" height="100%" src="http://150.95.141.66/hotdog/hotdog/image/user/100/stream_2017-02-14-19.27.59.473-JST_0.mp4" frameborder="0" allowfullscreen></iframe> -->
+							<c:forEach items="${list }"	var="vo" varStatus="status">
+							<li data-title="${vo.regdate }<br>${vo.regtime}">
 							<video width="100%" height="100%"  controls="controls">
-							    <source src="http://150.95.141.66/hotdog/hotdog/image/user/5/stream_2017-02-15-14.34.34.891-JST_0.mp4" type="video/mp4" />
+							    <source src="http://150.95.141.66/hotdog/hotdog/image/user/5/${vo.save_name }" type="video/mp4" />
 							</video>
-							
 							</li>
-
+							</c:forEach>
 							
 						</ul>
 						<div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>	

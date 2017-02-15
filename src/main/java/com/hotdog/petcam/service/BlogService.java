@@ -7,8 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.mail.Multipart;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,8 +17,8 @@ import com.hotdog.petcam.repository.PostDao;
 import com.hotdog.petcam.repository.UserDao;
 import com.hotdog.petcam.vo.BlogVo;
 import com.hotdog.petcam.vo.ImageVo;
-import com.hotdog.petcam.vo.PostVo;
 import com.hotdog.petcam.vo.UserVo;
+import com.hotdog.petcam.vo.VideoVo;
 
 @Service
 public class BlogService {
@@ -179,6 +177,11 @@ public class BlogService {
 	
 	public void setLogo(BlogVo blogVo){
 		blogDao.setLogo(blogVo);
+	}
+	
+	// vod 리스트 출력
+	public List<VideoVo> getVod(int users_no){
+		return blogDao.getVod(users_no);
 	}
 	
 	
