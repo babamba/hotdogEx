@@ -54,7 +54,6 @@ public class RaspberrypiController {
 	@RequestMapping("/app/raspberry/getinfo")
 	public Object getinfo(@ModelAttribute RaspberrypiVo raspberrypiVo, @RequestParam(value = "users_no") int users_no) {
 		raspberrypiVo.setUsers_no(users_no);
-
 		return JSONResult.success(raspberrypiService.selectByNo(raspberrypiVo));
 	}
 }

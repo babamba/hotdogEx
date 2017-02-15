@@ -72,6 +72,8 @@ public class UserService {
 
 	}
 
+
+
 	// 이메일 파라미터를 통해 조회한 유저넘버를 UserVo형태로 리턴
 	public UserVo getId(String email) {
 		return userDao.getId(email);
