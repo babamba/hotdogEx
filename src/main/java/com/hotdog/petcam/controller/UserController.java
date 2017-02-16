@@ -241,7 +241,6 @@ public class UserController {
 			@RequestParam(value = "nickname") String nickname, @RequestParam(value = "title") String title,
 			@RequestParam(value = "infomation") String infomation, @RequestParam(value = "pass_word") String password,
 			@RequestParam(value = "userimage") MultipartFile userimage) {
-		// @RequestParam(value="blogimage") MultipartFile blogimage
 
 		userService.userProfileModify(authUser, blogVo, nickname, title, infomation, password);
 
