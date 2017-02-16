@@ -264,7 +264,7 @@
 														</c:choose>
 														
 														<div id="datetimepicker1" class="input-group date">
-															<input type="text" id="co_datepick" class="form-control">
+															<input type="text" name="co_date" id="co_datepick" class="form-control">
 															<span class="input-group-addon">
                     											<span class="fa fa-calendar"></span>
 															</span>
@@ -275,7 +275,7 @@
 													<span class="input-group-addon">
 														<i class="fa fa-group"></i>
 													</span>
-													<input id="petName" type="text"
+													<input id="petName" type="text" name="petname"
 														class="form-control" placeholder="${map.petVo.name }">
 												</div>
 												
@@ -284,14 +284,14 @@
 														<i class="fa fa-group"></i>
 													</span>
 													
-													<input id="petInfo" type="text" class="form-control"
+													<input id="petInfo" name="petinfo" type="text" class="form-control"
 																placeholder="${map.petVo.info }">
 												</div>
 												
 												<div class="input-group">
 															<span class="input-group-addon"> <i
 																class="fa fa-group"></i>
-															</span> <input id="age" type="text" class="form-control"
+															</span> <input id="age" name="age" type="text" class="form-control"
 																placeholder="${map.petVo.age }"
 																onkeydown='return onlyNumber(event)'
 																onkeyup='removeChar(event)' style='ime-mode: disabled;'>
@@ -563,7 +563,7 @@
 					petUrl = "/petprofilemodify"
 					petimage = $("#petimage").get(0).files[0];
 					petname = $("#petName").val();
-					petinfo = $("#petInfo").va15l();
+					petinfo = $("#petInfo").val();
 					co_date = $("#co_datepick").val();
 					age = $("#age").val();
 					gender = $(":input:radio[name=gender]:checked").val();
@@ -644,7 +644,7 @@
 	$(function() {
 			$("#datetimepicker1").datetimepicker({
 				useCurrent: ('year', 'month', 'day'),
-				format: 'YYYY/MM/DD'
+				format: 'MM/DD/YYYY'
 			});
 		});
 	</script>

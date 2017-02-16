@@ -39,6 +39,9 @@ $(function(){
 						
 						<!-- 커뮤니티 메인 -->
 						<li><a href="${pageContext.request.contextPath}/community">커뮤니티</a></li>
+						
+						<!-- 커뮤니티 테스트 메인 -->
+						<li><a href="${pageContext.request.contextPath}/page_main">TEST</a></li>
 				</c:when>
 					
 					<c:otherwise> 
@@ -62,6 +65,9 @@ $(function(){
 		
 						<!-- user account  -->
 						<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/account">내 정보</a></li>
+						
+						<!-- 커뮤니티 테스트 메인 -->
+						<li><a href="${pageContext.request.contextPath}/page_main">TEST</a></li>
 					</c:otherwise>
 			    </c:choose>
 			    

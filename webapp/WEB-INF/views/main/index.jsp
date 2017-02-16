@@ -122,6 +122,11 @@
 								<div data-animation="fadeInDown" data-animation-delay="900" >
 									<a href="${pageContext.request.contextPath}/loginpage" class="button transparent rounded" ><span style="color:black;">Log-In</span></a>
 								</div>
+								
+								<!-- 커뮤니티 테스트 메인 -->
+								<div data-animation="fadeInDown" data-animation-delay="900">
+									<a href="${pageContext.request.contextPath}/page_main" class="button transparent rounded"><span style="color:black;">Test Index</span></a>
+								</div>
 							</c:when>
 							
 							<c:otherwise>
@@ -130,6 +135,12 @@
 								</div>
 								<div data-animation="fadeInDown" data-animation-delay="900">
 									<a href="${pageContext.request.contextPath}/user/logout" class="button transparent rounded" style="color:black;">Log-Out</a>
+								</div>
+								
+								<!-- 커뮤니티 테스트 메인 -->
+								
+								<div data-animation="fadeInDown" data-animation-delay="900">
+									<a href="${pageContext.request.contextPath}/page_main" class="button transparent rounded"><span style="color:black;">Test Index</span></a>
 								</div>
 							</c:otherwise>
 						</c:choose>

@@ -17,6 +17,7 @@ public class ImageService {
 
 	private static final String SAVE_PATH = "/upload";
 	
+	
 	@Autowired
 	private ImageDao imageDao;
 	
@@ -79,13 +80,7 @@ public class ImageService {
 			throw new RuntimeException("upload file exception");
 		}
 		return saveFileName;
-		
-		
 	}
-	
-	
-	
-	
 	
 	
 	private void writeFile(MultipartFile multipartFile, String saveFileName) throws IOException {

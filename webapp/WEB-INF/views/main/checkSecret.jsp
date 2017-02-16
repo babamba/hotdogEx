@@ -92,22 +92,6 @@
 			<div id="header-wrap">
 				<div class="container">
 
-					<!--LOGO-->
-					<div id="logo">
-						<a href="index.html" class="logo"
-							data-dark-logo="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png"> <img
-							src="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png" alt="Polo Logo">
-						</a>
-					</div>
-					<!--END: LOGO-->
-
-					<!--MOBILE MENU -->
-					<div class="nav-main-menu-responsive">
-						<button class="lines-button x">
-							<span class="lines"></span>
-						</button>
-					</div>
-					<!--END: MOBILE MENU -->
 				</div>
 			</div>
 		</header>
@@ -136,7 +120,7 @@
 							<div class="col-md-12 form-group">
 								
 								<button type="submit" id="checkSecretbutton" class="btn btn-primary" type="button">인증 시도</button>
-								<button type="button" class="btn btn-danger"><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}" style="color:white;">Cancel</a></button>
+								<button type="button" class="btn btn-danger"><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}" style="color:white;"></a>Cancel</button>
 							</div>
 						
 						</div>

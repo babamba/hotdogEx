@@ -105,10 +105,11 @@
 		<!-- START: HEADER PAGE TITLE -->
 		<c:import url="/WEB-INF/views/includes/header.jsp" />
 		<!-- END: PAGE TITLE -->
-
+		
+		
 
 		<!-- CONTENT -->
-		<section class="p-t-100">
+		<section class="content p-t-100">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3">
