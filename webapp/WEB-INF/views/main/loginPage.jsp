@@ -15,7 +15,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/loginPage.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mobileloginPage.css" media="screen and(max-device-width:120px) and(min-device-width:767px)">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mobileloginPage.css" media="max-width:767px">
 
 
 

@@ -490,50 +490,79 @@
 									controllerUrl = "userprofilemodify3";
 								}
 
-								$
-										.ajax({
-											url : "${pageContext.request.contextPath}/user/account/"
-													+ controllerUrl,
-											type : "post",
-											data : formData,
-											processData : false,
-											contentType : false
+								$.ajax({
+									url : "${pageContext.request.contextPath}/user/account/"+ controllerUrl,
+									type : "post",
+									data : formData,
+									processData : false,
+									contentType : false
 										})
 							})
 
 			// 닉네임 체크
-			$("#nicknameCheck")
-					.click(
-							function() {
-								nickname = $("#nickname").val();
-
-								if (nickname == "") {
-									return;
-								}
-
-								$
-										.ajax({
-											url : "${pageContext.request.contextPath}/user/nickCheck?nickname="
-													+ nickname,
-											type : "get",
-											dataType : "json",
-											data : "",
-											success : function(response) {
-												if (response.data == "yes") {
-													alert("사용가능 합니다.");
-													$("#userProfileSave").prop(
-															"disabled", false);
+			$("#nicknameCheck").click(
+				function() {
+					nickname = $("#nickname").val();
+						if (nickname == "") {
+							return;
+							}
+						$.ajax({
+							url : "${pageContext.request.contextPath}/user/nickCheck?nickname="+ nickname,
+							type : "get",
+							dataType : "json",
+							data : "",
+							success : function(response) {
+								if (response.data == "yes") {
+										alert("사용가능 합니다.");
+								$("#userProfileSave").prop("disabled", false);
+									
+								}if (response.data == "no") {
+										alert("이미 사용중인 닉네임 입니다.");
 												}
-												if (response.data == "no") {
-													alert("이미 사용중인 닉네임 입니다.");
-												}
-												if (response.result == "fail") {
-													alert("에러");
+								if (response.result == "fail") {
+										alert("에러");
 												}
 											}
 										})
 							})
-		})
+					})
+					
+					
+			$(function() {
+			// blog , user 데이터 전달
+			$("#blogProfileSave").click(
+						function() {
+								var formData = new FormData();
+
+								title = $("#title").val();
+								blogimage = $("#blogimage").get(0).files[0];
+								
+								formData.append("title", title);
+								formData.append("logo_image", blogimage)
+								
+								if (title != null) {
+									formData.append("title", title);
+									controllerUrl = "blogprofilemodify1";
+
+								} else(blogimage != null) {
+									formData.append("logo_image", blogimage);
+									controllerUrl = "blogprofilemodify2";
+								} 
+									
+								controllerUrl = "blogprofilemodify3";
+								
+								
+
+								$.ajax({
+									url : "${pageContext.request.contextPath}/user/account/"+ controllerUrl,
+									type : "post",
+									data : formData,
+									processData : false,
+									contentType : false
+										})
+							});
+			});
+	
 	</script>
 
 

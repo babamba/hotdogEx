@@ -107,10 +107,9 @@
  <!-- INSPIRO SLIDER -->
         <div id="slider" class="inspiro-slider" data-height-xs="200" >
             <!-- Slide 1 -->
-            <div class="slide background-overlay-dark"  data-vide-bg="${pageContext.request.contextPath}/assets/img/dog_video">
+            <div class="slide background-overlay-dark"  data-vide-bg="${pageContext.request.contextPath}/assets/img/dog_video.mp4">
 
                 <div class="container">
-                	
                 	<div class="col-md-6 col-sm-12 col-xs-12" style="margin-top:30px;">
 	                    <div class="slide-captions col-md-12 col-sm-12 col-xs-12">
 	                        <!-- Captions -->

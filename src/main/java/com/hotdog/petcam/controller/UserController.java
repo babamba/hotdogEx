@@ -233,6 +233,46 @@ public class UserController {
 		userService.userProfileModify(authUser, blogVo, nickname, title, infomation, password);
 		return "redirect:/";
 	}
+	
+	@Auth
+	@Secret
+	@RequestMapping(value = "/account/blogprofilemodify", method = RequestMethod.POST)
+	public String blogProfileModify(@ModelAttribute BlogVo blogVo, @AuthUser UserVo authUser,
+			@RequestParam(value = "nickname") String nickname, @RequestParam(value = "title") String title,
+			@RequestParam(value = "infomation") String infomation, @RequestParam(value = "pass_word") String password,
+			@RequestParam(value = "userimage") MultipartFile userimage) {
+		// @RequestParam(value="blogimage") MultipartFile blogimage
+
+		userService.userProfileModify(authUser, blogVo, nickname, title, infomation, password);
+
+		String saveName = imageService.restore(userimage, authUser.getUsers_no());
+		authUser.setUsers_image(saveName);
+
+		userService.setImage(authUser);
+
+		return "redirect:/";
+	}
+	
+	@Auth
+	@Secret
+	@RequestMapping(value = "/account/blogprofilemodify2", method = RequestMethod.POST)
+	public String blogProfileModify2(@ModelAttribute BlogVo blogVo, @AuthUser UserVo authUser,
+			@RequestParam(value = "nickname") String nickname, @RequestParam(value = "title") String title,
+			@RequestParam(value = "infomation") String infomation, @RequestParam(value = "pass_word") String password,
+			@RequestParam(value = "blogimage") MultipartFile blogimage) {
+
+		userService.userProfileModify(authUser, blogVo, nickname, title, infomation, password);
+
+		String saveName = imageService.restore(blogimage, authUser.getUsers_no());
+
+		blogVo.setUsers_no(authUser.getUsers_no());
+		blogVo.setLogo_image(saveName);
+		blogService.setLogo(blogVo);
+
+		return "redirect:/";
+	}
+	
+	
 
 	@Auth
 	@Secret
