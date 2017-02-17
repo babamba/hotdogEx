@@ -71,9 +71,7 @@
 	rel="stylesheet" type="text/css" />
 
 <!-- CSS CUSTOM STYLE -->
-<link
-	rel="${pageContext.request.contextPath}/assets/template/stylesheet"
-	type="text/css" href="css/custom.css" media="screen" />
+<link rel="${pageContext.request.contextPath}/assets/template/stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/template/css/custom.css" media="screen" />
 
 <!-- CKEDITOR SCRIPT -->
 <%-- <script src="${pageContext.request.contextPath}/assets/ckeditor/ckeditor.js"></script> --%>
@@ -104,13 +102,21 @@
 		<!-- START: HEADER PAGE TITLE -->
 		<c:import url="/WEB-INF/views/includes/header.jsp" />
 		<!-- END: PAGE TITLE -->
+		<div class="blog_navigation text-center">
+			
+				<a style="margin:0 ; padding:15px 26px 15px 26px; border:1px solid #e6e6e6; "  class="button border effect icon-top" href="${pageContext.request.contextPath}/post/${authUser.nickname}/postlist"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i>diary</span></a>
+				<a style="margin:0; padding:15px 20px 15px 20px; border:1px solid #e6e6e6; " class="button border effect icon-top" href="${pageContext.request.contextPath}/blog/${authUser.nickname}/streaming"><span><i class="fa fa-video-camera" aria-hidden="true"></i>stream</span></a>
+				<a style="margin:0; padding:15px; border:1px solid #e6e6e6; " class="button border effect icon-top" href="${pageContext.request.contextPath}/blog/${authUser.nickname}/vod"><span><i class="fa fa-file-video-o" aria-hidden="true"></i>vodplay</span></a>
+			
+		</div>
 
 		<!-- CONTENT -->
 		<section class="content">
 			<div class="container list_container">
-				<div class="streaming_browser">
+				<div class="streaming_browser text-center">
+						 
 						 <div>
-				            <video id="videoPlayer" controls></video>
+				            <video id="videoPlayer" width="720" height="360" controls="controls"></video>
 				       	 </div>
 					
 						<div class="streaming_control">

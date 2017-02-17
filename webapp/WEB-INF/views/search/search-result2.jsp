@@ -67,13 +67,13 @@
 			<div id="header-wrap">
 				<div class="container">
 
-					<!--LOGO-->
 					<div id="logo">
-						<a href="${pageContext.request.contextPath}" class="logo" data-dark-logo="images/logo-dark.png">
-							<img src="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png" alt="HotDog Logo">
+						<a href="${pageContext.request.contextPath}" class="logo"
+							data-dark-logo="images/logo-dark.png"> <img
+							src="${pageContext.request.contextPath}/assets/img/hotdog_logo_02.png"
+							alt="Hotdog Logo">
 						</a>
 					</div>
-					<!--END: LOGO-->
 
 					<!--MOBILE MENU -->
 					<div class="nav-main-menu-responsive">

@@ -9,12 +9,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>#codevember Sign In / Sign Up</title>
+<title>Hot Dog Log-In</title>
 
 <script src="${pageContext.request.contextPath}/assets/template/vendor/jquery/jquery-1.11.2.min.js"></script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/loginPage.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mobileloginPage.css" media="max-width:767px">
+
+
+
+
 <script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
 </head>
 <body>

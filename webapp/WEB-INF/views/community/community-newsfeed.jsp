@@ -51,7 +51,7 @@
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,800,700,600%7CRaleway:100,300,600,700,800" rel="stylesheet" type="text/css" />
 
 <!-- CSS CUSTOM STYLE -->
-<link rel="${pageContext.request.contextPath}/assets/template/stylesheet" type="text/css" href="css/custom.css" media="screen" />
+<link rel="${pageContext.request.contextPath}/assets/template/stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/template/css/custom.css" media="screen" />
 
 <!--VENDOR SCRIPT-->
 <script	src="${pageContext.request.contextPath}/assets/template/vendor/jquery/jquery-1.11.2.min.js"></script>
@@ -75,7 +75,7 @@
 					<!--LOGO-->
 					<div id="logo">
 						<a href="${pageContext.request.contextPath}" class="logo" data-dark-logo="images/logo-dark.png">
-							<img src="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png" alt="HotDog Logo">
+							<img src="${pageContext.request.contextPath}/assets/img/hotdog_logo_02.png" alt="HotDog Logo">
 						</a>
 					</div>
 					<!--END: LOGO-->
@@ -96,6 +96,7 @@
 						
 					</div>
 					<!--END: TOP SEARCH -->
+					
 					<!--NAVIGATION-->
 					<div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
 							<div class="container">
@@ -113,7 +114,7 @@
 											<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}">블로그</a></li>
 											
 											<!-- 커뮤니티 메인 -->
-											<li><a href="${pageContext.request.contextPath}//community/newsfeed">뉴스피드</a></li>
+											<li><a href="${pageContext.request.contextPath}/community/newsfeed">뉴스피드</a></li>
 											
 											<!-- 커뮤니티 메인 -->
 											<li><a href="${pageContext.request.contextPath}/community">커뮤니티 메인</a></li>

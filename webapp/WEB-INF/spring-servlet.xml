@@ -34,8 +34,8 @@
 	</mvc:annotation-driven>
 
 
-	 <!-- the mvc resources tag does the magic -->
-	<mvc:resources mapping="/hotdog/image/user/**" location="file:/upload/" />
+	<!-- the mvc resources tag does the magic -->
+	<mvc:resources mapping="/hotdog/image/user/**" location="file:/upload/"/>
 
 	<mvc:default-servlet-handler />
 
