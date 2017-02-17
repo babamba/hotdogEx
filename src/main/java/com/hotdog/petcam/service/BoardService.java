@@ -4,10 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +11,7 @@ import com.hotdog.petcam.repository.BoardDao;
 import com.hotdog.petcam.vo.BoardChatVo;
 import com.hotdog.petcam.vo.BoardCommentsVo;
 import com.hotdog.petcam.vo.BoardVo;
+import com.hotdog.petcam.vo.PostVo;
 
 @Service
 public class BoardService {
@@ -24,14 +21,48 @@ public class BoardService {
     private static final int LIST_SIZE= 10; //리스팅되는 게시물의 수
     private static final int PAGE_SIZE= 5; //페이지 리스트의 페이지 수
     
+    
+    public Map<String,Object> getTotalListBoard(int category_no, int currentPage, String keyword){
+    	
+        Map<String,Object> map = new HashMap<String,Object>();
+
+    	map = getTotalList(category_no, currentPage, keyword);
+    	
+    	return map;
+    }
+    
+    public Map<String,Object> getTotalListDiary(int currentPage, String keyword){
+    	
+        Map<String,Object> map = new HashMap<String,Object>();
+
+    	map = getTotalList(0, currentPage, keyword);
+    	
+    	return map;
+    }
+    
     // 게시판 리스트 가져오기
     public Map<String,Object> getTotalList(int category_no, int currentPage, String keyword){
+    	
+    		Map<String,Object> map = new HashMap<String,Object>();
             
     		// limit 사용위해 페이징 계산해서 전달
-    		int page = (currentPage - 1) * LIST_SIZE;
+    		int page = 0;
+   
+    		int totalCount = 0;
+    		
+    		// Diary List
+    		if(category_no == 0){
+    			page = (currentPage - 1) * 9;
+    			totalCount = boardDao.getTotalCotuntDiary(keyword);
+    		}
+    		// Board List
+    		else{
+    			page = (currentPage - 1) * LIST_SIZE;
+    			totalCount = boardDao.getTotalCotunt(category_no, keyword);
+    		}
+    		
     		
     		// 페이징을 위한 기본 데이터 계산
-            int totalCount = boardDao.getTotalCotunt(category_no, keyword);   
             int pageCount= (int)Math.ceil((double)totalCount / LIST_SIZE);
             int blockCount = (int)Math.ceil( (double)pageCount / PAGE_SIZE );
             int currentBlock = (int)Math.ceil( (double)currentPage / PAGE_SIZE );
@@ -52,12 +83,19 @@ public class BoardService {
             int endPage = ( nextPage > 0 ) ? ( beginPage - 1 ) + LIST_SIZE : pageCount;
             
             // TotalCount 계산했던 리스트에서 View로 만들 리스트 가져오기
-            List<BoardVo> list = boardDao.getList(category_no, page, keyword);
             
+    		// Diary List
+    		if(category_no == 0){
+    			List<PostVo> list = boardDao.getListDiary(page, keyword);
+    			map.put("list", list);
+    		}
+    		// Board List
+    		else{
+                List<BoardVo> list = boardDao.getList(category_no, page, keyword);
+                map.put("list", list);
+    		}
+
             // 맵에 데이터 저장
-            Map<String,Object> map = new HashMap<String,Object>();
-     
-            map.put("list", list);
             map.put("totalCount", totalCount);
             map.put("listSize", LIST_SIZE);
     		map.put("currentPage", currentPage );

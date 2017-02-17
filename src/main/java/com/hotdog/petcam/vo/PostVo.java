@@ -9,12 +9,11 @@ public class PostVo {
 	private String post_image;
 	private int publish;
 	private int users_no;
+	private int hits;
+	private int shared;
 	private String nickname;
 	private int count;
 	
-	
-	
-
 	public int getCount() {
 		return count;
 	}
@@ -72,11 +71,25 @@ public class PostVo {
 		this.nickname = nickname;
 	}
 	
+	
+	
+	public int getHits() {
+		return hits;
+	}
+	public void setHits(int hits) {
+		this.hits = hits;
+	}
+	public int getShared() {
+		return shared;
+	}
+	public void setShared(int shared) {
+		this.shared = shared;
+	}
 	@Override
 	public String toString() {
 		return "PostVo [post_no=" + post_no + ", title=" + title + ", content=" + content + ", regdate=" + regdate
-				+ ", post_image=" + post_image + ", publish=" + publish + ", users_no=" + users_no + ", nickname="
-				+ nickname + ", count=" + count + "]";
+				+ ", post_image=" + post_image + ", publish=" + publish + ", users_no=" + users_no + ", hits=" + hits
+				+ ", shared=" + shared + ", nickname=" + nickname + ", count=" + count + "]";
 	}
 	
 	

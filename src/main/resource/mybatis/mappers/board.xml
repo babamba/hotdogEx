@@ -157,4 +157,47 @@ select count(*) from board_chat bc where bc.comments_no = #{comments_no }
 
 
 
+
+<!--                 			Diary							 -->
+
+<select id="getTotalCountDiary" parameterType="map" resultType="int">
+	<![CDATA[
+		select count(*) from post p  WHERE p.shared = 1
+	]]>
+		<if test="keyword != null and keyword !=''">
+			<![CDATA[
+				and (p.title like '%${keyword }%' or p.content like '%${keyword }%')
+			]]>	
+		</if>
+</select>
+
+<select id="getListDiary" parameterType="map" resultType="postvo">
+	<choose>
+		<when test="keyword != null and keyword !=''">
+			<![CDATA[
+				select p.post_no, p.title, p.content, p.regdate, p.post_image, p.users_no, p.hits, u.nickname, (select count(*) 
+																												from post_comments pc
+																												where p.post_no = pc.post_no) as count
+				from post p, users u 
+				WHERE p.shared = 1 and p.users_no = u.users_no and (p.title like "%${keyword }%" or p.content like "%${keyword }%")
+				order by p.regdate DESC
+				limit #{currentPage }, 15;
+			]]>
+		</when>
+		
+		<otherwise>
+			<![CDATA[
+				select p.post_no, p.title, p.content, p.regdate, p.post_image, p.users_no, p.hits, u.nickname, (select count(*) 
+																												from post_comments pc
+																												where p.post_no = pc.post_no) as count
+				from post p, users u 
+				WHERE p.shared = 1 and p.users_no = u.users_no
+				order by p.regdate DESC
+				limit #{currentPage }, 15;
+			]]>
+		</otherwise>
+	</choose>
+</select>
+
+
 </mapper>

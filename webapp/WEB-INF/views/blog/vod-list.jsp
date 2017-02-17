@@ -141,7 +141,7 @@
 					var revapi60;
 					tpj(document).ready(function() {
 						if(tpj("#rev_slider_60_1").revolution == undefined){
-							revslider_showDoubleJqueryError("#rev_slider_60_1");
+							window.locatino.href="${pageContext.request.contextPath }/hotdog/community";
 						}else{
 							revapi60 = tpj("#rev_slider_60_1").show().revolution({
 								sliderType:"standard",

@@ -26,7 +26,7 @@
 						<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}">블로그</a></li>
 						
 						<!-- 커뮤니티 메인 -->
-						<li><a href="${pageContext.request.contextPath}//community/newsfeed">뉴스피드</a></li>
+						<li><a href="${pageContext.request.contextPath}/community/newsfeed">뉴스피드</a></li>
 						
 						<!-- 커뮤니티 메인 -->
 						<li><a href="${pageContext.request.contextPath}/community">커뮤니티</a></li>

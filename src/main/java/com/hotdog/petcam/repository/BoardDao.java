@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.hotdog.petcam.vo.BoardChatVo;
 import com.hotdog.petcam.vo.BoardCommentsVo;
 import com.hotdog.petcam.vo.BoardVo;
+import com.hotdog.petcam.vo.PostVo;
 
 @Repository
 public class BoardDao {
@@ -96,6 +97,21 @@ public class BoardDao {
     // 댓글 갯수 카운트
     public int countReplyChat(int comments_no){
     	return sqlSession.selectOne("board.countReplyChat", comments_no);
+    }
+    
+    ////////////////////////////////////////////////////////////////////Diary 
+    
+    public int getTotalCotuntDiary(String keyword){
+    	Map<String, Object> map = new HashMap<String, Object>();
+    	map.put("keyword", keyword);
+    	return sqlSession.selectOne("board.getTotalCountDiary", map);
+    }
+    
+    public List<PostVo> getListDiary(int currentPage, String keyword){
+    	Map<String, Object> map = new HashMap<String, Object>();
+    	map.put("keyword", keyword);
+    	map.put("currentPage", currentPage);
+    	return  sqlSession.selectList("board.getListDiary", map);
     }
     
     

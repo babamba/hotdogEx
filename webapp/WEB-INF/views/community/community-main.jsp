@@ -200,20 +200,10 @@
 		<!-- CONTENT -->
 			<section class="p-t-100">
 			<div class="container">
-					<div class="row">
-					<!--  02/10 뉴스피드 추가 -->
-					
-					<%-- <div class="col-md-3">
-						<div class="icon-box effect medium color border center">
-							<div class="icon">
-								<a href="${pageContext.request.contextPath}/community/newsfeed"><i class="fa fa-list-alt"></i></a>
-							</div>
-							<h3>뉴스피드</h3>
-						</div>
-					</div> --%>
+				<div class="row">
 				
 					<div class="col-md-4">
-						<div class="icon-box effect medium color border center">
+						<div class="icon-box effect medium border square">
 							<div class="icon">
 								<a href="${pageContext.request.contextPath}/community/freeboard">
 								<i class="fa fa-list-alt" ></i></a>
@@ -222,27 +212,20 @@
 						</div>
 					</div>
 
-					<!-- <div class="col-md-3">
-						<div class="icon-box effect medium color border center">
-							<div class="icon">
-								<a href="#"><i class="fa fa-desktop"></i></a>
-							</div>
-							<h3>Q & A</h3>
-						</div>
-					</div> -->
-
 					<div class="col-md-4">
-						<div class="icon-box effect medium color border center">
+						<div class="icon-box effect medium border square">
 							<div class="icon">
-								<a href="${pageContext.request.contextPath}/community/galleryboard"><i class="fa fa-cloud"></i></a>
+								<a href="${pageContext.request.contextPath}/community/galleryboard">
+								<i class="fa fa-cloud"></i></a>
 							</div>
 							<h3>갤러리 톡</h3>
 						</div>
 					</div>
 					<div class="col-md-4">
-						<div class="icon-box effect medium color border center">
+						<div class="icon-box effect medium border square">
 							<div class="icon">
-								<a href="#"><i class="fa fa-lightbulb-o"></i></a>
+								<a href="${pageContext.request.contextPath}/community/diaryboard">
+								<i class="fa fa-lightbulb-o"></i></a>
 							</div>
 							<h3>다이어리 톡</h3>
 						</div>

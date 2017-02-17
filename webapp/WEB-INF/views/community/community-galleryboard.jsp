@@ -182,9 +182,9 @@ $(function(){
 			style="background-image:url(${pageContext.request.contextPath}/assets/template/images/parallax/page-title-parallax.jpg)">
 			<div class="container">
 			  <div class="page-title col-md-8">
-					<h1>자유게시판</h1>
+					<h1>다이어리 톡</h1>
 					
-	
+					<c:import url="/WEB-INF/views/includes/navigation-community.jsp" />
 				</div>
 			</div>
 		</section>
@@ -195,11 +195,11 @@ $(function(){
 			<section id="shop-wishlist">
 			<div class="container">
 			
-					<form action="${pageContext.request.contextPath}/community/freeboard/writegalleryform" method="get">
+					<form action="${pageContext.request.contextPath}/community/galleryboard/writegalleryform" method="get">
 						<button class="btn btn-primary" type="submit" name="${categoryNo }">글쓰기</button>
 					</form>
 			
-					<form action="${pageContext.request.contextPath}/community/freeboard">
+					<form action="${pageContext.request.contextPath}/community/galleryboard">
 						<input type="submit" value="검색" style="float: right;">
 						<input type="text"  name="kwd" style="float: right;">
 					</form><br><br>

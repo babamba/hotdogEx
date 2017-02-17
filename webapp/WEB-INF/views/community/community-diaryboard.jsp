@@ -157,10 +157,10 @@ $(function(){
 									<ul class="main-menu nav nav-pills">
 									
 									    <!-- authUser 블로그 메인 -->
-										<li><a href="${pageContext.request.contextPath}"><i class="fa fa-home"></i></a>
+										<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}">블로그 </a></li>
 										
 										<!-- 커뮤니티 메인 -->
-										<li><a href="${pageContext.request.contextPath}/community">커뮤니티 메인</a></li>
+										<li><a href="${pageContext.request.contextPath}/community">커뮤니티</a></li>
 									
 									</ul>
 								</nav>
@@ -182,8 +182,9 @@ $(function(){
 			style="background-image:url(${pageContext.request.contextPath}/assets/template/images/parallax/page-title-parallax.jpg)">
 			<div class="container">
 			  <div class="page-title col-md-8">
-					<h1>프리 톡</h1>
-
+					<h1>다이어리 톡</h1>
+					
+					<c:import url="/WEB-INF/views/includes/navigation-community.jsp" />
 				</div>
 			</div>
 		</section>
@@ -191,67 +192,46 @@ $(function(){
 
 
 		<!-- CONTENT -->
-			<section id="shop-wishlist">
-			<c:import url="/WEB-INF/views/includes/navigation-community.jsp" />
-			<div class="container">
-			
-					<form action="${pageContext.request.contextPath}/community/freeboard/writeform" method="get">
-						<button class="btn btn-primary" type="submit" name="${categoryNo }">글쓰기</button>
+		<section class="content">
+			<div class="container list_container">
+					<form action="${pageContext.request.contextPath}/community/diaryboard/writediaryyform" method="get">
+						<button class="btn btn-primary" type="submit" name="${categoryNo }">다이어리 올리기</button>
 					</form>
-			
-					<form action="${pageContext.request.contextPath}/community/freeboard">
+					
+					<form action="${pageContext.request.contextPath}/community/diaryboard">
 						<input type="submit" value="검색" style="float: right;">
 						<input type="text"  name="kwd" style="float: right;">
 					</form><br><br>
 					
-				<div class="shop-cart">
-					<div class="table table-condensed table-striped table-responsive">
-						<table class="table">
-							<thead>
-								<tr>
-									<th class="cart-product-remove">번호</th>
-								<!--<th class="cart-product-thumbnail">Product</th>-->
-									<th class="cart-product-name">제목</th>
-									<th class="cart-product-price">작성자</th>
-									<th class="cart-product-price">작성일</th>
-									<th class="cart-product-remove">조회수</th>
-									<th class="cart-product-remove"></th>
-								</tr>
-							</thead>
-							
-							<tbody>
-								<c:forEach items="${map.list }"	var="vo" varStatus="status">
-								<tr>
-									<td class="cart-product-remove">
-										<p>${map.totalCount - (map.currentPage - 1)* map.listSize - status.index }</p>
-									</td>
-									<td class="cart-product-description" id="viewPost" data-no="${vo.board_no }">
-										<a href="${pageContext.request.contextPath }/community/viewpost?no=${vo.board_no }">${vo.title }(${vo.count })</a>
-									</td>
-
-									<td class="cart-product-price">
-										<span class="amount">${vo.nickname }</span>
-									</td>
-									
-									<td class="cart-product-price">
-										<span class="amount">${vo.regdate }</span>
-									</td>
-	
-									<td class="cart-product-remove">
-										<a href="#">${vo.hits }</a>
-									</td>
-									
-									<td class="cart-product-remove">
-										<a href="#"><i class="fa fa-close"></i></a>
-									</td>
-								</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-						
-								<ul class="pager">
+				<!-- Blog post-->
+				<div class="isotope" data-isotope-item-space="3" data-isotope-col="3" data-isotope-item=".post-item">
+					<c:forEach items="${map.list }"	var="vo" varStatus="status">
+					
+					<div class='post-item'>
+					<div class='post-image'>
+						<img src="${pageContext.request.contextPath}/hotdog/image/user/${vo.post_image }"></div>
+					<div class='post-content-details'>
+					  <div class='post-title'><a class='read-more' href="${pageContext.request.contextPath }/community/viewdiary?no=${vo.post_no }">
+					  <h3>${vo.title }(${vo.count })</h3></a>
+					  
+					  </div>
+					 
+					  <div class='post-description'>
+					  <div class='post-info'><p>${vo.nickname }</p></div>
+					  </div>
+					  
+					  </div><div class='post-meta'><div class='post-date'><span class='post-date-year'>${vo.regdate }</span></div>
+					  <div class='post-comments' data-no="">
+					  <span class='fa fa-hand-pointer-o'> ${vo.hits }</span>
+					  </div>
+					  </div></div>
+					  
+					  </c:forEach>
+				</div>
+				
+						<ul class="pager">
 									<c:if test="${map.prevPage > 0 }" >
-										<li><a href="${pageContext.request.contextPath}/community/freeboard?p=${map.prevPage }">◀</a></li>
+										<li><a href="${pageContext.request.contextPath}/community/diaryboard?p=${map.prevPage }">◀</a></li>
 									</c:if>
 									
 									<c:forEach begin="${map.beginPage }" end="${map.endPage}" var="page">
@@ -265,24 +245,22 @@ $(function(){
 											</c:when>
 											
 											<c:otherwise> 
-												<li><a href="${pageContext.request.contextPath }/community/freeboard?p=${page }">${page }</a></li>
+												<li><a href="${pageContext.request.contextPath }/community/diaryboard?p=${page }">${page }</a></li>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
 									
 									<c:if test="${map.nextPage > 0 }" >
-										<li><a href="${pageContext.request.contextPath }/community/freeboard?p=${map.nextPage }">▶</a></li>
+										<li><a href="${pageContext.request.contextPath }/community/diaryboard?p=${map.nextPage }">▶</a></li>
 									</c:if>	
-								</ul>
-					</div>
-				</div>
+						</ul>
+				
+				
 			</div>
-		</section>	
-		
-
-
+			
+		</section>
 		<!-- END: SECTION -->
-
+		
 		<!-- FOOTER -->
 		<c:import url="/WEB-INF/views/includes/footer.jsp" />
 		<!-- END: FOOTER -->

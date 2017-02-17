@@ -94,9 +94,8 @@
 		<c:import url="/WEB-INF/views/includes/header.jsp" />
 		<!-- END: PAGE TITLE -->
 
-<<<<<<< HEAD
-			<c:import url="/WEB-INF/views/includes/blog-navigation.jsp" />
-=======
+		<c:import url="/WEB-INF/views/includes/blog-navigation.jsp" />
+		
 		<div class="col-md-12 col-sm-12 col-xs-12 blog_navigation text-center" style="margin:0px; padding:0px">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="row">
@@ -110,7 +109,6 @@
 				</div>
 			</div>
 		</div>
->>>>>>> branch 'master' of https://github.com/babamba/hotdogEx.git
 
 		<section class="content">
 			<div class="container list_container">
