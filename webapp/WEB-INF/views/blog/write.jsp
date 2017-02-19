@@ -126,16 +126,37 @@
 						</div>
 					</form> -->
 					
-			
-				
+
 				<form class="thumnail-upload">
 					<label>썸네일</label>
 					<input id="post_image" type="file" name="post_image" class="btn btn-white btn-sm" accept="image/*" onchange="loadFile(event)">
 					<img id="output" width="200px" height="150px" /> <br>
 					<button id="post_imageThum" class="btn btn-white">save</button>
-				</form>
+				</form><br><br>
 				
+					
+
+
 				<form action= "${pageContext.request.contextPath }/post/${authUser.nickname}/insert" method="post"  >
+					  <fieldset>
+					    <legend>다이어리 공개 </legend>
+					    <label for="radio-1">공개</label>
+					    <input type="radio" name="publish" id="diaryOpen" value="1">
+					    <label for="radio-2">비공개</label>
+					    <input type="radio" name="publish" id="diaryClosed" value="0">
+					  </fieldset>
+					  
+					  <br><br>
+					  
+					  <fieldset>
+					    <legend>커뮤니티 업로드 </legend>
+					    <label for="radio-1">공개</label>
+					    <input type="radio" name="shared" id="communityOpen" value="1">
+					    <label for="radio-2">비공개</label>
+					    <input type="radio" name="shared" id="communityClosed" value="0">
+					  </fieldset>
+					  
+					  <br><br>
 					<textarea class="form-control required" aria-required="true" name="title" placeholder="제목을 입력하세요." rows="1" style="font-size:20px"></textarea>
 		            <input type="hidden" class="post_imagebox" name="post_image" >
 		            <textarea name="content" id="ckeditor" rows="10" cols="80"></textarea>
@@ -144,6 +165,24 @@
 			</div>
 
 		</section>
+		
+		<script>
+		$(document).ready(function() {
+			
+			
+			$("#diaryClosed").click(function(){
+				$("#communityOpen").attr("disabled", true)
+				$("#communityClosed").attr("checked", true)
+			});
+			
+			$("#diaryOpen").click(function(){
+				$("#communityOpen").removeAttr("disabled");
+			});
+		})
+		
+		
+		</script>
+			
 
 		<!-- END: SECTION -->
 

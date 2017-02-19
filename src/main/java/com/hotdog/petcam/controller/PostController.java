@@ -77,15 +77,14 @@ public class PostController {
 		@Auth
 		@RequestMapping(value="/{nickname}/insert")
 		public String insert(@ModelAttribute PostVo postVo, @AuthUser UserVo authUser ){
+			System.out.println("publish = " + postVo.getPublish());
+			System.out.println("shared = " + postVo.getShared());
+
 			String nickname = authUser.getNickname();
 			
 			int users_no = authUser.getUsers_no();
 			postVo.setUsers_no(users_no);
-			
-			System.out.println(nickname);
-			System.out.println("controller insert" + postVo);
-			
-			
+
 			postService.insert(postVo);
 			return "redirect:/post/" + nickname + "/postlist";
 		}
