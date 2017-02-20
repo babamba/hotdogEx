@@ -95,7 +95,8 @@
 <link
 	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
 	rel="stylesheet">
-<body>
+<body class="boxed background-white">
+
 	<div class="wrapper">
 
 		<!-- START: HEADER PAGE TITLE -->
@@ -108,27 +109,29 @@
 		<section class="content">
 			<div class="container list_container">
 				<div class="streaming_browser text-center">
+						<span class="re"><i class="fa fa-exclamation-circle"></i></span>
+						<br>
+						 <button class='button grey-dark button-3d rounded icon-left' id="recoding" data-no="${raspberrypiVo.device_num }" data-name="${map.userVo.nickname }">
+						 <i class="fa fa-video-camera">  녹화</i></button>   
+						 <%-- <button class='button red-dark button-3d rounded icon-left' data-id="${raspberrypiVo.device_num }"><i class="fa fa-video-camera"> Recoding</i></button> --%>
 						 
 						 <div>
 				            <video id="videoPlayer" width="720" height="360" controls="controls"></video>
 				       	 </div>
 					
 						<div class="streaming_control">
-							<button type='button' class='btn btn-info' id='left'><i id="left" class="material-icons">fast_rewind</i></button>
-				    		<button type='button' class='btn btn-info' id='center'><i class="material-icons">filter_center_focus</i></button>
-				    		<button type='button' class='btn btn-info' id='right'><i class="material-icons">fast_forward</i></button>
-				
-						<div class="togglebutton">
-							<label> 
-								<input type="checkbox" checked="checked">
-							</label>
+							<button class='button black-light button-3d rounded icon-left' id='left'><i class="material-icons">Left</i></button>
+				    		<button class='button black-light button-3d rounded icon-left' id='center'><i class="material-icons">Center</i></button>
+				    		<button class='button black-light button-3d rounded icon-left' id='right'><i class="material-icons">Right</i></button>
 						</div>
-					</div>
-				</div>
+						
+<!-- 						녹화시작 url: http://150.95.141.66:8086/livestreamrecord?app=live/" + nickname + "&streamname=stream&action=startRecording&outputPath=/upload/" + users_no)
+
+						녹화종료 url:   "http://150.95.141.66:8086/livestreamrecord?app=live/" + nickname + "&streamname=stream&action=stopRecording";
+ -->				</div>
 			</div>
 
 		</section>
-
 		<!-- END: SECTION -->
 
 		<!-- FOOTER -->
@@ -176,13 +179,57 @@
 	
 	<!-- VIDEO Controller -->
 	<script>
-			var ip1 = "10.0.0.4";
-		
-            (function(){
+	$(function(){
+
+            	
                 var url = "http://150.95.141.66:1935/live/${authUser.nickname}/stream/manifest.mpd";
+                
                 var player = dashjs.MediaPlayer().create();
                 player.initialize(document.querySelector("#videoPlayer"), url, true);
                 
+                $("#recoding").click(function(){
+                	
+    				var deviceNum = $(this).data("no");
+                    var nickname = $(this).data("name");
+                    var userNo = ${authUser.users_no};
+                
+                    $(this).attr('class', 'button red-dark button-3d rounded icon-left');
+                    $(this).attr('id', 'stop');
+                    $(this).html('STOP');
+
+                    setInterval(function(){
+                    	$(".re").toggle();
+                    	}, 500);
+                    
+                    $("#stop").click(function(){
+                        $(this).attr('class', 'button grey-dark button-3d rounded icon-left');
+                        $(this).attr('id', 'recoding');
+                    })
+                    });
+/*     				$.ajax({
+                        url:"http://150.95.141.66:8086/livestreamrecord?app=live/" + nickname + "&streamname=stream&action=startRecording&outputPath=/upload/" + userNo,
+                        type:"get",
+                        success: function(){
+                            console.log("success");
+                        },
+                        error : function(jqXHR, status, e) {
+                        console.log(status + ":" + e);
+                        }            
+                    });
+ */
+ 
+ /*     				$.ajax({
+							 url:"http://150.95.141.66:8086/livestreamrecord?app=live/" +nickname+ "&streamname=stream&action=stopRecording",
+							 type:"get",
+							 success: function(){
+							     console.log("success");
+							 },
+							 error : function(jqXHR, status, e) {
+							 console.log(status + ":" + e);
+							 }            
+						});
+*/
+       
                 $("#left").click(function(){
                     $.ajax({
                         url:"http://150.95.141.66/test/cgi-bin/send.py",
@@ -224,9 +271,8 @@
                         }            
                     });
                 });
-            })();
-       
-       
+            
+	})
     </script>
 
 
