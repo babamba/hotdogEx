@@ -1,9 +1,12 @@
 package com.hotdog.petcam.controller;
 
+import java.util.Random;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.hotdog.petcam.DTO.JSONResult;
@@ -233,7 +237,7 @@ public class UserController {
 		userService.userProfileModify(authUser, blogVo, nickname, title, infomation, password);
 		return "redirect:/";
 	}
-	
+
 	@Auth
 	@Secret
 	@RequestMapping(value = "/account/blogprofilemodify", method = RequestMethod.POST)
@@ -251,7 +255,7 @@ public class UserController {
 
 		return "redirect:/";
 	}
-	
+
 	@Auth
 	@Secret
 	@RequestMapping(value = "/account/blogprofilemodify2", method = RequestMethod.POST)
@@ -270,8 +274,6 @@ public class UserController {
 
 		return "redirect:/";
 	}
-	
-	
 
 	@Auth
 	@Secret
@@ -418,7 +420,7 @@ public class UserController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "app/account/userprofilemodify2", method = RequestMethod.POST)
+	@RequestMapping(value = "/app/account/userprofilemodify2", method = RequestMethod.POST)
 	public Object appUserProfileModify2(@RequestParam(value = "users_no") Integer users_no,
 			@ModelAttribute UserVo userVo, @RequestParam(value = "userimage") MultipartFile userimage) {
 
@@ -431,4 +433,23 @@ public class UserController {
 		return JSONResult.success(saveName);
 	}
 
+	@ResponseBody
+	@RequestMapping(value = "/app/email", method = RequestMethod.POST)
+	public Object appUserJoinEmail(@RequestParam(value = "email") String email, HttpServletRequest request) {
+		int code = new Random().nextInt(100);
+		ApplicationContext ac = WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
+		userService = ac.getBean(UserService.class);
+		userService.sendCode(email, code);
+		return JSONResult.success(code);
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/app/passmodify", method = RequestMethod.POST)
+	public Object appPasswordModify(@ModelAttribute UserVo userVo, @RequestParam(value = "email") String email,
+			@RequestParam(value = "pass_word") String pass_word) {
+		userVo.setEmail(email);
+		userVo.setPass_word(pass_word);
+		userService.appPasswordModify(userVo);
+		return JSONResult.success("success");
+	}
 }

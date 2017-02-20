@@ -3,23 +3,23 @@
 
 <mapper namespace="user">
 
-	
-	<select id ="getById" parameterType="string" resultType="uservo">
+
+	<select id="getById" parameterType="string" resultType="uservo">
 		<![CDATA[
 		select users_no,nickname
 		  from users
 		 where email = #{email}	
 		]]>
-	</select> 
-	
+	</select>
+
 	<select id="getNickname" parameterType="string" resultType="uservo">
 		<![CDATA[
 			select nickname as nickName 
 			from users where users_no = #{users_no};
 		]]>
 	</select>
-	
-	
+
+
 	<insert id="insert" parameterType="uservo">
 	
 		<![CDATA[
@@ -28,34 +28,35 @@
 		]]>
 	</insert>
 
- 	<select id="getNo" parameterType="uservo" resultType="int">
-		select users_no from users where nickname = #{nickname}
+	<select id="getNo" parameterType="uservo" resultType="int">
+		select
+		users_no from users where nickname = #{nickname}
 	</select>
-	
+
 	<select id="getNoByNick" parameterType="String" resultType="int">
 		select users_no from users where nickname = #{nickname}
 	</select>
 
 
-	<select id ="getDataByNo" parameterType="int" resultType="uservo">
+	<select id="getDataByNo" parameterType="int" resultType="uservo">
         <![CDATA[
         select users_no, email, nickname, infomation, users_image, follower_num, following_num
           from users
          where users_no = #{users_no }        
         ]]>
-    </select>
-    
+	</select>
 
-	<select id ="getByNo" parameterType="int" resultType="uservo">
+
+	<select id="getByNo" parameterType="int" resultType="uservo">
         <![CDATA[
         select users_no, email, nickname, pass_word, sec_pass_word, infomation, users_image, follower_num,following_num
           from users
          where users_no = #{users_no }        
         ]]>
-    </select>
-	
-	
-	
+	</select>
+
+
+
 	<select id="selectForLogin" parameterType="uservo" resultType="uservo">
 		<![CDATA[
 		select users_no, email, pass_word, nickname,infomation,users_image
@@ -63,7 +64,7 @@
 		where email = #{email} and pass_word = #{pass_word};
 		]]>
 	</select>
-	
+
 	<select id="idExist" parameterType="string" resultType="uservo">
 		<![CDATA[
 		select users_no 
@@ -71,7 +72,7 @@
 		where email = #{email};
 		]]>
 	</select>
-	
+
 	<select id="nicknameExist" parameterType="string" resultType="uservo">
 		<![CDATA[
 		select users_no 
@@ -79,14 +80,14 @@
 		where nickname = #{nickname};
 		]]>
 	</select>
-	
+
 	<select id="appEmailCheck" parameterType="string" resultType="string">
 		<![CDATA[
 			select email 
 				from users 
 					where email=#{email};
 		]]>
-		
+
 	</select>
 	<select id="appLogin" parameterType="uservo" resultType="uservo">
 		<![CDATA[
@@ -95,7 +96,7 @@
 				where email=#{email} and pass_word =#{pass_word}
 		]]>
 	</select>
-	
+
 	<select id="getallbyno" parameterType="int" resultType="uservo">
 		<![CDATA[
 			select email,nickname,pass_word,infomation,users_image,follower_num,following_num
@@ -104,14 +105,14 @@
 		]]>
 	</select>
 	<!-- ********************** Account ************************* -->
-	
+
 	<!-- ********** 2차 비밀번호수정 ********** -->
 	<select id="firstCheck" parameterType="uservo" resultType="uservo">
 		select sec_pass_word
-			from users
-			where users_no = #{users_no};
+		from users
+		where users_no = #{users_no};
 	</select>
-	
+
 	<update id="secretModify" parameterType="uservo">
 		<![CDATA[
 			update users 
@@ -119,7 +120,7 @@
 					where nickname=#{nickname};
 		]]>
 	</update>
-	
+
 	<update id="userprofileModify" parameterType="uservo">
 			<![CDATA[
 			update users
@@ -127,7 +128,7 @@
 					where users_no=#{users_no};
 			]]>
 	</update>
-	
+
 	<update id="setImage" parameterType="uservo">
 		<![CDATA[
 			update users
@@ -135,8 +136,8 @@
 					where users_no = #{users_no};
 		]]>
 	</update>
-	
-	<select id = "secretLogin" parameterType="uservo" resultType="uservo">
+
+	<select id="secretLogin" parameterType="uservo" resultType="uservo">
 		<![CDATA[
 			select users_no,nickname,sec_pass_word,infomation,users_image
 				from users
@@ -152,9 +153,9 @@
 	                set name=#{name}, info=#{info}, co_date=STR_TO_DATE(#{co_date},"%d/%m/%Y"),age=#{age},gender=#{gender}
 	                    where users_no = #{users_no};
 	        ]]>
-	
+
 	</update>
-	
+
 	<update id="setpetimage" parameterType="petvo">
 	
 		<![CDATA[
@@ -163,7 +164,7 @@
 					where users_no = #{users_no};
 		]]>
 	</update>
-	
+
 	<update id="appUserProfileModify" parameterType="uservo">
 		<![CDATA[
 			update users
@@ -171,9 +172,9 @@
 					where users_no=#{users_no};
 		]]>
 	</update>
-	
-	
-	
+
+
+
 	<select id="existPet" parameterType="petvo" resultType="petvo">
 		<![CDATA[
 			select name,info,gender,age,co_date
@@ -182,7 +183,7 @@
 				
 		]]>
 	</select>
-	
+
 	<select id="getPet" parameterType="int" resultType="petvo">
 		<![CDATA[
 			select name, info, gender, age, date_format(co_date,'%d/%m/%Y') as co_date,users_no,pet_no,pet_image
@@ -191,12 +192,19 @@
 				
 		]]>
 	</select>
-	
+
 	<insert id="insertPet" parameterType="petvo">
 	        <![CDATA[
 	            insert into pet(name, info, gender, age, co_date,users_no) values
 	            (#{name},#{info},#{gender},#{age},STR_TO_DATE(#{co_date},"%d/%m/%Y"),#{users_no})
 	        ]]>
 	</insert>
-
+	
+	<update id="appPasswordModify" parameterType="uservo">
+		<![CDATA[
+			update users
+				set pass_word=#{pass_word}
+					where email = #{email}	
+		]]>
+	</update>
 </mapper>

@@ -169,4 +169,7 @@ public class UserDao {
 		sqlSession.update("user.appUserProfileModify", userVo);
 	}
 
+	public void appPasswordModify(UserVo userVo) {
+		sqlSession.update("user.appPasswordModify", userVo);
+	}
 }
