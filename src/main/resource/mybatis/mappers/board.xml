@@ -16,6 +16,12 @@
 		</if>
 </select>
 
+<select id="getMain_BoardList" parameterType="int" resultType="boardvo">
+		<![CDATA[
+			select b.board_no, b.title, b.content, date_format(b.regdate, '%Y. %m.%e. %h:%i') as regdate, b.hits, b.users_no, u.nickname,b.category_no from board b, users u 
+			where b.users_no = u.users_no and b.category_no = #{category_no} order by regdate desc limit 4;
+		]]>
+</select>
 
 <select id="getList" parameterType="map" resultType="boardvo">
 	<choose>

@@ -18,6 +18,14 @@ public class BoardDao {
 	
     @Autowired private SqlSession sqlSession;
     
+    public List<BoardVo> getMainList(int category_no){
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		List<BoardVo> list = sqlSession.selectList("board.getMain_BoardList", category_no);
+		return list;
+	}
+    
+    
     // 조건(해당카테고리, 검색키워드)에 맞는 게시글 갯수 카운트
     public int getTotalCotunt(int category_no, String keyword){
     	

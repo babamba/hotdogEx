@@ -13,8 +13,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 	
 	
-	<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon.png">
-	<title>POLO | The Multi-Purpose HTML5 Template</title>
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/img/favicon.png">
+	<title>Hot Dog</title>
 
 	<!-- Bootstrap Core CSS -->
 	<link href="${pageContext.request.contextPath}/assets/template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -130,32 +130,7 @@
 												<label>핫도그를 시작하세요!</label>
 											</div>
 										</div>
-										<!-- 
-										<div class="row">
-											<div class="col-md-12 col-sm-12 col-xs-12">
-												<div class="form-group">
-													<label>Email</label>
-													<input type="email" value="" name="email" placeholder="E-mail">
-												</div>
-											</div>
-										</div>
 										
-										<div class="row">
-											<div class="col-md-12 col-sm-12 col-xs-12">
-												<div class="form-group">
-													<label>PassWord</label>
-													<input type="password" min="1" max="10" value="" name="pass_word" placeholder="Password">
-												</div>
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-md-12 col-sm-12 col-xs-12 text-center">
-												<div class="form-group">
-													<button class="btn btn-colored">Log-In</button>
-												</div>
-											</div>
-										</div> -->
 										
 									<div class="row">
 											<div class="col-md-12 col-sm-12 col-xs-12 text-center">	
@@ -237,6 +212,7 @@
 		<section class="p-t-40 p-b-40">
 			<div class="container">
 				<div class="grid-articles grid-articles-v2">
+				
 					<article class="post-entry">
 						<a href="#" class="post-image"><img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg"></a>
 						<div class="post-entry-overlay">
@@ -251,6 +227,7 @@
 							</div>
 						</div>
 					</article>
+					
 					<article class="post-entry">
 						<a href="#" class="post-image"><img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg"></a>
 						<div class="post-entry-overlay">
@@ -265,6 +242,8 @@
 							</div>
 						</div>
 					</article>
+					
+					
 					<article class="post-entry">
 						<a href="#" class="post-image"><img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg"></a>
 						<div class="post-entry-overlay">
@@ -317,142 +296,13 @@
 							</div>
 						</div>
 					</article>
+					
+					
+					
 				</div>
 			</div>
 		</section>
 		<!-- END: NEWS GRID -->
-		
-		
-		
-
-		<!-- BOXES -->
-		<section class="p-t-0 p-b-40">
-			<div class="container">
-
-				<div class="row">
-
-					<div class="col-md-4">
-						<div class="heading-fancy heading-line">
-							<h4>FOOD</h4></div>
-						<div class="post-thumbnail">
-							<div class="post-thumbnail-entry">
-								<img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg">
-								<div class="post-thumbnail-content">
-									<span class="post-date"><i class="fa fa-clock-o"></i> 6m ago</span>
-									<span class="post-category"><i class="fa fa-tag"></i> Technology</span>
-									<h3><a href="#">Morbi ac neque at mi</a></h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac neque at mi elementum gravida.</p>
-
-								</div>
-							</div>
-						</div>
-						<div class="post-thumbnail-list">
-							<div class="post-thumbnail-entry">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Suspendisse consectetur fringilla luctus</a></h4>
-
-								</div>
-							</div>
-							<div class="post-thumbnail-entry">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Consectetur adipiscing elit</a></h4>
-								</div>
-							</div>
-							<div class="post-thumbnail-entry">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing</a></h4>
-								</div>
-							</div>
-							<div class="post-thumbnail-entry">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Consectetur ipsum dolor sit amet</a></h4>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="heading-fancy heading-line">
-							<h4>TECHNOLOGY</h4></div>
-						<div class="post-thumbnail">
-							<div class="post-thumbnail-entry">
-								<img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg">
-								<div class="post-thumbnail-content">
-									<span class="post-date"><i class="fa fa-clock-o"></i> 6m ago</span>
-									<span class="post-category"><i class="fa fa-tag"></i> Technology</span>
-									<h3><a href="#">Fringilla consectetur amet</a></h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac neque at mi elementum gravida.</p>
-
-								</div>
-							</div>
-						</div>
-						<div class="post-thumbnail-list">
-							<div class="post-thumbnail-entry">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Suspendisse consectetur fringilla luctus</a></h4>
-
-								</div>
-							</div>
-							<div class="post-thumbnail-entry">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Consectetur adipiscing elit</a></h4>
-								</div>
-							</div>
-							<div class="post-thumbnail-entry">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing</a></h4>
-								</div>
-							</div>
-							<div class="post-thumbnail-entry">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Consectetur ipsum dolor sit amet</a></h4>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="heading-fancy heading-line">
-							<h4>AUTO</h4></div>
-						<div class="post-thumbnail">
-							<div class="post-thumbnail-entry">
-								<img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg">
-								<div class="post-thumbnail-content">
-									<span class="post-date"><i class="fa fa-clock-o"></i> 6m ago</span>
-									<span class="post-category"><i class="fa fa-tag"></i> Technology</span>
-									<h3><a href="#">Dolor sit amet ipsum</a></h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac neque at mi elementum gravida.</p>
-
-								</div>
-							</div>
-						</div>
-						<div class="post-thumbnail-list">
-							<div class="post-thumbnail-entry">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Suspendisse consectetur fringilla luctus</a></h4>
-
-								</div>
-							</div>
-							<div class="post-thumbnail-entry">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Consectetur adipiscing elit</a></h4>
-								</div>
-							</div>
-							<div class="post-thumbnail-entry">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing</a></h4>
-								</div>
-							</div>
-							<div class="post-thumbnail-entry">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Consectetur ipsum dolor sit amet</a></h4>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- END: BOXES -->
-		
 	
 		<!-- ADVERTISEMENT -->
 		<section class="p-t-20 p-b-40">
@@ -462,124 +312,234 @@
 		</section>
 			<!-- END: ADVERTISEMENT -->
 		
+			<!-- post 최신 글 9개 불러오는 ajax list -->
+	<script>
+	
+	var category_no = 1;
+	var post_path = "${pageContext.request.contextPath }/community/viewpost?no="
+	
+	var render = function(vo){
+			
+		var htmls =  "<div class='post-thumbnail-entry'><div class='post-thumbnail-content'>" +
+					 "<h4><a href='" + post_path + vo.board_no + "'>" + vo.title + "</a></h4>" +
+					 "<span class='post-date'><i class='fa fa-clock-o'></i>" + vo.regdate + "</span>" +
+					 "<span class='post-category'><i class='fa fa-eye'></i> 조회수 : " + vo.hits + "</span></div></div>"
+					
+					
+					$(".free_List").append(htmls);
+						 
+		};
+
+
+	var fetchList = function(){
+		"use strict";
+		console.log("fetchList")
+	
+		  $.ajax({
+			url: "${pageContext.request.contextPath }/main/api/board_list?category_no=" + category_no,
+			type: "get",
+			dataType: "json",
+			data:"",
+			success: function(response){
+				console.log(response)
+				if(response.result != "success"){
+					console.error(response.message);
+					return;
+				}
+				
+			$(response.data).each(function(index, vo){
+				render(vo);
+				console.log("render")
+			}); 
+		},
+		error: function(jqXHR, status, e){
+			console.error(status + ":" + e)
+		}
+	}); 
+		
+		
+	};
+
+
+	</script>
+	<script>
+	
+	
+	var post_path = "${pageContext.request.contextPath }/community/viewpost?no="
+	
+	var render1 = function(vo){
+			
+		var htmls =  "<div class='post-thumbnail-entry'><div class='post-thumbnail-content'>" +
+					 "<h4><a href='" + post_path + vo.board_no + "'>" + vo.title + "</a></h4>" +
+					 "<span class='post-date'><i class='fa fa-clock-o'></i>" + vo.regdate + "</span>" +
+					 "<span class='post-category'><i class='fa fa-eye'></i> 조회수 : " + vo.hits + "</span></div></div>"
+					
+					
+					$(".free_List").append(htmls);
+						 
+		};
+		
+	var render2 = function(vo){
+			
+			var htmls =  "<div class='post-thumbnail-entry'><div class='post-thumbnail-content'>" +
+						 "<h4><a href='" + post_path + vo.board_no + "'>" + vo.title + "</a></h4>" +
+						 "<span class='post-date'><i class='fa fa-clock-o'></i>" + vo.regdate + "</span>" +
+						 "<span class='post-category'><i class='fa fa-eye'></i> 조회수 : " + vo.hits + "</span></div></div>"
+						
+						
+						$(".gallery_list").append(htmls);
+							 
+			};	
+			
+	var render3 = function(vo){
+				
+				var htmls =  "<div class='post-thumbnail-entry'><div class='post-thumbnail-content'>" +
+							 "<h4><a href='" + post_path + vo.board_no + "'>" + vo.title + "</a></h4>" +
+							 "<span class='post-date'><i class='fa fa-clock-o'></i>" + vo.regdate + "</span>" +
+							 "<span class='post-category'><i class='fa fa-eye'></i> 조회수 : " + vo.hits + "</span></div></div>"
+							
+							
+						$(".diary_list").append(htmls);
+								 
+				};
+
+		
+	var fetchList1 = function(){
+		console.log("fetchList1")
+	
+		  $.ajax({
+			url: "${pageContext.request.contextPath }/main/api/board_list?category_no=" + 1,
+			type: "get",
+			dataType: "json",
+			data:"",
+			success: function(response){
+				console.log(response)
+				if(response.result != "success"){
+					console.error(response.message);
+					return;
+				}
+				
+			$(response.data).each(function(index, vo){
+				render1(vo);
+				console.log("render")
+			}); 
+		},
+		error: function(jqXHR, status, e){
+			console.error(status + ":" + e)
+		}
+	}); 
+		
+		
+	};
+	
+	var fetchList2 = function(){
+		console.log("fetchList2")
+	
+		  $.ajax({
+			url: "${pageContext.request.contextPath }/main/api/board_list?category_no=" + 2,
+			type: "get",
+			dataType: "json",
+			data:"",
+			success: function(response){
+				console.log(response)
+				if(response.result != "success"){
+					console.error(response.message);
+					return;
+				}
+				
+			$(response.data).each(function(index, vo){
+				render2(vo);
+				console.log("render")
+			}); 
+		},
+		error: function(jqXHR, status, e){
+			console.error(status + ":" + e)
+		}
+	}); 
+		
+		
+	};
+	
+	var fetchList3 = function(){
+		console.log("fetchList3")
+	
+		  $.ajax({
+			url: "${pageContext.request.contextPath }/main/api/board_list?category_no=" + 3,
+			type: "get",
+			dataType: "json",
+			data:"",
+			success: function(response){
+				console.log(response)
+				if(response.result != "success"){
+					console.error(response.message);
+					return;
+				}
+				
+			$(response.data).each(function(index, vo){
+				render3(vo);
+				console.log("render")
+			}); 
+		},
+		error: function(jqXHR, status, e){
+			console.error(status + ":" + e)
+		}
+	}); 
+		
+		
+	};
+	
+	fetchList1();
+	fetchList2();
+	fetchList3();
+	</script>
+	
+		
 		<!-- CATEGORIES -->
 		<section class="p-t-0 p-b-40">
 			<div class="container">
-				
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-4 board_category_list">
 						<div class="heading-fancy heading-line">
-							<h4>TECH</h4></div>
+							<h4><a href="${pageContext.request.contextPath}/community/freeboard">프리톡!</a></h4>
+						</div>
+						
+						<!-- ajax category List -->
 						<div class="post-thumbnail-list">
-							<div class="post-thumbnail-entry">
-								<img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Suspendisse consectetur fringilla luctus</a></h4>
-									<span class="post-date"><i class="fa fa-clock-o"></i> 6m ago</span>
-									<span class="post-category"><i class="fa fa-tag"></i> Technology</span>
-								</div>
+						
+							<div class="post-thumbnail-entry free_List">
+								
+							
 							</div>
-							<div class="post-thumbnail-entry">
-								<img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Consectetur adipiscing elit</a></h4>
-									<span class="post-date"><i class="fa fa-clock-o"></i> 24h ago</span>
-									<span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
-								</div>
-							</div>
-							<div class="post-thumbnail-entry">
-								<img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h4>
-									<span class="post-date"><i class="fa fa-clock-o"></i> 11h ago</span>
-									<span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
-								</div>
-							</div>
-							<div class="post-thumbnail-entry">
-								<img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Consectetur ipsum dolor sit amet</a></h4>
-									<span class="post-date"><i class="fa fa-clock-o"></i> 8h ago</span>
-									<span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
-								</div>
-							</div>
-
+							
+							
 						</div>
 						
 					</div>
+					
+					
+					
 					<div class="col-md-4">
-						<div class="heading-fancy heading-line">
-							<h4>SPORT</h4></div>
+						<div class="heading-fancy heading-line board_list">
+							<h4><a href="${pageContext.request.contextPath}/community/galleryboard">갤러리톡!</a></h4>
+						</div>
+							
+							
 						<div class="post-thumbnail-list">
-							<div class="post-thumbnail-entry">
-								<img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Suspendisse consectetur fringilla luctus</a></h4>
-									<span class="post-date"><i class="fa fa-clock-o"></i> 6m ago</span>
-									<span class="post-category"><i class="fa fa-tag"></i> Technology</span>
-								</div>
+							<div class="post-thumbnail-entry gallery_list">
+								
+								
 							</div>
-							<div class="post-thumbnail-entry">
-								<img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Consectetur adipiscing elit</a></h4>
-									<span class="post-date"><i class="fa fa-clock-o"></i> 24h ago</span>
-									<span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
-								</div>
-							</div>
-							<div class="post-thumbnail-entry">
-								<img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h4>
-									<span class="post-date"><i class="fa fa-clock-o"></i> 11h ago</span>
-									<span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
-								</div>
-							</div>
-							<div class="post-thumbnail-entry">
-								<img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Fringilla luctus Lorem ipsum dolor sit amet</a></h4>
-									<span class="post-date"><i class="fa fa-clock-o"></i> 11h ago</span>
-									<span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
-								</div>
-							</div>
+							
 						</div>
 					</div>
+					
+					
 					<div class="col-md-4">
-						<div class="heading-fancy heading-line">
-							<h4>FASHION</h4></div>
+						<div class="heading-fancy heading-line board_List">
+							<h4><a href="${pageContext.request.contextPath}/community/diaryboard">다이어리톡!</a></h4></div>
 						<div class="post-thumbnail-list">
-							<div class="post-thumbnail-entry">
-								<img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Suspendisse consectetur fringilla luctus</a></h4>
-									<span class="post-date"><i class="fa fa-clock-o"></i> 6m ago</span>
-									<span class="post-category"><i class="fa fa-tag"></i> Technology</span>
-								</div>
-							</div>
-							<div class="post-thumbnail-entry">
-								<img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Consectetur adipiscing elit</a></h4>
-									<span class="post-date"><i class="fa fa-clock-o"></i> 24h ago</span>
-									<span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
-								</div>
-							</div>
-							<div class="post-thumbnail-entry">
-								<img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h4>
-									<span class="post-date"><i class="fa fa-clock-o"></i> 11h ago</span>
-									<span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
-								</div>
-							</div>
-							<div class="post-thumbnail-entry">
-								<img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg">
-								<div class="post-thumbnail-content">
-									<h4><a href="#">Consectetur ipsum dolor sit amet</a></h4>
-									<span class="post-date"><i class="fa fa-clock-o"></i> 8h ago</span>
-									<span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
-								</div>
+							<div class="post-thumbnail-entry diary_list">
+								
 							</div>
 
 						</div>

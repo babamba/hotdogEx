@@ -16,8 +16,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1" />
-<link rel="shortcut icon"
-	href="${pageContext.request.contextPath}/assets/images/favicon.png">
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/img/favicon.png">
 <title>Hot dog</title>
 
 <head>
@@ -300,7 +299,7 @@ $(function(){
 					<div id="logo">
 						<a href="${pageContext.request.contextPath}" class="logo"
 							data-dark-logo="images/logo-dark.png"> <img
-							src="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png"
+							src="${pageContext.request.contextPath}/assets/img/hotdog_logo_02.png"
 							alt="Hotdog Logo">
 						</a>
 					</div>

@@ -14,7 +14,7 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
-<link rel="shortcut icon" href="images/favicon.png">
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/img/favicon.png">
 <title>HOTDOG | BIT2017</title>
 
 <!-- Bootstrap Core CSS -->

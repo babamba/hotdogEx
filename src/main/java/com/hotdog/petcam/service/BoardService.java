@@ -22,6 +22,11 @@ public class BoardService {
     private static final int PAGE_SIZE= 5; //페이지 리스트의 페이지 수
     
     
+    public List<BoardVo> getMainList(int category_no){
+		return boardDao.getMainList(category_no);
+	}
+    
+    
     public Map<String,Object> getTotalListBoard(int category_no, int currentPage, String keyword){
     	
         Map<String,Object> map = new HashMap<String,Object>();
