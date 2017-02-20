@@ -196,7 +196,9 @@ public class UserService {
 		userDao.userProfileModify(userVo);
 	}
 	public void blogProfileModify(int authUser_no,BlogVo blogVo){
-		userDao.blogProfileModify(authUser_no,blogVo);
+		if( blogVo.getTitle().length() >= 1){
+			userDao.blogProfileModify(authUser_no,blogVo);
+		}
 	}
 	public void setImage(UserVo userVo) {
 		userDao.setImage(userVo);

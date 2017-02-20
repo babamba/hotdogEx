@@ -243,7 +243,6 @@ public class UserController {
 	@RequestMapping(value = "/account/blogprofilemodify", method = RequestMethod.POST)
 	public String blogProfileModify(@ModelAttribute BlogVo blogVo, @AuthUser UserVo authUser,
 			@RequestParam(value = "title") String title) {
-		System.out.println("title :"+title);
 		blogVo.setTitle(title);
 		userService.blogProfileModify(authUser.getUsers_no(), blogVo);
 
@@ -255,8 +254,6 @@ public class UserController {
 	@RequestMapping(value = "/account/blogprofilemodify2", method = RequestMethod.POST)
 	public String blogProfileModify2(@ModelAttribute BlogVo blogVo, @AuthUser UserVo authUser,
 			@RequestParam(value = "title") String title,@RequestParam(value = "blogimage") MultipartFile blogimage) {
-		System.out.println("title :"+title);
-		System.out.println("image :"+blogimage);
 		blogVo.setTitle(title);
 		userService.blogProfileModify(authUser.getUsers_no(), blogVo);
 
