@@ -182,8 +182,7 @@ public class UserService {
 		}
 	}
 
-	public void userProfileModify(UserVo userVo, BlogVo blogVo, String nickname, String title, String infomation,
-			String password) {
+	public void userProfileModify(UserVo userVo, String nickname, String infomation,String password) {
 
 		if (nickname.length() >= 1) {
 			userVo.setNickname(nickname);
@@ -194,14 +193,11 @@ public class UserService {
 		if (password.length() >= 1) {
 			userVo.setPass_word(password);
 		}
-		if (title.length() >= 1) {
-			blogVo.setUsers_no(userVo.getUsers_no());
-			blogVo.setTitle(title);
-			blogDao.blogTitleModify(blogVo);
-		}
 		userDao.userProfileModify(userVo);
 	}
-
+	public void blogProfileModify(int authUser_no,BlogVo blogVo){
+		userDao.blogProfileModify(authUser_no,blogVo);
+	}
 	public void setImage(UserVo userVo) {
 		userDao.setImage(userVo);
 	}

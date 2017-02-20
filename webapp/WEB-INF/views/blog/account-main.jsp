@@ -512,15 +512,10 @@
 																										type : "get",
 																										dataType : "json",
 																										data : "",
-																										success : function(
-																												response) {
+																										success : function(response) {
 																											if (response.data == "yes") {
 																												alert("사용가능 합니다.");
-																												$(
-																														"#userProfileSave")
-																														.prop(
-																																"disabled",
-																																false);
+																												$("#userProfileSave").prop("disabled",false);
 																											}
 																											if (response.data == "no") {
 																												alert("이미 사용중인 닉네임 입니다.");
@@ -685,8 +680,9 @@
 																						})
 
 																			})
+																			
 														</script>
-
+														
 													</div>
 												</div>
 											</div>

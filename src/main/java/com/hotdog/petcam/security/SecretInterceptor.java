@@ -37,7 +37,6 @@ public class SecretInterceptor extends HandlerInterceptorAdapter{
             }
         }
         HttpSession session = request.getSession();
-        System.out.println(request.getRequestURI()+"-----> 인터셉터에서 확인");
         
         if(session == null){
             response.sendRedirect(request.getContextPath()+"/ 로그인 경로 처리");

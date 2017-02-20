@@ -215,9 +215,9 @@
 												</div>
 												
 												<button id="userProfileSave" class="btn btn-primary btn-sm pull-right">저장 </button>
+											</form>
 												<button id="nicknameCheck" class="btn btn-primary btn-sm pull-right">닉네임 중복검사</button>
 											</div>
-											</form>
 											
 										</div>
 										
@@ -379,10 +379,7 @@
 
 	<!-- user profile modal -->
 	<script>
-		$(document)
-				.on(
-						'ready',
-						function() {
+		$(document).on('ready',function() {
 							$modal = $('.modal-frame');
 							$overlay = $('.modal-overlay');
 
@@ -415,11 +412,7 @@
 									});
 
 						});
-	</script>
-
-
-	<!-- user profile Modify -->
-	<script>
+	
 		// 이미지 미리보기
 		var loadFile = function(event) {
 			var output = document.getElementById('output');
@@ -450,54 +443,41 @@
 
 		$(function() {
 			// blog , user 데이터 전달
-			$("#userProfileSave")
-					.click(
-							function() {
-								if ($("#pass_word").val() != $(
-										"#pass_wordCheck").val()) {
-									alert("입력하신 비밀번호가 일치하지 않습니다.");
-									return false;
-								}
+			$("#userProfileSave").click(function() {
+							if ($("#pass_word").val() != $("#pass_wordCheck").val()) {
+								alert("입력하신 비밀번호가 일치하지 않습니다.");
+								return false;
+							}
 
-								var formData = new FormData();
+							var formData = new FormData();
 
-								nickname = $("#nickname").val();
-								title = $("#title").val();
-								infomation = $("#infomation").val();
-								password = $("#pass_word").val();
-								userimage = $("#userimage").get(0).files[0];
-								blogimage = $("#blogimage").get(0).files[0];
+							nickname = $("#nickname").val();
+						
+							infomation = $("#infomation").val();
+							password = $("#pass_word").val();
+							userimage = $("#userimage").get(0).files[0];
+							
 
-								formData.append("nickname", nickname);
-								formData.append("title", title);
-								formData.append("infomation", infomation);
-								formData.append("pass_word", password);
+							formData.append("nickname", nickname);
+							formData.append("infomation", infomation);
+							formData.append("pass_word", password);
 
-								if (userimage != null) {
-									formData.append("userimage", userimage);
-									controllerUrl = "userprofilemodify";
+							if (userimage != null) {
+								formData.append("userimage", userimage);
+								controllerUrl = "userprofilemodify";
+							} else {
+								controllerUrl = "userprofilemodify2";
+							}
+							
 
-								} else if (blogimage != null) {
-									formData.append("blogimage", blogimage);
-									controllerUrl = "userprofilemodify2";
-								} else {
-									controllerUrl = "userprofilemodify4";
-								}
-								if (userimage != null && blogimage != null) {
-									formData.append("blogimage", blogimage);
-									formData.append("userimage", userimage);
-
-									controllerUrl = "userprofilemodify3";
-								}
-
-								$.ajax({
-									url : "${pageContext.request.contextPath}/user/account/"+ controllerUrl,
-									type : "post",
-									data : formData,
-									processData : false,
-									contentType : false
-										})
-							})
+							$.ajax({
+								url : "${pageContext.request.contextPath}/user/account/"+ controllerUrl,
+								type : "post",
+								data : formData,
+								processData : false,
+								contentType : false
+									})
+						})
 
 			// 닉네임 체크
 			$("#nicknameCheck").click(
@@ -514,19 +494,20 @@
 							success : function(response) {
 								if (response.data == "yes") {
 										alert("사용가능 합니다.");
-								$("#userProfileSave").prop("disabled", false);
+										$("#userProfileSave").prop("disabled", false);
 									
 								}if (response.data == "no") {
 										alert("이미 사용중인 닉네임 입니다.");
-												}
-								if (response.result == "fail") {
+								}if (response.result == "fail") {
 										alert("에러");
-												}
-											}
-										})
+									}
+								}
 							})
+						})
 					})
 					
+			
+						
 					
 			$(function() {
 			// blog , user 데이터 전달
@@ -537,21 +518,20 @@
 								title = $("#title").val();
 								blogimage = $("#blogimage").get(0).files[0];
 								
-								formData.append("title", title);
-								formData.append("logo_image", blogimage)
 								
-								if (title != null) {
-									formData.append("title", title);
-									controllerUrl = "blogprofilemodify1";
-
-								} else(blogimage != null) {
-									formData.append("logo_image", blogimage);
+								if( blogimage == null && title != null){
+									formData.append("title",title);
+									controllerUrl="blogprofilemodify";
+								}
+								if ( blogimage != null && title == null){
+									formData.append("blogimage",blogimage);
 									controllerUrl = "blogprofilemodify2";
-								} 
-									
-								controllerUrl = "blogprofilemodify3";
-								
-								
+								}
+								if( blogimage != null && title != null){
+									formData.append("blogimage",blogimage);
+									formData.append("title",title);
+									controllerUrl="blogprofilemodify2";
+								}
 
 								$.ajax({
 									url : "${pageContext.request.contextPath}/user/account/"+ controllerUrl,
@@ -563,11 +543,7 @@
 							});
 			});
 	
-	</script>
-
-
-	<!-- pet profile Modify -->
-	<script>
+	
 		var petimage;
 		var petname;
 		var petinfo;
@@ -618,9 +594,7 @@
 					})
 
 				})
-	</script>
-
-	<script>
+	
 		// 클릭시 비교
 		var secretNumber;
 		var secretNumberCheck;
@@ -666,10 +640,7 @@
 			else
 				event.target.value = event.target.value.replace(/[^0-9]/g, "");
 		}
-	</script>
 	
-	
-	<script>
 	$(function() {
 			$("#datetimepicker1").datetimepicker({
 				useCurrent: ('year', 'month', 'day'),

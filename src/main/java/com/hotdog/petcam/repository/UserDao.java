@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.hotdog.petcam.vo.BlogVo;
 import com.hotdog.petcam.vo.PetVo;
 import com.hotdog.petcam.vo.UserVo;
 
@@ -107,6 +108,10 @@ public class UserDao {
 	public void setImage(UserVo userVo) {
 		sqlSession.update("user.setImage", userVo);
 
+	}
+	public void blogProfileModify(int authUser_no,BlogVo blogVo){
+		blogVo.setUsers_no(authUser_no);
+		sqlSession.update("blog.titleModify", blogVo);
 	}
 
 	public void petProfileModify(PetVo petVo) {
