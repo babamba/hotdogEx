@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hotdog.petcam.DTO.JSONResult;
 import com.hotdog.petcam.service.BoardService;
+import com.hotdog.petcam.service.PetService;
 import com.hotdog.petcam.vo.BoardVo;
+import com.hotdog.petcam.vo.PetVo;
 
 @Controller
 @RequestMapping("/main/api/")
@@ -19,6 +21,9 @@ public class MainApiController {
 
 	@Autowired
 	private BoardService boardService;
+	
+	@Autowired
+	private PetService petService;
 	
 	@ResponseBody
 	@RequestMapping("/board_list")
@@ -31,5 +36,18 @@ public class MainApiController {
 		System.out.println(list);
 		return JSONResult.success(list);
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping("/hotdog_list")
+	public JSONResult hotdog(Model model, PetVo petVo){
+		
+		List<PetVo> list = petService.getHotdog(petVo);
+		System.out.println("hotdog list!");
+		
+		return JSONResult.success(list);
+	}
+	
+	
 	
 }

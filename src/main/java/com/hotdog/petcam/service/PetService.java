@@ -1,5 +1,7 @@
 package com.hotdog.petcam.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,4 +15,9 @@ public class PetService {
 	public PetVo getAllByNo(int no){
 		return petDao.getAllByNo(no);
 	}
+	
+	public List<PetVo> getHotdog(PetVo petVo){
+		return petDao.getHotdog();
+	}
+	
 }

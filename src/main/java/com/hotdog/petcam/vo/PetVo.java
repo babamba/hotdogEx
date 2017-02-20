@@ -10,6 +10,9 @@ public class PetVo {
 	private String pet_image;
 	private String age;
 	private int users_no;
+	private String nickname;
+	private int count;
+	
 
 	public int getPet_no() {
 		return pet_no;
@@ -83,10 +86,27 @@ public class PetVo {
 		this.age = age;
 	}
 
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
 	@Override
 	public String toString() {
 		return "PetVo [pet_no=" + pet_no + ", name=" + name + ", co_date=" + co_date + ", gender=" + gender + ", info="
-				+ info + ", pet_image=" + pet_image + ", age=" + age + ", users_no=" + users_no + "]";
+				+ info + ", pet_image=" + pet_image + ", age=" + age + ", users_no=" + users_no + ", nickname="
+				+ nickname + ", count=" + count + "]";
 	}
 
 }

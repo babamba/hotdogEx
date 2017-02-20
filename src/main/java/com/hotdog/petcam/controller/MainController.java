@@ -17,7 +17,7 @@ public class MainController {
 	
 	@RequestMapping("/")
 	public String index(){
-		return "main/index";
+		return "main/page_main";
 	}
 	
 	@RequestMapping("test")
@@ -30,11 +30,11 @@ public class MainController {
 		return "main/loginPage";
 	}
 	
-	@RequestMapping("/page_main")
+	/*@RequestMapping("/page_main")
 	public String page_main(@AuthUser UserVo nickname, Model model){
 		System.out.println("로그인한 유저 닉네임" + nickname);
 		return "main/page_main";
-	}
+	}*/
 	
 	
 }

@@ -1,5 +1,7 @@
 package com.hotdog.petcam.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,5 +15,10 @@ public class PetDao {
 	
 	public PetVo getAllByNo(int no){
 		return sqlSession.selectOne("pet.getallbyno", no);
+	}
+	
+	public List<PetVo> getHotdog(){
+		List<PetVo> list = sqlSession.selectList("pet.getBestHotdog");
+		return list;
 	}
 }

@@ -58,6 +58,7 @@
 	<script src="${pageContext.request.contextPath}/assets/js/userProfile.js"></script>
 	<link href="${pageContext.request.contextPath}/assets/css/userProfile.css" rel="stylesheet">
 
+	<script src="${pageContext.request.contextPath}/assets/js/board_list.js"></script>
 </head>
 
 <body class="boxed background-white">
@@ -66,10 +67,10 @@
 	<!-- WRAPPER -->
 	<div class="wrapper">
 		<!-- HEADER -->
-		<header id="header" class="">
+		<header id="header">
 			<div id="header-wrap">
 				<div class="container">
-
+					
 					<!--LOGO-->
 					<div id="logo">
 						<a href="${pageContext.request.contextPath}" class="logo"
@@ -104,13 +105,14 @@
 			</div>
 		</header>
 		<!-- END: HEADER -->
- <!-- INSPIRO SLIDER -->
-        <div id="slider" class="inspiro-slider" data-height-xs="200" >
+		
+		<!-- INSPIRO SLIDER -->
+        <div  class="inspiro-slider" >
             <!-- Slide 1 -->
             <div class="slide background-overlay-dark"  data-vide-bg="${pageContext.request.contextPath}/assets/img/dog_video.mp4">
 
                 <div class="container">
-                	<div class="col-md-6 col-sm-12 col-xs-12" style="margin-top:30px;">
+                	<div class="col-md-6 col-sm-12 col-xs-12">
 	                    <div class="slide-captions col-md-12 col-sm-12 col-xs-12">
 	                        <!-- Captions -->
 	                        <h2 class="text-center">Hot Dog</h2>
@@ -125,6 +127,7 @@
 					<c:when test="${empty authUser}">
 							<div class="col-md-4 col-sm-4 col-xs-4 pull-right">
 								<div id="book">
+								
 										<div class="row text-center">
 											<div class="col-md-12 col-sm-12 col-xs-12">
 												<label>핫도그를 시작하세요!</label>
@@ -189,116 +192,23 @@
 			    	</c:choose>
 					<!-- authUser info  부분  -->
 					</div>
-						
-						
-					
-
-			
                 </div>
-             
-            <!-- END: Slide 1 -->
+       		 </div>
 
-        </div>
-        
-        <!-- END: INSPIRO SLIDER -->
-        
+		<script>
 		
-			<div>
-			
-			</div>
 		
+		
+		
+		</script>
+		
+
 
 		<!-- NEWS GRID -->
 		<section class="p-t-40 p-b-40">
 			<div class="container">
-				<div class="grid-articles grid-articles-v2">
+				<div class="grid-articles grid-articles-v2 best_hotdog">
 				
-					<article class="post-entry">
-						<a href="#" class="post-image"><img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg"></a>
-						<div class="post-entry-overlay">
-							<div class="post-entry-meta">
-								<div class="post-entry-meta-category">
-									<span class="label label-danger">NEWS</span>
-								</div>
-								<div class="post-entry-meta-title">
-									<h2><a href="#">Pellentesque ipsum erat, facilisis ut venenatis eu, sodales vel dolor</a></h2>
-								</div>
-								<span class="post-date"><i class="fa fa-clock-o"></i> 6m ago</span>
-							</div>
-						</div>
-					</article>
-					
-					<article class="post-entry">
-						<a href="#" class="post-image"><img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg"></a>
-						<div class="post-entry-overlay">
-							<div class="post-entry-meta">
-								<div class="post-entry-meta-category">
-									<span class="label label-danger">LIFESTYLE</span>
-								</div>
-								<div class="post-entry-meta-title">
-									<h2><a href="#">Venenatis eu, sodales consectetur dolor fringilla fusce, non ornare orci</a></h2>
-								</div>
-								<span class="post-date"><i class="fa fa-clock-o"></i> 18m ago</span>
-							</div>
-						</div>
-					</article>
-					
-					
-					<article class="post-entry">
-						<a href="#" class="post-image"><img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg"></a>
-						<div class="post-entry-overlay">
-							<div class="post-entry-meta">
-								<div class="post-entry-meta-category">
-									<span class="label label-danger">LIFESTYLE</span>
-								</div>
-								<div class="post-entry-meta-title">
-									<h2><a href="#">Suspendisse consectetur fringilla luctus</a></h2>
-								</div>
-							</div>
-						</div>
-					</article>
-					<article class="post-entry">
-						<a href="#" class="post-image"><img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg"></a>
-						<div class="post-entry-overlay">
-							<div class="post-entry-meta">
-								<div class="post-entry-meta-category">
-									<span class="label label-danger">World</span>
-								</div>
-								<div class="post-entry-meta-title">
-									<h2><a href="#">Fusce id mi diam, non ornare orci</a></h2>
-								</div>
-							</div>
-						</div>
-					</article>
-					<article class="post-entry">
-						<a href="#" class="post-image"><img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg"></a>
-						<div class="post-entry-overlay">
-							<div class="post-entry-meta">
-								<div class="post-entry-meta-category">
-									<span class="label label-danger">World</span>
-								</div>
-								<div class="post-entry-meta-title">
-									<h2><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h2>
-								</div>
-							</div>
-						</div>
-					</article>
-					<article class="post-entry">
-						<a href="#" class="post-image"><img alt="" src="${pageContext.request.contextPath}/assets/template/images/portfolio/2.jpg"></a>
-						<div class="post-entry-overlay">
-							<div class="post-entry-meta">
-								<div class="post-entry-meta-category">
-									<span class="label label-danger">World</span>
-								</div>
-								<div class="post-entry-meta-title">
-									<h2><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h2>
-								</div>
-							</div>
-						</div>
-					</article>
-					
-					
-					
 				</div>
 			</div>
 		</section>
@@ -313,185 +223,6 @@
 			<!-- END: ADVERTISEMENT -->
 		
 			<!-- post 최신 글 9개 불러오는 ajax list -->
-	<script>
-	
-	var category_no = 1;
-	var post_path = "${pageContext.request.contextPath }/community/viewpost?no="
-	
-	var render = function(vo){
-			
-		var htmls =  "<div class='post-thumbnail-entry'><div class='post-thumbnail-content'>" +
-					 "<h4><a href='" + post_path + vo.board_no + "'>" + vo.title + "</a></h4>" +
-					 "<span class='post-date'><i class='fa fa-clock-o'></i>" + vo.regdate + "</span>" +
-					 "<span class='post-category'><i class='fa fa-eye'></i> 조회수 : " + vo.hits + "</span></div></div>"
-					
-					
-					$(".free_List").append(htmls);
-						 
-		};
-
-
-	var fetchList = function(){
-		"use strict";
-		console.log("fetchList")
-	
-		  $.ajax({
-			url: "${pageContext.request.contextPath }/main/api/board_list?category_no=" + category_no,
-			type: "get",
-			dataType: "json",
-			data:"",
-			success: function(response){
-				console.log(response)
-				if(response.result != "success"){
-					console.error(response.message);
-					return;
-				}
-				
-			$(response.data).each(function(index, vo){
-				render(vo);
-				console.log("render")
-			}); 
-		},
-		error: function(jqXHR, status, e){
-			console.error(status + ":" + e)
-		}
-	}); 
-		
-		
-	};
-
-
-	</script>
-	<script>
-	
-	
-	var post_path = "${pageContext.request.contextPath }/community/viewpost?no="
-	
-	var render1 = function(vo){
-			
-		var htmls =  "<div class='post-thumbnail-entry'><div class='post-thumbnail-content'>" +
-					 "<h4><a href='" + post_path + vo.board_no + "'>" + vo.title + "</a></h4>" +
-					 "<span class='post-date'><i class='fa fa-clock-o'></i>" + vo.regdate + "</span>" +
-					 "<span class='post-category'><i class='fa fa-eye'></i> 조회수 : " + vo.hits + "</span></div></div>"
-					
-					
-					$(".free_List").append(htmls);
-						 
-		};
-		
-	var render2 = function(vo){
-			
-			var htmls =  "<div class='post-thumbnail-entry'><div class='post-thumbnail-content'>" +
-						 "<h4><a href='" + post_path + vo.board_no + "'>" + vo.title + "</a></h4>" +
-						 "<span class='post-date'><i class='fa fa-clock-o'></i>" + vo.regdate + "</span>" +
-						 "<span class='post-category'><i class='fa fa-eye'></i> 조회수 : " + vo.hits + "</span></div></div>"
-						
-						
-						$(".gallery_list").append(htmls);
-							 
-			};	
-			
-	var render3 = function(vo){
-				
-				var htmls =  "<div class='post-thumbnail-entry'><div class='post-thumbnail-content'>" +
-							 "<h4><a href='" + post_path + vo.board_no + "'>" + vo.title + "</a></h4>" +
-							 "<span class='post-date'><i class='fa fa-clock-o'></i>" + vo.regdate + "</span>" +
-							 "<span class='post-category'><i class='fa fa-eye'></i> 조회수 : " + vo.hits + "</span></div></div>"
-							
-							
-						$(".diary_list").append(htmls);
-								 
-				};
-
-		
-	var fetchList1 = function(){
-		console.log("fetchList1")
-	
-		  $.ajax({
-			url: "${pageContext.request.contextPath }/main/api/board_list?category_no=" + 1,
-			type: "get",
-			dataType: "json",
-			data:"",
-			success: function(response){
-				console.log(response)
-				if(response.result != "success"){
-					console.error(response.message);
-					return;
-				}
-				
-			$(response.data).each(function(index, vo){
-				render1(vo);
-				console.log("render")
-			}); 
-		},
-		error: function(jqXHR, status, e){
-			console.error(status + ":" + e)
-		}
-	}); 
-		
-		
-	};
-	
-	var fetchList2 = function(){
-		console.log("fetchList2")
-	
-		  $.ajax({
-			url: "${pageContext.request.contextPath }/main/api/board_list?category_no=" + 2,
-			type: "get",
-			dataType: "json",
-			data:"",
-			success: function(response){
-				console.log(response)
-				if(response.result != "success"){
-					console.error(response.message);
-					return;
-				}
-				
-			$(response.data).each(function(index, vo){
-				render2(vo);
-				console.log("render")
-			}); 
-		},
-		error: function(jqXHR, status, e){
-			console.error(status + ":" + e)
-		}
-	}); 
-		
-		
-	};
-	
-	var fetchList3 = function(){
-		console.log("fetchList3")
-	
-		  $.ajax({
-			url: "${pageContext.request.contextPath }/main/api/board_list?category_no=" + 3,
-			type: "get",
-			dataType: "json",
-			data:"",
-			success: function(response){
-				console.log(response)
-				if(response.result != "success"){
-					console.error(response.message);
-					return;
-				}
-				
-			$(response.data).each(function(index, vo){
-				render3(vo);
-				console.log("render")
-			}); 
-		},
-		error: function(jqXHR, status, e){
-			console.error(status + ":" + e)
-		}
-	}); 
-		
-		
-	};
-	
-	fetchList1();
-	fetchList2();
-	fetchList3();
-	</script>
 	
 		
 		<!-- CATEGORIES -->
@@ -585,7 +316,7 @@
 	<!-- Custom js file -->
 	<script src="${pageContext.request.contextPath}/assets/template/js/custom.js"></script>
 
-
+	
 
 </body>
 

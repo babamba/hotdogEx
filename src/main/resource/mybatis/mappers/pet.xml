@@ -5,7 +5,7 @@
 
 	<insert id="insert" parameterType="petvo">
 		<![CDATA[
-			iselect * from pet;
+			select * from pet;
 				insert INTO pet(name, co_date, type, info, pet_image) values
 				(#{name}, #{co_date}, #{type}, #{info}, #{petImage});
 		]]>
@@ -18,5 +18,14 @@
 					where users_no = #{no}
 		]]>
 	</select>
+
+	<select id="getBestHotdog" resultType="petvo">
+		<![CDATA[
+		select u.nickname, (select count(*) from follow f where p.users_no = f.users_no)as count, 
+		p.pet_no, p.name, date_format(p.co_date, '%Y. %m.%e. %h:%i') as co_date, p.gender, p.info, p.users_no, p.pet_image, p.age
+  		from pet p, users u where p.users_no = u.users_no order by count desc limit 6;	
+		]]>
+	</select>
+
 
 </mapper>
