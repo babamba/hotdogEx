@@ -108,7 +108,7 @@ var renderReply = function(vo){
 		"<h4 class='media-heading'>"+vo.nickname+"</h4>"+
 		"<p class='time'>"+vo.regdate +"</p>"+
 		"<p class='comment_section'>" + vo.content.replace( /\n/gi, "<br>") +"</p>"+
-		//"<button class='comment-reply pull-left btn btn-white' style='padding-right:12px; padding-left:10px; margin-bottom:0px;' id='viewChat' data-cno1='"+vo.comments_no+"'><i class='fa fa-reply'></i>답글보기 ("+vo.count+")</button>"+
+		"<button class='comment-reply pull-left btn btn-white' style='padding-right:12px; padding-left:10px; margin-bottom:0px;' id='viewChat' data-cno1='"+vo.comments_no+"'><i class='fa fa-reply'></i>답글보기 ("+vo.count+")</button>"+
 		"<button class='comment-reply pull-right btn btn-white' style='padding:12px 12px; margin-right:6px; margin-bottom:0px;' id='viewChat' data-cno1='"+vo.comments_no+"'><i class='fa fa-reply'></i>댓글달기 ("+vo.count+")</button>"+
 		"</div><form style='visibility:hidden' id='visibile-"+vo.comments_no+"'><input type='text' size='100'><input type='submit' value='등록'></form></div>";
 		
@@ -147,26 +147,12 @@ var fetchReply = function(){
 var renderReplyChat = function(vo, commentsNo){
 	
 	var htmls = 
-		"<div class='comment comment-replied' style='padding-left:100px'>"+
-		"<div class='table-responsive'>"+
-		"<table class='table table-bordered table-striped'>"+
-		"<colgroup><col class='col-xs-2'><col class='col-xs-6'></colgroup>"+
-
-		"<tbody>"+
-	    "<tr>"+
-	    "<th scope='row'> <code>"+vo.nickname+"</code></td>"+
-	    "<td>"+vo.content+"</td>"+
-	    "</tr>"+
-	    "</tbody>"+
-		"</table>"+
-		"</div>"+
-		"</div>";
 		
-		/* "<div class='comment comment-replied'><a href='#' class='pull-left'><img alt='' src='" + image_path + vo.users_image +"' class='avatar'></a>" +
+		"<div class='comment comment-replied'><a href='#' class='pull-left'><img alt='' src='" + image_path + vo.users_image +"' class='avatar'></a>" +
 		"<div class='media-body'><h4 class='media-heading'>" + vo.nickname + "</h4><p class='time'>" + vo.regdate + "</p>" +
 		"<p class='comment_section'>"+vo.content+"</p>'" +
 		"<div><button class='comment-reply pull-right btn btn-white' id='reply'><i class='fa fa-reply'></i>Reply</button></div>" + 
-		"</div>"; */
+		"</div>"; 
 		
 		$("#chatview-"+commentsNo).after(htmls);
 };

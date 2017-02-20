@@ -219,9 +219,7 @@ $(function(){
 										<span class="amount">${vo.regdate }</span>
 									</td>
 	
-									<td class="cart-product-remove">
-										<a href="#">${vo.hits }</a>
-									</td>
+									<td class="cart-product-remove">${vo.hits }</td>
 									
 								</tr>
 								</c:forEach>
