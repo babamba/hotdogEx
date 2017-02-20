@@ -93,21 +93,8 @@
 		<c:import url="/WEB-INF/views/includes/header.jsp" />
 		<!-- END: PAGE TITLE -->
 
-		<c:import url="/WEB-INF/views/includes/blog-navigation.jsp" />
-		
-		<div class="col-md-12 col-sm-12 col-xs-12 blog_navigation text-center" style="margin:0px; padding:0px">
-			<div class="col-md-12 col-sm-12 col-xs-12">
-				<div class="row">
-					<%-- <a style="margin:0 ; padding:15px 26px 15px 26px; border:1px solid #e6e6e6; "  class="button border effect icon-top" href="${pageContext.request.contextPath}/post/${authUser.nickname}/postlist"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i>diary</span></a>
-					<a style="margin:0; padding:15px 20px 15px 20px; border:1px solid #e6e6e6; " class="button border effect icon-top" href="${pageContext.request.contextPath}/blog/${authUser.nickname}/streaming"><span><i class="fa fa-video-camera" aria-hidden="true"></i>stream</span></a>
-					<a style="margin:0; padding:15px; border:1px solid #e6e6e6; " class="button border effect icon-top" href="${pageContext.request.contextPath}/blog/${authUser.nickname}/vod"><span><i class="fa fa-file-video-o" aria-hidden="true"></i>vodplay</span></a> --%>
-				
-					<a href="${pageContext.request.contextPath}/post/${authUser.nickname}/postlist"><div class="button effect fill-vertical col-md-4 col-sm-4 col-xs-4 text-center"><span>diary</span></div></a>
-					<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/streaming"><div class="button effect fill-vertical col-md-4 col-sm-4 col-xs-4 text-center"><span>stream</span></div></a>
-					<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/vod"><div class="button effect fill-vertical col-md-4 col-sm-8 col-xs-12 text-center"><span>vodplay</span></div></a>
-				</div>
-			</div>
-		</div>
+		<c:import url="/WEB-INF/views/includes/navigation-blog.jsp" />
+
 
 		<section class="content">
 			<div class="container list_container">

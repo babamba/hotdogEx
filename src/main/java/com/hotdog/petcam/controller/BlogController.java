@@ -36,8 +36,6 @@ public class BlogController {
 
 	@RequestMapping("/{nickname}")
 	public String main(@PathVariable String nickname, Model model) {
-		System.out.println("로그인한 유저 닉네임" + nickname);
-
 		Map<String, Object> map = blogService.index(nickname);
 		model.addAttribute("map", map);
 
@@ -59,7 +57,7 @@ public class BlogController {
 		model.addAttribute("map", map);
 		model.addAttribute("list", list);
 
-		return "blog/vod-list";
+		return "blog/blog-vod";
 	}
 
 	@ResponseBody

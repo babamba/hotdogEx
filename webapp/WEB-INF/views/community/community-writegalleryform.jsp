@@ -144,21 +144,7 @@
 					<!--END: TOP SEARCH -->
 
 					<!--NAVIGATION-->
-					<div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
-							<div class="container">
-								<nav id="mainMenu" class="main-menu mega-menu">
-									<ul class="main-menu nav nav-pills">
-									
-									    <!-- authUser 블로그 메인 -->
-										<li><a href="${pageContext.request.contextPath}"><i class="fa fa-home"></i></a>
-										
-										<!-- 커뮤니티 메인 -->
-										<li><a href="${pageContext.request.contextPath}/community">커뮤니티 메인</a></li>
-									
-									</ul>
-								</nav>
-							</div>
-					</div>
+					<c:import url="/WEB-INF/views/includes/navigation-main.jsp" />
 					<!--END: NAVIGATION-->
 
 
@@ -175,9 +161,7 @@
 			style="background-image:url(${pageContext.request.contextPath}/assets/template/images/parallax/page-title-parallax.jpg)">
 			<div class="container">
 			  <div class="page-title col-md-8">
-					<h1>자유게시판</h1>
-					
-	
+				<h1><a href="${pageContext.request.contextPath}/community/galleryboard">갤러리 톡</a></h1>
 				</div>
 			</div>
 		</section>

@@ -92,40 +92,24 @@
 		<!-- START: HEADER PAGE TITLE -->
 		<c:import url="/WEB-INF/views/includes/header.jsp" />
 		<!-- END: PAGE TITLE -->
+		<c:import url="/WEB-INF/views/includes/navigation-blog.jsp" />
 
-		<div class="blog_navigation text-center">
-			
-				<a style="margin:0 ; padding:15px 26px 15px 26px; border:1px solid #e6e6e6; "  class="button border effect icon-top" href="${pageContext.request.contextPath}/post/${authUser.nickname}/postlist"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i>diary</span></a>
-				<a style="margin:0; padding:15px 20px 15px 20px; border:1px solid #e6e6e6; " class="button border effect icon-top" href="${pageContext.request.contextPath}/blog/${authUser.nickname}/streaming"><span><i class="fa fa-video-camera" aria-hidden="true"></i>stream</span></a>
-				<a style="margin:0; padding:15px; border:1px solid #e6e6e6; " class="button border effect icon-top" href="${pageContext.request.contextPath}/blog/${authUser.nickname}/vod"><span><i class="fa fa-file-video-o" aria-hidden="true"></i>vodplay</span></a>
-			
-		</div>
 
 		<!-- CONTENT -->
 		<section class="content">
 			<div class="container list_container">
+			    <div class="hr-title hr-long center"><abbr>Diary List</abbr></div>			    
 				<!-- Blog post-->
+				
 				<div class="isotope" data-isotope-item-space="3" data-isotope-col="3" data-isotope-item=".post-item">
 					
 				</div>
-				<!--  pagination nav 
-	      <div class="text-center">
-	        <div class="pagination-wrap">
-	          <ul class="pagination">
-	            <li> <a aria-label="Previous" href="#"> <span aria-hidden="true"><i class="fa fa-angle-left"></i></span> </a> </li>
-	            <li><a href="#">1</a> </li>
-	            <li><a href="#">2</a> </li>
-	            <li class="active"><a href="#">3</a> </li>
-	            <li><a href="#">4</a> </li>
-	            <li><a href="#">5</a> </li>
-	            <li> <a aria-label="Next" href="#"> <span aria-hidden="true"><i class="fa fa-angle-right"></i></span> </a> </li>
-	          </ul>
-	        </div>
-	      </div> -->
-
 				<!-- END: Blog post-->
 			</div>
-			<div id="load-more-link" class="text-center m-t-40"><a href="javascript:;" class="button border rounded">Load more</a></div>
+			<div class="row">
+				<div id="load-more-link" class="text-center m-t-40"><a href="javascript:;" class="button border rounded">Load more</a></div>
+				<div id="write" class="text-center m-t-40"><a href="${pageContext.request.contextPath}/post/${authUser.nickname}/write" class="button border rounded">Posting</a></div>
+			</div>
 		</section>
 
 		<!-- END: SECTION -->

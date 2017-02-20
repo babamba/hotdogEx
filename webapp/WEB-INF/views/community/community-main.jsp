@@ -128,49 +128,7 @@
 					<!--END: TOP SEARCH -->
 
 					<!--NAVIGATION-->
-					<div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
-							<div class="container">
-								<nav id="mainMenu" class="main-menu mega-menu">
-									<ul class="main-menu nav nav-pills">
-									
-									<c:choose>
-									<c:when test="${empty authUser}"> 
-									
-									<!-- 커뮤니티 메인 -->
-										<li><a href="${pageContext.request.contextPath}/community">커뮤니티 메인</a></li>
-									
-									</c:when>
-									<c:otherwise> 
-									    <!-- authUser 블로그 메인 -->
-										<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}">블로그</a></li>
-										
-										<!-- 커뮤니티 메인 -->
-										<li><a href="${pageContext.request.contextPath}//community/newsfeed">뉴스피드</a></li>
-										
-										<!-- 커뮤니티 메인 -->
-										<li><a href="${pageContext.request.contextPath}/community">커뮤니티 메인</a></li>
-										
-										
-									</c:otherwise>
-			    					</c:choose>
-									
-									<!-- 로그인 로그아웃 부분-->
-									<c:choose>
-										<c:when test="${empty authUser}"> 
-											<li><a href="${pageContext.request.contextPath}/loginpage">Log-In</a></li>
-										</c:when>
-										
-										<c:otherwise> 
-											<li><a href="${pageContext.request.contextPath}/user/logout">Log-out</a></li>
-										</c:otherwise>
-								    </c:choose>
-									
-									
-									
-									</ul>
-								</nav>
-							</div>
-					</div>
+					<c:import url="/WEB-INF/views/includes/navigation-main.jsp" />
 					<!--END: NAVIGATION-->
 
 
@@ -179,22 +137,18 @@
 		</header>
 		<!-- END: HEADER -->
 
-
-
 		<!-- PAGE TITLE -->
 		<section id="page-title"
 			class="page-title-parallax page-title-center text-dark"
 			style="background-image:url(${pageContext.request.contextPath}/assets/template/images/parallax/page-title-parallax.jpg)">
 			<div class="container">
 			  <div class="page-title col-md-8">
-					<h1>Community</h1>
+					<h1><a href="${pageContext.request.contextPath}/community">Community</a></h1>
 					
-	
 				</div>
 			</div>
 		</section>
 		<!-- END: PAGE TITLE -->
-
 
 		<!-- CONTENT -->
 			<section class="p-t-100">

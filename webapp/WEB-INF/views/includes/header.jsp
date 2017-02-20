@@ -37,7 +37,7 @@
 					<!--END: TOP SEARCH -->
 					
 					<!--NAVIGATION-->
-					<c:import url="/WEB-INF/views/includes/navigation.jsp" />
+					<c:import url="/WEB-INF/views/includes/navigation-main.jsp" />
 					<!--END: NAVIGATION-->
 					
 				</div>

@@ -17,8 +17,6 @@
 						<!-- 커뮤니티 메인 -->
 						<li><a href="${pageContext.request.contextPath}/community">커뮤니티</a></li>
 						
-						<!-- 커뮤니티 테스트 메인 -->
-						<li><a href="${pageContext.request.contextPath}/page_main">TEST</a></li>
 				</c:when>
 					
 					<c:otherwise> 
@@ -30,37 +28,24 @@
 						
 						<!-- 커뮤니티 메인 -->
 						<li><a href="${pageContext.request.contextPath}/community">커뮤니티</a></li>
-						
-						<!-- 포스팅  -->
-						<%-- <li><a href="${pageContext.request.contextPath}/post/${authUser.nickname}/write">포스팅하기</a></li> --%>
-							
-						<%-- <!-- 다이어리 부분  -->
-						<li><a href="${pageContext.request.contextPath}/post/${authUser.nickname}/postlist">나의 다이어리</a></li> --%>
 								
-						<%-- <!-- 스트리밍 부분 -->
-						<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/streaming">핫도그 스트리밍</a></li> --%>
-		
 						<!-- user account  -->
-						<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/account">내 정보</a></li>
-						
-						<!-- 커뮤니티 테스트 메인 -->
-						<li><a href="${pageContext.request.contextPath}/page_main">TEST</a></li>
+						<li class="dropdown"> <a href="#">내 정보<i class="fa fa-angle-down"></i> </a>
+							<ul class="dropdown-menu">
+								<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/account"> <i class="fa fa-user-plus"></i>계정 설정</a></li>
+								
+								<c:if test="${not empty authUser }">
+									<li><a href="${pageContext.request.contextPath}/user/logout"> <i class="fa fa-user-times"></i>로그아웃</a></li>
+								</c:if>
+							</ul>
+						</li>						
 					</c:otherwise>
 			    </c:choose>
 			    
-			   
-				
-				
 				<!-- 로그인 로그아웃 부분-->
-				<c:choose>
-					<c:when test="${empty authUser}"> 
+				<c:if test="${empty authUser }">
 						<li><a href="${pageContext.request.contextPath}/loginpage">Log-In</a></li>
-					</c:when>
-					
-					<c:otherwise> 
-						<li><a href="${pageContext.request.contextPath}/user/logout">Log-out</a></li>
-					</c:otherwise>
-			    </c:choose>
+				</c:if>
 			</ul>
 		</nav>
 	</div>

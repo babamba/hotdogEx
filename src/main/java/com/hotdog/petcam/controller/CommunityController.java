@@ -68,7 +68,7 @@ public class CommunityController {
 	
 	//자유게시판  입력폼 
 	@Auth
-	@RequestMapping("/writepost")
+	@RequestMapping("/freeboard/writepost")
 	public String writePost(BoardVo boardVo,@AuthUser UserVo authUser){
 		
 		int userNo = authUser.getUsers_no();
@@ -115,6 +115,21 @@ public class CommunityController {
 		boardService.writePost(boardVo);
 		
 		return "redirect:/community/galleryboard";
+	}
+	
+	@Auth
+	@RequestMapping("/viewgallery")
+	public String viewGallery(@RequestParam( value="no", required=true) Integer board_no,
+						   @AuthUser UserVo authUser, Model model){
+		
+		int userNo = authUser.getUsers_no();
+		
+		Map<String,Object> map = boardService.viewPost(board_no);
+		
+		model.addAttribute("map" , map);
+		model.addAttribute("authUserNo", userNo);
+		
+		return "community/community-viewgallery";
 	}
 	
 	

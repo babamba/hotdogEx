@@ -150,24 +150,8 @@ $(function(){
 					<!--END: TOP SEARCH -->
 
 					<!--NAVIGATION-->
-					<div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
-							<div class="container">
-								<nav id="mainMenu" class="main-menu mega-menu">
-									<ul class="main-menu nav nav-pills">
-									
-									    <!-- authUser 블로그 메인 -->
-										<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}">블로그 </a></li>
-										
-										<!-- 커뮤니티 메인 -->
-										<li><a href="${pageContext.request.contextPath}/community">커뮤니티</a></li>
-									
-									</ul>
-								</nav>
-							</div>
-					</div>
+					<c:import url="/WEB-INF/views/includes/navigation-main.jsp" />
 					<!--END: NAVIGATION-->
-
-
 				</div>
 			</div>
 		</header>
@@ -181,13 +165,13 @@ $(function(){
 			style="background-image:url(${pageContext.request.contextPath}/assets/template/images/parallax/page-title-parallax.jpg)">
 			<div class="container">
 			  <div class="page-title col-md-8">
-					<h1>다이어리 톡</h1>
+					<h1><a href="${pageContext.request.contextPath}/community/diaryboard">다이어리 톡</a></h1>
 					
-					<c:import url="/WEB-INF/views/includes/navigation-community.jsp" />
 				</div>
 			</div>
 		</section>
 		<!-- END: PAGE TITLE -->
+		<c:import url="/WEB-INF/views/includes/navigation-community.jsp" />
 
 
 		<!-- CONTENT -->

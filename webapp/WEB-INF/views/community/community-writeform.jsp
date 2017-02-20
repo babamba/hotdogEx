@@ -159,9 +159,7 @@
 			style="background-image:url(${pageContext.request.contextPath}/assets/template/images/parallax/page-title-parallax.jpg)">
 			<div class="container">
 			  <div class="page-title col-md-8">
-					<h1>자유게시판</h1>
-					
-	
+					<h1><a href="${pageContext.request.contextPath}/community/freeboard">프리 톡</a></h1>
 				</div>
 			</div>
 		</section>

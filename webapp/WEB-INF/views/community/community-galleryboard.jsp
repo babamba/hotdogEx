@@ -150,21 +150,7 @@ $(function(){
 					<!--END: TOP SEARCH -->
 
 					<!--NAVIGATION-->
-					<div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
-							<div class="container">
-								<nav id="mainMenu" class="main-menu mega-menu">
-									<ul class="main-menu nav nav-pills">
-									
-									    <!-- authUser 블로그 메인 -->
-										<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}">블로그 </a></li>
-										
-										<!-- 커뮤니티 메인 -->
-										<li><a href="${pageContext.request.contextPath}/community">커뮤니티</a></li>
-									
-									</ul>
-								</nav>
-							</div>
-					</div>
+					<c:import url="/WEB-INF/views/includes/navigation-main.jsp" />
 					<!--END: NAVIGATION-->
 
 
@@ -181,13 +167,13 @@ $(function(){
 			style="background-image:url(${pageContext.request.contextPath}/assets/template/images/parallax/page-title-parallax.jpg)">
 			<div class="container">
 			  <div class="page-title col-md-8">
-					<h1>다이어리 톡</h1>
+				<h1><a href="${pageContext.request.contextPath}/community/galleryboard">갤러리 톡</a></h1>
 					
-					<c:import url="/WEB-INF/views/includes/navigation-community.jsp" />
 				</div>
 			</div>
 		</section>
 		<!-- END: PAGE TITLE -->
+		<c:import url="/WEB-INF/views/includes/navigation-community.jsp" />
 
 
 		<!-- CONTENT -->
@@ -209,12 +195,10 @@ $(function(){
 							<thead>
 								<tr>
 									<th class="cart-product-remove">번호</th>
-								<!--<th class="cart-product-thumbnail">Product</th>-->
+									<th class="cart-product-remove">작성자</th>
 									<th class="cart-product-name">제목</th>
-									<th class="cart-product-price">작성자</th>
-									<th class="cart-product-price">작성일</th>
+									<th class="cart-product-remove">작성일</th>
 									<th class="cart-product-remove">조회수</th>
-									<th class="cart-product-remove"></th>
 								</tr>
 							</thead>
 							
@@ -224,15 +208,17 @@ $(function(){
 									<td class="cart-product-remove">
 										<p>${map.totalCount - (map.currentPage - 1)* map.listSize - status.index }</p>
 									</td>
-									<td class="cart-product-description" id="viewPost" data-no="${vo.board_no }">
-										<a href="${pageContext.request.contextPath }/community/viewpost?no=${vo.board_no }">${vo.title }(${vo.count })</a>
-									</td>
-
-									<td class="cart-product-price">
+									
+									<td class="cart-product-remove">
 										<span class="amount">${vo.nickname }</span>
 									</td>
 									
-									<td class="cart-product-price">
+									<td class="cart-product-description" id="viewPost" data-no="${vo.board_no }">
+										<a href="${pageContext.request.contextPath }/community/viewgallery?no=${vo.board_no }">${vo.title }(${vo.count })</a>
+									</td>
+
+									
+									<td class="cart-product-remove">
 										<span class="amount">${vo.regdate }</span>
 									</td>
 	
@@ -240,9 +226,6 @@ $(function(){
 										<a href="#">${vo.hits }</a>
 									</td>
 									
-									<td class="cart-product-remove">
-										<a href="#"><i class="fa fa-close"></i></a>
-									</td>
 								</tr>
 								</c:forEach>
 							</tbody>
@@ -250,7 +233,7 @@ $(function(){
 						
 								<ul class="pager">
 									<c:if test="${map.prevPage > 0 }" >
-										<li><a href="${pageContext.request.contextPath}/community/freeboard?p=${map.prevPage }">◀</a></li>
+										<li><a href="${pageContext.request.contextPath}/community/galleryboard?p=${map.prevPage }">◀</a></li>
 									</c:if>
 									
 									<c:forEach begin="${map.beginPage }" end="${map.endPage}" var="page">
@@ -264,13 +247,13 @@ $(function(){
 											</c:when>
 											
 											<c:otherwise> 
-												<li><a href="${pageContext.request.contextPath }/community/freeboard?p=${page }">${page }</a></li>
+												<li><a href="${pageContext.request.contextPath }/community/galleryboard?p=${page }">${page }</a></li>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
 									
 									<c:if test="${map.nextPage > 0 }" >
-										<li><a href="${pageContext.request.contextPath }/community/freeboard?p=${map.nextPage }">▶</a></li>
+										<li><a href="${pageContext.request.contextPath }/community/galleryboard?p=${map.nextPage }">▶</a></li>
 									</c:if>	
 								</ul>
 					</div>

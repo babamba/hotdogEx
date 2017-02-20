@@ -92,9 +92,10 @@
 	href="${pageContext.request.contextPath}/assets/css/community.css"
 	rel="stylesheet">
 	
+	
 <script type="text/javascript">
 
-var postNo = ${map.postVo.post_no};
+var boardNo = ${map.boardVo.board_no};
 var usersNo = ${authUserNo};
 var image_path = "${pageContext.request.contextPath}/hotdog/image/user/";
 
@@ -106,70 +107,20 @@ var renderReply = function(vo){
 		"<div class='media-body' id='chatview-"+vo.comments_no+ "'>"+
 		"<h4 class='media-heading'>"+vo.nickname+"</h4>"+
 		"<p class='time'>"+vo.regdate +"</p>"+
-		"<p class='comment_section'>" + vo.content +"</p>"+
-		"<div><form class='replytext' id='replyChat-" + vo.content.replace( /\n/gi, "<br>") + "'></form></div>" +
-		"<button class='comment-reply pull-right btn btn-white' style='padding-right:12px; padding-left:10px; margin-bottom:0px;' id='viewChat' data-cno1='"+vo.comments_no+"'><i class='fa fa-reply'></i>답글보기 ("+vo.count+")</button>"+
-		"<button class='comment-reply pull-right btn btn-white' style='padding:12px 12px; margin-right:6px; margin-bottom:0px;' id='writeChat' data-cno2='"+vo.comments_no+"'><i class='fa fa-reply'></i>Reply</button>"+
-		"</div></div>";
+		"<p class='comment_section'>" + vo.content.replace( /\n/gi, "<br>") +"</p>"+
+		//"<button class='comment-reply pull-left btn btn-white' style='padding-right:12px; padding-left:10px; margin-bottom:0px;' id='viewChat' data-cno1='"+vo.comments_no+"'><i class='fa fa-reply'></i>답글보기 ("+vo.count+")</button>"+
+		"<button class='comment-reply pull-right btn btn-white' style='padding:12px 12px; margin-right:6px; margin-bottom:0px;' id='viewChat' data-cno1='"+vo.comments_no+"'><i class='fa fa-reply'></i>댓글달기 ("+vo.count+")</button>"+
+		"</div><form style='visibility:hidden' id='visibile-"+vo.comments_no+"'><input type='text' size='100'><input type='submit' value='등록'></form></div>";
 		
 		$("#attachReply").append(htmls);
 };
 
 
-	
-	
-$(document).on("click", "#writeChat", function(){
-	
-	var textchat = function(replyNo){
-		
-		var textareareply = "<div><textarea id='contentReply' aria-required='true' placeholder='내용 입력' cols='10' rows='4' class='form-control required'>" +
-							"</textarea><button id='chatajax'class='chatText btn btn-white' type='submit' style='margin-top:12px;'>답글쓰기</button></div>"
-			
-		$("#replyChat-"+replyNo).append(textareareply);
-	} 
-	
-		
-		var replyNo = $(this).data("cno2");
-
-		console.log(replyNo);
-
-		textchat(replyNo);
-		
-		
-		$(".chatajax").submit(function(event){
-			event.preventDefault();
-			
-			var replyNo = $(this).data("cno2");
-			
-
-				$.ajax({
-					url : "${pageContext.request.contextPath }/postView/api/writereplychat",
-					type : "post",
-					dataType : "json",
-					data : "content="+$("#contentReply").val()+
-						   "&users_no="+usersNo+
-						   "&comments_no="+replyNo,
-					success : function(response){
-						
-						if(response.result != "success"){
-							console.error(response.message);
-							return;
-						}
-						renderReply(response.data);
-					},
-					
-					error : function(jqXHR, status, e) {
-						console.log(status + ":" + e);
-					}
-				});
-			});
-		})
-	
 /* 댓글 리스트  */
 var fetchReply = function(){
 	
 	$.ajax({
-		url : "${pageContext.request.contextPath }/postView/api/fetchreply?postNo="+postNo,
+		url : "${pageContext.request.contextPath }/community/freeboard/api/fetchreply?boardNo="+boardNo,
 		type : "get",
 		dataType : "json",
 		success : function(response){
@@ -192,18 +143,30 @@ var fetchReply = function(){
 	});
 };
 
-
-
 /* 댓글의 댓글 렌더 */
 var renderReplyChat = function(vo, commentsNo){
 	
-	
 	var htmls = 
-		"<div class='comment comment-replied'><a href='#' class='pull-left'><img alt='' src='" + image_path + vo.users_image +"' class='avatar'></a>" +
+		"<div class='comment comment-replied' style='padding-left:100px'>"+
+		"<div class='table-responsive'>"+
+		"<table class='table table-bordered table-striped'>"+
+		"<colgroup><col class='col-xs-2'><col class='col-xs-6'></colgroup>"+
+
+		"<tbody>"+
+	    "<tr>"+
+	    "<th scope='row'> <code>"+vo.nickname+"</code></td>"+
+	    "<td>"+vo.content+"</td>"+
+	    "</tr>"+
+	    "</tbody>"+
+		"</table>"+
+		"</div>"+
+		"</div>";
+		
+		/* "<div class='comment comment-replied'><a href='#' class='pull-left'><img alt='' src='" + image_path + vo.users_image +"' class='avatar'></a>" +
 		"<div class='media-body'><h4 class='media-heading'>" + vo.nickname + "</h4><p class='time'>" + vo.regdate + "</p>" +
 		"<p class='comment_section'>"+vo.content+"</p>'" +
 		"<div><button class='comment-reply pull-right btn btn-white' id='reply'><i class='fa fa-reply'></i>Reply</button></div>" + 
-		"</div>";
+		"</div>"; */
 		
 		$("#chatview-"+commentsNo).after(htmls);
 };
@@ -213,7 +176,7 @@ var renderReplyChat = function(vo, commentsNo){
 var fetchReplyChat = function(commentsNo){
 	
 	$.ajax({
-		url : "${pageContext.request.contextPath }/postView/api/fetchreplychat?commentsNo="+commentsNo,
+		url : "${pageContext.request.contextPath }/community/freeboard/api/fetchreplychat?commentsNo="+commentsNo,
 		type : "get",
 		dataType : "json",
 		success : function(response){
@@ -234,24 +197,30 @@ var fetchReplyChat = function(commentsNo){
 	});
 };	
 
-
-
+/*댓글의 댓글달기 쓰기 폼 */
+var textchat = function(replyNo){
+	
+	var textareareply = "<div><textarea id='contentReply' aria-required='true' placeholder='내용 입력' cols='10' rows='4' class='form-control required'>" +
+						"</textarea><button id='chatajax'class='chatText btn btn-white' type='submit' style='margin-top:12px;'>답글쓰기</button></div>"
 		
+	$("#replyChat-"+replyNo).append(textareareply);
+};
+
 $(function(){
  
 	fetchReply();
 		
 	$("#writeReply").submit(function(event){
-		console.log("submit")
+		
 		event.preventDefault();
 		
 		$.ajax({
-			url : "${pageContext.request.contextPath }/postView/api/writereply",
+			url : "${pageContext.request.contextPath }/community/freeboard/api/writereply",
 			type : "post",
 			dataType : "json",
 			data : "content="+$("#comment").val()+
 				   "&users_no="+usersNo+
-				   "&post_no="+postNo,
+				   "&board_no="+boardNo,
 			success : function(response){
 				
 				if(response.result != "success"){
@@ -267,17 +236,53 @@ $(function(){
 	});
 	
 	$(document).on("click", "#viewChat", function(){
-
+		
 		var commentsNo = $(this).data("cno1");
 		
-		console.log(commentsNo);
+		$("#visibile-"+commentsNo).show();
 		
 		fetchReplyChat(commentsNo);
 	});
+	
+	
+/* 	$(document).on("click", "#writeChat", function(){
+		
+		var replyNo = $(this).data("cno2");
+
+		textchat(replyNo);
+			
+		$(".chatajax").submit(function(event){
+			
+			event.preventDefault();
+				
+			var replyNo = $(this).data("cno2");
+				
+
+			$.ajax({
+				url : "${pageContext.request.contextPath }/community/freeboard/api/writereplychat",
+				type : "post",
+				dataType : "json",
+				data : "content="+$("#contentReply").val()+
+					   "&users_no="+usersNo+
+					   "&comments_no="+replyNo,
+				success : function(response){
+							
+						if(response.result != "success"){
+							console.error(response.message);
+							return;
+						}
+							renderReply(response.data);
+				},	
+				error : function(jqXHR, status, e) {
+							console.log(status + ":" + e);
+						}
+					});
+				});
+			}); */
+		
 })
 
 </script>
-
 
 <body>
 
@@ -338,7 +343,7 @@ $(function(){
 			style="background-image:url(${pageContext.request.contextPath}/assets/template/images/parallax/page-title-parallax.jpg)">
 			<div class="container">
 			  <div class="page-title col-md-8">
-					<h1><a href="${pageContext.request.contextPath}/community/diaryboard">다이어리 톡</a></h1>
+				<h1><a href="${pageContext.request.contextPath}/community/galleryboard">갤러리 톡</a></h1>
 				</div>
 			</div>
 		</section>
@@ -346,9 +351,7 @@ $(function(){
 
 
 		<!-- CONTENT -->
-	
-		<!-- CONTENT -->
-			<section class="content">
+
 			<div class="container">
 
 				<!-- Blog post-->
@@ -359,15 +362,17 @@ $(function(){
 						<div class="post-content-details">
 						
 							<div class="post-title">
-								<h2> ${map.postVo.title } </h2>
-							</div>
-							<div class="post-info">
-								<span class="post-autor"> 작성자 : <a href="#"> ${map.postVo.nickname }</a></span> 
-								<!--  <span class="post-category">in <a href="#">Productivity</a></span> -->
+								<h2> 제목 : ${map.boardVo.title } </h2>
 							</div>
 							
+							<div class="post-info">
+								<span class="post-autor"> 작성자 : <a href="#"> ${map.boardVo.nickname }</a></span> 
+								<!--  <span class="post-category">in <a href="#">Productivity</a></span> -->
+							</div>
 							<div class="post-description">
-								<p> ${fn:replace(map.postVo.content, newLine, "<br>") }	 </p>
+								
+								
+								<p> ${fn:replace(map.boardVo.content, newLine, "<br>") }	 </p>
 								
 								
 							</div>
@@ -380,8 +385,9 @@ $(function(){
 							</div>
 
 							<div class="post-comments">
-								<a href="#"> <i class="fa fa-comments-o"></i> 
-								<span class="post-comments-number">${map.postVo.count }</span>
+								<a href="#"> <i class="fa fa-comments-o"></i> <span
+																	class="post-comments-number">${map.boardVo.count }</span>
+								
 								</a>
 							</div>
 						</div>
@@ -391,24 +397,13 @@ $(function(){
 					<div id="comments" class="comments">
 						<div class="heading">
 							<h4 class="comments-title">
-								댓글 <small class="number">${map.postVo.count }</small>
+								댓글 <small class="number">${map.boardVo.count }</small>
 							</h4>
 						</div>
 
-						<div id="attachReply">
-							<!-- <div class="comment"> -->
-								<!--
-									<a href="#" class="pull-left"> <img alt="" src="images/team/1.jpg" class="avatar"></a>
-															
-									<div class="media-body" id="attachReply">
-									
-									<h4 class="media-heading">닉네임!!!</h4>
-									<p class="time">등록날짜 !!!</p>
-									<p>내용 !!!</p>
-									<a href="#" class="comment-reply pull-right"><i class="fa fa-reply"></i> Reply</a>
-									
-								</div> -->
-							<!-- </div> -->
+							<div id="attachReply">
+						
+							</div> 
 						</div>
 					</div>
 					
@@ -441,13 +436,6 @@ $(function(){
 					
 				</div>
 				<!-- END: Blog post-->
-
-			</div>
-		</section>
-
-
-		<!-- END: SECTION -->
-	
 
 			</div>
 
