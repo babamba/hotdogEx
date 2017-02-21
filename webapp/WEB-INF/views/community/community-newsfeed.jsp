@@ -204,7 +204,7 @@
 				<c:forEach items="${top_ten }"	var="vo" varStatus="status">
 					<div class="portfolio-item design artwork">
 						<div class="portfolio-image effect social-links">
-							<img src="${pageContext.request.contextPath}/hotdog/image/user/${vo.post_image }" width="220px" height="300px">
+							<img src="${pageContext.request.contextPath}/hotdog/image/user/${vo.post_image }" width="200px" height="160px">
 							<div class="image-box-content">
 								<p>
 									<a href="${pageContext.request.contextPath}/hotdog/image/user/${vo.post_image }" data-lightbox-type="image" title="${vo.title }"><i class="fa fa-expand"></i></a>
@@ -234,7 +234,7 @@
 						<div class="post-item" data-no="${vo.users_no}">
 							<div class="post-image">
 							<a href="#">
-								<img alt="" src="${pageContext.request.contextPath }/hotdog/image/user/${vo.post_image}" width="830px" height="600px">
+								<img alt="" src="${pageContext.request.contextPath }/hotdog/image/user/${vo.post_image}" width="650px" height="400px">
 							</a>
 							</div>
 							<div class="post-content-details">
@@ -247,7 +247,7 @@
 									</div>
 								</div>
 								<div class="post-description">
-									<p>불러온 리스트들의 글내용....image 파일을 제외하고 어떻게 불러올까...</p>
+									<p></p>
 		
 									<div class="post-read-more">
 										<a class="read-more" href="${pageContext.request.contextPath }/post/${vo.nickname}/postView?post_no=${vo.post_no}">read more <i class="fa fa-long-arrow-right"></i></a>
