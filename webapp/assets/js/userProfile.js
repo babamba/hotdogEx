@@ -47,7 +47,7 @@
        
        // 2-1 기본 정보를 가져온다.
        var basicProfile = function(basicProfile){
-    	   var htmls ='<img id="pf1" src="/hotdog/image/user/'+basicProfile.users_image+'">'+
+    	   var htmls ='<img id="pf1" src="/hotdog/hotdog/image/user/'+basicProfile.users_image+'">'+
 						'<h3 id="pf2" style="color:black;">'+basicProfile.nickname+'</h3>'+
 						'<p id="pf3">'+basicProfile.infomation+'</p>'+
 						'<p id="pf4">'+basicProfile.email+'</p>';
