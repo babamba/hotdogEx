@@ -124,8 +124,8 @@ select count(*) from board_comments bc where bc.board_no= #{board_no }
 <select id="fetchReplyChat" parameterType="int" resultType="boardchatvo">
 <![CDATA[
 
-	select bc.board_chat_no, bc.content, bc.regdate, bc.comments_no, bc.users_no, u.nickname, u.users_image
- 	from board_chat bc, users u 
+	select bc.content, bc.regdate, bc.comments_no, bc.users_no, bc.board_chat_no, u.nickname, u.users_image
+ 	from board_chat bc, users u
  	where bc.comments_no = #{comments_no } and u.users_no = bc.users_no
 
 ]]>
@@ -146,7 +146,7 @@ select count(*) from board_comments bc where bc.board_no= #{board_no }
 <select id="getReplyChat" parameterType="int" resultType="boardchatvo">
 <![CDATA[
 
-	select bc.board_chat_no, bc.content, bc.regdate, bc.comments_no, bc.users_no, u.nickname, u.users_image
+	select bc.content, bc.regdate, bc.comments_no, bc.users_no, bc.board_chat_no, u.nickname, u.users_image
 	from board_chat bc, users u
 	where bc.board_chat_no = #{board_chat_no } and bc.users_no = u.users_no
 

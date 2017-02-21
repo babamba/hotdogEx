@@ -109,7 +109,7 @@ var renderReply = function(vo){
 		"<p class='time'>"+vo.regdate +"</p>"+
 		"<p class='comment_section'>" + vo.content.replace( /\n/gi, "<br>") +"</p>"+
 		"<button class='comment-reply pull-left btn btn-white' style='padding-right:12px; padding-left:10px; margin-bottom:0px;' id='viewChat' data-cno1='"+vo.comments_no+"'><i class='fa fa-reply'></i>답글보기 ("+vo.count+")</button>"+
-		"<button class='comment-reply pull-right btn btn-white' style='padding:12px 12px; margin-right:6px; margin-bottom:0px;' id='viewChat' data-cno1='"+vo.comments_no+"'><i class='fa fa-reply'></i>댓글달기 ("+vo.count+")</button>"+
+		"<button class='comment-reply pull-right btn btn-white' style='padding:12px 12px; margin-right:6px; margin-bottom:0px;' id='writeChat' data-cno2='"+vo.comments_no+"'><i class='fa fa-reply'></i>댓글달기</button>"+
 		"</div><form style='visibility:hidden' id='visibile-"+vo.comments_no+"'><input type='text' size='100'><input type='submit' value='등록'></form></div>";
 		
 		$("#attachReply").append(htmls);
@@ -189,7 +189,7 @@ var textchat = function(replyNo){
 	var textareareply = "<div><textarea id='contentReply' aria-required='true' placeholder='내용 입력' cols='10' rows='4' class='form-control required'>" +
 						"</textarea><button id='chatajax'class='chatText btn btn-white' type='submit' style='margin-top:12px;'>답글쓰기</button></div>"
 		
-	$("#replyChat-"+replyNo).append(textareareply);
+	$("#chatview-"+replyNo).append(textareareply);
 };
 
 $(function(){
@@ -231,19 +231,16 @@ $(function(){
 	});
 	
 	
-/* 	$(document).on("click", "#writeChat", function(){
+ 	$(document).on("click", "#writeChat", function(){
 		
 		var replyNo = $(this).data("cno2");
-
+		
 		textchat(replyNo);
 			
-		$(".chatajax").submit(function(event){
+		$("#chatajax").click(function(event){
 			
 			event.preventDefault();
 				
-			var replyNo = $(this).data("cno2");
-				
-
 			$.ajax({
 				url : "${pageContext.request.contextPath }/community/freeboard/api/writereplychat",
 				type : "post",
@@ -257,14 +254,14 @@ $(function(){
 							console.error(response.message);
 							return;
 						}
-							renderReply(response.data);
+						renderReplyChat(response.data, replyNo);
 				},	
 				error : function(jqXHR, status, e) {
 							console.log(status + ":" + e);
 						}
 					});
 				});
-			}); */
+			}); 
 		
 })
 

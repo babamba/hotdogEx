@@ -2,11 +2,11 @@ package com.hotdog.petcam.vo;
 
 public class BoardChatVo {
 	
-	private int board_chat_no;
 	private String content;
 	private String regdate;
 	private int comments_no;
 	private int users_no;
+	private int board_chat_no;
 	private String nickname;
 	private String users_image;
 	
