@@ -21,6 +21,74 @@
 
 <head>
 
+<style>
+
+.toggle {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  height: 60px;
+  color: white;
+  outline: 0;
+  text-decoration: none;
+  border-radius: 100px;
+  border: 2px solid #546E7A;
+  background-color: #263238;
+  transition: all 500ms;
+}
+.toggle:active {
+  background-color: #1c2429;
+}
+.toggle:hover:not(.toggle--moving):after {
+  background-color: #455A64;
+}
+.toggle:after {
+  display: block;
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  line-height: 45px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 20px;
+  color: white;
+  background-color: #37474F;
+  border: 2px solid;
+  transition: all 500ms;
+}
+
+.toggle--on:after {
+  content: 'On';
+  border-radius: 50px 5px 5px 50px;
+  color: #66BB6A;
+}
+
+.toggle--off:after {
+  content: 'Off';
+  border-radius: 5px 50px 50px 5px;
+  transform: translate(100%, 0);
+  color: #f44336;
+}
+
+.toggle--moving {
+  background-color: #1c2429;
+}
+.toggle--moving:after {
+  color: transparent;
+  border-color: #435862;
+  background-color: #222c31;
+  transition: color 0s, transform 500ms, border-radius 500ms,           background-color 500ms;
+}
+
+h1 {
+  font-size: 64px;
+  margin-top: 0;
+  margin-bottom: 50px;
+}
+</style>
 <!-- Bootstrap Core CSS -->
 <link
 	href="${pageContext.request.contextPath}/assets/template/vendor/bootstrap/css/bootstrap.min.css"
@@ -109,11 +177,17 @@
 		<section class="content">
 			<div class="container list_container">
 				<div class="streaming_browser text-center">
+				<button class="toggle toggle--off"></button>
 						<span class="re"><i class="fa fa-exclamation-circle"></i></span>
 						<br>
-						 <button class='button grey-dark button-3d rounded icon-left' id="recoding" data-no="${raspberrypiVo.device_num }" data-name="${map.userVo.nickname }">
-						 <i class="fa fa-video-camera">  녹화</i></button>   
-						 <%-- <button class='button red-dark button-3d rounded icon-left' data-id="${raspberrypiVo.device_num }"><i class="fa fa-video-camera"> Recoding</i></button> --%>
+						
+						<%--
+						<div class="container" style="width:720px;">
+						 	<button class='button grey-dark button-3d rounded icon-left' id="recoding"><i class="fa fa-video-camera">  녹화</i></button>  
+						 	 <span class="pull-right" >27 C</span>
+						 </div> 
+						
+						  <button class='button red-dark button-3d rounded icon-left' data-id="${raspberrypiVo.device_num }"><i class="fa fa-video-camera"> Recoding</i></button> --%>
 						 
 						 <div>
 				            <video id="videoPlayer" width="720" height="360" controls="controls"></video>
@@ -125,10 +199,7 @@
 				    		<button class='button black-light button-3d rounded icon-left' id='right'><i class="material-icons">Right</i></button>
 						</div>
 						
-<!-- 						녹화시작 url: http://150.95.141.66:8086/livestreamrecord?app=live/" + nickname + "&streamname=stream&action=startRecording&outputPath=/upload/" + users_no)
-
-						녹화종료 url:   "http://150.95.141.66:8086/livestreamrecord?app=live/" + nickname + "&streamname=stream&action=stopRecording";
- -->				</div>
+				</div>
 			</div>
 
 		</section>
@@ -180,32 +251,60 @@
 	<!-- VIDEO Controller -->
 	<script>
 	$(function(){
+		
+				$('.toggle').click(function(e) {
+					  var toggle = this;
+					  e.preventDefault();
+
+ 					  $(toggle).toggleClass('toggle--on').toggleClass('toggle--off').toggleClass('toggle--moving');
+ 					  
+ 					  var sw = $(toggle).attr('class');
+ 					  var temp = sw.split(' ');
+ 					 
+  					  if(temp[1]=='toggle--on'){
+ 						  console.log("on")
+ 					  }
+ 					  else if(temp[1]=='toggle--off'){
+ 						  console.log("off")
+ 					  }
+ 					  
+					  setTimeout(function() {
+					    $(toggle).removeClass('toggle--moving');
+					  }, 200)
+					});
 
             	
                 var url = "http://150.95.141.66:1935/live/${authUser.nickname}/stream/manifest.mpd";
                 
+                var interval = null;
+
                 var player = dashjs.MediaPlayer().create();
                 player.initialize(document.querySelector("#videoPlayer"), url, true);
                 
+                
                 $("#recoding").click(function(){
                 	
-    				var deviceNum = $(this).data("no");
-                    var nickname = $(this).data("name");
-                    var userNo = ${authUser.users_no};
-                
+    				var deviceNum = "${raspberrypiVo.device_num }";
+                    var nickname = "${map.userVo.nickname}";
+                    var userNo = ${map.userVo.users_no};
+
                     $(this).attr('class', 'button red-dark button-3d rounded icon-left');
                     $(this).attr('id', 'stop');
                     $(this).html('STOP');
-
-                    setInterval(function(){
-                    	$(".re").toggle();
-                    	}, 500);
+					
+                    interval = setInterval(function(){
+                    				$(".re").toggle();
+                    				}, 500);
                     
                     $("#stop").click(function(){
                         $(this).attr('class', 'button grey-dark button-3d rounded icon-left');
                         $(this).attr('id', 'recoding');
+                        $(this).html('녹 화');
+                        clearInterval(interval);
+
                     })
                     });
+                
 /*     				$.ajax({
                         url:"http://150.95.141.66:8086/livestreamrecord?app=live/" + nickname + "&streamname=stream&action=startRecording&outputPath=/upload/" + userNo,
                         type:"get",
