@@ -90,7 +90,7 @@
               dataType:"json",
               success:function(response){
                  $("#followButton").remove();
-                 htmls ="<button id='deleteFollowButton' data-no='" + users_no + "' >Delete Follow</button>";
+                 htmls ="<button  class='btn btn-white' id='deleteFollowButton' data-no='" + users_no + "' >Delete Follow</button>";
                  $("#emptyButton").append(htmls);
               }
            })
@@ -107,7 +107,7 @@
               dataType:"json",
               success:function(response){
                  $("#deleteFollowButton").remove();
-                 htmls = "<button id='followButton' data-no='" + users_no + "' >Follow</button>";
+                 htmls = "<button  class='btn btn-white' id='followButton' data-no='" + users_no + "' >Follow</button>";
                  $("#emptyButton").append(htmls);
               }
            })

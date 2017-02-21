@@ -167,14 +167,6 @@ $(document).on("click", "#writeChat", function(){
 			});
 		})
 	
-
-
-
-
-
-
-
-
 /* 댓글 리스트  */
 var fetchReply = function(){
 	
@@ -288,7 +280,7 @@ $(function(){
 
 </script>
 
-<body>
+<body class="boxed background-white">
 
 
 
@@ -327,7 +319,8 @@ $(function(){
 					<!--END: TOP SEARCH -->
 					
 					<!--NAVIGATION-->
-					<c:import url="/WEB-INF/views/includes/navigation.jsp" />
+					<c:import url="/WEB-INF/views/includes/navigation-main.jsp" />
+					
 					<!--END: NAVIGATION-->
 					
 				</div>
@@ -382,7 +375,9 @@ $(function(){
 		</div>
 	</section>
 	<!-- END: PAGE TITLE -->
-
+	
+	<c:import url="/WEB-INF/views/includes/navigation-blog.jsp" />
+	
 
 		<!-- CONTENT -->
 			<section class="content">

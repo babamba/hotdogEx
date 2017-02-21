@@ -164,6 +164,33 @@
 				</div>
 			</section>
 			<!-- END: PAGE TITLE -->
+			<!-- user profile modal -->
+							<div class="container modal-body-container">
+								<div class="modal-frame">
+									<div class="modal">
+										<div class="modal-inset">
+			
+											<div class="icon-box effect medium closeProfile" id="infoModal-close" 
+												 style="float:right; padding:10px; margin:10px;">
+												<i class="fa fa-close"></i>
+											</div>
+											
+											
+												<div class="modal-body" style="clear:both;">
+													<div id="emptyProfile" style="z-index:10000"></div>
+													<div id="emptyFollowerButton" ></div>
+													<div id="emptyButton" ></div>
+												</div>
+			
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="modal-overlay">
+									
+								</div>
+							<!-- user profile modal -->
 			
 			<!-- CONTENT -->
 			<section class="content">
@@ -216,7 +243,7 @@
 								</div>
 								<div class="post-info">
 									<div >
-										 <button id="showInfo" class="post-autor openProfile" data-no="${vo.users_no}">Post by: ${vo.nickname } </button> 
+										 <a href="javascript:;" class="post-autor openProfile" data-no="${vo.users_no}">Post by: ${vo.nickname } </a> 
 									</div>
 								</div>
 								<div class="post-description">
@@ -245,35 +272,11 @@
 						</div>
 				</c:forEach>
 				</div>
+					
 					<div id="addList"></div>
 			</div>
-				<!-- user profile modal -->
-							<div class="container modal-body-container">
-								<div class="modal-frame">
-									<div class="modal">
-										<div class="modal-inset">
+				
 			
-											<div class="icon-box effect medium closeProfile" id="infoModal-close" 
-												 style="float:right; padding:10px; margin:10px;">
-												<i class="fa fa-close"></i>
-											</div>
-											
-											
-												<div class="modal-body" style="clear:both;">
-													<div id="emptyProfile" style="z-index:10000"></div>
-													<div id="emptyFollowerButton" ></div>
-													<div id="emptyButton" ></div>
-												</div>
-			
-											</div>
-										</div>
-									</div>
-								</div>
-								
-								<div class="modal-overlay">
-									
-								</div>
-							<!-- user profile modal -->
 			
 			<!-- END: Blog post-->
 			<script>
