@@ -1,4 +1,7 @@
 // PROFILE SCRIPT
+
+		var users_no = $(this).data("no");
+
 		$(document).on('ready', function(){
 	    $modal = $('.modal-frame');
 	    $overlay = $('.modal-overlay');
@@ -25,9 +28,12 @@
 	
        // 1. 유저를 클릭했을때,팔로우 유무, 대상의 요약정보를 요청한다.
        $("#showInfo").click(function(){
-          var users_no= ${map.userVo.users_no};
+    	  var users_no = $(this).data("no");
+//          var users_no= ${map.userVo.users_no};
           var follower;
           var didfollow;
+          
+          console.log("showinfo click")
           
           $.ajax({
              url:"${pageContext.request.contextPath}/follow/infomodal",
@@ -46,7 +52,7 @@
           var htmls;
           // 팔로우 안되어 있을 때 
           if(didFollow == false){
-             htmls = "<button id='followButton' class='btn btn-white'>Follow</button>";
+             htmls = "<button id='followButton' class='btn btn-white' data-no='" + users_no + "'>Follow</button>";
           }
           // 팔로우 되어 있을 때 생성할 버튼
           else{
@@ -58,13 +64,12 @@
        
        // 2-2. 갱신된 팔로워 숫자를 불러와 버튼을 생성한다.
        var createFollower=function(countFollower){
-          var htmls = "<buttion id='followerButtion' >Follower : "+countFollower+"명</button>";
+          var htmls = "<buttion id='followerButtion' data-no='" + users_no + "' >Follower : "+countFollower+"명</button>";
           $("#emptyFollowerButton").append(htmls);
        }
        
        // 3. 팔로우 / 팔로우 삭제 버튼 클릭시 요청 처리해주고 버튼 바꾸기
         $(document).on("click", "#followButton", function(){
-           var users_no= ${map.userVo.users_no};
            var htmls;
            
            $.ajax({
@@ -74,14 +79,14 @@
               dataType:"json",
               success:function(response){
                  $("#followButton").remove();
-                 htmls ="<button id='deleteFollowButton'>Delete Follow</button>";
+                 htmls ="<button id='deleteFollowButton' data-no='" + users_no + "' >Delete Follow</button>";
                  $("#emptyButton").append(htmls);
               }
            })
          });
        
         $(document).on("click", "#deleteFollowButton", function(){
-           var users_no= ${map.userVo.users_no};
+          
            var htmls;
            
            $.ajax({
@@ -91,7 +96,7 @@
               dataType:"json",
               success:function(response){
                  $("#deleteFollowButton").remove();
-                 htmls = "<button id='followButton'>Follow</button>";
+                 htmls = "<button id='followButton' data-no='" + users_no + "' >Follow</button>";
                  $("#emptyButton").append(htmls);
               }
            })

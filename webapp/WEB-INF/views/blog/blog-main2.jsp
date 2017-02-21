@@ -86,7 +86,7 @@
 <link
 	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
 	rel="stylesheet">
-<body>
+<body class="boxed background-white">
 	<div class="wrapper">
 
 		<!-- START: HEADER PAGE TITLE -->
