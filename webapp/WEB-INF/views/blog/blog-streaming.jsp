@@ -206,19 +206,19 @@ h1 {
 						 <div>
 				            <video id="videoPlayer" width="720" height="360" controls="controls"></video>
 				       	 </div>
-						
-						<div class="recording_btn center-block">
+				       	 
+						<div class="record_box">
+						<div class="recording_btn center-block pull-left">
 							<button class="toggle toggle--off"></button>
 							<!-- <span class="re"><i class="fa fa-exclamation-circle"></i></span> -->
-						
-						<div id="chronoExample">
-						    <div class="values">00:00:00</div>
-						</div>
-							
-				
-							
 						</div>
 						
+						<div id="chronoExample pull-right">
+							    <div class="values">
+							    	<p>00:00:00<p>
+							    </div>
+							</div>
+						</div>
 						<div class="clearfix"></div>
 						
 						<div class="streaming_control center-block">
@@ -304,10 +304,10 @@ h1 {
  					  var temp = sw.split(' ');
 
 	 					timer.addEventListener('started', function (e) {
-		 					    $('#chronoExample .values').html(timer.getTimeValues().toString());
+		 					    $('.record_box .values').html(timer.getTimeValues().toString());
 		 				});
 	 					timer.addEventListener('secondsUpdated', function (e) {
-	 					    $('#chronoExample .values').html(timer.getTimeValues().toString());
+	 					    $('.record_box .values').html(timer.getTimeValues().toString());
 	 					});
  					 
  					 
@@ -315,13 +315,13 @@ h1 {
   					  if(temp[1]=='toggle--on'){
   						 timer.start();
  						  console.log("on")
- 						  $(".values").append("<p> 녹화 중 </p>")
+ 						  /* $(".values").append("<p> 녹화 중 </p>") */
  					  }
  					  else if(temp[1]=='toggle--off'){
  						 
  						 timer.stop();
  						 console.log("off")
- 						$(".values").append("<p> 녹화됬엉 </p>")
+ 						/* $(".values").append("<p> 녹화됬엉 </p>") */
  					  }
  					  
 	  					

@@ -28,8 +28,8 @@ body {
   border-radius: 20px;
   position: relative;
   overflow: hidden;
-  width: 200px;
-  height: 100px;
+  width: 160px;
+  height: 75px;
   background-color: white;
   box-shadow: 0px 0px 25px 1px rgba(50, 50, 50, 0.1);
   -webkit-animation: appear 500ms ease-out forwards;
@@ -39,11 +39,11 @@ body {
   position: absolute;
   font-family: 'Lato', sans-serif;
   font-weight: 100;
-  font-size: 30px;
+  font-size: 20px;
   color: #a6a6a6;
-  top:45px;
+  top:21px;
   bottom: 0;
-  left: 25px;
+  left: 70px;
   opacity: 0;
   -webkit-transform: translateX(150px);
           transform: translateX(150px);
@@ -54,11 +54,11 @@ body {
   position: absolute;
   font-family: 'Lato', sans-serif;
   font-weight: 300;
-  font-size: 28px;
+  font-size: 25px;
   color: #a6a6a6;
-  top:20px;
+  top:25px;
   bottom: 0;
-  left: 25px;
+  left: 20px;
   -webkit-animation: title-appear 1s ease-out 100ms forwards;
           animation: title-appear 1s ease-out 100ms forwards;
 }
@@ -69,7 +69,7 @@ body {
   height: 20px;
   top: 0;
   float: right;
-  margin: 40px 40px 0 0;
+  margin: 30px 25px 0 0;
   -webkit-animation: weather-icon-move 5s ease-in-out infinite;
           animation: weather-icon-move 5s ease-in-out infinite;
 }
@@ -100,7 +100,7 @@ body {
   }
 }
 .cloud {
-  margin-right: 60px;
+  margin-right: 40px;
   background: #b6cede;
   border-radius: 20px;
   width: 15px;
@@ -250,7 +250,7 @@ body {
 
 
 .recording_btn{
-	width:400px;
+	width:50%;
 }
 
 .streaming_control{
@@ -274,6 +274,18 @@ body {
 	clear:both;
 }
 
+.record_box{
+	width:50%;
+	left:0;
+	padding:0 10px 25px 0;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.values{
+	padding-top:20px;
+	font-size:50px;
+}
 
 
 
