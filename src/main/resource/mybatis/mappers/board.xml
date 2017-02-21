@@ -38,7 +38,7 @@
 		
 		<otherwise>
 			<![CDATA[
-				select b.board_no, b.category_no, b.title, b.content, b.regdate, b.hits ,u.nickname, (select count(*) from board_comments bc
+				select b.board_no, b.category_no, b.title,b.users_no, b.content, b.regdate, b.hits ,u.nickname, (select count(*) from board_comments bc
 																								   where b.board_no = bc.board_no) as count
 				from board b, users u
 				where b.category_no = #{category_no } and b.users_no = u.users_no

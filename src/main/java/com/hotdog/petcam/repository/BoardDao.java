@@ -43,6 +43,7 @@ public class BoardDao {
     	map.put("keyword", keyword);
     	map.put("category_no", category_no);
     	map.put("currentPage", currentPage);
+    	System.out.println(sqlSession.selectList("board.getList", map));
     	return  sqlSession.selectList("board.getList", map);
     }
     

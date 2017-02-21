@@ -164,33 +164,33 @@
 				</div>
 			</section>
 			<!-- END: PAGE TITLE -->
-			<!-- user profile modal -->
-							<div class="container modal-body-container">
-								<div class="modal-frame">
-									<div class="modal">
-										<div class="modal-inset">
 			
-											<div class="icon-box effect medium closeProfile" id="infoModal-close" 
-												 style="float:right; padding:10px; margin:10px;">
-												<i class="fa fa-close"></i>
-											</div>
-											
-											
-												<div class="modal-body" style="clear:both;">
-													<div id="emptyProfile" style="z-index:10000"></div>
-													<div id="emptyFollowerButton" ></div>
-													<div id="emptyButton" ></div>
-												</div>
+		<!-- user profile modal -->
+			<div class="container modal-body-container">
+				<div class="modal-frame">
+					<div class="modal">
+						<div class="modal-inset">
+
+							<div class="icon-box effect medium closeProfile" id="infoModal-close" 
+								 style="float:right; padding:10px; margin:10px;">
+								<i class="fa fa-close"></i>
+							</div>
+						
+						
+							<div class="modal-body" style="clear:both;">
+								<div id="emptyProfile" style="z-index:10000"></div>
+								<div id="emptyFollowerButton" ></div>
+								<div id="emptyButton" ></div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
 			
-											</div>
-										</div>
-									</div>
-								</div>
-								
-								<div class="modal-overlay">
-									
-								</div>
-							<!-- user profile modal -->
+			<div class="modal-overlay">
+			</div>
+		<!-- user profile modal -->
 			
 			<!-- CONTENT -->
 			<section class="content">
@@ -233,13 +233,13 @@
 						
 						<div class="post-item" data-no="${vo.users_no}">
 							<div class="post-image">
-							<a href="#">
-								<img alt="" src="${pageContext.request.contextPath }/hotdog/image/user/${vo.post_image}" width="650px" height="400px">
+							<a href="javascript:;">
+								<img alt="" src="${pageContext.request.contextPath }/hotdog/image/user/${vo.post_image}" width="600px" height="400px">
 							</a>
 							</div>
 							<div class="post-content-details">
 								<div class="post-title">
-									<h3><a href="#">${vo. title}</a></h3>
+									<h3><a href="${pageContext.request.contextPath }/post/${vo.nickname}/postView?post_no=${vo.post_no}">${vo. title}</a></h3>
 								</div>
 								<div class="post-info">
 									<div >

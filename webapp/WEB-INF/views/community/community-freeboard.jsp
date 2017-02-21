@@ -81,12 +81,11 @@
 	src="${pageContext.request.contextPath}/assets/template/vendor/plugins-compressed.js"></script>
 
 <!-- User Profile -->
-<script
-	src="${pageContext.request.contextPath}/assets/js/userProfile.js"></script>
-<link
-	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
-	rel="stylesheet">
-	
+<!-- User Profile -->
+<script src="${pageContext.request.contextPath}/assets/js/userProfile.js"></script>
+<link href="${pageContext.request.contextPath}/assets/css/userProfile.css" rel="stylesheet">
+
+
 	
 <script>
 $(function(){
@@ -113,6 +112,8 @@ $(function(){
 
 
 	<div class="wrapper">
+	
+	
 
 		<!-- HEADER -->
 		<header id="header" class="header-transparent">
@@ -157,7 +158,7 @@ $(function(){
 		</header>
 		<!-- END: HEADER -->
 
-
+		
 
 		<!-- PAGE TITLE -->
 		<section id="page-title"
@@ -172,10 +173,14 @@ $(function(){
 		<!-- END: PAGE TITLE -->
 		<c:import url="/WEB-INF/views/includes/navigation-community.jsp" />
 
+		
 
 		<!-- CONTENT -->
 			<section id="shop-wishlist">
+				
 			<div class="container">
+			
+			
 			
 					<form action="${pageContext.request.contextPath}/community/freeboard/writeform" method="get">
 						<button class="btn btn-primary" type="submit" name="${categoryNo }">글쓰기</button>
@@ -185,6 +190,7 @@ $(function(){
 						<input type="submit" value="검색" style="float: right;">
 						<input type="text"  name="kwd" style="float: right;">
 					</form><br><br>
+					
 					
 				<div class="shop-cart">
 					<div class="table table-condensed table-striped table-responsive">
@@ -198,8 +204,9 @@ $(function(){
 									<th class="cart-product-remove">조회수</th>
 								</tr>
 							</thead>
-							
+					
 							<tbody>
+				
 								<c:forEach items="${map.list }"	var="vo" varStatus="status">
 								<tr>
 									<td class="cart-product-remove">
@@ -207,7 +214,7 @@ $(function(){
 									</td>
 									
 									<td class="cart-product-remove">
-										<span class="amount">${vo.nickname }</span>
+										<a href="javascript:;" class="openProfile" data-no="${vo.users_no}"><span class="amount" >${vo.nickname }</span></a>
 									</td>
 									
 									<td class="cart-product-description" id="viewPost" data-no="${vo.board_no }">
@@ -223,8 +230,11 @@ $(function(){
 									
 								</tr>
 								</c:forEach>
+								
+				
 							</tbody>
 						</table>
+					
 						
 								<ul class="pager">
 									<c:if test="${map.prevPage > 0 }" >
@@ -254,7 +264,39 @@ $(function(){
 					</div>
 				</div>
 			</div>
+			
+							<!-- user profile modal -->
+					<div class="container modal-body-container">
+						<div class="modal-frame">
+							<div class="modal">
+								<div class="modal-inset">
+		
+									<div class="icon-box effect medium closeProfile" id="infoModal-close" 
+										 style="float:right; padding:10px; margin:10px;">
+										<i class="fa fa-close"></i>
+									</div>
+								
+								
+									<div class="modal-body" style="clear:both;">
+										<div id="emptyProfile" style="z-index:10000"></div>
+										<div id="emptyFollowerButton" ></div>
+										<div id="emptyButton" ></div>
+									</div>
+		
+								</div>
+							</div>
+						</div>
+					</div>
+					
+<!-- 					<div class="modal-overlay"> -->
+<!-- 					</div> -->
+
+				<!-- user profile modal -->
+			
+				
 		</section>	
+					
+				
 		
 
 
@@ -263,8 +305,10 @@ $(function(){
 		<!-- FOOTER -->
 		<c:import url="/WEB-INF/views/includes/footer.jsp" />
 		<!-- END: FOOTER -->
-
+		
 	</div>
+	
+		
 	<!-- END: WRAPPER -->
 	<!-- Theme Base, Components and Settings -->
 	<script

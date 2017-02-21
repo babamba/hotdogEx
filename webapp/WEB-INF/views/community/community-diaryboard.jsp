@@ -200,7 +200,7 @@ $(function(){
 					  </div>
 					 
 					  <div class='post-description'>
-					  <div class='post-info'><p>${vo.nickname }</p></div>
+					  <div class='post-info'><a href="javascript:;" class="openProfile" data-no="${vo.users_no}"><p>${vo.nickname }</p></a></div>
 					  </div>
 					  
 					  </div><div class='post-meta'><div class='post-date'><span class='post-date-year'>${vo.regdate }</span></div>
@@ -241,6 +241,31 @@ $(function(){
 				
 			</div>
 			
+			<!-- user profile modal -->
+					<div class="container modal-body-container">
+						<div class="modal-frame">
+							<div class="modal">
+								<div class="modal-inset">
+		
+									<div class="icon-box effect medium closeProfile" id="infoModal-close" 
+										 style="float:right; padding:10px; margin:10px;">
+										<i class="fa fa-close"></i>
+									</div>
+								
+								
+									<div class="modal-body" style="clear:both;">
+										<div id="emptyProfile" style="z-index:10000"></div>
+										<div id="emptyFollowerButton" ></div>
+										<div id="emptyButton" ></div>
+									</div>
+		
+								</div>
+							</div>
+						</div>
+					</div>
+					
+<!-- 					<div class="modal-overlay"> -->
+<!-- 					</div> -->
 		</section>
 		<!-- END: SECTION -->
 		
