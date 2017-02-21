@@ -22,7 +22,8 @@
 					   device_num,
 					   token,
 					   temperature,
-					   humidity 
+					   humidity,
+					   sec_token 
 				 from raspberrypi 
 				 where users_no = #{users_no}
 		]]>
