@@ -46,7 +46,7 @@ body.wide .wrapper {
 body.boxed .wrapper,
 body.boxed-simple .wrapper {
     position: relative;
-    border: 1px solid #eee;
+    border: 1px solid #fff;
     background-color: #fff;
 }
 body.outter {

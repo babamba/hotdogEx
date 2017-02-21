@@ -36,6 +36,7 @@ public class NewsFeedController {
 		model.addAttribute("top_ten", top_ten);
 		model.addAttribute("recent_users",recent_users);
 		model.addAttribute("total_top", total_top);
+		
 		return "community/community-newsfeed";
 	}
 	

@@ -1,4 +1,4 @@
-	var post_path = "${pageContext.request.contextPath }/community/viewpost?no="
+	var post_path = "community/viewpost?no="
 	var pet_image_path = "hotdog/image/user/";
 	
 		var render1 = function(vo){

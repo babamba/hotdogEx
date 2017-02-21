@@ -197,10 +197,14 @@
 					</c:forEach>
 				</div>
 					
+					<div class="list">
 					<c:forEach items="${latest_news }"	var="vo" varStatus="status">	
 						<!-- Blog image post-->
-						<div class="hr-title hr-long center"><abbr>Friend's latest post</abbr> </div>
-						<div class="post-item">
+						<div class="hr-title hr-long center">
+							<abbr>Friend's latest post</abbr> 
+						</div>
+						
+						<div class="post-item" data-no="${vo.users_no}">
 							<div class="post-image">
 							<a href="#">
 								<img alt="" src="${pageContext.request.contextPath }/hotdog/image/user/${vo.post_image}" width="830px" height="600px">
@@ -211,7 +215,9 @@
 									<h3><a href="#">${vo. title}</a></h3>
 								</div>
 								<div class="post-info">
-									<span class="post-autor">Post by: <a href="${pageContext.request.contextPath }/blog/${vo.nickname}">${vo.nickname }</a></span>
+									<div >
+										 <button id="showInfo" class="post-autor openProfile" data-no="${vo.users_no}">Post by: ${vo.nickname } </button> 
+									</div>
 								</div>
 								<div class="post-description">
 									<p>불러온 리스트들의 글내용....image 파일을 제외하고 어떻게 불러올까...</p>
@@ -221,6 +227,38 @@
 									</div>
 								</div>
 							</div>
+							
+							<!-- user profile modal -->
+							<div class="container modal-body-container">
+								<div class="modal-frame">
+									<div class="modal">
+										<div class="modal-inset">
+			
+											<div class="icon-box effect medium closeProfile" id="infoModal-close" 
+												 style="float:right; padding:10px; margin:10px;">
+												<i class="fa fa-close"></i>
+											</div>
+											
+											
+												<div class="modal-body" style="clear:both; ">
+													<img src="${pageContext.request.contextPath}/hotdog/image/user/${map.userVo.users_image}">
+													<h3>${map.userVo.nickname}</h3>
+													<p>${map.userVo.infomation}</p>
+													<p>${map.userVo.email}</p>
+													<div id="emptyFollowerButton" ></div>
+													<div id="emptyButton" ></div>
+													<%--<ul><li><a href="${pageContext.request.contextPath }/blog/${map.userVo.nickname">블로그 가기</a></li></ul> --%>
+											</div>
+			
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="modal-overlay">
+									
+								</div>
+							<!-- user profile modal -->
 		
 							<div class="post-meta">
 								<div class="post-date">
@@ -236,6 +274,7 @@
 							</div>
 						</div>
 				</c:forEach>
+				</div>
 					<div id="addList"></div>
 			</div>
 			
