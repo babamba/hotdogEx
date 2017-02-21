@@ -24,6 +24,10 @@ public class RaspberrypiDao {
 		sqlSession.update("raspberrypi.tokenUpdate", raspberrypiVo);
 	}
 
+	public void tokenSecUpdate(RaspberrypiVo raspberrypiVo) {
+		sqlSession.update("raspberrypi.tokenSecUpdate", raspberrypiVo);
+	}
+
 	public void devUpdate(RaspberrypiVo raspberrypiVo) {
 		sqlSession.update("raspberrypi.devUpdate", raspberrypiVo);
 	}

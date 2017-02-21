@@ -34,6 +34,13 @@
 			where users_no =#{users_no}
 		]]>
 	</update>
+	<update id="tokenSecUpdate" parameterType="raspberrypivo">
+		<![CDATA[	
+			Update raspberrypi 
+				set sec_token = #{sec_token}
+			where users_no =#{users_no}
+		]]>
+	</update>
 	<update id="devUpdate" parameterType="raspberrypivo">
 		<![CDATA[	
 			Update raspberrypi 

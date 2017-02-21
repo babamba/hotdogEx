@@ -41,6 +41,16 @@ public class RaspberrypiController {
 	}
 
 	@ResponseBody
+	@RequestMapping(value = "/app/raspberry/tokensecupdate", method = RequestMethod.POST)
+	public Object piSecTokenUpdate(@ModelAttribute RaspberrypiVo raspberrypiVo,
+			@RequestParam(value = "users_no") int users_no, @RequestParam(value = "sec_token") String sec_token) {
+		raspberrypiVo.setUsers_no(users_no);
+		raspberrypiVo.setSec_token(sec_token);
+		raspberrypiService.tokenSecUpdate(raspberrypiVo);
+		return JSONResult.success("success");
+	}
+
+	@ResponseBody
 	@RequestMapping(value = "/app/raspberry/devupdate", method = RequestMethod.POST)
 	public Object piDevUpdate(@ModelAttribute RaspberrypiVo raspberrypiVo,
 			@RequestParam(value = "users_no") int users_no, @RequestParam(value = "device_num") String device_num) {

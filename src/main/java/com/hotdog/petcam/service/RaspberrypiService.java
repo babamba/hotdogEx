@@ -26,6 +26,10 @@ public class RaspberrypiService {
 		raspberrypiDao.tokenUpdate(raspberrypiVo);
 	}
 
+	public void tokenSecUpdate(RaspberrypiVo raspberrypiVo) {
+		raspberrypiDao.tokenSecUpdate(raspberrypiVo);
+	}
+
 	public void DevUpdate(RaspberrypiVo raspberrypiVo) {
 		raspberrypiDao.devUpdate(raspberrypiVo);
 	}
