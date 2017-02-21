@@ -164,37 +164,14 @@
 				</div>
 			</section>
 			<!-- END: PAGE TITLE -->
+		
 			
-		<!-- user profile modal -->
-			<div class="container modal-body-container">
-				<div class="modal-frame">
-					<div class="modal">
-						<div class="modal-inset">
-
-							<div class="icon-box effect medium closeProfile" id="infoModal-close" 
-								 style="float:right; padding:10px; margin:10px;">
-								<i class="fa fa-close"></i>
-							</div>
-						
-						
-							<div class="modal-body" style="clear:both;">
-								<div id="emptyProfile" style="z-index:10000"></div>
-								<div id="emptyFollowerButton" ></div>
-								<div id="emptyButton" ></div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
 			
-			<div class="modal-overlay">
-			</div>
-		<!-- user profile modal -->
 			
 			<!-- CONTENT -->
 			<section class="content">
 				<div class="container">
+				
 					<div class="row">
 					<!-- Blog post-->
 					<div class="post-content col-md-9" >
@@ -271,6 +248,34 @@
 							</div>
 						</div>
 				</c:forEach>
+				
+				<!-- user profile modal -->
+			<div class="container modal-body-container">
+				<div class="modal-frame">
+					<div class="modal">
+						<div class="modal-inset">
+
+							<div class="icon-box effect medium closeProfile" id="infoModal-close" 
+								 style="float:right; padding:10px; margin:10px;">
+								<i class="fa fa-close"></i>
+							</div>
+						
+						
+							<div class="modal-body" style="clear:both;">
+								<div id="emptyProfile" style="z-index:10000"></div>
+								<div id="emptyFollowerButton" ></div>
+								<div id="emptyButton" ></div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+<!-- 			<div class="modal-overlay"> -->
+			
+<!-- 			</div> -->
+		<!-- user profile modal -->
 				</div>
 					
 					<div id="addList"></div>
@@ -375,8 +380,6 @@
 				
 
 			</script>
-
-
 
 			<!-- Sidebar-->
 			<div class="sidebar sidebar-modern col-md-3">

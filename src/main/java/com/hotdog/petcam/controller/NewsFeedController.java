@@ -37,7 +37,7 @@ public class NewsFeedController {
 		model.addAttribute("recent_users",recent_users);
 		model.addAttribute("total_top", total_top);
 		
-		return "community/community-newsfeed";
+		return "newsfeed/newsfeed";
 	}
 	
 	// 2. 메인 에서 리스트 더 불러오기
@@ -63,7 +63,7 @@ public class NewsFeedController {
 		model.addAttribute("recent_users",recent_users);
 		model.addAttribute("total_top", total_top);
 		model.addAttribute("search", search);
-		return "community/community-newsfeed-search";
+		return "newsfeed/newsfeed-search";
 	}
 	
 	// 4. 검색한 유저의 글 더 불러오기

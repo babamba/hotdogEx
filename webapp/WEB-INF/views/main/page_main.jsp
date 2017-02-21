@@ -181,7 +181,7 @@
 												<a class="button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-4 text-center" href="#" ><span>스트리밍</span></a> -->
 										
 												<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}"><div class="button transparent effect fill-vertical col-md-4 col-sm-12 col-xs-4 text-center"><span>블로그</span></div></a>
-												<a href="${pageContext.request.contextPath}//community/newsfeed"><div class="button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-4 text-center"><span>뉴스피드</span></div></a>
+												<a href="${pageContext.request.contextPath}/community/newsfeed"><div class="button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-4 text-center"><span>뉴스피드</span></div></a>
 												<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/streaming"><div class="button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-4 text-center"><span>스트리밍</span></div></a>								
 										</div>
 									</div>

@@ -38,7 +38,7 @@
                data:"users_no="+users_no,
                dataType:"json",
                success:function(response){
-              	basicProfile(response.data.basicProfile);
+            	   basicProfile(response.data.basicProfile);
                   createButton(response.data.didFollow,response.data.myProfile,users_no);
                   createFollower(response.data.countFollower,users_no);
                }}
@@ -118,6 +118,7 @@
         $("#followButton").remove();
         $("#deleteFollowButton").remove();
         $("#followerButtion").remove();
+        
         $("#pf1").remove();
         $("#pf2").remove();
         $("#pf3").remove();
