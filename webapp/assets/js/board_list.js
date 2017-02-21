@@ -43,11 +43,9 @@
 			
 						var htmls =  "<article class='post-entry'><a href='#' class='post-image'><img src='" + pet_image_path + vo.pet_image + "'></a>" +
 										"<div class='post-entry-overlay'><div class='post-entry-meta'><div class='post-entry-meta-title'>" +
-										"<h1><a href='#'>" + vo.info + "</a></h1></div><div><h3><a href='#' style='color:white'>" + vo.name + " +</a></h3></div></br>" +
-										"<span class='post-date'><i class='fa fa-smile-o'></i>" + vo.nickname  +  "&nbsp;&nbsp;</span>"+
-								
+										"<div><h3><a href='#' style='color:white'>" + vo.name + " +</a></h3></div></br>" +
+										
 										"<span class='post-date'><i class='fa fa-intersex'></i> " + vo.gender + "&nbsp;&nbsp;</span>" +
-										"<span class='post-date'><i class='fa fa-calendar'></i> " + vo.co_date + "&nbsp;&nbsp;</span>" +
 										"<span class='post-date'><i class='fa fa-paw'></i>" + vo.age + "&nbsp;&nbsp;</span>" +
 										"<span class='post-date'><i class='fa fa-thumbs-o-up'></i>" + vo.count + "&nbsp;&nbsp;</span>" +
 										"</div></div></article>"

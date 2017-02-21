@@ -33,15 +33,15 @@
   outline: 0;
   text-decoration: none;
   border-radius: 100px;
-  border: 2px solid #546E7A;
-  background-color: #263238;
+  border: 2px solid #bfbfbf;
+  background-color: #d9d9d9;
   transition: all 500ms;
 }
 .toggle:active {
-  background-color: #1c2429;
+  background-color: white;
 }
 .toggle:hover:not(.toggle--moving):after {
-  background-color: #455A64;
+  background-color: white;
 }
 .toggle:after {
   display: block;
@@ -74,7 +74,7 @@
 }
 
 .toggle--moving {
-  background-color: #1c2429;
+  background-color: white;
 }
 .toggle--moving:after {
   color: transparent;
@@ -88,6 +88,8 @@ h1 {
   margin-top: 0;
   margin-bottom: 50px;
 }
+
+
 </style>
 <!-- Bootstrap Core CSS -->
 <link
@@ -163,6 +165,11 @@ h1 {
 <link
 	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
 	rel="stylesheet">
+	
+<link
+	href="${pageContext.request.contextPath}/assets/css/weather.css"
+	rel="stylesheet">
+	
 <body class="boxed background-white">
 
 	<div class="wrapper">
@@ -174,29 +181,52 @@ h1 {
 		
 
 		<!-- CONTENT -->
-		<section class="content">
+		<section class="content" style="padding-top:0px;">
 			<div class="container list_container">
 				<div class="streaming_browser text-center">
-				<button class="toggle toggle--off"></button>
-						<span class="re"><i class="fa fa-exclamation-circle"></i></span>
+				
+						
 						<br>
 						
-						<%--
-						<div class="container" style="width:720px;">
-						 	<button class='button grey-dark button-3d rounded icon-left' id="recoding"><i class="fa fa-video-camera">  녹화</i></button>  
-						 	 <span class="pull-right" >27 C</span>
-						 </div> 
+						<div class="weather-wrapper">
+						    <div class="weather-card madrid">
+						        <div class="weather-icon sun"></div>
+						       	<p>온도</p>
+						        <h1>14</h1>
+						        
+						    </div>
+						    <div class="weather-card london">
+						        <div class="weather-icon cloud"></div>
+						      	 <p>습도</p>
+						        <h1>14</h1>
+						       
+						    </div>
+						</div>
 						
-						  <button class='button red-dark button-3d rounded icon-left' data-id="${raspberrypiVo.device_num }"><i class="fa fa-video-camera"> Recoding</i></button> --%>
-						 
 						 <div>
 				            <video id="videoPlayer" width="720" height="360" controls="controls"></video>
 				       	 </div>
-					
-						<div class="streaming_control">
-							<button class='button black-light button-3d rounded icon-left' id='left'><i class="material-icons">Left</i></button>
-				    		<button class='button black-light button-3d rounded icon-left' id='center'><i class="material-icons">Center</i></button>
-				    		<button class='button black-light button-3d rounded icon-left' id='right'><i class="material-icons">Right</i></button>
+						
+						<div class="recording_btn center-block">
+							<button class="toggle toggle--off"></button>
+							<!-- <span class="re"><i class="fa fa-exclamation-circle"></i></span> -->
+						
+						<div id="chronoExample">
+						    <div class="values">00:00:00</div>
+						</div>
+							
+				
+							
+						</div>
+						
+						<div class="clearfix"></div>
+						
+						<div class="streaming_control center-block">
+							<div class="row">
+								<a class="button effect icon-right center-block text-center col-md-3 col-sm-3 col-xs-6" id='left' href="javascript:;" ><span><i class="fa fa-backward"></i>◀  Left</span></a>
+					    		<a class="button effect fill center-block col-md-3 col-sm-3 col-xs-12" style="margin-right:0;" id='center' href="javascript:;"><span>Center</span></a>
+					    		<a class='button effect icon-left center-block text-center col-md-3 col-sm-3 col-xs-6' id='right' href="javascript:;"><span><i class="fa fa-forward"></i>Right ▶</span></a>
+							</div>
 						</div>
 						
 				</div>
@@ -212,6 +242,7 @@ h1 {
 	</div>
 	<!-- END: WRAPPER -->
 	
+	
 	<!-- Theme Base, Components and Settings -->
 	<script
 		src="${pageContext.request.contextPath}/assets/template/js/theme-functions.js"></script>
@@ -219,8 +250,15 @@ h1 {
 	<!-- Custom js file -->
 	<script
 		src="${pageContext.request.contextPath}/assets/template/js/custom.js"></script>
+		
+	<!-- Custom js file -->
+	<script
+		src="${pageContext.request.contextPath}/assets/js/timer.min.js"></script>
 
-
+	<script>
+		
+	
+	</script>
 
 	<!-- user profile modal -->
 	<script>
@@ -251,23 +289,43 @@ h1 {
 	<!-- VIDEO Controller -->
 	<script>
 	$(function(){
+			
+		var timer = new Timer();
 		
 				$('.toggle').click(function(e) {
 					  var toggle = this;
 					  e.preventDefault();
 
  					  $(toggle).toggleClass('toggle--on').toggleClass('toggle--off').toggleClass('toggle--moving');
+ 					 
+ 					  
  					  
  					  var sw = $(toggle).attr('class');
  					  var temp = sw.split(' ');
+
+	 					timer.addEventListener('started', function (e) {
+		 					    $('#chronoExample .values').html(timer.getTimeValues().toString());
+		 				});
+	 					timer.addEventListener('secondsUpdated', function (e) {
+	 					    $('#chronoExample .values').html(timer.getTimeValues().toString());
+	 					});
+ 					 
+ 					 
  					 
   					  if(temp[1]=='toggle--on'){
+  						 timer.start();
  						  console.log("on")
+ 						  $(".values").append("<p> 녹화 중 </p>")
  					  }
  					  else if(temp[1]=='toggle--off'){
- 						  console.log("off")
+ 						 
+ 						 timer.stop();
+ 						 console.log("off")
+ 						$(".values").append("<p> 녹화됬엉 </p>")
  					  }
  					  
+	  					
+  					  
 					  setTimeout(function() {
 					    $(toggle).removeClass('toggle--moving');
 					  }, 200)
@@ -373,6 +431,8 @@ h1 {
             
 	})
     </script>
+    
+   
 
 
 </body>
