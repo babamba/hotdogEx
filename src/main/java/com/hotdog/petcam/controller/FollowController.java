@@ -22,13 +22,30 @@ import com.hotdog.petcam.vo.UserVo;
 public class FollowController {
    @Autowired private FollowService followService;
    
-   // 모달 띄울때 해당유저 정보 받아오기
+   // 블로그 메인 페이지 모달 띄울때 해당유저 정보 받아오기 ( 기본정보 출력 x )
    @Auth
    @ResponseBody
    @RequestMapping(value="/infomodal",method=RequestMethod.POST)
    public Object infoModal(@AuthUser UserVo authUser,@RequestParam(value="users_no")Integer users_no){
       
       Map<String,Object> resultMap = new HashMap<String,Object>();
+      resultMap.put("didFollow", followService.didFollow(authUser.getUsers_no(),users_no));
+      resultMap.put("countFollower", followService.countFollower(users_no));
+      resultMap.put("myProfile", followService.myProfile(authUser.getUsers_no(),users_no));
+      
+      return JSONResult.success(resultMap);
+   }
+   
+   // 유저 개인 프로필 모달 ( 기본 정보 포함 O )
+   @Auth
+   @ResponseBody
+   @RequestMapping(value="/profilemodal",method=RequestMethod.POST)
+   public Object profileModal(@AuthUser UserVo authUser,@RequestParam(value="users_no")Integer users_no){
+      
+	   System.out.println("프로필 찾는 유저번호 :"+ users_no);
+	   
+      Map<String,Object> resultMap = new HashMap<String,Object>();
+      resultMap.put("basicProfile", followService.basicProfile(users_no));
       resultMap.put("didFollow", followService.didFollow(authUser.getUsers_no(),users_no));
       resultMap.put("countFollower", followService.countFollower(users_no));
       resultMap.put("myProfile", followService.myProfile(authUser.getUsers_no(),users_no));

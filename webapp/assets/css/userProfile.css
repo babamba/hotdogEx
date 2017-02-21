@@ -69,7 +69,7 @@
   background-color: transparent;
   opacity: 0;
   visibility: hidden;
-  z-index: 40;
+  z-index: 0;
   -moz-transition: opacity 0.25s ease 0s, visibility 0.35s linear;
   -o-transition: opacity 0.25s ease 0s, visibility 0.35s linear;
   -webkit-transition: opacity 0.25s ease, visibility 0.35s linear;
@@ -97,7 +97,7 @@
   right: 0;
   bottom: 0;
   margin: auto;
-  z-index: 50;
+  z-index: 0;
   /*     display: table; */
   display: -webkit-flex;
   display: flex;
@@ -263,6 +263,10 @@
   font-size: 12px;
   opacity: .3;
 }
+
+
+
+
 
 @-webkit-keyframes modalComeIn {
   0% {

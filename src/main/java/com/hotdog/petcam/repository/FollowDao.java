@@ -52,6 +52,9 @@ public class FollowDao {
       
       return sqlSession.selectOne("follow.didFollow", map);
    }
+   public UserVo basicProfile(int users_no){
+	   return sqlSession.selectOne("follow.basicProfile", users_no);
+   }
    
    public int countFollower(int users_no){
       return sqlSession.selectOne("follow.countFollower", users_no);

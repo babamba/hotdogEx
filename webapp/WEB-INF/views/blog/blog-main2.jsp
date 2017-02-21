@@ -81,8 +81,6 @@
 	src="${pageContext.request.contextPath}/assets/template/vendor/plugins-compressed.js"></script>
 
 <!-- User Profile -->
-<script
-	src="${pageContext.request.contextPath}/assets/js/userProfile.js"></script>
 <link
 	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
 	rel="stylesheet">

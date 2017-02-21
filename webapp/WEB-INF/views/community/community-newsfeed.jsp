@@ -228,37 +228,7 @@
 								</div>
 							</div>
 							
-							<!-- user profile modal -->
-							<div class="container modal-body-container">
-								<div class="modal-frame">
-									<div class="modal">
-										<div class="modal-inset">
-			
-											<div class="icon-box effect medium closeProfile" id="infoModal-close" 
-												 style="float:right; padding:10px; margin:10px;">
-												<i class="fa fa-close"></i>
-											</div>
-											
-											
-												<div class="modal-body" style="clear:both; ">
-													<img src="${pageContext.request.contextPath}/hotdog/image/user/${map.userVo.users_image}">
-													<h3>${map.userVo.nickname}</h3>
-													<p>${map.userVo.infomation}</p>
-													<p>${map.userVo.email}</p>
-													<div id="emptyFollowerButton" ></div>
-													<div id="emptyButton" ></div>
-													<%--<ul><li><a href="${pageContext.request.contextPath }/blog/${map.userVo.nickname">블로그 가기</a></li></ul> --%>
-											</div>
-			
-											</div>
-										</div>
-									</div>
-								</div>
-								
-								<div class="modal-overlay">
-									
-								</div>
-							<!-- user profile modal -->
+						
 		
 							<div class="post-meta">
 								<div class="post-date">
@@ -277,6 +247,33 @@
 				</div>
 					<div id="addList"></div>
 			</div>
+				<!-- user profile modal -->
+							<div class="container modal-body-container">
+								<div class="modal-frame">
+									<div class="modal">
+										<div class="modal-inset">
+			
+											<div class="icon-box effect medium closeProfile" id="infoModal-close" 
+												 style="float:right; padding:10px; margin:10px;">
+												<i class="fa fa-close"></i>
+											</div>
+											
+											
+												<div class="modal-body" style="clear:both;">
+													<div id="emptyProfile" style="z-index:10000"></div>
+													<div id="emptyFollowerButton" ></div>
+													<div id="emptyButton" ></div>
+												</div>
+			
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="modal-overlay">
+									
+								</div>
+							<!-- user profile modal -->
 			
 			<!-- END: Blog post-->
 			<script>
@@ -484,7 +481,7 @@
 	<script
 		src="${pageContext.request.contextPath}/assets/template/js/custom.js"></script>
 		
-	
+
 
 </body>
 </html>

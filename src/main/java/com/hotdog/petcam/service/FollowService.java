@@ -1,8 +1,6 @@
 package com.hotdog.petcam.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +29,10 @@ public class FollowService {
    public List<UserVo> followList(int users_no){
       return followDao.followingList(users_no);
    }
-   
+   // 기본정보 가져오기
+   public UserVo basicProfile(int users_no){
+	   return followDao.basicProfile(users_no);
+   }
    // 본인이 해당유저를 팔로우 했나 안했나..authUser와 해당 유저의 번호를 가지고 판단
    public boolean didFollow(int authUser_no,int users_no){
       if( followDao.didFollow(authUser_no,users_no) == null){

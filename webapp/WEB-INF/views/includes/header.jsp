@@ -81,7 +81,7 @@
 										<div id="emptyFollowerButton" ></div>
 										<div id="emptyButton" ></div>
 										<%--<ul><li><a href="${pageContext.request.contextPath }/blog/${map.userVo.nickname">블로그 가기</a></li></ul> --%>
-								</div>
+									</div>
 
 								</div>
 							</div>
@@ -128,6 +128,7 @@
                   var users_no= ${map.userVo.users_no};
                   var follower;
                   var didfollow;
+                  var myProfile;
                   
                   $.ajax({
                      url:"${pageContext.request.contextPath}/follow/infomodal",
@@ -135,15 +136,20 @@
                      data:"users_no="+users_no,
                      dataType:"json",
                      success:function(response){
-                        createButton(response.data.didFollow);
+                        createButton(response.data.didFollow,response.data.myProfile);
                         createFollower(response.data.countFollower);
                      }
                   })
                })
                
                // 2-1.팔로우 유무를 판단하여 버튼을 생성한다.
-               var createButton = function(didFollow){
-                  var htmls;
+               var createButton = function(didFollow,myProfile){
+            	   
+            	   if( myProfile == true){
+            		   return;
+            	   }
+            	   
+            	   var htmls;
                   // 팔로우 안되어 있을 때 
                   if(didFollow == false){
                      htmls = "<button id='followButton' class='btn btn-white'>Follow</button>";
