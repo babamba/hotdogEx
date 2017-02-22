@@ -36,7 +36,13 @@ public class SecretLoginInterceptor extends HandlerInterceptorAdapter {
         UserVo userVo = new UserVo();
         
         userVo = userService.secretLogin(authUser);
-        // 비교
+        
+        if( userVo == null ) {
+            response.sendRedirect(
+                request.getContextPath() + "/user/secretloginfail" );
+            
+            return false;
+        }
         
         
         // 인증 처리

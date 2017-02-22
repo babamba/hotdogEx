@@ -59,7 +59,13 @@
 	<link href="${pageContext.request.contextPath}/assets/css/userProfile.css" rel="stylesheet">
 
 	<script src="${pageContext.request.contextPath}/assets/js/board_list.js"></script>
+	<!-- Alert -->
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/alertify/alertify.core.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/alertify/alertify.default.css">
+	
+	<script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
 </head>
+
 
 <body class="boxed background-white">
 	

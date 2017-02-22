@@ -77,6 +77,13 @@
 	src="${pageContext.request.contextPath}/assets/template/vendor/jquery/jquery-1.11.2.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/assets/template/vendor/plugins-compressed.js"></script>
+	
+<!-- alert -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/alertify/alertify.core.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/alertify/alertify.default.css">
+
+<script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
+
 
 
 </head>
@@ -142,6 +149,7 @@
 	<!-- Custom js file -->
 	<script src="${pageContext.request.contextPath}/assets/template/js/custom.js"></script>
 
+	
 	<script>
 		// 클릭시 비교
 		var secretNumber;
@@ -155,11 +163,11 @@
 				secretNumberCheck = $("#secretNumberCheck").val();
 				
 				if( secretNumber > 999999 ){
-					alert(" 1000 ~ 999999 까지의 숫자를 입력해주세요");
+					alertify.error(" Typing 1000 ~ 999999 Please");
 					return false;
 				}	
 				if( secretNumber < 1000){
-					alert(" 1000 ~ 999999 까지의 숫자를 입력해주세요");
+					alertify.error(" Typing 1000 ~ 999999 Please");
 					return false;
 				}
 			

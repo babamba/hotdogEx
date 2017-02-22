@@ -20,6 +20,11 @@
 <title>Hot dog</title>
 
 <head>
+<!-- alert -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/alertify/alertify.core.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/alertify/alertify.default.css">
+
+<script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
 
 <!-- Bootstrap Core CSS -->
 <link
@@ -239,7 +244,7 @@
 							
 							$(".post_imagebox").attr("value", saveFileName);
 							console.log("${pageContext.request.contextPath}");
-							alert("썸네일 이미지가 업로드 되었습니다.")
+							alertify.log("썸네일 이미지가 업로드 되었습니다.")
 						}
 				})
 			
@@ -283,7 +288,6 @@
 		
 		$("#posting").on('click', function(){
 			alertify.success("Success notification");
-			console.log("alert")
 		});
 		
 		/* $("input").click(function(){

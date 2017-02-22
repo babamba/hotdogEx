@@ -3,19 +3,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	
-	
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/img/favicon.png">
-	<title>HOTDOG | Security Page</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-	<!-- Bootstrap Core CSS -->
+
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/img/favicon.png">
+<title>HOTDOG | BIT2017</title>
+
+<!-- Bootstrap Core CSS -->
 <link
 	href="${pageContext.request.contextPath}/assets/template/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -76,17 +78,18 @@
 <script
 	src="${pageContext.request.contextPath}/assets/template/vendor/plugins-compressed.js"></script>
 	
-<!-- alert -->
+	<!-- alert -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/alertify/alertify.core.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/alertify/alertify.default.css">
 
 <script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
+	
 
 
 </head>
 
 <body class="wide">
-	
+
 
 	<!-- WRAPPER -->
 	<div class="wrapper">
@@ -96,66 +99,40 @@
 			<div id="header-wrap">
 				<div class="container">
 
-					<!--LOGO-->
-					<div id="logo">
-						<a href="${pageContext.request.contextPath }/" class="logo"
-							data-dark-logo="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png"> <img
-							src="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png" alt="Polo Logo">
-						</a>
-					</div>
-					<!--END: LOGO-->
-
-					<!--MOBILE MENU -->
-					<div class="nav-main-menu-responsive">
-						<button class="lines-button x">
-							<span class="lines"></span>
-						</button>
-					</div>
-					<!--END: MOBILE MENU -->
 				</div>
 			</div>
 		</header>
 		<!-- END: HEADER -->
 
-
 		<!-- SECTION -->
-		<section class="parallax fullscreen" style="background: 
+		<section class="parallax fullscreen"
+			style="background: 
 			linear-gradient(rgba(0, 0, 0, 0.65),rgba(0, 0, 0, 0.65)),url(${pageContext.request.contextPath}/assets/img/security.jpg); background-size:cover;">
-			<div class="background-overlay"></div>
 			<div class="container container-fullscreen">
-				<div class="text-middle text-light">
+				<div class="text-middle">
 					<div class="row">
-						<div class="col-md-4 col-md-offset-4 p-30">
-							<div class="col-md-12 text-center">
-								<h3>보안 페이지 - 2차 비밀번호 설정</h3>
-								<p>유저들의 안전한  HOTDOG 사용을 위한 2차 비밀번호 생성.</p>
+					
+					<form method="post" action="${pageContext.request.contextPath }/user/secretlogin">	
+						<div class="col-md-4 col-md-offset-4 p-30 background-white">
+							
+							<label class=col-md-12>2차비밀번호 확인</label>
+						
+							<div class="col-md-12 form-group">
+							
+								<label class="sr-only">Password</label> 
+								<input id="secretNumber" name="sec_pass_word" onkeydown='return onlyNumber(event)' type="password" value="" placeholder="Secret Number" class="form-control input-lg">
+
 							</div>
-							<form class="form-transparent-fields" method="post" action="${pageContext.request.contextPath }/user/account/secretmodify">
-							
-								<label class="col-md-12">2차비밀번호 설정( 1000 ~ 999999 )</label>
-								<div class="col-md-12 form-group">
-									<label class="sr-only">Password</label>
-									<input type="password" id="secretNumber" value="" onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' style='ime-mode:disabled;' placeholder="Secret password" name="sec_pass_word" class="form-control input-lg">
 
-								</div>
+							<div class="col-md-12 form-group">
 								
-								<label class="col-md-12">한번 더 비밀번호를 입력해주세요.</label>
-								<div class="col-md-12 form-group">
-									<label class="sr-only">Password</label>
-									<input id="secretNumberCheck" type="password" onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' style='ime-mode:disabled;' value="" placeholder="Please Enter once more" name="sec_pass_word" class="form-control input-lg">
-
-								</div>
-								<br>
-								<br>
-								<div class="col-md-12 form-group text-center">
-									<button class="btn btn-primary" type="submit" id="secretNumberSave">2차 비밀번호 저장</button>
-									<button type="button" class="btn btn-danger"><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}" style="color:white;">Cancel</a></button>
-								</div>
-							</form>
-
-							
-
+								<button type="submit" id="checkSecretbutton" class="btn btn-primary" type="button">인증 시도</button>
+								<button type="button" class="btn btn-danger"><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}" style="color:white;"></a>Cancel</button>
+							</div>
+						
 						</div>
+						</form>
+						
 					</div>
 				</div>
 			</div>
@@ -166,12 +143,18 @@
 	</div>
 	<!-- END: WRAPPER -->
 
-
 	<!-- Theme Base, Components and Settings -->
 	<script src="${pageContext.request.contextPath}/assets/template/js/theme-functions.js"></script>
 
 	<!-- Custom js file -->
 	<script src="${pageContext.request.contextPath}/assets/template/js/custom.js"></script>
+
+
+	<script>
+		$(document).ready(function(){
+			alertify.error(" Not Correct ");
+		})
+	</script>
 
 	<script>
 		// 클릭시 비교
@@ -180,7 +163,7 @@
 		
 		$(function(){
 			
-			$("#secretNumberSave").click(function(){
+			$("#checkSecretbutton").click(function(){
 				
 				secretNumber = $("#secretNumber").val();
 				secretNumberCheck = $("#secretNumberCheck").val();
@@ -193,11 +176,7 @@
 					alertify.error(" Typing 1000 ~ 999999 Please");
 					return false;
 				}
-				if(secretNumber != secretNumberCheck){
-					alertify.error("입력한  보안번호가 일치하지 않습니다");
-					return false;
-				}
-				return true;
+			
 			})
 		})		
 	
@@ -219,6 +198,8 @@
 				event.target.value = event.target.value.replace(/[^0-9]/g, "");
 		}
 	</script>
+
+
 
 
 </body>

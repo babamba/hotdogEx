@@ -84,8 +84,11 @@
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 
 <!-- ALERTIFY SCRIPT -->
-<script
-	src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/alertify/alertify.core.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/alertify/alertify.default.css">
+
+<script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
+
 
 <!--VENDOR SCRIPT-->
 <script
@@ -445,7 +448,7 @@
 			// blog , user 데이터 전달
 			$("#userProfileSave").click(function() {
 							if ($("#pass_word").val() != $("#pass_wordCheck").val()) {
-								alert("입력하신 비밀번호가 일치하지 않습니다.");
+								alertify.error("입력하신 비밀번호가 일치하지 않습니다.");
 								return false;
 							}
 
@@ -493,13 +496,13 @@
 							data : "",
 							success : function(response) {
 								if (response.data == "yes") {
-										alert("사용가능 합니다.");
+									alertify.success("사용가능 합니다.");
 										$("#userProfileSave").prop("disabled", false);
 									
 								}if (response.data == "no") {
-										alert("이미 사용중인 닉네임 입니다.");
+									alertify.error("이미 사용중인 닉네임 입니다.");
 								}if (response.result == "fail") {
-										alert("에러");
+									alertify.error("에러");
 									}
 								}
 							})
@@ -607,15 +610,15 @@
 				secretNumberCheck = $("#secretNumberCheck").val();
 
 				if (secretNumber > 999999) {
-					alert(" 1000 ~ 999999 까지의 숫자를 입력해주세요");
+					alertify.error(" 1000 ~ 999999 까지의 숫자를 입력해주세요");
 					return false;
 				}
 				if (secretNumber < 1000) {
-					alert(" 1000 ~ 999999 까지의 숫자를 입력해주세요");
+					alertify.error(" 1000 ~ 999999 까지의 숫자를 입력해주세요");
 					return false;
 				}
 				if (secretNumber != secretNumberCheck) {
-					alert("입력하신 두 보안번호가 일치하지 않습니다.");
+					alertify.error("입력하신 두 보안번호가 일치하지 않습니다.");
 					return false;
 				}
 				return true;

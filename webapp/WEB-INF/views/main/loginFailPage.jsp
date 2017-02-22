@@ -17,10 +17,14 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/loginPage.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mobileloginPage.css" media="max-width:767px">
 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/alertify/alertify.core.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/alertify/alertify.default.css">
+
 <script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
+
 <script>
 	$(document).ready(function(){
-		alert("로그인에 실패했습니다. 다시 한번 입력해주세요");
+		alertify.error("Log-in Fail");
 	})
 </script>
 </head>
@@ -168,7 +172,7 @@ $(function(){
 			console.log(nickname);
 			
 			if($("#inputnickname").val()==""){
-				alert("닉네임을 입력해주세요");
+				alertify.error("닉네임을 입력해주세요");
 				$("#inputnickname").focus();
 				return false;
 			}
@@ -188,11 +192,11 @@ $(function(){
 				
 				// 코드가 일치할 때
 				if(response.data=="yes"){
-					alert("사용가능한 닉네임입니다.");
+					alertify.success("사용가능한 닉네임입니다.");
 					
 				}
 					if(response.data=="no"){
-						alert("이미 사용중인 닉네임입니다.")
+						alertify.error("이미 사용중인 닉네임입니다.")
 					}
 				}
 			})
@@ -205,23 +209,23 @@ $(function(){
 			console.log(nickname);
 			
 			if($("#inputPassword").val()==""){
-				alert("패스워드를 입력해주세요");
+				alertify.error("패스워드를 입력하세요");
 				$("#inputPassword").focus();
 				return false;
 			}
 			
 			if($("#inputPassword2").val()==""){
-				alert("패스워드 체크를 입력해주세요");
+				alertify.error("패스워드를 입력하세요");
 				$("#inputPassword").focus();
 				return false;
 			}
 			
 			if($("#inputPassword").val()!=$("#inputPassword2").val()){
-				alert("입력한 비밀번호가 다릅니다.");
+				aalertify.error("입력한 비밀번호가 다릅니다.");
 				$("#inputPassword2").focus();
 				return false;
 			}else{
-				alert("비밀번호 체크완료")
+				alertify.success("비밀번호가 일치합니다.")
 				$("#SendCode").prop("disabled",false);
 			}
 		});
@@ -249,11 +253,11 @@ $(function(){
 			
 				// 코드가 일치할 때
 			if(response.data=="yes"){
-				alert("코드가 일치합니다.");
+				alertify.success("코드가 일치합니다.");
 				$("#SignUp").prop("disabled",false);
 			}
 				if(response.data=="no"){
-					alert("코드가 일치하지 않습니다.")
+					alertify.error("코드가 일치하지 않습니다.")
 				}
 			}
 		})
@@ -262,7 +266,7 @@ $(function(){
 		
 		
 	$(".SendCode").click(function(){
-		alert("코드를 이메일로 발송하였습니다.")
+		alertify.log("코드를 이메일로 발송하였습니다.")
 		
 		var formData = new FormData();
         email=$("#inputEmail").val();
@@ -275,22 +279,22 @@ $(function(){
     	
 		
 		if($("#inputEmail").val()==""){
-			alert("이메일을 입력해주세요");
+			alertify.error("이메일을 입력해주세요");
 			$("#inputEmail").focus();
 			return false;
 		}
 		if($("#inputPassword").val()==""){
-			alert("패스워드를 입력해주세요");
+			alertify.error("패스워드를 입력해주세요");
 			$("#inputPassword").focus();
 			return false;
 		}
 		if($("#inputPassword").val()!=$("#inputPassword2").val()){
-			alert("입력한 비밀번호가 다릅니다.");
+			alertify.error("입력한 비밀번호가 다릅니다.");
 			$("#inputPassword2").focus();
 			return false;
 		}
 		if($("#inputnickname").val()==""){
-			alert("닉네임을 입력해주세요");
+			alertify.error("닉네임을 입력해주세요");
 			$("#inputnickname").focus();
 			return false;
 		}

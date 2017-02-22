@@ -339,10 +339,8 @@ public class UserController {
 	public String secretControl(@AuthUser UserVo authUser) {
 		// 2차 비밀번호가 있나없나 체크한다.
 		if (userService.firstCheck(authUser)) {
-			System.out.println("최초 접속");
 			return "main/firstSecret";
 		} else {
-			System.out.println("설정되어 있음");
 			return "main/checkSecret";
 		}
 
@@ -358,6 +356,10 @@ public class UserController {
 			return JSONResult.success("exist");
 		}
 
+	}
+	@RequestMapping("/secretloginfail")
+	public String secretLoginFail(){
+		return "main/checkSecretFail";
 	}
 
 	@ResponseBody
@@ -407,11 +409,9 @@ public class UserController {
 			userService.appUserProfileModify(userVo);
 
 		} catch (Exception e) {
-			System.out.println("앱 개인정보 수정 실패 catch");
 			return JSONResult.error("fail");
 		}
 
-		System.out.println("앱 개인정보 수정 완료");
 		return JSONResult.success("success");
 	}
 
