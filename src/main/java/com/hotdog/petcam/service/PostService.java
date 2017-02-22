@@ -62,10 +62,21 @@ public class PostService {
 		return map;
 	}
 	
-	public boolean delete(PostVo postVo){
+/*	public boolean delete(PostVo postVo){
 		int result = postDao.delete(postVo);
 		return (result == 1);
+	}*/
+	
+	public void delete_post(int post_no){
+		postDao.delete_post(post_no);
+		return;
 	}
+	
+	// 메인화면 공개범위 1인 최신 글 4개 
+	public List<PostVo> getMainPostList(PostVo postVo){
+		return postDao.getMainList();
+	}
+	
 	
 	public List<PostVo> getMainPostList(String nickname){
 		Integer users_no = null;

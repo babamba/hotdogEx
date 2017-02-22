@@ -84,8 +84,7 @@
 <script
 	src="${pageContext.request.contextPath}/assets/js/userProfile.js"></script>
 <link
-	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
-	rel="stylesheet">
+	href="${pageContext.request.contextPath}/assets/css/userProfile.css" rel="stylesheet">
 	
 
 <!-- community -->
@@ -294,7 +293,7 @@ $(function(){
 					<!--LOGO-->
 					<div id="logo">
 						<a href="${pageContext.request.contextPath}" class="logo">
-							<img src="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png" alt="Hotdog">
+							<img src="${pageContext.request.contextPath}/assets/img/hotdog_logo_02.png" alt="Hotdog">
 						</a>
 					</div>
 					<!--END: LOGO-->

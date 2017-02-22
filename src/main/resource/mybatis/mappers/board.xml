@@ -23,6 +23,8 @@
 		]]>
 </select>
 
+
+
 <select id="getList" parameterType="map" resultType="boardvo">
 	<choose>
 		<when test="keyword != null and keyword !=''">

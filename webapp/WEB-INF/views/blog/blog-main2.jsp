@@ -84,6 +84,14 @@
 <link
 	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
 	rel="stylesheet">
+	
+	
+<!-- alertify -->
+<link href="${pageContext.request.contextPath}/assets/alertify/alertify.core.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/assets/alertify/alertify.default.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
+	
+	
 <body class="boxed background-white">
 	<div class="wrapper">
 
@@ -130,6 +138,7 @@
 	
 	
 	var nickname = "${map.userVo.nickname}"
+	var users_no = "${map.userVo.users_no}"
 	var image_path = "${pageContext.request.contextPath}/hotdog/image/user/"
 	var post = "${pageContext.request.contextPath }/post/" + nickname + "/postView?post_no="
 	
@@ -143,14 +152,18 @@
 	
 	var render = function(vo){
 			
-		var htmls =  "<li class='timeline_list'><div class='timeline-block'><div class='post-item'><div class='post-image'><a href='#'><img src='" + image_path + vo.post_image + "'></a></div>" +
+		var htmls =  "<li class='timeline_list' data-postno=" + vo.post_no + " data-usersno=" + vo.users_no + "><div class='timeline-block'><div class='post-item'><div class='post-image'><a href='#'><img src='" + image_path + vo.post_image + "'></a></div>" +
 					 "<div class='post-content-details'><div class='post-title'><h3>" + vo.title + "</h3></div>" +
 					 "<div class='post-info'><span class='post-autor'>Post by : " + nickname + "</span><span class='post-category'></span></div>" +
 					 "<div class='post-description'><div class='post-info'><a class='read-more' href='" + post + vo.post_no + "'>read more <i class='fa fa-long-arrow-right'></i></a></div></div>" +
 
 
 					 "<div class='post-meta'><div class='post-date'>" + vo.regdate + "</div>" +
-					 "<div class='post-comments'><a href='#'><i class='fa fa-comments-o'></i><span class='post-comments-number'>324</span></a></div></div></div></div></li>"
+					 "<div class='post-comments'><a href='#'><i class='fa fa-comments-o'></i><span class='post-comments-number'>324</span></a></div>" +
+					 "<div class='post-comments post_modify' data-postNo=" + vo.post_no + " data-usersNo='" + vo.users_no + "'><a href='javascript:;'><i class='fa fa-share-alt'></i><span class='post-comments-number'>수정</span></a></div>" +
+					 "<div class='post-comments post_delete' data-postNo=" + vo.post_no + " data-usersNo='" + vo.users_no + "'><a href='javascript:;'><i class='fa fa-share-alt'></i><span class='post-comments-number'>삭제</span></a></div>" +
+					 
+					 "</div></div></div></li>"
 			
 					  $(htmls).appendTo(".timeline-circles");
 		};
@@ -166,7 +179,7 @@
 		  }
 		
 		  $.ajax({
-			url: "${pageContext.request.contextPath }/blog/api/list?p=" + page + "&no=" + authUser,
+			url: "${pageContext.request.contextPath }/blog/api/list?p=" + page + "&no=" + users_no,
 			type: "get",
 			dataType: "json",
 			data:"",
@@ -180,8 +193,6 @@
 				
 			$(response.data).each(function(index, vo){
 				render(vo);
-				INSPIRO.masonryIsotope('reload');
-				
 				console.log("render")
 			});
 			
@@ -239,6 +250,83 @@
 	  });
 	
 	</script>
+	
+	<script>
+	
+	
+	$(document).on("click", ".post_delete", function(){
+	
+		post_no = $(this).data("postno");
+		var users_no = $(this).data("usersno");
+		
+		var ajax_delete = function(post_no){
+			
+			console.log(post_no)
+			
+			 $.ajax({
+					url: "${pageContext.request.contextPath }/post/api/delete?post_no=" + post_no,
+					type: "get",
+					dataType: "json",
+					data:"",
+					success: function(response){
+						history.go(0);
+						},
+						error: function(jqXHR, status, e){
+							console.error(status + ":" + e)
+						}
+					}); 
+		}
+		
+		
+		console.log(post_no);
+		console.log(users_no);
+		
+		if(users_no != authUser){
+			console.log(users_no + ":" +  authUser + "틀려")
+			alertify.error('유저가 일치하지 않습니다.');
+			return false;
+		}else{
+			alertify.confirm("글을 삭제하시겠습니까?",function(e){
+				console.log(post_no + "오케이 눌렀을때 전역변수")
+					if(e){
+						alertify.success("삭제완료", ajax_delete(window.post_no));
+					}else{
+						alertify.error(' 글 삭제가 취소되었습니다.');
+					}
+			});
+		}
+	})
+	
+	
+	
+	$(document).on("click", ".post_modify", function(){
+	
+		post_no = $(this).data("postno");
+		var users_no = $(this).data("usersno");
+		
+		console.log(post_no)
+		console.log(users_no)
+		
+		if(users_no != authUser){
+			console.log(users_no + ":" +  authUser + "틀려")
+			alertify.error('유저가 일치하지 않습니다.');
+			return false;
+			
+		}else{
+			console.log(users_no + ":" +  authUser + "일치")
+			
+			$.ajax({
+				url: "${pageContext.request.contextPath }/post/api/modify_view?post_no=" + post_no,
+				type: "post"
+			}); 
+		}
+	})
+	
+	
+	
+	
+	</script>
+	
 	
 	<!-- Theme Base, Components and Settings -->
 	<script

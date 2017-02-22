@@ -21,7 +21,7 @@ import com.hotdog.petcam.service.PostService;
 import com.hotdog.petcam.vo.PostVo;
 import com.hotdog.petcam.vo.UserVo;
 
-@Controller("/postAPIController")
+@Controller
 @RequestMapping("/post/api/")
 public class PostApiController {
 
@@ -49,7 +49,7 @@ public class PostApiController {
 	}
 	
 	
-	@Auth
+/*	@Auth
 	@ResponseBody
 	@RequestMapping("/{nickname}/delete")
 	public JSONResult delete(
@@ -60,15 +60,35 @@ public class PostApiController {
 		
 		
 		postVo.setUsers_no(authUser.getUsers_no());
-		
-		
-		
 		boolean result = postService.delete(postVo);
-		
-		
+
 		return JSONResult.success(result ? postVo.getUsers_no() : -1);
+	}*/
+	
+	@Auth
+	@ResponseBody
+	@RequestMapping("delete")
+	public String post_delete(
+			@RequestParam(value="post_no", required=true)Integer post_no){
+		
+		postService.delete_post(post_no);
+		System.out.println("삭제됨");
+		return "redirect:/";
+
 	}
 	
+	@Auth
+	@RequestMapping(value="/modify_view", method=RequestMethod.POST)
+	public String modify_form(
+			@RequestParam(value="post_no", required=true) Integer post_no, Model model){
+		Map<String, Object>map = postService.getPost(post_no);
+		model.addAttribute("post_map", map);
+		System.out.println("수정");
+		System.out.println(model);
+		
+		return "blog/modify-form";
+	}
+
 	@Auth
 	@ResponseBody
 	@RequestMapping(value ="/post_imageupload", method=RequestMethod.POST)

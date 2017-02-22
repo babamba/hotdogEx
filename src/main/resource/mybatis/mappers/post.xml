@@ -21,7 +21,7 @@
 	
 	<select id = "getListByPage" parameterType="map" resultType="postvo">
 		<![CDATA[
-		 select a.post_no, a.title, a.post_image, a.content, date_format(a.regdate, '%Y %m/%e %h:%i') as regdate , a.publish
+		 select b.users_no, a.post_no, a.title, a.post_image, a.content, date_format(a.regdate, '%Y %m/%e %h:%i') as regdate , a.publish
  		 from post a, users b where b.users_no = a.users_no and b.users_no = #{users_no} and a.users_no > 0
  		 order by a.post_no desc
  		 limit #{page }, 9;
@@ -30,7 +30,7 @@
 	
 	<select id = "getIndexByPostTop9" parameterType="int" resultType="postvo">
 		<![CDATA[
-		 select a.post_no ,a.title, date_format(a.regdate, '%Y %m/%e %h:%i') as regdate , a.publish, a.post_image
+		 select b.users_no, a.post_no ,a.title, date_format(a.regdate, '%Y %m/%e %h:%i') as regdate , a.publish, a.post_image
  		 from post a, users b where b.users_no = a.users_no and b.users_no = #{users_no} and a.users_no > 0
  		 order by a.post_no desc limit 0, 9;
 		]]>
@@ -45,11 +45,20 @@
 	</select>
 	
 	
-	<select id = "postdelete"  resultType="postvo">
+	<select id = "postdelete" parameterType="int" >
 		<![CDATA[
-		delete from post where users_no = #{users_no} and post_no= #{post_no}
+		delete from post where post_no= #{post_no}
 		]]>
 	</select>
+	
+	<select id="getMainPostList" resultType="postvo">
+		<![CDATA[
+		 select b.post_no, b.title, b.shared,  b.content, date_format(b.regdate, '%Y. %m.%e. %h:%i') as regdate, b.hits, b.users_no, u.nickname
+		 from post b, users u 
+		 where b.users_no = u.users_no and b.shared = 1 order by regdate desc limit 4;
+		]]>
+	</select>
+	
 	
 	<update id="post_image_insert" parameterType="postvo">
 		update post set post_image = #{post_image} where post_no = #{post_no]};

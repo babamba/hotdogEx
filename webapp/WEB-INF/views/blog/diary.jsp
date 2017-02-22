@@ -140,6 +140,7 @@
 	
 	var isEnd = false;
 	var authUser = ${authUser.users_no};
+	var users_no = "${map.userVo.users_no}"
 	var page = 0;	// 게시글의 0번째 인덱스 
 	var pluspage = 10;	// 게시글이 15개씩 fetchList로 로딩 되니까 fetchList가 요청될 시 15만큼 더해서 db인덱스값을 더해서 요청한다.
 	
@@ -169,7 +170,7 @@
 		  }
 		
 		  $.ajax({
-			url: "${pageContext.request.contextPath }/post/api/list?p=" + page + "&no=" + authUser,
+			url: "${pageContext.request.contextPath }/post/api/list?p=" + page + "&no=" + users_no,
 			type: "get",
 			dataType: "json",
 			data:"",

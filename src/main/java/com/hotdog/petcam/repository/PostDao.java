@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.hotdog.petcam.vo.PetVo;
 import com.hotdog.petcam.vo.PostChatVo;
 import com.hotdog.petcam.vo.PostCommentsVo;
 import com.hotdog.petcam.vo.PostVo;
@@ -35,9 +36,15 @@ public class PostDao {
 	}
 	
 	// 포스팅 삭제
-	public int delete(PostVo postVo){
+	/*public int delete(PostVo postVo){
 		return sqlSession.delete("post.postdelete", postVo);
+	}*/
+	
+	//웹브라우저에서 세션 유저번호와 글에 저장되있는 유저번호가 같을때 넘어온 포스팅 넘버를 가지고 포스팅 삭제
+	public void delete_post(int post_no){
+		sqlSession.delete("post.postdelete", post_no);
 	}
+	
 	
 /*	public List<PostVo> getPageList(int page){
 		List<PostVo> list = sqlSession.selectList("post.getListByPage");
@@ -53,6 +60,12 @@ public class PostDao {
 	public List<PostVo> getIndexByPostTop9(int users_no){
 		List<PostVo> list = sqlSession.selectList("post.getIndexByPostTop9",users_no);
 		
+		return list;
+	}
+	
+	// 메인화면 공개범위 1인 최신 글 4개 
+	public List<PostVo> getMainList(){
+		List<PostVo> list = sqlSession.selectList("post.getMainPostList");
 		return list;
 	}
 	

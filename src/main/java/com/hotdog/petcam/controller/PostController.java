@@ -46,7 +46,6 @@ public class PostController {
 		@Autowired
 		private ImageService ImageService;
 		
-		@Auth
 		@RequestMapping("/{nickname}/postlist")
 		public String diary(@PathVariable String nickname, Model model){
 			
@@ -117,7 +116,7 @@ public class PostController {
 			System.out.println("@@@@@@@@@@@@맵@@@@@@@@@@@@@@" + map);
 			
 			Map<String, Object> map2 = blogService.index(nickname);
-			model.addAttribute("map", map2);
+			model.addAttribute("map2", map2);
 			System.out.println("@@@@@@맵222222@@@  " + map2);
 			
 			model.addAttribute("map", map);

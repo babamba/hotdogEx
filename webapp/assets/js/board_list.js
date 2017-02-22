@@ -1,10 +1,13 @@
-	var post_path = "community/viewpost?no="
+	var nickname = "${map.userVo.nickname}"
+
+	var board_path = "community/viewpost?no="
+	var post_path = ""
 	var pet_image_path = "hotdog/image/user/";
 	
 		var render1 = function(vo){
 				
 			var htmls =  "<div class='post-thumbnail-entry'><div class='post-thumbnail-content'>" +
-						 "<h4><a href='" + post_path + vo.board_no + "'>" + vo.title + "</a></h4>" +
+						 "<h4><a href='" + board_path + vo.board_no + "'>" + vo.title + "</a></h4>" +
 						 "<span class='post-date'><i class='fa fa-clock-o'></i>" + vo.regdate + "</span>" +
 						 "<span class='post-category'><i class='fa fa-eye'></i> 조회수 : " + vo.hits + "</span></div></div>"
 						
@@ -16,7 +19,7 @@
 		var render2 = function(vo){
 				
 				var htmls =  "<div class='post-thumbnail-entry'><div class='post-thumbnail-content'>" +
-							 "<h4><a href='" + post_path + vo.board_no + "'>" + vo.title + "</a></h4>" +
+							 "<h4><a href='" + board_path + vo.board_no + "'>" + vo.title + "</a></h4>" +
 							 "<span class='post-date'><i class='fa fa-clock-o'></i>" + vo.regdate + "</span>" +
 							 "<span class='post-category'><i class='fa fa-eye'></i> 조회수 : " + vo.hits + "</span></div></div>"
 							
@@ -28,7 +31,7 @@
 		var render3 = function(vo){
 					
 					var htmls =  "<div class='post-thumbnail-entry'><div class='post-thumbnail-content'>" +
-								 "<h4><a href='" + post_path + vo.board_no + "'>" + vo.title + "</a></h4>" +
+								 "<h4><a href='community/diaryboard '>" + vo.title + "</a></h4>" +
 								 "<span class='post-date'><i class='fa fa-clock-o'></i>" + vo.regdate + "</span>" +
 								 "<span class='post-category'><i class='fa fa-eye'></i> 조회수 : " + vo.hits + "</span></div></div>"
 								
@@ -129,7 +132,7 @@ $(function(){
 			console.log("fetchList3")
 		
 			  $.ajax({
-				url: "main/api/board_list?category_no=" + 3,
+				url: "main/api/post_list",
 				type: "get",
 				dataType: "json",
 				data:"",
