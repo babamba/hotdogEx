@@ -66,6 +66,40 @@
 	<script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
 </head>
 
+<script type="text/javascript">
+/* $(function(){
+	var pi = '${piVo.device_num}';
+	var user = '${authUser.users_no}';
+
+ 	if(user != 0){
+ 	        $.ajax({
+	            url:"http://150.95.141.66/test/cgi-bin/send.py",
+	            type:"post",
+	            data: { msg:"stream", ip: pi },
+	            success: function(){
+	                console.log("Streaming Start");
+	            },
+	            error : function(jqXHR, status, e) {
+	            console.log(status + ":" + e);
+	            }            
+	        });
+	}
+ 	else{
+	        $.ajax({
+	            url:"http://150.95.141.66/test/cgi-bin/send.py",
+	            type:"post",
+	            data: { msg:"streamstop", ip: pi },
+	            success: function(){
+	                console.log("Streaming Stop");
+	            },
+	            error : function(jqXHR, status, e) {
+	            console.log(status + ":" + e);
+	            }            
+	        });
+ 	}
+})
+ */</script>
+
 
 <body class="boxed background-white">
 	

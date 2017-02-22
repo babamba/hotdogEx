@@ -117,10 +117,12 @@
 						
 							<!-- SLIDE  -->
 							<c:forEach items="${list }"	var="vo" varStatus="status">
-							<li data-title="${vo.regdate }<br>${vo.regtime}">
-							<video width="100%" height="100%"  controls="controls">
-							    <source src="http://150.95.141.66/hotdog/hotdog/image/user/5/${vo.save_name }" type="video/mp4" />
+							
+							<li style="font-size:60px;" data-title="${vo.regdate }<br>${vo.regtime}">
+								<video width="100%" height="100%"  controls="controls">
+							    <source src="http://150.95.141.66/hotdog/hotdog/image/user/${vo.users_no }/${vo.save_name }" type="video/mp4" />
 							</video>
+							
 							</li>
 							</c:forEach>
 							

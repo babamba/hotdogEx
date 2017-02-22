@@ -60,8 +60,8 @@
 
 <select id="viewPost" parameterType="int" resultType="boardvo">
 <![CDATA[
-	select b.board_no, b.category_no, b.title, b.content, b.regdate, b.hits ,u.nickname, (select count(*) from board_comments bc
-																					   where b.board_no = bc.board_no) as count
+	select b.board_no, b.category_no, b.title, b.content, b.regdate, b.hits , b.users_no, u.nickname, (select count(*) from board_comments bc
+																					 				  where b.board_no = bc.board_no) as count
 	from board b, users u where b.board_no = #{board_no} and b.users_no = u.users_no
 ]]>
 </select>

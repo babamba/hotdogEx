@@ -19,8 +19,6 @@ public class BoardDao {
     @Autowired private SqlSession sqlSession;
     
     public List<BoardVo> getMainList(int category_no){
-		Map<String, Object> map = new HashMap<String, Object>();
-
 		List<BoardVo> list = sqlSession.selectList("board.getMain_BoardList", category_no);
 		return list;
 	}
@@ -62,6 +60,11 @@ public class BoardDao {
     	sqlSession.update("board.increaseHits", board_no);
     }
     
+    // 삭제
+    public void deletePost(int board_no){
+    	sqlSession.update("board.deletePost", board_no);
+    }
+    
     
     ////////////////////////////////////////////////////////////////////Reply    
     // 선택된 게시글에 달린 댓글 리스트 가져오기 
@@ -95,7 +98,7 @@ public class BoardDao {
     // 해당 게시글에 댓글 작성하기
     public int writeReplyChat(BoardChatVo boardChatVo){
     	sqlSession.insert("board.writeReplyChat", boardChatVo);
-    	return boardChatVo.getComments_no();
+    	return boardChatVo.getBoard_chat_no();
     }
     
     // 작성한 댓글 바로 가져오기

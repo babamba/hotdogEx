@@ -51,9 +51,7 @@ public class BoardReplyApiController {
 	@ResponseBody
 	@RequestMapping("/writereplychat")
 	public JSONResult writeReplyChat(BoardChatVo boardChatVo){
-		
 		BoardChatVo vo = boardService.writeReplyChat(boardChatVo);
-		
 		return JSONResult.success(vo);
 	}
 	

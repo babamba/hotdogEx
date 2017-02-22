@@ -13,10 +13,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.hotdog.petcam.repository.BlogDao;
 import com.hotdog.petcam.repository.ImageDao;
-import com.hotdog.petcam.repository.PostDao;
+import com.hotdog.petcam.repository.RaspberrypiDao;
 import com.hotdog.petcam.repository.UserDao;
 import com.hotdog.petcam.vo.BlogVo;
 import com.hotdog.petcam.vo.ImageVo;
+import com.hotdog.petcam.vo.RaspberrypiVo;
 import com.hotdog.petcam.vo.UserVo;
 import com.hotdog.petcam.vo.VideoVo;
 
@@ -32,16 +33,12 @@ public class BlogService {
 	
 	@Autowired
 	private UserDao userDao;
-	
-	@Autowired
-	private UserService userService;
-	
-	@Autowired
-	private PostDao postDao;
-	
+		
 	@Autowired
 	private ImageDao imageDao;
 	
+	@Autowired
+	private RaspberrypiDao raspberrypiDao;
 	
 	public ImageVo selectByNo(int no){
 		return imageDao.selectByNo(no);
@@ -78,34 +75,28 @@ public class BlogService {
 
 		
 		public Map<String, Object> index(String nickname){
-			Integer users_no = null;
+			RaspberrypiVo piVo = new RaspberrypiVo();
+			UserVo userVo = null;
+			BlogVo blogVo = null;
 			
-			System.out.println(nickname);
 			//이메일로 유저번호 찾기.  not null일때 세션에 유저번호 저장
-			UserVo authUser = userDao.nicknameExist(nickname); 
-			System.out.println("오스유저"+ authUser);
-			
+			int users_no = userDao.nicknameExist(nickname); 
 			
 			//낫널일 경우 유저번호 값이 담긴 UserVo에 유저넘버를 저장하고 usersNo객체로 한다.
-			if(authUser != null){
-				users_no = authUser.getUsers_no();
-				System.out.println(users_no);
+			if(users_no != 0){
+				userVo = userDao.getDataByNo(users_no);
+				blogVo = blogDao.get(users_no);
+				piVo.setUsers_no(users_no);
+				piVo = raspberrypiDao.selectByNo(piVo);
 			} 
-			
-			/*PostVo postVo = postDao.getIndexByPostTop6(users_no);*/
-			UserVo userVo = userDao.getDataByNo(users_no);
-			BlogVo blogVo = blogDao.get(users_no);
-			
-			System.out.println(userVo);
-			
+		
 			Map<String, Object> map = new HashMap<String, Object>();
 			
 			//postVo형태인 list객체에  위의 authUser(유저넘버)를 담음 usersNo를 이용해로 조회한 포스트 컬럼을 map객체에 넣어 저장하고 리턴
 
-			
 			map.put("userVo", userVo);
 			map.put("blogVo", blogVo);
-			/*map.put("postvo", postVo);*/
+			map.put("piVo", piVo);
 				
 			return map;	
 		}

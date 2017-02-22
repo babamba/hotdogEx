@@ -21,76 +21,6 @@
 
 <head>
 
-<style>
-
-.toggle {
-  position: relative;
-  display: block;
-  margin: 0 auto;
-  width: 150px;
-  height: 60px;
-  color: white;
-  outline: 0;
-  text-decoration: none;
-  border-radius: 100px;
-  border: 2px solid #bfbfbf;
-  background-color: #d9d9d9;
-  transition: all 500ms;
-}
-.toggle:active {
-  background-color: white;
-}
-.toggle:hover:not(.toggle--moving):after {
-  background-color: white;
-}
-.toggle:after {
-  display: block;
-  position: absolute;
-  top: 4px;
-  bottom: 4px;
-  left: 4px;
-  width: calc(50% - 4px);
-  line-height: 45px;
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 20px;
-  color: white;
-  background-color: #37474F;
-  border: 2px solid;
-  transition: all 500ms;
-}
-
-.toggle--on:after {
-  content: 'On';
-  border-radius: 50px 5px 5px 50px;
-  color: #66BB6A;
-}
-
-.toggle--off:after {
-  content: 'Off';
-  border-radius: 5px 50px 50px 5px;
-  transform: translate(100%, 0);
-  color: #f44336;
-}
-
-.toggle--moving {
-  background-color: white;
-}
-.toggle--moving:after {
-  color: transparent;
-  border-color: #435862;
-  background-color: #222c31;
-  transition: color 0s, transform 500ms, border-radius 500ms,           background-color 500ms;
-}
-
-h1 {
-  font-size: 64px;
-  margin-top: 0;
-  margin-bottom: 50px;
-}
-
-
-</style>
 <!-- Bootstrap Core CSS -->
 <link
 	href="${pageContext.request.contextPath}/assets/template/vendor/bootstrap/css/bootstrap.min.css"
@@ -167,7 +97,7 @@ h1 {
 	rel="stylesheet">
 	
 <link
-	href="${pageContext.request.contextPath}/assets/css/weather.css"
+	href="${pageContext.request.contextPath}/assets/css/streamingPage.css"
 	rel="stylesheet">
 	
 <body class="boxed background-white">
@@ -184,21 +114,18 @@ h1 {
 		<section class="content" style="padding-top:0px;">
 			<div class="container list_container">
 				<div class="streaming_browser text-center">
-				
-						
-						<br>
-						
+						<br>				
 						<div class="weather-wrapper">
 						    <div class="weather-card madrid">
 						        <div class="weather-icon sun"></div>
 						       	<p>온도</p>
-						        <h1>14</h1>
-						        
+						        <h1>${map.piVo.temperature }</h1>
+						  
 						    </div>
 						    <div class="weather-card london">
 						        <div class="weather-icon cloud"></div>
 						      	 <p>습도</p>
-						        <h1>14</h1>
+						        <h1>${map.piVo.humidity }</h1>
 						       
 						    </div>
 						</div>
@@ -207,19 +134,21 @@ h1 {
 				            <video id="videoPlayer" width="720" height="360" controls="controls"></video>
 				       	 </div>
 				       	 
+				       	 <i class="fa fa-video-camera"> Recoding</i>
 						<div class="record_box">
-						<div class="recording_btn center-block pull-left">
-							<button class="toggle toggle--off"></button>
-							<!-- <span class="re"><i class="fa fa-exclamation-circle"></i></span> -->
-						</div>
+							<div class="recording_btn center-block pull-left">
+								<button class="toggle toggle--off"></button>
+							</div>
 						
-						<div id="chronoExample pull-right">
+							<div id="chronoExample pull-right">
 							    <div class="values">
 							    	<p>00:00:00<p>
 							    </div>
 							</div>
 						</div>
-						<div class="clearfix"></div>
+						
+						<br><br>
+						<div class="hr-title hr-long center"><abbr>Remote Camera</abbr> </div>
 						
 						<div class="streaming_control center-block">
 							<div class="row">
@@ -263,6 +192,7 @@ h1 {
 	<!-- user profile modal -->
 	<script>
 	$(document).on('ready', function(){
+		
 	    $modal = $('.modal-frame');
 	    $overlay = $('.modal-overlay');
 
@@ -288,18 +218,24 @@ h1 {
 	
 	<!-- VIDEO Controller -->
 	<script>
+	
 	$(function(){
-			
+		var player = dashjs.MediaPlayer().create();	
+		var url = "http://150.95.141.66:1935/live/${authUser.nickname}/stream/manifest.mpd";
+		var deviceNum = "${map.piVo.device_num }";
+        var nickname = "${map.userVo.nickname}";
+        var userNo = ${map.userVo.users_no};
 		var timer = new Timer();
 		
+		player.initialize(document.querySelector("#videoPlayer"), url, true);
+				
+				// Video Recoding
 				$('.toggle').click(function(e) {
 					  var toggle = this;
 					  e.preventDefault();
 
  					  $(toggle).toggleClass('toggle--on').toggleClass('toggle--off').toggleClass('toggle--moving');
- 					 
- 					  
- 					  
+ 					  					  
  					  var sw = $(toggle).attr('class');
  					  var temp = sw.split(' ');
 
@@ -310,90 +246,50 @@ h1 {
 	 					    $('.record_box .values').html(timer.getTimeValues().toString());
 	 					});
  					 
- 					 
- 					 
   					  if(temp[1]=='toggle--on'){
   						 timer.start();
- 						  console.log("on")
- 						  /* $(".values").append("<p> 녹화 중 </p>") */
+  						 
+	  						$.ajax({
+	                         url:"http://150.95.141.66:8086/livestreamrecord?app=live/"+nickname+"&streamname=stream&action=startRecording&outputPath=/upload/"+userNo,
+	                         type:"get",
+	                         success: function(){
+	                             console.log("Recoding Start");
+	                         },
+	                         error : function(jqXHR, status, e) {
+	                         console.log(status + ":" + e);
+	                         }            
+	                    	 });
+	  						
  					  }
  					  else if(temp[1]=='toggle--off'){
- 						 
  						 timer.stop();
- 						 console.log("off")
- 						/* $(".values").append("<p> 녹화됬엉 </p>") */
+ 						 
+ 						 $.ajax({
+ 							 url:"http://150.95.141.66:8086/livestreamrecord?app=live/"+nickname+"&streamname=stream&action=stopRecording",
+ 							type:"get",
+ 							 success: function(){
+ 							 console.log("Recoding STOP");
+ 							 },
+ 							 error : function(jqXHR, status, e) {
+ 							 console.log(status + ":" + e);
+ 							 }          
+ 							 });
+ 						
  					  }
- 					  
-	  					
-  					  
+ 					
 					  setTimeout(function() {
 					    $(toggle).removeClass('toggle--moving');
 					  }, 200)
 					});
-
-            	
-                var url = "http://150.95.141.66:1935/live/${authUser.nickname}/stream/manifest.mpd";
                 
-                var interval = null;
-
-                var player = dashjs.MediaPlayer().create();
-                player.initialize(document.querySelector("#videoPlayer"), url, true);
-                
-                
-                $("#recoding").click(function(){
-                	
-    				var deviceNum = "${raspberrypiVo.device_num }";
-                    var nickname = "${map.userVo.nickname}";
-                    var userNo = ${map.userVo.users_no};
-
-                    $(this).attr('class', 'button red-dark button-3d rounded icon-left');
-                    $(this).attr('id', 'stop');
-                    $(this).html('STOP');
-					
-                    interval = setInterval(function(){
-                    				$(".re").toggle();
-                    				}, 500);
-                    
-                    $("#stop").click(function(){
-                        $(this).attr('class', 'button grey-dark button-3d rounded icon-left');
-                        $(this).attr('id', 'recoding');
-                        $(this).html('녹 화');
-                        clearInterval(interval);
-
-                    })
-                    });
-                
-/*     				$.ajax({
-                        url:"http://150.95.141.66:8086/livestreamrecord?app=live/" + nickname + "&streamname=stream&action=startRecording&outputPath=/upload/" + userNo,
-                        type:"get",
-                        success: function(){
-                            console.log("success");
-                        },
-                        error : function(jqXHR, status, e) {
-                        console.log(status + ":" + e);
-                        }            
-                    });
- */
- 
- /*     				$.ajax({
-							 url:"http://150.95.141.66:8086/livestreamrecord?app=live/" +nickname+ "&streamname=stream&action=stopRecording",
-							 type:"get",
-							 success: function(){
-							     console.log("success");
-							 },
-							 error : function(jqXHR, status, e) {
-							 console.log(status + ":" + e);
-							 }            
-						});
-*/
-       
+                // Motor Controll
                 $("#left").click(function(){
                     $.ajax({
                         url:"http://150.95.141.66/test/cgi-bin/send.py",
                         type:"post",
-                        data: { msg:"left", ip:ip1 },
+                        data: { msg:"left", ip: deviceNum },
                         success: function(){
-                            console.log("success");
+                            console.log("left");
                         },
                         error : function(jqXHR, status, e) {
                         console.log(status + ":" + e);
@@ -405,9 +301,9 @@ h1 {
                     $.ajax({
                         url:"http://150.95.141.66/test/cgi-bin/send.py",
                         type:"post",
-                        data: { msg:"center", ip:ip1 },
+                        data: { msg:"center", ip: deviceNum },
                         success: function(){
-                            console.log("success");
+                            console.log("center");
                         },
                         error : function(jqXHR, status, e) {
                         console.log(status + ":" + e);
@@ -419,9 +315,9 @@ h1 {
                     $.ajax({
                         url:"http://150.95.141.66/test/cgi-bin/send.py",
                         type:"post",
-                        data: { msg:"right", ip:ip1 },
+                        data: { msg:"right", ip: deviceNum },
                         success: function(){
-                            console.log("success");
+                            console.log("right");
                         },
                         error : function(jqXHR, status, e) {
                         console.log(status + ":" + e);
@@ -430,7 +326,7 @@ h1 {
                 });
             
 	})
-    </script>
+</script>
     
    
 

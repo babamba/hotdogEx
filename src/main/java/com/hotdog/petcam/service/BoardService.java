@@ -141,6 +141,10 @@ public class BoardService {
     public void updateHits(int board_no){
     	boardDao.increaseHits(board_no);
     }
+    
+    public void deletePost(int board_no){
+    	boardDao.deletePost(board_no);
+    }
         
     
     ////////////////////////////////////////////////////////////////////Reply    

@@ -73,9 +73,9 @@
 		]]>
 	</select>
 
-	<select id="nicknameExist" parameterType="string" resultType="uservo">
+	<select id="nicknameExist" parameterType="string" resultType="int">
 		<![CDATA[
-		select users_no 
+		select users_no
 			from users 
 		where nickname = #{nickname};
 		]]>

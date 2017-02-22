@@ -5,15 +5,19 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hotdog.petcam.mail.SendMail;
 import com.hotdog.petcam.repository.BlogDao;
+import com.hotdog.petcam.repository.RaspberrypiDao;
 import com.hotdog.petcam.repository.UserDao;
 import com.hotdog.petcam.vo.BlogVo;
 import com.hotdog.petcam.vo.PetVo;
+import com.hotdog.petcam.vo.RaspberrypiVo;
 import com.hotdog.petcam.vo.UserVo;
 
 @Service
@@ -24,6 +28,10 @@ public class UserService {
 
 	@Autowired
 	private BlogDao blogDao;
+	
+	@Autowired
+	private RaspberrypiDao raspberrypiDao;
+
 
 	public int join(UserVo userVo) {
 
@@ -118,7 +126,7 @@ public class UserService {
 
 	// 브라우저에서 닉네임 체크 null이면 true not null이면 false
 	public boolean nicknameCheck(String nickname) {
-		if (userDao.nicknameExist(nickname) == null) {
+		if (userDao.nicknameExist(nickname) == 0) {
 			return true;
 		}
 		return false;
@@ -132,7 +140,6 @@ public class UserService {
 	// authUser에 넣어 리턴
 	public UserVo login(String email, String pass_word, String nickname) {
 		UserVo authUser = userDao.selectForLogin(email, pass_word, nickname);
-		System.out.println("loginService");
 		return authUser;
 	}
 

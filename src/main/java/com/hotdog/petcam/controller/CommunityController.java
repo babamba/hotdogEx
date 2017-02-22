@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hotdog.petcam.security.Auth;
@@ -64,6 +65,14 @@ public class CommunityController {
 		model.addAttribute("authUserNo", userNo);
 		
 		return "community/community-viewpost";
+	}
+	
+	@RequestMapping( value="/deletepost", method=RequestMethod.POST)
+	public String deletePost(@RequestParam( value="no", required=true) Integer board_no){
+		
+		boardService.deletePost(board_no);
+		
+		return "redirect:/community/freeboard";
 	}
 	
 	//자유게시판  입력폼 
