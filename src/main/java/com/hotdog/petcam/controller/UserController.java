@@ -44,9 +44,14 @@ public class UserController {
 
 	@RequestMapping("/login")
 	public String login(@ModelAttribute UserVo vo, Model model, HttpServletRequest request, HttpSession session) {
+		
 		return "redirect:/";
 	}
-
+	@RequestMapping("/loginfail")
+	public String loginFail(){
+		return "main/loginFailPage";
+	}
+	
 	@ResponseBody
 	@RequestMapping("/app/emailcheck")
 	public Object appEmailCheck(@RequestParam(value = "email") String email) {

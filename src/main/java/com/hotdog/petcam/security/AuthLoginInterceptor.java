@@ -36,9 +36,8 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
         UserVo userVo = userService.login(email, password, nickname);
         // 이메일과 패쓰워드가 일치하지 않는 경우
         if( userVo == null ) {
-            System.out.println(userVo);
             response.sendRedirect(
-                request.getContextPath() + "/user/loginform?result=fail" );
+                request.getContextPath() + "/user/loginfail" );
             
             return false;
         }
@@ -47,7 +46,6 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
         HttpSession session = request.getSession( true );
         session.setAttribute( "authUser", userVo );
         String callBack = (String)session.getAttribute("authcallback");
-        System.out.println(callBack);
         
         response.sendRedirect(request.getContextPath());     // request.getContextPath 에 추가하면 도메인이 일부 중복된다.
         return false;
