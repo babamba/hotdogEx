@@ -17,6 +17,7 @@
 		<typeAlias alias="categoryvo" type="com.hotdog.petcam.vo.CategoryVo" />
 		<typeAlias alias="searchblogvo" type="com.hotdog.petcam.vo.SearchBlogVo" />
 		<typeAlias alias="videovo" type="com.hotdog.petcam.vo.VideoVo" />
+		<typeAlias alias="cookievo" type="com.hotdog.petcam.vo.CookieVo" />
 	</typeAliases>
 
 	<mappers>
@@ -32,5 +33,6 @@
 		<mapper resource="mybatis/mappers/raspberrypi.xml" />
 		<mapper resource="mybatis/mappers/category.xml" />
 		<mapper resource="mybatis/mappers/search.xml"/>
+		<mapper resource="mybatis/mappers/cookie.xml"/>
 	</mappers>
 </configuration>

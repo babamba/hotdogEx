@@ -38,7 +38,7 @@
 						<label for="email">Your email</label> 
 						
 						<input type="password" name="pass_word" id="password" class="inpt" required="required"placeholder="Your password"> 
-						<label for="password">Your password</label> <input type="checkbox" id="remember" class="checkbox" checked> 
+						<label for="password">Your password</label> <input type="checkbox" id="remember" class="checkbox" name="remember" value="remember"> 
 							
 						<label for="remember">Remember me</label>
 						

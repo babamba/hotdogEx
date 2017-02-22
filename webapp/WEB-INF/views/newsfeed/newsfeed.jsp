@@ -89,7 +89,7 @@
 
 					<!--TOP SEARCH -->
 					<div id="top-search"> <a id="top-search-trigger"><i class="fa fa-search"></i><i class="fa fa-close"></i></a>
-						<form action="${pageContext.request.contextPath}/search }" method="get">
+						<form action="${pageContext.request.contextPath}/search" method="get">
 							<input type="text" name="keyword" class="form-control" value="" placeholder="Start typing & press  &quot;Enter&quot;">
 						</form>
 						
@@ -385,7 +385,9 @@
 			<div class="sidebar sidebar-modern col-md-3">
 
 				<!--widget search-->
+			
 				<div class="widget clearfix widget-search">
+								<h4 class="widget-title">Search</h4>
                             <form action="${pageContext.request.contextPath }/community/newsfeed/search" method="get" class="form-inline">
                                 <div class="input-group">
                                     <input type="text" name="search" placeholder="누구의 글을 찾나요?" class="form-control">

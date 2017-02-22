@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.hotdog.petcam.cookie.CookieBox;
 import com.hotdog.petcam.service.RaspberrypiService;
 import com.hotdog.petcam.service.UserService;
 import com.hotdog.petcam.vo.RaspberrypiVo;
@@ -26,6 +27,7 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
         String email = request.getParameter( "email" );
         String password = request.getParameter( "pass_word" );
         String nickname = request.getParameter("nickname");
+        String remember = (String)request.getParameter("remember");
         
         // Web Application Context 받아오기
         ApplicationContext ac =
@@ -41,9 +43,18 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
         // 이메일과 패쓰워드가 일치하지 않는 경우
         if( userVo == null ) {
             response.sendRedirect(
-                request.getContextPath() + "/user/loginform?result=fail" );
+                request.getContextPath() + "/user/loginfail" );
             
             return false;
+        }
+        // Remember Me Cookie 발급
+        if ( remember != null){
+        	
+        	CookieBox cookieBox = ac.getBean(CookieBox.class);
+        	userService.setCookie(userVo.getEmail());
+        	
+        	cookieBox.createCookie(userVo.getEmail(),String.valueOf(userVo.getEmail().hashCode()) );
+        	
         }
         
         // Pi 정보 받아오기  
@@ -58,7 +69,6 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
         session.setAttribute( "piVo", piVo );
 
         String callBack = (String)session.getAttribute("authcallback");
-        System.out.println(callBack);
         
         response.sendRedirect(request.getContextPath());     // request.getContextPath 에 추가하면 도메인이 일부 중복된다.
         return false;

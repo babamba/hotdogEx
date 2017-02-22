@@ -21,7 +21,7 @@
 
 	<!-- scanning -->
 	<context:component-scan
-		base-package="com.hotdog.petcam.repository, com.hotdog.petcam.service">
+		base-package="com.hotdog.petcam.repository, com.hotdog.petcam.service, com.hotdog.petcam.cookie">
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Repository" />
 		<context:include-filter type="annotation"

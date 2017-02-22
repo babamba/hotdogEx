@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cookie">
+
+<!--  1. 쿠키 생성 -->
+<insert id="setCookie" parameterType="map">
+	<![CDATA[
+		insert into Cookie(email, hashcode) values
+			(#{email},#{hashcode});
+	]]>
+</insert>
+
+<!--  2. 쿠키 삭제 -->
+<delete id="deleteCookie" parameterType="map">
+	<![CDATA[
+		delete 
+			from Cookie
+			where email = #{email} and hashcode = #{hashcode};
+	]]>
+</delete>
+
+</mapper>

@@ -18,6 +18,14 @@ public class UserDao {
 	@Autowired
 	private SqlSession sqlSession;
 
+	public void setCookie(String email,String hashcode){
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("email",email);
+		map.put("hashcode", hashcode);
+		
+		sqlSession.delete("cookie.deleteCookie",map);
+		sqlSession.insert("cookie.setCookie",map);
+	}
 	public int insert(UserVo userVo) {
 		sqlSession.insert("user.insert", userVo);
 		return userVo.getUsers_no();

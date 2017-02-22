@@ -56,6 +56,9 @@ public class UserService {
 		pet.setUsers_no(userVo.getUsers_no());
 		userDao.insertPet(pet);
 	}
+	public void setCookie(String email){
+		userDao.setCookie(email , String.valueOf(email.hashCode()));
+	}
 
 	public void createFolder(int no) {
 		try {
