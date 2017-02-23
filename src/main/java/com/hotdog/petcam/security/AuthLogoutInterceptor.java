@@ -4,7 +4,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import com.hotdog.petcam.service.UserService;
+import com.hotdog.petcam.vo.UserVo;
 
 public class AuthLogoutInterceptor extends HandlerInterceptorAdapter {
 
@@ -12,14 +17,20 @@ public class AuthLogoutInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
+		 ApplicationContext ac =
+		            WebApplicationContextUtils.getWebApplicationContext( request.getServletContext() );
+		        
+		        UserService userService = ac.getBean( UserService.class );
+		
 		HttpSession session = request.getSession();
 		if( session != null ) {
-			System.out.println("로그아웃 시도");
+			// 로그아웃시 DB에 있는 쿠키도 삭제해주기 위해..
+			UserVo authUser = (UserVo)session.getAttribute("authUser");
+			userService.deleteCookie("hotdog",authUser.getEmail());
+			
 			session.removeAttribute( "authUser" );
 			session.removeAttribute("secretUser");
-			System.out.println("세션 소멸");
 			session.invalidate();
-			System.out.println("세션 invalidate");
 		}
 		
 		response.sendRedirect( request.getContextPath() );

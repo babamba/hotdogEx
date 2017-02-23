@@ -15,17 +15,24 @@ import org.springframework.stereotype.Component;
 public class CookieBox {
 
 	private Map cookieMap = new HashMap();
-	
+	Cookie[]  cookies;
 	public CookieBox(){
 		
 	}
 	// 요청에서 쿠키를 받아오는 생성자
 	public CookieBox(HttpServletRequest request){ 
-		Cookie[] cookies = request.getCookies();
+		cookies = request.getCookies();
+	
 	}
 	
 	public Cookie createCookie(String name, String value) throws IOException {
-        return new Cookie(name, URLEncoder.encode(value, "utf-8"));
+		Cookie cookie =new Cookie(name, URLEncoder.encode(value, "utf-8"));
+		// hotdog 라는 이름의 쿠키를 생성할 예정, Value 에  email이 들어올 예정
+		cookie.setMaxAge(60*60*24*30); // 쿠키 유효기간 ( 초 단위 )
+		cookie.setPath("/"); // 삭제를 위해 있어야함
+		
+        return cookie;
+        
     }
 	public static Cookie createCookie(String name, String value, String path, int maxAge) throws IOException {
        Cookie cookie = new Cookie(name,URLEncoder.encode(value, "utf-8"));
@@ -42,7 +49,22 @@ public class CookieBox {
 	 }
 	 
 	 public Cookie getCookie(String name) {
-         return (Cookie)cookieMap.get(name); 
+		 
+			// 쿠키들을 꺼낸다.
+			for(int i=0;i<cookies.length;i++){
+				System.out.println(i+"번째 쿠키 이름 :"+cookies[i].getName());
+				System.out.println(i+"번째 쿠키 값 :"+cookies[i].getValue());
+				
+				// -1
+				System.out.println(cookies[i].getMaxAge());
+				
+				// null
+				System.out.println(cookies[i].getDomain());
+				System.out.println(cookies[i].getComment());
+				System.out.println(cookies[i].getPath());
+			}
+			
+		return null;
      }
      
      public String getValue(String name) throws IOException {
@@ -54,5 +76,6 @@ public class CookieBox {
      public boolean exists(String name) {
          return cookieMap.get(name) != null;
      }
-
+     
+     
 }

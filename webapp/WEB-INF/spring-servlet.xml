@@ -100,6 +100,11 @@
 			<bean class="com.hotdog.petcam.security.SecretLoginInterceptor" />
 		</mvc:interceptor>
 		
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="com.hotdog.petcam.security.CookieLogin"/>
+		</mvc:interceptor>
+		
 		
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />

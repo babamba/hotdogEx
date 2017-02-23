@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hotdog.petcam.vo.BlogVo;
+import com.hotdog.petcam.vo.CookieVo;
 import com.hotdog.petcam.vo.PetVo;
 import com.hotdog.petcam.vo.UserVo;
 
@@ -18,14 +19,7 @@ public class UserDao {
 	@Autowired
 	private SqlSession sqlSession;
 
-	public void setCookie(String email,String hashcode){
-		Map<String,String> map = new HashMap<String,String>();
-		map.put("email",email);
-		map.put("hashcode", hashcode);
-		
-		sqlSession.delete("cookie.deleteCookie",map);
-		sqlSession.insert("cookie.setCookie",map);
-	}
+
 	public int insert(UserVo userVo) {
 		sqlSession.insert("user.insert", userVo);
 		return userVo.getUsers_no();
@@ -189,4 +183,26 @@ public class UserDao {
 	public void appPasswordModify(UserVo userVo) {
 		sqlSession.update("user.appPasswordModify", userVo);
 	}
+	// ************************  Cookie  *********************************
+		public int searchCookie (CookieVo cookieVo){
+			return sqlSession.selectOne("cookie.searchCookie", cookieVo);
+		}
+		public UserVo	cookieLogin(String email){
+			return sqlSession.selectOne("cookie.cookieLogin", email);
+		}
+		public void deleteCookie(String name,String email){
+			
+			Map<String,String> map = new HashMap<String,String>();
+			map.put("name", name);
+			map.put("email", email);
+			sqlSession.delete("cookie.deleteCookie", map);
+		}
+		public void setCookie(String name,String email){
+			Map<String,String> map = new HashMap<String,String>();
+			map.put("name", name);
+			map.put("email",email);
+			
+			sqlSession.delete("cookie.deleteCookie",map);
+			sqlSession.insert("cookie.setCookie",map);
+		}
 }

@@ -5,8 +5,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +14,8 @@ import com.hotdog.petcam.repository.BlogDao;
 import com.hotdog.petcam.repository.RaspberrypiDao;
 import com.hotdog.petcam.repository.UserDao;
 import com.hotdog.petcam.vo.BlogVo;
+import com.hotdog.petcam.vo.CookieVo;
 import com.hotdog.petcam.vo.PetVo;
-import com.hotdog.petcam.vo.RaspberrypiVo;
 import com.hotdog.petcam.vo.UserVo;
 
 @Service
@@ -56,8 +54,8 @@ public class UserService {
 		pet.setUsers_no(userVo.getUsers_no());
 		userDao.insertPet(pet);
 	}
-	public void setCookie(String email){
-		userDao.setCookie(email , String.valueOf(email.hashCode()));
+	public void setCookie(String name,String email){
+		userDao.setCookie(name, email);
 	}
 
 	public void createFolder(int no) {
@@ -275,5 +273,25 @@ public class UserService {
 
 	public PetVo getPet(int users_no) {
 		return userDao.getPet(users_no);
+	}
+	// ************************  Cookie  *********************************
+	
+	public Boolean searchCookie(String cookieName,String cookieValue){
+		
+		CookieVo cookieVo = new CookieVo();
+		cookieVo.setName(cookieName);
+		cookieVo.setEmail(cookieValue);
+		
+		if( userDao.searchCookie(cookieVo) == 0 ){
+			return false;
+		}
+		
+		return true;
+	}
+	public UserVo cookieLogin(String email){
+		return userDao.cookieLogin(email);
+	}
+	public void deleteCookie(String name,String email){
+		userDao.deleteCookie(name,email);
 	}
 }

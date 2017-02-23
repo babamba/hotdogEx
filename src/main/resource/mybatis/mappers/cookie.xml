@@ -6,8 +6,8 @@
 <!--  1. 쿠키 생성 -->
 <insert id="setCookie" parameterType="map">
 	<![CDATA[
-		insert into Cookie(email, hashcode) values
-			(#{email},#{hashcode});
+		insert into Cookie(name, email) values
+			(#{name},#{email});
 	]]>
 </insert>
 
@@ -16,8 +16,26 @@
 	<![CDATA[
 		delete 
 			from Cookie
-			where email = #{email} and hashcode = #{hashcode};
+			where name = #{name} and email = #{email};
 	]]>
 </delete>
+
+<!--  3. 쿠키 조회 -->
+<select id="searchCookie" parameterType="cookievo" resultType = "int">
+	<![CDATA[
+		select count(email)
+			from Cookie
+		where email = #{email} and name = #{name};
+	]]>
+</select>
+
+<!-- 4. 쿠기 이메일로 로그인 -->
+<select id="cookieLogin" parameterType="String" resultType="uservo">
+	<![CDATA[
+		select users_no,email,nickname,infomation,users_image,follower_num
+			from users
+		where email = #{email};
+	]]>
+</select>
 
 </mapper>

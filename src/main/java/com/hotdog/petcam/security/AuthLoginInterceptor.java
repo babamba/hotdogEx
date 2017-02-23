@@ -1,5 +1,6 @@
 package com.hotdog.petcam.security;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -48,13 +49,18 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
             return false;
         }
         // Remember Me Cookie 발급
-        if ( remember != null){
+        if ( remember != null ){
+        	Cookie cookie = new Cookie("hotdog",userVo.getEmail());
+        	cookie.setMaxAge(60*60*24*365);
+        	userService.setCookie("hotdog",userVo.getEmail());
         	
-        	CookieBox cookieBox = ac.getBean(CookieBox.class);
-        	userService.setCookie(userVo.getEmail());
+        	System.out.println(cookie.getName());
+        	System.out.println(cookie.getValue());
+        	System.out.println(cookie.getMaxAge());
         	
-        	cookieBox.createCookie(userVo.getEmail(),String.valueOf(userVo.getEmail().hashCode()) );
+        	response.addCookie(cookie);
         	
+//        		cookieBox.createCookie("email", userVo.getEmail());
         }
         
         // Pi 정보 받아오기  
