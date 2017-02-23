@@ -58,6 +58,11 @@ public class UserDao {
 	public int nicknameExist(String nickname) {
 		return sqlSession.selectOne("user.nicknameExist", nickname);
 	}
+	
+	// 닉네임 파라미터로 유저넘버 조회 UserVo 형태의 authUser에 리턴
+		public int nicknameIndex(String nickname) {
+			return sqlSession.selectOne("user.nicknameindex", nickname);
+		}
 
 	// 맵형태의 email, password, nickname을 조회해 담고 UserVo형태의 authUser에 담아 리턴
 	public UserVo selectForLogin(String email, String pass_word, String nickname, String description, String infomation,

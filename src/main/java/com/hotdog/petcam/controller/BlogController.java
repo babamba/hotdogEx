@@ -39,7 +39,7 @@ public class BlogController {
 		Map<String, Object> map = blogService.index(nickname);
 		model.addAttribute("map", map);
 		
-		System.out.println(map);
+		System.out.println("닉네임"+map);
 
 		return "blog/blog-main2";
 	}

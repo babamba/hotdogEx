@@ -78,9 +78,11 @@ public class BlogService {
 			RaspberrypiVo piVo = new RaspberrypiVo();
 			UserVo userVo = null;
 			BlogVo blogVo = null;
+			System.out.println(nickname);
 			
 			//이메일로 유저번호 찾기.  not null일때 세션에 유저번호 저장
-			int users_no = userDao.nicknameExist(nickname); 
+			int users_no = userDao.nicknameIndex(nickname);
+			System.out.println(users_no);
 			
 			//낫널일 경우 유저번호 값이 담긴 UserVo에 유저넘버를 저장하고 usersNo객체로 한다.
 			if(users_no != 0){
