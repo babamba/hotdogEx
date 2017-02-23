@@ -67,10 +67,10 @@
 </head>
 
 <script type="text/javascript">
-$(function(){
+/* $(function(){
 	var pi = '${piVo.device_num}';
 	var user = '${authUser.users_no}';
-	
+		
  	if(user !=0){
         $.ajax({
             url:"http://150.95.141.66/test/cgi-bin/send.py",
@@ -103,7 +103,7 @@ $(function(){
  	})
  	
 })
-</script>
+ */</script>
 
 
 <body class="boxed background-white">

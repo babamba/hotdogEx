@@ -95,6 +95,66 @@
 	src="${pageContext.request.contextPath}/assets/js/userProfile.js"></script>
 <link
 	href="${pageContext.request.contextPath}/assets/css/userProfile.css" rel="stylesheet">
+	
+<!-- alertify -->
+<link href="${pageContext.request.contextPath}/assets/alertify/alertify.core.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/assets/alertify/alertify.default.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
+	
+<script>
+
+
+var deleteVod = function(delvideoNo,deluserNo,delname){
+	
+	$.ajax({
+        url:"${pageContext.request.contextPath}/blog/api/deletevod",
+        type:"post",
+        data:"videoNo="+delvideoNo,
+        success: function(){
+            console.log("success");
+            
+        	$.ajax({
+                url:"http://150.95.141.66/test/cgi-bin/deleteVod.py",
+                type:"post",
+                data: { userNo : deluserNo , name: delname },
+                success: function(){
+                    history.go(0);                   
+                },
+                error : function(jqXHR, status, e) {
+                console.log(status + ":" + e);
+                }   
+        	})
+        	
+        },
+        error : function(jqXHR, status, e) {
+       		console.log(status + ":" + e);
+        }   
+	})
+
+
+
+}
+
+$(function(){
+	
+	$(document).on("click", "#deleteVOD" ,function(event){
+		event.preventDefault();
+		
+		var delname = $(this).data("name");
+		var deluserNo = $(this).data("no");
+		var delvideoNo = $(this).data("vno");
+		
+		alertify.confirm("비디오를 삭제하시겠습니까?",function(e){
+			if(e){
+				alertify.success("삭제완료", deleteVod(delvideoNo,deluserNo,delname));
+			}else{
+				alertify.error('삭제가 취소되었습니다.');
+			}
+	});		
+	})
+	
+})
+</script>
 <body class="boxed background-white">
 
 
@@ -104,11 +164,12 @@
 		<!-- START: HEADER PAGE TITLE -->
 		<c:import url="/WEB-INF/views/includes/header.jsp" />
 		<!-- END: PAGE TITLE -->
-		<c:choose>
+				<c:choose>
 		<c:when test="${map.userVo.users_no == authUser.users_no}" >
 			<c:import url="/WEB-INF/views/includes/navigation-blog.jsp" />
 		</c:when>
 	</c:choose>
+		
 		
 
 		<!-- CONTENT -->
@@ -120,11 +181,12 @@
 						
 							<!-- SLIDE  -->
 							<c:forEach items="${list }"	var="vo" varStatus="status">
-							
-							<li style="font-size:60px;" data-title="${vo.regdate }<br>${vo.regtime}">
-								<video width="100%" height="100%"  controls="controls">
+														
+							<li data-title="${vo.regdate }<br>${vo.regtime}" style="font-size:60px;" >
+								<button id="deleteVOD" class="button red-dark button-3d rounded" style="float:right;" data-name="${vo.save_name }" data-no="${vo.users_no }" data-vno="${vo.video_no }"> 삭제</button>
+								<video width="100%" height="90%"  controls="controls">
 							    <source src="http://150.95.141.66/hotdog/hotdog/image/user/${vo.users_no }/${vo.save_name }" type="video/mp4" />
-							</video>
+								</video>
 							
 							</li>
 							</c:forEach>

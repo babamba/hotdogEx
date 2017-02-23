@@ -44,4 +44,8 @@ public class BlogDao {
 		return sqlSession.selectList("blog.getVod", users_no);
 	}
 	
+	public int deleteVod(int video_no){
+		return sqlSession.update("blog.deleteVod", video_no);
+	}
+	
 }

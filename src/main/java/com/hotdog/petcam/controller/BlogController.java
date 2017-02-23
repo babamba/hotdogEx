@@ -59,7 +59,17 @@ public class BlogController {
 
 		return "blog/blog-vod";
 	}
+	
+	@Auth
+	@ResponseBody
+	@RequestMapping(value="/api/deletevod" , method = RequestMethod.POST) 
+	public JSONResult deleteVod(@RequestParam( value="videoNo", required=true) Integer video_no) {
+		
+		boolean result = blogService.deleteVod(video_no);
 
+		return JSONResult.success(result);
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = "/app/vod", method = RequestMethod.POST)
 	public Object appVodMain(@RequestParam(value = "users_no") int users_no, Model model) {
@@ -94,5 +104,7 @@ public class BlogController {
 
 		return "blog/account-main2";
 	}
+	
+	
 
 }

@@ -177,6 +177,10 @@ public class BlogService {
 		return blogDao.getVod(users_no);
 	}
 	
+	public boolean deleteVod(int video_no){
+		return blogDao.deleteVod(video_no) == 1;
+	}
+	
 	
 	
 	
