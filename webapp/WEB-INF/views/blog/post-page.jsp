@@ -321,7 +321,6 @@ $(function(){
 					<c:import url="/WEB-INF/views/includes/navigation-main.jsp" />
 					
 					<!--END: NAVIGATION-->
-					
 				</div>
 			</div>
 		</header>
@@ -374,7 +373,6 @@ $(function(){
 		</div>
 	</section>
 	<!-- END: PAGE TITLE -->
-	
 	<c:import url="/WEB-INF/views/includes/navigation-blog.jsp" />
 	
 
@@ -427,19 +425,9 @@ $(function(){
 						</div>
 
 						<div id="attachReply">
-							<!-- <div class="comment"> -->
-								<!--
-									<a href="#" class="pull-left"> <img alt="" src="images/team/1.jpg" class="avatar"></a>
-															
-									<div class="media-body" id="attachReply">
-									
-									<h4 class="media-heading">닉네임!!!</h4>
-									<p class="time">등록날짜 !!!</p>
-									<p>내용 !!!</p>
-									<a href="#" class="comment-reply pull-right"><i class="fa fa-reply"></i> Reply</a>
-									
-								</div> -->
-							<!-- </div> -->
+						
+								<!--  댓글 리스트 -->
+		
 						</div>
 					</div>
 					

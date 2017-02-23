@@ -95,7 +95,7 @@ $(function(){
 		var boardNo = $(this).data("no");
 						
 		$.ajax({
-			url : "${pageContext.request.contextPath }/community/freeboard/api/updateHits?boardNo="+boardNo,
+			url : "${pageContext.request.contextPath }/community/api/updateHits?boardNo="+boardNo,
 			type : "get",
 			success: function() { 
 				console.log("success");

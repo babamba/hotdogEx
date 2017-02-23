@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -14,11 +15,29 @@ import com.hotdog.petcam.vo.BoardChatVo;
 import com.hotdog.petcam.vo.BoardCommentsVo;
 
 @Controller
-@RequestMapping("/community/freeboard/api")
-public class BoardReplyApiController {
+@RequestMapping("/community/api")
+public class BoardApiController {
 	
 	@Autowired
 	private BoardService boardService;
+	
+	//게시글 조횟수 증가
+	@ResponseBody
+	@RequestMapping("/updateHits")
+	public void updateHits(@RequestParam(value="boardNo", required=true) Integer board_no){
+		
+		boardService.updateHits(board_no);
+	}
+	
+	//게시글 삭제
+	@ResponseBody
+	@RequestMapping( value="/deletepost", method=RequestMethod.POST)
+	public JSONResult deletePost(@RequestParam( value="boardNo", required=true) Integer board_no){
+		
+		boolean data = boardService.deletePost(board_no);
+		
+		return JSONResult.success(data);
+	}
 	
 	/////////////////////////////////////////// Reply
 	@ResponseBody
@@ -36,6 +55,17 @@ public class BoardReplyApiController {
 		BoardCommentsVo vo = boardService.writeReply(boardCommentsVo);
 		
 		return JSONResult.success(vo);
+	}
+	
+	@ResponseBody
+	@RequestMapping( value="/deletereply", method=RequestMethod.POST)
+	public JSONResult deleteReply(@RequestParam( value="commentsNo", required=true) Integer comments_no){
+		System.out.println("----------------------------------------");
+		System.out.println(comments_no);
+		
+		boolean data = boardService.deleteReply(comments_no);
+		
+		return JSONResult.success(data);
 	}
 	
 	
@@ -56,11 +86,17 @@ public class BoardReplyApiController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/updateHits")
-	public void updateHits(@RequestParam(value="boardNo", required=true) Integer board_no){
+	@RequestMapping( value="/deletereplychat", method=RequestMethod.POST)
+	public JSONResult deleteReplyChat(@RequestParam( value="boardChatNo", required=true) Integer board_chat_no){
 		
-		boardService.updateHits(board_no);
+		boolean data = boardService.deleteReplyChat(board_chat_no);
+		
+		return JSONResult.success(data);
 	}
+	
+
+	
+	
 	
 	
 }
