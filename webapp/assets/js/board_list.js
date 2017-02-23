@@ -44,11 +44,11 @@
 		var render_hotdog = function(vo){
 						
 			
-						var htmls =  "<article class='post-entry'><a href='#' class='post-image'><img src='" + pet_image_path + vo.pet_image + "'></a>" +
-										"<div class='post-entry-overlay'><div class='post-entry-meta'><div class='post-entry-meta-title'>" +
+						var htmls =  "<article class='post-entry fadeIn'><a href='#' class='post-image'><img style=' box-shadow: 5px 3px 30px 5px lightgray;' src='" + pet_image_path + vo.pet_image + "'></a>" +
+										"<div class='post-entry-overlay'><div class='post-entry-meta'><div class='post-entry-meta-title' data-userNo=" + vo.users_no +
 										"<div><h3><a href='#' style='color:white'>" + vo.name + " +</a></h3></div></br>" +
 										
-										"<span class='post-date'><i class='fa fa-intersex'></i> " + vo.gender + "&nbsp;&nbsp;</span>" +
+										"><span class='post-date'><i class='fa fa-intersex'></i> " + vo.gender + "&nbsp;&nbsp;</span>" +
 										"<span class='post-date'><i class='fa fa-paw'></i>" + vo.age + "&nbsp;&nbsp;</span>" +
 										"<span class='post-date'><i class='fa fa-thumbs-o-up'></i>" + vo.count + "&nbsp;&nbsp;</span>" +
 										"</div></div></article>"

@@ -23,7 +23,7 @@
 		<![CDATA[
 		select u.nickname, (select count(*) from follow f where p.users_no = f.users_no)as count, 
 		p.pet_no, p.name, date_format(p.co_date, '%Y. %m.%e. %h:%i') as co_date, p.gender, p.info, p.users_no, p.pet_image, p.age
-  		from pet p, users u where p.users_no = u.users_no order by count desc limit 6;	
+  		from pet p, users u where p.users_no = u.users_no order by count desc limit 2;	
 		]]>
 	</select>
 

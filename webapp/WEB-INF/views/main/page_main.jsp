@@ -152,11 +152,11 @@ $(function(){
 		<!-- END: HEADER -->
 		
 		<!-- INSPIRO SLIDER -->
-        <div  class="inspiro-slider" >
+        <div  class="inspiro-slider ">
             <!-- Slide 1 -->
-            <div class="slide background-overlay-dark"  data-vide-bg="${pageContext.request.contextPath}/assets/img/dog_video.mp4">
+            <div class="slide background-overlay-dark" data-animation="fadeIn"  data-vide-bg="${pageContext.request.contextPath}/assets/img/dog_video.mp4">
 
-                <div class="container">
+                <div class="container " data-animation="fadeIn">
                 	<div class="col-md-6 col-sm-12 col-xs-12">
 	                    <div class="slide-captions col-md-12 col-sm-12 col-xs-12">
 	                        <!-- Captions -->
@@ -170,7 +170,7 @@ $(function(){
                  <!-- authUser info  부분  -->
                  <c:choose>
 					<c:when test="${empty authUser}">
-							<div class="col-md-4 col-sm-4 col-xs-4 pull-right">
+							<div class="col-md-4 col-sm-4 col-xs-4 pull-right" style="right:20px; padding-top:20px;">
 								<div id="book">
 								
 										<div class="row text-center">
@@ -193,12 +193,6 @@ $(function(){
 						<c:otherwise>
 						<div class="col-md-5 col-sm-5 col-xs-5 pull-right" >
 								<div id="book" class="col-md-12 col-sm-12 col-xs-12" >
-										
-										
-											
-												
-											
-									
 										<div class="col-md-12 col-sm-12 col-xs-12 text-center">
 											<button class="fancy-btn openProfile" style="position:relative; display:inline-block; left:-1%; margin-bottom:-38px;">
 												<img src="${pageContext.request.contextPath}/hotdog/image/user/${authUser.users_image}">
@@ -240,62 +234,49 @@ $(function(){
                 </div>
        		 </div>
 
-		<script>
-		
-		
-		
-		
-		</script>
-		
+		<div class="hr-title hr-long center" style="border-top-style:outset; width:70%;" data-animation="fadeIn">
+			<abbr>핫도그 베스트</abbr>
+			<p style="margin-top:10px; font-size:13px;">친구들을 팔로잉 하고 오늘의  핫도그가 되어보세요 </p>
+		</div>
 
 
 		<!-- NEWS GRID -->
-		<section class="p-t-40 p-b-40">
-			<div class="container">
+		<section class="p-t-40 p-b-40" data-animation="fadeIn" >
+			<div class="container" >
 				<div class="grid-articles grid-articles-v2 best_hotdog">
 				
 				</div>
 			</div>
 		</section>
 		<!-- END: NEWS GRID -->
-	
-		<!-- ADVERTISEMENT -->
-		<section class="p-t-20 p-b-40">
-			<div class="container">
-			<div class="marketing-box">ADVERTISEMENT</div>
-			</div>
-		</section>
-			<!-- END: ADVERTISEMENT -->
 		
-			<!-- post 최신 글 9개 불러오는 ajax list -->
-	
+		
+		<div class="hr-title hr-long center p-t-40 p-b-40" style="border-top-style:outset; width:30%;" data-animation="fadeInUp">
+			<abbr>핫도그 커뮤니티 게시판</abbr>
+			<p style="margin-top:10px; font-size:13px;">핫도그 커뮤니티를 통해 교감방법이나</br> 혼자보기 아까운 애완견의 모습을 올려주세요. </p>
+		</div>
 		
 		<!-- CATEGORIES -->
-		<section class="p-t-0 p-b-40">
+		<section class="p-t-40 p-b-40">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-4 board_category_list">
-						<div class="heading-fancy heading-line">
+					<div class="col-md-4 board_category_list" data-animation="fadeInUp" data-animation-delay="100">
+						<div class="heading-fancy heading-line" >
 							<h4><a href="${pageContext.request.contextPath}/community/freeboard">프리톡!</a></h4>
 						</div>
 						
 						<!-- ajax category List -->
 						<div class="post-thumbnail-list">
-						
 							<div class="post-thumbnail-entry free_List">
 								
 							
 							</div>
-							
-							
 						</div>
 						
 					</div>
 					
-					
-					
-					<div class="col-md-4">
-						<div class="heading-fancy heading-line board_list">
+					<div class="col-md-4" data-animation="fadeInUp" data-animation-delay="300">
+						<div class="heading-fancy heading-line board_list" >
 							<h4><a href="${pageContext.request.contextPath}/community/galleryboard">갤러리톡!</a></h4>
 						</div>
 							
@@ -305,13 +286,12 @@ $(function(){
 								
 								
 							</div>
-							
 						</div>
 					</div>
 					
 					
-					<div class="col-md-4">
-						<div class="heading-fancy heading-line board_List">
+					<div class="col-md-4" data-animation="fadeInUp" data-animation-delay="500">
+						<div class="heading-fancy heading-line board_List" >
 							<h4><a href="${pageContext.request.contextPath}/community/diaryboard">다이어리톡!</a></h4></div>
 						<div class="post-thumbnail-list">
 							<div class="post-thumbnail-entry diary_list">
@@ -326,24 +306,37 @@ $(function(){
 		<!-- END: HIGHTLIGHTS -->
 
 		<!-- ADVERTISEMENT -->
-		<section class="p-t-0 p-b-40">
+		<section class="p-t-0 p-b-0" data-animation="fadeInUp">
 			<div class="container">
 			<div class="marketing-box">ADVERTISEMENT</div>
 			</div>
 		</section>
-			<!-- END: ADVERTISEMENT -->
-
-
-		<!-- CALL TO ACTION -->
-		<!-- <div class="jumbotron jumbotron-fullwidth background-colored text-light m-b-0">
+		<!-- END: ADVERTISEMENT -->
+		
+		<section class="background text-dark p-b-40" style="margin-bottom:60px;">
 			<div class="container">
-				<h3>Ready to purchase POLO Template?</h3>
-				<p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-				<a href="#" class="button transparent rounded"><span>Purchase</span></a>
+				<div class="row">
+					<div class="col-md-12" data-animation="fadeInUp" data-animation-delay="100">
+						<div class="heading heading text-left">
+							<h1 class="text-medium">핫도그를 사용해보셨나요?</h1>
+						</div>
+					</div>
+					<div class="col-md-4 text-center" data-animation="fadeInUp" data-animation-delay="300" >
+						<img class="col-md-12" src="${pageContext.request.contextPath}/assets/img/raspberry_pi.jpg">
+					
+					</div>
+					<div class="col-md-4 text-center" data-animation="fadeInUp" data-animation-delay="300" >
+						원격으로 애완견과의 교감을 이룰 수 있게 해주는 핫도그 시스템 
+						<br><br></div>
+
+					<div class="col-md-4 text-center" data-animation="fadeInUp" data-animation-delay="600">
+						부가적인 설명
+						<br>
+						<br></div>
+
+				</div>
 			</div>
-		</div> -->
-		<!-- END: CALL TO ACTION -->
-	
+		</section>
 			
 		<!-- FOOTER -->
 		<c:import url="/WEB-INF/views/includes/footer.jsp" />

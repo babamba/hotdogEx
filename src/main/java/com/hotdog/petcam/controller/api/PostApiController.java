@@ -77,16 +77,15 @@ public class PostApiController {
 
 	}
 	
-	@Auth
-	@RequestMapping(value="/modify_view", method=RequestMethod.POST)
-	public String modify_form(
+	@RequestMapping(value="/modify_view")
+	public JSONResult modify_form(
 			@RequestParam(value="post_no", required=true) Integer post_no, Model model){
-		Map<String, Object>map = postService.getPost(post_no);
-		model.addAttribute("post_map", map);
+		PostVo postVo = postService.getModifyPost(post_no);
+/*		model.addAttribute("post_map", map);
 		System.out.println("수정");
-		System.out.println(model);
+		System.out.println(model);*/
 		
-		return "blog/modify-form";
+		return JSONResult.success(postVo);
 	}
 
 	@Auth

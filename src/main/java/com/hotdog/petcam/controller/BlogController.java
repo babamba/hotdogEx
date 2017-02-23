@@ -38,6 +38,8 @@ public class BlogController {
 	public String main(@PathVariable String nickname, Model model) {
 		Map<String, Object> map = blogService.index(nickname);
 		model.addAttribute("map", map);
+		
+		System.out.println(map);
 
 		return "blog/blog-main2";
 	}

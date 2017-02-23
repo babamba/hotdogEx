@@ -62,6 +62,11 @@ public class PostService {
 		return map;
 	}
 	
+	public PostVo getModifyPost(int post_no){
+		PostVo postVo = postDao.getPost(post_no);
+		return postVo;
+	}
+	
 /*	public boolean delete(PostVo postVo){
 		int result = postDao.delete(postVo);
 		return (result == 1);

@@ -201,10 +201,11 @@
 					</c:forEach>
 				</div>
 					
-					<div class="list">
+					<div class="list" >
 					<c:forEach items="${latest_news }"	var="vo" varStatus="status">	
 						<!-- Blog image post-->
-						<div class="hr-title hr-long center">
+						<div data-animation="fadeIn" data-animation-delay="200">
+						<div class="hr-title hr-long center" >
 							<abbr>Friend's latest post</abbr> 
 						</div>
 						
@@ -246,6 +247,7 @@
 									</a>
 								</div>
 							</div>
+						</div>
 						</div>
 				</c:forEach>
 				

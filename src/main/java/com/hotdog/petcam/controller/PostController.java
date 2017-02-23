@@ -72,6 +72,15 @@ public class PostController {
 			return "blog/write";
 		}
 		
+		@RequestMapping("/{nickname}/modifyform")
+		public String modify_page(
+				@RequestParam(value="post_no", required=true) Integer post_no, Model model,
+				@PathVariable String nickname){
+			PostVo postVo = postService.getModifyPost(post_no);
+			model.addAttribute("postvo",postVo);
+			return "blog/modify-form";
+		}
+		
 		
 		@Auth
 		@RequestMapping(value="/{nickname}/insert")
