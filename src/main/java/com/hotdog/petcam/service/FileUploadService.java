@@ -10,64 +10,62 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class FileUploadService {
 
-    
-    private static final String SAVE_PATH = "/usr/local/WowzaStreamingEngine/content";
-    
+	private static final String SAVE_PATH = "/upload";
 
-    public String restore(MultipartFile userimage) {
-        
-        String saveFileName;
-        try {
+	public String restore(MultipartFile userimage) {
 
-            if (userimage.isEmpty() == true) {
-                return "";
-            }
+		String saveFileName;
+		try {
 
-            String originalFileName = userimage.getOriginalFilename();
-            String extName = originalFileName.substring(originalFileName.lastIndexOf('.') + 1,originalFileName.length());
-            saveFileName = generateSaveFileName(extName);
-            Long fileSize = userimage.getSize();
+			if (userimage.isEmpty() == true) {
+				return "";
+			}
 
-            System.out.println("파일명 정제중");
-            System.out.println(saveFileName);
-            
-            writeFile(userimage, saveFileName);
+			String originalFileName = userimage.getOriginalFilename();
+			String extName = originalFileName.substring(originalFileName.lastIndexOf('.') + 1,
+					originalFileName.length());
+			saveFileName = generateSaveFileName(extName);
+			Long fileSize = userimage.getSize();
 
-            
-        } catch (IOException ex) {
-            // throw new UploadFileException("write file");
-            // log 남기기
-            throw new RuntimeException("write file");
-        }
-        return saveFileName;
-    }
+			System.out.println("파일명 정제중");
+			System.out.println(saveFileName);
 
-    private void writeFile(MultipartFile multipartFile, String saveFileName) throws IOException {
+			writeFile(userimage, saveFileName);
 
-        byte[] fileData = multipartFile.getBytes();
-        
-        FileOutputStream fos = new FileOutputStream(SAVE_PATH + "/" + saveFileName);
-        fos.write(fileData);
+		} catch (IOException ex) {
+			// throw new UploadFileException("write file");
+			// log 남기기
+			throw new RuntimeException("write file");
+		}
+		return saveFileName;
+	}
 
-        if (fos != null) {
-            fos.close();
-        }
+	private void writeFile(MultipartFile multipartFile, String saveFileName) throws IOException {
 
-    }
+		byte[] fileData = multipartFile.getBytes();
 
-    private String generateSaveFileName(String ext) {
-        String fileName = "";
-        Calendar calendar = Calendar.getInstance();
+		FileOutputStream fos = new FileOutputStream(SAVE_PATH + "/" + saveFileName);
+		fos.write(fileData);
 
-        fileName += calendar.get(Calendar.YEAR);
-        fileName += calendar.get(Calendar.MONTH);
-        fileName += calendar.get(Calendar.DATE);
-        fileName += calendar.get(Calendar.HOUR);
-        fileName += calendar.get(Calendar.MINUTE);
-        fileName += calendar.get(Calendar.SECOND);
-        fileName += calendar.get(Calendar.MILLISECOND);
-        fileName += ("." + ext);
+		if (fos != null) {
+			fos.close();
+		}
 
-        return fileName;
-    }
+	}
+
+	private String generateSaveFileName(String ext) {
+		String fileName = "";
+		Calendar calendar = Calendar.getInstance();
+
+		fileName += calendar.get(Calendar.YEAR);
+		fileName += calendar.get(Calendar.MONTH);
+		fileName += calendar.get(Calendar.DATE);
+		fileName += calendar.get(Calendar.HOUR);
+		fileName += calendar.get(Calendar.MINUTE);
+		fileName += calendar.get(Calendar.SECOND);
+		fileName += calendar.get(Calendar.MILLISECOND);
+		fileName += ("." + ext);
+
+		return fileName;
+	}
 }

@@ -46,14 +46,15 @@ public class UserController {
 
 	@RequestMapping("/login")
 	public String login(@ModelAttribute UserVo vo, Model model, HttpServletRequest request, HttpSession session) {
-		
+
 		return "redirect:/";
 	}
+
 	@RequestMapping("/loginfail")
-	public String loginFail(){
+	public String loginFail() {
 		return "main/loginFailPage";
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("/app/emailcheck")
 	public Object appEmailCheck(@RequestParam(value = "email") String email) {
@@ -174,11 +175,10 @@ public class UserController {
 	@Auth
 	@Secret
 	@RequestMapping(value = "/account/userprofilemodify", method = RequestMethod.POST)
-	public String userProfileModify(@AuthUser UserVo authUser,	@RequestParam(value = "nickname") String nickname, 
+	public String userProfileModify(@AuthUser UserVo authUser, @RequestParam(value = "nickname") String nickname,
 			@RequestParam(value = "infomation") String infomation, @RequestParam(value = "pass_word") String password,
 			@RequestParam(value = "userimage") MultipartFile userimage) {
-		
-	
+
 		// @RequestParam(value="blogimage") MultipartFile blogimage
 		userService.userProfileModify(authUser, nickname, infomation, password);
 
@@ -190,57 +190,69 @@ public class UserController {
 		return "redirect:/";
 	}
 
-//	@Auth
-//	@Secret
-//	@RequestMapping(value = "/account/userprofilemodify2", method = RequestMethod.POST)
-//	public String userProfileModify2(@ModelAttribute BlogVo blogVo, @AuthUser UserVo authUser,
-//			@RequestParam(value = "nickname") String nickname, @RequestParam(value = "title") String title,
-//			@RequestParam(value = "infomation") String infomation, @RequestParam(value = "pass_word") String password,
-//			@RequestParam(value = "blogimage") MultipartFile blogimage) {
-//
-//		userService.userProfileModify(authUser, blogVo, nickname, title, infomation, password);
-//
-//		String saveName = imageService.restore(blogimage, authUser.getUsers_no());
-//
-//		blogVo.setUsers_no(authUser.getUsers_no());
-//		blogVo.setLogo_image(saveName);
-//		blogService.setLogo(blogVo);
-//
-//		return "redirect:/";
-//	}
+	// @Auth
+	// @Secret
+	// @RequestMapping(value = "/account/userprofilemodify2", method =
+	// RequestMethod.POST)
+	// public String userProfileModify2(@ModelAttribute BlogVo blogVo, @AuthUser
+	// UserVo authUser,
+	// @RequestParam(value = "nickname") String nickname, @RequestParam(value =
+	// "title") String title,
+	// @RequestParam(value = "infomation") String infomation,
+	// @RequestParam(value = "pass_word") String password,
+	// @RequestParam(value = "blogimage") MultipartFile blogimage) {
+	//
+	// userService.userProfileModify(authUser, blogVo, nickname, title,
+	// infomation, password);
+	//
+	// String saveName = imageService.restore(blogimage,
+	// authUser.getUsers_no());
+	//
+	// blogVo.setUsers_no(authUser.getUsers_no());
+	// blogVo.setLogo_image(saveName);
+	// blogService.setLogo(blogVo);
+	//
+	// return "redirect:/";
+	// }
 
-//	@Auth
-//	@Secret
-//	@RequestMapping(value = "/account/userprofilemodify3", method = RequestMethod.POST)
-//	public String userProfileModify3(@ModelAttribute BlogVo blogVo, @AuthUser UserVo authUser,
-//			@RequestParam(value = "nickname") String nickname, @RequestParam(value = "title") String title,
-//			@RequestParam(value = "infomation") String infomation, @RequestParam(value = "pass_word") String password,
-//			@RequestParam(value = "userimage") MultipartFile userimage,
-//			@RequestParam(value = "blogimage") MultipartFile blogimage) {
-//
-//		userService.userProfileModify(authUser, blogVo, nickname, title, infomation, password);
-//
-//		String saveName = imageService.restore(userimage, authUser.getUsers_no());
-//		String saveName2 = imageService.restore(blogimage, authUser.getUsers_no());
-//
-//		authUser.setUsers_image(saveName);
-//		blogVo.setUsers_no(authUser.getUsers_no());
-//		blogVo.setLogo_image(saveName2);
-//
-//		userService.setImage(authUser);
-//		blogService.setLogo(blogVo);
-//
-//		return "redirect:/";
-//	}
+	// @Auth
+	// @Secret
+	// @RequestMapping(value = "/account/userprofilemodify3", method =
+	// RequestMethod.POST)
+	// public String userProfileModify3(@ModelAttribute BlogVo blogVo, @AuthUser
+	// UserVo authUser,
+	// @RequestParam(value = "nickname") String nickname, @RequestParam(value =
+	// "title") String title,
+	// @RequestParam(value = "infomation") String infomation,
+	// @RequestParam(value = "pass_word") String password,
+	// @RequestParam(value = "userimage") MultipartFile userimage,
+	// @RequestParam(value = "blogimage") MultipartFile blogimage) {
+	//
+	// userService.userProfileModify(authUser, blogVo, nickname, title,
+	// infomation, password);
+	//
+	// String saveName = imageService.restore(userimage,
+	// authUser.getUsers_no());
+	// String saveName2 = imageService.restore(blogimage,
+	// authUser.getUsers_no());
+	//
+	// authUser.setUsers_image(saveName);
+	// blogVo.setUsers_no(authUser.getUsers_no());
+	// blogVo.setLogo_image(saveName2);
+	//
+	// userService.setImage(authUser);
+	// blogService.setLogo(blogVo);
+	//
+	// return "redirect:/";
+	// }
 
 	@Auth
 	@Secret
 	@RequestMapping(value = "/account/userprofilemodify2", method = RequestMethod.POST)
-	public String userProfileModify4(@AuthUser UserVo authUser,	@RequestParam(value = "nickname") String nickname,
+	public String userProfileModify4(@AuthUser UserVo authUser, @RequestParam(value = "nickname") String nickname,
 			@RequestParam(value = "infomation") String infomation, @RequestParam(value = "pass_word") String password) {
-		
-	
-		userService.userProfileModify(authUser,nickname,infomation, password);
+
+		userService.userProfileModify(authUser, nickname, infomation, password);
 		return "redirect:/";
 	}
 
@@ -259,7 +271,7 @@ public class UserController {
 	@Secret
 	@RequestMapping(value = "/account/blogprofilemodify2", method = RequestMethod.POST)
 	public String blogProfileModify2(@ModelAttribute BlogVo blogVo, @AuthUser UserVo authUser,
-			@RequestParam(value = "title") String title,@RequestParam(value = "blogimage") MultipartFile blogimage) {
+			@RequestParam(value = "title") String title, @RequestParam(value = "blogimage") MultipartFile blogimage) {
 		blogVo.setTitle(title);
 		userService.blogProfileModify(authUser.getUsers_no(), blogVo);
 
@@ -358,8 +370,9 @@ public class UserController {
 		}
 
 	}
+
 	@RequestMapping("/secretloginfail")
-	public String secretLoginFail(){
+	public String secretLoginFail() {
 		return "main/checkSecretFail";
 	}
 
@@ -449,6 +462,5 @@ public class UserController {
 		userService.appPasswordModify(userVo);
 		return JSONResult.success("success");
 	}
-	
 
 }
