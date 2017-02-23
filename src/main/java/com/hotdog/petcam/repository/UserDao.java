@@ -74,7 +74,6 @@ public class UserDao {
 		map.put("following_num", following_num);
 
 		UserVo authUser = sqlSession.selectOne("user.selectForLogin", map);
-		System.out.println("UserDao login");
 		return authUser;
 	}
 

@@ -115,7 +115,6 @@ public class UserController {
 			HttpServletRequest request) {
 
 		Boolean result = userService.nicknameCheck(nickname);
-
 		return JSONResult.success(result ? "yes" : "no");
 	}
 

@@ -75,7 +75,7 @@
 
 	<select id="nicknameExist" parameterType="string" resultType="int">
 		<![CDATA[
-		select users_no
+		select count( users_no )
 			from users 
 		where nickname = #{nickname};
 		]]>
