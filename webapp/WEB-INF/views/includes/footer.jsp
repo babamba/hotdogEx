@@ -12,7 +12,7 @@
 					<div class="row">
 						<div class="copyright-text col-md-12 text-center">
 							&copy; 2017 Hotdog. &nbsp;&nbsp;<a target="_blank"
-								href="http://www.inspiro-media.com">Bit Academy</a>
+								href="http://www.bitacademy.com/">Bit Academy</a>
 						</div>
 					</div>
 				</div>

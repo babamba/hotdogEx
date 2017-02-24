@@ -21,7 +21,9 @@
 	
 	<select id = "getListByPage" parameterType="map" resultType="postvo">
 		<![CDATA[
-		 select b.users_no, a.post_no, a.title, a.post_image, a.content, date_format(a.regdate, '%Y %m/%e %h:%i') as regdate , a.publish
+		select b.users_no, a.hits, a.shared, a.post_no, a.title, a.post_image,
+		 a.content, date_format(a.regdate, '%Y %m/%e %h:%i') as regdate , a.publish,
+		 (select count(*) from post_comments pc where a.post_no = pc.post_no) as count
  		 from post a, users b where b.users_no = a.users_no and b.users_no = #{users_no} and a.users_no > 0
  		 order by a.post_no desc
  		 limit #{page }, 9;
@@ -38,7 +40,7 @@
 	
 	<select id = "getPost" parameterType="int" resultType = "postvo">
 		<![CDATA[
-			SELECT a.post_no, a.title, a.content, a.regdate, a.post_image, a.publish, b.nickname, 
+			SELECT a.post_no, a.title, a.content, a.regdate, a.post_image, a.publish, b.nickname,
 			(select count(*) from post_comments bc where a.post_no = bc.post_no) as count FROM post a, users b  
 			WHERE a.users_no = b.users_no and a.post_no = #{post_no}
 		]]>
@@ -50,7 +52,13 @@
 		delete from post where post_no= #{post_no}
 		]]>
 	</select>
+	<update id="increaseHits" parameterType="int">
+
+	<![CDATA[
+		update post set hits = hits + 1 where post_no = #{post_no }
+	]]>
 	
+	</update>
 	<select id="getMainPostList" resultType="postvo">
 		<![CDATA[
 		 select b.post_no, b.title, b.shared,  b.content, date_format(b.regdate, '%Y. %m.%e. %h:%i') as regdate, b.hits, b.users_no, u.nickname
@@ -69,7 +77,7 @@
 
 	<![CDATA[
 		select pc.comments_no, pc.content, pc.regdate, pc.post_no, pc.users_no, 
-						u.nickname, u.users_image, (select count(*) FROM board_chat pChat
+						u.nickname, u.users_image, (select count(*) FROM post_chat pChat
 						where pc.post_no = #{post_no } and pc.comments_no = pChat.comments_no) as count
 		from post_comments pc, users u
 		where pc.post_no = #{post_no } and pc.users_no = u.users_no
@@ -95,6 +103,13 @@
 	
 	]]>
 	</select>
+	
+	<delete id="deletePostReply" parameterType="int">
+	<![CDATA[
+	 delete from post_comments where comments_no = #{comments_no }
+	]]>
+	</delete>
+	
 	
 	<select id="getPostReply" parameterType="int" resultType="postcommentsvo">
 	<![CDATA[
@@ -129,6 +144,13 @@
 	    </selectKey>
 	
 	</insert>
+	
+	<delete id="deletePostReplyChat" parameterType="int">
+		<![CDATA[
+		 delete from post_chat where post_chat_no = #{post_chat_no };
+		]]>
+	</delete>
+	
 	
 	<select id="getReplyPostChat" parameterType="int" resultType="postchatvo">
 	<![CDATA[

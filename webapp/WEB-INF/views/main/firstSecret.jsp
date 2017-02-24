@@ -219,7 +219,13 @@
 				event.target.value = event.target.value.replace(/[^0-9]/g, "");
 		}
 	</script>
-
+	<script>
+	$(function(){
+		$(".redirect-btn").click(function(){
+			history.go(-1);
+		})
+	})
+	</script>
 
 </body>
 

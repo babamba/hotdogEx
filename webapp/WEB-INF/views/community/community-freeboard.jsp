@@ -107,7 +107,7 @@ $(function(){
 	})
 })
 </script>
-<body>
+<body class="boxed background-white">
 
 
 

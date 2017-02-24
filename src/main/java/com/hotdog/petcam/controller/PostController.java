@@ -41,7 +41,7 @@ public class PostController {
 			Map<String, Object> map = blogService.index(nickname);
 			model.addAttribute("map", map);
 			
-			return "blog/diary";
+			return "blog/blog-diary";
 		}
 		
 		/*@Auth
@@ -57,7 +57,7 @@ public class PostController {
 		public String main(@PathVariable String nickname, @ModelAttribute PostVo postVo, Model model, @AuthUser UserVo authUser) {
 			Map<String, Object> map = blogService.index(nickname);
 			model.addAttribute("map", map);
-			return "blog/write";
+			return "blog/blog-write";
 		}
 		
 		@RequestMapping("/{nickname}/modifyform")
@@ -66,7 +66,7 @@ public class PostController {
 				@PathVariable String nickname){
 			PostVo postVo = postService.getModifyPost(post_no);
 			model.addAttribute("postvo",postVo);
-			return "blog/modify-form";
+			return "blog/blog-modify-form";
 		}
 		
 		
@@ -80,7 +80,7 @@ public class PostController {
 			postVo.setUsers_no(users_no);
 
 			postService.insert(postVo);
-			return "redirect:/post/" + nickname + "/postlist";
+			return "redirect:/post/" + nickname;
 		}
 		
 		
@@ -114,7 +114,7 @@ public class PostController {
 			model.addAttribute("map", map);
 			model.addAttribute("authUserNo", users_no);
 			
-			return "blog/post-page";
+			return "blog/blog-post-page";
 		}
 		
 	// *************************** 포스트 템플릿 ************************

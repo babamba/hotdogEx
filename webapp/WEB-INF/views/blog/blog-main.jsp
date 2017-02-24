@@ -81,32 +81,49 @@
 	src="${pageContext.request.contextPath}/assets/template/vendor/plugins-compressed.js"></script>
 
 <!-- User Profile -->
-<script
-	src="${pageContext.request.contextPath}/assets/js/userProfile.js"></script>
 <link
-	href="${pageContext.request.contextPath}/assets/css/userProfile.css" rel="stylesheet">
-<body>
-
-
-
-	<div class="wrapper">
+	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
+	rel="stylesheet">
 	
+	
+<!-- alertify -->
+<link href="${pageContext.request.contextPath}/assets/alertify/alertify.core.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/assets/alertify/alertify.default.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
+	
+	
+<body class="boxed background-white">
+	<div class="wrapper">
+
 		<!-- START: HEADER PAGE TITLE -->
 		<c:import url="/WEB-INF/views/includes/header.jsp" />
 		<!-- END: PAGE TITLE -->
-
-
-		<!-- CONTENT -->
+		
+	<c:choose>
+		<c:when test="${map.userVo.users_no == authUser.users_no}" >
+			<c:import url="/WEB-INF/views/includes/navigation-blog.jsp" />
+		</c:when>
+	</c:choose>
+	
 		<section class="content">
 			<div class="container list_container">
-				<!-- Blog post-->
-				<div class="isotope" data-isotope-item-space="3"
-					data-isotope-col="3" data-isotope-item=".post-item">
-					
+						<!-- Blog post-->
+				<div class="post-content post-modern">
+					<div id="write" class="text-center m-t-40"><a href="${pageContext.request.contextPath}/post/${authUser.nickname}/write" class="button border rounded">Posting</a></div>
+					<br/>	
+					<div class="timeline">
+						
+						<ul class="timeline-circles" data-animation='fadeInUp' >
+							
+							
+							
+						</ul>
+					</div>	
 				</div>
-				<!-- END: Blog post-->
-			</div>
+			<div id="load-more-link" class="text-center m-t-40"><a href="javascript:;" class="button border rounded">Load more</a></div>	
+		</div>
 		</section>
+
 		<!-- END: SECTION -->
 
 		<!-- FOOTER -->
@@ -115,6 +132,220 @@
 
 	</div>
 	<!-- END: WRAPPER -->
+	
+
+
+
+	<!-- post 최신 글 9개 불러오는 ajax list -->
+	<script>
+	
+	
+	var nickname = "${map.userVo.nickname}"
+	var users_no = "${map.userVo.users_no}"
+	var image_path = "${pageContext.request.contextPath}/hotdog/image/user/"
+	var post = "${pageContext.request.contextPath }/post/" + nickname + "/postView?post_no="
+	
+			
+	var isEnd = false;
+	
+	var page = 0;	// 게시글의 0번째 인덱스 
+	var pluspage = 10;	// 게시글이 15개씩 fetchList로 로딩 되니까 fetchList가 요청될 시 15만큼 더해서 db인덱스값을 더해서 요청한다.
+	
+
+	var render = function(vo){
+			
+		var htmls =  "<li class='timeline_list ' data-animation='fadeInUp' data-postno=" + vo.post_no + " data-usersno=" + vo.users_no + "><div class='timeline-block'><div class='post-item'><div class='post-image'><a href='#'><img src='" + image_path + vo.post_image + "'></a></div>" +
+					 "<div class='post-content-details'><div class='post-title'><h3>" + vo.title + "</h3></div>" +
+					 "<div class='post-info'><span class='post-autor'>Post by : " + nickname + "</span><span class='post-category'></span></div>" +
+					 "<div class='post-description'><div class='post-info'><a class='read-more' href='" + post + vo.post_no + "'>read more <i class='fa fa-long-arrow-right'></i></a></div></div>" +
+
+
+					 "<div class='post-meta'><div class='post-date'>" + vo.regdate + "</div>" +
+					 "<div class='post-comments'><a href='#'><i class='fa fa-comments-o'></i><span class='post-comments-number'>" + vo.count + "</span></a></div>" +
+					 "<div class='post-comments post_modify' data-postNo=" + vo.post_no + " data-usersNo='" + vo.users_no + "'><a href='javascript:;'><i class='fa fa-share-alt'></i><span class='post-comments-number'>수정</span></a></div>" +
+					 "<div class='post-comments post_delete' data-postNo=" + vo.post_no + " data-usersNo='" + vo.users_no + "'><a href='javascript:;'><i class='fa fa-close'></i><span class='post-comments-number'>삭제</span></a></div>" +
+					 
+					 "</div></div></div></li>"
+			
+					  $(htmls).appendTo(".timeline-circles");
+		};
+
+	var fetchList = function(){
+		"use strict";
+		console.log("fetchList")
+
+		  if(isEnd == true){
+			  return;
+		  }
+		
+		  $.ajax({
+			url: "${pageContext.request.contextPath }/blog/api/list?p=" + page + "&no=" + users_no,
+			type: "get",
+			dataType: "json",
+			data:"",
+			success: function(response){
+				console.log(response.data.length)
+				if(response.result != "success"){
+					isEnd = true;
+					return;
+				}
+				
+				if( response.data.length == 0 ) {
+					alertify.log("모든 포스트를 불러왔습니다.")
+					isEnd = true;
+					$( "#load-more-link" ).prop( "disabled", true );
+					}
+				
+				
+			$(response.data).each(function(index, vo){
+				render(vo);
+				console.log("render")
+			});
+			
+			
+			},
+		error: function(jqXHR, status, e){
+			console.error(status + ":" + e)
+		}
+	}); 
+	};
+	
+	fetchList();
+
+	$(function(){
+		$("#load-more-link").click(function(e){
+			page = page +  pluspage;
+			fetchList();
+			
+		});
+	});
+	
+	
+	
+
+
+	</script>
+
+
+	<!-- user profile modal -->
+	<script>
+	$(document).on('ready', function(){
+	    $modal = $('.modal-frame');
+	    $overlay = $('.modal-overlay');
+
+	    /* Need this to clear out the keyframe classes so they dont clash with each other between ener/leave. Cheers. */
+	    $modal.bind('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e){
+	      if($modal.hasClass('state-leave')) {
+	        $modal.removeClass('state-leave');
+	      }
+	    });
+
+	    $('.closeProfile').on('click', function(){
+	      $overlay.removeClass('state-show');
+	      $modal.removeClass('state-appear').addClass('state-leave');
+	    });
+
+	    $('.openProfile').on('click', function(){
+	      $overlay.addClass('state-show');
+	      $modal.removeClass('state-leave').addClass('state-appear');
+	    });
+
+	  });
+	
+	</script>
+	
+	<script>
+	
+	
+	$(document).on("click", ".post_delete", function(){
+	
+		post_no = $(this).data("postno");
+		var users_no = $(this).data("usersno");
+		var authUser = ${authUser.users_no};
+		console.log(post_no)
+		console.log(users_no)
+		
+		var ajax_delete = function(post_no){
+			
+			console.log(post_no)
+			
+			 $.ajax({
+					url: "${pageContext.request.contextPath }/post/api/deletepost",
+					type : "post",
+					data : "post_no="+post_no,
+					success: function(response){
+						history.go(0);
+						},
+						error: function(jqXHR, status, e){
+							console.error(status + ":" + e)
+						}
+					}); 
+		}
+		
+		if(users_no != authUser){
+			alertify.error('유저가 일치하지 않습니다.');
+			return false;
+		}else{
+			alertify.confirm("글을 삭제하시겠습니까?",function(e){
+					if(e){
+						alertify.success("삭제완료", ajax_delete(window.post_no));
+					
+				
+			}else if(!authUser){
+				$(".post_modify").hide();
+				}
+					else{
+						alertify.error(' 글 삭제가 취소되었습니다.');
+					}
+			});
+		}
+	})
+	
+	
+	
+	$(document).on("click", ".post_modify", function(){
+	
+		post_no = $(this).data("postno");
+		var users_no = $(this).data("usersno");
+		var authUser = ${authUser.users_no};
+		
+		if(users_no != authUser){
+			alertify.error('유저가 일치하지 않습니다.');
+			return false;
+	 	
+		
+			
+		}else if(!authUser){
+			$(".post_modify").hide();
+		}
+		
+		
+		else{
+			console.log(users_no + ":" +  authUser + "일치")
+			location.href="${pageContext.request.contextPath}/post/${authUser.nickname}/modifyform?post_no=" + post_no;
+			
+			
+			
+			/* $.ajax({
+				url: "${pageContext.request.contextPath }/post/api/modify_view?post_no=" + post_no,
+				type: "get",
+				dataType: "json",
+				data:"",
+				success: function(){
+	        		console.log("SUCCESS")
+	        		
+
+	            },
+			}); */ 
+		}
+	})
+	
+	
+	
+	
+	</script>
+	
+	
 	<!-- Theme Base, Components and Settings -->
 	<script
 		src="${pageContext.request.contextPath}/assets/template/js/theme-functions.js"></script>
@@ -124,54 +355,5 @@
 		src="${pageContext.request.contextPath}/assets/template/js/custom.js"></script>
 
 
-
-	<!-- post 최신 글 9개 불러오는 ajax list -->
-	<script>
-	var nickname = "${map.userVo.nickname}"
-	var users_map = "{users_map.userVo.no}"
-	var image_path = "${pageContext.request.contextPath}/hotdog/image/user/"
-	var post = "${pageContext.request.contextPath }/post/" + nickname + "/postView?post_no="
-				
-			
-   
-	var render = function(vo){
-		var htmls =  "<div class='post-item'><div class='post-image'><img src='" + image_path + vo.post_image + "'></a></div><div class='post-content-details'>" + 
-	        		  "<div class='post-title'><h3>" + vo.title + "</h3></div>" +
-	        		  "<div class='post-description'><div class='post-info'><a class='read-more' href='" + post + vo.post_no + "'>read more <i class='fa fa-long-arrow-right'></i></a></div>" +
-	         		  "</div></div><div class='post-meta'><div class='post-date'><span class='post-date-year'>" + vo.regdate + "</span></div>" +
-	        		  "<div class='post-comments' data-no='" + vo.post_no + "'> <a href='#'> <i class='fa fa-comments-o'></i><span class='post-comments-number'>0</span></a></div>" +
-	         		  "</div></div>"
-				
-	         		  $(".isotope").append(htmls);
-		}
-	
-	var fetchList = function(){
-		console.log("fetchList")
-	  
-		  $.ajax({
-			url: "${pageContext.request.contextPath }/blog/api/indexPostList?nickname=" + nickname,
-			type: "get",
-			dataType: "json",
-			data:"",
-			success: function(response){
-				$(response.data).each(function(index, vo){
-					render(vo, $);
-					INSPIRO.masonryIsotope(render);
-					
-					console.log("render")
-				});
-			},
-		error: function(jqXHR, status, e){
-			console.error(status + ":" + e)
-			}
-		})
-	};
-	
-	fetchList();
-
-	</script>
-
-
-	
 </body>
 </html>

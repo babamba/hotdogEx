@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<% pageContext.setAttribute( "newLine", "\n" ); %>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -84,9 +84,9 @@
 <script
 	src="${pageContext.request.contextPath}/assets/js/userProfile.js"></script>
 <link
-	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
-	rel="stylesheet">
+	href="${pageContext.request.contextPath}/assets/css/userProfile.css" rel="stylesheet">
 	
+
 <!-- community -->
 <link
 	href="${pageContext.request.contextPath}/assets/css/community.css"
@@ -96,6 +96,7 @@
 <link href="${pageContext.request.contextPath}/assets/alertify/alertify.core.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/assets/alertify/alertify.default.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
+	
 	
 <script type="text/javascript">
 
@@ -109,7 +110,7 @@ var renderReply = function(vo){
 	
 	var htmls = 
 		"<div class='comment'><a href='#' class='pull-left'><img alt='' src='" + image_path + vo.users_image + "' class='avatar'></a>"+
-		"<div class='media-body' id='chatview-"+vo.comments_no+ "'><button id='deleteReply' style='border:none; float:right; board:None; background:000;' value='"+vo.users_no+"' data-id='"+vo.comments_no+"'><i class='fa fa-close'></i></button>"+
+		"<div class='media-body' id='chatview-"+vo.comments_no+ "'><button id='deleteReply' style='float:right; border:none; board:None; background:000;' value='"+vo.users_no+"' data-id='"+vo.comments_no+"'><i class='fa fa-close'></i></button>"+
 		"<h4 class='media-heading'>"+ vo.nickname + "</h4>"+
 		"<p class='time'>"+vo.regdate +"</p>"+
 		"<p class='comment_section'>" + vo.content.replace( /\n/gi, "<br>")+ "</p>"+
@@ -153,7 +154,7 @@ var renderReplyChat = function(vo, commentsNo){
 	
 	var htmls = 
 		"<div class='comment comment-replied' id='replyChatView'><a href='#' class='pull-left'><img alt='' src='" + image_path + vo.users_image +"' class='avatar'></a>" +
-		"<div class='media-body'><button id='deleteReplyChat' style='float:right; border:none; board:None; background:000;' value='"+vo.users_no+"' data-id='"+vo.post_chat_no+"'><i class='fa fa-close'></i></button>"+
+		"<div class='media-body'><button id='deleteReplyChat' style='border:none; float:right; border:none; board:None; background:000;' value='"+vo.users_no+"' data-id='"+vo.post_chat_no+"'><i class='fa fa-close'></i></button>"+
 		"<h4 class='media-heading'>" + vo.nickname + "</h4><p class='time'>" + vo.regdate + "</p>" +
 		"<p class='comment_section'>" + vo.content + "</p></div>"; 
 		
@@ -426,8 +427,7 @@ $(function(){
 
 </script>
 
-
-<body>
+<body class="boxed background-white">
 
 
 
@@ -440,10 +440,8 @@ $(function(){
 
 					<!--LOGO-->
 					<div id="logo">
-						<a href="${pageContext.request.contextPath}" class="logo"
-							data-dark-logo="images/logo-dark.png"> <img
-							src="${pageContext.request.contextPath}/assets/img/hotdog_logo_02.png"
-							alt="Hotdog Logo">
+						<a href="${pageContext.request.contextPath}" class="logo">
+							<img src="${pageContext.request.contextPath}/assets/img/hotdog_logo_02.png" alt="Hotdog">
 						</a>
 					</div>
 					<!--END: LOGO-->
@@ -456,7 +454,6 @@ $(function(){
 					</div>
 					<!--END: MOBILE MENU -->
 
-
 					<!--TOP SEARCH -->
 					<div id="top-search">
 						<a id="top-search-trigger"><i class="fa fa-search"></i><i
@@ -467,34 +464,69 @@ $(function(){
 						</form>
 					</div>
 					<!--END: TOP SEARCH -->
-
+					
 					<!--NAVIGATION-->
 					<c:import url="/WEB-INF/views/includes/navigation-main.jsp" />
+					
 					<!--END: NAVIGATION-->
-
-
 				</div>
 			</div>
 		</header>
 		<!-- END: HEADER -->
-
-
-
+		
 		<!-- PAGE TITLE -->
 		<section id="page-title"
 			class="page-title-parallax page-title-center text-dark"
-			style="background-image:url(${pageContext.request.contextPath}/assets/template/images/parallax/page-title-parallax.jpg)">
+			style="background-image:url(${pageContext.request.contextPath}/hotdog/image/user/${map2.blogVo.logo_image})">
 			<div class="container">
 			  <div class="page-title col-md-8">
-					<h1><a href="${pageContext.request.contextPath}/community/diaryboard">다이어리 톡</a></h1>
+					<h1>${map2.blogVo.title}</h1>
+					<span>${map2.userVo.infomation}</span>
+					
+					 <!-- profile modal  -->
+					<div id="showInfo">
+						<button class="fancy-btn openProfile">
+							<img
+								src="${pageContext.request.contextPath}/hotdog/image/user/${map2.userVo.users_image}">
+						</button>
+					</div>
+
+					<div class="modal-frame">
+						<div class="modal">
+							<div class="modal-inset">
+
+								<div class="button closeProfile" id="infoModal-close">
+									<i class="fa fa-close"></i>
+								</div>
+
+								<div class="modal-body">
+									<img
+										src="${pageContext.request.contextPath}/hotdog/image/user/${map2.userVo.users_image}">
+									<h3>${map2.userVo.nickname}</h3>
+									<p>${map2.userVo.infomation}</p>
+									<p>${map2.userVo.email}</p>
+									<div id="emptyFollowerButton"></div>
+									<div id="emptyButton"></div>
+									<%--<ul><li><a href="${pageContext.request.contextPath }/blog/${map.userVo.nickname">블로그 가기</a></li></ul> --%>
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+				<div class="modal-overlay">
+					
 				</div>
 			</div>
-		</section>
-		<!-- END: PAGE TITLE -->
+		</div>
+	</section>
+	<!-- END: PAGE TITLE -->
+	<c:choose>
+		<c:when test="${map.userVo.users_no == authUser.users_no}" >
+			<c:import url="/WEB-INF/views/includes/navigation-blog.jsp" />
+		</c:when>
+	</c:choose>
 
-
-		<!-- CONTENT -->
-	
 		<!-- CONTENT -->
 			<section class="content">
 			<div class="container">
@@ -510,12 +542,11 @@ $(function(){
 								<h2> ${map.postVo.title } </h2>
 							</div>
 							<div class="post-info">
-								<span class="post-autor"> 작성자 : <a href="#"> ${map.postVo.nickname }</a></span> 
-								<!--  <span class="post-category">in <a href="#">Productivity</a></span> -->
+								<span class="post-autor"> 작성자 : ${map.postVo.nickname }</span> 
 							</div>
 							
 							<div class="post-description">
-								<p> ${fn:replace(map.postVo.content, newLine, "<br>") }	 </p>
+								<p> ${fn:replace(map.postVo.content, newLine,"<br>")}	<br><br><br><br><br> </p>
 								
 								
 							</div>
@@ -532,6 +563,9 @@ $(function(){
 								<span class="post-comments-number">${map.postVo.count }</span>
 								</a>
 							</div>
+							<div id="delete-view" class="post-comments" style="visibility: hidden;">
+									<button style="border:None; background:000;" id="deletePost" value="${map.postVo.post_no }"><i class="fa fa-close"></i></button>
+							</div>
 						</div>
 					</div>
 
@@ -544,31 +578,21 @@ $(function(){
 						</div>
 
 						<div id="attachReply">
-							<!-- <div class="comment"> -->
-								<!--
-									<a href="#" class="pull-left"> <img alt="" src="images/team/1.jpg" class="avatar"></a>
-															
-									<div class="media-body" id="attachReply">
-									
-									<h4 class="media-heading">닉네임!!!</h4>
-									<p class="time">등록날짜 !!!</p>
-									<p>내용 !!!</p>
-									<a href="#" class="comment-reply pull-right"><i class="fa fa-reply"></i> Reply</a>
-									
-								</div> -->
-							<!-- </div> -->
+						
+								<!--  댓글 리스트 -->
+		
 						</div>
 					</div>
 					
 					<div class="comment-form">
 						<div class="heading">
-							<h4>Leave a comment</h4>
+							<h4>코멘트를 남겨주세요 :D </h4>
 						</div>
 						<form class="form-gray-fields" id="writeReply">
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<label for="comment" class="upper">Your comment</label>
+										<label for="comment" class="upper">댓글작성</label>
 										<textarea aria-required="true" id="comment" placeholder="Enter comment"
 										 rows="9" class="form-control required"></textarea>
 									</div>
@@ -578,7 +602,7 @@ $(function(){
 								<div class="col-md-12">
 									<div class="form-group text-center">
 										<button type="submit" class="btn btn-primary">
-											<i class="fa fa-paper-plane"></i>&nbsp;Post comment
+											<i class="fa fa-paper-plane"></i>&nbsp;댓글 입력하기
 										</button>
 									</div>
 								</div>
@@ -595,19 +619,12 @@ $(function(){
 
 
 		<!-- END: SECTION -->
-	
-
-			</div>
-
-
-
-		<!-- END: SECTION -->
 
 		<!-- FOOTER -->
 		<c:import url="/WEB-INF/views/includes/footer.jsp" />
 		<!-- END: FOOTER -->
 
-
+	</div>
 	<!-- END: WRAPPER -->
 	<!-- Theme Base, Components and Settings -->
 	<script

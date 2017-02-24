@@ -64,7 +64,6 @@ public class BoardApiController {
 		System.out.println(comments_no);
 		
 		boolean data = boardService.deleteReply(comments_no);
-		
 		return JSONResult.success(data);
 	}
 	

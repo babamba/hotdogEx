@@ -18,6 +18,9 @@ import com.hotdog.petcam.security.Auth;
 import com.hotdog.petcam.security.AuthUser;
 import com.hotdog.petcam.service.ImageService;
 import com.hotdog.petcam.service.PostService;
+import com.hotdog.petcam.vo.BoardChatVo;
+import com.hotdog.petcam.vo.PostChatVo;
+import com.hotdog.petcam.vo.PostCommentsVo;
 import com.hotdog.petcam.vo.PostVo;
 import com.hotdog.petcam.vo.UserVo;
 
@@ -38,16 +41,25 @@ public class PostApiController {
 			@RequestParam(value="p", required=true, defaultValue="1")Integer page, 
 			@RequestParam(value="no", required=true, defaultValue="1")Integer users_no,
 			Model model){
-		System.out.println(page);
 		List<PostVo> list = postService.getList(page, users_no);
-		
 		model.addAttribute("list", list);
-		System.out.println("controller return");
-		System.out.println(list);
 		
 		return JSONResult.success(list);
 	}
+
+	@RequestMapping(value="/modify_view")
+	public JSONResult modify_form(
+			@RequestParam(value="post_no", required=true) Integer post_no, Model model){
+		PostVo postVo = postService.getModifyPost(post_no);
+		
+		return JSONResult.success(postVo);
+	}
 	
+	@ResponseBody
+	@RequestMapping("/updateHits")
+	public void updateHits(@RequestParam(value="postNo", required=true)Integer post_no){
+		postService.updateHits(post_no);
+	}
 	
 /*	@Auth
 	@ResponseBody
@@ -67,27 +79,69 @@ public class PostApiController {
 	
 	@Auth
 	@ResponseBody
-	@RequestMapping("delete")
+	@RequestMapping(value="/deletepost" , method=RequestMethod.POST)
 	public String post_delete(
 			@RequestParam(value="post_no", required=true)Integer post_no){
-		
+		System.out.println(post_no);
 		postService.delete_post(post_no);
 		System.out.println("삭제됨");
 		return "redirect:/";
-
 	}
 	
-	@RequestMapping(value="/modify_view")
-	public JSONResult modify_form(
-			@RequestParam(value="post_no", required=true) Integer post_no, Model model){
-		PostVo postVo = postService.getModifyPost(post_no);
-/*		model.addAttribute("post_map", map);
-		System.out.println("수정");
-		System.out.println(model);*/
-		
-		return JSONResult.success(postVo);
+	
+	/***** reply *****/
+	@ResponseBody
+	@RequestMapping("/fetchreply")
+	public JSONResult fetchReply(
+			@RequestParam(value="postNo", required=true)Integer post_no
+			){
+		List<PostCommentsVo> list = postService.fetchReply(post_no);
+		return JSONResult.success(list);
 	}
+	
 
+	@ResponseBody
+	@RequestMapping( value="/deletePostreply", method=RequestMethod.POST)
+	public JSONResult deletePostReply(@RequestParam( value="commentsNo", required=true) Integer comments_no){
+		System.out.println("----------------------------------------");
+		System.out.println(comments_no);
+		
+		boolean data = postService.deletePostReply(comments_no);
+		return JSONResult.success(data);
+	}
+	
+
+
+	
+	/////////////////////////////////////////// Reply Chat
+	
+	@ResponseBody
+	@RequestMapping("/fetchreplychat")
+	public JSONResult fetchPostReplyChat(@RequestParam(value="commentsNo", required=true) Integer comments_no){
+				
+		List<PostChatVo> list = postService.fetchReplyChat(comments_no);
+		return JSONResult.success(list);
+	}
+	
+	@ResponseBody
+	@RequestMapping("/writereplychat")
+	public JSONResult writeReplyChat(PostChatVo postChatVo){
+		PostChatVo vo = postService.writeReplyChat(postChatVo);
+		return JSONResult.success(vo);
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping( value="/deletePostreplychat", method=RequestMethod.POST)
+	public JSONResult deleteReplyChat(@RequestParam( value="postChatNo", required=true) Integer post_chat_no){
+		
+		boolean data = postService.deletePostReplyChat(post_chat_no);
+		
+		return JSONResult.success(data);
+	}
+	
+	
+	
 	@Auth
 	@ResponseBody
 	@RequestMapping(value ="/post_imageupload", method=RequestMethod.POST)

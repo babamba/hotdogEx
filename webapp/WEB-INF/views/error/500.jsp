@@ -25,8 +25,7 @@
       <div class="face"></div>
     </div>
     <div class="shadow"></div>
-	<h1>오잉?</h1>
-  	<h6>HOT DOG 500 Error</h6>
+	<h1>HOT DOG 500 ERROR</h1>
     <br/>
      <p>
      	 서비스 이용이 원활하지 않습니다.

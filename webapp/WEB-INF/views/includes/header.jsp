@@ -78,8 +78,10 @@
 										<h3>${map.userVo.nickname}</h3>
 										<p>${map.userVo.infomation}</p>
 										<p>${map.userVo.email}</p>
-										<div id="emptyFollowerButton" ></div>
-										<div id="emptyButton" ></div>
+										<div class="ajaxBtn">
+											<div id="emptyFollowerButton" ></div>
+											<div id="emptyButton" ></div>
+										</div>
 										<%--<ul><li><a href="${pageContext.request.contextPath }/blog/${map.userVo.nickname">블로그 가기</a></li></ul> --%>
 									</div>
 
@@ -141,6 +143,8 @@
                      }
                   })
                })
+               
+              
                
                // 2-1.팔로우 유무를 판단하여 버튼을 생성한다.
                var createButton = function(didFollow,myProfile){

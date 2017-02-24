@@ -157,7 +157,7 @@
 				  "<div class='post-title'><h3>" + vo.title + "</h3></div>" +
 				  "<div class='post-description'><div class='post-info'><a class='read-more' href='" + post + vo.post_no + "'>read more <i class='fa fa-long-arrow-right'></i></a></div>" +
 				  "</div></div><div class='post-meta'><div class='post-date'><span class='post-date-year'>" + vo.regdate + "</span></div>" +
-				  "<div class='post-comments' data-no='" + vo.post_no + "'> <a href='#'> <i class='fa fa-comments-o'></i><span class='post-comments-number'>" + ${map.postVo.count } + "</span></a><a href='#' class='social-facebook'><i class='fa fa-facebook'></i><span class='post-comments-number'>0</span></a></div>" +
+				  "<div class='post-comments' data-no='" + vo.post_no + "'><span class='fa fa-hand-pointer-o'>" + vo.count + "</span></a></div>" +
 				  "</div></div>"
 			
 					  $(".isotope").append(htmls);

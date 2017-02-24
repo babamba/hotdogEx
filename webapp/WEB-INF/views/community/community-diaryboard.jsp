@@ -205,7 +205,7 @@ $(function(){
 					  
 					  </div><div class='post-meta'><div class='post-date'><span class='post-date-year'>${vo.regdate }</span></div>
 					  <div class='post-comments' data-no="">
-					  <span class='fa fa-hand-pointer-o'> ${vo.hits }</span>
+					  <span class='fa fa-hand-pointer-o'> ${vo.count}</span>
 					  </div>
 					  </div></div>
 					  

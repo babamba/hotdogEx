@@ -9,7 +9,14 @@ public class PostCommentsVo {
 	private int users_no;
 	private String nickname;
 	private String users_image;
+	private int count;
 	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public String getNickname() {
 		return nickname;
 	}
@@ -57,7 +64,7 @@ public class PostCommentsVo {
 	public String toString() {
 		return "PostCommentsVo [comments_no=" + comments_no + ", content=" + content + ", regdate=" + regdate
 				+ ", post_no=" + post_no + ", users_no=" + users_no + ", nickname=" + nickname + ", users_image="
-				+ users_image + "]";
+				+ users_image + ", count=" + count + "]";
 	}
 	
 	

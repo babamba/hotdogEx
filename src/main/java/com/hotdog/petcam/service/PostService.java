@@ -108,10 +108,19 @@ public class PostService {
 		return postDao.getReply(comments_no);
 	}
 	
+	public void updateHits(int post_no){
+		postDao.increaseHits(post_no);
+	}
+	
 	//댓글 갯수 카운트
 	public int countReply(int post_no){
 		return postDao.countReply(post_no);
 	}
+	
+	public boolean deletePostReply(int comments_no){
+		return postDao.deletePostReply(comments_no) == 1;
+	}
+	
 	
 	////////////////////////////////////////////////////////////////////ReplyChat    
 	// 선택된 게시글에 달린 댓글 리스트 가져오기 
@@ -128,6 +137,11 @@ public class PostService {
 	public int countReplyChat(int comments_no){
 		return postDao.countReplyChat(comments_no);
 	}
+	
+	 public boolean deletePostReplyChat(int post_chat_no){
+	    	return postDao.deletePostReplyChat(post_chat_no) == 1;
+	    }
+
 	
 	
 	// ************************포스트 템플릿 ********************

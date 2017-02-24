@@ -26,8 +26,8 @@
     </div>
     <div class="shadow"></div>
 
-    <h1>오잉?</h1>
-    <h6>HOT DOG 404 Not Found</h6>
+    <h1>HOT DOG 404 ERROR</h1>
+    <h6>HOT DOG <span>404</span> Not Found</h6>
     <br/>
     <p>
      	 페이지를 찾을 수가 없어요!

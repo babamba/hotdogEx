@@ -147,7 +147,7 @@
 					  	<c:when test="${publish eq 1}"> 
 				           <fieldset class="col-md-3 text-center">
 					           <div class="row">
-								    <p class="col-md-6 col-sm-6 col-xs-6" style="margin-left:0;">다이어리 공개 </p>
+								    <p class="col-md-6 col-sm-6 col-xs-6" style="margin-left:0; margin-top:0px">다이어리 공개 </p>
 								    <div class="col-md-6" style="padding-right:0px;">
 								    <label for="radio-1">공개</label>
 								    <input type="radio" name="publish" id="diaryOpen" value="1" checked="checked">
@@ -161,7 +161,7 @@
 					  <c:otherwise> 
 						<fieldset class="col-md-3 text-center">
 					           <div class="row">
-								    <p class="col-md-6 col-sm-6 col-xs-6" style="margin-left:0;">다이어리 공개 </p>
+								    <p class="col-md-6 col-sm-6 col-xs-6" style="margin-left:0; margin-top:0px">다이어리 공개 </p>
 								    <div class="col-md-6" style="padding-right:0px;">
 								    <label for="radio-1">공개</label>
 								    <input type="radio" name="publish" id="diaryOpen" value="1" >
@@ -180,7 +180,7 @@
 						  
 						  <fieldset class="col-md-3 text-center">
 							  <div class="row">
-							    <p class="col-md-6">커뮤니티 공개</p>
+							    <p class="col-md-6" style="margin-top:0px">커뮤니티 공개</p>
 							    <div class="col-md-6">
 							    <label for="radio-1">공개</label>
 							    <input type="radio" name="shared" id="communityOpen" value="1" checked="checked">
@@ -193,7 +193,7 @@
 					  <c:otherwise> 
 						  <fieldset class="col-md-3 text-center">
 							  <div class="row">
-							    <p class="col-md-6">커뮤니티 공개</p>
+							    <p class="col-md-6" style="margin-top:0px">커뮤니티 공개</p>
 							    <div class="col-md-6">
 							    <label for="radio-1">공개</label>
 							    <input type="radio" name="shared" id="communityOpen" value="1" >

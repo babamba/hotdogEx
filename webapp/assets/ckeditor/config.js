@@ -18,8 +18,8 @@ CKEDITOR.editorConfig = function( config ) {
 	config.image2_alignClasses = [ 'image-left', 'image-center', 'image-right' ];
 	config.image2_captionedClass = 'image-captioned';
 	config.removeButtons ='';
-	config.font_names = "굴림;돋움;바탕;궁서;굴림체;돋움체;바탕체;궁서체;나눔고딕;나눔명조;"+
-	'Arial;Comic Sans MS;Courier New;Lucida Sans Unicode;monospace;sans-serif;serif;Tahoma;Times New Roman;Verdana';
+	config.font_names = "굴림;돋움;바탕;궁서;굴림체;돋움체;바탕체;궁서체;나눔고딕;나눔명조;나눔바른고딕;"+
+	'Noto Sans KR;Arial;Comic Sans MS;Courier New;Lucida Sans Unicode;monospace;sans-serif;serif;Tahoma;Times New Roman;Verdana';
 	config.removeDialogTabs = 'image:advanced;link:advanced';
 	config.tabIndex = 1;	// 에디트 안에서 탭 사용하기
 	config.tabSpaces = 4;	// 탭 칸수

@@ -38,7 +38,7 @@ $(function(){
 		
 		<c:when test="${authUser.nickname eq map.nickname}"> 
 			<div class="blog_navigation text-center">
-				<a href="${pageContext.request.contextPath}/post/${map.userVo.nickname}/postlist"><div class="button effect fill-vertical col-md-4 col-sm-4 col-xs-4 text-center"><span>Diary</span></div></a>
+				<a href="${pageContext.request.contextPath}/blog/${map.userVo.nickname}"><div class="button effect fill-vertical col-md-4 col-sm-4 col-xs-4 text-center"><span>Diary</span></div></a>
 				<a href="${pageContext.request.contextPath}/blog/${map.userVo.nickname}/streaming"><div class="button effect fill-vertical col-md-4 col-sm-4 col-xs-4 text-center"><span>Streaming</span></div></a>
 				<a id="getVod"><div class="button effect fill-vertical col-md-4 col-sm-4 col-xs-4 text-center"><span>VOD</span></div></a>
 			</div>

@@ -42,7 +42,7 @@ public class BlogController {
 
 		System.out.println("닉네임" + map);
 
-		return "blog/blog-main2";
+		return "blog/blog-main";
 	}
 
 	@Auth
@@ -111,7 +111,7 @@ public class BlogController {
 
 		model.addAttribute("map", map);
 
-		return "blog/account-main2";
+		return "blog/blog-account-main";
 	}
 
 }

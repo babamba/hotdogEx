@@ -110,7 +110,7 @@ var renderReply = function(vo){
 	
 	var htmls = 
 		"<div class='comment'><a href='#' class='pull-left'><img alt='' src='" + image_path + vo.users_image + "' class='avatar'></a>"+
-		"<div class='media-body' id='chatview-"+vo.comments_no+ "'><button id='deleteReply' style='float:right; board:None; background:000;' value='"+vo.users_no+"' data-id='"+vo.comments_no+"'><i class='fa fa-close'></i></button>"+
+		"<div class='media-body' id='chatview-"+vo.comments_no+ "'><button id='deleteReply' style=' border:none; float:right; board:None; background:000;' value='"+vo.users_no+"' data-id='"+vo.comments_no+"'><i class='fa fa-close'></i></button>"+
 		"<h4 class='media-heading'>"+vo.nickname+"</h4>"+
 		"<p class='time'>"+vo.regdate +"</p>"+
 		"<p class='comment_section'>" + vo.content.replace( /\n/gi, "<br>") +"</p>"+
@@ -154,7 +154,7 @@ var renderReplyChat = function(vo, commentsNo){
 	
 	var htmls = 
 		"<div class='comment comment-replied' id='replyChatView'><a href='#' class='pull-left'><img alt='' src='" + image_path + vo.users_image +"' class='avatar'></a>" +
-		"<div class='media-body'><button id='deleteReplyChat' style='float:right; board:None; background:000;' value='"+vo.users_no+"' data-id='"+vo.board_chat_no+"'><i class='fa fa-close'></i></button>"+
+		"<div class='media-body'><button id='deleteReplyChat' style='float:right; border:none; board:None; background:000;' value='"+vo.users_no+"' data-id='"+vo.board_chat_no+"'><i class='fa fa-close'></i></button>"+
 		"<h4 class='media-heading'>" + vo.nickname + "</h4><p class='time'>" + vo.regdate + "</p>" +
 		"<p class='comment_section'>"+vo.content+"</p>'" +
 		"</div>"; 
