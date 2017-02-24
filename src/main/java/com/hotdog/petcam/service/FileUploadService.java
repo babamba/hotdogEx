@@ -12,7 +12,7 @@ public class FileUploadService {
 
 	private static final String SAVE_PATH = "/upload";
 
-	public String restore(MultipartFile userimage) {
+	public String restore(MultipartFile userimage, int users_no) {
 
 		String saveFileName;
 		try {
@@ -27,24 +27,20 @@ public class FileUploadService {
 			saveFileName = generateSaveFileName(extName);
 			Long fileSize = userimage.getSize();
 
-			System.out.println("파일명 정제중");
-			System.out.println(saveFileName);
-
-			writeFile(userimage, saveFileName);
-
+			writeFile(userimage, saveFileName, users_no);
 		} catch (IOException ex) {
 			// throw new UploadFileException("write file");
 			// log 남기기
 			throw new RuntimeException("write file");
 		}
-		return saveFileName;
+		return users_no + "/" + saveFileName;
 	}
 
-	private void writeFile(MultipartFile multipartFile, String saveFileName) throws IOException {
+	private void writeFile(MultipartFile multipartFile, String saveFileName, int users_no) throws IOException {
 
 		byte[] fileData = multipartFile.getBytes();
 
-		FileOutputStream fos = new FileOutputStream(SAVE_PATH + "/" + saveFileName);
+		FileOutputStream fos = new FileOutputStream(SAVE_PATH + "/" + users_no + "/" + saveFileName);
 		fos.write(fileData);
 
 		if (fos != null) {
@@ -56,7 +52,6 @@ public class FileUploadService {
 	private String generateSaveFileName(String ext) {
 		String fileName = "";
 		Calendar calendar = Calendar.getInstance();
-
 		fileName += calendar.get(Calendar.YEAR);
 		fileName += calendar.get(Calendar.MONTH);
 		fileName += calendar.get(Calendar.DATE);
