@@ -127,7 +127,7 @@
 							<div class="col-md-12 form-group">
 								
 								<button type="submit" id="checkSecretbutton" class="btn btn-primary" type="button">인증 시도</button>
-								<button type="button" class="btn btn-danger"><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}" style="color:white;"></a>Cancel</button>
+								<button type="button" id="cancel" class="btn btn-danger">cancel</button>
 							</div>
 						
 						</div>
@@ -154,7 +154,6 @@
 		// 클릭시 비교
 		var secretNumber;
 		var secretNumberCheck;
-		
 		$(function(){
 			
 			$("#checkSecretbutton").click(function(){
@@ -171,6 +170,10 @@
 					return false;
 				}
 			
+			})
+			
+			$(document).on("click", "#cancel", function(){
+				location.href="${pageContext.request.contextPath}/blog/${authUser.nickname}";
 			})
 		})		
 	

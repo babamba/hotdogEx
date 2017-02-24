@@ -90,7 +90,7 @@
               dataType:"json",
               success:function(response){
                  $("#followButton").remove();
-                 htmls ="<button  class='btn btn-white' id='deleteFollowButton' data-no='" + users_no + "' >Delete Follow</button>";
+                 htmls ="<button  class='btn btn-white' id='deleteFollowButton' data-no='" + users_no + "' >UnFollow</button>";
                  $("#emptyButton").append(htmls);
               }
            })

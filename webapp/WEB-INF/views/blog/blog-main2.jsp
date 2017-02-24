@@ -98,12 +98,8 @@
 		<!-- START: HEADER PAGE TITLE -->
 		<c:import url="/WEB-INF/views/includes/header.jsp" />
 		<!-- END: PAGE TITLE -->
-		
-	<c:choose>
-		<c:when test="${map.userVo.users_no == authUser.users_no}" >
-			<c:import url="/WEB-INF/views/includes/navigation-blog.jsp" />
-		</c:when>
-	</c:choose>
+		<c:import url="/WEB-INF/views/includes/navigation-blog.jsp" />
+
 	
 		<section class="content">
 			<div class="container list_container">
