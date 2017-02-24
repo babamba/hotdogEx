@@ -73,6 +73,14 @@
 		]]>
 	</select>
 
+	<select id="nicknameindex" parameterType="string" resultType="int">
+		<![CDATA[
+		select users_no
+			from users 
+		where nickname = #{nickname};
+		]]>
+	</select>
+	
 	<select id="nicknameExist" parameterType="string" resultType="int">
 		<![CDATA[
 		select count( users_no )

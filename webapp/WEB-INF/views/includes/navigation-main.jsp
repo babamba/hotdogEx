@@ -5,25 +5,26 @@
 	pageEncoding="UTF-8"%>
 
 <script type="text/javascript">
-/* $(function(){
+ $(function(){
 	var pi = '${piVo.device_num}';
 	var user = '${authUser.users_no}';
+	
+ 	$(document).on("click", "#logout", function(){
+        $.ajax({
+           url:"http://150.95.141.66/test/cgi-bin/send.py",
+           type:"post",
+           data: { msg:"streamstop", ip: pi },
+           success: function(){
+               console.log("Streaming Stop");
+           },
+           error : function(jqXHR, status, e) {
+           console.log(status + ":" + e);
+           }            
+       });
 
- 	if(user == 0){
-	        $.ajax({
-	            url:"http://150.95.141.66/test/cgi-bin/send.py",
-	            type:"post",
-	            data: { msg:"streamstop", ip: pi },
-	            success: function(){
-	                console.log("Streaming Stop");
-	            },
-	            error : function(jqXHR, status, e) {
-	            console.log(status + ":" + e);
-	            }            
-	        });
- 	}
+	})
 })
- */</script>
+</script>
 <div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
 	<div class="container">
 		<nav id="mainMenu" class="main-menu mega-menu">
@@ -55,7 +56,7 @@
 								<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/account"> <i class="fa fa-user-plus"></i>계정 설정</a></li>
 								
 								<c:if test="${not empty authUser }">
-									<li><a href="${pageContext.request.contextPath}/user/logout"> <i class="fa fa-user-times"></i>로그아웃</a></li>
+									<li><a id="logout" href="${pageContext.request.contextPath}/user/logout"> <i class="fa fa-user-times"></i>로그아웃</a></li>
 								</c:if>
 							</ul>
 						</li>						

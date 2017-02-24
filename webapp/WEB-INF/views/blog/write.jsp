@@ -111,7 +111,7 @@
 		
 </head>
 	
-<body>
+<body class="boxed background-white">
 	<div class="wrapper">
 
 		<!-- START: HEADER PAGE TITLE -->
@@ -130,41 +130,57 @@
 						</div>
 					</form> -->
 					
-
-				<form class="thumnail-upload">
-					<label>썸네일</label>
-					<input id="post_image" type="file" name="post_image" class="btn btn-white btn-sm" accept="image/*" onchange="loadFile(event)">
-					<img id="output" width="200px" height="150px" /> <br>
-					<button id="post_imageThum" class="btn btn-white">save</button>
-				</form><br><br>
-				
+			<div class=row>
+				<form class="thumnail-upload text-center">
 					
-
-
-				<form action= "${pageContext.request.contextPath }/post/${authUser.nickname}/insert" method="post"  >
-					  <fieldset>
-					    <legend>다이어리 공개 </legend>
-					    <label for="radio-1">공개</label>
-					    <input type="radio" name="publish" id="diaryOpen" value="1">
-					    <label for="radio-2">비공개</label>
-					    <input type="radio" name="publish" id="diaryClosed" value="0">
-					  </fieldset>
-					  
-					  <br><br>
-					  
-					  <fieldset>
-					    <legend>커뮤니티 업로드 </legend>
-					    <label for="radio-1">공개</label>
-					    <input type="radio" name="shared" id="communityOpen" value="1">
-					    <label for="radio-2">비공개</label>
-					    <input type="radio" name="shared" id="communityClosed" value="0">
-					  </fieldset>
-					  
-					  <br><br>
-					<textarea class="form-control required" aria-required="true" name="title" placeholder="제목을 입력하세요." rows="1" style="font-size:20px"></textarea>
+					<label>대표이미지</label>
+					<div>
+						<input id="post_image" type="file" name="post_image" class="btn btn-white btn-sm" accept="image/*" onchange="loadFile(event)" style="margin-left:auto; margin-right:auto;">
+					</div>
+					<img id="output" width="50%" height="300px" /> <br>
+					<div class="m-t-20">
+						<button id="post_imageThum" class="btn btn-white">썸네일 저장</button>
+					</div>
+				</form>
+			</div>
+			
+			
+				<form action= "${pageContext.request.contextPath }/post/${authUser.nickname}/insert" method="post" style="margin-top:20px;"  >
+				
+					<textarea class="form-control required" data-toggle="tooltip" title="대표이미지 올리는 것을 까먹진 않으셨나요?" aria-required="true" name="title" placeholder="제목을 입력하세요." rows="1" style="font-size:20px; margin-bottom:30px; text-align:center;"></textarea>
 		            <input type="hidden" class="post_imagebox" name="post_image" >
 		            <textarea name="content" id="ckeditor" rows="10" cols="80"></textarea>
-		            <input type="submit" class="btn btn-white pull-right" id="posting" style="margin-right:0; margin-top:10px; ">
+		            
+		            <div class="row" style="margin-left:0px; margin-right:0px; margin-top:20px; margin-left:0px;">
+		            	<div style="margin-top:15px;">
+				           <fieldset class="col-md-3 text-center">
+					           <div class="row">
+								    <p class="col-md-6 col-sm-6 col-xs-6" style="margin-left:0;">다이어리 공개 </p>
+								    <div class="col-md-6" style="padding-right:0px;">
+								    <label for="radio-1">공개</label>
+								    <input type="radio" name="publish" id="diaryOpen" value="1" >
+								    
+								    <label for="radio-2">비공개</label>
+								    <input type="radio" name="publish" id="diaryClosed" value="0">
+								     </div>
+							   </div>
+						  </fieldset>
+						  
+						  <fieldset class="col-md-3 text-center">
+						  <div class="row">
+						    <p class="col-md-6">커뮤니티 공개</p>
+						    <div class="col-md-6">
+						    <label for="radio-1">공개</label>
+						    <input type="radio" name="shared" id="communityOpen" value="1" >
+						    <label for="radio-2">비공개</label>
+						    <input type="radio" name="shared" id="communityClosed" value="0">
+						    </div>
+						  </div>
+						  </fieldset>
+					  </div>
+			            <input type="submit" value="포스팅하기" class="btn btn-primary pull-right col-md-3 col-sm-12 col-xs-12" id="posting" style="margin-right:0px;">
+			         </div>
+		            
        			</form>
 			</div>
 
@@ -206,6 +222,13 @@
 		src="${pageContext.request.contextPath}/assets/template/js/custom.js"></script>
 
 	<script>
+	
+	$(document).ready(function(){
+	    $('[data-toggle="tooltip"]').tooltip({ delay: {"show":500, "hide": 1000} });
+
+	});
+	
+	
 	var loadFile = function(
 			event) {
 		var output = document

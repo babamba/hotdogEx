@@ -49,6 +49,12 @@
 		]]>
 	</select>
 	
+	<delete id="deleteVod" parameterType="int">
+	<![CDATA[
+		delete from video where video_no = #{video_no}
+	]]>
+	</delete>
+	
 	
 	
 

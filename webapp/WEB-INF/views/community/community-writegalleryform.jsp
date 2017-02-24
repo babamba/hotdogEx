@@ -171,12 +171,12 @@
 		<section class="content">
 			<div class="container list_container">
 				<form action= "${pageContext.request.contextPath}/community/writegallerypost" method="post"  >
-					<textarea class="form-control required" aria-required="true" name="title" placeholder="제목을 입력하세요." rows="1" style="font-size:20px"></textarea>
+					<textarea class="form-control required" aria-required="true" name="title" placeholder="제목을 입력하세요." rows="1" style="font-size:20px; margin-bottom:30px; text-align:center;"></textarea>
 
 		            <textarea name="content" id="ckeditor" rows="10" cols="80"></textarea>
 		            
-		            <button type="submit" name="${categoryNo }" class="btn btn-white pull-right" id="posting" style="margin-right:0; margin-top:10px; "></button>
-		            
+		            <%-- <button type="submit" name="${categoryNo }" class="btn btn-white pull-right" id="posting" style="margin-right:0; margin-top:10px; "></button> --%>
+		             <input type="submit" name="${categoryNo }" value="포스팅하기" class="btn btn-primary pull-right col-md-3 col-sm-12 col-xs-12" id="posting" style="margin-right:0px; margin-top:10px; ">
 		            
        			</form>
 			</div>

@@ -1,13 +1,6 @@
 package com.hotdog.petcam.controller;
 
-import java.io.InputStream;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,21 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.hotdog.petcam.DTO.JSONResult;
 import com.hotdog.petcam.security.Auth;
 import com.hotdog.petcam.security.AuthUser;
 import com.hotdog.petcam.service.BlogService;
 import com.hotdog.petcam.service.ImageService;
 import com.hotdog.petcam.service.PostService;
-import com.hotdog.petcam.vo.BlogVo;
-import com.hotdog.petcam.vo.ImageVo;
-import com.hotdog.petcam.vo.PostImageVo;
 import com.hotdog.petcam.vo.PostVo;
 import com.hotdog.petcam.vo.UserVo;
 
@@ -52,7 +37,6 @@ public class PostController {
 			Map<String, Object> map = blogService.index(nickname);
 			model.addAttribute("map", map);
 			
-			System.out.println(map);
 			return "blog/diary";
 		}
 		
@@ -72,12 +56,19 @@ public class PostController {
 			return "blog/write";
 		}
 		
+		@RequestMapping("/{nickname}/modifyform")
+		public String modify_page(
+				@RequestParam(value="post_no", required=true) Integer post_no, Model model,
+				@PathVariable String nickname){
+			PostVo postVo = postService.getModifyPost(post_no);
+			model.addAttribute("postvo",postVo);
+			return "blog/modify-form";
+		}
+		
 		
 		@Auth
 		@RequestMapping(value="/{nickname}/insert")
 		public String insert(@ModelAttribute PostVo postVo, @AuthUser UserVo authUser ){
-			System.out.println("publish = " + postVo.getPublish());
-			System.out.println("shared = " + postVo.getShared());
 
 			String nickname = authUser.getNickname();
 			
@@ -108,16 +99,13 @@ public class PostController {
 			
 			Map<String, Object> users = blogService.index(nickname);
 			model.addAttribute("users_map", users);
-			
-			
+	
 			int users_no = authUser.getUsers_no();
 			
 			Map<String, Object> map = postService.getPost(post_no);
-			System.out.println("@@@@@@@@@@@@맵@@@@@@@@@@@@@@" + map);
 			
 			Map<String, Object> map2 = blogService.index(nickname);
 			model.addAttribute("map2", map2);
-			System.out.println("@@@@@@맵222222@@@  " + map2);
 			
 			model.addAttribute("map", map);
 			model.addAttribute("authUserNo", users_no);

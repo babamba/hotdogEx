@@ -66,7 +66,13 @@
 ]]>
 </select>
 
+<delete id="deletePost" parameterType="int">
+<![CDATA[
 
+delete FROM board WHERE board_no = #{board_no };
+
+]]>
+</delete>
 
 <update id="increaseHits" parameterType="int">
 
@@ -120,6 +126,12 @@ select count(*) from board_comments bc where bc.board_no= #{board_no }
 ]]>
 </select>
 
+<delete id="deleteReply" parameterType="int">
+<![CDATA[
+ delete from board_comments where comments_no = #{comments_no }
+]]>
+</delete>
+
 
 <!--                 			Reply Chat							 -->
 
@@ -163,7 +175,11 @@ select count(*) from board_chat bc where bc.comments_no = #{comments_no }
 ]]>
 </select>
 
-
+<delete id="deleteReplyChat" parameterType="int">
+<![CDATA[
+ delete from board_chat where board_chat_no = #{board_chat_no };
+]]>
+</delete>
 
 
 <!--                 			Diary							 -->

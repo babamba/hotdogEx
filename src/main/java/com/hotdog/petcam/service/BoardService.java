@@ -142,8 +142,8 @@ public class BoardService {
     	boardDao.increaseHits(board_no);
     }
     
-    public void deletePost(int board_no){
-    	boardDao.deletePost(board_no);
+    public boolean deletePost(int board_no){
+    	return boardDao.deletePost(board_no) == 1;
     }
         
     
@@ -164,6 +164,11 @@ public class BoardService {
     	return boardDao.countReply(board_no);
     }
     
+    public boolean deleteReply(int comments_no){
+    	return boardDao.deleteReply(comments_no) == 1;
+    }
+
+    
     ////////////////////////////////////////////////////////////////////ReplyChat    
     // 선택된 게시글에 달린 댓글 리스트 가져오기 
     public List<BoardChatVo> fetchReplyChat(int comments_no){
@@ -180,6 +185,11 @@ public class BoardService {
     public int countReplyChat(int comments_no){
     	return boardDao.countReplyChat(comments_no);
     }
+    
+    public boolean deleteReplyChat(int board_chat_no){
+    	return boardDao.deleteReplyChat(board_chat_no) == 1;
+    }
+
 
 
    

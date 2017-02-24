@@ -33,11 +33,14 @@ public class BlogController {
 	private UserService userService;
 	@Autowired
 	private PetService petService;
-
+	
+	
 	@RequestMapping("/{nickname}")
 	public String main(@PathVariable String nickname, Model model) {
 		Map<String, Object> map = blogService.index(nickname);
 		model.addAttribute("map", map);
+		
+		System.out.println("닉네임"+map);
 
 		return "blog/blog-main2";
 	}
@@ -57,7 +60,17 @@ public class BlogController {
 
 		return "blog/blog-vod";
 	}
+	
+	@Auth
+	@ResponseBody
+	@RequestMapping(value="/api/deletevod" , method = RequestMethod.POST) 
+	public JSONResult deleteVod(@RequestParam( value="videoNo", required=true) Integer video_no) {
+		
+		boolean result = blogService.deleteVod(video_no);
 
+		return JSONResult.success(result);
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = "/app/vod", method = RequestMethod.POST)
 	public Object appVodMain(@RequestParam(value = "users_no") int users_no, Model model) {
@@ -92,5 +105,7 @@ public class BlogController {
 
 		return "blog/account-main2";
 	}
+	
+	
 
 }

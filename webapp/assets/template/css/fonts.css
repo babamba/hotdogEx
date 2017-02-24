@@ -5,15 +5,18 @@
 /*Google fonts */
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 @import url(https://fonts.googleapis.com/css?family=Hind:400,500,600,700,300);
+@import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
 
 
 /*body*/
 body {
-     font-family: "Montserrat",sans-serif ! important;
+    /*  font-family: "Montserrat",sans-serif ! important; */
+    font-family: "Noto Sans KR", sans-serif;
 }
 
 p, p.lead {
-    font-family: "Montserrat",sans-serif ! important;
+    /* font-family: "Montserrat",sans-serif ! important; */
+    font-family: "Noto Sans KR", sans-serif;
 }
 
  

@@ -36,7 +36,7 @@ public class BlogApiController {
 	@RequestMapping("/list")
 	public JSONResult list(
 			@RequestParam(value="p", required=true, defaultValue="1")Integer page, 
-			@RequestParam(value="no", required=true, defaultValue="1")Integer users_no,
+			@RequestParam(value="no", required=true)Integer users_no,
 			Model model){
 		System.out.println(page);
 		List<PostVo> list = postService.getList(page, users_no);

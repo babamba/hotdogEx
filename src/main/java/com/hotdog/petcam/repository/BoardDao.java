@@ -61,8 +61,8 @@ public class BoardDao {
     }
     
     // 삭제
-    public void deletePost(int board_no){
-    	sqlSession.update("board.deletePost", board_no);
+    public int deletePost(int board_no){
+    	return sqlSession.delete("board.deletePost", board_no);
     }
     
     
@@ -87,6 +87,10 @@ public class BoardDao {
     public int countReply(int board_no){
     	return sqlSession.selectOne("board.countReply", board_no);
     }
+    
+    public int deleteReply(int comments_no){
+    	return sqlSession.delete("board.deleteReply", comments_no);
+    }
 
     
     ////////////////////////////////////////////////////////////////////ReplyChat    
@@ -110,6 +114,11 @@ public class BoardDao {
     public int countReplyChat(int comments_no){
     	return sqlSession.selectOne("board.countReplyChat", comments_no);
     }
+    
+    public int deleteReplyChat(int board_chat_no){
+    	return sqlSession.delete("board.deleteReplyChat", board_chat_no);
+    }
+
     
     ////////////////////////////////////////////////////////////////////Diary 
     

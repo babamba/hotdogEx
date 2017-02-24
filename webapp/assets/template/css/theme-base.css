@@ -1,3 +1,4 @@
+@import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
 /***********************************************************************
 **														              **
 **         POLO Html5 Template		   								  **
@@ -16,7 +17,8 @@ html {
 }
 body {
     color: #333;
-    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    /* font-family: "Open Sans", Helvetica, Arial, sans-serif; */
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 14px;
     line-height: 24px;
     overflow-x: hidden;
@@ -102,7 +104,8 @@ h5 a,
 h6,
 h6 a {
     color: #111;
-    font-family: 'Raleway', sans-serif;
+    /* font-family: 'Raleway', sans-serif; */
+    font-family: 'Noto Sans KR', sans-serif;
 	font-weight: 600;
 	line-height: 1.5;
 	margin: 0 0 10px 0;
@@ -137,7 +140,8 @@ p.lead {
 -----------------------------------------------------------------*/
 
 .font-pacifico {
-    font-family: 'Dancing Script' !important;
+    /* font-family: 'Dancing Script' !important; */
+     font-family: 'Noto Sans KR', sans-serif;
 }
 .font-raleway,
 .font-raleway a,
@@ -153,7 +157,8 @@ h3.font-raleway,
 h4.font-raleway,
 h5.font-raleway,
 h6.font-raleway {
-    font-family: 'Raleway' !important;
+    /* font-family: 'Raleway' !important; */
+    font-family: 'Noto Sans KR', sans-serif;
     font-weight: 100 !important;
 }
 .font-nothing-you-could-do,
@@ -170,7 +175,8 @@ h3.font-nothing-you-could-do,
 h4.font-nothing-you-could-do,
 h5.font-nothing-you-could-do,
 h6.font-nothing-you-could-do {
-    font-family: 'Nothing You Could Do', cursive !important;
+    /* font-family: 'Nothing You Could Do', cursive !important; */
+    font-family: 'Noto Sans KR', sans-serif;
     font-weight: normal !important;
 }
 .font-herr-von-muellerhoff,
@@ -187,7 +193,8 @@ h3.font-herr-von-muellerhoff,
 h4.font-herr-von-muellerhoff,
 h5.font-herr-von-muellerhoff,
 h6.font-herr-von-muellerhoff {
-    font-family: 'Herr Von Muellerhoff', cursive !important;
+    /* font-family: 'Herr Von Muellerhoff', cursive !important; */
+    font-family: 'Noto Sans KR', sans-serif;
     font-weight: normal !important;
 }
 .font-cedarville,
@@ -204,7 +211,8 @@ h3.font-cedarville,
 h4.font-cedarville,
 h5.font-cedarville,
 h6.font-cedarville {
-    font-family: 'Cedarville Cursive', cursive;
+    /* font-family: 'Cedarville Cursive', cursive; */
+     font-family: 'Noto Sans KR', sans-serif;
 }
 .font-parisienne,
 .font-parisienne a,
@@ -220,7 +228,8 @@ h3.font-parisienne,
 h4.font-parisienne,
 h5.font-parisienne,
 h6.font-parisienne {
-    font-family: 'Parisienne', cursive;
+   /*  font-family: 'Parisienne', cursive; */
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 /* ----------------------------------------------------------------
@@ -427,7 +436,8 @@ nav .main-menu .dropdown-menu {
 }
 nav .main-menu .dropdown-menu a,
 nav .main-menu .dropdown-submenu > span.dropdown-menu-title-only {
-    font-family: "Lato", sans-serif;
+   /*  font-family: "Lato", sans-serif; */
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 13px;
     font-weight: 400;
     height: 40px;
@@ -473,7 +483,8 @@ nav .main-menu .dropdown-submenu {
 }
 nav .main-menu .dropdown-submenu:before {
     content: "\f105";
-    font-family: fontawesome;
+    /* font-family: fontawesome; */
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 12px;
     opacity: 0.6;
     position: absolute;
@@ -1284,7 +1295,8 @@ body.side-panel-static #header.header-sticky:not(.header-static) #header-wrap {
     text-decoration: none;
     -webkit-transition: color 0.2s;
     transition: color 0.2s;
-    font-family: 'NotCourierSans';
+    /* font-family: 'NotCourierSans'; */
+    font-family: 'Noto Sans KR', sans-serif;
     text-transform: uppercase;
 }
 .fullscreen-panel-overlay ul li a:hover,
@@ -4100,7 +4112,8 @@ body:not(.device-sm):not(.device-xs):not(.device-xxs) .post-4-columns.post-moder
 .grid-articles .post-entry .post-entry-meta .post-entry-meta-title h2,
 .grid-articles .post-entry .post-entry-meta .post-entry-meta-title h2 a {
     color: #fff;
-    font-family: "Raleway", sans-serif;
+    /* font-family: "Raleway", sans-serif; */
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 16px;
     font-weight: 600;
     line-height: 1.2;
@@ -4249,7 +4262,8 @@ body:not(.device-sm):not(.device-xs):not(.device-xxs) .post-4-columns.post-moder
 .news-ticker-content .owl-item::before {
     color: #d82731;
     content: "";
-    font-family: fontawesome;
+    /* font-family: fontawesome; */
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 10px;
     margin-left: -24px;
     position: absolute;
@@ -4649,7 +4663,8 @@ body:not(.no-page-loader) .wrapper,
 }
 .hero-heading-3 h2,
 .hero-heading-3 h3 {
-    font-family: 'Josefin Sans', sans-serif;
+    /* font-family: 'Josefin Sans', sans-serif; */
+    font-family: 'Noto Sans KR', sans-serif;
     text-transform: uppercase;
     font-size: 92px;
     text-align: center;
@@ -4670,7 +4685,8 @@ body:not(.no-page-loader) .wrapper,
 }
 .working-hours li::before {
     content: "";
-    font-family: FontAwesome;
+    /* font-family: FontAwesome; */
+    font-family: 'Noto Sans KR', sans-serif;
     margin-right: 15px;
 }
 .working-hours li span {

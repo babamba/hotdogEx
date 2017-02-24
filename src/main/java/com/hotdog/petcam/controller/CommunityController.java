@@ -67,13 +67,6 @@ public class CommunityController {
 		return "community/community-viewpost";
 	}
 	
-	@RequestMapping( value="/deletepost", method=RequestMethod.POST)
-	public String deletePost(@RequestParam( value="no", required=true) Integer board_no){
-		
-		boardService.deletePost(board_no);
-		
-		return "redirect:/community/freeboard";
-	}
 	
 	//자유게시판  입력폼 
 	@Auth

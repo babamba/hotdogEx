@@ -207,7 +207,7 @@
 												        <c:forEach items="${user_list }"	var="vo" varStatus="status">
 												          <tr>
 												            <td>Image</td>
-												            <td>${vo.nickname }</td>
+												            <td><a href="${pageContext.request.contextPath }/blog/${vo.nickname}">${vo.nickname }</a></td>
 												            <td>${vo.email }</td>
 												            <td>${vo.infomation }</td>
 												          </tr>
@@ -231,8 +231,8 @@
 												        <c:forEach items="${blog_list }"	var="vo" varStatus="status">
 												          <tr>
 												            <td>Image</td>
-												            <td>${vo.title }</td>
-												            <td>${vo.nickname }</td>
+												            <td><a href="${pageContext.request.contextPath }/blog/${vo.nickname}">${vo.title }</a></td>
+												            <td><a href="${pageContext.request.contextPath }/blog/${vo.nickname}">${vo.nickname }</a></td>
 												          </tr>
 												         </c:forEach>
 												        </tbody>

@@ -164,8 +164,17 @@ $(function(){
 	$("#inputNickCheck").click(function(){
 			
 			nickname = $("#inputnickname").val();
-			console.log(nickname);
 			
+			if(nickname.length < 6 ){
+				alertify.error("닉네임은 6자 이상입니다.")
+				$("#inputnickname").focus();
+				return false;
+			}
+			if(nickname.length > 14 ){
+				alertify.error("닉네임은 14자 이하입니다.")
+				$("#inputnickname").focus();
+				return false;
+			}	
 			if($("#inputnickname").val()==""){
 				alertify.error("닉네임을 입력해주세요");
 				$("#inputnickname").focus();
@@ -201,16 +210,30 @@ $(function(){
 		$("#inputPassword2Check").click(function(){
 			
 			nickname = $("#inputnickname").val();
-			console.log(nickname);
+			
+			 var pw = $("#inputPassword").val();
+			 var num = pw.search(/[0-9]/g);
+			 var eng = pw.search(/[a-z]/ig);
+			 var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+
 			
 			if($("#inputPassword").val()==""){
 				alertify.error("패스워드를 입력해주세요");
 				$("#inputPassword").focus();
 				return false;
 			}
+			if($("#inputPassword").val().length < 8 || $("#inputPassword").val().length>20){
+				alertify.error("비밀번호는 8자 이상 20자 이하입니다");
+				$("#inputPassword").focus();
+				return false;
+			}
+			if(num < 0 || eng < 0 || spe < 0 ){
+				alertify.error("영문,숫자,특수문자를 혼합해주세요 ");
+				return false;
+			}
 			
 			if($("#inputPassword2").val()==""){
-				alertify.error("패스워드 체크를 입력해주세요");
+				alertify.error("패스워드를 한번더 입력해주세요");
 				$("#inputPassword").focus();
 				return false;
 			}

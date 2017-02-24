@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hotdog.petcam.vo.BlogVo;
+import com.hotdog.petcam.vo.CookieVo;
 import com.hotdog.petcam.vo.PetVo;
 import com.hotdog.petcam.vo.UserVo;
 
@@ -18,14 +19,7 @@ public class UserDao {
 	@Autowired
 	private SqlSession sqlSession;
 
-	public void setCookie(String email,String hashcode){
-		Map<String,String> map = new HashMap<String,String>();
-		map.put("email",email);
-		map.put("hashcode", hashcode);
-		
-		sqlSession.delete("cookie.deleteCookie",map);
-		sqlSession.insert("cookie.setCookie",map);
-	}
+
 	public int insert(UserVo userVo) {
 		sqlSession.insert("user.insert", userVo);
 		return userVo.getUsers_no();
@@ -58,6 +52,11 @@ public class UserDao {
 	public int nicknameExist(String nickname) {
 		return sqlSession.selectOne("user.nicknameExist", nickname);
 	}
+	
+	// 닉네임 파라미터로 유저넘버 조회 UserVo 형태의 authUser에 리턴
+		public int nicknameIndex(String nickname) {
+			return sqlSession.selectOne("user.nicknameindex", nickname);
+		}
 
 	// 맵형태의 email, password, nickname을 조회해 담고 UserVo형태의 authUser에 담아 리턴
 	public UserVo selectForLogin(String email, String pass_word, String nickname, String description, String infomation,
@@ -184,4 +183,26 @@ public class UserDao {
 	public void appPasswordModify(UserVo userVo) {
 		sqlSession.update("user.appPasswordModify", userVo);
 	}
+	// ************************  Cookie  *********************************
+		public int searchCookie (CookieVo cookieVo){
+			return sqlSession.selectOne("cookie.searchCookie", cookieVo);
+		}
+		public UserVo	cookieLogin(String email){
+			return sqlSession.selectOne("cookie.cookieLogin", email);
+		}
+		public void deleteCookie(String name,String email){
+			
+			Map<String,String> map = new HashMap<String,String>();
+			map.put("name", name);
+			map.put("email", email);
+			sqlSession.delete("cookie.deleteCookie", map);
+		}
+		public void setCookie(String name,String email){
+			Map<String,String> map = new HashMap<String,String>();
+			map.put("name", name);
+			map.put("email",email);
+			
+			sqlSession.delete("cookie.deleteCookie",map);
+			sqlSession.insert("cookie.setCookie",map);
+		}
 }

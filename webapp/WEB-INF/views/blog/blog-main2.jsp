@@ -98,10 +98,13 @@
 		<!-- START: HEADER PAGE TITLE -->
 		<c:import url="/WEB-INF/views/includes/header.jsp" />
 		<!-- END: PAGE TITLE -->
-
-		<c:import url="/WEB-INF/views/includes/navigation-blog.jsp" />
-
-
+		
+	<c:choose>
+		<c:when test="${map.userVo.users_no == authUser.users_no}" >
+			<c:import url="/WEB-INF/views/includes/navigation-blog.jsp" />
+		</c:when>
+	</c:choose>
+	
 		<section class="content">
 			<div class="container list_container">
 						<!-- Blog post-->
@@ -110,7 +113,7 @@
 					<br/>	
 					<div class="timeline">
 						
-						<ul class="timeline-circles" >
+						<ul class="timeline-circles" data-animation='fadeInUp' >
 							
 							
 							
@@ -143,7 +146,7 @@
 	var post = "${pageContext.request.contextPath }/post/" + nickname + "/postView?post_no="
 	
 	var isEnd = false;
-	var authUser = ${authUser.users_no};
+	
 	var page = 0;	// 게시글의 0번째 인덱스 
 	var pluspage = 10;	// 게시글이 15개씩 fetchList로 로딩 되니까 fetchList가 요청될 시 15만큼 더해서 db인덱스값을 더해서 요청한다.
 	
@@ -152,7 +155,7 @@
 	
 	var render = function(vo){
 			
-		var htmls =  "<li class='timeline_list' data-postno=" + vo.post_no + " data-usersno=" + vo.users_no + "><div class='timeline-block'><div class='post-item'><div class='post-image'><a href='#'><img src='" + image_path + vo.post_image + "'></a></div>" +
+		var htmls =  "<li class='timeline_list ' data-animation='fadeInUp' data-postno=" + vo.post_no + " data-usersno=" + vo.users_no + "><div class='timeline-block'><div class='post-item'><div class='post-image'><a href='#'><img src='" + image_path + vo.post_image + "'></a></div>" +
 					 "<div class='post-content-details'><div class='post-title'><h3>" + vo.title + "</h3></div>" +
 					 "<div class='post-info'><span class='post-autor'>Post by : " + nickname + "</span><span class='post-category'></span></div>" +
 					 "<div class='post-description'><div class='post-info'><a class='read-more' href='" + post + vo.post_no + "'>read more <i class='fa fa-long-arrow-right'></i></a></div></div>" +
@@ -161,7 +164,7 @@
 					 "<div class='post-meta'><div class='post-date'>" + vo.regdate + "</div>" +
 					 "<div class='post-comments'><a href='#'><i class='fa fa-comments-o'></i><span class='post-comments-number'>324</span></a></div>" +
 					 "<div class='post-comments post_modify' data-postNo=" + vo.post_no + " data-usersNo='" + vo.users_no + "'><a href='javascript:;'><i class='fa fa-share-alt'></i><span class='post-comments-number'>수정</span></a></div>" +
-					 "<div class='post-comments post_delete' data-postNo=" + vo.post_no + " data-usersNo='" + vo.users_no + "'><a href='javascript:;'><i class='fa fa-share-alt'></i><span class='post-comments-number'>삭제</span></a></div>" +
+					 "<div class='post-comments post_delete' data-postNo=" + vo.post_no + " data-usersNo='" + vo.users_no + "'><a href='javascript:;'><i class='fa fa-close'></i><span class='post-comments-number'>삭제</span></a></div>" +
 					 
 					 "</div></div></div></li>"
 			
@@ -184,22 +187,26 @@
 			dataType: "json",
 			data:"",
 			success: function(response){
-				console.log(response)
+				console.log(response.data.length)
 				if(response.result != "success"){
 					console.error(response.message);
 					isEnd = true;
 					return;
 				}
 				
+				if( response.data.length == 0 ) {
+					alertify.log("모든 포스트를 불러왔습니다.")
+					isEnd = true;
+					$( "#load-more-link" ).prop( "disabled", true );
+					}
+				
+				
 			$(response.data).each(function(index, vo){
 				render(vo);
 				console.log("render")
 			});
 			
-			if( response.data.length < 5 ) {
-				isEnd = true;
-				$( "#load-more-link" ).prop( "disabled", true );
-				}
+			
 			},
 		error: function(jqXHR, status, e){
 			console.error(status + ":" + e)
@@ -258,6 +265,7 @@
 	
 		post_no = $(this).data("postno");
 		var users_no = $(this).data("usersno");
+		var authUser = ${authUser.users_no};
 		
 		var ajax_delete = function(post_no){
 			
@@ -303,6 +311,7 @@
 	
 		post_no = $(this).data("postno");
 		var users_no = $(this).data("usersno");
+		var authUser = ${authUser.users_no};
 		
 		console.log(post_no)
 		console.log(users_no)
@@ -311,14 +320,25 @@
 			console.log(users_no + ":" +  authUser + "틀려")
 			alertify.error('유저가 일치하지 않습니다.');
 			return false;
+	 	
 			
 		}else{
 			console.log(users_no + ":" +  authUser + "일치")
+			location.href="${pageContext.request.contextPath}/post/${authUser.nickname}/modifyform?post_no=" + post_no;
 			
-			$.ajax({
+			
+			
+			/* $.ajax({
 				url: "${pageContext.request.contextPath }/post/api/modify_view?post_no=" + post_no,
-				type: "post"
-			}); 
+				type: "get",
+				dataType: "json",
+				data:"",
+				success: function(){
+	        		console.log("SUCCESS")
+	        		
+
+	            },
+			}); */ 
 		}
 	})
 	
