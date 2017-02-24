@@ -155,6 +155,7 @@ public class PostService {
 
 	}
 	public Boolean captureCheck(int authUser_no){
+		System.out.println(postDao.captureCheck( authUser_no ));
 		if( postDao.captureCheck( authUser_no ) !=0 ){
 			return true;
 		}

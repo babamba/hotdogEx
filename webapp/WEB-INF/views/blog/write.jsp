@@ -110,7 +110,47 @@
 
 		
 </head>
-	
+<script>
+// 1. 페이지가 시작될떄 오늘 짝운 서잔아 았눈자 펀단한다.
+$(document).ready(function(){
+
+	$.ajax({
+		url : "${pageContext.request.contextPath }/post/captureCheck",
+		type : "get",
+		dataType : "json",
+		data : "",
+		success : function(response){
+			// 오늘 캡쳐한 시잔이 있으면묻는다.			
+			if(response.data == "exist"){
+				
+				question();
+			}
+		}
+	});
+})
+var question = function(){
+	alertify.confirm("오늘 캡쳐한 사진이 있습니다. 가져올까요?", function (e) {
+		if (e) {
+	        // OK. 가져온다.
+	        pull();
+	    } else {
+	        // Cancel , 취소한다.
+	    }
+	});
+}
+
+var pull = function(){
+	$.ajax({
+		url : "{pageContext.request.contextPath}/post/pullCapture",
+		type : get,
+		dataType : "json",
+		data : "",
+		success : function(list){
+		}
+	});
+}
+
+</script>
 <body class="boxed background-white">
 	<div class="wrapper">
 

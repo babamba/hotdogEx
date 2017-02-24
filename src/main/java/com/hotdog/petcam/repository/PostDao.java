@@ -1,5 +1,6 @@
 package com.hotdog.petcam.repository;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -114,6 +115,24 @@ public class PostDao {
 	
 	// ************************* 캡쳐 템플릿 *************  쿼리 작성안됨
 	public int captureCheck( int authUser_no ){
+		
+		Calendar calender = Calendar.getInstance();
+		
+		String regdate = calender.get(Calendar.YEAR)+"-";
+		if ( (calender.get(Calendar.MONTH)+1) >= 10){
+			regdate +=  (calender.get(Calendar.MONTH)+1)+"-";
+		}else{
+			regdate +=  "0"+(calender.get(Calendar.MONTH)+1)+"-";
+		}
+		if ( calender.get(Calendar.DAY_OF_MONTH) >= 10){
+			regdate +=  calender.get(Calendar.DAY_OF_MONTH);
+		}else{
+			regdate +=  "0"+calender.get(Calendar.DAY_OF_MONTH);
+		}
+		System.out.println(regdate);
+		Map<String,Object >map = new HashMap<String,Object>();
+		map.put("authUser_no",authUser_no );
+		map.put("regdate", regdate);
 		return sqlSession.selectOne("post.captureCheck", authUser_no);
 	}
 	public List<ImageVo> pullCapture(int authUser_no){

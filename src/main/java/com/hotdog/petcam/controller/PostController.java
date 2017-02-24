@@ -123,8 +123,11 @@ public class PostController {
 		@ResponseBody
 		@RequestMapping("/captureCheck")
 		public Object captureCheck(@AuthUser UserVo authUser){
+			System.out.println("캡쳐사진이 있는지 확인한다.");
 			postService.captureConnect(authUser.getUsers_no());
-			return JSONResult.success(postService.captureCheck(authUser.getUsers_no()) ? "exist" : "not exist");
+			String result = (postService.captureCheck(authUser.getUsers_no()) ? "exist" : "not exist");
+			System.out.println(result);
+			return JSONResult.success(result);
 		}
 	
 		
@@ -132,7 +135,7 @@ public class PostController {
 		@ResponseBody
 		@RequestMapping("/pullCapture")
 		public Object pullCapture(@AuthUser UserVo authUser){
-			
+			System.out.println("캡쳐사진 가져온다.");
 			List<ImageVo> list = postService.pullCapture(authUser.getUsers_no());
 			return JSONResult.success(list);
 		}
