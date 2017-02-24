@@ -44,11 +44,11 @@ public class SecretLoginInterceptor extends HandlerInterceptorAdapter {
             return false;
         }
         
-        
+        System.out.println(request.getContextPath());
         // 인증 처리
         session.setAttribute( "secretUser", userVo );
 //        response.sendRedirect( "http://localhost:8087"+callBack);  // request.getContextPath 에 추가하면 도메인이 일부 중복된다.
-        response.sendRedirect( request.getContextPath()+callBack);
+        response.sendRedirect( callBack);
         return false;
     }
     

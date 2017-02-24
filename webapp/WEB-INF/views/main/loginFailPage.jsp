@@ -19,7 +19,6 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/alertify/alertify.core.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/alertify/alertify.default.css">
-
 <script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
 
 <script>
