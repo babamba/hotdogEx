@@ -20,6 +20,7 @@ import com.hotdog.petcam.security.Secret;
 import com.hotdog.petcam.service.BlogService;
 import com.hotdog.petcam.service.PetService;
 import com.hotdog.petcam.service.UserService;
+import com.hotdog.petcam.vo.CaptureVo;
 import com.hotdog.petcam.vo.UserVo;
 import com.hotdog.petcam.vo.VideoVo;
 
@@ -33,14 +34,13 @@ public class BlogController {
 	private UserService userService;
 	@Autowired
 	private PetService petService;
-	
-	
+
 	@RequestMapping("/{nickname}")
 	public String main(@PathVariable String nickname, Model model) {
 		Map<String, Object> map = blogService.index(nickname);
 		model.addAttribute("map", map);
-		
-		System.out.println("닉네임"+map);
+
+		System.out.println("닉네임" + map);
 
 		return "blog/blog-main2";
 	}
@@ -60,22 +60,30 @@ public class BlogController {
 
 		return "blog/blog-vod";
 	}
-	
+
 	@Auth
 	@ResponseBody
-	@RequestMapping(value="/api/deletevod" , method = RequestMethod.POST) 
-	public JSONResult deleteVod(@RequestParam( value="videoNo", required=true) Integer video_no) {
-		
+	@RequestMapping(value = "/api/deletevod", method = RequestMethod.POST)
+	public JSONResult deleteVod(@RequestParam(value = "videoNo", required = true) Integer video_no) {
+
 		boolean result = blogService.deleteVod(video_no);
 
 		return JSONResult.success(result);
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/app/vod", method = RequestMethod.POST)
-	public Object appVodMain(@RequestParam(value = "users_no") int users_no, Model model) {
+	public Object appVod(@RequestParam(value = "users_no") int users_no, Model model) {
 
 		List<VideoVo> list = blogService.getVod(users_no);
+		return JSONResult.success(list);
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/app/capture", method = RequestMethod.POST)
+	public Object appCapture(@RequestParam(value = "users_no") int users_no, Model model) {
+
+		List<CaptureVo> list = blogService.getCapture(users_no);
 		return JSONResult.success(list);
 	}
 
@@ -83,11 +91,11 @@ public class BlogController {
 	@Secret
 	@RequestMapping("/{nickname}/streaming")
 	public String Streaming(@PathVariable String nickname, @AuthUser UserVo authUser, Model model) {
-		
+
 		Map<String, Object> map = blogService.index(nickname);
-		
+
 		model.addAttribute("map", map);
-		
+
 		return "blog/blog-streaming";
 	}
 
@@ -105,7 +113,5 @@ public class BlogController {
 
 		return "blog/account-main2";
 	}
-	
-	
 
 }
