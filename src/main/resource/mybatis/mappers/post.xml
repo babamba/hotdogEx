@@ -145,12 +145,16 @@
 </select>
 
 <!--  ********************************* 캡쳐 템플릿 ******************************* -->	
+	<!--  (1) 오늘 날짜에 캡쳐사진이 있는지 ??? ( 미완성 )-->
 	<select id="captureCheck" parameterType="int">
 		<![CDATA[
 		
+		select count( capture_no )
+			from capture
+			where users_no = #{authUser_no} 
 		]]>
 	</select>
-	
+	<!--  (2) 캡쳐 사진들 땡겨오기 -->
 	<select id="pullCapture" parameterType="int">
 		<![CDATA[
 		

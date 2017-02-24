@@ -134,7 +134,7 @@ public class PostService {
 	
 	public void captureConnect(int authUser_no) {
 		try {
-			URL url = new URL("http://150.95.141.66/ ?????? " + authUser_no);
+			URL url = new URL("http://150.95.141.66/test/cgi-bin/capture.py?userNo=" + authUser_no);
 
 			URLConnection conn = url.openConnection();
 
