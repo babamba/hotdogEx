@@ -31,7 +31,7 @@ public class PostApiController {
 	@Autowired
 	private ImageService imageService;
 	
-	@Auth
+	
 	@ResponseBody
 	@RequestMapping("/list")
 	public JSONResult list(

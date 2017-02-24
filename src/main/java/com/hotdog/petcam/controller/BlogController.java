@@ -33,7 +33,8 @@ public class BlogController {
 	private UserService userService;
 	@Autowired
 	private PetService petService;
-
+	
+	
 	@RequestMapping("/{nickname}")
 	public String main(@PathVariable String nickname, Model model) {
 		Map<String, Object> map = blogService.index(nickname);

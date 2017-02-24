@@ -146,7 +146,7 @@
 	var post = "${pageContext.request.contextPath }/post/" + nickname + "/postView?post_no="
 	
 	var isEnd = false;
-	var authUser = ${authUser.users_no};
+	
 	var page = 0;	// 게시글의 0번째 인덱스 
 	var pluspage = 10;	// 게시글이 15개씩 fetchList로 로딩 되니까 fetchList가 요청될 시 15만큼 더해서 db인덱스값을 더해서 요청한다.
 	
@@ -265,6 +265,7 @@
 	
 		post_no = $(this).data("postno");
 		var users_no = $(this).data("usersno");
+		var authUser = ${authUser.users_no};
 		
 		var ajax_delete = function(post_no){
 			
@@ -310,6 +311,7 @@
 	
 		post_no = $(this).data("postno");
 		var users_no = $(this).data("usersno");
+		var authUser = ${authUser.users_no};
 		
 		console.log(post_no)
 		console.log(users_no)
@@ -318,6 +320,7 @@
 			console.log(users_no + ":" +  authUser + "틀려")
 			alertify.error('유저가 일치하지 않습니다.');
 			return false;
+	 	
 			
 		}else{
 			console.log(users_no + ":" +  authUser + "일치")
