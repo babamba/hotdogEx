@@ -5,6 +5,7 @@
 	pageEncoding="UTF-8"%>
 
 <script type="text/javascript">
+
 $(function(){
 	var users_no = ${authUser.users_no}
 	
