@@ -148,7 +148,6 @@
 	<!--  (1) 오늘 날짜에 캡쳐사진이 있는지 ??? -->
 	<select id="captureCheck" parameterType="map" resultType="int">
 		<![CDATA[
-		
 			select count( capture_no )
 					from capture a
 				where a.regdate = #{regdate} and a.users_no = #{authUser_no};
