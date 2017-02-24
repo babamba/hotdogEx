@@ -24,7 +24,7 @@ public class FileUploadService {
 			String originalFileName = userimage.getOriginalFilename();
 			String extName = originalFileName.substring(originalFileName.lastIndexOf('.') + 1,
 					originalFileName.length());
-			saveFileName = generateSaveFileName(extName);
+			saveFileName = originalFileName;
 			Long fileSize = userimage.getSize();
 
 			writeFile(userimage, saveFileName, users_no);
