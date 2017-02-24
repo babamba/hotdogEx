@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.hotdog.petcam.vo.PetVo;
+import com.hotdog.petcam.vo.ImageVo;
 import com.hotdog.petcam.vo.PostChatVo;
 import com.hotdog.petcam.vo.PostCommentsVo;
 import com.hotdog.petcam.vo.PostVo;
@@ -112,13 +112,13 @@ public class PostDao {
 		return sqlSession.selectOne("post.countReplyPostChat", comments_no);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
+	// ************************* 캡쳐 템플릿 *************  쿼리 작성안됨
+	public int captureCheck( int authUser_no ){
+		return sqlSession.selectOne("post.captureCheck", authUser_no);
+	}
+	public List<ImageVo> pullCapture(int authUser_no){
+		return sqlSession.selectList("post.pullCapture", authUser_no);
+	}
 	
 	
 	

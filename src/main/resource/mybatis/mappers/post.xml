@@ -143,6 +143,18 @@
 		select count(*) from post_chat pc where pc.comments_no = #{comments_no }
 		]]>
 </select>
+
+<!--  ********************************* 캡쳐 템플릿 ******************************* -->	
+	<select id="captureCheck" parameterType="int">
+		<![CDATA[
+		
+		]]>
+	</select>
 	
+	<select id="pullCapture" parameterType="int">
+		<![CDATA[
+		
+		]]>
+	</select>
 
 </mapper>

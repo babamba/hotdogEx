@@ -52,14 +52,13 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
         if ( remember != null ){
         	Cookie cookie = new Cookie("hotdog",userVo.getEmail());
         	cookie.setMaxAge(60*60*24*365);
-        	userService.setCookie("hotdog",userVo.getEmail());
-        	
-        	System.out.println(cookie.getName());
-        	System.out.println(cookie.getValue());
-        	System.out.println(cookie.getMaxAge());
+        	cookie.setDomain("hotdog");
+        	cookie.setPath("/hotdog");
         	
         	response.addCookie(cookie);
+        	System.out.println("쿠키 발급!");
         	
+        	userService.setCookie("hotdog",userVo.getEmail());
 //        		cookieBox.createCookie("email", userVo.getEmail());
         }
         

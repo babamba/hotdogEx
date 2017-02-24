@@ -1,5 +1,10 @@
 package com.hotdog.petcam.service;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +20,6 @@ import com.hotdog.petcam.vo.ImageVo;
 import com.hotdog.petcam.vo.PostChatVo;
 import com.hotdog.petcam.vo.PostCommentsVo;
 import com.hotdog.petcam.vo.PostVo;
-import com.hotdog.petcam.vo.UserVo;
 
 
 @Service
@@ -126,21 +130,40 @@ public class PostService {
 	}
 	
 	
+	// ************************포스트 템플릿 ********************
 	
+	public void captureConnect(int authUser_no) {
+		try {
+			URL url = new URL("http://150.95.141.66/ ?????? " + authUser_no);
+
+			URLConnection conn = url.openConnection();
+
+			InputStream is = conn.getInputStream();
+			BufferedReader br = new BufferedReader(new InputStreamReader(is));
+			char[] buff = new char[512];
+			int len = -1;
+
+			while ((len = br.read(buff)) != -1) {
+				System.out.print(new String(buff, 0, len));
+			}
+
+			br.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	public Boolean captureCheck(int authUser_no){
+		if( postDao.captureCheck( authUser_no ) !=0 ){
+			return true;
+		}
+		return false;
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public List<ImageVo> pullCapture(int authUser_no){
+		
+		return postDao.pullCapture(authUser_no);
+	}
 	
 }

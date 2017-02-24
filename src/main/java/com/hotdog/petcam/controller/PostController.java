@@ -1,5 +1,6 @@
 package com.hotdog.petcam.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +10,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hotdog.petcam.DTO.JSONResult;
 import com.hotdog.petcam.security.Auth;
 import com.hotdog.petcam.security.AuthUser;
 import com.hotdog.petcam.service.BlogService;
 import com.hotdog.petcam.service.ImageService;
 import com.hotdog.petcam.service.PostService;
+import com.hotdog.petcam.vo.ImageVo;
 import com.hotdog.petcam.vo.PostVo;
 import com.hotdog.petcam.vo.UserVo;
 
@@ -113,9 +117,27 @@ public class PostController {
 			return "blog/post-page";
 		}
 		
+	// *************************** 포스트 템플릿 ************************
 		
+	// (1) 오늘 캡쳐한 사진의 유무 체크
+		@ResponseBody
+		@RequestMapping("/captureCheck")
+		public Object captureCheck(@AuthUser UserVo authUser){
+			postService.captureConnect(authUser.getUsers_no());
+			return JSONResult.success(postService.captureCheck(authUser.getUsers_no()) ? "exist" : "not exist");
+		}
+	
 		
+	// (2) 오늘 캡쳐한 사진 가져오기
+		@ResponseBody
+		@RequestMapping("/pullCapture")
+		public Object pullCapture(@AuthUser UserVo authUser){
+			
+			List<ImageVo> list = postService.pullCapture(authUser.getUsers_no());
+			return JSONResult.success(list);
+		}
 		
+	
 		
 	
 }
