@@ -152,13 +152,14 @@
 		<!-- END: HEADER -->
 		
 		<!-- INSPIRO SLIDER -->
-        <div  class="inspiro-slider ">
+		<div style="width:100%; height:500px; overflow-y:hidden;">
+        <div  class="inspiro-slider " >
             <!-- Slide 1 -->
-            <div class="slide background-overlay-dark" data-animation="fadeIn"  data-vide-bg="${pageContext.request.contextPath}/assets/img/dog_video.mp4">
+            <div class="slide background-overlay-dark" data-animation="fadeIn" data-vide-bg="${pageContext.request.contextPath}/assets/img/dog_video.mp4">
 
-                <div class="container " data-animation="fadeIn">
+                <div class="container m-b-200" data-animation="fadeIn">
                 	<div class="col-md-6 col-sm-12 col-xs-12">
-	                    <div class="slide-captions col-md-12 col-sm-12 col-xs-12">
+	                    <div class="slide-captions col-md-12 col-sm-12 col-xs-12 m-b-40">
 	                        <!-- Captions -->
 	                        <h2 class="text-center">Hot Dog</h2>
 	                        <h4 class="m-b-40 text-center">핫도그 커뮤니티에 오신 걸 환영해요!</h4>
@@ -219,9 +220,9 @@
 												<a class="button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-4 text-center" href="#" ><span>뉴스피드</span></a>
 												<a class="button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-4 text-center" href="#" ><span>스트리밍</span></a> -->
 										
-												<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}"><div class="button transparent effect fill-vertical col-md-4 col-sm-12 col-xs-4 text-center"><span>블로그</span></div></a>
-												<a href="${pageContext.request.contextPath}/community/newsfeed"><div class="button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-4 text-center"><span>뉴스피드</span></div></a>
-												<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/streaming"><div class="button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-4 text-center"><span>스트리밍</span></div></a>								
+												<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}"><div class="button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-3 text-center"><span>블로그</span></div></a>
+												<a href="${pageContext.request.contextPath}/community/newsfeed"><div class="button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-3 text-center"><span>뉴스피드</span></div></a>
+												<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/streaming"><div class="button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-3 text-center"><span>스트리밍</span></div></a>								
 										</div>
 									</div>
 								</div>
@@ -233,8 +234,9 @@
 					</div>
                 </div>
        		 </div>
+       		 </div>
 
-		<div class="hr-title hr-long center" style="border-top-style:outset; width:70%;" data-animation="fadeIn">
+		<div class="hr-title hr-long center m-t-90" style="border-top-style:outset; width:70%;" data-animation="fadeInDown">
 			<abbr>핫도그 베스트</abbr>
 			<p style="margin-top:10px; font-size:13px;">친구들을 팔로잉 하고 오늘의  핫도그가 되어보세요 </p>
 		</div>
@@ -304,11 +306,20 @@
 			</div>
 		</section>
 		<!-- END: HIGHTLIGHTS -->
-
+		
+		<div class="hr-title hr-long center p-t-40 p-b-40" style="border-top-style:outset; width:30%;" data-animation="fadeInUp">
+			<abbr>핫도그 커뮤니티 게시판</abbr>
+			<p style="margin-top:10px; font-size:13px;">간단한 가입만으로 핫도그를 함께하세요 </p>
+		</div>
+		
+		
 		<!-- ADVERTISEMENT -->
 		<section class="p-t-0 p-b-0" data-animation="fadeInUp">
 			<div class="container">
-			<div class="marketing-box">ADVERTISEMENT</div>
+			<div class="marketing-box" style="height:400px;">
+				<img src="${pageContext.request.contextPath}/assets/img/Mock-Up2.png" style="width:100%;"/>
+			
+			</div>
 			</div>
 		</section>
 		<!-- END: ADVERTISEMENT -->
@@ -317,8 +328,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12" data-animation="fadeInUp" data-animation-delay="100">
-						<div class="heading heading text-left">
-							<h1 class="text-medium">핫도그를 사용해보셨나요?</h1>
+						<div class="text-center" >
+							<h1 class="text-medium-light" style="margin-bottom:40px;">핫도그를 사용해보셨나요?</h1>
 						</div>
 					</div>
 					<div class="col-md-4 text-center" data-animation="fadeInUp" data-animation-delay="300" >
