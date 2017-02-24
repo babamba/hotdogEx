@@ -54,7 +54,7 @@
 		delete from video where video_no = #{video_no}
 	]]>
 	</delete>
-	<select id="getCapture" parameterType="int" resultType="videovo">
+	<select id="getCapture" parameterType="int" resultType="capturevo">
 		<![CDATA[
 			select * from capture c where c.users_no = #{users_no } order by c.regdate DESC;
 		]]>
