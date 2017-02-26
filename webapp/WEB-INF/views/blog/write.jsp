@@ -161,7 +161,7 @@ var transport = function(captureList){
 	$(".capture").append(htmls);
 	
 	captureList.forEach(function (vo){
-		htmls='<img src="${pageContext.request.contextPath }/hotdog/image/user/'+ vo.save_name +' "></br>';
+		htmls='<img src="${pageContext.request.contextPath }/hotdog/image/user/'+vo.users_no+'/'+ vo.save_name +' "></br>';
 		console.log(vo.save_name);
 		$(".capture").appendTo(htmls);
 	});
