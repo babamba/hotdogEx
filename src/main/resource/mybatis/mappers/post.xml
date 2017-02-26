@@ -176,8 +176,12 @@
 		]]>
 	</select>
 	<!--  (2) 캡쳐 사진들 땡겨오기 -->
-	<select id="pullCapture" parameterType="int">
+	<select id="pullCapture" parameterType="map" resultType="capturevo">
 		<![CDATA[
+			select capture_no,save_name,regdate,regtime,users_no
+				from capture
+			where regdate = #{regdate} and users_no = #{authUser_no}
+			order by capture_no asc;
 		
 		]]>
 	</select>

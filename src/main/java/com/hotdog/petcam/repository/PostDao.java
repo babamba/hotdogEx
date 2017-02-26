@@ -9,7 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.hotdog.petcam.vo.ImageVo;
+import com.hotdog.petcam.vo.CaptureVo;
 import com.hotdog.petcam.vo.PostChatVo;
 import com.hotdog.petcam.vo.PostCommentsVo;
 import com.hotdog.petcam.vo.PostVo;
@@ -143,15 +143,35 @@ public class PostDao {
 		} else {
 			regdate += "0" + calender.get(Calendar.DAY_OF_MONTH);
 		}
-		System.out.println(regdate);
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("authUser_no", authUser_no);
 		map.put("regdate", regdate);
+		
 		return sqlSession.selectOne("post.captureCheck", map);
 	}
 
-	public List<ImageVo> pullCapture(int authUser_no) {
-		return sqlSession.selectList("post.pullCapture", authUser_no);
+	public List<CaptureVo> pullCapture(int authUser_no) {
+		
+		Calendar calender = Calendar.getInstance();
+
+		String regdate = calender.get(Calendar.YEAR) + "-";
+		if ((calender.get(Calendar.MONTH) + 1) >= 10) {
+			regdate += (calender.get(Calendar.MONTH) + 1) + "-";
+		} else {
+			regdate += "0" + (calender.get(Calendar.MONTH) + 1) + "-";
+		}
+		if (calender.get(Calendar.DAY_OF_MONTH) >= 10) {
+			regdate += calender.get(Calendar.DAY_OF_MONTH);
+		} else {
+			regdate += "0" + calender.get(Calendar.DAY_OF_MONTH);
+		}
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("authUser_no", authUser_no);
+		map.put("regdate", regdate);
+		
+		return sqlSession.selectList("post.pullCapture", map);
 	}
 
 }

@@ -16,7 +16,7 @@ import com.hotdog.petcam.repository.BlogDao;
 import com.hotdog.petcam.repository.ImageDao;
 import com.hotdog.petcam.repository.PostDao;
 import com.hotdog.petcam.repository.UserDao;
-import com.hotdog.petcam.vo.ImageVo;
+import com.hotdog.petcam.vo.CaptureVo;
 import com.hotdog.petcam.vo.PostChatVo;
 import com.hotdog.petcam.vo.PostCommentsVo;
 import com.hotdog.petcam.vo.PostVo;
@@ -176,7 +176,7 @@ public class PostService {
 		return false;
 	}
 	
-	public List<ImageVo> pullCapture(int authUser_no){
+	public List<CaptureVo> pullCapture(int authUser_no){
 		
 		return postDao.pullCapture(authUser_no);
 	}

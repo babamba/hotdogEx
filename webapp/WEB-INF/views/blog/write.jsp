@@ -1,8 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -113,7 +112,8 @@
 <script>
 // 1. 페이지가 시작될떄 오늘 짝운 서잔아 았눈자 펀단한다.
 $(document).ready(function(){
-
+	alert("안뜨냐?");
+	
 	$.ajax({
 		url : "${pageContext.request.contextPath }/post/captureCheck",
 		type : "get",
@@ -132,6 +132,7 @@ var question = function(){
 	alertify.confirm("오늘 캡쳐한 사진이 있습니다. 가져올까요?", function (e) {
 		if (e) {
 	        // OK. 가져온다.
+	        alert("pull 할꺼야");
 	        pull();
 	    } else {
 	        // Cancel , 취소한다.
@@ -141,15 +142,31 @@ var question = function(){
 
 var pull = function(){
 	$.ajax({
-		url : "{pageContext.request.contextPath}/post/pullCapture",
-		type : get,
+		url : "${pageContext.request.contextPath }/post/pullCapture",
+		type : "get",
 		dataType : "json",
 		data : "",
-		success : function(list){
+		success : function(response){
+			// 오늘 캡쳐한 시잔을 가져온다.	
+			transport(response.data.captureList);
+			
+			
 		}
 	});
 }
 
+var transport = function(captureList){
+	var htmls;
+	var htmls2="글자는 뜨나?";
+	$(".capture").append(htmls);
+	
+	captureList.forEach(function (vo){
+		htmls='<img src="${pageContext.request.contextPath }/hotdog/image/user/'+ vo.save_name +' "></br>';
+		console.log(vo.save_name);
+		$(".capture").appendTo(htmls);
+	});
+	
+}
 </script>
 <body class="boxed background-white">
 	<div class="wrapper">
@@ -189,7 +206,8 @@ var pull = function(){
 				
 					<textarea class="form-control required" data-toggle="tooltip" title="대표이미지 올리는 것을 까먹진 않으셨나요?" aria-required="true" name="title" placeholder="제목을 입력하세요." rows="1" style="font-size:20px; margin-bottom:30px; text-align:center;"></textarea>
 		            <input type="hidden" class="post_imagebox" name="post_image" >
-		            <textarea name="content" id="ckeditor" rows="10" cols="80"></textarea>
+		            <!--  content -->
+		            <textarea name="content" id="ckeditor" class="capture" rows="10" cols="80">나와라 나와라2</textarea>
 		            
 		            <div class="row" style="margin-left:0px; margin-right:0px; margin-top:20px; margin-left:0px;">
 		            	<div style="margin-top:15px;">

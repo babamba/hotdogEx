@@ -149,7 +149,8 @@
 				
 					<textarea class="form-control required" data-toggle="tooltip" title="대표이미지 올리는 것을 까먹진 않으셨나요?" aria-required="true" name="title" placeholder="제목을 입력하세요." rows="1" style="font-size:20px; margin-bottom:30px; text-align:center;"></textarea>
 		            <input type="hidden" class="post_imagebox" name="post_image" >
-		            <textarea name="content" id="ckeditor" rows="10" cols="80"></textarea>
+		            <!--  content -->
+		            <textarea name="content" id="ckeditor" rows="10" cols="80"><div id ="capture"></div></textarea>
 		            
 		            <div class="row" style="margin-left:0px; margin-right:0px; margin-top:20px; margin-left:0px;">
 		            	<div style="margin-top:15px;">
