@@ -81,7 +81,7 @@ public class PostController {
 			postVo.setUsers_no(users_no);
 
 			postService.insert(postVo);
-			return "redirect:/post/" + nickname;
+			return "redirect:/blog/" + nickname;
 		}
 		
 		

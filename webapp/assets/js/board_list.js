@@ -159,7 +159,7 @@ $(function(){
 	})
 	
 	
-	
+/*	
 	$(function(){
 		var HotdogList = function(){
 			console.log("HotdogList")
@@ -188,7 +188,7 @@ $(function(){
 		};
 		HotdogList();
 	})
-	
+	*/
 	
 	
 	

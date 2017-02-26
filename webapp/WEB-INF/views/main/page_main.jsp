@@ -6,7 +6,6 @@
 
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -236,22 +235,50 @@
        		 </div>
        		 </div>
 
-		<div class="hr-title hr-long center m-t-90" style="border-top-style:outset; width:70%;" data-animation="fadeInDown">
+		<div class="hr-title hr-long center m-t-40 p-t-20 p-b-20" style="border-top-style:outset; width:30%; margin-top:20px;" data-animation="fadeInUp">
 			<abbr>핫도그 베스트</abbr>
 			<p style="margin-top:10px; font-size:13px;">친구들을 팔로잉 하고 오늘의  핫도그가 되어보세요 </p>
 		</div>
 
 
 		<!-- NEWS GRID -->
-		<section class="p-t-40 p-b-40" data-animation="fadeIn" >
+		<!-- <section class="p-t-40 p-b-40" data-animation="fadeIn" >
 			<div class="container" >
 				<div class="grid-articles grid-articles-v2 best_hotdog">
 				
 				</div>
 			</div>
-		</section>
+		</section> -->
 		<!-- END: NEWS GRID -->
 		
+
+		<section class="p-b-40 p-t-20">
+
+		 <div class="portfolio">
+                <!-- Portfolio Items -->
+                <div id="isotope" class="isotope portfolio-items" data-isotope-item-space="2" data-isotope-mode="masonry" data-isotope-col="5" data-isotope-item=".portfolio-item">
+		  			<c:forEach items="${list }"	var="vo" varStatus="status">
+		  			 
+	                    <div class="portfolio-item design artwork" data-no="${vo.users_no }">
+	                        <div class="image-box effect victor"> 
+	                        	
+	                        	<img style="width:100%;height:100%;" src="${pageContext.request.contextPath}/hotdog/image/user/${vo.pet_image }" alt="">
+	                            <h3>${vo.name }</h3>
+	                            
+	                            <div class="image-box-content">
+	                                <h3><a href="${pageContext.request.contextPath }/blog/${vo.nickname}" style="color:white;">${vo.name }</a></h3>
+	                                <p>${vo.gender }</p>
+	                            </div>
+	                        </div>
+	                    </div>
+                    
+		  			</c:forEach>
+				</div>
+                <!-- END: Portfolio Items -->
+
+            </div>
+
+		</section>
 		
 		<div class="hr-title hr-long center p-t-40 p-b-40" style="border-top-style:outset; width:30%;" data-animation="fadeInUp">
 			<abbr>핫도그 커뮤니티 게시판</abbr>
@@ -336,8 +363,13 @@
 						<img class="col-md-12" src="${pageContext.request.contextPath}/assets/img/raspberry_pi.jpg">
 					
 					</div>
-					<div class="col-md-4 text-center" data-animation="fadeInUp" data-animation-delay="300" >
-						원격으로 애완견과의 교감을 이룰 수 있게 해주는 핫도그 시스템 
+					<div class="col-md-4 text-center p-t-20 p-b-20" data-animation="fadeInUp" data-animation-delay="300" >
+						핫도그(HotDog)는 라즈베리파이 기반의 센서 제어를 활용하여 반려동물의 상태나 행돟을 원격으로 볼수 있는 시스템입니다.
+						<br>
+						<br>
+						외부에서도 쉽게 반려동물의 상태를 알 수 있게 <br>
+						PetCam을 이용해 볼 수 있고, 스피커를 이용하여 외로워하는 반려동물과의 대화를 할 수 있습니다.
+						
 						<br><br></div>
 
 					<div class="col-md-4 text-center" data-animation="fadeInUp" data-animation-delay="600">
