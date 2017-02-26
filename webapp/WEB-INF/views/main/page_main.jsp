@@ -194,7 +194,7 @@
 						<div class="col-md-5 col-sm-5 col-xs-5 pull-right" >
 								<div id="book" class="col-md-12 col-sm-12 col-xs-12" >
 										<div class="col-md-12 col-sm-12 col-xs-12 text-center">
-											<button class="fancy-btn openProfile" style="position:relative; display:inline-block; left:-1%; margin-bottom:-38px;">
+											<button class="fancy-btn " style="position:relative; display:inline-block; left:-1%; margin-bottom:-38px;">
 												<img src="${pageContext.request.contextPath}/hotdog/image/user/${authUser.users_image}">
 											</button>
 										</div>
@@ -260,13 +260,13 @@
 		  			<c:forEach items="${list }"	var="vo" varStatus="status">
 		  			 
 	                    <div class="portfolio-item design artwork" data-no="${vo.users_no }">
+	                   
 	                        <div class="image-box effect victor"> 
 	                        	
 	                        	<img style="width:100%;height:100%;" src="${pageContext.request.contextPath}/hotdog/image/user/${vo.pet_image }" alt="">
-	                            <h3>${vo.name }</h3>
 	                            
 	                            <div class="image-box-content">
-	                                <h3><a href="${pageContext.request.contextPath }/blog/${vo.nickname}" style="color:white;">${vo.name }</a></h3>
+	                                <h3><a href="${pageContext.request.contextPath }/blog/${vo.nickname}" style="color:white;"><i class='fa fa-paw'></i>${vo.name }</a></h3>
 	                                <p>${vo.gender }</p>
 	                            </div>
 	                        </div>
