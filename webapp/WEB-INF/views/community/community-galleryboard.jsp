@@ -108,7 +108,7 @@ $(function(){
 	})
 })
 </script>
-<body>
+<body class="boxed background-white">
 
 
 
@@ -180,14 +180,23 @@ $(function(){
 			<section id="shop-wishlist">
 			<div class="container">
 			
-					<form action="${pageContext.request.contextPath}/community/galleryboard/writegalleryform" method="get">
-						<button class="btn btn-primary" type="submit" name="${categoryNo }">글쓰기</button>
-					</form>
+					<a class="button black-light full-rounded effect icon-top" href="${pageContext.request.contextPath}/community/galleryboard/writegalleryform">
+					<span><i class="fa fa-pencil-square-o"></i>글쓰기</span></a>
+				
+					
+					<div class="row">
+						<div class="col-md-4 accordion toggle" style="float:right;">
+							<div class="ac-item">
+								<h5 class="ac-title"><i class="fa fa-search"></i> 검색</h5>
+								<div class="ac-content">
+										<form action="${pageContext.request.contextPath}/community/galleryboard" method="get">
+											<input type="text" name="kwd" class="form-control" value="" placeholder="Press &quot;Enter&quot;">
+										</form>
+								</div>
+							</div>
+						</div>
+					</div>
 			
-					<form action="${pageContext.request.contextPath}/community/galleryboard">
-						<input type="submit" value="검색" style="float: right;">
-						<input type="text"  name="kwd" style="float: right;">
-					</form><br><br>
 					
 				<div class="shop-cart">
 					<div class="table table-condensed table-striped table-responsive">

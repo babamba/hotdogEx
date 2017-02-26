@@ -180,17 +180,22 @@ $(function(){
 				
 			<div class="container">
 			
-			
-			
-					<form action="${pageContext.request.contextPath}/community/freeboard/writeform" method="get">
-						<button class="btn btn-primary" type="submit" name="${categoryNo }">글쓰기</button>
-					</form>
-			
-					<form action="${pageContext.request.contextPath}/community/freeboard">
-						<input type="submit" value="검색" style="float: right;">
-						<input type="text"  name="kwd" style="float: right;">
-					</form><br><br>
+					<a class="button black-light full-rounded effect icon-top" href="${pageContext.request.contextPath}/community/freeboard/writeform">
+					<span><i class="fa fa-pencil-square-o"></i>글쓰기</span></a>
+				
 					
+					<div class="row">
+						<div class="col-md-4 accordion toggle" style="float:right;">
+							<div class="ac-item">
+								<h5 class="ac-title"><i class="fa fa-search"></i> 검색</h5>
+								<div class="ac-content">
+										<form action="${pageContext.request.contextPath}/community/freeboard" method="get">
+											<input type="text" name="kwd" class="form-control" value="" placeholder="Press &quot;Enter&quot;">
+										</form>
+								</div>
+							</div>
+						</div>
+					</div>
 					
 				<div class="shop-cart">
 					<div class="table table-condensed table-striped table-responsive">
@@ -234,8 +239,6 @@ $(function(){
 				
 							</tbody>
 						</table>
-					
-						
 								<ul class="pager">
 									<c:if test="${map.prevPage > 0 }" >
 										<li><a href="${pageContext.request.contextPath}/community/freeboard?p=${map.prevPage }">◀</a></li>

@@ -5,10 +5,9 @@
 	pageEncoding="UTF-8"%>
 
 <script type="text/javascript">
-
 $(function(){
-	var users_no = ${authUser.users_no}
-	
+	var users_no = ${authUser.users_no};
+
 	var change = function(){
 		location.href="${pageContext.request.contextPath}/blog/${authUser.nickname}/vod";
 	}

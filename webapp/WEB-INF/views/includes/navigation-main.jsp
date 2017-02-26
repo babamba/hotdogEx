@@ -32,16 +32,15 @@
 			
 				<c:choose>
 					<c:when test="${empty authUser}"> 
-						<!-- authUser 블로그 메인 -->
-						<li><a href="${pageContext.request.contextPath}/blog/${map.nickname}">내 블로그 </a></li>
+						<li><a href="${pageContext.request.contextPath}">메인</a></li>
 						
-						<!-- 커뮤니티 메인 -->
 						<li><a href="${pageContext.request.contextPath}/community">커뮤니티</a></li>
 						
 						<li><a href="${pageContext.request.contextPath}/loginpage">Log-In</a></li>
 				</c:when>
 					
 					<c:otherwise> 
+						<li><a href="${pageContext.request.contextPath}">메인</a></li>
 						
 						<!-- authUser 블로그 메인 -->
 						<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}">내 블로그</a></li>
