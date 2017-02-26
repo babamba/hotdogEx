@@ -105,18 +105,18 @@
  */</script>
 
 
-<body class="boxed background-white">
+<body class="boxed background-white no-page-loader">
 	
 
 	<!-- WRAPPER -->
 	<div class="wrapper">
 		<!-- HEADER -->
 		<header id="header">
-			<div id="header-wrap">
+			<div id="header-wrap" >
 				<div class="container">
 					
 					<!--LOGO-->
-					<div id="logo">
+					<div id="logo" >
 						<a href="${pageContext.request.contextPath}" class="logo"
 							data-dark-logo="images/logo-dark.png"> <img
 							src="${pageContext.request.contextPath}/assets/img/hotdog_logo_02.png"
@@ -359,24 +359,19 @@
 							<h1 class="text-medium-light" style="margin-bottom:40px;">핫도그를 사용해보셨나요?</h1>
 						</div>
 					</div>
-					<div class="col-md-4 text-center" data-animation="fadeInUp" data-animation-delay="300" >
+					<div class="col-md-6 text-center" data-animation="fadeInUp" data-animation-delay="300" >
 						<img class="col-md-12" src="${pageContext.request.contextPath}/assets/img/raspberry_pi.jpg">
 					
 					</div>
-					<div class="col-md-4 text-center p-t-20 p-b-20" data-animation="fadeInUp" data-animation-delay="300" >
-						핫도그(HotDog)는 라즈베리파이 기반의 센서 제어를 활용하여 반려동물의 상태나 행돟을 원격으로 볼수 있는 시스템입니다.
+					<div class="col-md-6 text-center p-t-20 p-b-20" data-animation="fadeInUp" data-animation-delay="300">
+						핫도그(HotDog)는 라즈베리파이 기반의 센서 제어를 활용하여 <br>
+						반려동물의 상태나 행돟을 원격으로 볼수 있는 시스템입니다.<br>
 						<br>
+						외부에서도 쉽게 반려동물의 상태를 알 수 있게 PetCam을 이용해 볼 수 있고,  <br>
+						스피커를 이용하여 외로워하는 반려동물과의 대화를 할 수 있습니다.<br>
 						<br>
-						외부에서도 쉽게 반려동물의 상태를 알 수 있게 <br>
-						PetCam을 이용해 볼 수 있고, 스피커를 이용하여 외로워하는 반려동물과의 대화를 할 수 있습니다.
-						
+						커뮤니티를 통해 자신의 반려동물을 더욱 멋지게 자랑하세요.
 						<br><br></div>
-
-					<div class="col-md-4 text-center" data-animation="fadeInUp" data-animation-delay="600">
-						부가적인 설명
-						<br>
-						<br></div>
-
 				</div>
 			</div>
 		</section>
