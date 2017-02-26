@@ -60,7 +60,7 @@
 <script src="${pageContext.request.contextPath}/assets/js/userProfile.js"></script>
 <link href="${pageContext.request.contextPath}/assets/css/userProfile.css" rel="stylesheet">
 		
-<body class="wide">
+<body class="boxed background-white">
 	
 
 	<!-- WRAPPER -->
@@ -97,45 +97,7 @@
 					<!--END: TOP SEARCH -->
 					
 					<!--NAVIGATION-->
-					<div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
-							<div class="container">
-								<nav id="mainMenu" class="main-menu mega-menu">
-									<ul class="main-menu nav nav-pills">
-										<c:choose>
-										<c:when test="${empty authUser}"> 
-										
-										<!-- 커뮤니티 메인 -->
-											<li><a href="${pageContext.request.contextPath}/community">커뮤니티 메인</a></li>
-										
-										</c:when>
-										<c:otherwise> 
-										    <!-- authUser 블로그 메인 -->
-											<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}">블로그</a></li>
-											
-											<!-- 커뮤니티 메인 -->
-											<li><a href="${pageContext.request.contextPath}/community/newsfeed">뉴스피드</a></li>
-											
-											<!-- 커뮤니티 메인 -->
-											<li><a href="${pageContext.request.contextPath}/community">커뮤니티 메인</a></li>
-											
-											
-										</c:otherwise>
-				    					</c:choose>
-										
-										<!-- 로그인 로그아웃 부분-->
-										<c:choose>
-											<c:when test="${empty authUser}"> 
-												<li><a href="${pageContext.request.contextPath}/loginpage">Log-In</a></li>
-											</c:when>
-											
-											<c:otherwise> 
-												<li><a href="${pageContext.request.contextPath}/user/logout">Log-out</a></li>
-											</c:otherwise>
-									    </c:choose>
-									</ul>
-								</nav>
-							</div>
-					</div>
+					<c:import url="/WEB-INF/views/includes/navigation-main.jsp" />
 					<!--END: NAVIGATION-->
 				</div>
 			</div>
@@ -149,24 +111,11 @@
 						<h1>News Feed</h1>
 						<h1>Share. Your <span class="text-rotator" data-rotate-effect="bounce" data-rotate-speed="3000">Happiness :),Sorrow :(,Everything !</span></h1>
 					</div>
-					<div class="breadcrumb col-md-4">
-						<ul>
-							<li><a href="#"><i class="fa fa-home"></i></a>
-							</li>
-							<li><a href="${pageContext.request.contextPath}">Home</a>
-							</li>
-							<li><a href="${pageContext.request.contextPath}/community">Community</a>
-							</li>
-							<li class="active"><a href="${pageContext.request.contextPath}/community/newsfeed">News feed</a>
-							</li>
-						</ul>
-					</div>
+
 				</div>
 			</section>
 			<!-- END: PAGE TITLE -->
 		
-			
-			
 			
 			<!-- CONTENT -->
 			<section class="content">
@@ -202,12 +151,14 @@
 				</div>
 					
 					<div class="list" >
-					<c:forEach items="${latest_news }"	var="vo" varStatus="status">	
-						<!-- Blog image post-->
-						<div data-animation="fadeIn" data-animation-delay="200">
 						<div class="hr-title hr-long center" >
 							<abbr>Friend's latest post</abbr> 
 						</div>
+					<c:forEach items="${latest_news }"	var="vo" varStatus="status">	
+						<!-- Blog image post-->
+
+						<div data-animation="fadeIn" data-animation-delay="200">
+
 						
 						<div class="post-item" data-no="${vo.users_no}">
 							<div class="post-image">

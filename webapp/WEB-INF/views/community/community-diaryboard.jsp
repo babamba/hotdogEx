@@ -108,7 +108,7 @@ $(function(){
 	})
 })
 </script>
-<body>
+<body class="boxed background-white">
 
 
 
@@ -177,14 +177,21 @@ $(function(){
 		<!-- CONTENT -->
 		<section class="content">
 			<div class="container list_container">
-					<form action="${pageContext.request.contextPath}/community/diaryboard/writediaryyform" method="get">
-						<button class="btn btn-primary" type="submit" name="${categoryNo }">다이어리 올리기</button>
-					</form>
+
 					
-					<form action="${pageContext.request.contextPath}/community/diaryboard">
-						<input type="submit" value="검색" style="float: right;">
-						<input type="text"  name="kwd" style="float: right;">
-					</form><br><br>
+					<div class="row">
+						<div class="col-md-4 accordion toggle" style="float:right;">
+							<div class="ac-item">
+								<h5 class="ac-title"><i class="fa fa-search"></i> 검색</h5>
+								<div class="ac-content">
+										<form action="${pageContext.request.contextPath}/community/diaryboard" method="get">
+											<input type="text" name="kwd" class="form-control" value="" placeholder="Press &quot;Enter&quot;">
+										</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					
 					
 				<!-- Blog post-->
 				<div class="isotope" data-isotope-item-space="3" data-isotope-col="3" data-isotope-item=".post-item">
