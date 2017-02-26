@@ -101,8 +101,7 @@
 
 
 <!-- User Profile -->
-<script
-	src="${pageContext.request.contextPath}/assets/js/userProfile.js"></script>
+<script	src="${pageContext.request.contextPath}/assets/js/userProfile.js"></script>
 <link
 	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
 	rel="stylesheet">
@@ -144,13 +143,17 @@
 				</form>
 			</div>
 			
-			
 				<form action= "${pageContext.request.contextPath }/post/${authUser.nickname}/insert" method="post" style="margin-top:20px;"  >
 				
 					<textarea class="form-control required" data-toggle="tooltip" title="대표이미지 올리는 것을 까먹진 않으셨나요?" aria-required="true" name="title" placeholder="제목을 입력하세요." rows="1" style="font-size:20px; margin-bottom:30px; text-align:center;"></textarea>
 		            <input type="hidden" class="post_imagebox" name="post_image" >
 		            <!--  content -->
-		            <textarea name="content" id="ckeditor" rows="10" cols="80"><div id ="capture"></div></textarea>
+		            <textarea name="content" id="ckeditor" rows="10" cols="80">
+			            <c:forEach items="${map.captureList }"	var="vo" varStatus="status">	
+			           		 <img src="${pageContext.request.contextPath }/hotdog/image/user/${vo.users_no}/${vo.save_name}">
+			            </c:forEach>
+			           
+		            </textarea>
 		            
 		            <div class="row" style="margin-left:0px; margin-right:0px; margin-top:20px; margin-left:0px;">
 		            	<div style="margin-top:15px;">
@@ -183,7 +186,6 @@
 			         </div>
 		            
        			</form>
-       			<form id="pullButton" type="hidden" action="${pageContext.request.contextPath }/post/pullCapture">
 			</div>
 
 		</section>
@@ -347,45 +349,6 @@
 	  });
 	
 	</script>
-	<!--  capture	 -->
-    <script>
-		// 1. 페이지가 시작될떄 오늘 짝운 서잔아 았눈자 펀단한다.
-		$(document).ready(function(){
-			
-			$.ajax({
-				url : "${pageContext.request.contextPath }/post/captureCheck",
-				type : "get",
-				dataType : "json",
-				data : "",
-				success : function(response){
-					// 오늘 캡쳐한 시잔이 있으면묻는다.			
-					if(response.data == "exist"){
-						
-						question();
-					}
-				}
-			});
-		})
-		var question = function(){
-			alertify.confirm("오늘 캡쳐한 사진이 있습니다. 가져올까요?", function (e) {
-				if (e) {
-			        // OK. 가져온다.
-// 			        pull();
-			        $("#pullButton").submit();
-			    } else {
-			        // Cancel , 취소한다.
-			    }
-			});
-		}
-		
-		var pull = function(){
-			$.ajax({
-				url : "${pageContext.request.contextPath }/post/pullCapture",
-				type : "get",
-				dataType : "json",
-				data : ""
-			});
-		}
-	</script>
+
 </body>
 </html>

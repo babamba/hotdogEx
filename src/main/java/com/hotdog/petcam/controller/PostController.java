@@ -1,7 +1,6 @@
 package com.hotdog.petcam.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,6 @@ import com.hotdog.petcam.security.AuthUser;
 import com.hotdog.petcam.service.BlogService;
 import com.hotdog.petcam.service.ImageService;
 import com.hotdog.petcam.service.PostService;
-import com.hotdog.petcam.vo.CaptureVo;
 import com.hotdog.petcam.vo.PostVo;
 import com.hotdog.petcam.vo.UserVo;
 
@@ -58,7 +56,7 @@ public class PostController {
 		public String main(@PathVariable String nickname, @ModelAttribute PostVo postVo, Model model, @AuthUser UserVo authUser) {
 			Map<String, Object> map = blogService.index(nickname);
 			model.addAttribute("map", map);
-			return "blog/write";
+			return "blog/blog-write";
 		}
 		
 		@RequestMapping("/{nickname}/modifyform")
@@ -133,15 +131,18 @@ public class PostController {
 	
 		
 	// (2) 오늘 캡쳐한 사진 가져오기
-		@ResponseBody
+		
 		@RequestMapping("/pullCapture")
-		public Object pullCapture(@AuthUser UserVo authUser){
-			System.out.println("가져온다..");
+		public String pullCapture(@AuthUser UserVo authUser,Model model){
+			System.out.println("리스트를 뽑아낸다.");
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("captureList",postService.pullCapture(authUser.getUsers_no()));
+			
 			System.out.println(postService.pullCapture(authUser.getUsers_no()));
 			
-			return JSONResult.success(map);
+			model.addAttribute("map", map);
+			
+			return "blog/blog-write2";
 		}
 		
 	

@@ -330,13 +330,7 @@ var pull = function(){
 		url : "${pageContext.request.contextPath }/post/pullCapture",
 		type : "get",
 		dataType : "json",
-		data : "",
-		success : function(response){
-			// 오늘 캡쳐한 시잔을 가져온다.	
-			transport(response.data.captureList);
-			
-			
-		}
+		data : ""
 	});
 }
 
