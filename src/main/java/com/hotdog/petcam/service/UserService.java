@@ -45,8 +45,8 @@ public class UserService {
 
 		BlogVo blogVo = new BlogVo();
 		blogVo.setUsers_no(vo1.getUsers_no());
-		blogVo.setTitle(vo1.getNickname() + "블로그");
-		blogVo.setLogo_image("a.jpg");
+		blogVo.setTitle(vo1.getNickname() + "님의 블로그");
+		blogVo.setLogo_image("a.png");
 
 		blogDao.insert(blogVo);
 

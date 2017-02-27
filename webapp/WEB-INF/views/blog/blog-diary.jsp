@@ -155,7 +155,7 @@
 			
 		var htmls =  "<div class='post-item'><div class='post-image'><img src='" + image_path + vo.post_image + "'></a></div><div class='post-content-details'>" + 
 				  "<div class='post-title'><h3>" + vo.title + "</h3></div>" +
-				  "<div class='post-description'><div class='post-info'><a class='read-more' href='" + post + vo.post_no + "'>read more <i class='fa fa-long-arrow-right'></i></a></div>" +
+				  "<div class='post-description'><div class='post-info'><a class='read-more' id='viewDiary' data-no='" + vo.post_no + "' href='" + post + vo.post_no + "'>read more <i class='fa fa-long-arrow-right'></i></a></div>" +
 				  "</div></div><div class='post-meta'><div class='post-date'><span class='post-date-year'>" + vo.regdate + "</span></div>" +
 				  "<div class='post-comments' data-no='" + vo.post_no + "'><span class='fa fa-hand-pointer-o'>" + vo.count + "</span></a></div>" +
 				  "</div></div>"
@@ -247,6 +247,24 @@
 	  });
 	
 	</script>
+	
+	<script>
+
+	$(document).on("click", "#viewDiary", function(){
+				
+		var postNo = $(this).data("no");
+		$.ajax({
+			url : "${pageContext.request.contextPath }/post/api/updateHits?postNo="+postNo,
+			type : "get",
+			success: function() { 
+				console.log("success");
+			},
+			error : function(jqXHR, status, e) {
+				console.log(status + ":" + e);
+			}
+		});
+	})
+</script>
 
 
 </body>

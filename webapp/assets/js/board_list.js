@@ -7,7 +7,7 @@
 		var render1 = function(vo){
 				
 			var htmls =  "<div class='post-thumbnail-entry'><div class='post-thumbnail-content'>" +
-						 "<h4><a href='" + board_path + vo.board_no + "'>" + vo.title + "</a></h4>" +
+						 "<h4><a class='freetalk' data-no='" + vo.board_no + "' href='" + board_path + vo.board_no + "'>" + vo.title + "</a></h4>" +
 						 "<span class='post-date'><i class='fa fa-clock-o'></i>" + vo.regdate + "</span>" +
 						 "<span class='post-category'><i class='fa fa-eye'></i> 조회수 : " + vo.hits + "</span></div></div>"
 						
@@ -19,7 +19,7 @@
 		var render2 = function(vo){
 				
 				var htmls =  "<div class='post-thumbnail-entry'><div class='post-thumbnail-content'>" +
-							 "<h4><a href='" + board_path + vo.board_no + "'>" + vo.title + "</a></h4>" +
+							 "<h4><a class='gallerytalk' data-no='" + vo.board_no + "' href='" + board_path + vo.board_no + "'>" + vo.title + "</a></h4>" +
 							 "<span class='post-date'><i class='fa fa-clock-o'></i>" + vo.regdate + "</span>" +
 							 "<span class='post-category'><i class='fa fa-eye'></i> 조회수 : " + vo.hits + "</span></div></div>"
 							
@@ -191,9 +191,37 @@ $(function(){
 	*/
 	
 	
-	
-	
-	
-	
-	
+
+
+		$(document).on("click", ".freetalk", function(){
+					
+			var boardNo = $(this).data("no");
+							
+			$.ajax({
+				url : "/hotdog/community/api/updateHits?boardNo="+boardNo,
+				type : "get",
+				success: function() { 
+					console.log("success");
+				},
+				error : function(jqXHR, status, e) {
+					console.log(status + ":" + e);
+				}
+			});
+		})
+
+		
+		$(document).on("click", ".gallerytalk", function(){
+					
+			var boardNo = $(this).data("no");
+			$.ajax({
+				url : "/hotdog/community/api/updateHits?boardNo="+boardNo,
+				type : "get",
+				success: function() { 
+					console.log("success");
+				},
+				error : function(jqXHR, status, e) {
+					console.log(status + ":" + e);
+				}
+			});
+		})
 	

@@ -150,7 +150,7 @@
 		var htmls =  "<li class='timeline_list ' data-animation='fadeInUp' data-postno=" + vo.post_no + " data-usersno=" + vo.users_no + "><div class='timeline-block'><div class='post-item'><div class='post-image'><a href='" + post + vo.post_no + "'><img src='" + image_path + vo.post_image + "'></a></div>" +
 					 "<div class='post-content-details'><div class='post-title'><h3>" + vo.title + "</h3></div>" +
 					 "<div class='post-info'><span class='post-autor'>Post by : " + nickname + "</span><span class='post-category'></span></div>" +
-					 "<div class='post-description'><div class='post-info'><a class='read-more' href='" + post + vo.post_no + "'>read more <i class='fa fa-long-arrow-right'></i></a></div></div>" +
+					 "<div class='post-description'><div class='post-info'><a class='read-more' id='viewDiary' data-no='" + vo.post_no + "' href='" + post + vo.post_no + "'>read more <i class='fa fa-long-arrow-right'></i></a></div></div>" +
 
 
 					 "<div class='post-meta'><div class='post-date'>" + vo.regdate + "</div>" +
@@ -212,11 +212,24 @@
 			
 		});
 	});
+	</script>
 	
-	
-	
+	<script>
 
-
+	$(".timeline-circles").on("click", "#viewDiary", function(){
+				
+		var postNo = $(this).data("no");
+		$.ajax({
+			url : "${pageContext.request.contextPath }/post/api/updateHits?postNo="+postNo,
+			type : "get",
+			success: function() { 
+				console.log("success");
+			},
+			error : function(jqXHR, status, e) {
+				console.log(status + ":" + e);
+			}
+		});
+	})
 	</script>
 
 

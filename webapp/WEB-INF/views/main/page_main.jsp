@@ -105,7 +105,7 @@
  */</script>
 
 
-<body class="boxed background-grey no-page-loader">
+<body class="boxed background-grey">
 	
 
 	<!-- WRAPPER -->
@@ -165,7 +165,7 @@
                  <!-- authUser info  부분  -->
                  <c:choose>
 					<c:when test="${empty authUser}">
-							<div class="col-md-4 col-sm-4 col-xs-4 pull-right" style="right:20px; padding-top:20px;">
+							<div class="col-md-4 col-sm-4 col-xs-4 pull-right m-b-150" style="right:20px; padding-top:20px;">
 								<div id="book">
 								
 										<div class="row text-center">
@@ -186,7 +186,7 @@
 						</c:when>
 					
 						<c:otherwise>
-						<div class="col-md-5 col-sm-5 col-xs-5 pull-right" >
+						<div class="col-md-5 col-sm-5 col-xs-5 pull-right pull-right m-b-150" >
 								<div id="book" class="col-md-12 col-sm-12 col-xs-12" >
 										<div class="col-md-12 col-sm-12 col-xs-12 text-center">
 											<button class="fancy-btn " style="position:relative; display:inline-block; left:-1%; margin-bottom:-38px;">
@@ -250,8 +250,9 @@
 	                        	<img style="width:100%;height:100%;" src="${pageContext.request.contextPath}/hotdog/image/user/${vo.pet_image }" alt="">
 	                            
 	                            <div class="image-box-content">
-	                                <h3><a href="${pageContext.request.contextPath }/blog/${vo.nickname}" style="color:white;"><i class='fa fa-paw'></i>${vo.name }</a></h3>
-	                                <p>${vo.gender }</p>
+	                                <h3 class="text-center"><a href="${pageContext.request.contextPath }/blog/${vo.nickname}" style="color:white;"><i class='fa fa-paw' style="font-size:16px;"></i>&nbsp;${vo.name }</a>&nbsp;&nbsp;&nbsp;<i class='fa fa-thumbs-o-up'></i>&nbsp;&nbsp;${vo.count}</h3>
+	                                
+	                                <p class="text-center"><i class='fa fa-intersex'></i>&nbsp;${vo.gender }&nbsp;&nbsp;&nbsp;<i class="fa fa-user"></i>&nbsp;&nbsp;${vo.nickname}</p>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -265,8 +266,8 @@
 		</section>
 		
 		<div class="heading-fancy text-center heading-line m-l-40 m-r-40" data-animation="fadeInUp" data-animation-delay="400">
-			<h3 style="padding-top:15px;margin-top:15px;font-size:20px;"><i class='fa fa-paw'></i>&nbsp;핫도그베스트</h3>
-			<p style="margin-top:10px; font-size:13px;">친구들을 팔로잉 하고 오늘의  핫도그가 되어보세요 </p>
+			<h3 style="padding-top:15px;margin-top:15px;font-size:20px;"><i class='fa fa-paw'></i>&nbsp;커뮤니티</h3>
+			<p style="margin-top:10px; font-size:13px;">커뮤니티를 통해 반려동물에 대해 공유하세요 </p>
 		</div>
 		
 		<!-- CATEGORIES -->
@@ -348,7 +349,7 @@
 						<img class="col-md-12" src="${pageContext.request.contextPath}/assets/img/raspberry_pi.jpg">
 					
 					</div>
-					<div class="col-md-6 text-center p-t-20 p-b-40 background-white"  data-animation="fadeInUp" data-animation-delay="500">
+					<div class="col-md-6 text-center p-t-20 p-b-40 background-white"  data-animation="fadeInUp" data-animation-delay="500" style="font-size:16px;">
 						<br>핫도그(HotDog)는 라즈베리파이 기반의 센서 제어를 활용하여 <br>
 						반려동물의 상태나 행돟을 원격으로 볼수 있는 시스템입니다.<br>
 						<br>
@@ -367,19 +368,18 @@
 				<div class="row m-t-30 m-l-10">
 
 					
-					<div class="col-md-6 text-center p-t-20 p-b-40 background-white" data-animation="fadeInUp" data-animation-delay="700">
-						<br>핫도그(HotDog)는 라즈베리파이 기반의 센서 제어를 활용하여 <br>
-						반려동물의 상태나 행돟을 원격으로 볼수 있는 시스템입니다.<br>
+					<div class="col-md-6 text-center p-t-20 p-b-40 background-white" data-animation="fadeInUp" data-animation-delay="700" style="font-size:16px;">
+						<br>핫도그는 Web과  App을 지원하며,<br>
 						<br>
-						외부에서도 쉽게 반려동물의 상태를 알 수 있게 PetCam을 이용해 볼 수 있고,  <br>
-						스피커를 이용하여 외로워하는 반려동물과의 대화를 할 수 있습니다.<br>
+						Web상에서는 커뮤니티를 주요 시스템으로 하고<br>
+						App에서는 PetCam의 기능을 주요 시스템으로 합니다. <br>
 						<br>
-						가입 후 자신만의 블로그에 반려동물과의 일상을 기록하고<br>
-						커뮤니티를 통해 일상의 공유 및 자신의 반려동물을 더욱 멋지게 자랑하세요.
-						<br><br>
+						주요 기술은 Spring MVC / MariaDB / Python / Raspberry_pi이며<br>
+						미디어서버와 Raspberry_pi를 통해 미디어 서비스를 제공하고있습니다.
+						<br><br><br>
 					</div>
 					<div class="col-md-6 text-center" data-animation="fadeInUp" data-animation-delay="900" >
-						<img class="col-md-12" src="${pageContext.request.contextPath}/assets/img/raspberry_pi.jpg">
+						<img class="col-md-12" src="${pageContext.request.contextPath}/assets/img/responsive.jpg">
 					
 					</div>
 					

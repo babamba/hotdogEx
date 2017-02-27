@@ -93,10 +93,10 @@ $(function(){
 	
 	$(document).on("click", "#viewPost", function(){
 				
-		var boardNo = $(this).data("no");
-						
+		var postNo = $(this).data("no");
+		console.log("선택한 포스트 " + postNo)
 		$.ajax({
-			url : "${pageContext.request.contextPath }/community/freeboard/api/updateHits?boardNo="+boardNo,
+			url : "${pageContext.request.contextPath }/post/api/updateHits?postNo="+postNo,
 			type : "get",
 			success: function() { 
 				console.log("success");
@@ -194,7 +194,7 @@ $(function(){
 					<div class='post-image'>
 						<img src="${pageContext.request.contextPath}/hotdog/image/user/${vo.post_image }"></div>
 					<div class='post-content-details'>
-					  <div class='post-title'><a class='read-more' href="${pageContext.request.contextPath }/community/viewdiary?no=${vo.post_no }">
+					  <div class='post-title'><a id="viewPost" data-no="${vo.post_no}" class='read-more' href="${pageContext.request.contextPath }/community/viewdiary?no=${vo.post_no }">
 					  <h3>${vo.title }(${vo.count })</h3></a>
 					  
 					  </div>
