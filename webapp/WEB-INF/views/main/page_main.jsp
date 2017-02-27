@@ -105,7 +105,7 @@
  */</script>
 
 
-<body class="boxed background-white no-page-loader">
+<body class="boxed background-grey no-page-loader">
 	
 
 	<!-- WRAPPER -->
