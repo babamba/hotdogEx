@@ -24,7 +24,7 @@
 	
 		<![CDATA[
 			insert into users(email, pass_word, nickname, follower_num, following_num,users_image) values
-			(#{email}, #{pass_word}, #{nickname} , 0, 0,userimage);
+			(#{email}, #{pass_word}, #{nickname} , 0, 0,"userimage");
 		]]>
 	</insert>
 
