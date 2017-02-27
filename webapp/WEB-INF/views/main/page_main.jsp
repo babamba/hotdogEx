@@ -105,11 +105,11 @@
  */</script>
 
 
-<body class="boxed background-white no-page-loader">
+<body class="boxed background-grey no-page-loader">
 	
 
 	<!-- WRAPPER -->
-	<div class="wrapper">
+	<div class="wrapper" style="border:none;">
 		<!-- HEADER -->
 		<header id="header">
 			<div id="header-wrap" >
@@ -136,7 +136,9 @@
 					<!--TOP SEARCH -->
 					<c:import url="/WEB-INF/views/includes/search-bar.jsp" />
 					<!--END: TOP SEARCH -->
-
+					
+					
+					
 					
 				</div>
 			</div>
@@ -355,7 +357,73 @@
 						<br>
 						가입 후 자신만의 블로그에 반려동물과의 일상을 기록하고<br>
 						커뮤니티를 통해 일상의 공유 및 자신의 반려동물을 더욱 멋지게 자랑하세요.
-						<br><br></div>
+						<br><br>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section>
+			<div class="container" data-animation="fadeInUp" data-animation-delay="100">
+				<div class="heading heading-center" >
+					<h2>Development Team</h2>
+					<span>애완동물을 사랑합시다!</span>
+			</div>
+				
+			<div class="row">
+
+			<div class="col-md-3" data-animation="fadeInUp" data-animation-delay="300">
+				<div class="image-box circle-image small">
+					<img src="${pageContext.request.contextPath}/assets/img/yada.jpg">
+				</div>
+				<div class="image-box-description text-center">
+					<h4>이 동 후</h4>
+					<p class="subtitle">Software Developer</p>
+					<hr class="line">
+					<div>여행꾼 개잘함 개발도잘함</div>
+					<a target="_blank" href="https://github.com/yada91"><div>https://github.com/yada91</div></a>
+					
+				</div>
+			</div>
+			<div class="col-md-3" data-animation="fadeInUp" data-animation-delay="500">
+				<div class="image-box circle-image small">
+					<img src="${pageContext.request.contextPath}/assets/img/leehamin.jpg">
+				</div>
+				<div class="image-box-description text-center">
+					<h4>이 하 민</h4>
+					<p class="subtitle">Software Developer</p>
+					<hr class="line">
+					<div>얼굴로 먹고사는 개발자</div>
+					<a target="_blank" href="https://github.com/lhm8446"><div>https://github.com/lhm8446</div></a>
+
+				</div>
+			</div>
+			<div class="col-md-3" data-animation="fadeInUp" data-animation-delay="700">
+				<div class="image-box circle-image small">
+					<img src="${pageContext.request.contextPath}/assets/img/bjw.jpg" alt="">
+				</div>
+				<div class="image-box-description text-center">
+					<h4>변 준 우</h4>
+					<p class="subtitle">Software Developer</p>
+					<hr class="line">
+					<div>si왕자 사랑꾼 개발자</div>
+					<a target="_blank" href="https://github.com/bjwangel"><div>https://github.com/bjwangel</div></a>
+
+				</div>
+			</div>
+			
+			<div class="col-md-3" data-animation="fadeInUp" data-animation-delay="900">
+				<div class="image-box circle-image small">
+					<img src="${pageContext.request.contextPath}/assets/img/jw.jpg">
+				</div>
+				<div class="image-box-description text-center">
+					<h4>김 진 원</h4>
+					<p class="subtitle">Publisher</p>
+					<hr class="line">
+					<div>수원촌놈 개발 잘하고싶은 퍼블리셔 꿈나무</div>
+					<a target="_blank" href="https://github.com/babamba"><div>https://github.com/babamba</div></a>
+				</div>
+			</div>
 				</div>
 			</div>
 		</section>
