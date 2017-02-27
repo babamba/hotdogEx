@@ -82,9 +82,7 @@ public class PostApiController {
 	@RequestMapping(value="/deletepost" , method=RequestMethod.POST)
 	public String post_delete(
 			@RequestParam(value="post_no", required=true)Integer post_no){
-		System.out.println(post_no);
 		postService.delete_post(post_no);
-		System.out.println("삭제됨");
 		return "redirect:/";
 	}
 	
@@ -103,8 +101,6 @@ public class PostApiController {
 	@ResponseBody
 	@RequestMapping( value="/deletePostreply", method=RequestMethod.POST)
 	public JSONResult deletePostReply(@RequestParam( value="commentsNo", required=true) Integer comments_no){
-		System.out.println("----------------------------------------");
-		System.out.println(comments_no);
 		
 		boolean data = postService.deletePostReply(comments_no);
 		return JSONResult.success(data);
@@ -155,10 +151,8 @@ public class PostApiController {
 	
 		
 /*		postVo.setPost_image(saveFileName);*/
-		System.out.println("post_image" + saveFileName);
 		
 		model.addAttribute("saveFileName", saveFileName);
-		System.out.println("모델" + model);
 		
 		
 		return JSONResult.success(saveFileName);

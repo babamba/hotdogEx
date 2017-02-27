@@ -39,8 +39,6 @@ public class MainController {
 			PetVo petVo, HttpSession session) {
 		List<PetVo> list = petService.getHotdog(petVo);
 		model.addAttribute("list", list);
-		System.out.println("hotdog list!");
-		System.out.println("핫도그 메인에 뿌려질것들" + list);
 		
 		
 		// 앱 웹뷰에 로그인 구현

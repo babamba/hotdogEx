@@ -19,7 +19,6 @@ public class AuthSignUpInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		// modal 창에서 입력한 가입양식을 세션에 TempUser 로 저장해둠
 		
-		System.out.println("야호");
 		UserVo userVo = new UserVo();
 		int code=new Random().nextInt(100);
 		
@@ -33,7 +32,6 @@ public class AuthSignUpInterceptor extends HandlerInterceptorAdapter{
 		userVo.setPass_word(request.getParameter("password"));
 		userVo.setNickname(request.getParameter("nickname"));
 		
-		System.out.println(userVo);
 		
 		
 		// TempUser 에게 이메일을 보낸다.

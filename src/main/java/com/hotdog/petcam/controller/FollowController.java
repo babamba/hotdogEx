@@ -42,7 +42,6 @@ public class FollowController {
    @RequestMapping(value="/profilemodal",method=RequestMethod.POST)
    public Object profileModal(@AuthUser UserVo authUser,@RequestParam(value="users_no")Integer users_no){
       
-	   System.out.println("프로필 찾는 유저번호 :"+ users_no);
 	   
       Map<String,Object> resultMap = new HashMap<String,Object>();
       resultMap.put("basicProfile", followService.basicProfile(users_no));

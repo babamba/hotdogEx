@@ -37,10 +37,8 @@ public class MainApiController {
 	public JSONResult MainBoardlist(
 			@RequestParam(value="category_no", required=true)Integer category_no,
 			Model model){
-		System.out.println("넘어온 카테고리 번호" +category_no);
 		List<BoardVo> list = boardService.getMainList(category_no);
 		
-		System.out.println(list);
 		return JSONResult.success(list);
 	}
 	
@@ -50,7 +48,6 @@ public class MainApiController {
 		List<PostVo> list = postService.getMainPostList(postVo);
 		model.addAttribute("map", list);
 		
-		System.out.println(list);
 		return JSONResult.success(list);
 	}
 	
@@ -62,7 +59,6 @@ public class MainApiController {
 	public JSONResult hotdog(Model model, PetVo petVo){
 		
 		List<PetVo> list = petService.getHotdog(petVo);
-		System.out.println("hotdog list!");
 		
 		return JSONResult.success(list);
 	}

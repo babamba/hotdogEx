@@ -52,16 +52,10 @@ public class CookieBox {
 		 
 			// 쿠키들을 꺼낸다.
 			for(int i=0;i<cookies.length;i++){
-				System.out.println(i+"번째 쿠키 이름 :"+cookies[i].getName());
-				System.out.println(i+"번째 쿠키 값 :"+cookies[i].getValue());
 				
 				// -1
-				System.out.println(cookies[i].getMaxAge());
 				
 				// null
-				System.out.println(cookies[i].getDomain());
-				System.out.println(cookies[i].getComment());
-				System.out.println(cookies[i].getPath());
 			}
 			
 		return null;

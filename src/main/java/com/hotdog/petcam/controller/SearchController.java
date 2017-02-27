@@ -35,11 +35,6 @@ public class SearchController {
 		model.addAttribute("board_list", board_list);
 		model.addAttribute("post_list", post_list);
 		
-		System.out.println(user_list);
-		System.out.println(blog_list);
-		System.out.println(board_list);
-		System.out.println(post_list);
-		
 		return "search/search-result2";
 	}
 }

@@ -39,7 +39,6 @@ public class CookieLogin extends HandlerInterceptorAdapter{
 					
 					hotdogCookie = cookies[i];
 					
-					System.out.println("핫도그 쿠키 찾았다.");
 					
 					break;
 				}
@@ -47,7 +46,6 @@ public class CookieLogin extends HandlerInterceptorAdapter{
 		}
 		// hotdogCookie 쿠키 존재 유무를 판단하여, 없으면 인터셉터를 중지시킨다.
 		if ( hotdogCookie == null){
-			System.out.println("hotdog 쿠키 없다.");
 			return true;
 		}
 		
@@ -63,7 +61,6 @@ public class CookieLogin extends HandlerInterceptorAdapter{
 		//  받아온 쿠키 값이 DB에 저장되어 있으면..이메일 값으로 바로 로그인 시킨다.
 		if( userService.searchCookie( cookieName , cookieValue ) == true ){
 			
-			System.out.println("쿠키값 확인 ~로그인 시킨다~");
 			UserVo userVo = userService.cookieLogin(cookieName);
 			
 			session.setAttribute( "authUser", userVo );

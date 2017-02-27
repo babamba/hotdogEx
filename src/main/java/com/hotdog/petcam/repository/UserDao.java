@@ -30,7 +30,6 @@ public class UserDao {
 	}
 
 	public UserVo getId(String email) {
-		System.out.println(email + "email로 유저넘버 조회전");
 		return sqlSession.selectOne("user.getById", email);
 	}
 

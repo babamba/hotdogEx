@@ -33,7 +33,6 @@ public class SendMail {
 	            session.setDebug(true); // 메일을 전송할 때 상세한 상황을 콘솔에 출력한다.
 	            MimeMessage msg = new MimeMessage(session);
 	            
-	            System.out.println("********************* ");
 	 
 	            msg.setSubject("<< HOTDOG TEAM >>  Check your Code !!");
 	            Address fromAddr = new InternetAddress("hotdog.bit2017@gmail.com"); // 보내는사람 EMAIL

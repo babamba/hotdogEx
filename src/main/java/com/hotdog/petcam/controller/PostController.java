@@ -88,7 +88,6 @@ public class PostController {
 	    @RequestMapping(value = "/upload", method = RequestMethod.POST)
 	    public JSONResult upload(@RequestParam("file") MultipartFile file, MultipartHttpServletRequest request,
 	            Model model, HttpServletResponse response) throws UnknownHostException{
-	        System.out.println("upload");
 	        String saveFileName = blogService.restore(file);
 	        String localIp = InetAddress.getLocalHost().getHostAddress();
 	        return JSONResult.success("http://150.95.141.66/hotdog/hotdog/image/user/" + saveFileName);
@@ -124,7 +123,6 @@ public class PostController {
 		public Object captureCheck(@AuthUser UserVo authUser){
 			postService.captureConnect(authUser.getUsers_no());
 			String result = (postService.captureCheck(authUser.getUsers_no()) ? "exist" : "not exist");
-			System.out.println(result);
 			return JSONResult.success(result);
 		}
 	

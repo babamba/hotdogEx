@@ -56,7 +56,6 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
         	cookie.setPath("/hotdog");
         	
         	response.addCookie(cookie);
-        	System.out.println("쿠키 발급!");
         	
         	userService.setCookie("hotdog",userVo.getEmail());
 //        		cookieBox.createCookie("email", userVo.getEmail());

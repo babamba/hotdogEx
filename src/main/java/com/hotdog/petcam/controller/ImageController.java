@@ -47,8 +47,6 @@ public class ImageController {
 		
 		
 		
-		System.out.println(CKEditorFuncNum);
-		System.out.println(file_path);
 		
 		/*String funcNum = request.getParameter("CKEditorFuncNum");
 		String fileUrl = "http://localhost:8087/hotdog/hotdog/image/user/";

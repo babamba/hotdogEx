@@ -22,7 +22,6 @@ public class BlogDao {
 	}
 
 	public void insert(BlogVo vo) {
-		System.out.println("유저 가입하면서 블로그 인서트");
 		sqlSession.insert("blog.insert", vo);
 	}
 

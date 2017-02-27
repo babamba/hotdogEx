@@ -60,8 +60,6 @@ public class BoardApiController {
 	@ResponseBody
 	@RequestMapping( value="/deletereply", method=RequestMethod.POST)
 	public JSONResult deleteReply(@RequestParam( value="commentsNo", required=true) Integer comments_no){
-		System.out.println("----------------------------------------");
-		System.out.println(comments_no);
 		
 		boolean data = boardService.deleteReply(comments_no);
 		return JSONResult.success(data);

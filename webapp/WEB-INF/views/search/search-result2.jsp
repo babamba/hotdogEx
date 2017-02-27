@@ -209,7 +209,7 @@
 												        <tbody>
 												        <c:forEach items="${blog_list }"	var="vo" varStatus="status">
 												          <tr>
-												            <td>Image</td>
+												            <td><img src="${pageContext.request.contextPath }/hotdog/image/user/${vo.logo_image}" style="border-radius:15px; witdh:35px; height:35px;" ></td>
 												            <td><a href="${pageContext.request.contextPath }/blog/${vo.nickname}">${vo.title }</a></td>
 												            <td><a href="${pageContext.request.contextPath }/blog/${vo.nickname}">${vo.nickname }</a></td>
 												          </tr>

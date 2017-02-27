@@ -38,12 +38,9 @@ public class BlogApiController {
 			@RequestParam(value="p", required=true, defaultValue="1")Integer page, 
 			@RequestParam(value="no", required=true)Integer users_no,
 			Model model){
-		System.out.println(page);
 		List<PostVo> list = postService.getList(page, users_no);
 		
 		model.addAttribute("list", list);
-		System.out.println("controller return");
-		System.out.println(list);
 		
 		return JSONResult.success(list);
 	}
