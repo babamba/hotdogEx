@@ -351,14 +351,14 @@
 											<div class="row col-md-6">
 												<h5>변경하실 2차 보안번호를 입력하세요</h5>
 												<div class="input-group col-md-12 password_start text-center">
-													<input id="secretNumber" type="password" class="form-control" placeholder="${map.userVo.pass_word }">
+													<input id="secretNumber" type="password" class="form-control" placeholder="2차 비밀번호를 입력하세요">
 												</div>
 											</div>
 											
 											<div class="row col-md-6">
 												<h5>변경하실 2차 보안번호 재입력하세요</h5>
 												<div class="input-group col-md-12 m-l-20">
-													<input id="secretNumberCheck" type="password" class="form-control" placeholder="${map.userVo.pass_word }">
+													<input id="secretNumberCheck" type="password" class="form-control" placeholder="2차 비밀번호를 재입력하세요">
 												</div>
 											</div>
 											
