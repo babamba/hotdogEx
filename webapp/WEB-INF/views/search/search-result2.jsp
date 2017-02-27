@@ -206,7 +206,7 @@
 												        <tbody>
 												        <c:forEach items="${user_list }"	var="vo" varStatus="status">
 												          <tr>
-												            <td>Image</td>
+												            <td><img src="${pageContext.request.contextPath }/hotdog/image/user/${vo.users_image}"></td>
 												            <td><a href="${pageContext.request.contextPath }/blog/${vo.nickname}">${vo.nickname }</a></td>
 												            <td>${vo.email }</td>
 												            <td>${vo.infomation }</td>
