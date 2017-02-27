@@ -83,11 +83,7 @@
 					<!--END: MOBILE MENU -->
 
 					<!--TOP SEARCH -->
-					<div id="top-search"> <a id="top-search-trigger"><i class="fa fa-search"></i><i class="fa fa-close"></i></a>
-						<form action="${pageContext.request.contextPath}/search" method="get">
-							<input type="text" name="keyword" class="form-control" value="" placeholder="Start typing & press  &quot;Enter&quot;">
-						</form>
-					</div>
+					<c:import url="/WEB-INF/views/includes/search-bar.jsp" />
 					<!--END: TOP SEARCH -->
 					<!--NAVIGATION-->
 					<div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
