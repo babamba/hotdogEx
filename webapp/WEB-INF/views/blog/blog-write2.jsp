@@ -150,7 +150,7 @@
 		            <!--  content -->
 		            <textarea name="content" id="ckeditor" rows="10" cols="80">
 			            <c:forEach items="${map.captureList }"	var="vo" varStatus="status">	
-			           		 <img src="${pageContext.request.contextPath }/hotdog/image/user/${vo.users_no }/${vo.save_name}">
+			           		 <img src="${pageContext.request.contextPath }/hotdog/image/user/${vo.users_no }/${vo.save_name}" style= "width: 50%; height:50%;"></br>&nbsp;
 			            </c:forEach>
 			           
 		            </textarea>
