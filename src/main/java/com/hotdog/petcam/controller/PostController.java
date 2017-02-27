@@ -122,7 +122,6 @@ public class PostController {
 		@ResponseBody
 		@RequestMapping("/captureCheck")
 		public Object captureCheck(@AuthUser UserVo authUser){
-			System.out.println("체크한다.");
 			postService.captureConnect(authUser.getUsers_no());
 			String result = (postService.captureCheck(authUser.getUsers_no()) ? "exist" : "not exist");
 			System.out.println(result);
@@ -134,11 +133,8 @@ public class PostController {
 		
 		@RequestMapping("/pullCapture")
 		public String pullCapture(@AuthUser UserVo authUser,Model model){
-			System.out.println("리스트를 뽑아낸다.");
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("captureList",postService.pullCapture(authUser.getUsers_no()));
-			
-			System.out.println(postService.pullCapture(authUser.getUsers_no()));
 			
 			model.addAttribute("map", map);
 			
