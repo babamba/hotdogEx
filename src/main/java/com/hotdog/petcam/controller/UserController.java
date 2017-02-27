@@ -141,7 +141,7 @@ public class UserController {
 
 	@Auth
 	@Secret
-	@RequestMapping(value = "/account/secretmodify", method = RequestMethod.POST)
+	@RequestMapping(value = "/account/secretmodify")
 	public String basicModify(@ModelAttribute UserVo userVo, @AuthUser UserVo authUser) {
 
 		// 입력받은 2차 비밀번호 수정사항을 세션의 authUser 정보에 덮어씌운다.
@@ -155,7 +155,7 @@ public class UserController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/app/account/secretmodify", method = RequestMethod.POST)
+	@RequestMapping(value = "/app/account/secretmodify")
 	public Object appSecModify(@ModelAttribute UserVo userVo, @RequestParam(value = "nickname") String nickname,
 			@RequestParam(value = "sec_pass_word") int sec_pass_word) {
 
@@ -174,7 +174,7 @@ public class UserController {
 
 	@Auth
 	@Secret
-	@RequestMapping(value = "/account/userprofilemodify", method = RequestMethod.POST)
+	@RequestMapping(value = "/account/userprofilemodify")
 	public String userProfileModify(@AuthUser UserVo authUser, @RequestParam(value = "nickname") String nickname,
 			@RequestParam(value = "infomation") String infomation, @RequestParam(value = "pass_word") String password,
 			@RequestParam(value = "userimage") MultipartFile userimage) {
@@ -248,7 +248,7 @@ public class UserController {
 
 	@Auth
 	@Secret
-	@RequestMapping(value = "/account/userprofilemodify2", method = RequestMethod.POST)
+	@RequestMapping(value = "/account/userprofilemodify2")
 	public String userProfileModify4(@AuthUser UserVo authUser, @RequestParam(value = "nickname") String nickname,
 			@RequestParam(value = "infomation") String infomation, @RequestParam(value = "pass_word") String password) {
 
@@ -258,7 +258,7 @@ public class UserController {
 
 	@Auth
 	@Secret
-	@RequestMapping(value = "/account/blogprofilemodify", method = RequestMethod.POST)
+	@RequestMapping(value = "/account/blogprofilemodify")
 	public String blogProfileModify(@ModelAttribute BlogVo blogVo, @AuthUser UserVo authUser,
 			@RequestParam(value = "title") String title) {
 		blogVo.setTitle(title);
@@ -269,7 +269,7 @@ public class UserController {
 
 	@Auth
 	@Secret
-	@RequestMapping(value = "/account/blogprofilemodify2", method = RequestMethod.POST)
+	@RequestMapping(value = "/account/blogprofilemodify2")
 	public String blogProfileModify2(@ModelAttribute BlogVo blogVo, @AuthUser UserVo authUser,
 			@RequestParam(value = "title") String title, @RequestParam(value = "blogimage") MultipartFile blogimage) {
 		blogVo.setTitle(title);
@@ -286,7 +286,7 @@ public class UserController {
 
 	@Auth
 	@Secret
-	@RequestMapping(value = "/account/petprofilemodify", method = RequestMethod.POST)
+	@RequestMapping(value = "/account/petprofilemodify")
 	public String petProfileModify(@ModelAttribute PetVo petVo, @AuthUser UserVo authUser,
 			@RequestParam(value = "petname") String name, @RequestParam(value = "petinfo") String info,
 			@RequestParam(value = "gender") String gender, @RequestParam(value = "age") String age,
@@ -298,7 +298,7 @@ public class UserController {
 
 	@Auth
 	@Secret
-	@RequestMapping(value = "/account/petprofilemodify2", method = RequestMethod.POST)
+	@RequestMapping(value = "/account/petprofilemodify2")
 	public String petProfileModify2(@ModelAttribute PetVo petVo, @AuthUser UserVo authUser,
 			@RequestParam(value = "petname") String name, @RequestParam(value = "petinfo") String info,
 			@RequestParam(value = "gender") String gender, @RequestParam(value = "age") String age,
@@ -315,7 +315,7 @@ public class UserController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/app/account/petprofilemodify", method = RequestMethod.POST)
+	@RequestMapping(value = "/app/account/petprofilemodify")
 	public Object appPetProfileModify(@RequestParam(value = "users_no") Integer users_no,
 			@RequestParam(value = "petname") String name, @RequestParam(value = "petinfo") String info,
 			@RequestParam(value = "gender") String gender, @RequestParam(value = "age") String age,
@@ -326,7 +326,7 @@ public class UserController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/app/account/petprofilemodify2", method = RequestMethod.POST)
+	@RequestMapping(value = "/app/account/petprofilemodify2")
 	public Object appPetProfileModify2(@ModelAttribute PetVo petVo, @RequestParam(value = "users_no") Integer users_no,
 			@RequestParam(value = "petimage") MultipartFile petimage) {
 
