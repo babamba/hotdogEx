@@ -74,7 +74,7 @@
 					<!--LOGO-->
 					<div id="logo">
 						<a href="${pageContext.request.contextPath}" class="logo" data-dark-logo="images/logo-dark.png">
-							<img src="${pageContext.request.contextPath}/assets/img/hotdog_logo-01.png" alt="HotDog Logo">
+							<img src="${pageContext.request.contextPath}/assets/img/hotdog_logo_02.png" alt="HotDog Logo">
 						</a>
 					</div>
 					<!--END: LOGO-->
@@ -117,20 +117,9 @@
 				<div class="container">
 					<div class="page-title col-md-8">
 						<h1>News Feed</h1>
-						<span>이웃들의 소식을 한눈에 확인하세요 !</span>
+						<h1>Share. Your <span class="text-rotator" data-rotate-effect="bounce" data-rotate-speed="3000">Happiness :),Sorrow :(,Everything !</span></h1>
 					</div>
-					<div class="breadcrumb col-md-4">
-						<ul>
-							<li><a href="#"><i class="fa fa-home"></i></a>
-							</li>
-							<li><a href="${pageContext.request.contextPath}">Home</a>
-							</li>
-							<li><a href="${pageContext.request.contextPath}/community">Community</a>
-							</li>
-							<li class="active"><a href="${pageContext.request.contextPath}/community/newsfeed">News feed</a>
-							</li>
-						</ul>
-					</div>
+
 				</div>
 			</section>
 			<!-- END: PAGE TITLE -->
@@ -142,20 +131,23 @@
 					<!-- Blog post-->
 					<div class="post-content col-md-9" >
 				
+					<div class="hr-title hr-long center"><abbr>Search Result</abbr> </div>
+					
 					<c:forEach items="${search_list }"	var="vo" varStatus="status">	
 						<!-- Blog image post-->
 						<div class="post-item">
 							<div class="post-image">
-							<a href="#">
+							<a href="javascript:;">
 								<img alt="" src="${pageContext.request.contextPath }/hotdog/image/user/${vo.post_image}">
 							</a>
 							</div>
 							<div class="post-content-details">
 								<div class="post-title">
-									<h3><a href="#">${vo. title}</a></h3>
+									<h3><a href="${pageContext.request.contextPath }/post/${vo.nickname}/postView?post_no=${vo.post_no}">${vo. title}</a></h3>
+
 								</div>
 								<div class="post-info">
-									<span class="post-autor">Post by: <a href="${pageContext.request.contextPath }/blog/${vo.nickname}">${vo.nickname }</a></span>
+									<span class="post-autor openProfile" data-no="${vo.users_no}">Post by: <a href="${pageContext.request.contextPath }/blog/${vo.nickname}">${vo.nickname }</a></span>
 								</div>
 								<div class="post-description">
 									<p>불러온 리스트들의 글내용....image 파일을 제외하고 어떻게 불러올까...</p>
@@ -172,7 +164,7 @@
 								</div>
 		
 								<div class="post-comments">
-									<a href="#">
+									<a href="jaascript:;">
 										<i class="fa fa-comments-o"></i>
 										<span class="post-comments-number">${vo.count }</span>
 									</a>
@@ -288,6 +280,7 @@
 
 				<!--widget search-->
 				<div class="widget clearfix widget-search">
+					<h4 class="widget-title">Search</h4>
                             <form action="${pageContext.request.contextPath }/community/newsfeed/search" method="get" class="form-inline">
                                 <div class="input-group">
                                     <input type="text" name="search" placeholder="${search }" class="form-control">

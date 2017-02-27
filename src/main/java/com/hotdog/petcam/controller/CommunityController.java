@@ -31,8 +31,8 @@ public class CommunityController {
 	
 	@RequestMapping("")
 	public String communityMain(Model model){
-
-		return "community/community-main";
+		// 메인 페이지 변경됨 
+		return "redirect: /hotdog/community/freeboard";
 	}
 	
 	/*---------------------------------------Freeboard---------------------------------------*/
@@ -46,7 +46,7 @@ public class CommunityController {
 
 		return "community/community-freeboard";
 	}
-	
+	@Auth
 	@RequestMapping("/freeboard/writeform")
 	public String writeBoardForm(){
 		return "community/community-writeform";
@@ -97,7 +97,7 @@ public class CommunityController {
 		return "community/community-galleryboard";
 	}
 	
-	
+	@Auth
 	@RequestMapping("/galleryboard/writegalleryform")
 	public String writeGalleryForm(){
 		return "community/community-writegalleryform";

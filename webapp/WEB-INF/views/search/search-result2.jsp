@@ -84,23 +84,7 @@
 					<!--TOP SEARCH -->
 					<c:import url="/WEB-INF/views/includes/search-bar.jsp" />
 					<!--END: TOP SEARCH -->
-					<!--NAVIGATION-->
-					<div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
-							<div class="container">
-								<nav id="mainMenu" class="main-menu mega-menu">
-									<ul class="main-menu nav nav-pills">
-									
-									    <!-- authUser 블로그 메인 -->
-										<li><a href="${pageContext.request.contextPath}"><i class="fa fa-home"></i></a>
-										
-										<!-- 커뮤니티 메인 -->
-										<li><a href="${pageContext.request.contextPath}/community">커뮤니티 메인</a></li>
-									
-									</ul>
-								</nav>
-							</div>
-					</div>
-					<!--END: NAVIGATION-->
+				<c:import url="/WEB-INF/views/includes/navigation-main.jsp" />
 				</div>
 			</div>
 		</header>
@@ -201,7 +185,7 @@
 												        <tbody>
 												        <c:forEach items="${user_list }"	var="vo" varStatus="status">
 												          <tr>
-												            <td><img src="${pageContext.request.contextPath }/hotdog/image/user/${vo.users_image}"></td>
+												            <td><img src="${pageContext.request.contextPath }/hotdog/image/user/${vo.users_image}" style="border-radius:15px; witdh:35px; height:35px;" ></td>
 												            <td><a href="${pageContext.request.contextPath }/blog/${vo.nickname}">${vo.nickname }</a></td>
 												            <td>${vo.email }</td>
 												            <td>${vo.infomation }</td>

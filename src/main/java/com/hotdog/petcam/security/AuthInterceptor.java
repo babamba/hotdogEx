@@ -52,19 +52,18 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 //        System.out.println("^^^^^^^^^^^^^^   " + request.getRequestURI());
         
         if(session== null){
-            System.out.println("session");
             
 //            response.sendRedirect(request.getContextPath()+"/user/loginform");
-            RequestDispatcher rd= request.getRequestDispatcher("/user/loginform");
+            RequestDispatcher rd= request.getRequestDispatcher("/loginpage");
             rd.forward(request,response);
             return false;
         }
         
         UserVo authUser=(UserVo)session.getAttribute("authUser");
+        
         if(authUser == null){
-            System.out.println("auth");
 //            response.sendRedirect(request.getContextPath()+"/user/loginform");
-            RequestDispatcher rd= request.getRequestDispatcher("/user/loginform");
+            RequestDispatcher rd= request.getRequestDispatcher("/loginpage");
             rd.forward(request,response);
             return false;
         }
