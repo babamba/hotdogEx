@@ -112,8 +112,8 @@
 
 
 <!-- Account Main -->
-<body>
-	<div class="wrapper">
+<body class="boxed background-grey">
+	<div class="wrapper" style="border:none;">
 
 		<!-- START: HEADER PAGE TITLE -->
 		<c:import url="/WEB-INF/views/includes/header.jsp" />

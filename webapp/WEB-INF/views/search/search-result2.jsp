@@ -57,10 +57,9 @@
 <script src="${pageContext.request.contextPath}/assets/js/userProfile.js"></script>
 <link href="${pageContext.request.contextPath}/assets/css/userProfile.css" rel="stylesheet">
 		
-<body class="wide">
 
 </head>
-<body>
+<body class="boxed background-grey">
 		<!-- HEADER -->
 		<header id="header" class="header-transparent">
 			<div id="header-wrap">

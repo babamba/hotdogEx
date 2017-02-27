@@ -106,8 +106,8 @@
 		
 </head>
 	
-<body>
-	<div class="wrapper">
+<body class="boxed background-grey">
+	<div class="wrapper" style="border:none;">
 		<!-- HEADER -->
 		<header id="header" class="header-transparent">
 			<div id="header-wrap">

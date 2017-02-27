@@ -86,11 +86,11 @@
 <link
 	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
 	rel="stylesheet">
-<body>
+<body class="boxed background-grey">
 
 
 
-	<div class="wrapper">
+	<div class="wrapper" style="border:none;">
 
 		<!-- HEADER -->
 		<header id="header" class="header-transparent">

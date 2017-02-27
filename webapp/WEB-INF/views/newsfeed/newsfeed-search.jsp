@@ -60,11 +60,11 @@
 <script src="${pageContext.request.contextPath}/assets/js/userProfile.js"></script>
 <link href="${pageContext.request.contextPath}/assets/css/userProfile.css" rel="stylesheet">
 		
-<body class="wide">
+<body class="boxed background-grey">
 	
 
 	<!-- WRAPPER -->
-	<div class="wrapper">
+	<div class="wrapper" style="border:none;">
 
 		<!-- HEADER -->
 		<header id="header" class="header-transparent">

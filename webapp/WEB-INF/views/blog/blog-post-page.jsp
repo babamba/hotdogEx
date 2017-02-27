@@ -427,11 +427,8 @@ $(function(){
 
 </script>
 
-<body class="boxed background-white">
-
-
-
-	<div class="wrapper">
+<body class="boxed background-grey">
+	<div class="wrapper" style="border:none;">
 
 		<!-- HEADER -->
 		<header id="header" class="header-transparent">

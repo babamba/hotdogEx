@@ -147,7 +147,7 @@
 		<div style="width:100%; height:500px; overflow-y:hidden;">
         <div  class="inspiro-slider " >
             <!-- Slide 1 -->
-            <div class="slide background-overlay-dark" data-animation="fadeIn" data-vide-bg="${pageContext.request.contextPath}/assets/img/dog_video.mp4">
+            <div class="slide background-overlay-dark" data-animation="fadeIn" data-animation-delay="100" data-vide-bg="${pageContext.request.contextPath}/assets/img/dog_video.mp4">
 
                 <div class="container m-b-200" data-animation="fadeIn">
                 	<div class="col-md-6 col-sm-12 col-xs-12">
@@ -228,28 +228,18 @@
        		 </div>
        		 </div>
 
-		<div class="hr-title hr-long center m-t-40 p-t-20 p-b-20" style="border-top-style:outset; width:30%; margin-top:20px;" data-animation="fadeInUp">
-			<abbr>핫도그 베스트</abbr>
+		<div class="heading-fancy text-center heading-line m-t-15 m-l-40 m-r-40" data-animation="fadeInUp" data-animation-delay="300">
+			<h3 style="padding-top:15px;margin-top:15px;font-size:20px;"><i class='fa fa-paw'></i>&nbsp;핫도그베스트</h3>
 			<p style="margin-top:10px; font-size:13px;">친구들을 팔로잉 하고 오늘의  핫도그가 되어보세요 </p>
 		</div>
-
-
-		<!-- NEWS GRID -->
-		<!-- <section class="p-t-40 p-b-40" data-animation="fadeIn" >
-			<div class="container" >
-				<div class="grid-articles grid-articles-v2 best_hotdog">
-				
-				</div>
-			</div>
-		</section> -->
-		<!-- END: NEWS GRID -->
+		
 		
 
-		<section class="p-b-40 p-t-20">
+		<section class="p-b-10 p-t-20">
 
 		 <div class="portfolio">
                 <!-- Portfolio Items -->
-                <div id="isotope" class="isotope portfolio-items" data-isotope-item-space="2" data-isotope-mode="masonry" data-isotope-col="5" data-isotope-item=".portfolio-item">
+                <div id="isotope" class="isotope portfolio-items" data-animation="fadeIn" data-animation-delay="700" data-isotope-item-space="1" data-isotope-mode="masonry" data-isotope-col="5" data-isotope-item=".portfolio-item">
 		  			<c:forEach items="${list }"	var="vo" varStatus="status">
 		  			 
 	                    <div class="portfolio-item design artwork" data-no="${vo.users_no }">
@@ -273,13 +263,13 @@
 
 		</section>
 		
-		<div class="hr-title hr-long center p-t-40 p-b-40" style="border-top-style:outset; width:30%;" data-animation="fadeInUp">
-			<abbr>핫도그 커뮤니티 게시판</abbr>
-			<p style="margin-top:10px; font-size:13px;">핫도그 커뮤니티를 통해 교감방법이나</br> 혼자보기 아까운 애완견의 모습을 올려주세요. </p>
+		<div class="heading-fancy text-center heading-line m-t-15 m-l-40 m-r-40" data-animation="fadeInUp" data-animation-delay="400">
+			<h3 style="padding-top:15px;margin-top:15px;font-size:20px;"><i class='fa fa-paw'></i>&nbsp;핫도그베스트</h3>
+			<p style="margin-top:10px; font-size:13px;">친구들을 팔로잉 하고 오늘의  핫도그가 되어보세요 </p>
 		</div>
 		
 		<!-- CATEGORIES -->
-		<section class="p-t-40 p-b-40">
+		<section class="p-t-20 p-b-20">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-4 board_category_list" data-animation="fadeInUp" data-animation-delay="100">
@@ -327,8 +317,8 @@
 		</section>
 		<!-- END: HIGHTLIGHTS -->
 		
-		<div class="hr-title hr-long center p-t-40 p-b-40" style="border-top-style:outset; width:30%;" data-animation="fadeInUp">
-			<abbr>핫도그 커뮤니티 게시판</abbr>
+		<div class="heading-fancy text-center heading-line m-t-5 m-l-40 m-r-40 p-b-10" data-animation="fadeInUp">
+			<h3 style="padding-top:15px;margin-top:40px;font-size:20px;"><i class='fa fa-paw'></i>&nbsp;Welcome</h3>
 			<p style="margin-top:10px; font-size:13px;">간단한 가입만으로 핫도그를 함께하세요 </p>
 		</div>
 		
@@ -357,13 +347,14 @@
 					
 					</div>
 					<div class="col-md-6 text-center p-t-20 p-b-20" data-animation="fadeInUp" data-animation-delay="300">
-						핫도그(HotDog)는 라즈베리파이 기반의 센서 제어를 활용하여 <br>
+						<br>핫도그(HotDog)는 라즈베리파이 기반의 센서 제어를 활용하여 <br>
 						반려동물의 상태나 행돟을 원격으로 볼수 있는 시스템입니다.<br>
 						<br>
 						외부에서도 쉽게 반려동물의 상태를 알 수 있게 PetCam을 이용해 볼 수 있고,  <br>
 						스피커를 이용하여 외로워하는 반려동물과의 대화를 할 수 있습니다.<br>
 						<br>
-						커뮤니티를 통해 자신의 반려동물을 더욱 멋지게 자랑하세요.
+						가입 후 자신만의 블로그에 반려동물과의 일상을 기록하고<br>
+						커뮤니티를 통해 일상의 공유 및 자신의 반려동물을 더욱 멋지게 자랑하세요.
 						<br><br></div>
 				</div>
 			</div>

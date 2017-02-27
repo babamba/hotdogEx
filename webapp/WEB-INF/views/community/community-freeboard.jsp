@@ -107,11 +107,11 @@ $(function(){
 	})
 })
 </script>
-<body class="boxed background-white">
+<body class="boxed background-grey">
 
 
 
-	<div class="wrapper">
+	<div class="wrapper" style="border:none;">
 	
 	
 

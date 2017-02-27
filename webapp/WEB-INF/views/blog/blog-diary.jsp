@@ -86,8 +86,8 @@
 <link
 	href="${pageContext.request.contextPath}/assets/css/userProfile.css"
 	rel="stylesheet">
-<body class="boxed background-white">
-	<div class="wrapper">
+<body class="boxed background-grey">
+	<div class="wrapper" style="border:none;">
 
 		<!-- START: HEADER PAGE TITLE -->
 		<c:import url="/WEB-INF/views/includes/header.jsp" />

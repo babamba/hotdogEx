@@ -1413,11 +1413,11 @@ var INSPIRO = {};
                     filter: defaultFilter,
                     itemSelector: itemElement,
                     layoutMode: mode,
-                    transitionDuration: '0.6s',
+                    transitionDuration: '1.6s',
                     resizesContainer: true,
                     resizable: true,
                     animationOptions: {
-                        duration: 400,
+                        duration: 500,
                         queue: !1
                     }
 

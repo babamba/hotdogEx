@@ -100,9 +100,9 @@
 	href="${pageContext.request.contextPath}/assets/css/streamingPage.css"
 	rel="stylesheet">
 	
-<body class="boxed background-white">
+<body class="boxed background-grey">
 
-	<div class="wrapper">
+	<div class="wrapper" style="border:none;">
 
 		<!-- START: HEADER PAGE TITLE -->
 		<c:import url="/WEB-INF/views/includes/header.jsp" />

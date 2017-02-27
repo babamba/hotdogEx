@@ -92,8 +92,8 @@
 <script src="${pageContext.request.contextPath}/assets/alertify/alertify.js"></script>
 	
 	
-<body class="boxed background-white">
-	<div class="wrapper">
+<body class="boxed background-grey">
+	<div class="wrapper" style="border:none;">
 
 		<!-- START: HEADER PAGE TITLE -->
 		<c:import url="/WEB-INF/views/includes/header.jsp" />
@@ -154,7 +154,7 @@
 
 
 					 "<div class='post-meta'><div class='post-date'>" + vo.regdate + "</div>" +
-					 "<div class='post-comments'><a href='#'><i class='fa fa-comments-o'></i><span class='post-comments-number'>" + vo.count + "</span></a></div>" +
+					 "<div class='post-comments'><a href='javascript:;' ><i class='fa fa-comments-o'></i><span class='post-comments-number'>" + vo.count + "</span></a></div>" +
 					 "<div class='post-comments post_modify' data-postNo=" + vo.post_no + " data-usersNo='" + vo.users_no + "'><a href='javascript:;'><i class='fa fa-share-alt'></i><span class='post-comments-number'>수정</span></a></div>" +
 					 "<div class='post-comments post_delete' data-postNo=" + vo.post_no + " data-usersNo='" + vo.users_no + "'><a href='javascript:;'><i class='fa fa-close'></i><span class='post-comments-number'>삭제</span></a></div>" +
 					 
