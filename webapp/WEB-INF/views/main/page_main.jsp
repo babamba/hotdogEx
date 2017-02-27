@@ -149,7 +149,7 @@
 		<div style="width:100%; height:500px; overflow-y:hidden;">
         <div  class="inspiro-slider " >
             <!-- Slide 1 -->
-            <div class="slide background-overlay-dark" data-animation="fadeIn" data-animation-delay="100" data-vide-bg="${pageContext.request.contextPath}/assets/img/dog_video.mp4">
+            <div class="slide background-overlay-dark" data-animation="fadeIn" data-animation-delay="100" data-vide-bg="${pageContext.request.contextPath}/assets/img/dog_video.mp4" align="middle">
 
                 <div class="container m-b-200" data-animation="fadeIn">
                 	<div class="col-md-6 col-sm-12 col-xs-12">
@@ -157,7 +157,7 @@
 	                        <!-- Captions -->
 	                        <h2 class="text-center">Hot Dog</h2>
 	                        <h4 class="m-b-40 text-center">핫도그 커뮤니티에 오신 걸 환영해요!</h4>
-	                       	<a class="text-center button transparent effect fill-vertical col-md-12 col-sm-12 col-xs-4 " href="${pageContext.request.contextPath}/community"><span>커뮤니티 게시판으로!</span></a>
+	                       	<a class="text-center button transparent effect fill-vertical col-md-12 col-sm-12 col-xs-4" href="${pageContext.request.contextPath}/community/freeboard"><span>커뮤니티 게시판으로!</span></a>
 	                        <!-- End: Captions -->
 	                    </div>
                     </div>
@@ -247,7 +247,6 @@
 	                    <div class="portfolio-item design artwork" data-no="${vo.users_no }">
 	                   
 	                        <div class="image-box effect victor"> 
-	                        	
 	                        	<img style="width:100%;height:100%;" src="${pageContext.request.contextPath}/hotdog/image/user/${vo.pet_image }" alt="">
 	                            
 	                            <div class="image-box-content">
@@ -265,7 +264,7 @@
 
 		</section>
 		
-		<div class="heading-fancy text-center heading-line m-t-15 m-l-40 m-r-40" data-animation="fadeInUp" data-animation-delay="400">
+		<div class="heading-fancy text-center heading-line m-l-40 m-r-40" data-animation="fadeInUp" data-animation-delay="400">
 			<h3 style="padding-top:15px;margin-top:15px;font-size:20px;"><i class='fa fa-paw'></i>&nbsp;핫도그베스트</h3>
 			<p style="margin-top:10px; font-size:13px;">친구들을 팔로잉 하고 오늘의  핫도그가 되어보세요 </p>
 		</div>
@@ -321,7 +320,7 @@
 		
 		<div class="heading-fancy text-center heading-line m-t-5 m-l-40 m-r-40 p-b-10" data-animation="fadeInUp">
 			<h3 style="padding-top:15px;margin-top:40px;font-size:20px;"><i class='fa fa-paw'></i>&nbsp;Welcome</h3>
-			<p style="margin-top:10px; font-size:13px;">간단한 가입만으로 핫도그를 함께하세요 </p>
+			<p style="margin-top:10px; font-size:13px;">간단한 가입만으로 핫도그 WEB을 함께하세요 </p>
 		</div>
 		
 		
@@ -336,19 +335,20 @@
 		</section>
 		<!-- END: ADVERTISEMENT -->
 		
-		<section class="background text-dark p-b-40" style="margin-bottom:60px;">
+		<section class="background-grey text-dark p-b-10 m-b-10 p-b-30" >
 			<div class="container">
-				<div class="row">
 					<div class="col-md-12" data-animation="fadeInUp" data-animation-delay="100">
 						<div class="text-center" >
-							<h1 class="text-medium-light" style="margin-bottom:40px;">핫도그를 사용해보셨나요?</h1>
+							<h1 class="heading heading-center text-medium-light" style="margin-bottom:40px;">핫도그를 사용해보셨나요?</h1>
 						</div>
 					</div>
-					<div class="col-md-6 text-center" data-animation="fadeInUp" data-animation-delay="300" >
+				
+				<div class="row m-r-10">
+					<div class="col-md-6 text-center" data-animation="fadeInUp" data-animation-delay="100" >
 						<img class="col-md-12" src="${pageContext.request.contextPath}/assets/img/raspberry_pi.jpg">
 					
 					</div>
-					<div class="col-md-6 text-center p-t-20 p-b-20" data-animation="fadeInUp" data-animation-delay="300">
+					<div class="col-md-6 text-center p-t-20 p-b-40 background-white"  data-animation="fadeInUp" data-animation-delay="500">
 						<br>핫도그(HotDog)는 라즈베리파이 기반의 센서 제어를 활용하여 <br>
 						반려동물의 상태나 행돟을 원격으로 볼수 있는 시스템입니다.<br>
 						<br>
@@ -359,15 +359,39 @@
 						커뮤니티를 통해 일상의 공유 및 자신의 반려동물을 더욱 멋지게 자랑하세요.
 						<br><br>
 					</div>
+					
+					
 				</div>
+				
+				
+				<div class="row m-t-30 m-l-10">
+
+					
+					<div class="col-md-6 text-center p-t-20 p-b-40 background-white" data-animation="fadeInUp" data-animation-delay="700">
+						<br>핫도그(HotDog)는 라즈베리파이 기반의 센서 제어를 활용하여 <br>
+						반려동물의 상태나 행돟을 원격으로 볼수 있는 시스템입니다.<br>
+						<br>
+						외부에서도 쉽게 반려동물의 상태를 알 수 있게 PetCam을 이용해 볼 수 있고,  <br>
+						스피커를 이용하여 외로워하는 반려동물과의 대화를 할 수 있습니다.<br>
+						<br>
+						가입 후 자신만의 블로그에 반려동물과의 일상을 기록하고<br>
+						커뮤니티를 통해 일상의 공유 및 자신의 반려동물을 더욱 멋지게 자랑하세요.
+						<br><br>
+					</div>
+					<div class="col-md-6 text-center" data-animation="fadeInUp" data-animation-delay="900" >
+						<img class="col-md-12" src="${pageContext.request.contextPath}/assets/img/raspberry_pi.jpg">
+					
+					</div>
+					
+				</div>
+				
 			</div>
 		</section>
 		
-		<section>
+		<section class="m-b-10 p-t-30 p-b-10">
 			<div class="container" data-animation="fadeInUp" data-animation-delay="100">
 				<div class="heading heading-center" >
-					<h2>Development Team</h2>
-					<span>애완동물을 사랑합시다!</span>
+					<h2 style="font-weight:100; font-size:50px; line-height:55px;">Development Team</h2>
 			</div>
 				
 			<div class="row">
@@ -418,7 +442,7 @@
 				</div>
 				<div class="image-box-description text-center">
 					<h4>김 진 원</h4>
-					<p class="subtitle">Publisher</p>
+					<p class="subtitle">Web Developer</p>
 					<hr class="line">
 					<div>수원촌놈 개발 잘하고싶은 퍼블리셔 꿈나무</div>
 					<a target="_blank" href="https://github.com/babamba"><div>https://github.com/babamba</div></a>

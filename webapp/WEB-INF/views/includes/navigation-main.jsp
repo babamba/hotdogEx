@@ -49,7 +49,7 @@
 						<li><a href="${pageContext.request.contextPath}/community/newsfeed">뉴스피드</a></li>
 						
 						<!-- 커뮤니티 메인 -->
-						<li><a href="${pageContext.request.contextPath}/community">커뮤니티</a></li>
+						<li><a href="${pageContext.request.contextPath}/community/freeboard">커뮤니티</a></li>
 								
 						<!-- user account  -->
 						<li class="dropdown"> <a href="#">내 정보<i class="fa fa-angle-down"></i> </a>

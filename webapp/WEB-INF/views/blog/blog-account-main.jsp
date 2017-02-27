@@ -340,9 +340,31 @@
 								</div>
 									
 									
-									<div class="tab-pane" id="secret">
-										<h4>보안번호 설정</h4>
-										<p>보안번호 설정</p>
+									<div class="tab-pane text-center" id="secret" >
+										<h4>2차 보안번호 설정</h4>
+										<p>2차 보안번호 설정</p>
+										
+										<div class="secret_profile_modify col-md-12 text-center">
+										
+												<form action="">
+												
+											<div class="row col-md-6">
+												<h5>변경하실 2차 보안번호를 입력하세요</h5>
+												<div class="input-group col-md-12 password_start text-center">
+													<input id="secretNumber" type="password" class="form-control" placeholder="${map.userVo.pass_word }">
+												</div>
+											</div>
+											
+											<div class="row col-md-6">
+												<h5>변경하실 2차 보안번호 재입력하세요</h5>
+												<div class="input-group col-md-12 m-l-20">
+													<input id="secretNumberCheck" type="password" class="form-control" placeholder="${map.userVo.pass_word }">
+												</div>
+											</div>
+											
+											<button id="secretNumberSave" class="btn btn-primary btn-sm m-t-20 text-center">2차 보안번호 변경 </button>
+											</form>
+										</div>
 									</div>
 								</div>
 
