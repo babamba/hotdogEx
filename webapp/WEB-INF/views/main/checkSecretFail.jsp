@@ -127,7 +127,7 @@
 							<div class="col-md-12 form-group">
 								
 								<button type="submit" id="checkSecretbutton" class="btn btn-primary" type="button">인증 시도</button>
-								<button type="button" class="btn btn-danger"><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}" style="color:white;"></a>Cancel</button>
+								<button type="button" id="cancel" class="btn btn-danger">Cancel</button>
 							</div>
 						
 						</div>
@@ -178,9 +178,13 @@
 				}
 			
 			})
-		})		
+		})
+		
+		$(document).on("click", "#cancel", function(){
+				location.href="${pageContext.request.contextPath}/blog/${authUser.nickname}";
+		})
 	
-	// 문자를 빼버리고 숫자만 입력받기
+		// 문자를 빼버리고 숫자만 입력받기
 		function onlyNumber(event){
 			event = event || window.event;
 			var keyID = (event.which) ? event.which : event.keyCode;
