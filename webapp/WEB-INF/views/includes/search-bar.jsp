@@ -5,9 +5,14 @@
 	pageEncoding="UTF-8"%>
 
 	<!--TOP SEARCH -->
-	<div id="top-search"> <a id="top-search-trigger"><i class="fa fa-search"></i><i class="fa fa-close"></i></a>
+	<div id="top-search">
+		<a id="top-search-trigger"><i class="fa fa-search"></i><i class="fa fa-close"></i>
+		</a>
+		
 		<form action="${pageContext.request.contextPath}/search" method="get">
 			<input type="text" name="keyword" class="form-control" value="" placeholder="검색어를 입력해주세요.">
 		</form>
 		
 	</div>
+	
+	

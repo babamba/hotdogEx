@@ -66,7 +66,7 @@
 </head>
 
 <script type="text/javascript">
-/* $(function(){
+ $(function(){
 	var pi = '${piVo.device_num}';
 	var user = '${authUser.users_no}';
 		
@@ -102,7 +102,7 @@
  	})
  	
 })
- */</script>
+ </script>
 
 
 <body class="boxed background-grey no-page-loader">
@@ -135,8 +135,48 @@
 
 					<!--TOP SEARCH -->
 					<c:import url="/WEB-INF/views/includes/search-bar.jsp" />
-					<!--END: TOP SEARCH -->
 					
+					<!--END: TOP SEARCH -->
+					<div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
+	<div class="container hidden-lg hidden-md">
+		<nav id="mainMenu" class="main-menu mega-menu">
+			<ul class="main-menu nav nav-pills">
+			
+				<c:choose>
+					<c:when test="${empty authUser}"> 
+						<li><a href="${pageContext.request.contextPath}">메인</a></li>
+						
+						<li><a href="${pageContext.request.contextPath}/community">커뮤니티</a></li>
+						
+						<li><a href="${pageContext.request.contextPath}/loginpage">Log-In</a></li>
+				</c:when>
+					
+					<c:otherwise> 
+						<li><a href="${pageContext.request.contextPath}">메인</a></li>
+						
+						<!-- authUser 블로그 메인 -->
+						<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}">내 블로그</a></li>
+						
+						<!-- 커뮤니티 메인 -->
+						<li><a href="${pageContext.request.contextPath}/community/newsfeed">뉴스피드</a></li>
+						
+						<!-- 커뮤니티 메인 -->
+						<li><a href="${pageContext.request.contextPath}/community/freeboard">커뮤니티</a></li>
+								
+						<!-- user account  -->
+						<li class="dropdown"> <a href="#">내 정보<i class="fa fa-angle-down"></i> </a>
+							<ul class="dropdown-menu">
+								<li><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/account"> <i class="fa fa-user-plus"></i>계정 설정</a></li>
+								
+								<li><a id="logout" href="${pageContext.request.contextPath}/user/logout"> <i class="fa fa-user-times"></i>로그아웃</a></li>
+							</ul>
+						</li>						
+					</c:otherwise>
+			    </c:choose>				
+			</ul>
+		</nav>
+	</div>
+</div>
 					
 					
 					
@@ -186,14 +226,14 @@
 						</c:when>
 					
 						<c:otherwise>
-						<div class="col-md-5 col-sm-5 col-xs-5" >
+						<div class="col-md-5 hidden-sm hidden-xs" >
 								<div id="book" class="col-md-12 col-sm-12 col-xs-12" style="position:relative; height:230px; margin-left:20px;" >
 										<div class="col-md-12 col-sm-12 col-xs-12 text-center">
 											<button class="fancy-btn " style="position:relative; display:inline-block; left:-1%; margin-bottom:-38px;">
 												<img src="${pageContext.request.contextPath}/hotdog/image/user/${authUser.users_image}">
 											</button>
 										</div>
-								<div class="col-md-12 col-sm-6 col-xs-6">
+								<div class="col-md-12 hidden-sm hidden-xs">
 											<div class="row">
 												<div class="col-md-6 col-sm-3 col-xs-3 text-center">
 													<label style="margin-top:10px;">"${authUser.nickname}"님</br>안녕하세요!</label>
