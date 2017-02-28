@@ -144,7 +144,8 @@ public class UserController {
 	@Auth
 	@Secret
 	@RequestMapping(value = "/account/secretmodify")
-	public String basicModify(@ModelAttribute UserVo userVo, @AuthUser UserVo authUser,@ModelAttribute RaspberrypiVo piVo) {
+	public String basicModify(@ModelAttribute UserVo userVo, @AuthUser UserVo authUser,
+			@ModelAttribute RaspberrypiVo piVo) {
 
 		// 입력받은 2차 비밀번호 수정사항을 세션의 authUser 정보에 덮어씌운다.
 		authUser.setSec_pass_word(userVo.getSec_pass_word());
@@ -410,14 +411,22 @@ public class UserController {
 
 	// ******** 테스트
 	@ResponseBody
-	@RequestMapping("/app/audioupload")
-	public Object appAudioUpload(MultipartFile file, @RequestParam(value = "users_no") int users_no) {
+	@RequestMapping("/app/imageupload")
+	public Object appImageUpload(MultipartFile file, @RequestParam(value = "users_no") int users_no) {
 
 		String saveName = fileService.restore(file, users_no);
 
 		return JSONResult.success(saveName);
 	}
 
+	@ResponseBody
+	@RequestMapping("/app/audioupload")
+	public Object appAudioUpload(MultipartFile file, @RequestParam(value = "users_no") int users_no) {
+
+		String saveName = fileService.restore2(file, users_no);
+
+		return JSONResult.success(saveName);
+	}
 	// ************* App account ******
 
 	@ResponseBody
