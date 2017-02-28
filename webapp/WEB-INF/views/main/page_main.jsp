@@ -362,7 +362,7 @@
 		<!-- ADVERTISEMENT -->
 		<section class="p-t-0 p-b-0" data-animation="fadeInUp">
 			<div class="container">
-			<div class="marketing-box" style="height:400px;">
+			<div class="marketing-box" style="height:280px;">
 				<img src="${pageContext.request.contextPath}/assets/img/Mock-Up2.png" style="width:100%;"/>
 			
 			</div>
