@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.hotdog.petcam.vo.BlogVo;
 import com.hotdog.petcam.vo.CookieVo;
 import com.hotdog.petcam.vo.PetVo;
+import com.hotdog.petcam.vo.RaspberrypiVo;
 import com.hotdog.petcam.vo.UserVo;
 
 @Repository
@@ -143,6 +144,12 @@ public class UserDao {
 	public void insertPet(PetVo petVo) {
 		sqlSession.insert("user.insertPet", petVo);
 	}
+	
+	public void updateDeviceNum(RaspberrypiVo piVo) {
+		sqlSession.update("user.insertDeviceNum", piVo);
+	}
+	
+	
 
 	// *******************************************************************************************************
 	// ***************************** Secret

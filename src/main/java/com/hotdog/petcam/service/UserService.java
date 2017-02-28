@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 
 import com.hotdog.petcam.mail.SendMail;
 import com.hotdog.petcam.repository.BlogDao;
-import com.hotdog.petcam.repository.RaspberrypiDao;
 import com.hotdog.petcam.repository.UserDao;
 import com.hotdog.petcam.vo.BlogVo;
 import com.hotdog.petcam.vo.CookieVo;
 import com.hotdog.petcam.vo.PetVo;
+import com.hotdog.petcam.vo.RaspberrypiVo;
 import com.hotdog.petcam.vo.UserVo;
 
 @Service
@@ -26,13 +26,8 @@ public class UserService {
 
 	@Autowired
 	private BlogDao blogDao;
-	
-	@Autowired
-	private RaspberrypiDao raspberrypiDao;
-
 
 	public int join(UserVo userVo) {
-
 		userDao.insert(userVo);
 		UserVo vo1 = getId(userVo.getEmail());
 		return vo1.getUsers_no();
@@ -242,6 +237,11 @@ public class UserService {
 		userDao.setPetImage(petVo);
 
 	}
+	
+	public void updateDeviceNum(RaspberrypiVo piVo) {
+		userDao.updateDeviceNum(piVo);
+	}
+
 
 	// *********************************************************
 	// *************** Secret Check ****************************

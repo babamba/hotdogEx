@@ -5,6 +5,36 @@
 	pageEncoding="UTF-8"%>
 
 <script type="text/javascript">
+
+var getVideo = function(users_no){
+    $.ajax({
+    	url:"http://150.95.141.66/test/cgi-bin/vod.py",
+    	type:"post",
+    	data: { userNo : users_no },
+    	success: function(){
+    		console.log("getVideo")
+        },
+        error : function(jqXHR, status, e) {
+        console.log(status + ":" + e);
+        }            
+    });
+}
+
+var getCapture = function(users_no){
+    $.ajax({
+    	url:"http://150.95.141.66/test/cgi-bin/capture.py",
+    	type:"post",
+    	data: { userNo : users_no },
+    	success: function(){
+    		console.log("getCapture")
+        },
+        error : function(jqXHR, status, e) {
+        console.log(status + ":" + e);
+        }            
+    });
+}
+
+
 $(function(){
 	var users_no = ${authUser.users_no};
 
@@ -13,18 +43,14 @@ $(function(){
 	}
 	
 	$(document).on("click", "#getVod", function(){
-         $.ajax({
-        	url:"http://150.95.141.66/test/cgi-bin/vod.py",
-        	type:"post",
-        	data: { userNo : users_no },
-        	success: function(){
-        		console.log("SUCCESS")
-        		setTimeout(change, 500);
-            },
-            error : function(jqXHR, status, e) {
-            console.log(status + ":" + e);
-            }            
-        });
+		
+
+		getVideo(users_no);
+		
+		getCapture(users_no);
+		
+		change();
+		
      });
 })
 </script>

@@ -161,129 +161,58 @@ $(function(){
 		<!-- START: HEADER PAGE TITLE -->
 		<c:import url="/WEB-INF/views/includes/header.jsp" />
 		<!-- END: PAGE TITLE -->
-				<c:choose>
-		<c:when test="${map.userVo.users_no == authUser.users_no}" >
-			<c:import url="/WEB-INF/views/includes/navigation-blog.jsp" />
-		</c:when>
-	</c:choose>
+		<c:import url="/WEB-INF/views/includes/navigation-blog.jsp" />
 		
 		
-
 		<!-- CONTENT -->
-		<!-- REVOLUTION SLIDER -->
-        <div id="slider"> <div id="rev_slider_60_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="vimeo-gallery58" style="margin:0px auto;background-color:#000000;padding:0px;margin-top:0px;margin-bottom:0px;">
-				<!-- START REVOLUTION SLIDER 5.0.7 auto mode -->
-					<div id="rev_slider_60_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.0.7">
-						<ul>	
-						
-							<!-- SLIDE  -->
-							<c:forEach items="${list }"	var="vo" varStatus="status">
-														
-							<li data-title="${vo.regdate }<br>${vo.regtime}" style="font-size:60px;" >
-								<button id="deleteVOD" class="button red-dark button-3d rounded" style="float:right;" data-name="${vo.save_name }" data-no="${vo.users_no }" data-vno="${vo.video_no }"> 삭제</button>
-								<video width="100%" height="90%"  controls="controls">
-							    <source src="http://150.95.141.66/hotdog/hotdog/image/user/${vo.users_no }/${vo.save_name }" type="video/mp4" />
-								</video>
-							
-							</li>
-							</c:forEach>
-							
-						</ul>
-						<div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>	
+		<section class="p-t-100">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2">
 					</div>
-				</div><!-- END REVOLUTION SLIDER -->
-				<script type="text/javascript">
-					var tpj=jQuery;
 					
-					var revapi60;
-					tpj(document).ready(function() {
-						if(tpj("#rev_slider_60_1").revolution == undefined){
-							window.locatino.href="${pageContext.request.contextPath }/hotdog/community";
-						}else{
-							revapi60 = tpj("#rev_slider_60_1").show().revolution({
-								sliderType:"standard",
-								jsFileLocation: "${pageContext.request.contextPath }/assets/template/vendor/rs-plugin/js/",
-								sliderLayout:"auto",
-								dottedOverlay:"none",
-								delay:9000,
-								navigation: {
-									keyboardNavigation:"off",
-									keyboard_direction: "horizontal",
-									mouseScrollNavigation:"off",
-									onHoverStop:"off",
-									arrows: {
-										style:"uranus",
-										enable:true,
-										hide_onmobile:true,
-										hide_under:778,
-										hide_onleave:true,
-										hide_delay:200,
-										hide_delay_mobile:1200,
-										tmp:'',
-										left: {
-											h_align:"left",
-											v_align:"center",
-											h_offset:20,
-											v_offset:0
-										},
-										right: {
-											h_align:"right",
-											v_align:"center",
-											h_offset:20,
-											v_offset:0
-										}
-									}
-									,
-									thumbnails: {
-										style:"erinyen",
-										enable:true,
-										width:200,
-										height:113,
-										min_width:170,
-										wrapper_padding:30,
-										wrapper_color:"#333333",
-										wrapper_opacity:"1",
-										tmp:'<span class="tp-thumb-over"></span><span class="tp-thumb-image"></span><span class="tp-thumb-title">{{title}}</span><span class="tp-thumb-more"></span>',
-										visibleAmount:10,
-										hide_onmobile:false,
-										hide_onleave:false,
-										direction:"horizontal",
-										span:true,
-										position:"outer-top",
-										space:20,
-										h_align:"center",
-										v_align:"top",
-										h_offset:0,
-										v_offset:0
-									}
-								},
-								gridwidth:1230,
-								gridheight:692,
-								lazyType:"none",
-								shadow:0,
-								spinner:"spinner2",
-								stopLoop:"on",
-								stopAfterLoops:0,
-								stopAtSlide:1,
-								shuffle:"off",
-								autoHeight:"off",
-								disableProgressBar:"on",
-								hideThumbsOnMobile:"off",
-								hideSliderAtLimit:0,
-								hideCaptionAtLimit:0,
-								hideAllCaptionAtLilmit:0,
-								debugMode:false,
-								fallbacks: {
-									simplifyAll:"off",
-									nextSlideOnWindowFocus:"off",
-									disableFocusListener:false,
-								}
-							});
-						}
-					});	/*ready*/
-				</script></div>
-				<!-- END: SECTION -->
-		<br><br>
+				      
+			      <div class="col-md-4">
+			        <div class="icon-box effect medium center">
+			          <div class="icon"> <a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/vodvideo"><i class="fa fa-video-camera"></i></a> </div>
+			          <h3>Video</h3>
+			          <p>Recorded video.</p>
+			        </div>
+			      </div>
+							      
+			      <div class="col-md-4">
+			        <div class="icon-box effect medium center">
+			          <div class="icon"> <a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/vodcapture"><i class="fa fa-photo"></i></a> </div>
+			          <h3>Photo</h3>
+			          <p>Captured photos.</p>
+			        </div>
+			      </div>
+				      
+<%-- 					<div class="col-md-3">
+						<div class="icon-box effect medium border square">
+							<div class="icon">
+								<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/vodvideo">
+								<i class="fa fa-video-camera" ></i></a>
+							</div>
+							<h3>Video</h3>
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<div class="icon-box effect medium border square">
+							<div class="icon">
+								<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/vodcapture">
+								<i class="fa fa-photo"></i></a>
+							</div>
+							<h3>Capture</h3>
+						</div>
+					</div> --%>
+					
+
+				</div>
+			</div>
+		</section>
+
 		<!-- END: SECTION -->
 
 		<!-- FOOTER -->

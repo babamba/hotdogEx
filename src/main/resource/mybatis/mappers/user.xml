@@ -215,4 +215,11 @@
 					where email = #{email}	
 		]]>
 	</update>
+	
+	<update id="insertDeviceNum" parameterType="raspberrypivo">
+	        <![CDATA[
+	            update raspberrypi SET device_num = #{device_num} where users_no = #{users_no}
+	        ]]>
+	</update>
+	
 </mapper>

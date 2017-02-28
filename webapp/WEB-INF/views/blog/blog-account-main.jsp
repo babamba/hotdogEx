@@ -149,6 +149,10 @@
 									<li class="social-facebook"><a href="#secret"><i
 											class="fa fa-lock"></i>보안번호 설정</a>
 									</li>
+									
+									<li class="social-facebook"><a href="#device_reg"><i
+											class="fa fa-video-camera"></i>기기등록</a>
+									</li>
 
 								</ul>
 
@@ -365,6 +369,22 @@
 											<button id="secretNumberSave" class="btn btn-primary btn-sm m-t-20 text-center">2차 보안번호 변경 </button>
 											</form>
 										</div>
+									</div>
+									
+									<div class="tab-pane text-center" id="device_reg" >
+										<h4>기기 번호 등록</h4>
+									
+										<form action="${pageContext.request.contextPath}/user/account/updatedevice">
+												<p>기기번호를 입력하세요 </p>
+													<div class="col-md-4">
+													</div>
+												<div class="input-group col-md-4 password_start text-center">
+													<input name="device_num" class="form-control" value='${map.piVo.device_num }' placeholder="번호 입력 ">
+												</div>
+																
+											<button class="btn btn-primary btn-sm m-t-20 text-center" type="submit">설정 </button>
+										</form>
+										
 									</div>
 								</div>
 

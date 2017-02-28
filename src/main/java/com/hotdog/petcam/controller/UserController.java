@@ -2,9 +2,7 @@ package com.hotdog.petcam.controller;
 
 import java.util.Random;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +27,7 @@ import com.hotdog.petcam.service.ImageService;
 import com.hotdog.petcam.service.UserService;
 import com.hotdog.petcam.vo.BlogVo;
 import com.hotdog.petcam.vo.PetVo;
+import com.hotdog.petcam.vo.RaspberrypiVo;
 import com.hotdog.petcam.vo.UserVo;
 
 @Controller
@@ -245,7 +244,20 @@ public class UserController {
 	//
 	// return "redirect:/";
 	// }
-
+	
+	@Auth
+	@Secret
+	@RequestMapping(value = "/account/updatedevice")
+	public String userDeviceNum(@ModelAttribute RaspberrypiVo piVo ,@AuthUser UserVo authUser, @RequestParam(value = "device_num") String device_num) {
+		
+		piVo.setUsers_no(authUser.getUsers_no());
+		String deviceNum = "10.0.0." + device_num;		
+		piVo.setDevice_num(deviceNum);
+		
+		userService.updateDeviceNum(piVo);
+		
+		return "redirect:/";
+	}
 	@Auth
 	@Secret
 	@RequestMapping(value = "/account/userprofilemodify2")
