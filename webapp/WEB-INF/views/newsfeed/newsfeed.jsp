@@ -363,65 +363,6 @@
 					</c:forEach>
 				</div>
 				<!--end: widget archive-->
-
-				
-
-				<!--widget flickr-->
-				<div class="widget clearfix widget-flickr">
-					<h4 class="widget-title">내 이웃들</h4>
-					<div data-flickr-images="12" data-flickr-id="52617155@N08" class="flickr-widget"></div>
-				</div>
-				<!--end: widget flickr-->
-
-				<!--widget blog articles-->
-				<div class="widget clearfix widget-blog-articles"> 
-					<h4 class="widget-title">최근 활동한 이웃들</h4>
-					<ul class="list-posts list-medium">
-						<c:forEach items="${recent_users }"	var="vo" varStatus="status">
-						<li><a href="${pageContext.request.contextPath }/post/${vo.nickname}/postView?post_no=${vo.post_no}">${vo.nickname } : ${vo.title }</a>
-							<small>${vo.regdate }</small>
-						</li>
-						</c:forEach>
-					</ul>
-				</div>
-				<!--end: widget blog articles-->
-
-
-				<!--widget contact us-->
-				<div class="widget clearfix widget-contact-us" style="background-image: url('images/world-map.png'); background-position: 50% 55px; background-repeat: no-repeat">
-					<h4 class="widget-title">Contact us</h4>
-					<ul class="list-large list-icons">
-						<li><i class="fa fa-map-marker"></i>
-							<strong>Address:</strong> BIT Academy - HotDog Team
-							<br>Seoul, Kodrea</li>
-						<li><i class="fa fa-phone"></i><strong>Phone:</strong> (010) 1234-5678 </li>
-						<li><i class="fa fa-envelope"></i><strong>Email:</strong> <a href="#">hotdog.bit2017@gmail.com</a>
-						</li>
-						<li><i class="fa fa-clock-o"></i>Monday - Friday: <strong>09:00 - 18:00</strong>
-							<br>Saturday, Sunday: <strong>Closed</strong>
-						</li>
-					</ul>
-				</div>
-				<!--end: widget contact us-->
-				
-				<!--widget tags -->
-				<div class="widget clearfix widget-tags">
-					<h4 class="widget-title">Tags</h4>
-					<div class="tags">
-						<a href="">HotDog</a>
-						<a href="">PetCam</a>
-						<a href="">Streaming</a>
-						<a href="">SNS</a>
-						<a href="">Raspberry Pi</a>
-						<a href="">Python</a>
-						<a href="">Java</a>
-						<a href="">Vod</a>
-						<a href="">Diary</a>
-						<a href="">Android</a>
-					</div>
-				</div>
-				<!--end: widget tags -->
-
 			</div>
 			<!-- END: Sidebar-->
 		</div>

@@ -399,7 +399,7 @@
 				</div>
 				<div class="image-box-description text-center">
 					<h4>이 동 후</h4>
-					<p class="subtitle">Software Developer</p>
+					<p class="subtitle">WEB Developer</p>
 					<hr class="line">
 					<div>여행꾼 개잘함 개발도잘함</div>
 					<a target="_blank" href="https://github.com/yada91"><div>https://github.com/yada91</div></a>
@@ -412,7 +412,7 @@
 				</div>
 				<div class="image-box-description text-center">
 					<h4>이 하 민</h4>
-					<p class="subtitle">Software Developer</p>
+					<p class="subtitle">WEB Developer</p>
 					<hr class="line">
 					<div>얼굴로 먹고사는 개발자</div>
 					<a target="_blank" href="https://github.com/lhm8446"><div>https://github.com/lhm8446</div></a>
@@ -425,7 +425,7 @@
 				</div>
 				<div class="image-box-description text-center">
 					<h4>변 준 우</h4>
-					<p class="subtitle">Software Developer</p>
+					<p class="subtitle">WEB Developer</p>
 					<hr class="line">
 					<div>si왕자 사랑꾼 개발자</div>
 					<a target="_blank" href="https://github.com/bjwangel"><div>https://github.com/bjwangel</div></a>
@@ -441,7 +441,7 @@
 					<h4>김 진 원</h4>
 					<p class="subtitle">Web Developer</p>
 					<hr class="line">
-					<div>수원촌놈 개발 잘하고싶은 퍼블리셔 꿈나무</div>
+					<div>수원촌놈 개발리셔 꿈나무</div>
 					<a target="_blank" href="https://github.com/babamba"><div>https://github.com/babamba</div></a>
 				</div>
 			</div>
