@@ -123,9 +123,9 @@
 
 	<update id="secretModify" parameterType="uservo">
 		<![CDATA[
-			update users 
+			 update users 
 				set sec_pass_word=#{sec_pass_word} 
-					where nickname=#{nickname};
+					where nickname=#{nickname}; 
 		]]>
 	</update>
 
