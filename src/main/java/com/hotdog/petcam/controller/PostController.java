@@ -131,7 +131,8 @@ public class PostController {
 		
 		@RequestMapping("/pullCapture")
 		public String pullCapture(@AuthUser UserVo authUser,Model model){
-			Map<String,Object> map = new HashMap<String,Object>();
+			
+			Map<String,Object> map = blogService.index(authUser.getNickname());
 			map.put("captureList",postService.pullCapture(authUser.getUsers_no()));
 			
 			model.addAttribute("map", map);

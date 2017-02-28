@@ -379,8 +379,8 @@ $(function(){
 			style="background-image:url(${pageContext.request.contextPath}/hotdog/image/user/${map2.blogVo.logo_image})">
 			<div class="container">
 			  <div class="page-title col-md-8">
-					<h1>${map2.blogVo.title}</h1>
-					<span>${map2.userVo.infomation}</span>
+					<h1>${list.blogVo.title}</h1>
+					<span>${list.userVo.infomation}</span>
 					
 					 <!-- profile modal  -->
 					<div id="showInfo">
