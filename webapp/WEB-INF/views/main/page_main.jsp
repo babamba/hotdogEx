@@ -151,7 +151,7 @@
             <!-- Slide 1 -->
             <div class="slide background-overlay-dark" data-animation="fadeIn" data-animation-delay="100" data-vide-bg="${pageContext.request.contextPath}/assets/img/dog_video.mp4" align="middle">
 
-                <div class="container m-b-200" data-animation="fadeIn">
+                <div class="container m-b-100" data-animation="fadeIn">
                 	<div class="col-md-6 col-sm-12 col-xs-12">
 	                    <div class="slide-captions col-md-12 col-sm-12 col-xs-12 m-b-40">
 	                        <!-- Captions -->
@@ -165,8 +165,8 @@
                  <!-- authUser info  부분  -->
                  <c:choose>
 					<c:when test="${empty authUser}">
-							<div class="col-md-4 col-sm-4 col-xs-4 pull-right m-b-150" style="right:20px; padding-top:20px;">
-								<div id="book">
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<div id="book" style="position:relative; height:195px;">
 								
 										<div class="row text-center">
 											<div class="col-md-12 col-sm-12 col-xs-12">
@@ -186,41 +186,38 @@
 						</c:when>
 					
 						<c:otherwise>
-						<div class="col-md-5 col-sm-5 col-xs-5 pull-right pull-right m-b-150" >
-								<div id="book" class="col-md-12 col-sm-12 col-xs-12" >
+						<div class="col-md-5 col-sm-5 col-xs-5" >
+								<div id="book" class="col-md-12 col-sm-12 col-xs-12" style="position:relative; height:230px; margin-left:20px;" >
 										<div class="col-md-12 col-sm-12 col-xs-12 text-center">
 											<button class="fancy-btn " style="position:relative; display:inline-block; left:-1%; margin-bottom:-38px;">
 												<img src="${pageContext.request.contextPath}/hotdog/image/user/${authUser.users_image}">
 											</button>
 										</div>
-										
-										<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="col-md-12 col-sm-6 col-xs-6">
 											<div class="row">
-												
-											
-												<div class="col-md-6 col-sm-6 col-xs-6 text-center">
+												<div class="col-md-6 col-sm-3 col-xs-3 text-center">
 													<label style="margin-top:10px;">"${authUser.nickname}"님</br>안녕하세요!</label>
 												</div> 
 												
-												<div class="col-md-6 col-sm-6 col-xs-6 text-center">
+												<div class="col-md-6 col-sm-3 col-xs-3 text-center">
 													<a class="button transparent full-rounded" id="logout-stream" href="${pageContext.request.contextPath}/user/logout" ><span>로그아웃</span></a>
 												</div>
 											</div>
-										</div>
 									
-									<div class="auth_nav col-md-12 col-sm-12 col-xs-12" style="margin:0px; padding:0px" >
+
 										<div class="row">
-												<!-- <a class="button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-4 text-center" href="#" ><span>블로그</span></a>
-												<a class="button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-4 text-center" href="#" ><span>뉴스피드</span></a>
-												<a class="button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-4 text-center" href="#" ><span>스트리밍</span></a> -->
-										
-												<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}"><div class="button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-3 text-center"><span>블로그</span></div></a>
-												<a href="${pageContext.request.contextPath}/community/newsfeed"><div class="button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-3 text-center"><span>뉴스피드</span></div></a>
-												<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/streaming"><div class="button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-3 text-center"><span>스트리밍</span></div></a>								
+												<div class="button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-1 text-center">
+													<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}" style="color:white;">
+														<span>블로그</span></a>
+												</div>
+												
+												<div class="row button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-1 text-center" style="margin-right:-8px;"><a href="${pageContext.request.contextPath}/community/newsfeed" style="color:white;"><span>뉴스피드</span></a></div>
+												<div class="row button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-1 text-center" style="margin-left:8px; margin-right:0px;"><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/streaming" style="color:white;"><span>스트리밍</span></a></div>						
+												
+
 										</div>
 									</div>
 								</div>
-							
 							</div>
 						</c:otherwise>
 			    	</c:choose>
