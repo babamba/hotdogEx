@@ -134,7 +134,7 @@
 
 								<ul class="tabs-navigation">
 
-									<li class="social-facebook"><a href="#user_profile"><i
+									<li class="social-facebook active"><a href="#user_profile"><i
 											class="fa fa-user"></i> 유저 프로필 설정</a>
 									</li>
 
@@ -159,7 +159,7 @@
 
 								<div class="tabs-content">
 								
-									<div class="tab-pane" id="user_profile">
+									<div class="tab-pane active" id="user_profile">
 										<form name="uploadImages" method="post" enctype="multipart/form-data" class="upload_modify">
 											<div class="user_modify_intro text-center">
 												<h4>유저 프로필 설정</h4>
