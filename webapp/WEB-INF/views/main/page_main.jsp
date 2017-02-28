@@ -105,7 +105,7 @@
  */</script>
 
 
-<body class="boxed background-grey">
+<body class="boxed background-grey no-page-loader">
 	
 
 	<!-- WRAPPER -->
@@ -206,13 +206,10 @@
 									
 
 										<div class="row">
-												<div class="button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-1 text-center">
-													<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}" style="color:white;">
-														<span>블로그</span></a>
-												</div>
+												<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}" style="color:white;"><div class="button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-1 text-center"><span>블로그</span></div></a>
 												
-												<div class="row button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-1 text-center" style="margin-right:-8px;"><a href="${pageContext.request.contextPath}/community/newsfeed" style="color:white;"><span>뉴스피드</span></a></div>
-												<div class="row button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-1 text-center" style="margin-left:8px; margin-right:0px;"><a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/streaming" style="color:white;"><span>스트리밍</span></a></div>						
+												<a href="${pageContext.request.contextPath}/community/newsfeed" style="color:white;"><div class="row button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-1 text-center" style="margin-right:-8px;"><span>뉴스피드</span></div></a>
+												<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}/streaming" style="color:white;"><div class="row button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-1 text-center" style="margin-left:8px; margin-right:0px;"><span>스트리밍</span></a></div>						
 												
 
 										</div>

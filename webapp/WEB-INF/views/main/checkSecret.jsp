@@ -120,7 +120,7 @@
 							<div class="col-md-12 form-group">
 							
 								<label class="sr-only">Password</label> 
-								<input id="secretNumber" name="sec_pass_word" onkeydown='return onlyNumber(event)' type="password" value="" placeholder="Secret Number" class="form-control input-lg">
+								<input id="secretNumber" name="sec_pass_word" onkeydown='return onlyNumber(event)' type="password" placeholder="Secret Number" class="form-control input-lg">
 
 							</div>
 

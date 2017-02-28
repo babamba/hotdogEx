@@ -203,8 +203,8 @@
 
 	<insert id="insertPet" parameterType="petvo">
 	        <![CDATA[
-	            insert into pet(name, info, gender, age, co_date,users_no) values
-	            (#{name},#{info},#{gender},#{age},STR_TO_DATE(#{co_date},"%d/%m/%Y"),#{users_no})
+	            insert into pet(name, info, gender, age, co_date,users_no, pet_image) values
+	            (#{name},#{info},#{gender},#{age},STR_TO_DATE(#{co_date},"%d/%m/%Y"),#{users_no}, #{pet_image})
 	        ]]>
 	</insert>
 	

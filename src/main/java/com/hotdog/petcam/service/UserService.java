@@ -41,12 +41,13 @@ public class UserService {
 		BlogVo blogVo = new BlogVo();
 		blogVo.setUsers_no(vo1.getUsers_no());
 		blogVo.setTitle(vo1.getNickname() + "님의 블로그");
-		blogVo.setLogo_image("a.png");
+		blogVo.setLogo_image("blogbackground.jpg");
 
 		blogDao.insert(blogVo);
 
 		PetVo pet = new PetVo();
 		pet.setUsers_no(userVo.getUsers_no());
+		pet.setPet_image("dogimage.png");
 		userDao.insertPet(pet);
 	}
 	public void setCookie(String name,String email){
