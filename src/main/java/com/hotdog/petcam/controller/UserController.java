@@ -24,6 +24,7 @@ import com.hotdog.petcam.security.Secret;
 import com.hotdog.petcam.service.BlogService;
 import com.hotdog.petcam.service.FileUploadService;
 import com.hotdog.petcam.service.ImageService;
+import com.hotdog.petcam.service.RaspberrypiService;
 import com.hotdog.petcam.service.UserService;
 import com.hotdog.petcam.vo.BlogVo;
 import com.hotdog.petcam.vo.PetVo;
@@ -42,6 +43,8 @@ public class UserController {
 	private ImageService imageService;
 	@Autowired
 	private FileUploadService fileService;
+	@Autowired
+	private RaspberrypiService raspberrypiService;
 
 	@RequestMapping("/login")
 	public String login(@ModelAttribute UserVo vo, Model model, HttpServletRequest request, HttpSession session) {
@@ -141,11 +144,12 @@ public class UserController {
 	@Auth
 	@Secret
 	@RequestMapping(value = "/account/secretmodify")
-	public String basicModify(@ModelAttribute UserVo userVo, @AuthUser UserVo authUser) {
+	public String basicModify(@ModelAttribute UserVo userVo, @AuthUser UserVo authUser,@ModelAttribute RaspberrypiVo piVo) {
 
 		// 입력받은 2차 비밀번호 수정사항을 세션의 authUser 정보에 덮어씌운다.
 		authUser.setSec_pass_word(userVo.getSec_pass_word());
-
+		piVo.setUsers_no(authUser.getUsers_no());
+		raspberrypiService.insert(piVo);
 		// 가서 업데이트 하자
 		userService.secretModify(authUser);
 
@@ -244,20 +248,22 @@ public class UserController {
 	//
 	// return "redirect:/";
 	// }
-	
+
 	@Auth
 	@Secret
 	@RequestMapping(value = "/account/updatedevice")
-	public String userDeviceNum(@ModelAttribute RaspberrypiVo piVo ,@AuthUser UserVo authUser, @RequestParam(value = "device_num") String device_num) {
-		
+	public String userDeviceNum(@ModelAttribute RaspberrypiVo piVo, @AuthUser UserVo authUser,
+			@RequestParam(value = "device_num") String device_num) {
+
 		piVo.setUsers_no(authUser.getUsers_no());
-		String deviceNum = "10.0.0." + device_num;		
+		String deviceNum = "10.0.0." + device_num;
 		piVo.setDevice_num(deviceNum);
-		
+
 		userService.updateDeviceNum(piVo);
-		
+
 		return "redirect:/";
 	}
+
 	@Auth
 	@Secret
 	@RequestMapping(value = "/account/userprofilemodify2")
