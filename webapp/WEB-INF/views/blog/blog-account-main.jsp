@@ -346,12 +346,12 @@
 										
 										<div class="secret_profile_modify col-md-12 text-center">
 										
-												<form action="">
+												<form action="${pageContext.request.contextPath }/user/account/secretmodify" method="post">
 												
 											<div class="row col-md-6">
 												<h5>변경하실 2차 보안번호를 입력하세요</h5>
 												<div class="input-group col-md-12 password_start text-center">
-													<input id="secretNumber" type="password" class="form-control" placeholder="2차 비밀번호를 입력하세요">
+													<input id="secretNumber" name="sec_pass_word" type="password" class="form-control" placeholder="2차 비밀번호를 입력하세요">
 												</div>
 											</div>
 											
