@@ -180,8 +180,8 @@ $(function(){
 			
 			nickname = $("#inputnickname").val();
 			
-			if(nickname.length < 6 ){
-				alertify.error("닉네임은 6자 이상입니다.")
+			if(nickname.length < 1 ){
+				alertify.error("닉네임은 1자 이상입니다.")
 				$("#inputnickname").focus();
 				return false;
 			}

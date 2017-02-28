@@ -151,7 +151,7 @@ public class UserController {
 		userService.secretModify(authUser);
 
 		// 블로그 메인으로 리다이렉트~
-		return "main/index";
+		return "blog-account-main";
 	}
 
 	@ResponseBody
