@@ -106,11 +106,11 @@
 		<!-- END: HEADER -->
     
 			<!-- PAGE TITLE -->
-			<section id="page-title" class="page-title-parallax page-title-center text-dark" style="background-image:url(${pageContext.request.contextPath}/assets/template/images/parallax/page-title-parallax.jpg);">
+			<section id="page-title" class="page-title-parallax page-title-center text-light" style="background-image:url(${pageContext.request.contextPath}/assets/template/images/parallax/page-title-parallax-2.jpg);" >
 				<div class="container">
 					<div class="page-title col-md-8">
-						<h1>News Feed</h1>
-						<h1>Share. Your <span class="text-rotator" data-rotate-effect="bounce" data-rotate-speed="3000">Happiness :),Sorrow :(,Everything !</span></h1>
+						<h1 style="text-shadow: 0px 1px 10px #4d4d4d;">News Feed</h1>
+						<h1 style="text-shadow: 0px 1px 10px #4d4d4d;">Share. Your <span class="text-rotator" data-rotate-effect="bounce" data-rotate-speed="3000" style="text-shadow: 0px 1px 10px #4d4d4d;">Happiness :),Sorrow :(,Everything !</span></h1>
 					</div>
 
 				</div>
