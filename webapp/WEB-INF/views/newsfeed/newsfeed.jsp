@@ -143,9 +143,9 @@
 							<h4 class="title">${vo.title }</h4>
 							<p><i class="fa fa-tag"></i>${vo.nickname }</p>
 						</div>
-						<div class="portfolio-date">
+						<%--<div class="portfolio-date">
 							<p class="small"><i class="fa fa-calendar-o"></i>${vo.regdate }</p>
-						</div>
+						</div> --%>
 						
 					</div>
 					</c:forEach>

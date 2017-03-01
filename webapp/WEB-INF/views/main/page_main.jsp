@@ -187,13 +187,13 @@
 		
 		<!-- INSPIRO SLIDER -->
 		<div style="width:100%; height:500px; overflow-y:hidden;">
-        <div  class="inspiro-slider " >
+        <div  class="inspiro-slider" >
             <!-- Slide 1 -->
             <div class="slide background-overlay-dark" data-animation="fadeIn" data-animation-delay="100" data-vide-bg="${pageContext.request.contextPath}/assets/img/dog_video.mp4" align="middle">
 
                 <div class="container m-b-100" data-animation="fadeIn">
                 	<div class="col-md-6 col-sm-12 col-xs-12">
-	                    <div class="slide-captions col-md-12 col-sm-12 col-xs-12 m-b-40">
+	                    <div class="slide-captions col-md-12 col-sm-12 col-xs-12 m-b-40 p-t-20">
 	                        <!-- Captions -->
 	                        <h2 class="text-center">Hot Dog</h2>
 	                        <h4 class="m-b-40 text-center">핫도그 커뮤니티에 오신 걸 환영해요!</h4>
