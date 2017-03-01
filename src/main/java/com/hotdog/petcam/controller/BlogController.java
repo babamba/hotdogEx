@@ -141,6 +141,8 @@ public class BlogController {
 		piVo.setUsers_no(authUser.getUsers_no());
 		map.put("piVo", raspberrypiService.selectByNo(piVo));
 		model.addAttribute("map", map);
+		
+		System.out.println(map);
 
 		return "blog/blog-account-main";
 	}

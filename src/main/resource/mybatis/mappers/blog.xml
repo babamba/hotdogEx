@@ -30,7 +30,7 @@
 	</update>
 	<select id="getTitleByNo" parameterType="int" resultType="blogvo">
 		<![CDATA[
-			select title 
+			select title, logo_image 
 				from blog
 				where users_no=#{no};
 		]]>
