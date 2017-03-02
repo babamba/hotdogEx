@@ -402,7 +402,7 @@
 				<div class="row m-t-30 m-l-10">
 
 					
-					<div class="col-md-6 text-center p-t-20 p-b-40 background-white" data-animation="fadeInUp" data-animation-delay="700" style="font-size:16px;">
+					<div class="col-md-6 text-center p-t-20 p-b-40 background-white" data-animation="fadeInUp" data-animation-delay="500" style="font-size:16px;">
 						<br>핫도그는 Web과  App을 지원하며,<br>
 						<br>
 						Web상에서는 커뮤니티를 주요 시스템으로 하고<br>
@@ -423,7 +423,7 @@
 		</section>
 		
 		<section class="m-b-10 p-t-30 p-b-10">
-			<div class="container" data-animation="fadeInUp" data-animation-delay="100">
+			<div class="container" data-animation="fadeInUp" data-animation-delay="300">
 				<div class="heading heading-center" >
 					<h2 style="font-weight:100; font-size:50px; line-height:55px;">Development Team</h2>
 			</div>
