@@ -195,9 +195,9 @@
                 	<div class="col-md-6 col-sm-12 col-xs-12">
 	                    <div class="slide-captions col-md-12 col-sm-12 col-xs-12 m-b-40 p-t-20">
 	                        <!-- Captions -->
-	                        <h2 class="text-center">Hot Dog</h2>
-	                        <h4 class="m-b-40 text-center">핫도그 커뮤니티에 오신 걸 환영해요!</h4>
-	                       	<a class="text-center button transparent effect fill-vertical col-md-12 col-sm-12 col-xs-4" href="${pageContext.request.contextPath}/community/freeboard"><span>커뮤니티 게시판으로!</span></a>
+	                        <h2 class="text-center" style="text-shadow: 3px 1px 10px #4d4d4d;">Hot Dog</h2>
+	                        <h4 class="m-b-40 text-center" style="text-shadow: 3px 1px 10px #4d4d4d;">핫도그 커뮤니티에 오신 걸 환영해요!</h4>
+	                       	<a class="text-center button transparent effect fill-vertical col-md-12 col-sm-12 hidden-xs" href="${pageContext.request.contextPath}/community/freeboard"><span>커뮤니티 게시판으로!</span></a>
 	                        <!-- End: Captions -->
 	                    </div>
                     </div>
@@ -205,19 +205,19 @@
                  <!-- authUser info  부분  -->
                  <c:choose>
 					<c:when test="${empty authUser}">
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<div id="book" style="position:relative; height:195px; margin-top:16px;">
+							<div class="col-md-6 hidden-sm hidden-xs">
+								<div id="book" style="position:relative; height:195px; margin-top:20px;">
 								
 										<div class="row text-center">
 											<div class="col-md-12 col-sm-12 col-xs-12" data-animation="fadeInUp">
-												<label>핫도그를 시작하세요!</label>
+												<label style="text-shadow: 3px 1px 10px #4d4d4d;">핫도그를 시작하세요!</label>
 											</div>
 										</div>
 										
 										
 									<div class="row">
 											<div class="col-md-12 col-sm-12 col-xs-12 text-center">	
-												<a href="${pageContext.request.contextPath}/loginpage"><div class="button transparent effect fill-vertical col-md-12 col-sm-12 col-xs-4 text-center" data-animation="fadeInUp"><span>로그인 & 회원가입</span></div></a>
+												<a style="text-shadow: 3px 1px 10px #4d4d4d;" href="${pageContext.request.contextPath}/loginpage"><div class="button transparent effect fill-vertical col-md-12 col-sm-12 col-xs-4 text-center" data-animation="fadeInUp"><span>로그인 & 회원가입</span></div></a>
 											</div>
 									</div> 
 								
