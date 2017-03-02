@@ -27,6 +27,9 @@ body .container {
   -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px;
 }
+
+
+
 body .container .half {
   float: left;
   width: 50%;
@@ -42,6 +45,28 @@ body .container .half.bg {
   margin-bottom:10px;
   background-repeat: no-repeat;
 }
+
+@media screen and (max-width: 767px){
+	body{
+		margin-top:0px;
+	}
+	
+	body .container{
+		width: 350px;
+	}
+	
+	
+	body .container .half{
+		width: 100%;
+	}
+	
+	body .container .half.bg {
+ 		display: none;
+	}
+}
+
+
+
 body .container h1 {
   font-size: 18px;
   font-weight: 700;
