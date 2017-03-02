@@ -63,8 +63,13 @@ public class PostController {
 		public String modify_page(
 				@RequestParam(value="post_no", required=true) Integer post_no, Model model,
 				@PathVariable String nickname){
+			
+			Map<String, Object> map = blogService.index(nickname);
+			model.addAttribute("map", map);
+			
 			PostVo postVo = postService.getModifyPost(post_no);
 			model.addAttribute("postvo",postVo);
+			
 			return "blog/blog-modify-form";
 		}
 		

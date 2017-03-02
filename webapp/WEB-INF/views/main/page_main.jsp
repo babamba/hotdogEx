@@ -206,10 +206,10 @@
                  <c:choose>
 					<c:when test="${empty authUser}">
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<div id="book" style="position:relative; height:195px;">
+								<div id="book" style="position:relative; height:195px; margin-top:16px;">
 								
 										<div class="row text-center">
-											<div class="col-md-12 col-sm-12 col-xs-12">
+											<div class="col-md-12 col-sm-12 col-xs-12" data-animation="fadeInUp">
 												<label>핫도그를 시작하세요!</label>
 											</div>
 										</div>
@@ -217,7 +217,7 @@
 										
 									<div class="row">
 											<div class="col-md-12 col-sm-12 col-xs-12 text-center">	
-												<a href="${pageContext.request.contextPath}/loginpage"><div class="button transparent effect fill-vertical col-md-12 col-sm-12 col-xs-4 text-center"><span>로그인 & 회원가입</span></div></a>
+												<a href="${pageContext.request.contextPath}/loginpage"><div class="button transparent effect fill-vertical col-md-12 col-sm-12 col-xs-4 text-center" data-animation="fadeInUp"><span>로그인 & 회원가입</span></div></a>
 											</div>
 									</div> 
 								
@@ -226,7 +226,7 @@
 						</c:when>
 					
 						<c:otherwise>
-						<div class="col-md-5 hidden-sm hidden-xs" >
+						<div class="col-md-5 hidden-sm hidden-xs" data-animation="fadeIn">
 								<div id="book" class="col-md-12 col-sm-12 col-xs-12" style="position:relative; height:230px; margin-left:20px;" >
 										<div class="col-md-12 col-sm-12 col-xs-12 text-center">
 											<button class="fancy-btn " style="position:relative; display:inline-block; left:-1%; margin-bottom:-38px;">
@@ -235,17 +235,17 @@
 										</div>
 								<div class="col-md-12 hidden-sm hidden-xs">
 											<div class="row">
-												<div class="col-md-6 col-sm-3 col-xs-3 text-center">
+												<div class="col-md-6 col-sm-3 col-xs-3 text-center" data-animation="fadeInUp">
 													<label style="margin-top:10px;">"${authUser.nickname}"님</br>안녕하세요!</label>
 												</div> 
 												
-												<div class="col-md-6 col-sm-3 col-xs-3 text-center">
+												<div class="col-md-6 col-sm-3 col-xs-3 text-center" data-animation="fadeInUp">
 													<a class="button transparent full-rounded" id="logout-stream" href="${pageContext.request.contextPath}/user/logout" ><span>로그아웃</span></a>
 												</div>
 											</div>
 									
 
-										<div class="row">
+										<div class="row" data-animation="fadeInDown">
 												<a href="${pageContext.request.contextPath}/blog/${authUser.nickname}" style="color:white;"><div class="button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-1 text-center"><span>블로그</span></div></a>
 												
 												<a href="${pageContext.request.contextPath}/community/newsfeed" style="color:white;"><div class="row button transparent effect fill-vertical col-md-4 col-sm-4 col-xs-1 text-center" style="margin-right:-8px;"><span>뉴스피드</span></div></a>
